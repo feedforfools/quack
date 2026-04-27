@@ -1,0 +1,31 @@
+# Always ignore project implementation markdown files
+_*.md 
+
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+dist-ssr
+
+# Test artifacts
+coverage
+test-results
+playwright-report
+blob-report
+.playwright
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea

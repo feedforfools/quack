@@ -1,0 +1,6 @@
+dist
+node_modules
+coverage
+supabase/.branches
+package-lock.json
+_*.md
