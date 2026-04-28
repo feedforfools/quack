@@ -1,0 +1,46 @@
+{
+  "common": {
+    "comingSoon": "Prossimamente.",
+    "backToHome": "Torna alla home"
+  },
+  "language": {
+    "label": "Cambia lingua",
+    "en": "EN",
+    "it": "IT"
+  },
+  "identity": {
+    "prompt": {
+      "title": "Come ti chiami?",
+      "subtitle": "Visibile agli altri nella stanza. Nessun account richiesto.",
+      "label": "Nome visualizzato",
+      "placeholder": "es. Papero McQuack",
+      "cta": "Andiamo"
+    }
+  },
+  "home": {
+    "tagline": "Scopri il cialtrone.",
+    "nameLabel": "Il tuo nome",
+    "namePlaceholder": "es. Papero McQuack",
+    "nameRequired": "Inserisci il tuo nome per continuare.",
+    "createRoom": "Crea Stanza",
+    "joinRoom": "Entra",
+    "privacyLink": "Privacy"
+  },
+  "create": {
+    "title": "Crea una Stanza"
+  },
+  "join": {
+    "title": "Entra in una Stanza"
+  },
+  "room": {
+    "title": "Stanza"
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "message": "Questa stanza potrebbe essere terminata, o il link \u00e8 errato."
+  },
+  "privacy": {
+    "title": "Informativa sulla Privacy",
+    "placeholder": "Informativa completa in arrivo. Quack non raccoglie dati personali e non memorizza nulla oltre al nome visualizzato scelto nel tuo browser."
+  }
+}

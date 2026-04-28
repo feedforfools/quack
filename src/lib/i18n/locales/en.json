@@ -1,0 +1,46 @@
+{
+  "common": {
+    "comingSoon": "Coming soon.",
+    "backToHome": "Back to home"
+  },
+  "language": {
+    "label": "Switch language",
+    "en": "EN",
+    "it": "IT"
+  },
+  "identity": {
+    "prompt": {
+      "title": "What\u2019s your name?",
+      "subtitle": "Shown to others in the room. No account needed.",
+      "label": "Display name",
+      "placeholder": "e.g. Duck McQuack",
+      "cta": "Let\u2019s go"
+    }
+  },
+  "home": {
+    "tagline": "Spot the cialtrone.",
+    "nameLabel": "Your name",
+    "namePlaceholder": "e.g. Duck McQuack",
+    "nameRequired": "Enter your name to continue.",
+    "createRoom": "Create Room",
+    "joinRoom": "Join Room",
+    "privacyLink": "Privacy"
+  },
+  "create": {
+    "title": "Create a Room"
+  },
+  "join": {
+    "title": "Join a Room"
+  },
+  "room": {
+    "title": "Room"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "message": "This room may have ended, or the link is wrong."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "placeholder": "Full privacy policy coming soon. Quack collects no personal data and stores nothing beyond your chosen display name in your browser."
+  }
+}
