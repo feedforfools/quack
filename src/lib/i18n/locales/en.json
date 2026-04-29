@@ -18,7 +18,7 @@
     }
   },
   "home": {
-    "tagline": "Spot the cialtrone.",
+    "tagline": "Spot the impostor.",
     "nameLabel": "Your name",
     "namePlaceholder": "e.g. Duck McQuack",
     "nameRequired": "Enter your name to continue.",
@@ -27,13 +27,41 @@
     "privacyLink": "Privacy"
   },
   "create": {
-    "title": "Create a Room"
+    "title": "Create a Room",
+    "cta": "Create Room",
+    "errorCreate": "Failed to create the room. Please try again."
   },
   "join": {
-    "title": "Join a Room"
+    "title": "Join a Room",
+    "codeLabel": "Room code",
+    "codePlaceholder": "e.g. ABC123",
+    "cta": "Join Room",
+    "errorNotFound": "Room not found. Check the code and try again.",
+    "errorJoin": "Couldn\u2019t join the room. Please try again."
   },
   "room": {
-    "title": "Room"
+    "title": "Room",
+    "waitingForHost": "Waiting for the host to start\u2026",
+    "waitingToReady": "Press \u201cI\u2019m Ready\u201d when you\u2019re set!",
+    "errorNotFound": "This room has ended.",
+    "errorNotFoundSubtitle": "The link may have expired or the room was closed. Start a new game instead.",
+    "createNewRoom": "Create a New Room",
+    "shareLabel": "Invite players",
+    "shareTitle": "Join my Quack room!",
+    "shareText": "Use code {{code}} or tap the link to join.",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied!",
+    "playerCount": "{{count}} player",
+    "playerCount_other": "{{count}} players",
+    "host": "Host",
+    "you": "You",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "readyCta": "I\u2019m Ready",
+    "notReadyCta": "Not Ready",
+    "startGame": "Start Game",
+    "startDisabledNotAllReady": "Waiting for all players to be ready",
+    "startDisabledTooFew": "Need at least {{count}} players to start"
   },
   "notFound": {
     "title": "Page not found",

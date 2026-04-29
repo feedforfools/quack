@@ -14,6 +14,12 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: ["./src/test/setup.ts"],
+    env: {
+      // Local Supabase dev stack — public anon key, safe to commit.
+      VITE_SUPABASE_URL: "http://127.0.0.1:54321",
+      VITE_SUPABASE_ANON_KEY:
+        "sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH",
+    },
     include: ["src/**/*.test.{ts,tsx}", "tests/unit/**/*.test.{ts,tsx}"],
     coverage: {
       provider: "v8",

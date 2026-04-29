@@ -48,17 +48,23 @@ describe("routing smoke", () => {
   });
 
   it("/create renders the Create heading", () => {
+    // Create page gates on display name — seed one so we reach the heading.
+    localStorage.setItem("quack_display_name", "Test Duck");
     renderRoute("/create", "/create", <Create />);
     expect(
       screen.getByRole("heading", { name: i18n.t("create.title") }),
     ).toBeInTheDocument();
+    localStorage.removeItem("quack_display_name");
   });
 
   it("/join renders the Join heading", () => {
+    // Join page gates on display name — seed one so we reach the heading.
+    localStorage.setItem("quack_display_name", "Test Duck");
     renderRoute("/join", "/join", <Join />);
     expect(
       screen.getByRole("heading", { name: i18n.t("join.title") }),
     ).toBeInTheDocument();
+    localStorage.removeItem("quack_display_name");
   });
 
   it("/privacy renders the Privacy heading", () => {

@@ -27,13 +27,41 @@
     "privacyLink": "Privacy"
   },
   "create": {
-    "title": "Crea una Stanza"
+    "title": "Crea una Stanza",
+    "cta": "Crea Stanza",
+    "errorCreate": "Impossibile creare la stanza. Riprova."
   },
   "join": {
-    "title": "Entra in una Stanza"
+    "title": "Entra in una Stanza",
+    "codeLabel": "Codice stanza",
+    "codePlaceholder": "es. ABC123",
+    "cta": "Entra",
+    "errorNotFound": "Stanza non trovata. Controlla il codice e riprova.",
+    "errorJoin": "Impossibile entrare nella stanza. Riprova."
   },
   "room": {
-    "title": "Stanza"
+    "title": "Stanza",
+    "waitingForHost": "In attesa che l\u2019host avvii la partita\u2026",
+    "waitingToReady": "Premi \"Sono pronto\" quando sei pronto!",
+    "errorNotFound": "Questa stanza \u00e8 terminata.",
+    "errorNotFoundSubtitle": "Il link potrebbe essere scaduto o la stanza \u00e8 stata chiusa. Crea una nuova partita.",
+    "createNewRoom": "Crea una nuova stanza",
+    "shareLabel": "Invita giocatori",
+    "shareTitle": "Entra nella mia stanza Quack!",
+    "shareText": "Usa il codice {{code}} oppure tocca il link per entrare.",
+    "copyLink": "Copia link",
+    "linkCopied": "Link copiato!",
+    "playerCount": "{{count}} giocatore",
+    "playerCount_other": "{{count}} giocatori",
+    "host": "Host",
+    "you": "Tu",
+    "connected": "Connesso",
+    "disconnected": "Disconnesso",
+    "readyCta": "Sono pronto",
+    "notReadyCta": "Non pronto",
+    "startGame": "Inizia partita",
+    "startDisabledNotAllReady": "In attesa che tutti i giocatori siano pronti",
+    "startDisabledTooFew": "Servono almeno {{count}} giocatori per iniziare"
   },
   "notFound": {
     "title": "Pagina non trovata",
