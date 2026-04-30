@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { supabaseWithDevice } from "@/lib/supabase";
 import type { Database } from "@/lib/supabase/types";
 import { log } from "@/lib/log";
@@ -12,6 +12,8 @@ export interface UseRoomReturn {
   /** Raw `config` JSONB from the rooms row, or null while loading. */
   roomConfig: RoomConfig | null;
   loading: boolean;
+  /** Re-fetch the room row from the DB. Useful after a host transfer. */
+  refetch: () => void;
 }
 
 /**
@@ -29,28 +31,30 @@ export function useRoom(
   const [roomConfig, setRoomConfig] = useState<RoomConfig | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const fetchRoom = useCallback(async () => {
     if (!deviceId || !code) return;
 
     const client = supabaseWithDevice(deviceId);
-
-    void client
+    const { data, error } = await client
       .from("rooms")
       .select("id, host_player_id, config")
       .eq("code", code.toUpperCase())
-      .maybeSingle()
-      .then(({ data, error }) => {
-        if (error) {
-          log.error("useRoom: fetch failed", error);
-        } else if (data) {
-          setRoomId(data.id);
-          setHostPlayerId(data.host_player_id);
-          setIsHost(data.host_player_id === deviceId);
-          setRoomConfig(data.config);
-        }
-        setLoading(false);
-      });
+      .maybeSingle();
+
+    if (error) {
+      log.error("useRoom: fetch failed", error);
+    } else if (data) {
+      setRoomId(data.id);
+      setHostPlayerId(data.host_player_id);
+      setIsHost(data.host_player_id === deviceId);
+      setRoomConfig(data.config);
+    }
+    setLoading(false);
   }, [deviceId, code]);
 
-  return { roomId, hostPlayerId, isHost, roomConfig, loading };
+  useEffect(() => {
+    void fetchRoom();
+  }, [fetchRoom]);
+
+  return { roomId, hostPlayerId, isHost, roomConfig, loading, refetch: fetchRoom };
 }

@@ -11,7 +11,7 @@ export interface UseCreateRoomReturn {
     displayName: string;
   }) => Promise<string | null>;
   loading: boolean;
-  error: string | null;
+  error: "create.errorCreate" | "create.errorAlreadyInRoom" | null;
 }
 
 /**
@@ -29,7 +29,7 @@ export interface UseCreateRoomReturn {
  */
 export function useCreateRoom(): UseCreateRoomReturn {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<"create.errorCreate" | "create.errorAlreadyInRoom" | null>(null);
 
   const createRoom = useCallback(
     async ({
@@ -44,6 +44,21 @@ export function useCreateRoom(): UseCreateRoomReturn {
 
       try {
         const client = supabaseWithDevice(deviceId);
+
+        // Guard: reject if this device is already a member of any room.
+        // Prevents orphaning a newly-created room if the players INSERT would
+        // later fail against the players_device_single_room unique index.
+        const { data: existing } = await client
+          .from("players")
+          .select("room_id")
+          .eq("id", deviceId)
+          .maybeSingle();
+
+        if (existing) {
+          log.warn("useCreateRoom: device already in a room", existing.room_id);
+          setError("create.errorAlreadyInRoom");
+          return null;
+        }
 
         // Generate unique room code.
         const code = await generateUniqueRoomCode(client);

@@ -10,6 +10,8 @@ export interface UseRoomPlayersReturn {
   /** Set of player IDs currently connected to the Realtime presence channel. */
   connectedIds: Set<string>;
   loading: boolean;
+  /** True once the host broadcasts `room_ended` — non-host players should show a "room ended" screen. */
+  roomEnded: boolean;
   /** Re-fetch the roster from the DB immediately. */
   refetch: () => Promise<void>;
   /**
@@ -42,6 +44,7 @@ export function useRoomPlayers(
   const [players, setPlayers] = useState<PlayerRow[]>([]);
   const [connectedIds, setConnectedIds] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
+  const [roomEnded, setRoomEnded] = useState(false);
 
   // Keep a stable ref to the fetch function so it can be called from
   // callbacks that outlive a single render (e.g., broadcast handler).
@@ -98,6 +101,25 @@ export function useRoomPlayers(
         if (!isMounted) return;
         void fetchPlayers();
       })
+      // Host ended the room — flag non-host players to show the ended screen.
+      .on("broadcast", { event: "room_ended" }, () => {
+        if (!isMounted) return;
+        setRoomEnded(true);
+      })
+      // When the host hands over, they broadcast the new host secret so the
+      // successor's browser can save it to localStorage without a page reload.
+      .on("broadcast", { event: "host_secret_transfer" }, ({ payload }) => {
+        if (!isMounted) return;
+        const p = payload as { newHostId?: string; newSecret?: string };
+        if (
+          typeof p.newHostId === "string" &&
+          typeof p.newSecret === "string" &&
+          p.newHostId === deviceId &&
+          roomId
+        ) {
+          localStorage.setItem(`quack_host_secret_${roomId}`, p.newSecret);
+        }
+      })
       .subscribe((status) => {
         if (status === "SUBSCRIBED") {
           void channel.track({ playerId: deviceId });
@@ -125,5 +147,5 @@ export function useRoomPlayers(
     await broadcastRef.current?.("roster_update");
   }, []);
 
-  return { players, connectedIds, loading, refetch, broadcastRefetch };
+  return { players, connectedIds, loading, roomEnded, refetch, broadcastRefetch };
 }

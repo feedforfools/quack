@@ -9,6 +9,7 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
 import { I18nextProvider } from "react-i18next";
 import i18n from "@/lib/i18n/config";
+import { ToastProvider } from "@/components";
 import { AppLayout } from "./Layout";
 import Home from "@/pages/Home";
 import Create from "@/pages/Create";
@@ -28,13 +29,15 @@ beforeAll(async () => {
 function renderRoute(path: string, routePath: string, element: React.ReactNode) {
   render(
     <I18nextProvider i18n={i18n}>
-      <MemoryRouter initialEntries={[path]}>
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route path={routePath} element={element} />
-          </Route>
-        </Routes>
-      </MemoryRouter>
+      <ToastProvider>
+        <MemoryRouter initialEntries={[path]}>
+          <Routes>
+            <Route element={<AppLayout />}>
+              <Route path={routePath} element={element} />
+            </Route>
+          </Routes>
+        </MemoryRouter>
+      </ToastProvider>
     </I18nextProvider>,
   );
 }

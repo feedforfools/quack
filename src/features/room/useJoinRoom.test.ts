@@ -24,23 +24,31 @@ interface RoomRow { id: string; state: string }
  * Builds a minimal fluent Supabase stub.
  *
  *   client.from("rooms").select(...).eq(...).maybeSingle()
+ *   client.from("players").select(...).eq(...).maybeSingle()  ← membership pre-check
  *   client.from("players").upsert(...)
  */
 function makeStub({
   roomData,
   roomError = null,
   playerError = null,
+  existingMembership = null,
 }: {
   roomData: RoomRow | null;
   roomError?: unknown;
   playerError?: unknown;
+  existingMembership?: { room_id: string } | null;
 }) {
   const maybeSingle = vi.fn().mockResolvedValue({ data: roomData, error: roomError });
   const roomEq = vi.fn().mockReturnValue({ maybeSingle });
   const roomSelect = vi.fn().mockReturnValue({ eq: roomEq });
 
+  // Membership pre-check: from("players").select("room_id").eq("id", ...).maybeSingle()
+  const memberMaybeSingle = vi.fn().mockResolvedValue({ data: existingMembership, error: null });
+  const memberEq = vi.fn().mockReturnValue({ maybeSingle: memberMaybeSingle });
+  const memberSelect = vi.fn().mockReturnValue({ eq: memberEq });
+
   const upsert = vi.fn().mockResolvedValue({ error: playerError });
-  const playerFrom = { upsert };
+  const playerFrom = { select: memberSelect, upsert };
 
   return {
     from: vi.fn((table: string) => {
@@ -191,6 +199,26 @@ describe("useJoinRoom", () => {
 
     expect(returnedCode).toBe(validCode);
     expect(result.current.error).toBeNull();
+  });
+
+  it("returns null and sets errorAlreadyInRoom when device is in a different room", async () => {
+    const otherRoomId = "cccccccc-cccc-cccc-cccc-cccccccccccc";
+    mockClient.mockReturnValue(
+      makeStub({
+        roomData: { id: roomId, state: "lobby" },
+        existingMembership: { room_id: otherRoomId },
+      }) as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
+
+    const { result } = renderHook(() => useJoinRoom());
+
+    let returnedCode: string | null | undefined;
+    await act(async () => {
+      returnedCode = await result.current.joinRoom({ deviceId, displayName, code: validCode });
+    });
+
+    expect(returnedCode).toBeNull();
+    expect(result.current.error).toBe("join.errorAlreadyInRoom");
   });
 
   it("normalises a mixed-case code with dashes before looking it up", async () => {

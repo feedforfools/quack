@@ -93,3 +93,118 @@ test.describe("lobby roster — two players", () => {
     ).toBeVisible();
   });
 });
+
+// ─── Resume from home ─────────────────────────────────────────────────────────
+
+test.describe("resume from home — active-room card", () => {
+  test("home page shows active-room card with Resume button after creating a room", async ({
+    browser,
+  }) => {
+    const ctx = await browser.newContext();
+    const page = await ctx.newPage();
+
+    await seedDisplayName(page, "Resuming Duck");
+
+    // Create a room via the Create page.
+    await page.goto("/create");
+    await page.getByRole("button", { name: /create room/i }).click();
+    await page.waitForURL(/\/r\/[A-Z2-9]{6}/, { timeout: 15_000 });
+    const roomCode = page.url().split("/r/")[1]?.slice(0, 6) ?? "";
+
+    // Navigate back to home — the device still has an active players row.
+    await page.goto("/");
+
+    // Active-room card should be visible.
+    await expect(page.getByText(/you're in a room/i)).toBeVisible({ timeout: 10_000 });
+
+    // Resume button should navigate back to the room.
+    await page.getByRole("button", { name: /resume room/i }).click();
+    await page.waitForURL(new RegExp(`/r/${roomCode}`), { timeout: 10_000 });
+
+    await ctx.close();
+  });
+});
+
+// ─── Host leave: end room alone ───────────────────────────────────────────────
+
+test.describe("host leave — end room alone", () => {
+  test("host can end the room when alone and is redirected to home", async ({ browser }) => {
+    const ctx = await browser.newContext();
+    const page = await ctx.newPage();
+
+    await seedDisplayName(page, "Solo Host Duck");
+
+    await page.goto("/create");
+    await page.getByRole("button", { name: /create room/i }).click();
+    await page.waitForURL(/\/r\/[A-Z2-9]{6}/, { timeout: 15_000 });
+
+    // Open the host leave modal.
+    await page.getByRole("button", { name: /leave room/i }).click();
+    await expect(page.getByRole("dialog")).toBeVisible({ timeout: 5_000 });
+
+    // Click End Room — the host is alone so only this button is present.
+    await page.getByRole("button", { name: /end room/i }).click();
+
+    // Should be redirected to the home page.
+    await page.waitForURL("/", { timeout: 10_000 });
+
+    await ctx.close();
+  });
+});
+
+// ─── Host leave: handover to another player ───────────────────────────────────
+
+test.describe("host leave — handover to another player", () => {
+  let hostCtx: BrowserContext;
+  let playerCtx: BrowserContext;
+
+  test.beforeEach(async ({ browser }) => {
+    hostCtx = await browser.newContext();
+    playerCtx = await browser.newContext();
+  });
+
+  test.afterEach(async () => {
+    await hostCtx.close();
+    await playerCtx.close();
+  });
+
+  test("host can hand over to a player and is redirected to home", async () => {
+    const hostPage = await hostCtx.newPage();
+    const playerPage = await playerCtx.newPage();
+
+    await seedDisplayName(hostPage, "Handover Host");
+    await seedDisplayName(playerPage, "Handover Player");
+
+    // Host creates a room.
+    await hostPage.goto("/create");
+    await hostPage.getByRole("button", { name: /create room/i }).click();
+    await hostPage.waitForURL(/\/r\/[A-Z2-9]{6}/, { timeout: 15_000 });
+    const roomCode = hostPage.url().split("/r/")[1]?.slice(0, 6) ?? "";
+
+    // Player navigates directly to the room URL.
+    await playerPage.goto(`/r/${roomCode}`);
+    await expect(playerPage.getByText("Handover Player")).toBeVisible({ timeout: 10_000 });
+
+    // Host waits until the player appears in their roster (Realtime presence sync).
+    await expect(hostPage.getByText("Handover Player")).toBeVisible({ timeout: 15_000 });
+
+    // Host opens the leave modal.
+    await hostPage.getByRole("button", { name: /leave room/i }).click();
+    await expect(hostPage.getByRole("dialog")).toBeVisible({ timeout: 5_000 });
+
+    // Select the player as the successor via their radio button.
+    await hostPage.getByRole("radio", { name: "Handover Player" }).click();
+
+    // Click Hand Over & Leave.
+    await hostPage.getByRole("button", { name: /hand over/i }).click();
+
+    // Host should be navigated back to home.
+    await hostPage.waitForURL("/", { timeout: 10_000 });
+
+    // Player should eventually see the "Host" badge next to their own name
+    // (roster re-fetched after host's players row is removed).
+    await expect(
+      playerPage.getByText("Host").first(),
+    ).toBeVisible({ timeout: 15_000 });
+  });
+});

@@ -15,7 +15,7 @@
 
 BEGIN;
 
-SELECT plan(10);
+SELECT plan(13);
 
 -- ─── Fixtures (superuser, bypasses RLS) ──────────────────────────────────────
 
@@ -46,7 +46,10 @@ SELECT is(
 );
 RESET ROLE;
 
--- ─── 2. Non-member cannot SELECT another room ─────────────────────────────────
+-- ─── 2. Any anon device can SELECT a room (rooms_select_public policy) ─────────
+-- Migration 20260429000001 deliberately added USING(true) to rooms SELECT so
+-- that joiners can look up a room by code before they have a players row.
+-- The rooms table contains no PII; role assignments are protected separately.
 
 SELECT set_config('request.headers',
   '{"x-device-id":"b1000000-0000-0000-0000-000000000000"}', true);
@@ -54,19 +57,21 @@ SET ROLE anon;
 SELECT is(
   (SELECT count(*)::int FROM public.rooms
    WHERE id = 'a2000000-0000-0000-0000-000000000000'),
-  0,
-  'non-member player cannot SELECT another room'
+  1,
+  'any anon device can SELECT any room (public join-flow lookup)'
 );
 RESET ROLE;
 
--- ─── 3. Request with no device-id sees no rooms ───────────────────────────────
+-- ─── 3. Request with no device-id can still SELECT rooms (join-flow requirement) ──
+-- Joiners arrive without a players row; the public rooms policy lets them look
+-- up a room by code. Players rows remain protected by the members-only policy.
 
 SELECT set_config('request.headers', '{}', true);
 SET ROLE anon;
 SELECT is(
   (SELECT count(*)::int FROM public.rooms),
-  0,
-  'request with no x-device-id header sees no rooms'
+  2,
+  'headerless request can SELECT rooms (public join-flow lookup permitted)'
 );
 RESET ROLE;
 
@@ -167,6 +172,56 @@ SELECT throws_ok(
   '42501',
   NULL,
   'device cannot INSERT a player row with a different device id'
+);
+RESET ROLE;
+
+-- ─── 11. Player can DELETE their own row (Leave Room) ──────────────────────
+-- Add a second player (Carol) to Alice's room so we can isolate the delete.
+
+INSERT INTO public.players (id, room_id, display_name)
+VALUES ('bC000000-0000-0000-0000-000000000000',
+        'a1000000-0000-0000-0000-000000000000', 'Carol');
+
+SELECT set_config('request.headers',
+  '{"x-device-id":"bC000000-0000-0000-0000-000000000000"}', true);
+SET ROLE anon;
+SELECT lives_ok(
+  $$DELETE FROM public.players
+    WHERE id = 'bC000000-0000-0000-0000-000000000000'$$,
+  'player can DELETE their own row'
+);
+RESET ROLE;
+
+-- ─── 12. Player cannot DELETE another player's row ───────────────────────────
+
+SELECT set_config('request.headers',
+  '{"x-device-id":"b1000000-0000-0000-0000-000000000000"}', true);
+SET ROLE anon;
+-- Alice attempts to delete Bob's row — should be silently blocked (0 rows deleted).
+DELETE FROM public.players
+WHERE id = 'b2000000-0000-0000-0000-000000000000';
+RESET ROLE;
+SELECT is(
+  (SELECT count(*)::int FROM public.players
+   WHERE id = 'b2000000-0000-0000-0000-000000000000'),
+  1,
+  'player cannot DELETE another player''s row (RLS silently blocks it)'
+);
+
+-- ─── 13. Unique index prevents a device from joining a second room ───────────
+-- Alice (b1) is already in room 1. Attempting to insert her into room 2 must
+-- fail with 23505 (unique_violation) on the players_device_single_room index.
+
+SELECT set_config('request.headers',
+  '{"x-device-id":"b1000000-0000-0000-0000-000000000000"}', true);
+SET ROLE anon;
+SELECT throws_ok(
+  $$INSERT INTO public.players (id, room_id, display_name)
+    VALUES ('b1000000-0000-0000-0000-000000000000',
+            'a2000000-0000-0000-0000-000000000000', 'Alice-dup')$$,
+  '23505',
+  NULL,
+  'unique index prevents a device from being in two rooms simultaneously'
 );
 RESET ROLE;
 

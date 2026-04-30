@@ -3,8 +3,11 @@ import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
-import { DisplayNamePrompt } from "@/features/identity";
+import { useToast } from "@/components";
+import { DisplayNamePrompt, useDeviceId } from "@/features/identity";
 import { useDisplayName } from "@/features/identity";
+import { useActiveRoom, useLeaveRoom } from "@/features/room";
+import { supabaseWithDevice } from "@/lib/supabase";
 
 /**
  * Home page — `/`
@@ -21,7 +24,11 @@ import { useDisplayName } from "@/features/identity";
 export default function Home() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const deviceId = useDeviceId();
   const { displayName, hasDisplayName, setDisplayName } = useDisplayName();
+  const { activeRoom, loading: activeRoomLoading, refetch: refetchActiveRoom } = useActiveRoom(deviceId);
+  const { leaveRoom, loading: leaveLoading } = useLeaveRoom();
+  const { toast } = useToast();
 
   // Tracks which route to send the player to after the name prompt resolves.
   const [pendingDestination, setPendingDestination] = useState<
@@ -69,25 +76,103 @@ export default function Home() {
           />
         </div>
 
-        {/* CTAs */}
-        <div className="mt-4 flex w-full flex-col gap-3">
-          <Button
-            variant="primary"
-            size="lg"
-            className="w-full"
-            onClick={() => handleCta("/create")}
-          >
-            {t("home.createRoom")}
-          </Button>
-          <Button
-            variant="ghost"
-            size="lg"
-            className="w-full"
-            onClick={() => handleCta("/join")}
-          >
-            {t("home.joinRoom")}
-          </Button>
-        </div>
+        {/* Active-room card — shown when the device already has a live players row. */}
+        {!activeRoomLoading && activeRoom && (
+          <div className="mt-4 w-full rounded-2xl bg-bg-raised px-5 py-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
+              {t("home.activeRoomTitle")}
+            </p>
+            <p className="mt-1 text-xl font-bold tracking-[0.15em] text-accent">
+              {activeRoom.code.toUpperCase()}
+            </p>
+            <div className="mt-4 flex flex-col gap-2">
+              <Button
+                variant="primary"
+                size="md"
+                className="w-full"
+                onClick={() => void navigate(`/r/${activeRoom.code.toUpperCase()}`)}
+              >
+                {t("home.activeRoomResume", { code: activeRoom.code.toUpperCase() })}
+              </Button>
+              <Button
+                variant="ghost"
+                size="md"
+                className="w-full text-danger"
+                disabled={leaveLoading}
+                onClick={async () => {
+                  const ok = await leaveRoom({ deviceId: deviceId ?? "", roomId: activeRoom.roomId });
+                  if (ok) {
+                    refetchActiveRoom();
+                    toast({ title: t("home.activeRoomLeftToast"), variant: "default" });
+                  }
+                }}
+              >
+                {t("home.activeRoomLeave")}
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* CTAs — hidden while the device has an active room. */}
+        {!activeRoomLoading && !activeRoom && (
+          <div className="mt-4 flex w-full flex-col gap-3">
+            <Button
+              variant="primary"
+              size="lg"
+              className="w-full"
+              onClick={() => handleCta("/create")}
+            >
+              {t("home.createRoom")}
+            </Button>
+            <Button
+              variant="ghost"
+              size="lg"
+              className="w-full"
+              onClick={() => handleCta("/join")}
+            >
+              {t("home.joinRoom")}
+            </Button>
+          </div>
+        )}
+
+        {/* Hint shown while loading to prevent layout shift flicker. */}
+        {activeRoomLoading && (
+          <div className="mt-4 h-[136px] w-full animate-pulse rounded-2xl bg-bg-raised" />
+        )}
+
+        {activeRoom && !activeRoomLoading && (
+          <p className="mt-3 text-center text-xs text-fg-muted">
+            {t("home.activeRoomHint")}
+          </p>
+        )}
+
+        {/* Dev-only reset panel — Vite tree-shakes this entire branch in production */}
+        {import.meta.env.DEV && (
+          <div className="mt-8 w-full rounded-xl border border-dashed border-yellow-500/40 bg-yellow-500/5 px-4 py-3">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-yellow-500/70">
+              Dev
+            </p>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="w-full border-yellow-500/30 text-yellow-500/80 hover:text-yellow-500"
+              onClick={async () => {
+                if (deviceId) {
+                  await supabaseWithDevice(deviceId)
+                    .from("players")
+                    .delete()
+                    .eq("id", deviceId);
+                }
+                for (const key of Object.keys(localStorage)) {
+                  if (key.startsWith("quack_")) localStorage.removeItem(key);
+                }
+                location.reload();
+              }}
+            >
+              Reset device
+            </Button>
+          </div>
+        )}
 
         {/* Footer */}
         <footer className="mt-12 text-xs text-fg-subtle">

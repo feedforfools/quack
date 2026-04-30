@@ -113,8 +113,24 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      end_room_as_host: {
+        Args: {
+          p_room_id: string
+          p_host_secret_hash: string
+        }
+        Returns: undefined
+      }
       player_in_room: { Args: { p_room_id: string }; Returns: boolean }
       requesting_player_id: { Args: never; Returns: string }
+      transfer_host: {
+        Args: {
+          p_room_id: string
+          p_host_secret_hash: string
+          p_successor_id: string
+          p_new_secret_hash: string
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       room_state: "lobby" | "round_active" | "round_ended"

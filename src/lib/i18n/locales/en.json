@@ -24,12 +24,18 @@
     "nameRequired": "Enter your name to continue.",
     "createRoom": "Create Room",
     "joinRoom": "Join Room",
-    "privacyLink": "Privacy"
+    "privacyLink": "Privacy",
+    "activeRoomTitle": "You\u2019re in a room",
+    "activeRoomResume": "Resume room {{code}}",
+    "activeRoomLeave": "Leave room",
+    "activeRoomHint": "To start fresh, leave your current room first.",
+    "activeRoomLeftToast": "You\u2019ve left the room."
   },
   "create": {
     "title": "Create a Room",
     "cta": "Create Room",
-    "errorCreate": "Failed to create the room. Please try again."
+    "errorCreate": "Failed to create the room. Please try again.",
+    "errorAlreadyInRoom": "You\u2019re already in a room. Leave it first to create a new one."
   },
   "join": {
     "title": "Join a Room",
@@ -37,7 +43,9 @@
     "codePlaceholder": "e.g. ABC123",
     "cta": "Join Room",
     "errorNotFound": "Room not found. Check the code and try again.",
-    "errorJoin": "Couldn\u2019t join the room. Please try again."
+    "errorJoin": "Couldn\u2019t join the room. Please try again.",
+    "errorFull": "This room is full.",
+    "errorAlreadyInRoom": "You\u2019re already in a room. Leave it first to join a new one."
   },
   "room": {
     "title": "Room",
@@ -61,7 +69,22 @@
     "notReadyCta": "Not Ready",
     "startGame": "Start Game",
     "startDisabledNotAllReady": "Waiting for all players to be ready",
-    "startDisabledTooFew": "Need at least {{count}} players to start"
+    "startDisabledTooFew": "Need at least {{count}} players to start",
+    "leaveCta": "Leave Room",
+    "leftRoom": "You\u2019ve left the room.",
+    "leaveError": "Couldn\u2019t leave the room. Please try again.",
+    "roomEndedTitle": "Room ended",
+    "roomEndedSubtitle": "The host ended the room. Thanks for playing!",
+    "hostLeaveCta": "Leave Room",
+    "hostLeaveTitle": "Leave Room",
+    "hostLeaveSubtitle": "Choose a player to hand over to, or end the room for everyone.",
+    "hostLeaveAloneSubtitle": "You\u2019re the only player. Ending the room will close it for everyone.",
+    "chooseSuccessor": "Choose successor",
+    "handoverCta": "Hand Over \u0026 Leave",
+    "hostEndRoomCta": "End Room",
+    "hostHandedOver": "Room handed over successfully.",
+    "hostEndedRoom": "Room ended.",
+    "hostLeaveError": "Couldn\u2019t update the room. Please try again."
   },
   "notFound": {
     "title": "Page not found",

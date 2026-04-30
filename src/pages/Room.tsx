@@ -1,9 +1,9 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDeviceId, useDisplayName, DisplayNamePrompt } from "@/features/identity";
-import { useJoinRoom, useRoom, useRoomPlayers, useReadyToggle } from "@/features/room";
-import { Button, QRCode } from "@/components";
+import { useJoinRoom, useRoom, useRoomPlayers, useReadyToggle, useLeaveRoom, useHostLeave } from "@/features/room";
+import { Button, Modal, QRCode, useToast } from "@/components";
 import { log } from "@/lib/log";
 
 /** Minimum total players needed to start: imposter_count + 2 civilians. */
@@ -41,12 +41,19 @@ export default function Room() {
   const [joinFailed, setJoinFailed] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const { roomId, hostPlayerId, isHost, roomConfig, loading: roomLoading } = useRoom(deviceId, code);
-  const { players, connectedIds, loading: playersLoading, broadcastRefetch } = useRoomPlayers(
+  const { roomId, hostPlayerId, isHost, roomConfig, loading: roomLoading, refetch: refetchRoom } = useRoom(deviceId, code);
+  const { players, connectedIds, loading: playersLoading, roomEnded, broadcastRefetch } = useRoomPlayers(
     deviceId,
     roomId,
   );
   const { toggleReady, loading: readyLoading } = useReadyToggle(deviceId, roomId, broadcastRefetch);
+  const { leaveRoom, loading: leaveLoading } = useLeaveRoom();
+  const { handOver, endRoom, loading: hostLeaveLoading } = useHostLeave();
+  const { toast } = useToast();
+
+  // Host-leave modal state.
+  const [showLeaveModal, setShowLeaveModal] = useState(false);
+  const [selectedSuccessor, setSelectedSuccessor] = useState<string | null>(null);
 
   // Derive imposter count from room config (defaults to 1 until E5-T1 settings).
   const cfgObj =
@@ -69,6 +76,16 @@ export default function Room() {
     : !allReady
       ? t("room.startDisabledNotAllReady")
       : undefined;
+
+  // When the roster changes length, re-fetch room data to pick up host changes
+  // (e.g., after a host handover the successor's isHost becomes true).
+  const prevPlayerCountRef = useRef(players.length);
+  useEffect(() => {
+    if (players.length !== prevPlayerCountRef.current) {
+      prevPlayerCountRef.current = players.length;
+      void refetchRoom();
+    }
+  }, [players.length, refetchRoom]);
 
   // Join on mount (idempotent — host's row already exists, no-op upsert).
   useEffect(() => {
@@ -109,10 +126,81 @@ export default function Room() {
     log.debug("Room: Start pressed — round start RPC wired in E3-T4");
   }, []);
 
+  // Host handover handler.
+  const handleHandOver = useCallback(async () => {
+    if (!roomId || !selectedSuccessor) return;
+    const ok = await handOver({ deviceId, roomId, successorId: selectedSuccessor });
+    setShowLeaveModal(false);
+    if (ok) {
+      toast({ title: t("room.hostHandedOver"), variant: "success" });
+      void navigate("/");
+    } else {
+      toast({ title: t("room.hostLeaveError"), variant: "danger" });
+    }
+  }, [roomId, selectedSuccessor, handOver, deviceId, toast, t, navigate]);
+
+  // Host end-room handler.
+  const handleEndRoom = useCallback(async () => {
+    if (!roomId) return;
+    const ok = await endRoom({ deviceId, roomId });
+    setShowLeaveModal(false);
+    if (ok) {
+      toast({ title: t("room.hostEndedRoom"), variant: "default" });
+      void navigate("/");
+    } else {
+      toast({ title: t("room.hostLeaveError"), variant: "danger" });
+    }
+  }, [roomId, endRoom, deviceId, toast, t, navigate]);
+
+  // Leave room handler — non-host only.
+  const handleLeave = useCallback(async () => {
+    if (!roomId) return;
+    const ok = await leaveRoom({ deviceId, roomId });
+    if (ok) {
+      toast({ title: t("room.leftRoom"), variant: "default" });
+      void navigate("/");
+    } else {
+      toast({ title: t("room.leaveError"), variant: "danger" });
+    }
+  }, [leaveRoom, deviceId, roomId, navigate, toast, t]);
+
   // Gate: display name required before joining.
   if (!hasDisplayName) {
     return (
       <DisplayNamePrompt onConfirm={setDisplayName} initialName={displayName ?? ""} />
+    );
+  }
+
+  // Room ended by host while this device was in the lobby.
+  if (roomEnded && !isHost) {
+    return (
+      <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 py-10">
+        <span className="text-6xl" aria-hidden="true">
+          🦆
+        </span>
+        <h1 className="mt-6 text-center text-2xl font-semibold text-fg">
+          {t("room.roomEndedTitle")}
+        </h1>
+        <p className="mt-3 text-center text-sm text-fg-muted">
+          {t("room.roomEndedSubtitle")}
+        </p>
+        <div className="mt-8 flex w-full flex-col gap-3">
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={() => void navigate("/create")}
+            className="w-full"
+          >
+            {t("room.createNewRoom")}
+          </Button>
+          <button
+            onClick={() => void navigate("/")}
+            className="text-center text-sm text-fg-muted underline underline-offset-4"
+          >
+            {t("common.backToHome")}
+          </button>
+        </div>
+      </main>
     );
   }
 
@@ -209,7 +297,7 @@ export default function Room() {
                       {t("room.you")}
                     </span>
                   )}
-                  {roomId && p.id === players[0]?.id && (
+                  {roomId && p.id === hostPlayerId && (
                     <span className="rounded-full bg-fg/10 px-2 py-0.5 text-xs text-fg-muted">
                       {t("room.host")}
                     </span>
@@ -285,7 +373,102 @@ export default function Room() {
             {ownPlayer?.is_ready ? t("room.waitingForHost") : t("room.waitingToReady")}
           </p>
         )}
+
+        {/* Non-host: Leave Room */}
+        {joined && !isHost && !roomLoading && (
+          <Button
+            variant="ghost"
+            size="md"
+            onClick={() => void handleLeave()}
+            disabled={leaveLoading}
+            className="w-full text-danger"
+          >
+            {t("room.leaveCta")}
+          </Button>
+        )}
+
+        {/* Host: Leave Room */}
+        {joined && isHost && !roomLoading && (
+          <Button
+            variant="ghost"
+            size="md"
+            onClick={() => {
+              setSelectedSuccessor(null);
+              setShowLeaveModal(true);
+            }}
+            disabled={hostLeaveLoading}
+            className="w-full text-danger"
+          >
+            {t("room.hostLeaveCta")}
+          </Button>
+        )}
       </div>
+
+      {/* Host leave modal */}
+      <Modal
+        open={showLeaveModal}
+        onClose={() => setShowLeaveModal(false)}
+        title={t("room.hostLeaveTitle")}
+        description={
+          players.length <= 1
+            ? t("room.hostLeaveAloneSubtitle")
+            : t("room.hostLeaveSubtitle")
+        }
+        dismissible={!hostLeaveLoading}
+      >
+        {/* Successor picker — shown only when there are other players. */}
+        {players.length > 1 && (
+          <fieldset className="mb-4">
+            <legend className="mb-2 text-sm font-medium text-fg">
+              {t("room.chooseSuccessor")}
+            </legend>
+            <ul className="space-y-2">
+              {players
+                .filter((p) => p.id !== deviceId)
+                .map((p) => (
+                  <li key={p.id}>
+                    <label className="flex cursor-pointer items-center gap-3 rounded-xl bg-bg p-3 has-[:checked]:ring-2 has-[:checked]:ring-accent">
+                      <input
+                        type="radio"
+                        name="successor"
+                        value={p.id}
+                        checked={selectedSuccessor === p.id}
+                        onChange={() => setSelectedSuccessor(p.id)}
+                        className="accent-accent"
+                      />
+                      <span className="font-medium text-fg">{p.display_name}</span>
+                    </label>
+                  </li>
+                ))}
+            </ul>
+          </fieldset>
+        )}
+
+        <div className="flex flex-col gap-2">
+          {players.length > 1 && (
+            <Button
+              variant="primary"
+              size="md"
+              onClick={() => void handleHandOver()}
+              disabled={!selectedSuccessor || hostLeaveLoading}
+              loading={hostLeaveLoading}
+              className="w-full"
+            >
+              {t("room.handoverCta")}
+            </Button>
+          )}
+          <Button
+            variant="danger"
+            size="md"
+            onClick={() => void handleEndRoom()}
+            disabled={hostLeaveLoading}
+            loading={hostLeaveLoading}
+            className="w-full"
+          >
+            {t("room.hostEndRoomCta")}
+          </Button>
+        </div>
+      </Modal>
     </main>
   );
 }

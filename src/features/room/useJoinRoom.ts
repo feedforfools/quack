@@ -6,7 +6,8 @@ import { log } from "@/lib/log";
 export type JoinRoomError =
   | "join.errorNotFound"
   | "join.errorFull"
-  | "join.errorJoin";
+  | "join.errorJoin"
+  | "join.errorAlreadyInRoom";
 
 export interface UseJoinRoomReturn {
   joinRoom: (params: {
@@ -83,6 +84,21 @@ export function useJoinRoom(): UseJoinRoomReturn {
 
         if (!room) {
           setError("join.errorNotFound");
+          return null;
+        }
+
+        // Idempotent insert — if the player is already in this room, this is a no-op.
+        // Guard: if the device is already in a DIFFERENT room, surface a friendly error
+        // instead of hitting the players_device_single_room unique index constraint.
+        const { data: existingMembership } = await client
+          .from("players")
+          .select("room_id")
+          .eq("id", deviceId)
+          .maybeSingle();
+
+        if (existingMembership && existingMembership.room_id !== room.id) {
+          log.warn("useJoinRoom: device already in a different room", existingMembership.room_id);
+          setError("join.errorAlreadyInRoom");
           return null;
         }
 

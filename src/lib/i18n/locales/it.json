@@ -24,20 +24,28 @@
     "nameRequired": "Inserisci il tuo nome per continuare.",
     "createRoom": "Crea Stanza",
     "joinRoom": "Entra",
-    "privacyLink": "Privacy"
+    "privacyLink": "Privacy",
+    "activeRoomTitle": "Sei in una stanza",
+    "activeRoomResume": "Riprendi stanza {{code}}",
+    "activeRoomLeave": "Lascia stanza",
+    "activeRoomHint": "Per ricominciare, prima lascia la stanza attuale.",
+    "activeRoomLeftToast": "Hai lasciato la stanza."
   },
   "create": {
     "title": "Crea una Stanza",
     "cta": "Crea Stanza",
-    "errorCreate": "Impossibile creare la stanza. Riprova."
+    "errorCreate": "Impossibile creare la stanza. Riprova.",
+    "errorAlreadyInRoom": "Sei gi\u00e0 in una stanza. Lasciala prima di crearne una nuova."
   },
   "join": {
-    "title": "Entra in una Stanza",
+    "title": "Unisciti a una stanza",
     "codeLabel": "Codice stanza",
     "codePlaceholder": "es. ABC123",
     "cta": "Entra",
     "errorNotFound": "Stanza non trovata. Controlla il codice e riprova.",
-    "errorJoin": "Impossibile entrare nella stanza. Riprova."
+    "errorJoin": "Impossibile unirsi alla stanza. Riprova.",
+    "errorFull": "Questa stanza \u00e8 piena.",
+    "errorAlreadyInRoom": "Sei gi\u00e0 in una stanza. Lasciala prima di entrarne in una nuova."
   },
   "room": {
     "title": "Stanza",
@@ -61,7 +69,22 @@
     "notReadyCta": "Non pronto",
     "startGame": "Inizia partita",
     "startDisabledNotAllReady": "In attesa che tutti i giocatori siano pronti",
-    "startDisabledTooFew": "Servono almeno {{count}} giocatori per iniziare"
+    "startDisabledTooFew": "Servono almeno {{count}} giocatori per iniziare",
+    "leaveCta": "Lascia stanza",
+    "leftRoom": "Hai lasciato la stanza.",
+    "leaveError": "Impossibile lasciare la stanza. Riprova.",
+    "roomEndedTitle": "Stanza terminata",
+    "roomEndedSubtitle": "Il padrone di casa ha terminato la stanza. Grazie per aver giocato!",
+    "hostLeaveCta": "Lascia stanza",
+    "hostLeaveTitle": "Lascia stanza",
+    "hostLeaveSubtitle": "Scegli un giocatore a cui passare il comando, o termina la stanza per tutti.",
+    "hostLeaveAloneSubtitle": "Sei l\u2019unico giocatore. Terminare la stanza la chiuder\u00e0 per tutti.",
+    "chooseSuccessor": "Scegli successore",
+    "handoverCta": "Passa e vai",
+    "hostEndRoomCta": "Termina stanza",
+    "hostHandedOver": "Stanza passata con successo.",
+    "hostEndedRoom": "Stanza terminata.",
+    "hostLeaveError": "Impossibile aggiornare la stanza. Riprova."
   },
   "notFound": {
     "title": "Pagina non trovata",

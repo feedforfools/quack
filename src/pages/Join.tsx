@@ -69,7 +69,7 @@ export default function Join() {
           autoCapitalize="characters"
           spellCheck={false}
           maxLength={ROOM_CODE_LENGTH * 2}
-          error={error ? t("join.errorNotFound") : undefined}
+          error={error ? t(error) : undefined}
           className="font-mono text-xl tracking-widest text-center uppercase"
           disabled={loading}
         />

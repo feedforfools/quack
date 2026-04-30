@@ -42,7 +42,7 @@ export default function Create() {
 
       {error && (
         <p role="alert" className="mt-4 text-sm text-danger">
-          {t("create.errorCreate")}
+          {t(error)}
         </p>
       )}
 
