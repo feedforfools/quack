@@ -1,4 +1,9 @@
-export { generateRawCode, generateUniqueRoomCode, ROOM_CODE_ALPHABET, ROOM_CODE_LENGTH } from "./generateCode";
+export {
+  generateRawCode,
+  generateUniqueRoomCode,
+  ROOM_CODE_ALPHABET,
+  ROOM_CODE_LENGTH,
+} from "./generateCode";
 export { useCreateRoom } from "./useCreateRoom";
 export type { UseCreateRoomReturn } from "./useCreateRoom";
 export { useJoinRoom, normaliseCode } from "./useJoinRoom";
@@ -19,3 +24,5 @@ export { useStartGame } from "./useStartGame";
 export type { UseStartGameReturn, StartGameError } from "./useStartGame";
 export { useEndGame } from "./useEndGame";
 export type { UseEndGameReturn, EndGameError } from "./useEndGame";
+export { useKickPlayer } from "./useKickPlayer";
+export type { UseKickPlayerReturn } from "./useKickPlayer";

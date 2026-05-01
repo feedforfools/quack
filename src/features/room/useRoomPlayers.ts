@@ -41,6 +41,12 @@ export interface UseRoomPlayersReturn {
   broadcastTimerStart: () => Promise<void>;
   /** Notifies other clients that the current player has peeked at their role (E3-T7). */
   broadcastPeekUpdate: () => Promise<void>;
+  /**
+   * Realtime channel subscription status. `"SUBSCRIBED"` = connected;
+   * `"CHANNEL_ERROR"` / `"TIMED_OUT"` / `"CLOSED"` = disconnected.
+   * Use this to surface a non-blocking reconnecting banner (E4-T6).
+   */
+  channelStatus: string | null;
 }
 
 /**
@@ -86,12 +92,19 @@ export function useRoomPlayers(
      * Used by the host to refetch all_players_seen (E3-T7 gate).
      */
     onPeekUpdate?: () => void;
+    /**
+     * Called when a `player_kicked` broadcast is received and the kicked
+     * player ID matches this device. The client should navigate home with
+     * a toast (E4-T5).
+     */
+    onKicked?: () => void;
   },
 ): UseRoomPlayersReturn {
   const [players, setPlayers] = useState<PlayerRow[]>([]);
   const [connectedIds, setConnectedIds] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
   const [roomEnded, setRoomEnded] = useState(false);
+  const [channelStatus, setChannelStatus] = useState<string | null>(null);
 
   // Keep a stable ref to the fetch function so it can be called from
   // callbacks that outlive a single render (e.g., broadcast handler).
@@ -102,12 +115,14 @@ export function useRoomPlayers(
   const onRoundStartRef = useRef(options?.onRoundStart);
   const onTimerStartRef = useRef(options?.onTimerStart);
   const onPeekUpdateRef = useRef(options?.onPeekUpdate);
+  const onKickedRef = useRef(options?.onKicked);
   // Keep callback refs current whenever the props change.
   useEffect(() => {
     onRoundEndRef.current = options?.onRoundEnd;
     onRoundStartRef.current = options?.onRoundStart;
     onTimerStartRef.current = options?.onTimerStart;
     onPeekUpdateRef.current = options?.onPeekUpdate;
+    onKickedRef.current = options?.onKicked;
   });
   // Ref to the broadcast function populated once the channel is subscribed.
   const broadcastRef = useRef<((event: string) => Promise<void>) | null>(null);
@@ -204,7 +219,19 @@ export function useRoomPlayers(
         if (!isMounted) return;
         onPeekUpdateRef.current?.();
       })
+      // Host kicked a player — refetch roster; if it's this device, fire onKicked.
+      .on("broadcast", { event: "player_kicked" }, ({ payload }) => {
+        if (!isMounted) return;
+        const p = payload as { playerId?: string };
+        if (typeof p.playerId === "string" && p.playerId === deviceId) {
+          onKickedRef.current?.();
+        } else {
+          void fetchPlayers();
+        }
+      })
       .subscribe((status) => {
+        if (!isMounted) return;
+        setChannelStatus(status);
         if (status === "SUBSCRIBED") {
           void channel.track({ playerId: deviceId });
         }
@@ -252,6 +279,7 @@ export function useRoomPlayers(
     connectedIds,
     loading,
     roomEnded,
+    channelStatus,
     refetch,
     broadcastRefetch,
     broadcastRoundEnd,

@@ -97,24 +97,29 @@ export function useJoinRoom(): UseJoinRoomReturn {
           .maybeSingle();
 
         if (existingMembership && existingMembership.room_id !== room.id) {
-          log.warn("useJoinRoom: device already in a different room", existingMembership.room_id);
+          log.warn(
+            "useJoinRoom: device already in a different room",
+            existingMembership.room_id,
+          );
           setError("join.errorAlreadyInRoom");
           return null;
         }
 
         // Idempotent insert — if the player is already in this room, this is a no-op.
-        const { error: playerError } = await client
-          .from("players")
-          .upsert(
-            {
-              id: deviceId,
-              room_id: room.id,
-              display_name: displayName,
-              is_ready: false,
-              is_connected: true,
-            },
-            { onConflict: "id,room_id", ignoreDuplicates: true },
-          );
+        const { error: playerError } = await client.from("players").upsert(
+          {
+            id: deviceId,
+            room_id: room.id,
+            display_name: displayName,
+            is_ready: false,
+            is_connected: true,
+            // Seat late joiners as spectators when the game is already running.
+            // The spectator flag is cleared automatically by the server when the
+            // next start_game RPC fires, so they participate from the next game.
+            is_spectator: room.state === "round_active",
+          },
+          { onConflict: "id,room_id", ignoreDuplicates: true },
+        );
 
         if (playerError) {
           log.error("useJoinRoom: players upsert failed", playerError);

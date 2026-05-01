@@ -18,7 +18,10 @@ const mockClient = vi.mocked(supabaseWithDevice);
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-interface RoomRow { id: string; state: string }
+interface RoomRow {
+  id: string;
+  state: string;
+}
 
 /**
  * Builds a minimal fluent Supabase stub.
@@ -38,12 +41,16 @@ function makeStub({
   playerError?: unknown;
   existingMembership?: { room_id: string } | null;
 }) {
-  const maybeSingle = vi.fn().mockResolvedValue({ data: roomData, error: roomError });
+  const maybeSingle = vi
+    .fn()
+    .mockResolvedValue({ data: roomData, error: roomError });
   const roomEq = vi.fn().mockReturnValue({ maybeSingle });
   const roomSelect = vi.fn().mockReturnValue({ eq: roomEq });
 
   // Membership pre-check: from("players").select("room_id").eq("id", ...).maybeSingle()
-  const memberMaybeSingle = vi.fn().mockResolvedValue({ data: existingMembership, error: null });
+  const memberMaybeSingle = vi
+    .fn()
+    .mockResolvedValue({ data: existingMembership, error: null });
   const memberEq = vi.fn().mockReturnValue({ maybeSingle: memberMaybeSingle });
   const memberSelect = vi.fn().mockReturnValue({ eq: memberEq });
 
@@ -115,7 +122,9 @@ describe("useJoinRoom", () => {
 
   it("returns null and sets errorNotFound when room is not in the DB", async () => {
     mockClient.mockReturnValue(
-      makeStub({ roomData: null }) as unknown as ReturnType<typeof supabaseWithDevice>,
+      makeStub({ roomData: null }) as unknown as ReturnType<
+        typeof supabaseWithDevice
+      >,
     );
 
     const { result } = renderHook(() => useJoinRoom());
@@ -181,9 +190,9 @@ describe("useJoinRoom", () => {
 
   it("returns the normalised code and clears error on success", async () => {
     mockClient.mockReturnValue(
-      makeStub({ roomData: { id: roomId, state: "lobby" } }) as unknown as ReturnType<
-        typeof supabaseWithDevice
-      >,
+      makeStub({
+        roomData: { id: roomId, state: "lobby" },
+      }) as unknown as ReturnType<typeof supabaseWithDevice>,
     );
 
     const { result } = renderHook(() => useJoinRoom());
@@ -214,7 +223,11 @@ describe("useJoinRoom", () => {
 
     let returnedCode: string | null | undefined;
     await act(async () => {
-      returnedCode = await result.current.joinRoom({ deviceId, displayName, code: validCode });
+      returnedCode = await result.current.joinRoom({
+        deviceId,
+        displayName,
+        code: validCode,
+      });
     });
 
     expect(returnedCode).toBeNull();
@@ -223,7 +236,9 @@ describe("useJoinRoom", () => {
 
   it("normalises a mixed-case code with dashes before looking it up", async () => {
     const stub = makeStub({ roomData: { id: roomId, state: "lobby" } });
-    mockClient.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    mockClient.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result } = renderHook(() => useJoinRoom());
 
@@ -239,7 +254,9 @@ describe("useJoinRoom", () => {
     const fromCall = stub.from.mock.calls.find(([t]) => t === "rooms");
     expect(fromCall).toBeDefined();
     // .select().eq(field, value) — retrieve the eq mock from the select chain
-    const selectResult = stub.from("rooms") as { select: ReturnType<typeof vi.fn> };
+    const selectResult = stub.from("rooms") as {
+      select: ReturnType<typeof vi.fn>;
+    };
     const eqSpy = selectResult.select().eq as ReturnType<typeof vi.fn>;
     expect(eqSpy).toHaveBeenCalledWith("code", "ABC234");
   });
@@ -266,7 +283,11 @@ describe("useJoinRoom", () => {
 
     let joinPromise!: Promise<string | null>;
     act(() => {
-      joinPromise = result.current.joinRoom({ deviceId, displayName, code: validCode });
+      joinPromise = result.current.joinRoom({
+        deviceId,
+        displayName,
+        code: validCode,
+      });
     });
 
     // Resolve the in-flight request
@@ -276,5 +297,50 @@ describe("useJoinRoom", () => {
     });
 
     expect(result.current.loading).toBe(false);
+  });
+
+  it("upserts with is_spectator=true when the room is already round_active", async () => {
+    const stub = makeStub({ roomData: { id: roomId, state: "round_active" } });
+    mockClient.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
+
+    const { result } = renderHook(() => useJoinRoom());
+
+    await act(async () => {
+      await result.current.joinRoom({ deviceId, displayName, code: validCode });
+    });
+
+    // Verify the players upsert was called with is_spectator: true.
+    expect(stub.from).toHaveBeenCalledWith("players");
+    const upsertSpy = (
+      stub.from("players") as { upsert: ReturnType<typeof vi.fn> }
+    ).upsert;
+    expect(upsertSpy).toHaveBeenCalledWith(
+      expect.objectContaining({ is_spectator: true }),
+      expect.anything(),
+    );
+  });
+
+  it("upserts with is_spectator=false when the room is in lobby state", async () => {
+    const stub = makeStub({ roomData: { id: roomId, state: "lobby" } });
+    mockClient.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
+
+    const { result } = renderHook(() => useJoinRoom());
+
+    await act(async () => {
+      await result.current.joinRoom({ deviceId, displayName, code: validCode });
+    });
+
+    expect(stub.from).toHaveBeenCalledWith("players");
+    const upsertSpy = (
+      stub.from("players") as { upsert: ReturnType<typeof vi.fn> }
+    ).upsert;
+    expect(upsertSpy).toHaveBeenCalledWith(
+      expect.objectContaining({ is_spectator: false }),
+      expect.anything(),
+    );
   });
 });

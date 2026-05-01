@@ -1,15 +1,52 @@
 import { useEffect, useState, useCallback, useRef, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useDeviceId, useDisplayName, DisplayNamePrompt } from "@/features/identity";
-import { useJoinRoom, useRoom, useRoomPlayers, useReadyToggle, useLeaveRoom, useHostLeave, useStartGame, useEndGame } from "@/features/room";
-import { useRoleAssignment, DiscussionScreen, useMarkRoleSeen, useStartGameTimer, useAllPlayersSeen } from "@/features/round";
+import {
+  useDeviceId,
+  useDisplayName,
+  DisplayNamePrompt,
+} from "@/features/identity";
+import {
+  useJoinRoom,
+  useRoom,
+  useRoomPlayers,
+  useReadyToggle,
+  useLeaveRoom,
+  useHostLeave,
+  useStartGame,
+  useEndGame,
+  useKickPlayer,
+} from "@/features/room";
+import {
+  useRoleAssignment,
+  DiscussionScreen,
+  useMarkRoleSeen,
+  useStartGameTimer,
+  useAllPlayersSeen,
+} from "@/features/round";
 import { Button, Modal, QRCode, useToast } from "@/components";
 
 /** Minimum total players needed to start: imposter_count + 2 civilians. */
 const MIN_CIVILIAN_BUFFER = 2;
 /** Default if not yet set in room config. */
 const DEFAULT_IMPOSTER_COUNT = 1;
+
+/** Fixed top banner shown when the Realtime channel is not SUBSCRIBED (E4-T6). */
+function ReconnectingBanner({ label }: { label: string }) {
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      className="fixed inset-x-0 top-0 z-50 flex items-center justify-center gap-2 bg-yellow-400/90 px-4 py-2 text-sm font-medium text-yellow-950 backdrop-blur-sm"
+    >
+      <span
+        className="h-3 w-3 animate-spin rounded-full border-2 border-current border-t-transparent"
+        aria-hidden="true"
+      />
+      {label}
+    </div>
+  );
+}
 
 /**
  * Room page — `/r/:code`
@@ -38,44 +75,93 @@ export default function Room() {
   const [joinFailed, setJoinFailed] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const { roomId, hostPlayerId, isHost, roomConfig, roomState, loading: roomLoading, refetch: refetchRoom } = useRoom(deviceId, code);
-  const { assignment, loading: assignmentLoading, refetch: refetchAssignment } = useRoleAssignment(deviceId, roomId, roomState);
-  const { allSeen: allPlayersSeen, refetch: refetchAllSeen } = useAllPlayersSeen(
-    isHost ? deviceId : null,
-    assignment?.gameId ?? null,
-  );
-  const { players, connectedIds, loading: playersLoading, roomEnded, refetch: refetchPlayers, broadcastRefetch, broadcastRoundEnd, broadcastRoundStart, broadcastTimerStart, broadcastPeekUpdate } = useRoomPlayers(
+  const {
+    roomId,
+    hostPlayerId,
+    isHost,
+    roomConfig,
+    roomState,
+    loading: roomLoading,
+    refetch: refetchRoom,
+  } = useRoom(deviceId, code);
+  const {
+    assignment,
+    loading: assignmentLoading,
+    refetch: refetchAssignment,
+  } = useRoleAssignment(deviceId, roomId, roomState);
+  const { allSeen: allPlayersSeen, refetch: refetchAllSeen } =
+    useAllPlayersSeen(isHost ? deviceId : null, assignment?.gameId ?? null);
+  const { toast } = useToast();
+  const {
+    players,
+    connectedIds,
+    loading: playersLoading,
+    roomEnded,
+    channelStatus,
+    refetch: refetchPlayers,
+    broadcastRefetch,
+    broadcastRoundEnd,
+    broadcastRoundStart,
+    broadcastTimerStart,
+    broadcastPeekUpdate,
+  } = useRoomPlayers(deviceId, roomId, {
+    onRoundEnd: refetchRoom,
+    onRoundStart: refetchRoom,
+    onTimerStart: refetchAssignment,
+    onPeekUpdate: isHost ? refetchAllSeen : undefined,
+    onKicked: () => {
+      navigate("/");
+      toast({ title: t("room.kickedToast"), variant: "danger" });
+    },
+  });
+  const { toggleReady, loading: readyLoading } = useReadyToggle(
     deviceId,
     roomId,
-    { onRoundEnd: refetchRoom, onRoundStart: refetchRoom, onTimerStart: refetchAssignment, onPeekUpdate: isHost ? refetchAllSeen : undefined },
+    broadcastRefetch,
   );
-  const { toggleReady, loading: readyLoading } = useReadyToggle(deviceId, roomId, broadcastRefetch);
   const { leaveRoom, loading: leaveLoading } = useLeaveRoom();
   const { handOver, endRoom, loading: hostLeaveLoading } = useHostLeave();
-  const { startGame, loading: startLoading, error: startError } = useStartGame();
+  const {
+    startGame,
+    loading: startLoading,
+    error: startError,
+  } = useStartGame();
   const { endGame, loading: endRoundLoading } = useEndGame();
+  const { kickPlayer, loading: kickLoading } = useKickPlayer();
   const { markRoleSeen } = useMarkRoleSeen();
   const { startTimer, loading: startTimerLoading } = useStartGameTimer();
-  const { toast } = useToast();
 
   // Host-leave modal state.
   const [showLeaveModal, setShowLeaveModal] = useState(false);
-  const [selectedSuccessor, setSelectedSuccessor] = useState<string | null>(null);
+  const [selectedSuccessor, setSelectedSuccessor] = useState<string | null>(
+    null,
+  );
 
   // Derive imposter count from room config (defaults to 1 until E5-T1 settings).
   const cfgObj =
-    typeof roomConfig === "object" && roomConfig !== null && !Array.isArray(roomConfig)
+    typeof roomConfig === "object" &&
+    roomConfig !== null &&
+    !Array.isArray(roomConfig)
       ? (roomConfig as Record<string, unknown>)
       : null;
   const imposterCount =
-    typeof cfgObj?.imposter_count === "number" ? cfgObj.imposter_count : DEFAULT_IMPOSTER_COUNT;
+    typeof cfgObj?.imposter_count === "number"
+      ? cfgObj.imposter_count
+      : DEFAULT_IMPOSTER_COUNT;
   const minPlayers = imposterCount + MIN_CIVILIAN_BUFFER;
 
-  // Start validation — only non-host players need to be ready.
+  // Start validation — only non-host, non-spectator players need to be ready.
   const nonHostPlayers = players.filter((p) => p.id !== hostPlayerId);
-  const allReady = nonHostPlayers.length > 0 && nonHostPlayers.every((p) => p.is_ready);
-  const enoughPlayers = players.length >= minPlayers;
+  const activePlayers = players.filter((p) => !p.is_spectator);
+  const allReady =
+    nonHostPlayers.length > 0 &&
+    nonHostPlayers.filter((p) => !p.is_spectator).every((p) => p.is_ready);
+  const enoughPlayers = activePlayers.length >= minPlayers;
   const canStart = allReady && enoughPlayers;
+
+  // True while the Realtime channel is not SUBSCRIBED — drives the reconnecting banner (E4-T6).
+  const isReconnecting =
+    channelStatus !== null && channelStatus !== "SUBSCRIBED";
 
   // Friendly reason why Start is disabled.
   const startDisabledReason = !enoughPlayers
@@ -98,13 +184,15 @@ export default function Room() {
   useEffect(() => {
     if (!code || !deviceId || !hasDisplayName || joined) return;
 
-    void joinRoom({ deviceId, displayName: displayName!, code }).then((result) => {
-      if (result) {
-        setJoined(true);
-      } else {
-        setJoinFailed(true);
-      }
-    });
+    void joinRoom({ deviceId, displayName: displayName!, code }).then(
+      (result) => {
+        if (result) {
+          setJoined(true);
+        } else {
+          setJoinFailed(true);
+        }
+      },
+    );
   }, [code, deviceId, hasDisplayName, displayName, joinRoom, joined]);
 
   // Share / copy-link handler.
@@ -135,7 +223,8 @@ export default function Room() {
   );
   const configCategories = useMemo(
     () =>
-      Array.isArray(cfgObj?.categories) && (cfgObj.categories as unknown[]).length > 0
+      Array.isArray(cfgObj?.categories) &&
+      (cfgObj.categories as unknown[]).length > 0
         ? (cfgObj.categories as string[])
         : ["food"],
     [cfgObj],
@@ -156,14 +245,41 @@ export default function Room() {
       // transition to the active-round screen immediately (E3-T10).
       void broadcastRoundStart();
     } else {
-      toast({ title: t(startError ?? "room.startErrorGeneric"), variant: "danger" });
+      toast({
+        title: t(startError ?? "room.startErrorGeneric"),
+        variant: "danger",
+      });
     }
-  }, [roomId, deviceId, startGame, configLanguage, configCategories, refetchRoom, broadcastRoundStart, toast, t, startError]);
+  }, [
+    roomId,
+    deviceId,
+    startGame,
+    configLanguage,
+    configCategories,
+    refetchRoom,
+    broadcastRoundStart,
+    toast,
+    t,
+    startError,
+  ]);
+
+  // Kick player handler (host only).
+  const handleKick = useCallback(
+    async (playerId: string) => {
+      if (!roomId || !deviceId) return;
+      await kickPlayer({ deviceId, roomId, playerId });
+    },
+    [kickPlayer, deviceId, roomId],
+  );
 
   // Host handover handler.
   const handleHandOver = useCallback(async () => {
     if (!roomId || !selectedSuccessor) return;
-    const ok = await handOver({ deviceId, roomId, successorId: selectedSuccessor });
+    const ok = await handOver({
+      deviceId,
+      roomId,
+      successorId: selectedSuccessor,
+    });
     setShowLeaveModal(false);
     if (ok) {
       toast({ title: t("room.hostHandedOver"), variant: "success" });
@@ -198,7 +314,16 @@ export default function Room() {
     } else {
       toast({ title: t("round.endGameError"), variant: "danger" });
     }
-  }, [roomId, deviceId, endGame, broadcastRoundEnd, refetchPlayers, refetchRoom, toast, t]);
+  }, [
+    roomId,
+    deviceId,
+    endGame,
+    broadcastRoundEnd,
+    refetchPlayers,
+    refetchRoom,
+    toast,
+    t,
+  ]);
 
   const handleFirstPeek = useCallback(() => {
     if (!deviceId || !assignment) return;
@@ -208,7 +333,14 @@ export default function Room() {
       // Notify the host's screen that another player peeked.
       void broadcastPeekUpdate();
     });
-  }, [deviceId, assignment, markRoleSeen, isHost, refetchAllSeen, broadcastPeekUpdate]);
+  }, [
+    deviceId,
+    assignment,
+    markRoleSeen,
+    isHost,
+    refetchAllSeen,
+    broadcastPeekUpdate,
+  ]);
 
   const handleStartTimer = useCallback(async (): Promise<boolean> => {
     if (!deviceId || !roomId) return false;
@@ -218,9 +350,20 @@ export default function Room() {
       void broadcastTimerStart();
       return true;
     }
-    toast({ title: t("round.startTimerError", "Couldn't start the timer."), variant: "danger" });
+    toast({
+      title: t("round.startTimerError", "Couldn't start the timer."),
+      variant: "danger",
+    });
     return false;
-  }, [deviceId, roomId, startTimer, refetchAssignment, broadcastTimerStart, toast, t]);
+  }, [
+    deviceId,
+    roomId,
+    startTimer,
+    refetchAssignment,
+    broadcastTimerStart,
+    toast,
+    t,
+  ]);
 
   // Leave room handler — non-host only.
   const handleLeave = useCallback(async () => {
@@ -237,12 +380,44 @@ export default function Room() {
   // Gate: display name required before joining.
   if (!hasDisplayName) {
     return (
-      <DisplayNamePrompt onConfirm={setDisplayName} initialName={displayName ?? ""} />
+      <DisplayNamePrompt
+        onConfirm={setDisplayName}
+        initialName={displayName ?? ""}
+      />
     );
   }
 
   // Round active — reveal flow.
-  if (roomState === "round_active" && joined) {
+  // Gate on `roomId` (server-confirmed membership, not the local `joined` flag)
+  // so a reload mid-round shows the correct screen immediately without waiting
+  // for the idempotent join re-upsert to complete (E4-T1).
+  if (roomState === "round_active" && roomId !== null) {
+    // Spectators who joined mid-game see a neutral waiting screen (E4-T3).
+    const ownPlayer = players.find((p) => p.id === deviceId);
+    if (ownPlayer?.is_spectator) {
+      return (
+        <>
+          {isReconnecting && (
+            <ReconnectingBanner label={t("room.reconnecting")} />
+          )}
+          <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 py-10">
+            <span className="text-6xl" aria-hidden="true">
+              🦆
+            </span>
+            <h1 className="mt-6 text-center text-2xl font-semibold text-fg">
+              {t("room.spectatorTitle")}
+            </h1>
+            <p className="mt-3 text-center text-sm text-fg-muted">
+              {t("room.spectatorSubtitle")}
+            </p>
+            <p className="mt-6 animate-pulse text-center text-xs text-fg-subtle">
+              {t("room.spectatorWaiting")}
+            </p>
+          </main>
+        </>
+      );
+    }
+
     // Spinner while the role assignment is being fetched.
     if (assignmentLoading || !assignment) {
       return (
@@ -256,7 +431,26 @@ export default function Room() {
       );
     }
     // Merged discussion + reveal screen (E3-T6).
-    return <DiscussionScreen assignment={assignment} roomCode={code} players={players} deviceId={deviceId} isHost={isHost} onEndRound={isHost ? handleEndRound : undefined} endRoundLoading={endRoundLoading} onFirstPeek={handleFirstPeek} onStartTimer={isHost ? handleStartTimer : undefined} startTimerLoading={startTimerLoading} allPlayersSeen={allPlayersSeen} />;
+    return (
+      <>
+        {isReconnecting && (
+          <ReconnectingBanner label={t("room.reconnecting")} />
+        )}
+        <DiscussionScreen
+          assignment={assignment}
+          roomCode={code}
+          players={players}
+          deviceId={deviceId}
+          isHost={isHost}
+          onEndRound={isHost ? handleEndRound : undefined}
+          endRoundLoading={endRoundLoading}
+          onFirstPeek={handleFirstPeek}
+          onStartTimer={isHost ? handleStartTimer : undefined}
+          startTimerLoading={startTimerLoading}
+          allPlayersSeen={allPlayersSeen}
+        />
+      </>
+    );
   }
 
   // Room ended by host while this device was in the lobby.
@@ -333,6 +527,8 @@ export default function Room() {
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col px-6 py-10">
+      {/* Reconnecting banner — shown when the Realtime channel is not SUBSCRIBED (E4-T6). */}
+      {isReconnecting && <ReconnectingBanner label={t("room.reconnecting")} />}
       {/* Header */}
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold text-fg">{t("room.title")}</h1>
@@ -368,7 +564,10 @@ export default function Room() {
         {playersLoading ? (
           <div className="space-y-3">
             {[1, 2].map((i) => (
-              <div key={i} className="h-12 animate-pulse rounded-xl bg-bg-raised" />
+              <div
+                key={i}
+                className="h-12 animate-pulse rounded-xl bg-bg-raised"
+              />
             ))}
           </div>
         ) : (
@@ -378,7 +577,9 @@ export default function Room() {
                 key={p.id}
                 className="flex items-center justify-between rounded-xl bg-bg-raised px-4 py-3"
               >
-                <span className="truncate font-medium text-fg">{p.display_name}</span>
+                <span className="truncate font-medium text-fg">
+                  {p.display_name}
+                </span>
                 <div className="flex shrink-0 items-center gap-2 pl-2">
                   {p.id === deviceId && (
                     <span className="rounded-full bg-accent/20 px-2 py-0.5 text-xs font-semibold text-accent">
@@ -390,28 +591,65 @@ export default function Room() {
                       {t("room.host")}
                     </span>
                   )}
-                  {/* Ready indicator — hidden for the host who has no ready button */}
-                  {p.id !== hostPlayerId && (
-                    <span
-                      aria-label={p.is_ready ? t("room.readyCta") : t("room.notReadyCta")}
-                      className={[
-                        "h-2.5 w-2.5 rounded-full border-2",
-                        p.is_ready
-                          ? "border-green-400 bg-green-400"
-                          : "border-fg-muted bg-transparent",
-                      ].join(" ")}
-                    />
+                  {/* Spectator badge — shown instead of ready/connection dots */}
+                  {p.is_spectator ? (
+                    <span className="rounded-full bg-fg/10 px-2 py-0.5 text-xs text-fg-muted">
+                      {t("room.spectatorBadge")}
+                    </span>
+                  ) : (
+                    <>
+                      {/* Ready indicator — hidden for the host who has no ready button */}
+                      {p.id !== hostPlayerId && (
+                        <span
+                          aria-label={
+                            p.is_ready
+                              ? t("room.readyCta")
+                              : t("room.notReadyCta")
+                          }
+                          className={[
+                            "h-2.5 w-2.5 rounded-full border-2",
+                            p.is_ready
+                              ? "border-green-400 bg-green-400"
+                              : "border-fg-muted bg-transparent",
+                          ].join(" ")}
+                        />
+                      )}
+                      {/* Connection dot — derived from live Realtime presence */}
+                      <span
+                        aria-label={
+                          connectedIds.has(p.id)
+                            ? t("room.connected")
+                            : t("room.disconnected")
+                        }
+                        className={[
+                          "h-2 w-2 rounded-full",
+                          connectedIds.has(p.id)
+                            ? "bg-green-400"
+                            : "bg-fg-subtle",
+                        ].join(" ")}
+                      />
+                    </>
                   )}
-                  {/* Connection dot — derived from live Realtime presence */}
-                  <span
-                    aria-label={
-                      connectedIds.has(p.id) ? t("room.connected") : t("room.disconnected")
-                    }
-                    className={[
-                      "h-2 w-2 rounded-full",
-                      connectedIds.has(p.id) ? "bg-green-400" : "bg-fg-subtle",
-                    ].join(" ")}
-                  />
+                  {/* Kick button — host only, not for self, only in lobby */}
+                  {isHost && p.id !== deviceId && roomState === "lobby" && (
+                    <button
+                      type="button"
+                      aria-label={t("room.kickCta")}
+                      disabled={kickLoading}
+                      onClick={() => void handleKick(p.id)}
+                      className="ml-1 flex h-5 w-5 items-center justify-center rounded-full text-fg-subtle transition-colors hover:bg-fg/10 hover:text-fg disabled:opacity-40"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        className="h-3 w-3"
+                        aria-hidden="true"
+                      >
+                        <path d="M5.28 4.22a.75.75 0 0 0-1.06 1.06L6.94 8l-2.72 2.72a.75.75 0 1 0 1.06 1.06L8 9.06l2.72 2.72a.75.75 0 1 0 1.06-1.06L9.06 8l2.72-2.72a.75.75 0 0 0-1.06-1.06L8 6.94 5.28 4.22Z" />
+                      </svg>
+                    </button>
+                  )}
                 </div>
               </li>
             ))}
@@ -458,7 +696,9 @@ export default function Room() {
         {/* Non-host: context message based on own ready state */}
         {joined && !isHost && !roomLoading && (
           <p className="text-center text-sm text-fg-muted">
-            {ownPlayer?.is_ready ? t("room.waitingForHost") : t("room.waitingToReady")}
+            {ownPlayer?.is_ready
+              ? t("room.waitingForHost")
+              : t("room.waitingToReady")}
           </p>
         )}
 
@@ -524,7 +764,9 @@ export default function Room() {
                         onChange={() => setSelectedSuccessor(p.id)}
                         className="accent-accent"
                       />
-                      <span className="font-medium text-fg">{p.display_name}</span>
+                      <span className="font-medium text-fg">
+                        {p.display_name}
+                      </span>
                     </label>
                   </li>
                 ))}
@@ -560,4 +802,3 @@ export default function Room() {
     </main>
   );
 }
-

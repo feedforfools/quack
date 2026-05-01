@@ -20,16 +20,33 @@ const GAME_ID = "game-uuid-cccc";
 // ─── Stub builder ─────────────────────────────────────────────────────────────
 
 function makeClientStub({
-  round = { id: GAME_ID, index: 1, ends_at: null, started_at: '2026-01-01T00:00:00Z' } as { id: string; index: number; ends_at: string | null; started_at: string } | null,
-  ra = { role: "civilian" as "civilian" | "imposter", word: "pizza" } as {
+  round = {
+    id: GAME_ID,
+    index: 1,
+    ends_at: null,
+    started_at: "2026-01-01T00:00:00Z",
+  } as {
+    id: string;
+    index: number;
+    ends_at: string | null;
+    started_at: string;
+  } | null,
+  ra = {
+    role: "civilian" as "civilian" | "imposter",
+    word: "pizza",
+    seen_at: null,
+  } as {
     role: "civilian" | "imposter";
     word: string | null;
+    seen_at: string | null;
   } | null,
   roundError = null as unknown,
   raError = null as unknown,
 } = {}) {
   // Rounds query chain: .select().eq().order().limit().maybeSingle()
-  const roundsMaybeSingle = vi.fn().mockResolvedValue({ data: round, error: roundError });
+  const roundsMaybeSingle = vi
+    .fn()
+    .mockResolvedValue({ data: round, error: roundError });
   const roundsLimit = vi.fn(() => ({ maybeSingle: roundsMaybeSingle }));
   const roundsOrder = vi.fn(() => ({ limit: roundsLimit }));
   const roundsEq = vi.fn(() => ({ order: roundsOrder }));
@@ -60,7 +77,9 @@ afterEach(() => {
 describe("useRoleAssignment", () => {
   it("returns null assignment when roomState is lobby", () => {
     const stub = makeClientStub();
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result } = renderHook(() =>
       useRoleAssignment(DEVICE_ID, ROOM_ID, "lobby"),
@@ -73,7 +92,9 @@ describe("useRoleAssignment", () => {
 
   it("fetches and returns assignment when round_active", async () => {
     const stub = makeClientStub();
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result } = renderHook(() =>
       useRoleAssignment(DEVICE_ID, ROOM_ID, "round_active"),
@@ -88,12 +109,15 @@ describe("useRoleAssignment", () => {
       word: "pizza",
       endsAt: null,
       timerSeconds: null,
+      seenAt: null,
     });
   });
 
   it("returns null when no round exists for the room", async () => {
     const stub = makeClientStub({ round: null });
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result } = renderHook(() =>
       useRoleAssignment(DEVICE_ID, ROOM_ID, "round_active"),
@@ -106,7 +130,9 @@ describe("useRoleAssignment", () => {
 
   it("returns null when no role_assignment row exists", async () => {
     const stub = makeClientStub({ ra: null });
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result } = renderHook(() =>
       useRoleAssignment(DEVICE_ID, ROOM_ID, "round_active"),
@@ -118,8 +144,12 @@ describe("useRoleAssignment", () => {
   });
 
   it("returns null and does not throw when games fetch errors", async () => {
-    const stub = makeClientStub({ roundError: { code: "PGRST301", message: "error" } });
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    const stub = makeClientStub({
+      roundError: { code: "PGRST301", message: "error" },
+    });
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result } = renderHook(() =>
       useRoleAssignment(DEVICE_ID, ROOM_ID, "round_active"),
@@ -132,12 +162,18 @@ describe("useRoleAssignment", () => {
 
   it("clears assignment when roomState transitions back to lobby", async () => {
     const stub = makeClientStub();
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result, rerender } = renderHook(
       ({ state }: { state: "lobby" | "round_active" | "round_ended" }) =>
         useRoleAssignment(DEVICE_ID, ROOM_ID, state),
-      { initialProps: { state: "round_active" as "lobby" | "round_active" | "round_ended" } },
+      {
+        initialProps: {
+          state: "round_active" as "lobby" | "round_active" | "round_ended",
+        },
+      },
     );
 
     await waitFor(() => expect(result.current.assignment).not.toBeNull());
@@ -159,7 +195,9 @@ describe("useRoleAssignment", () => {
         ends_at: "2026-01-01T00:01:30.000Z",
       },
     });
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result } = renderHook(() =>
       useRoleAssignment(DEVICE_ID, ROOM_ID, "round_active"),
@@ -181,7 +219,9 @@ describe("useRoleAssignment", () => {
         ends_at: "2026-01-01T00:00:59.500Z",
       },
     });
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result } = renderHook(() =>
       useRoleAssignment(DEVICE_ID, ROOM_ID, "round_active"),
@@ -201,7 +241,9 @@ describe("useRoleAssignment", () => {
         ends_at: null,
       },
     });
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result } = renderHook(() =>
       useRoleAssignment(DEVICE_ID, ROOM_ID, "round_active"),
@@ -211,5 +253,40 @@ describe("useRoleAssignment", () => {
 
     expect(result.current.assignment?.timerSeconds).toBeNull();
     expect(result.current.assignment?.endsAt).toBeNull();
+  });
+
+  it("exposes seenAt as null when the player has not yet peeked", async () => {
+    const stub = makeClientStub({
+      ra: { role: "civilian", word: "pizza", seen_at: null },
+    });
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
+
+    const { result } = renderHook(() =>
+      useRoleAssignment(DEVICE_ID, ROOM_ID, "round_active"),
+    );
+
+    await waitFor(() => expect(result.current.loading).toBe(false));
+
+    expect(result.current.assignment?.seenAt).toBeNull();
+  });
+
+  it("exposes seenAt as the server timestamp when the player has already peeked", async () => {
+    const seenTimestamp = "2026-05-01T12:00:00.000Z";
+    const stub = makeClientStub({
+      ra: { role: "civilian", word: "pizza", seen_at: seenTimestamp },
+    });
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
+
+    const { result } = renderHook(() =>
+      useRoleAssignment(DEVICE_ID, ROOM_ID, "round_active"),
+    );
+
+    await waitFor(() => expect(result.current.loading).toBe(false));
+
+    expect(result.current.assignment?.seenAt).toBe(seenTimestamp);
   });
 });

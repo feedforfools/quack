@@ -88,7 +88,14 @@
     "startErrorNotHost": "Non sei l\u2019host di questa stanza.",
     "startErrorGeneric": "Impossibile avviare il round. Riprova.",
     "roundActiveTitle": "Round in corso",
-    "roundActiveSubtitle": "Gira la tua carta per vedere il tuo ruolo."
+    "roundActiveSubtitle": "Gira la tua carta per vedere il tuo ruolo.",
+    "spectatorBadge": "Partecipi alla prossima",
+    "spectatorTitle": "Partecipi alla prossima partita",
+    "spectatorSubtitle": "Hai partecipato mentre una partita era in corso. Sarai incluso dalla prossima.",
+    "spectatorWaiting": "In attesa che la partita in corso finisca…",
+    "kickCta": "Rimuovi",
+    "kickedToast": "Sei stato rimosso dalla stanza.",
+    "reconnecting": "Riconnessione…"
   },
   "round": {
     "loading": "Recupero il tuo ruolo…",

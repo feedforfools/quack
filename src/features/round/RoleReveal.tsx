@@ -20,6 +20,13 @@ export interface RoleRevealProps {
    * Useful for DiscussionScreen to react to peek state (e.g., hide timer).
    */
   onPeekChange?: (isPeeking: boolean) => void;
+  /**
+   * Whether the player has already peeked (i.e., `seen_at` is set on the
+   * server). When true, the first-peek callback is suppressed on the first
+   * drag so a reload mid-round doesn't re-fire `mark_role_seen` or re-trigger
+   * the first-peek haptic (E4-T1).
+   */
+  initialHasPeeked?: boolean;
 }
 
 /**
@@ -37,12 +44,17 @@ export interface RoleRevealProps {
  *  - 60 ms on round arrival (component mount).
  *  - 25 ms on first peek (lid held past threshold for the first time).
  */
-export function RoleReveal({ assignment, onFirstPeek, onPeekChange }: RoleRevealProps) {
+export function RoleReveal({
+  assignment,
+  onFirstPeek,
+  onPeekChange,
+  initialHasPeeked = false,
+}: RoleRevealProps) {
   const { t } = useTranslation();
   const [drag, setDrag] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [keyHeld, setKeyHeld] = useState(false);
-  const [hasPeeked, setHasPeeked] = useState(false);
+  const [hasPeeked, setHasPeeked] = useState(initialHasPeeked);
   const originRef = useRef<{ x: number; y: number } | null>(null);
 
   // Haptic on round arrival.
@@ -69,11 +81,14 @@ export function RoleReveal({ assignment, onFirstPeek, onPeekChange }: RoleReveal
     }
   }, [isVisible, hasPeeked, onFirstPeek, onPeekChange]);
 
-  const handlePointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
-    e.currentTarget.setPointerCapture(e.pointerId);
-    originRef.current = { x: e.clientX, y: e.clientY };
-    setIsDragging(true);
-  }, []);
+  const handlePointerDown = useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      e.currentTarget.setPointerCapture(e.pointerId);
+      originRef.current = { x: e.clientX, y: e.clientY };
+      setIsDragging(true);
+    },
+    [],
+  );
 
   const handlePointerMove = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {
@@ -93,12 +108,15 @@ export function RoleReveal({ assignment, onFirstPeek, onPeekChange }: RoleReveal
   }, []);
 
   // Keyboard: hold Space / Enter to enter peek mode; release to cover.
-  const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
-    if ((e.key === " " || e.key === "Enter") && !e.repeat) {
-      e.preventDefault();
-      setKeyHeld(true);
-    }
-  }, []);
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if ((e.key === " " || e.key === "Enter") && !e.repeat) {
+        e.preventDefault();
+        setKeyHeld(true);
+      }
+    },
+    [],
+  );
 
   const handleKeyUp = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === " " || e.key === "Enter") {

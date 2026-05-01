@@ -19,6 +19,12 @@ export interface RoleAssignment {
    * Null when no timer was configured for this round.
    */
   timerSeconds: number | null;
+  /**
+   * Server-issued ISO timestamp of the player's first lid-peek, or null if
+   * they have not yet peeked. Used by RoleReveal to restore peek state on
+   * reload so a player is never falsely reset to "never peeked" (E4-T1).
+   */
+  seenAt: string | null;
 }
 
 export interface UseRoleAssignmentReturn {
@@ -75,13 +81,16 @@ export function useRoleAssignment(
       // RLS guarantees only the row for this device is returned.
       const { data: ra, error: raErr } = await client
         .from("role_assignments")
-        .select("role, word")
+        .select("role, word, seen_at")
         .eq("game_id", round.id)
         .eq("player_id", deviceId)
         .maybeSingle();
 
       if (raErr) {
-        log.error("useRoleAssignment: role_assignments fetch error", raErr.code);
+        log.error(
+          "useRoleAssignment: role_assignments fetch error",
+          raErr.code,
+        );
         return;
       }
 
@@ -96,7 +105,8 @@ export function useRoleAssignment(
       const timerSeconds =
         endsAt && round.started_at
           ? Math.round(
-              (new Date(endsAt).getTime() - new Date(round.started_at).getTime()) /
+              (new Date(endsAt).getTime() -
+                new Date(round.started_at).getTime()) /
                 1000,
             )
           : null;
@@ -109,6 +119,7 @@ export function useRoleAssignment(
         word: ra.word,
         endsAt,
         timerSeconds,
+        seenAt: ra.seen_at ?? null,
       });
     } finally {
       setLoading(false);

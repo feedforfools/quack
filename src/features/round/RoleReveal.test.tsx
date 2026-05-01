@@ -20,21 +20,23 @@ import type { RoleAssignment } from "./useRoleAssignment";
 // ─── Fixtures ─────────────────────────────────────────────────────────────────
 
 const civilianAssignment: RoleAssignment = {
-  roundId: "round-uuid-1",
+  gameId: "round-uuid-1",
   roundIndex: 0,
   role: "civilian",
   word: "pizza",
   endsAt: null,
   timerSeconds: null,
+  seenAt: null,
 };
 
 const imposterAssignment: RoleAssignment = {
-  roundId: "round-uuid-2",
+  gameId: "round-uuid-2",
   roundIndex: 1,
   role: "imposter",
   word: null,
   endsAt: null,
   timerSeconds: null,
+  seenAt: null,
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -117,9 +119,9 @@ describe("RoleReveal (drag-lid card)", () => {
     fireEvent.keyUp(lid, { key: " " });
     fireEvent.keyDown(lid, { key: " " });
     fireEvent.keyUp(lid, { key: " " });
-    const peekCalls = (navigator.vibrate as ReturnType<typeof vi.fn>).mock.calls.filter(
-      ([ms]) => ms === 25,
-    );
+    const peekCalls = (
+      navigator.vibrate as ReturnType<typeof vi.fn>
+    ).mock.calls.filter(([ms]) => ms === 25);
     expect(peekCalls).toHaveLength(1);
   });
 
@@ -150,6 +152,22 @@ describe("RoleReveal (drag-lid card)", () => {
     fireEvent.keyDown(getLid(), { key: " " });
     expect(getLid()).toHaveAttribute("aria-pressed", "true");
   });
+
+  it("does not call onFirstPeek on first peek when initialHasPeeked is true (reload case)", () => {
+    const onFirstPeek = vi.fn();
+    renderReveal(civilianAssignment, { onFirstPeek, initialHasPeeked: true });
+    const lid = getLid();
+    // Simulate peek — should NOT invoke onFirstPeek since the player already peeked.
+    fireEvent.keyDown(lid, { key: " " });
+    fireEvent.keyUp(lid, { key: " " });
+    expect(onFirstPeek).not.toHaveBeenCalled();
+  });
+
+  it("calls onFirstPeek on first peek when initialHasPeeked is false (fresh load)", () => {
+    const onFirstPeek = vi.fn();
+    renderReveal(civilianAssignment, { onFirstPeek, initialHasPeeked: false });
+    const lid = getLid();
+    fireEvent.keyDown(lid, { key: " " });
+    expect(onFirstPeek).toHaveBeenCalledTimes(1);
+  });
 });
-
-

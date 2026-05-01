@@ -114,7 +114,7 @@ export function NeutralRoundScreen({
       {/* Round number — contextual, does not encode role info. */}
       {assignment && (
         <p className="text-xs font-semibold uppercase tracking-widest text-fg-subtle">
-          {t("round.roundLabel", { index: assignment.roundIndex + 1 })}
+          {t("round.gameLabel", { index: assignment.roundIndex })}
         </p>
       )}
 
@@ -200,7 +200,7 @@ export function NeutralRoundScreen({
           disabled={endRoundLoading}
           className="mt-4 w-full max-w-xs"
         >
-          {endRoundLoading ? "…" : t("round.endRoundCta")}
+          {endRoundLoading ? "…" : t("round.endGameCta")}
         </Button>
       )}
 
@@ -240,7 +240,9 @@ export function NeutralRoundScreen({
                 </p>
               )}
               {!isCivilian && (
-                <p className="text-sm text-fg-muted">{t("round.imposterHint")}</p>
+                <p className="text-sm text-fg-muted">
+                  {t("round.imposterHint")}
+                </p>
               )}
             </div>
             <Button

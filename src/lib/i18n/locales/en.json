@@ -88,7 +88,14 @@
     "startErrorNotHost": "You\u2019re not the host of this room.",
     "startErrorGeneric": "Couldn\u2019t start the round. Please try again.",
     "roundActiveTitle": "Round in progress",
-    "roundActiveSubtitle": "Flip your card to see your role."
+    "roundActiveSubtitle": "Flip your card to see your role.",
+    "spectatorBadge": "Joining next game",
+    "spectatorTitle": "Joining next game",
+    "spectatorSubtitle": "You joined while a game was in progress. You\u2019ll be included from the next one.",
+    "spectatorWaiting": "Waiting for the current game to end…",
+    "kickCta": "Kick",
+    "kickedToast": "You were removed from the room.",
+    "reconnecting": "Reconnecting…"
   },
   "round": {
     "loading": "Getting your role…",

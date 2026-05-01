@@ -21,7 +21,10 @@ import { expect, test, type BrowserContext, type Page } from "@playwright/test";
  */
 async function seedDisplayName(page: Page, name: string) {
   await page.goto("/");
-  await page.evaluate((n) => localStorage.setItem("quack_display_name", n), name);
+  await page.evaluate(
+    (n) => localStorage.setItem("quack_display_name", n),
+    name,
+  );
 }
 
 test.describe("lobby roster — two players", () => {
@@ -58,20 +61,28 @@ test.describe("lobby roster — two players", () => {
     expect(code).toMatch(/^[A-Z2-9]{6}$/);
 
     // Host's own name appears in their roster
-    await expect(hostPage.getByText("Host Duck")).toBeVisible({ timeout: 10_000 });
+    await expect(hostPage.getByText("Host Duck")).toBeVisible({
+      timeout: 10_000,
+    });
 
     // ── Player: set display name, navigate to the room URL ───────────────────
     await seedDisplayName(playerPage, "Player Duck");
     await playerPage.goto(`/r/${code}`);
 
     // Player sees the lobby (their own name appears first — from initial DB fetch)
-    await expect(playerPage.getByText("Player Duck")).toBeVisible({ timeout: 10_000 });
+    await expect(playerPage.getByText("Player Duck")).toBeVisible({
+      timeout: 10_000,
+    });
 
     // Player can also see the host in their roster
-    await expect(playerPage.getByText("Host Duck")).toBeVisible({ timeout: 10_000 });
+    await expect(playerPage.getByText("Host Duck")).toBeVisible({
+      timeout: 10_000,
+    });
 
     // ── Host sees the player (via Realtime presence sync → HTTP re-fetch) ────
-    await expect(hostPage.getByText("Player Duck")).toBeVisible({ timeout: 15_000 });
+    await expect(hostPage.getByText("Player Duck")).toBeVisible({
+      timeout: 15_000,
+    });
   });
 
   test("navigating to a non-existent room code shows the stale-room screen", async () => {
@@ -115,7 +126,9 @@ test.describe("resume from home — active-room card", () => {
     await page.goto("/");
 
     // Active-room card should be visible.
-    await expect(page.getByText(/you're in a room/i)).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByText(/you're in a room/i)).toBeVisible({
+      timeout: 10_000,
+    });
 
     // Resume button should navigate back to the room.
     await page.getByRole("button", { name: /resume room/i }).click();
@@ -128,7 +141,9 @@ test.describe("resume from home — active-room card", () => {
 // ─── Host leave: end room alone ───────────────────────────────────────────────
 
 test.describe("host leave — end room alone", () => {
-  test("host can end the room when alone and is redirected to home", async ({ browser }) => {
+  test("host can end the room when alone and is redirected to home", async ({
+    browser,
+  }) => {
     const ctx = await browser.newContext();
     const page = await ctx.newPage();
 
@@ -207,15 +222,21 @@ test.describe("full round — 4 contexts (E3 acceptance criteria)", () => {
       expect(p3Page.getByText("Player Three")).toBeVisible({ timeout: 10_000 }),
     ]);
     // Host roster eventually shows all 3 players (via Realtime sync).
-    await expect(hostPage.getByText("Player One")).toBeVisible({ timeout: 15_000 });
-    await expect(hostPage.getByText("Player Two")).toBeVisible({ timeout: 15_000 });
-    await expect(hostPage.getByText("Player Three")).toBeVisible({ timeout: 15_000 });
+    await expect(hostPage.getByText("Player One")).toBeVisible({
+      timeout: 15_000,
+    });
+    await expect(hostPage.getByText("Player Two")).toBeVisible({
+      timeout: 15_000,
+    });
+    await expect(hostPage.getByText("Player Three")).toBeVisible({
+      timeout: 15_000,
+    });
 
     // ── All non-host players mark ready ───────────────────────────────────────
     await Promise.all([
-      p1Page.getByRole("button", { name: /i'm ready/i }).click(),
-      p2Page.getByRole("button", { name: /i'm ready/i }).click(),
-      p3Page.getByRole("button", { name: /i'm ready/i }).click(),
+      p1Page.getByRole("button", { name: /i\u2019m ready/i }).click(),
+      p2Page.getByRole("button", { name: /i\u2019m ready/i }).click(),
+      p3Page.getByRole("button", { name: /i\u2019m ready/i }).click(),
     ]);
     // Host's Start Game button becomes enabled when all are ready.
     await expect(
@@ -226,26 +247,38 @@ test.describe("full round — 4 contexts (E3 acceptance criteria)", () => {
     await hostPage.getByRole("button", { name: /start game/i }).click();
 
     // ── All players see the role-reveal card ──────────────────────────────────
-    // The card has aria-label matching "tap to reveal" before it's flipped.
-    const revealLabel = /tap to reveal/i;
+    // The drag-lid button always has aria-label t("round.dragToReveal") = "Hold & drag to peek".
+    const revealLabel = /hold & drag to peek/i;
     await Promise.all([
-      expect(hostPage.getByRole("button", { name: revealLabel })).toBeVisible({ timeout: 15_000 }),
-      expect(p1Page.getByRole("button", { name: revealLabel })).toBeVisible({ timeout: 15_000 }),
-      expect(p2Page.getByRole("button", { name: revealLabel })).toBeVisible({ timeout: 15_000 }),
-      expect(p3Page.getByRole("button", { name: revealLabel })).toBeVisible({ timeout: 15_000 }),
+      expect(hostPage.getByRole("button", { name: revealLabel })).toBeVisible({
+        timeout: 15_000,
+      }),
+      expect(p1Page.getByRole("button", { name: revealLabel })).toBeVisible({
+        timeout: 15_000,
+      }),
+      expect(p2Page.getByRole("button", { name: revealLabel })).toBeVisible({
+        timeout: 15_000,
+      }),
+      expect(p3Page.getByRole("button", { name: revealLabel })).toBeVisible({
+        timeout: 15_000,
+      }),
     ]);
 
     // ── Each player flips their card then dismisses ───────────────────────────
     for (const page of [hostPage, p1Page, p2Page, p3Page]) {
       await page.getByRole("button", { name: revealLabel }).click();
       // "Got it" appears after the flip animation.
-      await page.getByRole("button", { name: /got it/i }).click({ timeout: 5_000 });
+      await page
+        .getByRole("button", { name: /got it/i })
+        .click({ timeout: 5_000 });
     }
 
     // ── All players are now on the neutral round screen ───────────────────────
     // The neutral screen shows the round label and a "Peek" button.
     for (const page of [hostPage, p1Page, p2Page, p3Page]) {
-      await expect(page.getByRole("button", { name: /peek at your card/i })).toBeVisible({
+      await expect(
+        page.getByRole("button", { name: /peek at your card/i }),
+      ).toBeVisible({
         timeout: 10_000,
       });
     }
@@ -256,7 +289,7 @@ test.describe("full round — 4 contexts (E3 acceptance criteria)", () => {
     // ── All pages transition back to the lobby (Start Game visible again) ─────
     for (const page of [hostPage, p1Page, p2Page, p3Page]) {
       await expect(
-        page.getByRole("button", { name: /start game|i'm ready/i }),
+        page.getByRole("button", { name: /start game|i\u2019m ready/i }),
       ).toBeVisible({ timeout: 15_000 });
     }
 
@@ -264,9 +297,9 @@ test.describe("full round — 4 contexts (E3 acceptance criteria)", () => {
     // After end-round all players are no longer ready, so host Start is disabled.
     // Re-ready players and verify Start becomes enabled again.
     await Promise.all([
-      p1Page.getByRole("button", { name: /i'm ready/i }).click(),
-      p2Page.getByRole("button", { name: /i'm ready/i }).click(),
-      p3Page.getByRole("button", { name: /i'm ready/i }).click(),
+      p1Page.getByRole("button", { name: /i\u2019m ready/i }).click(),
+      p2Page.getByRole("button", { name: /i\u2019m ready/i }).click(),
+      p3Page.getByRole("button", { name: /i\u2019m ready/i }).click(),
     ]);
     await expect(
       hostPage.getByRole("button", { name: /start game/i }),
@@ -303,10 +336,14 @@ test.describe("host leave — handover to another player", () => {
 
     // Player navigates directly to the room URL.
     await playerPage.goto(`/r/${roomCode}`);
-    await expect(playerPage.getByText("Handover Player")).toBeVisible({ timeout: 10_000 });
+    await expect(playerPage.getByText("Handover Player")).toBeVisible({
+      timeout: 10_000,
+    });
 
     // Host waits until the player appears in their roster (Realtime presence sync).
-    await expect(hostPage.getByText("Handover Player")).toBeVisible({ timeout: 15_000 });
+    await expect(hostPage.getByText("Handover Player")).toBeVisible({
+      timeout: 15_000,
+    });
 
     // Host opens the leave modal.
     await hostPage.getByRole("button", { name: /leave room/i }).click();
@@ -323,8 +360,8 @@ test.describe("host leave — handover to another player", () => {
 
     // Player should eventually see the "Host" badge next to their own name
     // (roster re-fetched after host's players row is removed).
-    await expect(
-      playerPage.getByText("Host").first(),
-    ).toBeVisible({ timeout: 15_000 });
+    await expect(playerPage.getByText("Host").first()).toBeVisible({
+      timeout: 15_000,
+    });
   });
 });

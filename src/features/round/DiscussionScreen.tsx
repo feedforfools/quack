@@ -13,8 +13,12 @@ interface DiscussionScreenProps {
   /**
    * All players currently in the room (names only — role information is
    * never passed here; the roster never reveals assignments).
+   *
+   * `is_spectator` players (late joiners who arrived mid-game) are rendered
+   * in a separate "joining next game" section so they don't visually mingle
+   * with active participants and confuse the people currently playing.
    */
-  players: { id: string; display_name: string }[];
+  players: { id: string; display_name: string; is_spectator?: boolean }[];
   /** The calling device's UUID — used to render the "You" badge. */
   deviceId: string | null;
   /** Whether the current player is the host. Shows End Round + Start Timer. */
@@ -76,13 +80,14 @@ export function DiscussionScreen({
   }, []);
 
   const timerActive = assignment.endsAt !== null;
-  const canStartTimer = isHost && !timerActive && allPlayersSeen && onStartTimer;
+  const canStartTimer =
+    isHost && !timerActive && allPlayersSeen && onStartTimer;
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col items-center px-6 py-10">
       {/* Round label */}
       <p className="text-xs font-semibold uppercase tracking-widest text-fg-subtle">
-        {t("round.gameLabel", { index: assignment.roundIndex + 1 })}
+        {t("round.gameLabel", { index: assignment.roundIndex })}
       </p>
 
       {/* ── Countdown timer — primary visual when running ────────────────── */}
@@ -124,6 +129,7 @@ export function DiscussionScreen({
           assignment={assignment}
           onFirstPeek={onFirstPeek}
           onPeekChange={handlePeekChange}
+          initialHasPeeked={assignment.seenAt !== null}
         />
       </div>
 
@@ -135,29 +141,59 @@ export function DiscussionScreen({
         {t("round.neutralSubtitle")}
       </p>
 
-      {/* Player roster — names only, no role info */}
-      {players.length > 0 && (
-        <ul
-          className="mt-6 w-full space-y-2"
-          aria-label={t("round.neutralPlayers")}
-        >
-          {players.map((p) => (
-            <li
-              key={p.id}
-              className="flex items-center rounded-xl bg-bg-raised px-4 py-3"
-            >
-              <span className="flex-1 truncate font-medium text-fg">
-                {p.display_name}
-              </span>
-              {p.id === deviceId && (
-                <span className="rounded-full bg-accent/20 px-2 py-0.5 text-xs font-semibold text-accent">
-                  {t("room.you")}
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
+      {/* Player roster — names only, no role info. Active participants only. */}
+      {(() => {
+        const activePlayers = players.filter((p) => !p.is_spectator);
+        const spectators = players.filter((p) => p.is_spectator);
+        return (
+          <>
+            {activePlayers.length > 0 && (
+              <ul
+                className="mt-6 w-full space-y-2"
+                aria-label={t("round.neutralPlayers")}
+              >
+                {activePlayers.map((p) => (
+                  <li
+                    key={p.id}
+                    className="flex items-center rounded-xl bg-bg-raised px-4 py-3"
+                  >
+                    <span className="flex-1 truncate font-medium text-fg">
+                      {p.display_name}
+                    </span>
+                    {p.id === deviceId && (
+                      <span className="rounded-full bg-accent/20 px-2 py-0.5 text-xs font-semibold text-accent">
+                        {t("room.you")}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {/* Spectators — late joiners shown muted, set apart from the
+                active roster so currently-playing players are not confused. */}
+            {spectators.length > 0 && (
+              <div className="mt-6 w-full">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-fg-subtle">
+                  {t("room.spectatorBadge")}
+                </p>
+                <ul className="space-y-2" aria-label={t("room.spectatorBadge")}>
+                  {spectators.map((p) => (
+                    <li
+                      key={p.id}
+                      className="flex items-center rounded-xl border border-dashed border-fg-subtle/30 bg-bg-raised/50 px-4 py-3 text-fg-muted"
+                    >
+                      <span className="flex-1 truncate font-medium">
+                        {p.display_name}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </>
+        );
+      })()}
 
       {/* Room code — subtle anchor */}
       {roomCode && (
