@@ -122,14 +122,14 @@ export function CountdownDial({
           strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={dashOffset}
-          style={{ transition: "stroke-dashoffset 0.25s linear, stroke 0.5s" }}
+          style={{ transition: "stroke 0.5s" }}
         />
       </svg>
 
       {/* Centre readout */}
       <span
         aria-hidden="true"
-        className="absolute text-2xl font-bold tabular-nums text-fg"
+        className="absolute text-4xl font-bold tabular-nums text-fg"
       >
         {mm}:{ss}
       </span>

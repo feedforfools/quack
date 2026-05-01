@@ -5,12 +5,16 @@ import { log } from "@/lib/log";
 
 type RoomConfig = Database["public"]["Tables"]["rooms"]["Row"]["config"];
 
+export type RoomState = "lobby" | "round_active" | "round_ended";
+
 export interface UseRoomReturn {
   roomId: string | null;
   hostPlayerId: string | null;
   isHost: boolean;
   /** Raw `config` JSONB from the rooms row, or null while loading. */
   roomConfig: RoomConfig | null;
+  /** Current state of the room (`lobby`, `round_active`, or `round_ended`). */
+  roomState: RoomState;
   loading: boolean;
   /** Re-fetch the room row from the DB. Useful after a host transfer. */
   refetch: () => void;
@@ -29,6 +33,7 @@ export function useRoom(
   const [hostPlayerId, setHostPlayerId] = useState<string | null>(null);
   const [isHost, setIsHost] = useState(false);
   const [roomConfig, setRoomConfig] = useState<RoomConfig | null>(null);
+  const [roomState, setRoomState] = useState<RoomState>("lobby");
   const [loading, setLoading] = useState(true);
 
   const fetchRoom = useCallback(async () => {
@@ -37,7 +42,7 @@ export function useRoom(
     const client = supabaseWithDevice(deviceId);
     const { data, error } = await client
       .from("rooms")
-      .select("id, host_player_id, config")
+      .select("id, host_player_id, config, state")
       .eq("code", code.toUpperCase())
       .maybeSingle();
 
@@ -48,6 +53,7 @@ export function useRoom(
       setHostPlayerId(data.host_player_id);
       setIsHost(data.host_player_id === deviceId);
       setRoomConfig(data.config);
+      setRoomState(data.state as RoomState);
     }
     setLoading(false);
   }, [deviceId, code]);
@@ -56,5 +62,5 @@ export function useRoom(
     void fetchRoom();
   }, [fetchRoom]);
 
-  return { roomId, hostPlayerId, isHost, roomConfig, loading, refetch: fetchRoom };
+  return { roomId, hostPlayerId, isHost, roomConfig, roomState, loading, refetch: fetchRoom };
 }

@@ -1,10 +1,10 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback, useRef, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDeviceId, useDisplayName, DisplayNamePrompt } from "@/features/identity";
-import { useJoinRoom, useRoom, useRoomPlayers, useReadyToggle, useLeaveRoom, useHostLeave } from "@/features/room";
+import { useJoinRoom, useRoom, useRoomPlayers, useReadyToggle, useLeaveRoom, useHostLeave, useStartGame, useEndGame } from "@/features/room";
+import { useRoleAssignment, DiscussionScreen, useMarkRoleSeen, useStartGameTimer, useAllPlayersSeen } from "@/features/round";
 import { Button, Modal, QRCode, useToast } from "@/components";
-import { log } from "@/lib/log";
 
 /** Minimum total players needed to start: imposter_count + 2 civilians. */
 const MIN_CIVILIAN_BUFFER = 2;
@@ -25,9 +25,6 @@ const DEFAULT_IMPOSTER_COUNT = 1;
  *  - Player roster with ready / connection indicators
  *  - Ready toggle per player (E2-T8)
  *  - Host Start button, enabled when all ready + enough players (E2-T8)
- *
- * TODO(E3-T4): Wire Start button to start_round RPC.
- * TODO(E3-T5): Conditional render for active round.
  */
 export default function Room() {
   const { code } = useParams<{ code: string }>();
@@ -41,14 +38,24 @@ export default function Room() {
   const [joinFailed, setJoinFailed] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const { roomId, hostPlayerId, isHost, roomConfig, loading: roomLoading, refetch: refetchRoom } = useRoom(deviceId, code);
-  const { players, connectedIds, loading: playersLoading, roomEnded, broadcastRefetch } = useRoomPlayers(
+  const { roomId, hostPlayerId, isHost, roomConfig, roomState, loading: roomLoading, refetch: refetchRoom } = useRoom(deviceId, code);
+  const { assignment, loading: assignmentLoading, refetch: refetchAssignment } = useRoleAssignment(deviceId, roomId, roomState);
+  const { allSeen: allPlayersSeen, refetch: refetchAllSeen } = useAllPlayersSeen(
+    isHost ? deviceId : null,
+    assignment?.gameId ?? null,
+  );
+  const { players, connectedIds, loading: playersLoading, roomEnded, refetch: refetchPlayers, broadcastRefetch, broadcastRoundEnd, broadcastRoundStart, broadcastTimerStart, broadcastPeekUpdate } = useRoomPlayers(
     deviceId,
     roomId,
+    { onRoundEnd: refetchRoom, onRoundStart: refetchRoom, onTimerStart: refetchAssignment, onPeekUpdate: isHost ? refetchAllSeen : undefined },
   );
   const { toggleReady, loading: readyLoading } = useReadyToggle(deviceId, roomId, broadcastRefetch);
   const { leaveRoom, loading: leaveLoading } = useLeaveRoom();
   const { handOver, endRoom, loading: hostLeaveLoading } = useHostLeave();
+  const { startGame, loading: startLoading, error: startError } = useStartGame();
+  const { endGame, loading: endRoundLoading } = useEndGame();
+  const { markRoleSeen } = useMarkRoleSeen();
+  const { startTimer, loading: startTimerLoading } = useStartGameTimer();
   const { toast } = useToast();
 
   // Host-leave modal state.
@@ -121,10 +128,37 @@ export default function Room() {
     }
   }, [code, roomUrl, t]);
 
-  // TODO(E3-T4): Replace with start_round RPC call.
-  const handleStart = useCallback(() => {
-    log.debug("Room: Start pressed — round start RPC wired in E3-T4");
-  }, []);
+  // Derive language + categories from room config (defaults until E5-T1 settings UI).
+  const configLanguage = useMemo(
+    () => (typeof cfgObj?.language === "string" ? cfgObj.language : "en"),
+    [cfgObj],
+  );
+  const configCategories = useMemo(
+    () =>
+      Array.isArray(cfgObj?.categories) && (cfgObj.categories as unknown[]).length > 0
+        ? (cfgObj.categories as string[])
+        : ["food"],
+    [cfgObj],
+  );
+
+  // Start Game handler — calls start_round RPC then re-fetches room state.
+  const handleStart = useCallback(async () => {
+    if (!roomId || !deviceId) return;
+    const ok = await startGame({
+      deviceId,
+      roomId,
+      language: configLanguage as import("@/lib/words").WordPoolLang,
+      categories: configCategories as import("@/lib/words").WordPoolCategory[],
+    });
+    if (ok) {
+      void refetchRoom();
+      // Tell other connected clients to refetch their room state so they
+      // transition to the active-round screen immediately (E3-T10).
+      void broadcastRoundStart();
+    } else {
+      toast({ title: t(startError ?? "room.startErrorGeneric"), variant: "danger" });
+    }
+  }, [roomId, deviceId, startGame, configLanguage, configCategories, refetchRoom, broadcastRoundStart, toast, t, startError]);
 
   // Host handover handler.
   const handleHandOver = useCallback(async () => {
@@ -152,6 +186,42 @@ export default function Room() {
     }
   }, [roomId, endRoom, deviceId, toast, t, navigate]);
 
+  // Host end-round handler — returns the room to lobby state.
+  const handleEndRound = useCallback(async () => {
+    if (!roomId || !deviceId) return;
+    const ok = await endGame({ deviceId, roomId });
+    if (ok) {
+      void broadcastRoundEnd();
+      void refetchPlayers();
+      void refetchRoom();
+      toast({ title: t("round.gameEndedToast"), variant: "success" });
+    } else {
+      toast({ title: t("round.endGameError"), variant: "danger" });
+    }
+  }, [roomId, deviceId, endGame, broadcastRoundEnd, refetchPlayers, refetchRoom, toast, t]);
+
+  const handleFirstPeek = useCallback(() => {
+    if (!deviceId || !assignment) return;
+    void markRoleSeen({ deviceId, gameId: assignment.gameId }).then(() => {
+      // Re-check all_players_seen so the host's Start Timer button unlocks.
+      if (isHost) refetchAllSeen();
+      // Notify the host's screen that another player peeked.
+      void broadcastPeekUpdate();
+    });
+  }, [deviceId, assignment, markRoleSeen, isHost, refetchAllSeen, broadcastPeekUpdate]);
+
+  const handleStartTimer = useCallback(async (): Promise<boolean> => {
+    if (!deviceId || !roomId) return false;
+    const result = await startTimer({ deviceId, roomId });
+    if (result) {
+      refetchAssignment();
+      void broadcastTimerStart();
+      return true;
+    }
+    toast({ title: t("round.startTimerError", "Couldn't start the timer."), variant: "danger" });
+    return false;
+  }, [deviceId, roomId, startTimer, refetchAssignment, broadcastTimerStart, toast, t]);
+
   // Leave room handler — non-host only.
   const handleLeave = useCallback(async () => {
     if (!roomId) return;
@@ -169,6 +239,24 @@ export default function Room() {
     return (
       <DisplayNamePrompt onConfirm={setDisplayName} initialName={displayName ?? ""} />
     );
+  }
+
+  // Round active — reveal flow.
+  if (roomState === "round_active" && joined) {
+    // Spinner while the role assignment is being fetched.
+    if (assignmentLoading || !assignment) {
+      return (
+        <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 py-10">
+          <div
+            className="h-8 w-8 animate-spin rounded-full border-4 border-accent border-t-transparent"
+            role="status"
+            aria-label={t("round.loading")}
+          />
+        </main>
+      );
+    }
+    // Merged discussion + reveal screen (E3-T6).
+    return <DiscussionScreen assignment={assignment} roomCode={code} players={players} deviceId={deviceId} isHost={isHost} onEndRound={isHost ? handleEndRound : undefined} endRoundLoading={endRoundLoading} onFirstPeek={handleFirstPeek} onStartTimer={isHost ? handleStartTimer : undefined} startTimerLoading={startTimerLoading} allPlayersSeen={allPlayersSeen} />;
   }
 
   // Room ended by host while this device was in the lobby.
@@ -352,8 +440,8 @@ export default function Room() {
             <Button
               variant="primary"
               size="lg"
-              onClick={handleStart}
-              disabled={!canStart}
+              onClick={() => void handleStart()}
+              disabled={!canStart || startLoading}
               aria-describedby={!canStart ? "start-hint" : undefined}
               className="w-full"
             >

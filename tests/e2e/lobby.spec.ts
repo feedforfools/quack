@@ -152,7 +152,127 @@ test.describe("host leave — end room alone", () => {
   });
 });
 
-// ─── Host leave: handover to another player ───────────────────────────────────
+// ─── Full round: start → reveal → discuss → end → second round ───────────────
+
+test.describe("full round — 4 contexts (E3 acceptance criteria)", () => {
+  let hostCtx: BrowserContext;
+  let p1Ctx: BrowserContext;
+  let p2Ctx: BrowserContext;
+  let p3Ctx: BrowserContext;
+
+  test.beforeEach(async ({ browser }) => {
+    hostCtx = await browser.newContext();
+    p1Ctx = await browser.newContext();
+    p2Ctx = await browser.newContext();
+    p3Ctx = await browser.newContext();
+  });
+
+  test.afterEach(async () => {
+    await Promise.all([
+      hostCtx.close(),
+      p1Ctx.close(),
+      p2Ctx.close(),
+      p3Ctx.close(),
+    ]);
+  });
+
+  test("host starts a round, all players reveal and dismiss, host ends round, lobby resets", async () => {
+    const hostPage = await hostCtx.newPage();
+    const p1Page = await p1Ctx.newPage();
+    const p2Page = await p2Ctx.newPage();
+    const p3Page = await p3Ctx.newPage();
+
+    // ── Seed display names ────────────────────────────────────────────────────
+    await seedDisplayName(hostPage, "Round Host");
+    await seedDisplayName(p1Page, "Player One");
+    await seedDisplayName(p2Page, "Player Two");
+    await seedDisplayName(p3Page, "Player Three");
+
+    // ── Host creates room ─────────────────────────────────────────────────────
+    await hostPage.goto("/create");
+    await hostPage.getByRole("button", { name: /create room/i }).click();
+    await hostPage.waitForURL(/\/r\/[A-Z2-9]{6}/, { timeout: 15_000 });
+    const roomCode = hostPage.url().split("/r/")[1]?.slice(0, 6) ?? "";
+
+    // ── Players join ──────────────────────────────────────────────────────────
+    await Promise.all([
+      p1Page.goto(`/r/${roomCode}`),
+      p2Page.goto(`/r/${roomCode}`),
+      p3Page.goto(`/r/${roomCode}`),
+    ]);
+    // Each player sees their own name in the lobby roster.
+    await Promise.all([
+      expect(p1Page.getByText("Player One")).toBeVisible({ timeout: 10_000 }),
+      expect(p2Page.getByText("Player Two")).toBeVisible({ timeout: 10_000 }),
+      expect(p3Page.getByText("Player Three")).toBeVisible({ timeout: 10_000 }),
+    ]);
+    // Host roster eventually shows all 3 players (via Realtime sync).
+    await expect(hostPage.getByText("Player One")).toBeVisible({ timeout: 15_000 });
+    await expect(hostPage.getByText("Player Two")).toBeVisible({ timeout: 15_000 });
+    await expect(hostPage.getByText("Player Three")).toBeVisible({ timeout: 15_000 });
+
+    // ── All non-host players mark ready ───────────────────────────────────────
+    await Promise.all([
+      p1Page.getByRole("button", { name: /i'm ready/i }).click(),
+      p2Page.getByRole("button", { name: /i'm ready/i }).click(),
+      p3Page.getByRole("button", { name: /i'm ready/i }).click(),
+    ]);
+    // Host's Start Game button becomes enabled when all are ready.
+    await expect(
+      hostPage.getByRole("button", { name: /start game/i }),
+    ).toBeEnabled({ timeout: 15_000 });
+
+    // ── Host starts the round ─────────────────────────────────────────────────
+    await hostPage.getByRole("button", { name: /start game/i }).click();
+
+    // ── All players see the role-reveal card ──────────────────────────────────
+    // The card has aria-label matching "tap to reveal" before it's flipped.
+    const revealLabel = /tap to reveal/i;
+    await Promise.all([
+      expect(hostPage.getByRole("button", { name: revealLabel })).toBeVisible({ timeout: 15_000 }),
+      expect(p1Page.getByRole("button", { name: revealLabel })).toBeVisible({ timeout: 15_000 }),
+      expect(p2Page.getByRole("button", { name: revealLabel })).toBeVisible({ timeout: 15_000 }),
+      expect(p3Page.getByRole("button", { name: revealLabel })).toBeVisible({ timeout: 15_000 }),
+    ]);
+
+    // ── Each player flips their card then dismisses ───────────────────────────
+    for (const page of [hostPage, p1Page, p2Page, p3Page]) {
+      await page.getByRole("button", { name: revealLabel }).click();
+      // "Got it" appears after the flip animation.
+      await page.getByRole("button", { name: /got it/i }).click({ timeout: 5_000 });
+    }
+
+    // ── All players are now on the neutral round screen ───────────────────────
+    // The neutral screen shows the round label and a "Peek" button.
+    for (const page of [hostPage, p1Page, p2Page, p3Page]) {
+      await expect(page.getByRole("button", { name: /peek at your card/i })).toBeVisible({
+        timeout: 10_000,
+      });
+    }
+
+    // ── Host clicks End Round ─────────────────────────────────────────────────
+    await hostPage.getByRole("button", { name: /end round/i }).click();
+
+    // ── All pages transition back to the lobby (Start Game visible again) ─────
+    for (const page of [hostPage, p1Page, p2Page, p3Page]) {
+      await expect(
+        page.getByRole("button", { name: /start game|i'm ready/i }),
+      ).toBeVisible({ timeout: 15_000 });
+    }
+
+    // ── Host can immediately start a second round ─────────────────────────────
+    // After end-round all players are no longer ready, so host Start is disabled.
+    // Re-ready players and verify Start becomes enabled again.
+    await Promise.all([
+      p1Page.getByRole("button", { name: /i'm ready/i }).click(),
+      p2Page.getByRole("button", { name: /i'm ready/i }).click(),
+      p3Page.getByRole("button", { name: /i'm ready/i }).click(),
+    ]);
+    await expect(
+      hostPage.getByRole("button", { name: /start game/i }),
+    ).toBeEnabled({ timeout: 15_000 });
+  });
+});
 
 test.describe("host leave — handover to another player", () => {
   let hostCtx: BrowserContext;

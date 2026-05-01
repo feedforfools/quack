@@ -72,6 +72,41 @@ export type Database = {
           },
         ]
       }
+      role_assignments: {
+        Row: {
+          game_id: string
+          player_id: string
+          revealed_at: string | null
+          role: Database["public"]["Enums"]["player_role"]
+          seen_at: string | null
+          word: string | null
+        }
+        Insert: {
+          game_id: string
+          player_id: string
+          revealed_at?: string | null
+          role: Database["public"]["Enums"]["player_role"]
+          seen_at?: string | null
+          word?: string | null
+        }
+        Update: {
+          game_id?: string
+          player_id?: string
+          revealed_at?: string | null
+          role?: Database["public"]["Enums"]["player_role"]
+          seen_at?: string | null
+          word?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "role_assignments_game_id_fkey"
+            columns: ["game_id"]
+            isOneToOne: false
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       rooms: {
         Row: {
           code: string
@@ -108,31 +143,86 @@ export type Database = {
         }
         Relationships: []
       }
+      games: {
+        Row: {
+          config_snapshot: Json
+          ended_at: string | null
+          ends_at: string | null
+          id: string
+          index: number
+          room_id: string
+          started_at: string
+        }
+        Insert: {
+          config_snapshot?: Json
+          ended_at?: string | null
+          ends_at?: string | null
+          id?: string
+          index: number
+          room_id: string
+          started_at?: string
+        }
+        Update: {
+          config_snapshot?: Json
+          ended_at?: string | null
+          ends_at?: string | null
+          id?: string
+          index?: number
+          room_id?: string
+          started_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "games_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
       end_room_as_host: {
-        Args: {
-          p_room_id: string
-          p_host_secret_hash: string
-        }
+        Args: { p_host_secret_hash: string; p_room_id: string }
+        Returns: undefined
+      }
+      mark_game_seen: { Args: { p_game_id: string }; Returns: undefined }
+      all_players_seen: { Args: { p_game_id: string }; Returns: boolean }
+      end_game: {
+        Args: { p_host_secret_hash: string; p_room_id: string }
         Returns: undefined
       }
       player_in_room: { Args: { p_room_id: string }; Returns: boolean }
       requesting_player_id: { Args: never; Returns: string }
+      start_game_timer: {
+        Args: { p_room_id: string; p_host_secret_hash: string }
+        Returns: Json
+      }
+      start_game: {
+        Args: {
+          p_host_secret_hash: string
+          p_intended_index: number
+          p_room_id: string
+          p_word: string
+        }
+        Returns: undefined
+      }
       transfer_host: {
         Args: {
-          p_room_id: string
           p_host_secret_hash: string
-          p_successor_id: string
           p_new_secret_hash: string
+          p_room_id: string
+          p_successor_id: string
         }
         Returns: undefined
       }
     }
     Enums: {
+      player_role: "civilian" | "imposter"
       room_state: "lobby" | "round_active" | "round_ended"
     }
     CompositeTypes: {
@@ -264,6 +354,7 @@ export const Constants = {
   },
   public: {
     Enums: {
+      player_role: ["civilian", "imposter"],
       room_state: ["lobby", "round_active", "round_ended"],
     },
   },

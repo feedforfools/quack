@@ -19,6 +19,28 @@ export interface UseRoomPlayersReturn {
    * connected clients also re-fetch. Use this after toggling ready state.
    */
   broadcastRefetch: () => Promise<void>;
+  /**
+   * Broadcast `round_ended_return_lobby` so all other connected clients
+   * know to refetch their room state and return to the lobby.
+   * Call this after a successful `end_round` RPC.
+   */
+  broadcastRoundEnd: () => Promise<void>;
+  /**
+   * Broadcast `round_started` so all other connected clients
+   * refetch their room state and transition to the active-round screen.
+   * Call this after a successful `start_round` RPC. Without this signal,
+   * non-host clients would only discover the state change on the next
+   * incidental refetch (E3-T10 bug).
+   */
+  broadcastRoundStart: () => Promise<void>;
+  /**
+   * Broadcast `timer_started` so all other connected clients refetch their
+   * role assignment and begin showing the countdown dial.
+   * Call this after a successful `start_round_timer` RPC.
+   */
+  broadcastTimerStart: () => Promise<void>;
+  /** Notifies other clients that the current player has peeked at their role (E3-T7). */
+  broadcastPeekUpdate: () => Promise<void>;
 }
 
 /**
@@ -40,6 +62,31 @@ export interface UseRoomPlayersReturn {
 export function useRoomPlayers(
   deviceId: string | null,
   roomId: string | null,
+  options?: {
+    /**
+     * Called when a `round_ended_return_lobby` broadcast is received.
+     * Use this in Room.tsx to trigger a room state refetch so the UI
+     * transitions back to the lobby for all connected clients.
+     */
+    onRoundEnd?: () => void;
+    /**
+     * Called when a `round_started` broadcast is received. Use this in
+     * Room.tsx to trigger a room state refetch so non-host clients
+     * transition into the active-round screen as soon as the host starts.
+     */
+    onRoundStart?: () => void;
+    /**
+     * Called when a `timer_started` broadcast is received. Use this in
+     * Room.tsx / DiscussionScreen to trigger a role assignment refetch so all
+     * clients transition to showing the countdown.
+     */
+    onTimerStart?: () => void;
+    /**
+     * Called when a `peek_update` broadcast is received (any player peeked).
+     * Used by the host to refetch all_players_seen (E3-T7 gate).
+     */
+    onPeekUpdate?: () => void;
+  },
 ): UseRoomPlayersReturn {
   const [players, setPlayers] = useState<PlayerRow[]>([]);
   const [connectedIds, setConnectedIds] = useState<Set<string>>(new Set());
@@ -49,6 +96,19 @@ export function useRoomPlayers(
   // Keep a stable ref to the fetch function so it can be called from
   // callbacks that outlive a single render (e.g., broadcast handler).
   const fetchRef = useRef<(() => Promise<void>) | null>(null);
+  // Ref to the onRoundEnd callback so the channel handler always calls
+  // the latest version without needing to re-subscribe.
+  const onRoundEndRef = useRef(options?.onRoundEnd);
+  const onRoundStartRef = useRef(options?.onRoundStart);
+  const onTimerStartRef = useRef(options?.onTimerStart);
+  const onPeekUpdateRef = useRef(options?.onPeekUpdate);
+  // Keep callback refs current whenever the props change.
+  useEffect(() => {
+    onRoundEndRef.current = options?.onRoundEnd;
+    onRoundStartRef.current = options?.onRoundStart;
+    onTimerStartRef.current = options?.onTimerStart;
+    onPeekUpdateRef.current = options?.onPeekUpdate;
+  });
   // Ref to the broadcast function populated once the channel is subscribed.
   const broadcastRef = useRef<((event: string) => Promise<void>) | null>(null);
 
@@ -120,6 +180,30 @@ export function useRoomPlayers(
           localStorage.setItem(`quack_host_secret_${roomId}`, p.newSecret);
         }
       })
+      // Host ended the round — all clients (including host) should refetch room
+      // state so the UI transitions back to the lobby.
+      .on("broadcast", { event: "round_ended_return_lobby" }, () => {
+        if (!isMounted) return;
+        void fetchPlayers();
+        onRoundEndRef.current?.();
+      })
+      // Host started a round — non-host clients refetch room state so the UI
+      // transitions into the active-round screen within ~1 s of Start (E3-T10).
+      .on("broadcast", { event: "round_started" }, () => {
+        if (!isMounted) return;
+        onRoundStartRef.current?.();
+      })
+      // Host started the discussion timer — all clients refetch their role
+      // assignment so the countdown dial appears (E3-T7).
+      .on("broadcast", { event: "timer_started" }, () => {
+        if (!isMounted) return;
+        onTimerStartRef.current?.();
+      })
+      // A player peeked — host refetches all_players_seen gate (E3-T7).
+      .on("broadcast", { event: "peek_update" }, () => {
+        if (!isMounted) return;
+        onPeekUpdateRef.current?.();
+      })
       .subscribe((status) => {
         if (status === "SUBSCRIBED") {
           void channel.track({ playerId: deviceId });
@@ -147,5 +231,32 @@ export function useRoomPlayers(
     await broadcastRef.current?.("roster_update");
   }, []);
 
-  return { players, connectedIds, loading, roomEnded, refetch, broadcastRefetch };
+  const broadcastRoundEnd = useCallback(async () => {
+    await broadcastRef.current?.("round_ended_return_lobby");
+  }, []);
+
+  const broadcastRoundStart = useCallback(async () => {
+    await broadcastRef.current?.("round_started");
+  }, []);
+
+  const broadcastTimerStart = useCallback(async () => {
+    await broadcastRef.current?.("timer_started");
+  }, []);
+
+  const broadcastPeekUpdate = useCallback(async () => {
+    await broadcastRef.current?.("peek_update");
+  }, []);
+
+  return {
+    players,
+    connectedIds,
+    loading,
+    roomEnded,
+    refetch,
+    broadcastRefetch,
+    broadcastRoundEnd,
+    broadcastRoundStart,
+    broadcastTimerStart,
+    broadcastPeekUpdate,
+  };
 }
