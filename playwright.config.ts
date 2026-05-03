@@ -1,4 +1,16 @@
 import { defineConfig, devices } from "@playwright/test";
+import { existsSync, readFileSync } from "fs";
+
+// Load .env.local into process.env so E2E tests that make direct Supabase
+// REST API calls (e.g., voting.spec.ts) can access VITE_SUPABASE_* vars.
+// Uses only Node.js built-ins — no dotenv dependency required.
+const envLocalPath = new URL(".env.local", import.meta.url).pathname;
+if (existsSync(envLocalPath)) {
+  for (const line of readFileSync(envLocalPath, "utf-8").split("\n")) {
+    const m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/);
+    if (m?.[1] && !process.env[m[1]]) process.env[m[1]] = m[2] ?? "";
+  }
+}
 
 /**
  * Playwright configuration for Quack E2E tests.

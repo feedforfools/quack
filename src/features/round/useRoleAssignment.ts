@@ -3,6 +3,11 @@ import { supabaseWithDevice } from "@/lib/supabase";
 import type { RoomState } from "@/features/room";
 import { log } from "@/lib/log";
 
+export interface CoImposter {
+  playerId: string;
+  displayName: string;
+}
+
 export interface RoleAssignment {
   gameId: string;
   roundIndex: number;
@@ -25,6 +30,18 @@ export interface RoleAssignment {
    * reload so a player is never falsely reset to "never peeked" (E4-T1).
    */
   seenAt: string | null;
+  /**
+   * Other imposters in this game — only populated when
+   * config_snapshot.imposters_see_each_other is true. Empty array otherwise.
+   * Fetched via the get_co_imposters SECURITY DEFINER RPC (E5-T4).
+   */
+  coImposters: CoImposter[];
+  /**
+   * Imposter-specific hints distributed by start_game (E5-T5).
+   * One or more short clues to help the imposter blend in.
+   * Always empty for civilians.
+   */
+  hints: string[];
 }
 
 export interface UseRoleAssignmentReturn {
@@ -81,7 +98,7 @@ export function useRoleAssignment(
       // RLS guarantees only the row for this device is returned.
       const { data: ra, error: raErr } = await client
         .from("role_assignments")
-        .select("role, word, seen_at")
+        .select("role, word, seen_at, payload")
         .eq("game_id", round.id)
         .eq("player_id", deviceId)
         .maybeSingle();
@@ -111,6 +128,33 @@ export function useRoleAssignment(
             )
           : null;
 
+      // Extract hints from payload (imposter-only field set by start_game).
+      const hints: string[] =
+        ra.payload &&
+        typeof ra.payload === "object" &&
+        !Array.isArray(ra.payload) &&
+        "hints" in ra.payload &&
+        Array.isArray((ra.payload as Record<string, unknown>)["hints"])
+          ? ((ra.payload as Record<string, unknown>)["hints"] as string[])
+          : [];
+
+      // For imposters, fetch co-imposter names (E5-T4).
+      // The RPC returns an empty result for civilians or when the setting is off.
+      let coImposters: CoImposter[] = [];
+      if (ra.role === "imposter") {
+        const { data: coData } = await client.rpc("get_co_imposters", {
+          p_game_id: round.id,
+        });
+        if (coData) {
+          coImposters = coData.map(
+            (row: { player_id: string; display_name: string }) => ({
+              playerId: row.player_id,
+              displayName: row.display_name,
+            }),
+          );
+        }
+      }
+
       // Word is intentionally not logged — privacy constraint §10.
       setAssignment({
         gameId: round.id,
@@ -120,6 +164,8 @@ export function useRoleAssignment(
         endsAt,
         timerSeconds,
         seenAt: ra.seen_at ?? null,
+        coImposters,
+        hints,
       });
     } finally {
       setLoading(false);

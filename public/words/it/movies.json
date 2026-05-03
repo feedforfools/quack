@@ -3,55 +3,405 @@
   "lang": "it",
   "category": "movies",
   "words": [
-    "Frozen",
-    "Shrek",
-    "Toy Story",
-    "Il re leone",
-    "Alla ricerca di Nemo",
-    "Up",
-    "Wall-E",
-    "Coco",
-    "Oceania",
-    "Rapunzel",
-    "Encanto",
-    "Ratatouille",
-    "Ribelle",
-    "Bambi",
-    "Pinocchio",
-    "Cenerentola",
-    "Aladdin",
-    "Mulan",
-    "Zootropolis",
-    "Monsters & Co.",
-    "Cars",
-    "A Bug's Life",
-    "Lilo & Stitch",
-    "Ralph Spaccatutto",
-    "Inside Out",
-    "Gli Incredibili",
-    "Madagascar",
-    "Kung Fu Panda",
-    "L'era glaciale",
-    "Rio",
-    "Happy Feet",
-    "Grease",
-    "Mamma ho perso l'aereo",
-    "Elf",
-    "Jumanji",
-    "Matilda",
-    "Paddington",
-    "Ghostbusters",
-    "Beetlejuice",
-    "I Goonies",
-    "E.T.",
-    "Ritorno al futuro",
-    "Jurassic Park",
-    "Lo squalo",
-    "Rocky",
-    "Forrest Gump",
-    "Titanic",
-    "Shrek 2",
-    "Cattivissimo me",
-    "Minions"
+    {
+      "word": "Frozen",
+      "hints": [
+        "principessa con poteri di ghiaccio",
+        "musical Disney animato",
+        "Libera sono"
+      ]
+    },
+    {
+      "word": "Shrek",
+      "hints": [
+        "simpatico orco verde",
+        "asino parlante",
+        "mondo fiabesco"
+      ]
+    },
+    {
+      "word": "Toy Story",
+      "hints": [
+        "i giocattoli prendono vita",
+        "cowboy e ranger spaziale",
+        "classico Pixar"
+      ]
+    },
+    {
+      "word": "Il re leone",
+      "hints": [
+        "cerchio della vita",
+        "giovane principe leone",
+        "Hakuna Matata"
+      ]
+    },
+    {
+      "word": "Alla ricerca di Nemo",
+      "hints": [
+        "padre pesce clown attraversa l'oceano",
+        "continua a nuotare",
+        "compagna tartaruga blu"
+      ]
+    },
+    {
+      "word": "Up",
+      "hints": [
+        "vecchio fa volare la casa con palloncini",
+        "giovane scout a bordo",
+        "là fuori c'è l'avventura"
+      ]
+    },
+    {
+      "word": "Wall-E",
+      "hints": [
+        "robot raccoglie spazzatura sulla Terra",
+        "si innamora di un robot futuristico",
+        "film animato"
+      ]
+    },
+    {
+      "word": "Coco",
+      "hints": [
+        "ambientato il Giorno dei Morti",
+        "bambino visita la terra dei morti",
+        "famiglia e musica"
+      ]
+    },
+    {
+      "word": "Oceania",
+      "hints": [
+        "ragazza polinesiana naviga l'oceano",
+        "semidio Maui",
+        "restituisce il cuore di Te Fiti"
+      ]
+    },
+    {
+      "word": "Rapunzel",
+      "hints": [
+        "principessa con i capelli lunghissimi",
+        "rinchiusa in una torre",
+        "festa delle lanterne"
+      ]
+    },
+    {
+      "word": "Encanto",
+      "hints": [
+        "famiglia colombiana magica",
+        "ognuno ha un dono speciale",
+        "di Bruno non si parla"
+      ]
+    },
+    {
+      "word": "Ratatouille",
+      "hints": [
+        "topo che ama cucinare",
+        "ambientato a Parigi",
+        "chiunque può cucinare"
+      ]
+    },
+    {
+      "word": "Ribelle",
+      "hints": [
+        "principessa scozzese con capelli ricci",
+        "trasformazione in orso",
+        "gara di tiro con l'arco"
+      ]
+    },
+    {
+      "word": "Bambi",
+      "hints": [
+        "cerbiatto nel bosco",
+        "morte della madre",
+        "classico Disney commovente"
+      ]
+    },
+    {
+      "word": "Pinocchio",
+      "hints": [
+        "burattino che vuole diventare vero",
+        "il naso cresce quando mente",
+        "il grillo è la coscienza"
+      ]
+    },
+    {
+      "word": "Cenerentola",
+      "hints": [
+        "scarpetta di cristallo",
+        "fata madrina",
+        "torna a essere stracciona a mezzanotte"
+      ]
+    },
+    {
+      "word": "Aladdin",
+      "hints": [
+        "genio della lampada magica",
+        "tappeto volante",
+        "ragazzo di strada diventa principe"
+      ]
+    },
+    {
+      "word": "Mulan",
+      "hints": [
+        "ragazza cinese si traveste da soldato",
+        "drago Mushu",
+        "onora la tua famiglia"
+      ]
+    },
+    {
+      "word": "Zootropolis",
+      "hints": [
+        "città di animali antropomorfi",
+        "coniglietta poliziotta e volpe",
+        "prova tutto"
+      ]
+    },
+    {
+      "word": "Monsters & Co.",
+      "hints": [
+        "i mostri spaventano i bambini per energia",
+        "la piccola Boo",
+        "fabbrica di urla"
+      ]
+    },
+    {
+      "word": "Cars",
+      "hints": [
+        "macchine con personalità",
+        "Radiator Springs",
+        "rookie impara la lezione"
+      ]
+    },
+    {
+      "word": "A Bug's Life",
+      "hints": [
+        "colonia di formiche contro le cavallette",
+        "insetti circensi in soccorso",
+        "mondo degli insetti Pixar"
+      ]
+    },
+    {
+      "word": "Lilo & Stitch",
+      "hints": [
+        "alieno atterra alle Hawaii",
+        "bambina lo adotta come cane",
+        "ohana significa famiglia"
+      ]
+    },
+    {
+      "word": "Ralph Spaccatutto",
+      "hints": [
+        "il cattivo del videogioco vuole essere eroe",
+        "bambina glitch nelle gare",
+        "ambientato nelle sale giochi"
+      ]
+    },
+    {
+      "word": "Inside Out",
+      "hints": [
+        "le emozioni sono personaggi",
+        "bambina si trasferisce in una nuova città",
+        "Gioia e Tristezza in viaggio"
+      ]
+    },
+    {
+      "word": "Gli Incredibili",
+      "hints": [
+        "famiglia di supereroi nasconde i poteri",
+        "i supereroi sono vietati",
+        "niente mantelli"
+      ]
+    },
+    {
+      "word": "Madagascar",
+      "hints": [
+        "animali dello zoo persi allo stato brado",
+        "i pinguini tramano la fuga",
+        "mi piace muovermi"
+      ]
+    },
+    {
+      "word": "Kung Fu Panda",
+      "hints": [
+        "panda goffo diventa guerriero",
+        "il Rotolo del Drago è vuoto",
+        "non c'è ingrediente segreto"
+      ]
+    },
+    {
+      "word": "L'era glaciale",
+      "hints": [
+        "mammut, bradipo e tigre dai denti a sciabola",
+        "lo scoiattolo ossessionato dalla ghianda",
+        "avventura preistorica"
+      ]
+    },
+    {
+      "word": "Rio",
+      "hints": [
+        "ara blu raro va in Brasile",
+        "all'inizio non sa volare",
+        "ambientato al Carnevale"
+      ]
+    },
+    {
+      "word": "Happy Feet",
+      "hints": [
+        "pinguino balla invece di cantare",
+        "tip tap in Antartide",
+        "trova la sua voce"
+      ]
+    },
+    {
+      "word": "Grease",
+      "hints": [
+        "storia d'amore negli anni '50",
+        "gang in giacca di pelle",
+        "quell'estate dell'amore"
+      ]
+    },
+    {
+      "word": "Mamma ho perso l'aereo",
+      "hints": [
+        "bambino dimenticato a casa",
+        "difende la casa dai ladri",
+        "trappole ovunque"
+      ]
+    },
+    {
+      "word": "Elf",
+      "hints": [
+        "umano cresciuto dagli elfi al Polo Nord",
+        "arriva a New York",
+        "commedia di Natale"
+      ]
+    },
+    {
+      "word": "Jumanji",
+      "hints": [
+        "il gioco da tavolo prende vita",
+        "animali selvatici invadono il sobborgo",
+        "si può finire solo vincendo"
+      ]
+    },
+    {
+      "word": "Matilda",
+      "hints": [
+        "bambina prodigio con genitori terribili",
+        "poteri telecinetici",
+        "la gentile maestra Honey"
+      ]
+    },
+    {
+      "word": "Paddington",
+      "hints": [
+        "orso peruviano a Londra",
+        "ama i panini alla marmellata",
+        "educato e avventuroso"
+      ]
+    },
+    {
+      "word": "Ghostbusters",
+      "hints": [
+        "squadra di cacciatori di fantasmi",
+        "pistole a protoni",
+        "chi chiami"
+      ]
+    },
+    {
+      "word": "Beetlejuice",
+      "hints": [
+        "fantasma burlone a noleggio",
+        "dire il nome tre volte",
+        "vestito a righe"
+      ]
+    },
+    {
+      "word": "I Goonies",
+      "hints": [
+        "ragazzi in cerca di un tesoro pirata",
+        "salvare il quartiere",
+        "il ballo del tartufo"
+      ]
+    },
+    {
+      "word": "E.T.",
+      "hints": [
+        "alieno abbandonato adottato da un bambino",
+        "telefono casa",
+        "dito che si illumina"
+      ]
+    },
+    {
+      "word": "Ritorno al futuro",
+      "hints": [
+        "DeLorean viaggia nel tempo",
+        "tornare al 1985",
+        "ottantotto miglia all'ora"
+      ]
+    },
+    {
+      "word": "Jurassic Park",
+      "hints": [
+        "dinosauri clonati dal DNA",
+        "il parco a tema va storto",
+        "la vita trova una via"
+      ]
+    },
+    {
+      "word": "Lo squalo",
+      "hints": [
+        "squalo bianco semina il panico",
+        "ci vuole una barca più grande",
+        "tema musicale in due note"
+      ]
+    },
+    {
+      "word": "Rocky",
+      "hints": [
+        "pugile sfavorito si allena duro",
+        "sale i gradini di corsa",
+        "Eye of the Tiger"
+      ]
+    },
+    {
+      "word": "Forrest Gump",
+      "hints": [
+        "la vita è come una scatola di cioccolatini",
+        "attraversa l'America di corsa",
+        "racconta dal sedile di una panchina"
+      ]
+    },
+    {
+      "word": "Titanic",
+      "hints": [
+        "transatlantico colpisce un iceberg",
+        "storia d'amore infelice",
+        "sono il re del mondo"
+      ]
+    },
+    {
+      "word": "Shrek 2",
+      "hints": [
+        "l'orco incontra i suoceri",
+        "il regno di Gran Bosco",
+        "la Fata Madrina è la cattiva"
+      ]
+    },
+    {
+      "word": "Cattivissimo me",
+      "hints": [
+        "supervil lano adotta tre orfanelle",
+        "i piccoli Minions gialli",
+        "il furto del raggio restringitore"
+      ]
+    },
+    {
+      "word": "Minions",
+      "hints": [
+        "creature gialle in cerca di un capo",
+        "prima di incontrare Gru",
+        "banana"
+      ]
+    }
   ]
 }

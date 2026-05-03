@@ -16,6 +16,9 @@ import {
   useStartGame,
   useEndGame,
   useKickPlayer,
+  parseRoomConfig,
+  useUpdateRoomConfig,
+  SettingsPanel,
 } from "@/features/room";
 import {
   useRoleAssignment,
@@ -23,13 +26,18 @@ import {
   useMarkRoleSeen,
   useStartGameTimer,
   useAllPlayersSeen,
+  useVoteState,
+  useRequestVote,
+  useCastVote,
+  useRetractVote,
+  useResolveVote,
+  useGameResult,
+  ResultScreen,
 } from "@/features/round";
 import { Button, Modal, QRCode, useToast } from "@/components";
 
 /** Minimum total players needed to start: imposter_count + 2 civilians. */
 const MIN_CIVILIAN_BUFFER = 2;
-/** Default if not yet set in room config. */
-const DEFAULT_IMPOSTER_COUNT = 1;
 
 /** Fixed top banner shown when the Realtime channel is not SUBSCRIBED (E4-T6). */
 function ReconnectingBanner({ label }: { label: string }) {
@@ -92,6 +100,9 @@ export default function Room() {
   const { allSeen: allPlayersSeen, refetch: refetchAllSeen } =
     useAllPlayersSeen(isHost ? deviceId : null, assignment?.gameId ?? null);
   const { toast } = useToast();
+  // Ref so the useRoomPlayers option callback can call refetchVoteState
+  // without creating a circular hook dependency (voteState is added below).
+  const refetchVoteStateRef = useRef<(() => void) | null>(null);
   const {
     players,
     connectedIds,
@@ -104,11 +115,13 @@ export default function Room() {
     broadcastRoundStart,
     broadcastTimerStart,
     broadcastPeekUpdate,
+    broadcastVoteStateChanged,
   } = useRoomPlayers(deviceId, roomId, {
     onRoundEnd: refetchRoom,
     onRoundStart: refetchRoom,
     onTimerStart: refetchAssignment,
     onPeekUpdate: isHost ? refetchAllSeen : undefined,
+    onVoteStateChanged: () => refetchVoteStateRef.current?.(),
     onKicked: () => {
       navigate("/");
       toast({ title: t("room.kickedToast"), variant: "danger" });
@@ -130,25 +143,45 @@ export default function Room() {
   const { kickPlayer, loading: kickLoading } = useKickPlayer();
   const { markRoleSeen } = useMarkRoleSeen();
   const { startTimer, loading: startTimerLoading } = useStartGameTimer();
+  // Parse room config with full defaults via parseRoomConfig (E5-T1).
+  // Memoized so the reference is stable across renders — SettingsPanel's
+  // useEffect([config]) only fires when roomConfig actually changes from the DB,
+  // not on every re-render caused by saving-state toggles in useUpdateRoomConfig.
+  const parsedConfig = useMemo(() => parseRoomConfig(roomConfig), [roomConfig]);
+  const imposterCount = parsedConfig.imposter_count;
+  const minPlayers = imposterCount + MIN_CIVILIAN_BUFFER;
 
-  // Host-leave modal state.
+  // Voting state (E5-T8) — only fetched during an active game.
+  const { voteState, refetch: refetchVoteState } = useVoteState(
+    deviceId,
+    roomState === "round_active" ? (assignment?.gameId ?? null) : null,
+    parsedConfig.live_vote_tally,
+  );
+  // Wire the ref so useRoomPlayers.onVoteStateChanged can call refetchVoteState.
+  useEffect(() => {
+    refetchVoteStateRef.current = refetchVoteState;
+  }, [refetchVoteState]);
+
+  const { requestVote, loading: requestVoteLoading } = useRequestVote();
+  const { castVote, loading: castVoteLoading } = useCastVote();
+  const { retractVote, loading: retractVoteLoading } = useRetractVote();
+  const { resolveVote } = useResolveVote();
+
+  // Fetch full game result once vote is resolved (E5-T9).
+  const isResolved = voteState?.state === "resolved";
+  const { result: gameResult, loading: resultLoading } = useGameResult(
+    isResolved ? deviceId : null,
+    isResolved ? (assignment?.gameId ?? null) : null,
+  );
+
+  const { updateConfig, saving: configSaving } = useUpdateRoomConfig(
+    deviceId,
+    roomId,
+  );
   const [showLeaveModal, setShowLeaveModal] = useState(false);
   const [selectedSuccessor, setSelectedSuccessor] = useState<string | null>(
     null,
   );
-
-  // Derive imposter count from room config (defaults to 1 until E5-T1 settings).
-  const cfgObj =
-    typeof roomConfig === "object" &&
-    roomConfig !== null &&
-    !Array.isArray(roomConfig)
-      ? (roomConfig as Record<string, unknown>)
-      : null;
-  const imposterCount =
-    typeof cfgObj?.imposter_count === "number"
-      ? cfgObj.imposter_count
-      : DEFAULT_IMPOSTER_COUNT;
-  const minPlayers = imposterCount + MIN_CIVILIAN_BUFFER;
 
   // Start validation — only non-host, non-spectator players need to be ready.
   const nonHostPlayers = players.filter((p) => p.id !== hostPlayerId);
@@ -216,19 +249,9 @@ export default function Room() {
     }
   }, [code, roomUrl, t]);
 
-  // Derive language + categories from room config (defaults until E5-T1 settings UI).
-  const configLanguage = useMemo(
-    () => (typeof cfgObj?.language === "string" ? cfgObj.language : "en"),
-    [cfgObj],
-  );
-  const configCategories = useMemo(
-    () =>
-      Array.isArray(cfgObj?.categories) &&
-      (cfgObj.categories as unknown[]).length > 0
-        ? (cfgObj.categories as string[])
-        : ["food"],
-    [cfgObj],
-  );
+  // Derive language + categories from parsed room config (E5-T1).
+  const configLanguage = parsedConfig.language;
+  const configCategories = parsedConfig.categories;
 
   // Start Game handler — calls start_round RPC then re-fetches room state.
   const handleStart = useCallback(async () => {
@@ -236,8 +259,10 @@ export default function Room() {
     const ok = await startGame({
       deviceId,
       roomId,
-      language: configLanguage as import("@/lib/words").WordPoolLang,
-      categories: configCategories as import("@/lib/words").WordPoolCategory[],
+      language: configLanguage,
+      categories: configCategories,
+      imposterCount: parsedConfig.imposter_count,
+      hintCount: parsedConfig.imposter_hint_count,
     });
     if (ok) {
       void refetchRoom();
@@ -365,6 +390,57 @@ export default function Room() {
     t,
   ]);
 
+  // Vote action handlers — broadcast vote_state_changed after each RPC
+  // so all connected clients refetch their vote state.
+  const handleRequestVote = useCallback(
+    async (params: { deviceId: string; gameId: string }): Promise<boolean> => {
+      const ok = await requestVote(params);
+      if (ok) void broadcastVoteStateChanged();
+      else toast({ title: t("vote.requestError"), variant: "danger" });
+      return ok;
+    },
+    [requestVote, broadcastVoteStateChanged, toast, t],
+  );
+
+  const handleCastVote = useCallback(
+    async (params: {
+      deviceId: string;
+      gameId: string;
+      targetPlayerId: string;
+    }): Promise<boolean> => {
+      const ok = await castVote(params);
+      if (ok) void broadcastVoteStateChanged();
+      // Typed errors are surfaced via useCastVote.error; swallow here.
+      return ok;
+    },
+    [castVote, broadcastVoteStateChanged],
+  );
+
+  const handleRetractVote = useCallback(
+    async (params: { deviceId: string; gameId: string }): Promise<boolean> => {
+      const ok = await retractVote(params);
+      if (ok) void broadcastVoteStateChanged();
+      else toast({ title: t("vote.retractError"), variant: "danger" });
+      return ok;
+    },
+    [retractVote, broadcastVoteStateChanged, toast, t],
+  );
+
+  // Called when the voting timer expires — triggers resolution and broadcasts
+  // so all clients transition to the result screen (E5-T9).
+  const handleVoteTimerComplete = useCallback(() => {
+    if (!deviceId || !assignment) return;
+    void resolveVote({ deviceId, gameId: assignment.gameId }).then((ok) => {
+      if (ok) void broadcastVoteStateChanged();
+    });
+  }, [deviceId, assignment, resolveVote, broadcastVoteStateChanged]);
+
+  // Compute vote threshold to display in VotingPanel.
+  const activePlayerCount = players.filter((p) => !p.is_spectator).length;
+  const voteThreshold = Math.ceil(
+    activePlayerCount * parsedConfig.vote_threshold_fraction,
+  );
+
   // Leave room handler — non-host only.
   const handleLeave = useCallback(async () => {
     if (!roomId) return;
@@ -430,6 +506,35 @@ export default function Room() {
         </main>
       );
     }
+    // Result screen — shown when voting is resolved (E5-T9).
+    if (isResolved) {
+      // Show a spinner while the result is still being fetched.
+      if (resultLoading || !gameResult) {
+        return (
+          <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 py-10">
+            <div
+              className="h-8 w-8 animate-spin rounded-full border-4 border-accent border-t-transparent"
+              role="status"
+              aria-label={t("round.loading")}
+            />
+          </main>
+        );
+      }
+      return (
+        <>
+          {isReconnecting && (
+            <ReconnectingBanner label={t("room.reconnecting")} />
+          )}
+          <ResultScreen
+            result={gameResult}
+            isHost={isHost}
+            onEndGame={isHost ? handleEndRound : undefined}
+            endGameLoading={endRoundLoading}
+          />
+        </>
+      );
+    }
+
     // Merged discussion + reveal screen (E3-T6).
     return (
       <>
@@ -448,6 +553,15 @@ export default function Room() {
           onStartTimer={isHost ? handleStartTimer : undefined}
           startTimerLoading={startTimerLoading}
           allPlayersSeen={allPlayersSeen}
+          voteState={voteState}
+          voteThreshold={voteThreshold}
+          onRequestVote={handleRequestVote}
+          requestVoteLoading={requestVoteLoading}
+          onCastVote={handleCastVote}
+          castVoteLoading={castVoteLoading}
+          onRetractVote={handleRetractVote}
+          retractVoteLoading={retractVoteLoading}
+          onVoteTimerComplete={handleVoteTimerComplete}
         />
       </>
     );
@@ -557,6 +671,16 @@ export default function Room() {
             {copied ? t("room.linkCopied") : t("room.copyLink")}
           </Button>
         </div>
+      )}
+
+      {/* Host settings panel — only in lobby, only for host (E5-T1) */}
+      {isHost && !isLoading && (
+        <SettingsPanel
+          config={parsedConfig}
+          onSave={updateConfig}
+          saving={configSaving}
+          disabled={roomState !== "lobby"}
+        />
       )}
 
       {/* Roster */}

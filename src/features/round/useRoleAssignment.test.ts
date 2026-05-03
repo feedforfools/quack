@@ -110,6 +110,8 @@ describe("useRoleAssignment", () => {
       endsAt: null,
       timerSeconds: null,
       seenAt: null,
+      coImposters: [],
+      hints: [],
     });
   });
 

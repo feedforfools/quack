@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { supabaseWithDevice } from "@/lib/supabase";
-import { fetchWordPools, pickWord } from "@/lib/words";
+import { fetchWordPools, pickWord, pickHints } from "@/lib/words";
 import type { WordPoolCategory, WordPoolLang } from "@/lib/words";
 import { log } from "@/lib/log";
 
@@ -25,6 +25,8 @@ export interface UseStartGameReturn {
     roomId: string;
     language: WordPoolLang;
     categories: WordPoolCategory[];
+    imposterCount?: number;
+    hintCount?: number;
   }) => Promise<boolean>;
   loading: boolean;
   error: StartGameError | null;
@@ -57,11 +59,15 @@ export function useStartGame(): UseStartGameReturn {
       roomId,
       language,
       categories,
+      imposterCount = 1,
+      hintCount = 0,
     }: {
       deviceId: string;
       roomId: string;
       language: WordPoolLang;
       categories: WordPoolCategory[];
+      imposterCount?: number;
+      hintCount?: number;
     }): Promise<boolean> => {
       setLoading(true);
       setError(null);
@@ -80,9 +86,11 @@ export function useStartGame(): UseStartGameReturn {
 
         const nextIndex = (lastGame?.index ?? 0) + 1;
 
-        // 2. Pick a word from the word pool (never logged).
+        // 2. Pick a word entry (word + hints) from the word pool (never logged).
         const pools = await fetchWordPools(language, categories);
-        const word = pickWord(pools);
+        const entry = pickWord(pools);
+        const word = entry.word;
+        const hints = pickHints(entry, imposterCount, hintCount);
 
         // 3. Read raw host secret and hash it.
         const rawSecret = localStorage.getItem(
@@ -101,6 +109,7 @@ export function useStartGame(): UseStartGameReturn {
           p_host_secret_hash: secretHash,
           p_intended_index: nextIndex,
           p_word: word,
+          p_hints: hints,
         });
 
         if (rpcError) {

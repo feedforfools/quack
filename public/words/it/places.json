@@ -3,55 +3,405 @@
   "lang": "it",
   "category": "places",
   "words": [
-    "spiaggia",
-    "montagna",
-    "foresta",
-    "deserto",
-    "vulcano",
-    "castello",
-    "faro",
-    "grotta",
-    "cascata",
-    "isola",
-    "città",
-    "villaggio",
-    "fattoria",
-    "mercato",
-    "biblioteca",
-    "stadio",
-    "museo",
-    "aeroporto",
-    "stazione ferroviaria",
-    "ponte",
-    "porto",
-    "parco",
-    "giardino",
-    "canyon",
-    "ghiacciaio",
-    "foresta tropicale",
-    "savana",
-    "tundra",
-    "scogliera",
-    "fiordo",
-    "palude",
-    "prato",
-    "vigneto",
-    "frutteto",
-    "osservatorio",
-    "cattedrale",
-    "palazzo",
-    "piramide",
-    "rovine",
-    "acquario",
-    "zoo",
-    "parco divertimenti",
-    "centro commerciale",
-    "grattacielo",
-    "tunnel",
-    "mulino a vento",
-    "fienile",
-    "cimitero",
-    "serra",
-    "cava"
+    {
+      "word": "spiaggia",
+      "hints": [
+        "sabbia tra le dita dei piedi",
+        "onde che si infrangono",
+        "ombrelloni e sdraio"
+      ]
+    },
+    {
+      "word": "montagna",
+      "hints": [
+        "cime innevate",
+        "escursionisti sui sentieri",
+        "sopra le nuvole"
+      ]
+    },
+    {
+      "word": "foresta",
+      "hints": [
+        "alberi alti bloccano la luce",
+        "animali tra gli arbusti",
+        "profumo di resina"
+      ]
+    },
+    {
+      "word": "deserto",
+      "hints": [
+        "vaste dune sabbiose",
+        "caldo torrido di giorno",
+        "pochissima pioggia"
+      ]
+    },
+    {
+      "word": "vulcano",
+      "hints": [
+        "erutta lava",
+        "montagna a forma di cono",
+        "crea nuova terra"
+      ]
+    },
+    {
+      "word": "castello",
+      "hints": [
+        "fortezza medievale in pietra",
+        "circondato da un fossato",
+        "torri e merlature"
+      ]
+    },
+    {
+      "word": "faro",
+      "hints": [
+        "alta torre sul mare",
+        "luce intermittente per le navi",
+        "avverte degli scogli"
+      ]
+    },
+    {
+      "word": "grotta",
+      "hints": [
+        "cavità sotterranea buia",
+        "stalattiti dal soffitto",
+        "i pipistrelli ci abitano"
+      ]
+    },
+    {
+      "word": "cascata",
+      "hints": [
+        "l'acqua precipita dalla roccia",
+        "arcobaleno nella nebbia",
+        "suono fragoroso"
+      ]
+    },
+    {
+      "word": "isola",
+      "hints": [
+        "circondata dall'acqua",
+        "si raggiunge in barca o aereo",
+        "isolata dalla terraferma"
+      ]
+    },
+    {
+      "word": "città",
+      "hints": [
+        "grattacieli e strade trafficate",
+        "milioni di abitanti",
+        "non si ferma mai"
+      ]
+    },
+    {
+      "word": "villaggio",
+      "hints": [
+        "piccola comunità unita",
+        "poche centinaia di abitanti",
+        "tranquillo e pittoresco"
+      ]
+    },
+    {
+      "word": "fattoria",
+      "hints": [
+        "campi coltivati e bestiame",
+        "fienili rossi",
+        "si alzano all'alba"
+      ]
+    },
+    {
+      "word": "mercato",
+      "hints": [
+        "bancarelle di prodotti freschi",
+        "si contratta sul prezzo",
+        "colorato e rumoroso"
+      ]
+    },
+    {
+      "word": "biblioteca",
+      "hints": [
+        "scaffali pieni di libri",
+        "silenzio assoluto",
+        "si prende in prestito e si restituisce"
+      ]
+    },
+    {
+      "word": "stadio",
+      "hints": [
+        "tifosi che esultano",
+        "campo erboso al centro",
+        "grandi riflettori"
+      ]
+    },
+    {
+      "word": "museo",
+      "hints": [
+        "reperti esposti nelle teche",
+        "antichi manufatti",
+        "si impara la storia"
+      ]
+    },
+    {
+      "word": "aeroporto",
+      "hints": [
+        "aerei decollano e atterrano",
+        "controllo passaporti",
+        "uscite d'imbarco"
+      ]
+    },
+    {
+      "word": "stazione ferroviaria",
+      "hints": [
+        "binari e banchine",
+        "orari sul tabellone",
+        "fischio del treno"
+      ]
+    },
+    {
+      "word": "ponte",
+      "hints": [
+        "attraversa un fiume o una valle",
+        "collega due sponde",
+        "cavi o archi"
+      ]
+    },
+    {
+      "word": "porto",
+      "hints": [
+        "barche ormeggiate alle banchine",
+        "baia protetta",
+        "odore di mare e pesce"
+      ]
+    },
+    {
+      "word": "parco",
+      "hints": [
+        "spazio verde aperto",
+        "panchine e viali",
+        "cani e picnic"
+      ]
+    },
+    {
+      "word": "giardino",
+      "hints": [
+        "fiori e ortaggi",
+        "siepi ben potate",
+        "annaffiato ogni giorno"
+      ]
+    },
+    {
+      "word": "canyon",
+      "hints": [
+        "pareti rocciose ripide",
+        "il fiume ha scavato la valle",
+        "roccia rossa spettacolare"
+      ]
+    },
+    {
+      "word": "ghiacciaio",
+      "hints": [
+        "fiume di ghiaccio lento",
+        "nelle regioni polari",
+        "si scioglie con il riscaldamento"
+      ]
+    },
+    {
+      "word": "foresta tropicale",
+      "hints": [
+        "chioma di alberi fitta",
+        "biodiversità straordinaria",
+        "piogge calde continue"
+      ]
+    },
+    {
+      "word": "savana",
+      "hints": [
+        "praterie aperte africane",
+        "casa della fauna selvatica",
+        "stagione secca ingiallisce tutto"
+      ]
+    },
+    {
+      "word": "tundra",
+      "hints": [
+        "pianure gelate senza alberi",
+        "permafrost sotterraneo",
+        "venti gelidi estremi"
+      ]
+    },
+    {
+      "word": "scogliera",
+      "hints": [
+        "parete rocciosa verticale",
+        "strapiombo sul mare",
+        "uccelli marini nidificano sulle pareti"
+      ]
+    },
+    {
+      "word": "fiordo",
+      "hints": [
+        "profonda insenatura marina stretta",
+        "pareti di montagna ripide",
+        "tipico della Scandinavia"
+      ]
+    },
+    {
+      "word": "palude",
+      "hints": [
+        "terreno acquitrinoso e fangoso",
+        "cipressi nell'acqua",
+        "coccodrilli in agguato"
+      ]
+    },
+    {
+      "word": "prato",
+      "hints": [
+        "campo erboso aperto",
+        "fiorisce in primavera",
+        "farfalle che svolazzano"
+      ]
+    },
+    {
+      "word": "vigneto",
+      "hints": [
+        "filari di viti",
+        "vendemmia in autunno",
+        "qui si produce il vino"
+      ]
+    },
+    {
+      "word": "frutteto",
+      "hints": [
+        "alberi da frutto in fila",
+        "fiorisce in primavera",
+        "raccolta nella stagione"
+      ]
+    },
+    {
+      "word": "osservatorio",
+      "hints": [
+        "grande telescopio a cupola",
+        "si osservano le stelle di notte",
+        "ci lavorano gli astronomi"
+      ]
+    },
+    {
+      "word": "cattedrale",
+      "hints": [
+        "guglie gotiche altissime",
+        "vetrate colorate",
+        "secoli di culto"
+      ]
+    },
+    {
+      "word": "palazzo",
+      "hints": [
+        "grandiosa residenza reale",
+        "architettura sontuosa",
+        "circondato da giardini formali"
+      ]
+    },
+    {
+      "word": "piramide",
+      "hints": [
+        "struttura triangolare in pietra",
+        "antico monumento funerario",
+        "in Egitto o in Messico"
+      ]
+    },
+    {
+      "word": "rovine",
+      "hints": [
+        "muri antichi diroccati",
+        "gli archeologi scavano",
+        "la natura riprende il sopravvento"
+      ]
+    },
+    {
+      "word": "acquario",
+      "hints": [
+        "pesci che nuotano dietro al vetro",
+        "squali che scivolano sopra la testa",
+        "luce azzurra tenue"
+      ]
+    },
+    {
+      "word": "zoo",
+      "hints": [
+        "animali da tutto il mondo",
+        "i bambini danno da mangiare alle giraffe",
+        "missione di conservazione"
+      ]
+    },
+    {
+      "word": "parco divertimenti",
+      "hints": [
+        "montagne russe e giostre",
+        "zucchero filato e palloncini",
+        "urla di gioia"
+      ]
+    },
+    {
+      "word": "centro commerciale",
+      "hints": [
+        "negozi sotto un unico tetto",
+        "food court al centro",
+        "aria condizionata"
+      ]
+    },
+    {
+      "word": "grattacielo",
+      "hints": [
+        "torre di vetro e acciaio",
+        "centinaia di piani",
+        "emblema dello skyline cittadino"
+      ]
+    },
+    {
+      "word": "tunnel",
+      "hints": [
+        "passaggio sotterraneo",
+        "auto o treni vi transitano",
+        "buio dentro"
+      ]
+    },
+    {
+      "word": "mulino a vento",
+      "hints": [
+        "pale che girano nel vento",
+        "macinava il grano",
+        "icona della campagna olandese"
+      ]
+    },
+    {
+      "word": "fienile",
+      "hints": [
+        "ricovera gli animali in inverno",
+        "fieno nel solaio",
+        "grandi porte di legno rosso"
+      ]
+    },
+    {
+      "word": "cimitero",
+      "hints": [
+        "lapidi in fila ordinate",
+        "luogo silenzioso e solenne",
+        "ultimo riposo"
+      ]
+    },
+    {
+      "word": "serra",
+      "hints": [
+        "pareti e tetto di vetro",
+        "le piante crescono tutto l'anno",
+        "umida e calda dentro"
+      ]
+    },
+    {
+      "word": "cava",
+      "hints": [
+        "pietra estratta dalla terra",
+        "scavo a cielo aperto",
+        "enormi camion trasportano massi"
+      ]
+    }
   ]
 }

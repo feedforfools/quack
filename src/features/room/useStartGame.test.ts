@@ -10,14 +10,16 @@ vi.mock("@/lib/supabase", () => ({
 vi.mock("@/lib/words", () => ({
   fetchWordPools: vi.fn(),
   pickWord: vi.fn(),
+  pickHints: vi.fn(),
 }));
 
 import { supabaseWithDevice } from "@/lib/supabase";
-import { fetchWordPools, pickWord } from "@/lib/words";
+import { fetchWordPools, pickWord, pickHints } from "@/lib/words";
 
 const mockDevice = vi.mocked(supabaseWithDevice);
 const mockFetchPools = vi.mocked(fetchWordPools);
 const mockPickWord = vi.mocked(pickWord);
+const mockPickHints = vi.mocked(pickHints);
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -26,6 +28,7 @@ const ROOM_ID = "room-uuid-bbbb";
 const HOST_SECRET_KEY = `quack_host_secret_${ROOM_ID}`;
 const FAKE_SECRET = "raw-host-secret-for-test";
 const FAKE_WORD = "pizza";
+const FAKE_ENTRY = { word: FAKE_WORD, hints: ["Italian dish", "round"] };
 
 // ─── Stub builders ────────────────────────────────────────────────────────────
 
@@ -36,7 +39,9 @@ function makeClientStub({
   lastRound?: { index: number } | null;
   rpcError?: unknown;
 } = {}) {
-  const maybeSingle = vi.fn().mockResolvedValue({ data: lastRound, error: null });
+  const maybeSingle = vi
+    .fn()
+    .mockResolvedValue({ data: lastRound, error: null });
   const limit = vi.fn(() => ({ maybeSingle }));
   const order = vi.fn(() => ({ limit }));
   const select = vi.fn(() => ({ eq: vi.fn(() => ({ order })) }));
@@ -49,9 +54,10 @@ function makeClientStub({
 
 beforeEach(() => {
   mockFetchPools.mockResolvedValue([
-    { version: 1, lang: "en", category: "food", words: [FAKE_WORD] },
+    { version: 1, lang: "en", category: "food", words: [FAKE_ENTRY] },
   ]);
-  mockPickWord.mockReturnValue(FAKE_WORD);
+  mockPickWord.mockReturnValue(FAKE_ENTRY);
+  mockPickHints.mockReturnValue([]);
 });
 
 afterEach(() => {
@@ -64,7 +70,9 @@ afterEach(() => {
 describe("useStartGame", () => {
   it("returns false and sets error when no host secret in localStorage", async () => {
     const stub = makeClientStub();
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result } = renderHook(() => useStartGame());
 
@@ -86,7 +94,9 @@ describe("useStartGame", () => {
   it("calls RPC with correct params and returns true on success", async () => {
     localStorage.setItem(HOST_SECRET_KEY, FAKE_SECRET);
     const stub = makeClientStub({ lastRound: null }); // no previous games → index 1
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result } = renderHook(() => useStartGame());
 
@@ -109,13 +119,16 @@ describe("useStartGame", () => {
       p_host_secret_hash: expect.stringMatching(/^[0-9a-f]{64}$/),
       p_intended_index: 1,
       p_word: FAKE_WORD,
+      p_hints: [],
     });
   });
 
   it("uses next index when a previous game exists", async () => {
     localStorage.setItem(HOST_SECRET_KEY, FAKE_SECRET);
     const stub = makeClientStub({ lastRound: { index: 2 } }); // last game was 2 → next is 3
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result } = renderHook(() => useStartGame());
 
@@ -136,8 +149,12 @@ describe("useStartGame", () => {
 
   it("returns false and sets error when RPC fails", async () => {
     localStorage.setItem(HOST_SECRET_KEY, FAKE_SECRET);
-    const stub = makeClientStub({ rpcError: { code: "42501", message: "not host" } });
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    const stub = makeClientStub({
+      rpcError: { code: "42501", message: "not host" },
+    });
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const { result } = renderHook(() => useStartGame());
 
@@ -158,10 +175,14 @@ describe("useStartGame", () => {
   it("does not log the word (privacy constraint)", async () => {
     localStorage.setItem(HOST_SECRET_KEY, FAKE_SECRET);
     const stub = makeClientStub();
-    mockDevice.mockReturnValue(stub as unknown as ReturnType<typeof supabaseWithDevice>);
+    mockDevice.mockReturnValue(
+      stub as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
 
     const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
-    const infoSpy = vi.spyOn(console, "info").mockImplementation(() => undefined);
+    const infoSpy = vi
+      .spyOn(console, "info")
+      .mockImplementation(() => undefined);
 
     const { result } = renderHook(() => useStartGame());
     await act(async () => {
@@ -197,9 +218,9 @@ describe("useStartGame", () => {
     const select = vi.fn(() => ({ eq: vi.fn(() => ({ order })) }));
     const from = vi.fn(() => ({ select }));
     const rpc = vi.fn().mockReturnValue(rpcPromise);
-    mockDevice.mockReturnValue(
-      { from, rpc } as unknown as ReturnType<typeof supabaseWithDevice>,
-    );
+    mockDevice.mockReturnValue({ from, rpc } as unknown as ReturnType<
+      typeof supabaseWithDevice
+    >);
 
     const { result } = renderHook(() => useStartGame());
     expect(result.current.loading).toBe(false);

@@ -3,55 +3,405 @@
   "lang": "it",
   "category": "food",
   "words": [
-    "pizza",
-    "sushi",
-    "hamburger",
-    "pasta",
-    "tacos",
-    "insalata",
-    "zuppa",
-    "panino",
-    "frittelle",
-    "waffle",
-    "bistecca",
-    "spaghetti",
-    "ramen",
-    "curry",
-    "paella",
-    "lasagna",
-    "risotto",
-    "frittata",
-    "croissant",
-    "bagel",
-    "pretzel",
-    "ciambella",
-    "gelato",
-    "cheesecake",
-    "brownie",
-    "biscotto",
-    "muffin",
-    "cupcake",
-    "crostata di mele",
-    "cioccolata",
-    "popcorn",
-    "hot dog",
-    "patatine fritte",
-    "pollo fritto",
-    "ravioli",
-    "falafel",
-    "hummus",
-    "guacamole",
-    "bruschetta",
-    "tiramisù",
-    "crêpe",
-    "baguette",
-    "focaccia",
-    "pita",
-    "kebab",
-    "nachos",
-    "wonton",
-    "dim sum",
-    "involtino primavera",
-    "churros"
+    {
+      "word": "pizza",
+      "hints": [
+        "rotonda e piatta",
+        "spesso consegnata a casa",
+        "piatto italiano"
+      ]
+    },
+    {
+      "word": "sushi",
+      "hints": [
+        "cucina giapponese",
+        "avvolto nell'alga",
+        "servito con zenzero"
+      ]
+    },
+    {
+      "word": "hamburger",
+      "hints": [
+        "tra due panini",
+        "spesso servito con patatine",
+        "classico fast food"
+      ]
+    },
+    {
+      "word": "pasta",
+      "hints": [
+        "piatto base italiano",
+        "mille forme diverse",
+        "servita con il sugo"
+      ]
+    },
+    {
+      "word": "tacos",
+      "hints": [
+        "cibo di strada messicano",
+        "guscio ripiegato",
+        "condito con salsa"
+      ]
+    },
+    {
+      "word": "insalata",
+      "hints": [
+        "prevalentemente verdure",
+        "condita con olio",
+        "considerata leggera"
+      ]
+    },
+    {
+      "word": "zuppa",
+      "hints": [
+        "servita calda in una ciotola",
+        "piatto liquido",
+        "perfetta in inverno"
+      ]
+    },
+    {
+      "word": "panino",
+      "hints": [
+        "tra due fette di pane",
+        "pasto da asporto",
+        "farciture infinite"
+      ]
+    },
+    {
+      "word": "frittelle",
+      "hints": [
+        "piatte e soffici",
+        "con sciroppo d'acero",
+        "colazione preferita"
+      ]
+    },
+    {
+      "word": "waffle",
+      "hints": [
+        "superficie a griglia",
+        "spesso con burro",
+        "colazione o dolce"
+      ]
+    },
+    {
+      "word": "bistecca",
+      "hints": [
+        "fetta spessa di carne",
+        "cotta alla griglia",
+        "piatto di manzo"
+      ]
+    },
+    {
+      "word": "spaghetti",
+      "hints": [
+        "pasta lunga e sottile",
+        "classico italiano",
+        "spesso con polpette"
+      ]
+    },
+    {
+      "word": "ramen",
+      "hints": [
+        "zuppa di noodle giapponese",
+        "brodo ricco",
+        "vari condimenti"
+      ]
+    },
+    {
+      "word": "curry",
+      "hints": [
+        "piatto con salsa speziata",
+        "dall'Asia meridionale",
+        "servito con il riso"
+      ]
+    },
+    {
+      "word": "paella",
+      "hints": [
+        "piatto di riso spagnolo",
+        "cotto in una padella larga",
+        "con frutti di mare"
+      ]
+    },
+    {
+      "word": "lasagna",
+      "hints": [
+        "pasta stratificata",
+        "cotta al forno",
+        "formaggio fuso in cima"
+      ]
+    },
+    {
+      "word": "risotto",
+      "hints": [
+        "piatto di riso cremoso",
+        "cucina italiana",
+        "mescolato lentamente"
+      ]
+    },
+    {
+      "word": "frittata",
+      "hints": [
+        "uova strapazzate in padella",
+        "piatto italiano",
+        "può avere ripieno"
+      ]
+    },
+    {
+      "word": "croissant",
+      "hints": [
+        "pasta sfoglia burrosa",
+        "forma di mezzaluna",
+        "prodotto da forno francese"
+      ]
+    },
+    {
+      "word": "bagel",
+      "hints": [
+        "pane a forma di ciambella",
+        "spesso tostato",
+        "con crema di formaggio"
+      ]
+    },
+    {
+      "word": "pretzel",
+      "hints": [
+        "snack da forno intrecciato",
+        "crosta salata",
+        "da intingere nella senape"
+      ]
+    },
+    {
+      "word": "ciambella",
+      "hints": [
+        "pasta fritta a forma di anello",
+        "glassata o colorata",
+        "dolce goloso"
+      ]
+    },
+    {
+      "word": "gelato",
+      "hints": [
+        "dessert congelato",
+        "tanti gusti diversi",
+        "servito in cono o coppetta"
+      ]
+    },
+    {
+      "word": "cheesecake",
+      "hints": [
+        "dolce cremoso",
+        "base di biscotto",
+        "guarnito con frutta"
+      ]
+    },
+    {
+      "word": "brownie",
+      "hints": [
+        "quadratino denso al cioccolato",
+        "texture fondente",
+        "cotto in teglia"
+      ]
+    },
+    {
+      "word": "biscotto",
+      "hints": [
+        "piccolo dolce cotto al forno",
+        "spesso con gocce di cioccolato",
+        "da inzuppare nel latte"
+      ]
+    },
+    {
+      "word": "muffin",
+      "hints": [
+        "piccola torta a cupola",
+        "spesso ai mirtilli",
+        "colazione dolce"
+      ]
+    },
+    {
+      "word": "cupcake",
+      "hints": [
+        "tortina individuale",
+        "ricoperta di glassa",
+        "per le feste"
+      ]
+    },
+    {
+      "word": "crostata di mele",
+      "hints": [
+        "dolce da forno classico",
+        "frutta in guscio di pasta",
+        "servita calda"
+      ]
+    },
+    {
+      "word": "cioccolata",
+      "hints": [
+        "fatta con cacao",
+        "tavolette e praline",
+        "fondente, al latte o bianca"
+      ]
+    },
+    {
+      "word": "popcorn",
+      "hints": [
+        "chicchi di mais soffiati",
+        "immancabile al cinema",
+        "salati o al burro"
+      ]
+    },
+    {
+      "word": "hot dog",
+      "hints": [
+        "salsiccia in un panino",
+        "cibo da stadio",
+        "con senape o ketchup"
+      ]
+    },
+    {
+      "word": "patatine fritte",
+      "hints": [
+        "strisce di patate fritte",
+        "spesso con ketchup",
+        "contorno del fast food"
+      ]
+    },
+    {
+      "word": "pollo fritto",
+      "hints": [
+        "pollo croccante e impanato",
+        "piatto della tradizione americana",
+        "succoso dentro"
+      ]
+    },
+    {
+      "word": "ravioli",
+      "hints": [
+        "pasta ripiena",
+        "di carne o ricotta",
+        "tipici di molte regioni"
+      ]
+    },
+    {
+      "word": "falafel",
+      "hints": [
+        "polpette di ceci fritte",
+        "cibo di strada mediorientale",
+        "servito nel pita"
+      ]
+    },
+    {
+      "word": "hummus",
+      "hints": [
+        "crema di ceci",
+        "spalmata sul pane piatto",
+        "condita con olio"
+      ]
+    },
+    {
+      "word": "guacamole",
+      "hints": [
+        "crema di avocado",
+        "condimento messicano",
+        "cremosa o in pezzi"
+      ]
+    },
+    {
+      "word": "bruschetta",
+      "hints": [
+        "pane tostato con condimento",
+        "antipasto italiano",
+        "spesso con pomodoro"
+      ]
+    },
+    {
+      "word": "tiramisù",
+      "hints": [
+        "dolce italiano",
+        "strati imbevuti di caffè",
+        "spolverato di cacao"
+      ]
+    },
+    {
+      "word": "crêpe",
+      "hints": [
+        "sottile pancake francese",
+        "dolce o salata",
+        "ripiegata con farcitura"
+      ]
+    },
+    {
+      "word": "baguette",
+      "hints": [
+        "pane lungo francese",
+        "crosta croccante",
+        "indispensabile in panetteria"
+      ]
+    },
+    {
+      "word": "focaccia",
+      "hints": [
+        "pane piatto italiano",
+        "superficie a fossette",
+        "condita con olio d'oliva"
+      ]
+    },
+    {
+      "word": "pita",
+      "hints": [
+        "pane piatto rotondo",
+        "cavo all'interno",
+        "riempito con ingredienti vari"
+      ]
+    },
+    {
+      "word": "kebab",
+      "hints": [
+        "carne allo spiedo",
+        "grigliata sulla fiamma",
+        "piatto mediorientale"
+      ]
+    },
+    {
+      "word": "nachos",
+      "hints": [
+        "chips di tortilla con formaggio",
+        "snack messicano",
+        "con jalapeños e salsa"
+      ]
+    },
+    {
+      "word": "wonton",
+      "hints": [
+        "raviolo cinese sottile",
+        "cucina cinese",
+        "spesso in brodo"
+      ]
+    },
+    {
+      "word": "dim sum",
+      "hints": [
+        "piccole porzioni cinesi",
+        "servite in cestelli a vapore",
+        "tradizione del brunch"
+      ]
+    },
+    {
+      "word": "involtino primavera",
+      "hints": [
+        "involucro croccante fritto",
+        "ripieno di verdure",
+        "antipasto asiatico"
+      ]
+    },
+    {
+      "word": "churros",
+      "hints": [
+        "bastoncini di pasta fritta",
+        "ricoperti di cannella e zucchero",
+        "da intingere nel cioccolato"
+      ]
+    }
   ]
 }

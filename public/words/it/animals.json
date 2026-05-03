@@ -3,55 +3,405 @@
   "lang": "it",
   "category": "animals",
   "words": [
-    "cane",
-    "gatto",
-    "elefante",
-    "giraffa",
-    "pinguino",
-    "delfino",
-    "aquila",
-    "leone",
-    "tigre",
-    "orso",
-    "lupo",
-    "volpe",
-    "coniglio",
-    "tartaruga",
-    "pappagallo",
-    "gufo",
-    "squalo",
-    "balena",
-    "polpo",
-    "medusa",
-    "farfalla",
-    "libellula",
-    "ape",
-    "formica",
-    "coccinella",
-    "fenicottero",
-    "zebra",
-    "panda",
-    "koala",
-    "canguro",
-    "coccodrillo",
-    "camaleonte",
-    "pavone",
-    "pellicano",
-    "stella marina",
-    "granchio",
-    "aragosta",
-    "cavalluccio marino",
-    "ghepardo",
-    "gorilla",
-    "tucano",
-    "bradipo",
-    "riccio",
-    "procione",
-    "scoiattolo",
-    "cervo",
-    "alce",
-    "cammello",
-    "lontra",
-    "ornitorinco"
+    {
+      "word": "cane",
+      "hints": [
+        "fedele compagno",
+        "scodinzola",
+        "abbaia"
+      ]
+    },
+    {
+      "word": "gatto",
+      "hints": [
+        "fa le fusa quando è contento",
+        "caccia i topi",
+        "cade sempre in piedi"
+      ]
+    },
+    {
+      "word": "elefante",
+      "hints": [
+        "il più grande animale terrestre",
+        "ha la proboscide",
+        "non dimentica mai"
+      ]
+    },
+    {
+      "word": "giraffa",
+      "hints": [
+        "l'animale più alto del mondo",
+        "lungo collo maculato",
+        "mangia dalle cime degli alberi"
+      ]
+    },
+    {
+      "word": "pinguino",
+      "hints": [
+        "uccello che non vola",
+        "vive nei climi freddi",
+        "cammina dondolandosi"
+      ]
+    },
+    {
+      "word": "delfino",
+      "hints": [
+        "mammifero marino intelligente",
+        "salta fuori dall'acqua",
+        "usa l'ecolocalizzazione"
+      ]
+    },
+    {
+      "word": "aquila",
+      "hints": [
+        "rapace con artigli affilati",
+        "vista acutissima",
+        "simbolo di libertà"
+      ]
+    },
+    {
+      "word": "leone",
+      "hints": [
+        "re della savana",
+        "il maschio ha la criniera",
+        "ruggisce forte"
+      ]
+    },
+    {
+      "word": "tigre",
+      "hints": [
+        "felino a strisce",
+        "predatore solitario",
+        "ottimo nuotatore"
+      ]
+    },
+    {
+      "word": "orso",
+      "hints": [
+        "va in letargo in inverno",
+        "ama il miele",
+        "molto forte"
+      ]
+    },
+    {
+      "word": "lupo",
+      "hints": [
+        "ulula alla luna",
+        "caccia in branco",
+        "antenato del cane"
+      ]
+    },
+    {
+      "word": "volpe",
+      "hints": [
+        "astuta e furba",
+        "coda folta",
+        "caccia di notte"
+      ]
+    },
+    {
+      "word": "coniglio",
+      "hints": [
+        "orecchie lunghe",
+        "saltella",
+        "ama le carote"
+      ]
+    },
+    {
+      "word": "tartaruga",
+      "hints": [
+        "guscio duro sulla schiena",
+        "si muove lentamente",
+        "può vivere cent'anni"
+      ]
+    },
+    {
+      "word": "pappagallo",
+      "hints": [
+        "piume colorate",
+        "imita la voce umana",
+        "vive nelle foreste tropicali"
+      ]
+    },
+    {
+      "word": "gufo",
+      "hints": [
+        "caccia di notte",
+        "ruota la testa quasi completamente",
+        "fa verso"
+      ]
+    },
+    {
+      "word": "squalo",
+      "hints": [
+        "predatore apicale oceanico",
+        "file di denti affilati",
+        "pinna dorsale in superficie"
+      ]
+    },
+    {
+      "word": "balena",
+      "hints": [
+        "l'animale più grande del pianeta",
+        "vive nell'oceano",
+        "respira con lo sfiatatoio"
+      ]
+    },
+    {
+      "word": "polpo",
+      "hints": [
+        "otto tentacoli",
+        "spruzza inchiostro",
+        "può cambiare colore"
+      ]
+    },
+    {
+      "word": "medusa",
+      "hints": [
+        "galleggia in mare",
+        "senza cervello né ossa",
+        "può pungere"
+      ]
+    },
+    {
+      "word": "farfalla",
+      "hints": [
+        "ali variopinte",
+        "inizia come bruco",
+        "sorseggia il nettare dei fiori"
+      ]
+    },
+    {
+      "word": "libellula",
+      "hints": [
+        "ali iridescenti",
+        "libra sull'acqua",
+        "mangia le zanzare"
+      ]
+    },
+    {
+      "word": "ape",
+      "hints": [
+        "produce il miele",
+        "vive nell'alveare",
+        "importante impollinatrice"
+      ]
+    },
+    {
+      "word": "formica",
+      "hints": [
+        "forza straordinaria per la sua taglia",
+        "vive in colonie",
+        "scava gallerie"
+      ]
+    },
+    {
+      "word": "coccinella",
+      "hints": [
+        "rossa con puntini neri",
+        "porta fortuna",
+        "mangia gli afidi"
+      ]
+    },
+    {
+      "word": "fenicottero",
+      "hints": [
+        "sta su una zampa",
+        "piume rosa",
+        "vive vicino alle lagune"
+      ]
+    },
+    {
+      "word": "zebra",
+      "hints": [
+        "strisce bianche e nere",
+        "animale delle savane africane",
+        "parente del cavallo"
+      ]
+    },
+    {
+      "word": "panda",
+      "hints": [
+        "orso bianco e nero",
+        "mangia bambù",
+        "originario della Cina"
+      ]
+    },
+    {
+      "word": "koala",
+      "hints": [
+        "si aggrappa agli eucalipti",
+        "dorme quasi tutto il giorno",
+        "dall'Australia"
+      ]
+    },
+    {
+      "word": "canguro",
+      "hints": [
+        "porta il cucciolo nel marsupio",
+        "salta su zampe potenti",
+        "dall'Australia"
+      ]
+    },
+    {
+      "word": "coccodrillo",
+      "hints": [
+        "rettile antico",
+        "si nasconde nei fiumi",
+        "mascella potentissima"
+      ]
+    },
+    {
+      "word": "camaleonte",
+      "hints": [
+        "cambia colore",
+        "occhi indipendenti",
+        "lingua lunga e appiccicosa"
+      ]
+    },
+    {
+      "word": "pavone",
+      "hints": [
+        "coda a ruota spettacolare",
+        "piume azzurre brillanti",
+        "grido stridente"
+      ]
+    },
+    {
+      "word": "pellicano",
+      "hints": [
+        "grande sacca sul becco",
+        "pesca raccogliendo acqua",
+        "uccello costiero"
+      ]
+    },
+    {
+      "word": "stella marina",
+      "hints": [
+        "cinque braccia",
+        "vive sul fondo del mare",
+        "rigenera gli arti persi"
+      ]
+    },
+    {
+      "word": "granchio",
+      "hints": [
+        "cammina di lato",
+        "guscio duro",
+        "chele"
+      ]
+    },
+    {
+      "word": "aragosta",
+      "hints": [
+        "grandi chele",
+        "diventa rossa cuocendo",
+        "vive sul fondo del mare"
+      ]
+    },
+    {
+      "word": "cavalluccio marino",
+      "hints": [
+        "il maschio porta i piccoli",
+        "nuota in verticale",
+        "si aggrappa con la coda"
+      ]
+    },
+    {
+      "word": "ghepardo",
+      "hints": [
+        "animale terrestre più veloce",
+        "macchie nere sul manto",
+        "sprint brevi"
+      ]
+    },
+    {
+      "word": "gorilla",
+      "hints": [
+        "il primate più grande",
+        "cammina sulle nocche",
+        "vive nelle foreste montane"
+      ]
+    },
+    {
+      "word": "tucano",
+      "hints": [
+        "becco enorme e colorato",
+        "uccello tropicale",
+        "mangia frutti"
+      ]
+    },
+    {
+      "word": "bradipo",
+      "hints": [
+        "si muove lentissimamente",
+        "sta appeso a testa in giù",
+        "dorme quasi tutto il giorno"
+      ]
+    },
+    {
+      "word": "riccio",
+      "hints": [
+        "ricoperto di spine",
+        "si arrotola a palla",
+        "notturno"
+      ]
+    },
+    {
+      "word": "procione",
+      "hints": [
+        "maschera sul muso",
+        "lava il cibo nell'acqua",
+        "nottambulo e onnivoro"
+      ]
+    },
+    {
+      "word": "scoiattolo",
+      "hints": [
+        "coda folta",
+        "raccoglie ghiande",
+        "sale sugli alberi"
+      ]
+    },
+    {
+      "word": "cervo",
+      "hints": [
+        "il maschio ha le corna",
+        "pascola nei boschi",
+        "molto elegante"
+      ]
+    },
+    {
+      "word": "alce",
+      "hints": [
+        "il più grande cervide",
+        "palchi larghi e piatti",
+        "guada i laghi"
+      ]
+    },
+    {
+      "word": "cammello",
+      "hints": [
+        "le gobbe immagazzinano energia",
+        "sopravvive nel deserto",
+        "sputa quando è irritato"
+      ]
+    },
+    {
+      "word": "lontra",
+      "hints": [
+        "si tiene per mano dormendo",
+        "spezza i gusci sulla pancia",
+        "mammifero acquatico giocoso"
+      ]
+    },
+    {
+      "word": "ornitorinco",
+      "hints": [
+        "becco da anatra e coda da castoro",
+        "depone le uova",
+        "speroni velenosi sulle zampe"
+      ]
+    }
   ]
 }

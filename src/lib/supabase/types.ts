@@ -78,6 +78,7 @@ export type Database = {
       role_assignments: {
         Row: {
           game_id: string;
+          payload: Json;
           player_id: string;
           revealed_at: string | null;
           role: Database["public"]["Enums"]["player_role"];
@@ -86,6 +87,7 @@ export type Database = {
         };
         Insert: {
           game_id: string;
+          payload?: Json;
           player_id: string;
           revealed_at?: string | null;
           role: Database["public"]["Enums"]["player_role"];
@@ -94,6 +96,7 @@ export type Database = {
         };
         Update: {
           game_id?: string;
+          payload?: Json;
           player_id?: string;
           revealed_at?: string | null;
           role?: Database["public"]["Enums"]["player_role"];
@@ -153,8 +156,13 @@ export type Database = {
           ends_at: string | null;
           id: string;
           index: number;
+          outcome: Database["public"]["Enums"]["game_outcome"] | null;
           room_id: string;
           started_at: string;
+          vote_ends_at: string | null;
+          vote_request_count: number;
+          vote_state: Database["public"]["Enums"]["vote_state"];
+          voted_out_player_id: string | null;
         };
         Insert: {
           config_snapshot?: Json;
@@ -162,8 +170,13 @@ export type Database = {
           ends_at?: string | null;
           id?: string;
           index: number;
+          outcome?: Database["public"]["Enums"]["game_outcome"] | null;
           room_id: string;
           started_at?: string;
+          vote_ends_at?: string | null;
+          vote_request_count?: number;
+          vote_state?: Database["public"]["Enums"]["vote_state"];
+          voted_out_player_id?: string | null;
         };
         Update: {
           config_snapshot?: Json;
@@ -171,8 +184,13 @@ export type Database = {
           ends_at?: string | null;
           id?: string;
           index?: number;
+          outcome?: Database["public"]["Enums"]["game_outcome"] | null;
           room_id?: string;
           started_at?: string;
+          vote_ends_at?: string | null;
+          vote_request_count?: number;
+          vote_state?: Database["public"]["Enums"]["vote_state"];
+          voted_out_player_id?: string | null;
         };
         Relationships: [
           {
@@ -180,6 +198,61 @@ export type Database = {
             columns: ["room_id"];
             isOneToOne: false;
             referencedRelation: "rooms";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      votes: {
+        Row: {
+          created_at: string;
+          game_id: string;
+          target_player_id: string;
+          voter_player_id: string;
+        };
+        Insert: {
+          created_at?: string;
+          game_id: string;
+          target_player_id: string;
+          voter_player_id: string;
+        };
+        Update: {
+          created_at?: string;
+          game_id?: string;
+          target_player_id?: string;
+          voter_player_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "votes_game_id_fkey";
+            columns: ["game_id"];
+            isOneToOne: false;
+            referencedRelation: "games";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      vote_requests: {
+        Row: {
+          created_at: string;
+          game_id: string;
+          player_id: string;
+        };
+        Insert: {
+          created_at?: string;
+          game_id: string;
+          player_id: string;
+        };
+        Update: {
+          created_at?: string;
+          game_id?: string;
+          player_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "vote_requests_game_id_fkey";
+            columns: ["game_id"];
+            isOneToOne: false;
+            referencedRelation: "games";
             referencedColumns: ["id"];
           },
         ];
@@ -203,6 +276,14 @@ export type Database = {
       };
       mark_game_seen: { Args: { p_game_id: string }; Returns: undefined };
       all_players_seen: { Args: { p_game_id: string }; Returns: boolean };
+      get_co_imposters: {
+        Args: { p_game_id: string };
+        Returns: { player_id: string; display_name: string }[];
+      };
+      get_vote_tally: {
+        Args: { p_game_id: string };
+        Returns: { target_player_id: string; vote_count: number }[];
+      };
       end_game: {
         Args: { p_host_secret_hash: string; p_room_id: string };
         Returns: undefined;
@@ -219,6 +300,7 @@ export type Database = {
           p_intended_index: number;
           p_room_id: string;
           p_word: string;
+          p_hints?: string[];
         };
         Returns: undefined;
       };
@@ -231,10 +313,38 @@ export type Database = {
         };
         Returns: undefined;
       };
+      request_vote: {
+        Args: { p_game_id: string };
+        Returns: undefined;
+      };
+      cast_vote: {
+        Args: { p_game_id: string; p_target_player_id: string };
+        Returns: undefined;
+      };
+      retract_vote: {
+        Args: { p_game_id: string };
+        Returns: undefined;
+      };
+      resolve_vote: {
+        Args: { p_game_id: string };
+        Returns: undefined;
+      };
+      get_game_result: {
+        Args: { p_game_id: string };
+        Returns: {
+          outcome: Database["public"]["Enums"]["game_outcome"];
+          voted_out_player_id: string | null;
+          voted_out_player_name: string | null;
+          secret_word: string | null;
+          imposters: Json;
+        }[];
+      };
     };
     Enums: {
+      game_outcome: "imposters_caught" | "imposters_win" | "tie";
       player_role: "civilian" | "imposter";
       room_state: "lobby" | "round_active" | "round_ended";
+      vote_state: "none" | "requested" | "active" | "resolved";
     };
     CompositeTypes: {
       [_ in never]: never;

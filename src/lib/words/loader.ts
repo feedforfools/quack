@@ -43,7 +43,11 @@ function validate(
   const obj = raw as Record<string, unknown>;
 
   if (typeof obj["version"] !== "number") {
-    throw new WordPoolValidationError(lang, category, '"version" must be a number');
+    throw new WordPoolValidationError(
+      lang,
+      category,
+      '"version" must be a number',
+    );
   }
   if (!WORD_POOL_LANGS.includes(obj["lang"] as WordPoolLang)) {
     throw new WordPoolValidationError(
@@ -60,18 +64,50 @@ function validate(
     );
   }
   if (!Array.isArray(obj["words"])) {
-    throw new WordPoolValidationError(lang, category, '"words" must be an array');
+    throw new WordPoolValidationError(
+      lang,
+      category,
+      '"words" must be an array',
+    );
   }
   if ((obj["words"] as unknown[]).length === 0) {
-    throw new WordPoolValidationError(lang, category, '"words" must not be empty');
+    throw new WordPoolValidationError(
+      lang,
+      category,
+      '"words" must not be empty',
+    );
   }
   for (const w of obj["words"] as unknown[]) {
-    if (typeof w !== "string" || w.trim() === "") {
+    if (typeof w !== "object" || w === null || Array.isArray(w)) {
       throw new WordPoolValidationError(
         lang,
         category,
-        '"words" entries must be non-empty strings',
+        '"words" entries must be objects with "word" and "hints" fields',
       );
+    }
+    const entry = w as Record<string, unknown>;
+    if (typeof entry["word"] !== "string" || entry["word"].trim() === "") {
+      throw new WordPoolValidationError(
+        lang,
+        category,
+        '"words[].word" must be a non-empty string',
+      );
+    }
+    if (!Array.isArray(entry["hints"])) {
+      throw new WordPoolValidationError(
+        lang,
+        category,
+        '"words[].hints" must be an array',
+      );
+    }
+    for (const h of entry["hints"] as unknown[]) {
+      if (typeof h !== "string") {
+        throw new WordPoolValidationError(
+          lang,
+          category,
+          '"words[].hints" entries must be strings',
+        );
+      }
     }
   }
 }

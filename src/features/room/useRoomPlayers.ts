@@ -42,6 +42,11 @@ export interface UseRoomPlayersReturn {
   /** Notifies other clients that the current player has peeked at their role (E3-T7). */
   broadcastPeekUpdate: () => Promise<void>;
   /**
+   * Broadcast `vote_state_changed` so all connected clients refetch their
+   * vote state after a request_vote / cast_vote / retract_vote RPC.
+   */
+  broadcastVoteStateChanged: () => Promise<void>;
+  /**
    * Realtime channel subscription status. `"SUBSCRIBED"` = connected;
    * `"CHANNEL_ERROR"` / `"TIMED_OUT"` / `"CLOSED"` = disconnected.
    * Use this to surface a non-blocking reconnecting banner (E4-T6).
@@ -93,6 +98,11 @@ export function useRoomPlayers(
      */
     onPeekUpdate?: () => void;
     /**
+     * Called when a `vote_state_changed` broadcast is received.
+     * Use this in Room.tsx to trigger a vote state refetch on all clients.
+     */
+    onVoteStateChanged?: () => void;
+    /**
      * Called when a `player_kicked` broadcast is received and the kicked
      * player ID matches this device. The client should navigate home with
      * a toast (E4-T5).
@@ -116,6 +126,7 @@ export function useRoomPlayers(
   const onTimerStartRef = useRef(options?.onTimerStart);
   const onPeekUpdateRef = useRef(options?.onPeekUpdate);
   const onKickedRef = useRef(options?.onKicked);
+  const onVoteStateChangedRef = useRef(options?.onVoteStateChanged);
   // Keep callback refs current whenever the props change.
   useEffect(() => {
     onRoundEndRef.current = options?.onRoundEnd;
@@ -123,6 +134,7 @@ export function useRoomPlayers(
     onTimerStartRef.current = options?.onTimerStart;
     onPeekUpdateRef.current = options?.onPeekUpdate;
     onKickedRef.current = options?.onKicked;
+    onVoteStateChangedRef.current = options?.onVoteStateChanged;
   });
   // Ref to the broadcast function populated once the channel is subscribed.
   const broadcastRef = useRef<((event: string) => Promise<void>) | null>(null);
@@ -219,6 +231,11 @@ export function useRoomPlayers(
         if (!isMounted) return;
         onPeekUpdateRef.current?.();
       })
+      // Any vote RPC completed — all clients refetch vote state.
+      .on("broadcast", { event: "vote_state_changed" }, () => {
+        if (!isMounted) return;
+        onVoteStateChangedRef.current?.();
+      })
       // Host kicked a player — refetch roster; if it's this device, fire onKicked.
       .on("broadcast", { event: "player_kicked" }, ({ payload }) => {
         if (!isMounted) return;
@@ -274,6 +291,10 @@ export function useRoomPlayers(
     await broadcastRef.current?.("peek_update");
   }, []);
 
+  const broadcastVoteStateChanged = useCallback(async () => {
+    await broadcastRef.current?.("vote_state_changed");
+  }, []);
+
   return {
     players,
     connectedIds,
@@ -286,5 +307,6 @@ export function useRoomPlayers(
     broadcastRoundStart,
     broadcastTimerStart,
     broadcastPeekUpdate,
+    broadcastVoteStateChanged,
   };
 }

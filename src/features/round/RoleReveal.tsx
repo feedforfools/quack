@@ -162,9 +162,29 @@ export function RoleReveal({
             </p>
           )}
           {!isCivilian && (
-            <p className="mt-4 text-center text-sm text-fg-muted">
-              {t("round.imposterHint")}
-            </p>
+            <>
+              <p className="mt-4 text-center text-sm text-fg-muted">
+                {t("round.imposterHint")}
+              </p>
+              {isVisible && assignment.hints.length > 0 && (
+                <ul className="mt-3 space-y-1 text-center">
+                  {assignment.hints.map((hint, i) => (
+                    <li key={i} className="text-sm font-medium text-fg">
+                      {hint}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {isVisible && assignment.coImposters.length > 0 && (
+                <p className="mt-2 text-center text-xs font-medium text-danger">
+                  {t("round.coImposters", {
+                    names: assignment.coImposters
+                      .map((c) => c.displayName)
+                      .join(", "),
+                  })}
+                </p>
+              )}
+            </>
           )}
         </div>
 

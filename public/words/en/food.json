@@ -3,55 +3,405 @@
   "lang": "en",
   "category": "food",
   "words": [
-    "pizza",
-    "sushi",
-    "burger",
-    "pasta",
-    "tacos",
-    "salad",
-    "soup",
-    "sandwich",
-    "pancakes",
-    "waffles",
-    "steak",
-    "spaghetti",
-    "ramen",
-    "curry",
-    "paella",
-    "lasagna",
-    "risotto",
-    "omelette",
-    "croissant",
-    "bagel",
-    "pretzel",
-    "doughnut",
-    "ice cream",
-    "cheesecake",
-    "brownie",
-    "cookie",
-    "muffin",
-    "cupcake",
-    "apple pie",
-    "chocolate",
-    "popcorn",
-    "hot dog",
-    "french fries",
-    "fried chicken",
-    "dumplings",
-    "falafel",
-    "hummus",
-    "guacamole",
-    "bruschetta",
-    "tiramisu",
-    "crepe",
-    "baguette",
-    "focaccia",
-    "pita",
-    "kebab",
-    "nachos",
-    "wonton",
-    "dim sum",
-    "spring roll",
-    "churros"
+    {
+      "word": "pizza",
+      "hints": [
+        "round and flat",
+        "often delivered",
+        "Italian dish"
+      ]
+    },
+    {
+      "word": "sushi",
+      "hints": [
+        "Japanese cuisine",
+        "wrapped in seaweed",
+        "served with ginger"
+      ]
+    },
+    {
+      "word": "burger",
+      "hints": [
+        "between two buns",
+        "often served with fries",
+        "fast food classic"
+      ]
+    },
+    {
+      "word": "pasta",
+      "hints": [
+        "Italian staple",
+        "comes in many shapes",
+        "served with sauce"
+      ]
+    },
+    {
+      "word": "tacos",
+      "hints": [
+        "Mexican street food",
+        "folded shell",
+        "topped with salsa"
+      ]
+    },
+    {
+      "word": "salad",
+      "hints": [
+        "mostly vegetables",
+        "tossed with dressing",
+        "considered healthy"
+      ]
+    },
+    {
+      "word": "soup",
+      "hints": [
+        "served hot in a bowl",
+        "liquid-based dish",
+        "great for cold days"
+      ]
+    },
+    {
+      "word": "sandwich",
+      "hints": [
+        "between two slices of bread",
+        "portable meal",
+        "endless filling options"
+      ]
+    },
+    {
+      "word": "pancakes",
+      "hints": [
+        "flat and fluffy",
+        "drizzled with syrup",
+        "breakfast favorite"
+      ]
+    },
+    {
+      "word": "waffles",
+      "hints": [
+        "grid-patterned surface",
+        "often with butter",
+        "breakfast or dessert"
+      ]
+    },
+    {
+      "word": "steak",
+      "hints": [
+        "thick cut of meat",
+        "cooked on a grill",
+        "beef dish"
+      ]
+    },
+    {
+      "word": "spaghetti",
+      "hints": [
+        "long thin pasta",
+        "Italian classic",
+        "often with meatballs"
+      ]
+    },
+    {
+      "word": "ramen",
+      "hints": [
+        "Japanese noodle soup",
+        "rich broth",
+        "assorted toppings"
+      ]
+    },
+    {
+      "word": "curry",
+      "hints": [
+        "spiced sauce dish",
+        "from South Asia",
+        "served over rice"
+      ]
+    },
+    {
+      "word": "paella",
+      "hints": [
+        "Spanish rice dish",
+        "cooked in a wide pan",
+        "with seafood or chicken"
+      ]
+    },
+    {
+      "word": "lasagna",
+      "hints": [
+        "layered pasta dish",
+        "baked in the oven",
+        "melted cheese on top"
+      ]
+    },
+    {
+      "word": "risotto",
+      "hints": [
+        "creamy rice dish",
+        "Italian cuisine",
+        "slow-stirred"
+      ]
+    },
+    {
+      "word": "omelette",
+      "hints": [
+        "folded egg dish",
+        "cooked in a pan",
+        "filled with cheese or veg"
+      ]
+    },
+    {
+      "word": "croissant",
+      "hints": [
+        "buttery pastry",
+        "crescent-shaped",
+        "French bakery staple"
+      ]
+    },
+    {
+      "word": "bagel",
+      "hints": [
+        "ring-shaped bread",
+        "often toasted",
+        "spread with cream cheese"
+      ]
+    },
+    {
+      "word": "pretzel",
+      "hints": [
+        "twisted baked snack",
+        "salty crust",
+        "often dipped in mustard"
+      ]
+    },
+    {
+      "word": "doughnut",
+      "hints": [
+        "ring-shaped fried dough",
+        "covered in glaze or sprinkles",
+        "sweet treat"
+      ]
+    },
+    {
+      "word": "ice cream",
+      "hints": [
+        "frozen dessert",
+        "comes in many flavors",
+        "served in a cone"
+      ]
+    },
+    {
+      "word": "cheesecake",
+      "hints": [
+        "rich creamy dessert",
+        "cracker crust base",
+        "topped with fruit"
+      ]
+    },
+    {
+      "word": "brownie",
+      "hints": [
+        "dense chocolate square",
+        "fudgy texture",
+        "baked in a pan"
+      ]
+    },
+    {
+      "word": "cookie",
+      "hints": [
+        "small baked sweet",
+        "often has chocolate chips",
+        "dunked in milk"
+      ]
+    },
+    {
+      "word": "muffin",
+      "hints": [
+        "small domed cake",
+        "often blueberry or banana",
+        "breakfast treat"
+      ]
+    },
+    {
+      "word": "cupcake",
+      "hints": [
+        "individual small cake",
+        "piled with frosting",
+        "eaten at parties"
+      ]
+    },
+    {
+      "word": "apple pie",
+      "hints": [
+        "classic baked dessert",
+        "fruit in pastry crust",
+        "served warm"
+      ]
+    },
+    {
+      "word": "chocolate",
+      "hints": [
+        "made from cocoa beans",
+        "comes in bars",
+        "dark, milk, or white"
+      ]
+    },
+    {
+      "word": "popcorn",
+      "hints": [
+        "puffed corn kernels",
+        "movie theater staple",
+        "salted or buttered"
+      ]
+    },
+    {
+      "word": "hot dog",
+      "hints": [
+        "sausage in a bun",
+        "stadium food staple",
+        "topped with mustard"
+      ]
+    },
+    {
+      "word": "french fries",
+      "hints": [
+        "fried potato strips",
+        "often with ketchup",
+        "fast food side dish"
+      ]
+    },
+    {
+      "word": "fried chicken",
+      "hints": [
+        "crispy battered poultry",
+        "Southern comfort food",
+        "juicy inside"
+      ]
+    },
+    {
+      "word": "dumplings",
+      "hints": [
+        "filled dough pockets",
+        "steamed or pan-fried",
+        "Asian cuisine"
+      ]
+    },
+    {
+      "word": "falafel",
+      "hints": [
+        "fried chickpea balls",
+        "Middle Eastern street food",
+        "served in pita"
+      ]
+    },
+    {
+      "word": "hummus",
+      "hints": [
+        "chickpea-based dip",
+        "spread on flatbread",
+        "drizzled with olive oil"
+      ]
+    },
+    {
+      "word": "guacamole",
+      "hints": [
+        "avocado-based dip",
+        "Mexican condiment",
+        "chunky or smooth"
+      ]
+    },
+    {
+      "word": "bruschetta",
+      "hints": [
+        "toasted bread with topping",
+        "Italian appetizer",
+        "often with tomatoes"
+      ]
+    },
+    {
+      "word": "tiramisu",
+      "hints": [
+        "Italian dessert",
+        "coffee-soaked layers",
+        "dusted with cocoa"
+      ]
+    },
+    {
+      "word": "crepe",
+      "hints": [
+        "thin French pancake",
+        "sweet or savory",
+        "folded with fillings"
+      ]
+    },
+    {
+      "word": "baguette",
+      "hints": [
+        "long French bread",
+        "crispy crust",
+        "bakery essential"
+      ]
+    },
+    {
+      "word": "focaccia",
+      "hints": [
+        "flat Italian bread",
+        "dimpled surface",
+        "drizzled with olive oil"
+      ]
+    },
+    {
+      "word": "pita",
+      "hints": [
+        "round flatbread",
+        "hollow inside",
+        "stuffed with fillings"
+      ]
+    },
+    {
+      "word": "kebab",
+      "hints": [
+        "meat on a skewer",
+        "grilled over flame",
+        "Middle Eastern dish"
+      ]
+    },
+    {
+      "word": "nachos",
+      "hints": [
+        "tortilla chips with cheese",
+        "Mexican snack",
+        "topped with jalapeños"
+      ]
+    },
+    {
+      "word": "wonton",
+      "hints": [
+        "thin-wrapped dumpling",
+        "Chinese cuisine",
+        "often in soup"
+      ]
+    },
+    {
+      "word": "dim sum",
+      "hints": [
+        "small Chinese portions",
+        "served in steamer baskets",
+        "weekend brunch tradition"
+      ]
+    },
+    {
+      "word": "spring roll",
+      "hints": [
+        "crispy rolled wrapper",
+        "filled with vegetables",
+        "Asian appetizer"
+      ]
+    },
+    {
+      "word": "churros",
+      "hints": [
+        "fried dough sticks",
+        "rolled in cinnamon sugar",
+        "dipped in chocolate"
+      ]
+    }
   ]
 }

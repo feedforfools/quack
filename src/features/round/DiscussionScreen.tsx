@@ -3,7 +3,9 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components";
 import { CountdownDial } from "@/components";
 import { RoleReveal } from "./RoleReveal";
+import { VotingPanel } from "./VotingPanel";
 import type { RoleAssignment } from "./useRoleAssignment";
+import type { VoteState } from "./useVoteState";
 
 interface DiscussionScreenProps {
   /** The device's own role assignment — powers the drag-lid card. */
@@ -38,6 +40,37 @@ interface DiscussionScreenProps {
    * peek threshold. Wired to `mark_role_seen` in E3-T11.
    */
   onFirstPeek?: () => void;
+  /** Current voting state — drives VotingPanel (E5-T8). */
+  voteState?: VoteState | null;
+  /**
+   * Minimum number of vote-requests to transition to 'active'.
+   * = CEIL(activePlayers.length × config.vote_threshold_fraction)
+   */
+  voteThreshold?: number;
+  /** Called when player taps "Call to vote". */
+  onRequestVote?: (params: {
+    deviceId: string;
+    gameId: string;
+  }) => Promise<boolean>;
+  requestVoteLoading?: boolean;
+  /** Called when player taps a player row to cast/change vote. */
+  onCastVote?: (params: {
+    deviceId: string;
+    gameId: string;
+    targetPlayerId: string;
+  }) => Promise<boolean>;
+  castVoteLoading?: boolean;
+  /** Called when player taps "Retract vote". */
+  onRetractVote?: (params: {
+    deviceId: string;
+    gameId: string;
+  }) => Promise<boolean>;
+  retractVoteLoading?: boolean;
+  /**
+   * Called once when the voting CountdownDial reaches zero.
+   * Triggers `resolve_vote` in Room.tsx (E5-T9).
+   */
+  onVoteTimerComplete?: () => void;
 }
 
 /**
@@ -71,6 +104,15 @@ export function DiscussionScreen({
   startTimerLoading = false,
   allPlayersSeen = false,
   onFirstPeek,
+  voteState,
+  voteThreshold = 1,
+  onRequestVote,
+  requestVoteLoading = false,
+  onCastVote,
+  castVoteLoading = false,
+  onRetractVote,
+  retractVoteLoading = false,
+  onVoteTimerComplete,
 }: DiscussionScreenProps) {
   const { t } = useTranslation();
   const [_isPeeking, setIsPeeking] = useState(false);
@@ -201,6 +243,31 @@ export function DiscussionScreen({
           {roomCode.toUpperCase()}
         </p>
       )}
+
+      {/* ── Voting panel (E5-T8) ─────────────────────────────────────────── */}
+      {voteState &&
+        voteState.state !== "resolved" &&
+        deviceId &&
+        onRequestVote &&
+        onCastVote &&
+        onRetractVote && (
+          <VotingPanel
+            gameId={assignment.gameId}
+            deviceId={deviceId}
+            players={players
+              .filter((p) => !p.is_spectator)
+              .map((p) => ({ id: p.id, display_name: p.display_name }))}
+            voteState={voteState}
+            voteThreshold={voteThreshold}
+            onRequestVote={onRequestVote}
+            requestVoteLoading={requestVoteLoading}
+            onCastVote={onCastVote}
+            castVoteLoading={castVoteLoading}
+            onRetractVote={onRetractVote}
+            retractVoteLoading={retractVoteLoading}
+            onVoteTimerComplete={onVoteTimerComplete}
+          />
+        )}
 
       {/* End Round — host-only action */}
       {isHost && onEndRound && (

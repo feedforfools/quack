@@ -106,6 +106,7 @@
     "roleCivilian": "Civile",
     "roleImposter": "Impostore",
     "imposterHint": "Trova la parola che tutti gli altri conoscono.",
+    "coImposters": "I tuoi complici: {{names}}",
     "gotIt": "Capito",
     "gameLabel": "Partita {{index}}",
     "neutralTitle": "Discussione",
@@ -122,6 +123,34 @@
     "endGameError": "Impossibile terminare la partita. Riprova.",
     "gameEndedToast": "Partita terminata. Di ritorno alla lobby."
   },
+  "vote": {
+    "sectionLabel": "Voto",
+    "requestHint": "\u00c8 ora di votare l\u2019impostore fuori?",
+    "callToVoteCta": "Chiedi il voto",
+    "requestLoading": "Richiesta\u2026",
+    "requestCount": "{{count}} su {{threshold}} voti per iniziare",
+    "requestError": "Impossibile richiedere il voto. Riprova.",
+    "activeLabel": "Votazione in corso",
+    "castVoteHint": "Tocca un giocatore per votarlo fuori.",
+    "changeVoteHint": "Tocca un altro giocatore per cambiare voto.",
+    "yourVote": "Il tuo voto",
+    "tallyCount": "{{count}}",
+    "retractCta": "Ritira voto",
+    "retractLoading": "Ritiro\u2026",
+    "retractError": "Impossibile ritirare il voto. Riprova.",
+    "playerListLabel": "Giocatori"
+  },
+  "result": {
+    "outcomeCaught": "Impostori scoperti!",
+    "outcomeWin": "Impostori vincono!",
+    "outcomeTie": "Pareggio!",
+    "votedOutLabel": "Votato fuori",
+    "nobody": "Nessuno",
+    "secretWordLabel": "La parola segreta era",
+    "impostersLabel": "Gli impostori",
+    "endGameCta": "Termina partita",
+    "waitingForHost": "In attesa che l’host termini la partita…"
+  },
   "notFound": {
     "title": "Pagina non trovata",
     "message": "Questa stanza potrebbe essere terminata, o il link \u00e8 errato."
@@ -129,5 +158,37 @@
   "privacy": {
     "title": "Informativa sulla Privacy",
     "placeholder": "Informativa completa in arrivo. Quack non raccoglie dati personali e non memorizza nulla oltre al nome visualizzato scelto nel tuo browser."
+  },
+  "settings": {
+    "title": "Impostazioni partita",
+    "frozenNote": "Le impostazioni sono bloccate durante una partita.",
+    "language": "Lingua",
+    "categories": "Categorie di parole",
+    "category_food": "Cibo",
+    "category_animals": "Animali",
+    "category_places": "Luoghi",
+    "category_movies": "Film",
+    "category_objects": "Oggetti",
+    "imposterCount": "Impostori",
+    "impostersSeeEachOther": "Gli impostori si vedono tra loro",
+    "imposterHintCount": "Suggerimenti impostore",
+    "hintCount_none": "Nessuno",
+    "hintCount_one": "1",
+    "hintCount_two_plus": "{{count}}",
+    "numGames": "Partite per set",
+    "timerDuration": "Timer discussione",
+    "timerOff": "Disattivato",
+    "timer_1min": "1 min",
+    "timer_2min": "2 min",
+    "timer_3min": "3 min",
+    "timer_5min": "5 min",
+    "votingSection": "Votazione",
+    "voteThreshold": "Soglia per votazione",
+    "threshold_half": "Maggioranza (50%+)",
+    "threshold_two_thirds": "Due terzi (67%+)",
+    "threshold_all": "Unanimit\u00e0",
+    "votingDuration": "Timer votazione",
+    "liveVoteTally": "Mostra conteggio voti in tempo reale",
+    "saveError": "Impossibile salvare le impostazioni. Riprova."
   }
 }

@@ -106,6 +106,7 @@
     "roleCivilian": "Civilian",
     "roleImposter": "Imposter",
     "imposterHint": "Find the word everyone else knows.",
+    "coImposters": "Your fellow imposters: {{names}}",
     "gotIt": "Got it",
     "gameLabel": "Game {{index}}",
     "neutralTitle": "Discussion",
@@ -122,6 +123,34 @@
     "endGameError": "Couldn’t end the game. Please try again.",
     "gameEndedToast": "Game ended. Back to lobby."
   },
+  "vote": {
+    "sectionLabel": "Vote",
+    "requestHint": "Think it's time to vote out the imposter?",
+    "callToVoteCta": "Call to Vote",
+    "requestLoading": "Requesting\u2026",
+    "requestCount": "{{count}} of {{threshold}} votes to start",
+    "requestError": "Couldn\u2019t request a vote. Please try again.",
+    "activeLabel": "Voting in progress",
+    "castVoteHint": "Tap a player to vote them out.",
+    "changeVoteHint": "Tap another player to change your vote.",
+    "yourVote": "Your vote",
+    "tallyCount": "{{count}}",
+    "retractCta": "Retract vote",
+    "retractLoading": "Retracting\u2026",
+    "retractError": "Couldn\u2019t retract your vote. Please try again.",
+    "playerListLabel": "Players"
+  },
+  "result": {
+    "outcomeCaught": "Imposters caught!",
+    "outcomeWin": "Imposters win!",
+    "outcomeTie": "It’s a tie!",
+    "votedOutLabel": "Voted out",
+    "nobody": "Nobody",
+    "secretWordLabel": "The secret word was",
+    "impostersLabel": "The imposters",
+    "endGameCta": "End Game",
+    "waitingForHost": "Waiting for the host to end the game…"
+  },
   "notFound": {
     "title": "Page not found",
     "message": "This room may have ended, or the link is wrong."
@@ -129,5 +158,37 @@
   "privacy": {
     "title": "Privacy Policy",
     "placeholder": "Full privacy policy coming soon. Quack collects no personal data and stores nothing beyond your chosen display name in your browser."
+  },
+  "settings": {
+    "title": "Game Settings",
+    "frozenNote": "Settings are locked while a game is in progress.",
+    "language": "Language",
+    "categories": "Word categories",
+    "category_food": "Food",
+    "category_animals": "Animals",
+    "category_places": "Places",
+    "category_movies": "Movies",
+    "category_objects": "Objects",
+    "imposterCount": "Imposters",
+    "impostersSeeEachOther": "Imposters see each other",
+    "imposterHintCount": "Imposter hints",
+    "hintCount_none": "None",
+    "hintCount_one": "1",
+    "hintCount_two_plus": "{{count}}",
+    "numGames": "Games per set",
+    "timerDuration": "Discussion timer",
+    "timerOff": "Off",
+    "timer_1min": "1 min",
+    "timer_2min": "2 min",
+    "timer_3min": "3 min",
+    "timer_5min": "5 min",
+    "votingSection": "Voting",
+    "voteThreshold": "Call-to-vote threshold",
+    "threshold_half": "Majority (50%+)",
+    "threshold_two_thirds": "Two-thirds (67%+)",
+    "threshold_all": "Unanimous",
+    "votingDuration": "Voting timer",
+    "liveVoteTally": "Show live vote count",
+    "saveError": "Couldn\u2019t save settings. Please try again."
   }
 }

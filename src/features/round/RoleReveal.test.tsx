@@ -27,6 +27,8 @@ const civilianAssignment: RoleAssignment = {
   endsAt: null,
   timerSeconds: null,
   seenAt: null,
+  coImposters: [],
+  hints: [],
 };
 
 const imposterAssignment: RoleAssignment = {
@@ -37,6 +39,8 @@ const imposterAssignment: RoleAssignment = {
   endsAt: null,
   timerSeconds: null,
   seenAt: null,
+  coImposters: [],
+  hints: [],
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -169,5 +173,57 @@ describe("RoleReveal (drag-lid card)", () => {
     const lid = getLid();
     fireEvent.keyDown(lid, { key: " " });
     expect(onFirstPeek).toHaveBeenCalledTimes(1);
+  });
+
+  it("shows co-imposter names when peeking as an imposter with imposters_see_each_other on", () => {
+    const withCoImposters: RoleAssignment = {
+      ...imposterAssignment,
+      coImposters: [
+        { playerId: "p1", displayName: "Alice" },
+        { playerId: "p2", displayName: "Bob" },
+      ],
+    };
+    renderReveal(withCoImposters);
+    // Co-imposter names are hidden until peek.
+    expect(screen.queryByText(/Alice/)).not.toBeInTheDocument();
+    fireEvent.keyDown(getLid(), { key: " " });
+    expect(screen.getByText(/Alice.*Bob|Bob.*Alice/)).toBeInTheDocument();
+  });
+
+  it("shows hints when peeking as an imposter with hints assigned", () => {
+    const withHints: RoleAssignment = {
+      ...imposterAssignment,
+      hints: ["Italian dish", "round and flat"],
+    };
+    renderReveal(withHints);
+    // Hints are hidden until peek.
+    expect(screen.queryByText("Italian dish")).not.toBeInTheDocument();
+    fireEvent.keyDown(getLid(), { key: " " });
+    expect(screen.getByText("Italian dish")).toBeInTheDocument();
+    expect(screen.getByText("round and flat")).toBeInTheDocument();
+  });
+
+  it("does not show hints section when hints array is empty", () => {
+    renderReveal(imposterAssignment);
+    fireEvent.keyDown(getLid(), { key: " " });
+    expect(screen.queryByText("Italian dish")).not.toBeInTheDocument();
+  });
+
+  it("does not show hints for civilians", () => {
+    const civilianWithHintsAttempt: RoleAssignment = {
+      ...civilianAssignment,
+      hints: ["should not appear"],
+    };
+    renderReveal(civilianWithHintsAttempt);
+    fireEvent.keyDown(getLid(), { key: " " });
+    expect(screen.queryByText("should not appear")).not.toBeInTheDocument();
+  });
+
+  it("does not show co-imposter section when coImposters is empty", () => {
+    renderReveal(imposterAssignment);
+    fireEvent.keyDown(getLid(), { key: " " });
+    expect(
+      screen.queryByText(/fellow imposters|complici/i),
+    ).not.toBeInTheDocument();
   });
 });

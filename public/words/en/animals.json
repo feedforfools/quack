@@ -3,55 +3,405 @@
   "lang": "en",
   "category": "animals",
   "words": [
-    "dog",
-    "cat",
-    "elephant",
-    "giraffe",
-    "penguin",
-    "dolphin",
-    "eagle",
-    "lion",
-    "tiger",
-    "bear",
-    "wolf",
-    "fox",
-    "rabbit",
-    "turtle",
-    "parrot",
-    "owl",
-    "shark",
-    "whale",
-    "octopus",
-    "jellyfish",
-    "butterfly",
-    "dragonfly",
-    "bee",
-    "ant",
-    "ladybug",
-    "flamingo",
-    "zebra",
-    "panda",
-    "koala",
-    "kangaroo",
-    "crocodile",
-    "chameleon",
-    "peacock",
-    "pelican",
-    "starfish",
-    "crab",
-    "lobster",
-    "seahorse",
-    "cheetah",
-    "gorilla",
-    "toucan",
-    "sloth",
-    "hedgehog",
-    "raccoon",
-    "squirrel",
-    "deer",
-    "moose",
-    "camel",
-    "otter",
-    "platypus"
+    {
+      "word": "dog",
+      "hints": [
+        "loyal companion",
+        "wags its tail",
+        "barks"
+      ]
+    },
+    {
+      "word": "cat",
+      "hints": [
+        "purrs when content",
+        "chases mice",
+        "lands on its feet"
+      ]
+    },
+    {
+      "word": "elephant",
+      "hints": [
+        "largest land animal",
+        "has a trunk",
+        "never forgets"
+      ]
+    },
+    {
+      "word": "giraffe",
+      "hints": [
+        "tallest living animal",
+        "long spotted neck",
+        "eats from treetops"
+      ]
+    },
+    {
+      "word": "penguin",
+      "hints": [
+        "flightless bird",
+        "lives in cold climates",
+        "waddles when walking"
+      ]
+    },
+    {
+      "word": "dolphin",
+      "hints": [
+        "highly intelligent marine mammal",
+        "leaps above water",
+        "uses echolocation"
+      ]
+    },
+    {
+      "word": "eagle",
+      "hints": [
+        "bird of prey",
+        "sharp talons",
+        "keen eyesight"
+      ]
+    },
+    {
+      "word": "lion",
+      "hints": [
+        "king of the savanna",
+        "males have a mane",
+        "roars loudly"
+      ]
+    },
+    {
+      "word": "tiger",
+      "hints": [
+        "striped big cat",
+        "solitary predator",
+        "excellent swimmer"
+      ]
+    },
+    {
+      "word": "bear",
+      "hints": [
+        "hibernates in winter",
+        "loves honey",
+        "very strong"
+      ]
+    },
+    {
+      "word": "wolf",
+      "hints": [
+        "howls at the moon",
+        "hunts in packs",
+        "ancestor of dogs"
+      ]
+    },
+    {
+      "word": "fox",
+      "hints": [
+        "clever and cunning",
+        "bushy tail",
+        "nocturnal hunter"
+      ]
+    },
+    {
+      "word": "rabbit",
+      "hints": [
+        "long ears",
+        "hops around",
+        "loves carrots"
+      ]
+    },
+    {
+      "word": "turtle",
+      "hints": [
+        "hard shell on its back",
+        "moves very slowly",
+        "can live for a century"
+      ]
+    },
+    {
+      "word": "parrot",
+      "hints": [
+        "colorful feathers",
+        "can mimic speech",
+        "lives in tropical forests"
+      ]
+    },
+    {
+      "word": "owl",
+      "hints": [
+        "hunts at night",
+        "can rotate its head",
+        "hoots"
+      ]
+    },
+    {
+      "word": "shark",
+      "hints": [
+        "apex ocean predator",
+        "rows of sharp teeth",
+        "dorsal fin above water"
+      ]
+    },
+    {
+      "word": "whale",
+      "hints": [
+        "largest animal on Earth",
+        "lives in the ocean",
+        "breathes through a blowhole"
+      ]
+    },
+    {
+      "word": "octopus",
+      "hints": [
+        "eight arms",
+        "sprays ink",
+        "can change color"
+      ]
+    },
+    {
+      "word": "jellyfish",
+      "hints": [
+        "floats in the ocean",
+        "no brain or bones",
+        "can sting"
+      ]
+    },
+    {
+      "word": "butterfly",
+      "hints": [
+        "colorful wings",
+        "starts as a caterpillar",
+        "sips flower nectar"
+      ]
+    },
+    {
+      "word": "dragonfly",
+      "hints": [
+        "iridescent wings",
+        "hovers over water",
+        "eats mosquitoes"
+      ]
+    },
+    {
+      "word": "bee",
+      "hints": [
+        "makes honey",
+        "lives in a hive",
+        "important pollinator"
+      ]
+    },
+    {
+      "word": "ant",
+      "hints": [
+        "extremely strong for its size",
+        "lives in colonies",
+        "tunnels underground"
+      ]
+    },
+    {
+      "word": "ladybug",
+      "hints": [
+        "red with black spots",
+        "considered good luck",
+        "eats aphids"
+      ]
+    },
+    {
+      "word": "flamingo",
+      "hints": [
+        "stands on one leg",
+        "pink feathers",
+        "lives near lagoons"
+      ]
+    },
+    {
+      "word": "zebra",
+      "hints": [
+        "black and white stripes",
+        "African plains animal",
+        "related to horses"
+      ]
+    },
+    {
+      "word": "panda",
+      "hints": [
+        "black and white bear",
+        "eats bamboo",
+        "from China"
+      ]
+    },
+    {
+      "word": "koala",
+      "hints": [
+        "clings to eucalyptus trees",
+        "sleeps most of the day",
+        "from Australia"
+      ]
+    },
+    {
+      "word": "kangaroo",
+      "hints": [
+        "carries young in a pouch",
+        "hops on powerful legs",
+        "from Australia"
+      ]
+    },
+    {
+      "word": "crocodile",
+      "hints": [
+        "ancient reptile",
+        "lurks in rivers",
+        "powerful jaw"
+      ]
+    },
+    {
+      "word": "chameleon",
+      "hints": [
+        "changes color",
+        "eyes move independently",
+        "long sticky tongue"
+      ]
+    },
+    {
+      "word": "peacock",
+      "hints": [
+        "spectacular tail fan",
+        "brilliant blue plumage",
+        "loud call"
+      ]
+    },
+    {
+      "word": "pelican",
+      "hints": [
+        "large beak pouch",
+        "scoops fish from water",
+        "coastal bird"
+      ]
+    },
+    {
+      "word": "starfish",
+      "hints": [
+        "five arms",
+        "lives on the sea floor",
+        "can regrow limbs"
+      ]
+    },
+    {
+      "word": "crab",
+      "hints": [
+        "walks sideways",
+        "hard shell",
+        "pincers"
+      ]
+    },
+    {
+      "word": "lobster",
+      "hints": [
+        "large claws",
+        "red when cooked",
+        "lives on the ocean floor"
+      ]
+    },
+    {
+      "word": "seahorse",
+      "hints": [
+        "males carry young",
+        "swims upright",
+        "wraps tail around seaweed"
+      ]
+    },
+    {
+      "word": "cheetah",
+      "hints": [
+        "fastest land animal",
+        "black tear-stripe markings",
+        "sprints in short bursts"
+      ]
+    },
+    {
+      "word": "gorilla",
+      "hints": [
+        "largest primate",
+        "knuckle walks",
+        "lives in mountain forests"
+      ]
+    },
+    {
+      "word": "toucan",
+      "hints": [
+        "enormous colorful beak",
+        "tropical bird",
+        "eats fruit"
+      ]
+    },
+    {
+      "word": "sloth",
+      "hints": [
+        "moves extremely slowly",
+        "hangs upside down",
+        "sleeps most of the day"
+      ]
+    },
+    {
+      "word": "hedgehog",
+      "hints": [
+        "covered in spines",
+        "rolls into a ball",
+        "nocturnal"
+      ]
+    },
+    {
+      "word": "raccoon",
+      "hints": [
+        "masked face markings",
+        "washes food in water",
+        "nocturnal scavenger"
+      ]
+    },
+    {
+      "word": "squirrel",
+      "hints": [
+        "bushy tail",
+        "collects nuts",
+        "climbs trees"
+      ]
+    },
+    {
+      "word": "deer",
+      "hints": [
+        "males have antlers",
+        "grazes in forests",
+        "very graceful"
+      ]
+    },
+    {
+      "word": "moose",
+      "hints": [
+        "largest member of the deer family",
+        "broad flat antlers",
+        "wades in lakes"
+      ]
+    },
+    {
+      "word": "camel",
+      "hints": [
+        "humps store energy",
+        "survives in the desert",
+        "spits when annoyed"
+      ]
+    },
+    {
+      "word": "otter",
+      "hints": [
+        "holds hands while sleeping",
+        "cracks shells on its belly",
+        "playful water mammal"
+      ]
+    },
+    {
+      "word": "platypus",
+      "hints": [
+        "duck bill and beaver tail",
+        "lays eggs",
+        "venomous spurs on hind legs"
+      ]
+    }
   ]
 }
