@@ -23,6 +23,7 @@ import {
 import {
   useRoleAssignment,
   DiscussionScreen,
+  VotingScreen,
   useMarkRoleSeen,
   useStartGameTimer,
   useAllPlayersSeen,
@@ -81,7 +82,11 @@ export default function Room() {
 
   const [joined, setJoined] = useState(false);
   const [joinFailed, setJoinFailed] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [showQR, setShowQR] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  // Local flag: true once the discussion timer fires, driving auto-transition
+  // to the voting screen even before voteState becomes 'active' on the server.
+  const [discussionTimerExpired, setDiscussionTimerExpired] = useState(false);
 
   const {
     roomId,
@@ -149,6 +154,7 @@ export default function Room() {
   // not on every re-render caused by saving-state toggles in useUpdateRoomConfig.
   const parsedConfig = useMemo(() => parseRoomConfig(roomConfig), [roomConfig]);
   const imposterCount = parsedConfig.imposter_count;
+  const imposterHintCount = parsedConfig.imposter_hint_count;
   const minPlayers = imposterCount + MIN_CIVILIAN_BUFFER;
 
   // Voting state (E5-T8) — only fetched during an active game.
@@ -173,6 +179,16 @@ export default function Room() {
     isResolved ? deviceId : null,
     isResolved ? (assignment?.gameId ?? null) : null,
   );
+
+  // Reset timer-expired flag when a new game starts (gameId changes).
+  useEffect(() => {
+    setDiscussionTimerExpired(false);
+  }, [assignment?.gameId]);
+
+  // Called by DiscussionScreen's TimerStrip when discussion time runs out.
+  const handleDiscussionTimerComplete = useCallback(() => {
+    setDiscussionTimerExpired(true);
+  }, []);
 
   const { updateConfig, saving: configSaving } = useUpdateRoomConfig(
     deviceId,
@@ -228,26 +244,14 @@ export default function Room() {
     );
   }, [code, deviceId, hasDisplayName, displayName, joinRoom, joined]);
 
-  // Share / copy-link handler.
+  // Room URL used by the QR code.
   const roomUrl = `${window.location.origin}/r/${code?.toUpperCase()}`;
-
-  const handleShare = useCallback(async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: t("room.shareTitle"),
-          text: t("room.shareText", { code: code?.toUpperCase() }),
-          url: roomUrl,
-        });
-      } catch {
-        // User dismissed share sheet — not an error.
-      }
-    } else {
-      await navigator.clipboard.writeText(roomUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  }, [code, roomUrl, t]);
+  // QR canvas size for the modal: half the viewport width, capped at half of max-w-md (224 px).
+  // useMemo so it's stable across re-renders; recalculates if the component remounts.
+  const qrSize = useMemo(
+    () => Math.floor(Math.min(window.innerWidth, 448) / 2),
+    [],
+  );
 
   // Derive language + categories from parsed room config (E5-T1).
   const configLanguage = parsedConfig.language;
@@ -261,8 +265,8 @@ export default function Room() {
       roomId,
       language: configLanguage,
       categories: configCategories,
-      imposterCount: parsedConfig.imposter_count,
-      hintCount: parsedConfig.imposter_hint_count,
+      imposterCount,
+      hintCount: imposterHintCount,
     });
     if (ok) {
       void refetchRoom();
@@ -281,6 +285,8 @@ export default function Room() {
     startGame,
     configLanguage,
     configCategories,
+    imposterCount,
+    imposterHintCount,
     refetchRoom,
     broadcastRoundStart,
     toast,
@@ -395,11 +401,13 @@ export default function Room() {
   const handleRequestVote = useCallback(
     async (params: { deviceId: string; gameId: string }): Promise<boolean> => {
       const ok = await requestVote(params);
-      if (ok) void broadcastVoteStateChanged();
-      else toast({ title: t("vote.requestError"), variant: "danger" });
+      if (ok) {
+        refetchVoteState();
+        void broadcastVoteStateChanged();
+      } else toast({ title: t("vote.requestError"), variant: "danger" });
       return ok;
     },
-    [requestVote, broadcastVoteStateChanged, toast, t],
+    [requestVote, refetchVoteState, broadcastVoteStateChanged, toast, t],
   );
 
   const handleCastVote = useCallback(
@@ -409,21 +417,37 @@ export default function Room() {
       targetPlayerId: string;
     }): Promise<boolean> => {
       const ok = await castVote(params);
-      if (ok) void broadcastVoteStateChanged();
+      if (ok) {
+        refetchVoteState();
+        void broadcastVoteStateChanged();
+        // Attempt auto-resolve in case this was the last vote — the RPC is a
+        // no-op (raises P0001) if not all players have voted yet.
+        void resolveVote({
+          deviceId: params.deviceId,
+          gameId: params.gameId,
+        }).then((resolved) => {
+          if (resolved) {
+            refetchVoteState();
+            void broadcastVoteStateChanged();
+          }
+        });
+      }
       // Typed errors are surfaced via useCastVote.error; swallow here.
       return ok;
     },
-    [castVote, broadcastVoteStateChanged],
+    [castVote, resolveVote, refetchVoteState, broadcastVoteStateChanged],
   );
 
   const handleRetractVote = useCallback(
     async (params: { deviceId: string; gameId: string }): Promise<boolean> => {
       const ok = await retractVote(params);
-      if (ok) void broadcastVoteStateChanged();
-      else toast({ title: t("vote.retractError"), variant: "danger" });
+      if (ok) {
+        refetchVoteState();
+        void broadcastVoteStateChanged();
+      } else toast({ title: t("vote.retractError"), variant: "danger" });
       return ok;
     },
-    [retractVote, broadcastVoteStateChanged, toast, t],
+    [retractVote, refetchVoteState, broadcastVoteStateChanged, toast, t],
   );
 
   // Called when the voting timer expires — triggers resolution and broadcasts
@@ -431,9 +455,18 @@ export default function Room() {
   const handleVoteTimerComplete = useCallback(() => {
     if (!deviceId || !assignment) return;
     void resolveVote({ deviceId, gameId: assignment.gameId }).then((ok) => {
-      if (ok) void broadcastVoteStateChanged();
+      if (ok) {
+        refetchVoteState();
+        void broadcastVoteStateChanged();
+      }
     });
-  }, [deviceId, assignment, resolveVote, broadcastVoteStateChanged]);
+  }, [
+    deviceId,
+    assignment,
+    resolveVote,
+    refetchVoteState,
+    broadcastVoteStateChanged,
+  ]);
 
   // Compute vote threshold to display in VotingPanel.
   const activePlayerCount = players.filter((p) => !p.is_spectator).length;
@@ -506,8 +539,26 @@ export default function Room() {
         </main>
       );
     }
+
+    // Derive the current game phase from server state + local flag.
+    // Phase order: discussion → voting → result.
+    //  - discussion: default — DiscussionScreen auto-opens the role-peek modal
+    //                when seenAt is null, so there is no separate reveal phase.
+    //  - voting:     vote is active, OR discussion timer has fired, OR the
+    //                assignment's endsAt is already in the past.
+    //  - result:     vote is resolved (show result screen)
+    const timerExpiredNow =
+      assignment.endsAt != null && new Date(assignment.endsAt) <= new Date();
+    const gamePhase = isResolved
+      ? "result"
+      : voteState?.state === "active" ||
+          discussionTimerExpired ||
+          timerExpiredNow
+        ? "voting"
+        : "discussion";
+
     // Result screen — shown when voting is resolved (E5-T9).
-    if (isResolved) {
+    if (gamePhase === "result") {
       // Show a spinner while the result is still being fetched.
       if (resultLoading || !gameResult) {
         return (
@@ -535,36 +586,61 @@ export default function Room() {
       );
     }
 
-    // Merged discussion + reveal screen (E3-T6).
-    return (
-      <>
-        {isReconnecting && (
-          <ReconnectingBanner label={t("room.reconnecting")} />
-        )}
-        <DiscussionScreen
-          assignment={assignment}
-          roomCode={code}
-          players={players}
-          deviceId={deviceId}
-          isHost={isHost}
-          onEndRound={isHost ? handleEndRound : undefined}
-          endRoundLoading={endRoundLoading}
-          onFirstPeek={handleFirstPeek}
-          onStartTimer={isHost ? handleStartTimer : undefined}
-          startTimerLoading={startTimerLoading}
-          allPlayersSeen={allPlayersSeen}
-          voteState={voteState}
-          voteThreshold={voteThreshold}
-          onRequestVote={handleRequestVote}
-          requestVoteLoading={requestVoteLoading}
-          onCastVote={handleCastVote}
-          castVoteLoading={castVoteLoading}
-          onRetractVote={handleRetractVote}
-          retractVoteLoading={retractVoteLoading}
-          onVoteTimerComplete={handleVoteTimerComplete}
-        />
-      </>
-    );
+    // Voting screen — dedicated active-voting phase (E5.5-T5).
+    if (gamePhase === "voting" && voteState) {
+      return (
+        <>
+          {isReconnecting && (
+            <ReconnectingBanner label={t("room.reconnecting")} />
+          )}
+          <VotingScreen
+            assignment={assignment}
+            players={players}
+            deviceId={deviceId}
+            voteState={voteState}
+            onRequestVote={handleRequestVote}
+            requestVoteLoading={requestVoteLoading}
+            voteThreshold={voteThreshold}
+            onCastVote={handleCastVote}
+            castVoteLoading={castVoteLoading}
+            onRetractVote={handleRetractVote}
+            retractVoteLoading={retractVoteLoading}
+            onVoteTimerComplete={handleVoteTimerComplete}
+            votingTotalSeconds={parsedConfig.voting_duration_seconds}
+          />
+        </>
+      );
+    }
+
+    // Discussion screen — post-reveal phase (E5.5-T5).
+    if (gamePhase === "discussion") {
+      return (
+        <>
+          {isReconnecting && (
+            <ReconnectingBanner label={t("room.reconnecting")} />
+          )}
+          <DiscussionScreen
+            assignment={assignment}
+            roomCode={code}
+            players={players}
+            deviceId={deviceId}
+            isHost={isHost}
+            onEndRound={isHost ? handleEndRound : undefined}
+            endRoundLoading={endRoundLoading}
+            onStartTimer={isHost ? handleStartTimer : undefined}
+            startTimerLoading={startTimerLoading}
+            allPlayersSeen={allPlayersSeen}
+            configTimerSeconds={parsedConfig.timer_seconds}
+            voteState={voteState}
+            voteThreshold={voteThreshold}
+            onRequestVote={handleRequestVote}
+            requestVoteLoading={requestVoteLoading}
+            onFirstPeek={handleFirstPeek}
+            onTimerComplete={handleDiscussionTimerComplete}
+          />
+        </>
+      );
+    }
   }
 
   // Room ended by host while this device was in the lobby.
@@ -634,57 +710,41 @@ export default function Room() {
     );
   }
 
-  const isLoading = !joined || roomLoading;
-
   // Own player row for ready state.
   const ownPlayer = players.find((p) => p.id === deviceId);
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md flex-col px-6 py-10">
-      {/* Reconnecting banner — shown when the Realtime channel is not SUBSCRIBED (E4-T6). */}
+    <main className="mx-auto flex h-dvh max-w-md flex-col px-4">
+      {/* Reconnecting banner */}
       {isReconnecting && <ReconnectingBanner label={t("room.reconnecting")} />}
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-fg">{t("room.title")}</h1>
-        {!isLoading && (
-          <span className="text-sm text-fg-muted">
-            {t("room.playerCount", { count: players.length })}
-          </span>
-        )}
+
+      {/* ── Header: "Room" · code centered · QR miniature button ── */}
+      <div className="grid flex-none grid-cols-[auto_1fr_auto] items-center gap-3 pt-4 pb-3">
+        <div className="justify-self-start">
+          <h1 className="text-xl font-semibold text-fg">{t("room.title")}</h1>
+        </div>
+
+        <span className="pointer-events-none justify-self-center font-mono text-4xl font-bold text-accent">
+          {code?.toUpperCase()}
+        </span>
+
+        <div className="justify-self-end">
+          <button
+            type="button"
+            onClick={() => setShowQR(true)}
+            aria-label={t("room.shareLabel")}
+            className="flex items-center justify-center transition-opacity active:opacity-60"
+          >
+            <QRCode value={roomUrl} size={36} label={t("room.shareLabel")} />
+          </button>
+        </div>
       </div>
 
-      {/* Room code */}
-      <p className="mt-4 font-mono text-4xl font-bold tracking-[0.2em] text-accent">
-        {code?.toUpperCase()}
-      </p>
-
-      {/* QR + share */}
-      {!isLoading && (
-        <div className="mt-6 flex flex-col items-center gap-4">
-          <QRCode value={roomUrl} size={192} label={t("room.shareLabel")} />
-          <Button
-            variant="ghost"
-            size="md"
-            onClick={() => void handleShare()}
-            className="w-full"
-          >
-            {copied ? t("room.linkCopied") : t("room.copyLink")}
-          </Button>
-        </div>
-      )}
-
-      {/* Host settings panel — only in lobby, only for host (E5-T1) */}
-      {isHost && !isLoading && (
-        <SettingsPanel
-          config={parsedConfig}
-          onSave={updateConfig}
-          saving={configSaving}
-          disabled={roomState !== "lobby"}
-        />
-      )}
-
-      {/* Roster */}
-      <section aria-label={t("room.shareLabel")} className="mt-8 flex-1">
+      {/* ── Player roster — grows to fill available space ── */}
+      <section
+        aria-label={t("room.shareLabel")}
+        className="mt-3 min-h-0 flex-1 overflow-y-auto"
+      >
         {playersLoading ? (
           <div className="space-y-3">
             {[1, 2].map((i) => (
@@ -715,14 +775,12 @@ export default function Room() {
                       {t("room.host")}
                     </span>
                   )}
-                  {/* Spectator badge — shown instead of ready/connection dots */}
                   {p.is_spectator ? (
                     <span className="rounded-full bg-fg/10 px-2 py-0.5 text-xs text-fg-muted">
                       {t("room.spectatorBadge")}
                     </span>
                   ) : (
                     <>
-                      {/* Ready indicator — hidden for the host who has no ready button */}
                       {p.id !== hostPlayerId && (
                         <span
                           aria-label={
@@ -738,7 +796,6 @@ export default function Room() {
                           ].join(" ")}
                         />
                       )}
-                      {/* Connection dot — derived from live Realtime presence */}
                       <span
                         aria-label={
                           connectedIds.has(p.id)
@@ -754,7 +811,6 @@ export default function Room() {
                       />
                     </>
                   )}
-                  {/* Kick button — host only, not for self, only in lobby */}
                   {isHost && p.id !== deviceId && roomState === "lobby" && (
                     <button
                       type="button"
@@ -781,80 +837,158 @@ export default function Room() {
         )}
       </section>
 
-      {/* Bottom action area */}
-      <div className="mt-6 space-y-3">
-        {/* Non-host: Ready toggle */}
-        {joined && !isHost && !roomLoading && (
-          <Button
-            variant={ownPlayer?.is_ready ? "ghost" : "primary"}
-            size="lg"
-            onClick={() => void toggleReady(ownPlayer?.is_ready ?? false)}
-            disabled={readyLoading}
-            className="w-full"
-          >
-            {ownPlayer?.is_ready ? t("room.notReadyCta") : t("room.readyCta")}
-          </Button>
-        )}
-
-        {/* Host: Start button */}
+      {/* ── Bottom action row ── */}
+      <div className="flex-none pb-6 pt-3">
+        {/* Host: exit · start · settings */}
         {joined && isHost && !roomLoading && (
-          <div className="flex flex-col items-center gap-2">
-            <Button
-              variant="primary"
-              size="lg"
+          <div className="flex items-center gap-2">
+            {/* Exit — square, red */}
+            <button
+              type="button"
+              aria-label={t("room.hostLeaveCta")}
+              disabled={hostLeaveLoading}
+              onClick={() => {
+                setSelectedSuccessor(null);
+                setShowLeaveModal(true);
+              }}
+              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-danger text-danger-ink transition-opacity disabled:opacity-40 active:opacity-80"
+            >
+              {/* Arrow-right-on-square (exit) icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-6 w-6"
+                aria-hidden="true"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5h-6Zm10.72 4.72a.75.75 0 0 1 1.06 0l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72H9a.75.75 0 0 1 0-1.5h10.94l-1.72-1.72a.75.75 0 0 1 0-1.06Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+
+            {/* Start — rectangular, yellow */}
+            <button
+              type="button"
               onClick={() => void handleStart()}
               disabled={!canStart || startLoading}
               aria-describedby={!canStart ? "start-hint" : undefined}
-              className="w-full"
+              className="flex h-14 flex-1 items-center justify-center rounded-xl bg-accent text-base font-semibold text-accent-ink transition-opacity disabled:opacity-40 active:opacity-80"
             >
-              {t("room.startGame")}
-            </Button>
-            {!canStart && (
-              <p id="start-hint" className="text-center text-sm text-fg-muted">
-                {startDisabledReason}
-              </p>
-            )}
+              {startLoading ? (
+                <span
+                  className="h-5 w-5 animate-spin rounded-full border-2 border-accent-ink border-t-transparent"
+                  aria-hidden="true"
+                />
+              ) : (
+                "Start · Inizia"
+              )}
+            </button>
+
+            {/* Settings — square, neutral */}
+            <button
+              type="button"
+              aria-label={t("settings.title")}
+              onClick={() => setShowSettings(true)}
+              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-border bg-bg-raised text-fg-muted transition-colors hover:bg-fg/5 active:opacity-80"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-6 w-6"
+                aria-hidden="true"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 0 0-2.282.819l-.922 1.597a1.875 1.875 0 0 0 .432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 0 0 0 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 0 0-.432 2.385l.922 1.597a1.875 1.875 0 0 0 2.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.986.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 0 0 2.28-.819l.923-1.597a1.875 1.875 0 0 0-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 0 0 0-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 0 0-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 0 0-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 0 0-1.85-1.567h-1.843ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
           </div>
         )}
 
-        {/* Non-host: context message based on own ready state */}
-        {joined && !isHost && !roomLoading && (
-          <p className="text-center text-sm text-fg-muted">
-            {ownPlayer?.is_ready
-              ? t("room.waitingForHost")
-              : t("room.waitingToReady")}
+        {/* Disabled-start hint */}
+        {joined && isHost && !roomLoading && !canStart && (
+          <p id="start-hint" className="mt-2 text-center text-xs text-fg-muted">
+            {startDisabledReason}
           </p>
         )}
 
-        {/* Non-host: Leave Room */}
+        {/* Non-host: exit · ready */}
         {joined && !isHost && !roomLoading && (
-          <Button
-            variant="ghost"
-            size="md"
-            onClick={() => void handleLeave()}
-            disabled={leaveLoading}
-            className="w-full text-danger"
-          >
-            {t("room.leaveCta")}
-          </Button>
-        )}
+          <div className="flex items-center gap-2">
+            {/* Exit — square, red */}
+            <button
+              type="button"
+              aria-label={t("room.leaveCta")}
+              disabled={leaveLoading}
+              onClick={() => void handleLeave()}
+              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-danger text-danger-ink transition-opacity disabled:opacity-40 active:opacity-80"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-6 w-6"
+                aria-hidden="true"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5h-6Zm10.72 4.72a.75.75 0 0 1 1.06 0l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72H9a.75.75 0 0 1 0-1.5h10.94l-1.72-1.72a.75.75 0 0 1 0-1.06Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
 
-        {/* Host: Leave Room */}
-        {joined && isHost && !roomLoading && (
-          <Button
-            variant="ghost"
-            size="md"
-            onClick={() => {
-              setSelectedSuccessor(null);
-              setShowLeaveModal(true);
-            }}
-            disabled={hostLeaveLoading}
-            className="w-full text-danger"
-          >
-            {t("room.hostLeaveCta")}
-          </Button>
+            {/* Ready — rectangular, rest of width */}
+            <button
+              type="button"
+              onClick={() => void toggleReady(ownPlayer?.is_ready ?? false)}
+              disabled={readyLoading}
+              className={[
+                "flex h-14 flex-1 items-center justify-center rounded-xl text-base font-semibold transition-opacity disabled:opacity-40 active:opacity-80",
+                ownPlayer?.is_ready
+                  ? "border border-border bg-transparent text-fg"
+                  : "bg-accent text-accent-ink",
+              ].join(" ")}
+            >
+              {ownPlayer?.is_ready ? t("room.notReadyCta") : t("room.readyCta")}
+            </button>
+          </div>
         )}
       </div>
+
+      {/* QR modal — full-size QR code for sharing the room URL */}
+      <Modal
+        open={showQR}
+        onClose={() => setShowQR(false)}
+        title={t("room.shareLabel")}
+      >
+        <div className="flex justify-center py-4">
+          <QRCode value={roomUrl} size={qrSize} label={t("room.shareLabel")} />
+        </div>
+      </Modal>
+
+      {/* Settings modal — host only */}
+      {isHost && (
+        <Modal
+          open={showSettings}
+          onClose={() => setShowSettings(false)}
+          title={t("settings.title")}
+        >
+          <SettingsPanel
+            config={parsedConfig}
+            onSave={updateConfig}
+            saving={configSaving}
+            disabled={roomState !== "lobby"}
+            defaultOpen
+          />
+        </Modal>
+      )}
 
       {/* Host leave modal */}
       <Modal
@@ -868,7 +1002,6 @@ export default function Room() {
         }
         dismissible={!hostLeaveLoading}
       >
-        {/* Successor picker — shown only when there are other players. */}
         {players.length > 1 && (
           <fieldset className="mb-4">
             <legend className="mb-2 text-sm font-medium text-fg">

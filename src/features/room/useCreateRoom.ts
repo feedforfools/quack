@@ -1,7 +1,9 @@
 import { useState, useCallback } from "react";
 import { supabaseWithDevice } from "@/lib/supabase";
+import type { Json } from "@/lib/supabase/types";
 import { generateUniqueRoomCode } from "./generateCode";
 import { log } from "@/lib/log";
+import type { RoomConfig } from "./roomConfig";
 
 const HOST_SECRET_STORAGE_PREFIX = "quack_host_secret_";
 
@@ -9,6 +11,7 @@ export interface UseCreateRoomReturn {
   createRoom: (params: {
     deviceId: string;
     displayName: string;
+    config?: RoomConfig;
   }) => Promise<string | null>;
   loading: boolean;
   error: "create.errorCreate" | "create.errorAlreadyInRoom" | null;
@@ -29,15 +32,19 @@ export interface UseCreateRoomReturn {
  */
 export function useCreateRoom(): UseCreateRoomReturn {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<"create.errorCreate" | "create.errorAlreadyInRoom" | null>(null);
+  const [error, setError] = useState<
+    "create.errorCreate" | "create.errorAlreadyInRoom" | null
+  >(null);
 
   const createRoom = useCallback(
     async ({
       deviceId,
       displayName,
+      config,
     }: {
       deviceId: string;
       displayName: string;
+      config?: RoomConfig;
     }): Promise<string | null> => {
       setLoading(true);
       setError(null);
@@ -78,7 +85,9 @@ export function useCreateRoom(): UseCreateRoomReturn {
             code,
             host_player_id: deviceId,
             host_secret_hash: hostSecretHash,
-            config: {},
+            config: (config ?? {}) as unknown as {
+              [key: string]: Json | undefined;
+            },
             state: "lobby",
             locked_after_start: false,
           })
@@ -109,7 +118,10 @@ export function useCreateRoom(): UseCreateRoomReturn {
         }
 
         // Persist host secret locally (never sent to server again; used client-side only).
-        localStorage.setItem(`${HOST_SECRET_STORAGE_PREFIX}${roomId}`, hostSecret);
+        localStorage.setItem(
+          `${HOST_SECRET_STORAGE_PREFIX}${roomId}`,
+          hostSecret,
+        );
         log.debug("useCreateRoom: room created");
 
         return code;

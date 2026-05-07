@@ -1,8 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useDeviceId, useDisplayName, DisplayNamePrompt } from "@/features/identity";
-import { useCreateRoom } from "@/features/room";
-import { Button } from "@/components";
+import { useState } from "react";
+import {
+  useDeviceId,
+  useDisplayName,
+  DisplayNamePrompt,
+} from "@/features/identity";
+import {
+  BasicSettingsFields,
+  DEFAULT_ROOM_CONFIG,
+  useCreateRoom,
+} from "@/features/room";
+import { Button, Card } from "@/components";
 
 /**
  * Create page — `/create`
@@ -18,6 +27,7 @@ export default function Create() {
   const deviceId = useDeviceId();
   const { displayName, hasDisplayName, setDisplayName } = useDisplayName();
   const { createRoom, loading, error } = useCreateRoom();
+  const [config, setConfig] = useState(DEFAULT_ROOM_CONFIG);
 
   if (!hasDisplayName) {
     return (
@@ -30,15 +40,27 @@ export default function Create() {
 
   async function handleCreate() {
     if (!deviceId || !displayName) return;
-    const code = await createRoom({ deviceId, displayName });
+    const code = await createRoom({ deviceId, displayName, config });
     if (code) {
       void navigate(`/r/${code}`);
     }
   }
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 py-10">
+    <main className="mx-auto flex min-h-screen max-w-md flex-col px-6 py-10">
       <h1 className="text-2xl font-semibold text-fg">{t("create.title")}</h1>
+      <p className="mt-2 text-sm text-fg-muted">{t("create.subtitle")}</p>
+
+      <Card className="mt-6 divide-y divide-border">
+        <BasicSettingsFields
+          config={config}
+          onChange={setConfig}
+          idPrefix="create-setting"
+        />
+        <div className="pt-4 text-sm text-fg-muted">
+          {t("create.lobbyHint")}
+        </div>
+      </Card>
 
       {error && (
         <p role="alert" className="mt-4 text-sm text-danger">
@@ -47,7 +69,7 @@ export default function Create() {
       )}
 
       <Button
-        className="mt-8 w-full"
+        className="mt-6 w-full"
         size="lg"
         loading={loading}
         onClick={() => void handleCreate()}

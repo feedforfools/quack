@@ -1,44 +1,52 @@
 import { useTranslation } from "react-i18next";
 import { SUPPORTED_LANGUAGES, type SupportedLanguage } from "@/lib/i18n";
 
+const FLAG_CDN = "https://flagicons.lipis.dev/flags/4x3";
+
+const FLAG_CODE: Record<SupportedLanguage, string> = {
+  en: "gb",
+  it: "it",
+};
+
 /**
- * Compact EN / IT language toggle rendered in the app header.
- *
- * The active language button is `aria-pressed="true"` (toggle semantics).
- * Both buttons meet the 44×44 px tap-target minimum.
+ * Single-button language toggle showing a flat circular flag of the active language.
+ * Clicking it cycles to the next available language.
  */
 export function LanguageToggle() {
   const { i18n, t } = useTranslation();
-  const current = i18n.language as SupportedLanguage;
+  const current =
+    (SUPPORTED_LANGUAGES.find((l) =>
+      i18n.language.startsWith(l),
+    ) as SupportedLanguage) ?? SUPPORTED_LANGUAGES[0];
 
-  function handleChange(lang: SupportedLanguage) {
-    if (lang !== current) {
-      void i18n.changeLanguage(lang);
-    }
+  function handleToggle() {
+    const nextIndex =
+      (SUPPORTED_LANGUAGES.indexOf(current) + 1) % SUPPORTED_LANGUAGES.length;
+    void i18n.changeLanguage(SUPPORTED_LANGUAGES[nextIndex]);
   }
 
+  const code = FLAG_CODE[current];
+
   return (
-    <nav aria-label={t("language.label")} className="flex gap-1">
-      {SUPPORTED_LANGUAGES.map((lang) => {
-        const isActive = current.startsWith(lang);
-        return (
-          <button
-            key={lang}
-            onClick={() => handleChange(lang)}
-            aria-pressed={isActive}
-            className={[
-              "min-h-[44px] min-w-[44px] rounded-lg px-3 text-sm font-semibold uppercase",
-              "transition-colors duration-150",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
-              isActive
-                ? "bg-accent text-accent-ink"
-                : "bg-transparent text-fg-muted hover:text-fg",
-            ].join(" ")}
-          >
-            {t(`language.${lang}`)}
-          </button>
-        );
-      })}
-    </nav>
+    <button
+      onClick={handleToggle}
+      aria-label={t("language.label")}
+      title={t("language.label")}
+      className={[
+        "min-h-[44px] min-w-[44px] rounded-full",
+        "flex items-center justify-center",
+        "transition-opacity duration-150 hover:opacity-70",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+      ].join(" ")}
+    >
+      <img
+        src={`${FLAG_CDN}/${code}.svg`}
+        alt={code}
+        width={28}
+        height={28}
+        className="rounded-full object-cover ring-2 ring-white"
+        style={{ aspectRatio: "1 / 1" }}
+      />
+    </button>
   );
 }

@@ -29,8 +29,6 @@ export interface RoomConfig {
    * pool must carry the hint field — added in E5-T5.
    */
   imposter_hint_count: number;
-  /** How many games make up a "set". Counter tracked in E5-T2. */
-  num_games: number;
   /** Discussion timer length in seconds. 0 = disabled. */
   timer_seconds: number;
   /**
@@ -54,7 +52,6 @@ export const DEFAULT_ROOM_CONFIG: RoomConfig = {
   imposter_count: 1,
   imposters_see_each_other: false,
   imposter_hint_count: 0,
-  num_games: 3,
   timer_seconds: 0,
   vote_threshold_fraction: 0.5,
   voting_duration_seconds: 60,
@@ -101,11 +98,6 @@ export function parseRoomConfig(raw: unknown): RoomConfig {
       ? Math.floor(r["imposter_hint_count"])
       : DEFAULT_ROOM_CONFIG.imposter_hint_count;
 
-  const num_games =
-    typeof r["num_games"] === "number" && r["num_games"] >= 1
-      ? Math.floor(r["num_games"])
-      : DEFAULT_ROOM_CONFIG.num_games;
-
   const timer_seconds =
     typeof r["timer_seconds"] === "number" && r["timer_seconds"] >= 0
       ? Math.floor(r["timer_seconds"])
@@ -130,7 +122,6 @@ export function parseRoomConfig(raw: unknown): RoomConfig {
     imposter_count,
     imposters_see_each_other,
     imposter_hint_count,
-    num_games,
     timer_seconds,
     vote_threshold_fraction,
     voting_duration_seconds,

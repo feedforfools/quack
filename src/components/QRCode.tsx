@@ -4,7 +4,7 @@ import QRCodeLib from "qrcode";
 interface QRCodeProps {
   /** The URL or text to encode. */
   value: string;
-  /** Canvas size in CSS px (rendered at 2× for retina). Default 192. */
+  /** Canvas display size in CSS px (rendered at 2× for retina). Default 192. */
   size?: number;
   /** Accessible label for the canvas element. */
   label: string;
@@ -22,7 +22,7 @@ export function QRCode({ value, size = 192, label }: QRCodeProps) {
     if (!canvasRef.current) return;
 
     void QRCodeLib.toCanvas(canvasRef.current, value, {
-      width: size * 2, // render at 2× for retina; CSS constrains display size
+      width: size, // * 2, // render at 2× for retina; CSS constrains display size
       margin: 1,
       errorCorrectionLevel: "H",
       color: {
@@ -38,7 +38,7 @@ export function QRCode({ value, size = 192, label }: QRCodeProps) {
       aria-label={label}
       role="img"
       style={{ width: size, height: size }}
-      className="rounded-lg"
+      className="rounded-sm"
     />
   );
 }

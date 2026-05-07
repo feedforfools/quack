@@ -1,14 +1,12 @@
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components";
-import { CountdownDial } from "@/components";
+import { Button, Modal, TimerStrip } from "@/components";
 import { RoleReveal } from "./RoleReveal";
-import { VotingPanel } from "./VotingPanel";
 import type { RoleAssignment } from "./useRoleAssignment";
 import type { VoteState } from "./useVoteState";
 
 interface DiscussionScreenProps {
-  /** The device's own role assignment — powers the drag-lid card. */
+  /** The device's own role assignment — used for the peek-again modal. */
   assignment: RoleAssignment;
   /** Room code shown as a subtle anchor (helps players confirm their room). */
   roomCode?: string;
@@ -36,11 +34,28 @@ interface DiscussionScreenProps {
   /** Whether all players have seen their role (enables Start Timer). */
   allPlayersSeen?: boolean;
   /**
-   * Called exactly once the first time the player holds the lid past the
-   * peek threshold. Wired to `mark_role_seen` in E3-T11.
+   * Configured timer duration in seconds from room config.
+   * Used to render the full-bar pre-start state before the host starts the
+   * timer. When 0 (timer disabled) the strip is hidden entirely.
+   */
+  configTimerSeconds?: number;
+  /**
+   * Called when the player holds the role lid past the peek threshold for
+   * the first time (i.e. their first genuine peek). Triggers markRoleSeen.
+   * Only needed when `assignment.seenAt` is null on mount.
    */
   onFirstPeek?: () => void;
-  /** Current voting state — drives VotingPanel (E5-T8). */
+  /**
+   * Called once when the discussion timer reaches zero (client-side).
+   * Room.tsx uses this to set `discussionTimerExpired` and transition
+   * everyone to the VotingScreen.
+   */
+  onTimerComplete?: () => void;
+  /**
+   * Current voting state — only 'none' and 'requested' states are shown
+   * here (and only when no discussion timer is running). 'active' transitions
+   * to VotingScreen; 'resolved' to ResultScreen.
+   */
   voteState?: VoteState | null;
   /**
    * Minimum number of vote-requests to transition to 'active'.
@@ -53,44 +68,30 @@ interface DiscussionScreenProps {
     gameId: string;
   }) => Promise<boolean>;
   requestVoteLoading?: boolean;
-  /** Called when player taps a player row to cast/change vote. */
-  onCastVote?: (params: {
-    deviceId: string;
-    gameId: string;
-    targetPlayerId: string;
-  }) => Promise<boolean>;
-  castVoteLoading?: boolean;
-  /** Called when player taps "Retract vote". */
-  onRetractVote?: (params: {
-    deviceId: string;
-    gameId: string;
-  }) => Promise<boolean>;
-  retractVoteLoading?: boolean;
-  /**
-   * Called once when the voting CountdownDial reaches zero.
-   * Triggers `resolve_vote` in Room.tsx (E5-T9).
-   */
-  onVoteTimerComplete?: () => void;
 }
 
 /**
- * Merged discussion + reveal screen (E3-T6).
+ * Discussion phase screen (E5.5-T5 refactor, E5.5 UX pass).
  *
- * Replaces the two-step "flip card → dismiss → neutral screen" flow.
- * The drag-lid card is always present so players can re-peek at any point
- * during the discussion; outside of an active peek the screen is glance-safe
- * (the lid covers the role).
+ * Shown immediately when the game starts (replaces the old separate
+ * RevealScreen). If the player has not yet seen their role (`seenAt = null`),
+ * the "peek" modal opens automatically on mount — no separate reveal page.
  *
- * Layout (top-to-bottom):
- *  1. Round label (context anchor)
- *  2. Drag-lid card (via RoleReveal sub-component)
- *  3. "Discussion" heading + subtitle
- *  4. Player roster (names only)
- *  5. Room code (subtle)
- *  6. End Round button (host only)
- *
- * E3-T7 will insert the countdown timer as the primary visual between the
- * round label and the drag-lid card.
+ * Layout:
+ *   1. Game label (context anchor)
+ *   2. TimerStrip — primary visual when running; triggers onTimerComplete
+ *      which transitions Room.tsx to VotingScreen for everyone.
+ *   3. "Start Timer" host control
+ *   4. "Peek at role" button → modal with drag-lid RoleReveal card.
+ *      Auto-opens when seenAt is null (first peek). Subsequent opens are
+ *      the manual "peek again" button.
+ *   5. Discussion heading + subtitle
+ *   6. Player roster (names only)
+ *   7. Room code (subtle anchor)
+ *   8. Compact "Call to Vote" row — only visible when no timer is running
+ *      (no-timer games); hidden once the discussion timer starts because
+ *      timer-expiry transitions everyone to VotingScreen instead.
+ *   9. End Game button (host only)
  */
 export function DiscussionScreen({
   assignment,
@@ -103,184 +104,213 @@ export function DiscussionScreen({
   onStartTimer,
   startTimerLoading = false,
   allPlayersSeen = false,
+  configTimerSeconds = 0,
   onFirstPeek,
+  onTimerComplete,
   voteState,
   voteThreshold = 1,
   onRequestVote,
   requestVoteLoading = false,
-  onCastVote,
-  castVoteLoading = false,
-  onRetractVote,
-  retractVoteLoading = false,
-  onVoteTimerComplete,
 }: DiscussionScreenProps) {
   const { t } = useTranslation();
-  const [_isPeeking, setIsPeeking] = useState(false);
 
-  const handlePeekChange = useCallback((v: boolean) => {
-    setIsPeeking(v);
-  }, []);
+  // Auto-open the peek modal on first mount when the player hasn't seen their
+  // role yet — replaces the old dedicated RevealScreen page (E5.5 UX pass).
+  const [peekOpen, setPeekOpen] = useState(() => assignment.seenAt === null);
+
+  // Per-device tracking so the "Call to Vote" button only turns ghost for the
+  // device that pressed it, not for everyone when any one player requests.
+  const [hasLocallyRequestedVote, setHasLocallyRequestedVote] = useState(false);
 
   const timerActive = assignment.endsAt !== null;
+  // totalSeconds for the strip: use the actual round duration once running,
+  // fall back to the configured value for the full-bar pre-start display.
+  const effectiveTimerSeconds = assignment.timerSeconds ?? configTimerSeconds;
   const canStartTimer =
     isHost && !timerActive && allPlayersSeen && onStartTimer;
 
+  const handleRequestVote = useCallback(() => {
+    if (!deviceId || !onRequestVote) return;
+    setHasLocallyRequestedVote(true);
+    void onRequestVote({ deviceId, gameId: assignment.gameId }).then((ok) => {
+      if (!ok) setHasLocallyRequestedVote(false); // revert on failure
+    });
+  }, [onRequestVote, deviceId, assignment.gameId]);
+
+  // Call-to-vote is shown only when no discussion timer is running:
+  // timer-expiry games use VotingScreen for the whole voting flow.
+  const showCallToVote =
+    !timerActive &&
+    voteState != null &&
+    (voteState.state === "none" || voteState.state === "requested") &&
+    deviceId != null &&
+    onRequestVote != null;
+
   return (
-    <main className="mx-auto flex min-h-screen max-w-md flex-col items-center px-6 py-10">
-      {/* Round label */}
-      <p className="text-xs font-semibold uppercase tracking-widest text-fg-subtle">
-        {t("round.gameLabel", { index: assignment.roundIndex })}
-      </p>
-
-      {/* ── Countdown timer — primary visual when running ────────────────── */}
-      {timerActive && assignment.timerSeconds !== null && (
-        <div className="mt-6">
-          <CountdownDial
-            endsAt={assignment.endsAt!}
-            totalSeconds={assignment.timerSeconds}
-            size={200}
+    <div className="flex min-h-screen flex-col">
+      {/* ── Timer strip — sticky header ─────────────────────────────────── */}
+      {effectiveTimerSeconds > 0 && (
+        <div className="sticky top-0 z-10 w-full">
+          <TimerStrip
+            endsAt={assignment.endsAt}
+            totalSeconds={effectiveTimerSeconds}
+            running={timerActive}
+            onToggle={
+              canStartTimer && !startTimerLoading
+                ? () => void onStartTimer!()
+                : undefined
+            }
+            onComplete={onTimerComplete}
           />
-        </div>
-      )}
-
-      {/* ── Start Timer — host control (visible until timer is running) ───── */}
-      {isHost && !timerActive && (
-        <div className="mt-6 flex flex-col items-center gap-2">
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={onStartTimer ? () => void onStartTimer() : undefined}
-            disabled={!canStartTimer || startTimerLoading}
-            className="w-full max-w-xs"
-          >
-            {startTimerLoading
-              ? t("round.startTimerLoading")
-              : t("round.startTimerCta")}
-          </Button>
-          {!allPlayersSeen && (
-            <p className="text-center text-xs text-fg-muted">
+          {isHost && !timerActive && !allPlayersSeen && (
+            <p className="bg-bg px-4 py-2 text-center text-xs text-fg-muted">
               {t("round.waitingForAllSeen")}
             </p>
           )}
         </div>
       )}
 
-      {/* ── Drag-lid card — always visible, glance-safe ──────────────────── */}
-      <div className="mt-6 flex flex-col items-center">
-        <RoleReveal
-          assignment={assignment}
-          onFirstPeek={onFirstPeek}
-          onPeekChange={handlePeekChange}
-          initialHasPeeked={assignment.seenAt !== null}
-        />
-      </div>
+      <main className="mx-auto flex w-full max-w-md flex-1 flex-col items-center px-6 py-10">
+        {/* Game label */}
+        <p className="text-xs font-semibold uppercase tracking-widest text-fg-subtle">
+          {t("round.gameLabel", { index: assignment.roundIndex })}
+        </p>
 
-      {/* ── Discussion context ────────────────────────────────────────────── */}
-      <h1 className="mt-8 text-center text-2xl font-semibold text-fg">
-        {t("round.neutralTitle")}
-      </h1>
-      <p className="mt-2 text-center text-sm text-fg-muted">
-        {t("round.neutralSubtitle")}
-      </p>
+        {/* ── Peek at role — compact button; auto-opens modal on first visit ── */}
+        <Button
+          variant="ghost"
+          size="md"
+          onClick={() => setPeekOpen(true)}
+          className="mt-6"
+        >
+          {t("round.peekAgainCta")}
+        </Button>
 
-      {/* Player roster — names only, no role info. Active participants only. */}
-      {(() => {
-        const activePlayers = players.filter((p) => !p.is_spectator);
-        const spectators = players.filter((p) => p.is_spectator);
-        return (
-          <>
-            {activePlayers.length > 0 && (
-              <ul
-                className="mt-6 w-full space-y-2"
-                aria-label={t("round.neutralPlayers")}
-              >
-                {activePlayers.map((p) => (
-                  <li
-                    key={p.id}
-                    className="flex items-center rounded-xl bg-bg-raised px-4 py-3"
-                  >
-                    <span className="flex-1 truncate font-medium text-fg">
-                      {p.display_name}
-                    </span>
-                    {p.id === deviceId && (
-                      <span className="rounded-full bg-accent/20 px-2 py-0.5 text-xs font-semibold text-accent">
-                        {t("room.you")}
-                      </span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            )}
+        <Modal
+          open={peekOpen}
+          onClose={() => setPeekOpen(false)}
+          title={t("round.peekAgainModalTitle")}
+          description={t("round.dragToReveal")}
+        >
+          <div className="flex justify-center">
+            <RoleReveal
+              assignment={assignment}
+              initialHasPeeked={assignment.seenAt !== null}
+              onFirstPeek={onFirstPeek}
+            />
+          </div>
+        </Modal>
 
-            {/* Spectators — late joiners shown muted, set apart from the
-                active roster so currently-playing players are not confused. */}
-            {spectators.length > 0 && (
-              <div className="mt-6 w-full">
-                <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-fg-subtle">
-                  {t("room.spectatorBadge")}
-                </p>
-                <ul className="space-y-2" aria-label={t("room.spectatorBadge")}>
-                  {spectators.map((p) => (
+        {/* ── Discussion context ────────────────────────────────────────────── */}
+        <h1 className="mt-8 text-center text-2xl font-semibold text-fg">
+          {t("round.neutralTitle")}
+        </h1>
+        <p className="mt-2 text-center text-sm text-fg-muted">
+          {t("round.neutralSubtitle")}
+        </p>
+
+        {/* Player roster — names only, no role info. Active participants only. */}
+        {(() => {
+          const activePlayers = players.filter((p) => !p.is_spectator);
+          const spectators = players.filter((p) => p.is_spectator);
+          return (
+            <>
+              {activePlayers.length > 0 && (
+                <ul
+                  className="mt-6 w-full space-y-2"
+                  aria-label={t("round.neutralPlayers")}
+                >
+                  {activePlayers.map((p) => (
                     <li
                       key={p.id}
-                      className="flex items-center rounded-xl border border-dashed border-fg-subtle/30 bg-bg-raised/50 px-4 py-3 text-fg-muted"
+                      className="flex items-center rounded-xl bg-bg-raised px-4 py-3"
                     >
-                      <span className="flex-1 truncate font-medium">
+                      <span className="flex-1 truncate font-medium text-fg">
                         {p.display_name}
                       </span>
+                      {p.id === deviceId && (
+                        <span className="rounded-full bg-accent/20 px-2 py-0.5 text-xs font-semibold text-accent">
+                          {t("room.you")}
+                        </span>
+                      )}
                     </li>
                   ))}
                 </ul>
-              </div>
-            )}
-          </>
-        );
-      })()}
+              )}
 
-      {/* Room code — subtle anchor */}
-      {roomCode && (
-        <p className="mt-6 font-mono text-xs text-fg-subtle">
-          {roomCode.toUpperCase()}
-        </p>
-      )}
+              {/* Spectators — late joiners shown muted, set apart from the
+                active roster so currently-playing players are not confused. */}
+              {spectators.length > 0 && (
+                <div className="mt-6 w-full">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-fg-subtle">
+                    {t("room.spectatorBadge")}
+                  </p>
+                  <ul
+                    className="space-y-2"
+                    aria-label={t("room.spectatorBadge")}
+                  >
+                    {spectators.map((p) => (
+                      <li
+                        key={p.id}
+                        className="flex items-center rounded-xl border border-dashed border-fg-subtle/30 bg-bg-raised/50 px-4 py-3 text-fg-muted"
+                      >
+                        <span className="flex-1 truncate font-medium">
+                          {p.display_name}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </>
+          );
+        })()}
 
-      {/* ── Voting panel (E5-T8) ─────────────────────────────────────────── */}
-      {voteState &&
-        voteState.state !== "resolved" &&
-        deviceId &&
-        onRequestVote &&
-        onCastVote &&
-        onRetractVote && (
-          <VotingPanel
-            gameId={assignment.gameId}
-            deviceId={deviceId}
-            players={players
-              .filter((p) => !p.is_spectator)
-              .map((p) => ({ id: p.id, display_name: p.display_name }))}
-            voteState={voteState}
-            voteThreshold={voteThreshold}
-            onRequestVote={onRequestVote}
-            requestVoteLoading={requestVoteLoading}
-            onCastVote={onCastVote}
-            castVoteLoading={castVoteLoading}
-            onRetractVote={onRetractVote}
-            retractVoteLoading={retractVoteLoading}
-            onVoteTimerComplete={onVoteTimerComplete}
-          />
+        {/* Room code — subtle anchor */}
+        {roomCode && (
+          <p className="mt-6 font-mono text-xs text-fg-subtle">
+            {roomCode.toUpperCase()}
+          </p>
         )}
 
-      {/* End Round — host-only action */}
-      {isHost && onEndRound && (
-        <Button
-          variant="danger"
-          size="lg"
-          onClick={onEndRound}
-          disabled={endRoundLoading}
-          className="mt-8 w-full max-w-xs"
-        >
-          {endRoundLoading ? "…" : t("round.endGameCta")}
-        </Button>
-      )}
-    </main>
+        {/* ── Compact call-to-vote — only for no-timer games ───────────────── */}
+        {showCallToVote && (
+          <div className="mt-6 flex w-full items-center gap-3 rounded-xl bg-bg-raised px-4 py-3">
+            <p className="flex-1 text-sm text-fg-muted">
+              {voteState!.state === "requested"
+                ? t("vote.requestCount", {
+                    count: voteState!.requestCount,
+                    threshold: voteThreshold,
+                  })
+                : t("vote.requestHint")}
+            </p>
+            <Button
+              variant={hasLocallyRequestedVote ? "ghost" : "primary"}
+              size="sm"
+              onClick={handleRequestVote}
+              disabled={requestVoteLoading || hasLocallyRequestedVote}
+              className="shrink-0"
+            >
+              {requestVoteLoading
+                ? t("vote.requestLoading")
+                : t("vote.callToVoteCta")}
+            </Button>
+          </div>
+        )}
+
+        {/* End Game — host-only action */}
+        {isHost && onEndRound && (
+          <Button
+            variant="danger"
+            size="lg"
+            onClick={onEndRound}
+            disabled={endRoundLoading}
+            className="mt-8 w-full max-w-xs"
+          >
+            {endRoundLoading ? "…" : t("round.endGameCta")}
+          </Button>
+        )}
+      </main>
+    </div>
   );
 }

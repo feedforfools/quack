@@ -1,5 +1,5 @@
 export { Button } from "./Button";
-export type { } from "./Button"; // types inferred from forwardRef signature
+export type {} from "./Button"; // types inferred from forwardRef signature
 
 export { Card } from "./Card";
 
@@ -12,5 +12,7 @@ export { QRCode } from "./QRCode";
 export { ToastProvider, useToast } from "./Toast";
 
 export { CountdownDial } from "./CountdownDial";
+
+export { TimerStrip } from "./TimerStrip";
 
 export { LanguageToggle } from "./LanguageToggle";

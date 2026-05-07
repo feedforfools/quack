@@ -8,62 +8,15 @@
  */
 import { useState, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { WORD_POOL_CATEGORIES, type WordPoolCategory } from "@/lib/words";
+import { BasicSettingsFields } from "./BasicSettingsFields";
 import type { RoomConfig } from "./roomConfig";
+import { SettingRow } from "./settingsControls";
 
 /* ── constants ─────────────────────────────────────────────────────────────── */
 
-const TIMER_OPTIONS = [0, 60, 120, 180, 300] as const;
 const VOTING_DURATION_OPTIONS = [30, 60, 90, 120] as const;
 const VOTE_THRESHOLD_OPTIONS = [0.5, 0.67, 1.0] as const;
 const HINT_COUNT_OPTIONS = [0, 1, 2] as const;
-const MAX_IMPOSTERS = 9;
-
-/* ── helpers ────────────────────────────────────────────────────────────────── */
-
-function StepperButton({
-  label,
-  onClick,
-  disabled,
-}: {
-  label: string;
-  onClick: () => void;
-  disabled?: boolean;
-}) {
-  return (
-    <button
-      type="button"
-      aria-label={label}
-      onClick={onClick}
-      disabled={disabled}
-      className="flex h-10 w-10 items-center justify-center rounded-lg bg-bg-raised text-lg font-bold text-fg transition-colors hover:bg-fg/10 disabled:cursor-not-allowed disabled:opacity-30"
-    >
-      {label}
-    </button>
-  );
-}
-
-function SettingRow({
-  label,
-  htmlFor,
-  children,
-}: {
-  label: string;
-  htmlFor?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="flex items-start justify-between gap-4 py-3">
-      <label
-        htmlFor={htmlFor}
-        className="min-w-0 flex-1 text-sm font-medium text-fg"
-      >
-        {label}
-      </label>
-      <div className="shrink-0">{children}</div>
-    </div>
-  );
-}
 
 /* ── component ──────────────────────────────────────────────────────────────── */
 
@@ -73,6 +26,8 @@ export interface SettingsPanelProps {
   saving: boolean;
   /** True while a game is active — settings are frozen / displayed read-only. */
   disabled: boolean;
+  /** When true the accordion starts in the open state. Default false. */
+  defaultOpen?: boolean;
 }
 
 export function SettingsPanel({
@@ -80,15 +35,32 @@ export function SettingsPanel({
   onSave,
   saving,
   disabled,
+  defaultOpen = false,
 }: SettingsPanelProps) {
   const { t } = useTranslation();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(defaultOpen);
+  const [advancedOpen, setAdvancedOpen] = useState(false);
   const [local, setLocal] = useState<RoomConfig>(config);
 
   // Sync local state when the server-side config changes (e.g. after a reload).
   useEffect(() => {
     setLocal(config);
   }, [config]);
+
+  useEffect(() => {
+    if (disabled) {
+      setAdvancedOpen(true);
+    }
+  }, [disabled]);
+
+  const handleBasicChange = useCallback(
+    (next: RoomConfig) => {
+      if (disabled) return;
+      setLocal(next);
+      void onSave(next);
+    },
+    [disabled, onSave],
+  );
 
   /** Apply a partial update to local state and persist immediately. */
   const update = useCallback(
@@ -100,31 +72,6 @@ export function SettingsPanel({
     },
     [disabled, local, onSave],
   );
-
-  const toggleCategory = useCallback(
-    (cat: WordPoolCategory) => {
-      if (disabled) return;
-      const has = local.categories.includes(cat);
-      // Must keep at least one category selected.
-      if (has && local.categories.length === 1) return;
-      const next = has
-        ? local.categories.filter((c) => c !== cat)
-        : [...local.categories, cat];
-      update("categories", next);
-    },
-    [disabled, local.categories, update],
-  );
-
-  const timerLabel = (s: number) =>
-    s === 0
-      ? t("settings.timerOff")
-      : s < 120
-        ? t("settings.timer_1min")
-        : s < 180
-          ? t("settings.timer_2min")
-          : s < 300
-            ? t("settings.timer_3min")
-            : t("settings.timer_5min");
 
   const votingDurationLabel = (s: number) => `${s}s`;
 
@@ -205,225 +152,158 @@ export function SettingsPanel({
             </p>
           )}
 
-          {/* ── Language ───────────────────────────────────────────────────── */}
-          <SettingRow label={t("settings.language")}>
-            <div
-              className="flex gap-2"
-              role="group"
-              aria-label={t("settings.language")}
-            >
-              {(["en", "it"] as const).map((lang) => (
-                <button
-                  key={lang}
-                  type="button"
-                  aria-pressed={local.language === lang}
-                  onClick={() => update("language", lang)}
-                  className={[
-                    "rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors",
-                    local.language === lang
-                      ? "bg-accent text-black"
-                      : "bg-bg text-fg hover:bg-fg/10",
-                  ].join(" ")}
-                >
-                  {lang.toUpperCase()}
-                </button>
-              ))}
-            </div>
-          </SettingRow>
+          <BasicSettingsFields
+            config={local}
+            onChange={handleBasicChange}
+            disabled={disabled}
+            showSectionLabel
+          />
 
-          {/* ── Categories ─────────────────────────────────────────────────── */}
           <div className="py-3">
-            <p className="mb-2 text-sm font-medium text-fg">
-              {t("settings.categories")}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {WORD_POOL_CATEGORIES.map((cat) => {
-                const selected = local.categories.includes(cat);
-                return (
-                  <button
-                    key={cat}
-                    type="button"
-                    aria-pressed={selected}
-                    onClick={() => toggleCategory(cat)}
-                    className={[
-                      "rounded-full px-3 py-1 text-sm font-medium transition-colors",
-                      selected
-                        ? "bg-accent text-black"
-                        : "bg-bg text-fg hover:bg-fg/10",
-                    ].join(" ")}
-                  >
-                    {t(`settings.category_${cat}` as `settings.category_food`)}
-                  </button>
-                );
-              })}
-            </div>
+            <button
+              type="button"
+              aria-expanded={advancedOpen}
+              aria-controls="settings-advanced-body"
+              onClick={() => setAdvancedOpen((value) => !value)}
+              className="flex w-full items-center justify-between rounded-xl border border-border bg-bg px-3 py-2 text-left transition-colors hover:bg-fg/5"
+            >
+              <span>
+                <span className="block text-xs font-semibold uppercase tracking-wide text-fg-muted">
+                  {t("settings.advancedSection")}
+                </span>
+                <span className="block text-sm font-medium text-fg">
+                  {advancedOpen
+                    ? t("settings.advancedHide")
+                    : t("settings.advancedShow")}
+                </span>
+              </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                className={[
+                  "h-4 w-4 text-fg-muted transition-transform",
+                  advancedOpen ? "rotate-180" : "",
+                ].join(" ")}
+                aria-hidden="true"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
           </div>
 
-          {/* ── Imposters ──────────────────────────────────────────────────── */}
-          <SettingRow label={t("settings.imposterCount")}>
-            <div className="flex items-center gap-3">
-              <StepperButton
-                label="−"
-                onClick={() =>
-                  update("imposter_count", local.imposter_count - 1)
-                }
-                disabled={local.imposter_count <= 1}
-              />
-              <span className="w-6 text-center text-lg font-bold text-fg">
-                {local.imposter_count}
-              </span>
-              <StepperButton
-                label="+"
-                onClick={() =>
-                  update("imposter_count", local.imposter_count + 1)
-                }
-                disabled={local.imposter_count >= MAX_IMPOSTERS}
-              />
-            </div>
-          </SettingRow>
+          {advancedOpen && (
+            <div id="settings-advanced-body" className="divide-y divide-border">
+              {/* ── Imposters see each other ───────────────────────────────── */}
+              <SettingRow
+                label={t("settings.impostersSeeEachOther")}
+                htmlFor="setting-imposters-see"
+              >
+                <input
+                  id="setting-imposters-see"
+                  type="checkbox"
+                  checked={local.imposters_see_each_other}
+                  onChange={(e) =>
+                    update("imposters_see_each_other", e.target.checked)
+                  }
+                  className="h-5 w-5 cursor-pointer accent-accent"
+                />
+              </SettingRow>
 
-          {/* ── Imposters see each other ───────────────────────────────────── */}
-          <SettingRow
-            label={t("settings.impostersSeeEachOther")}
-            htmlFor="setting-imposters-see"
-          >
-            <input
-              id="setting-imposters-see"
-              type="checkbox"
-              checked={local.imposters_see_each_other}
-              onChange={(e) =>
-                update("imposters_see_each_other", e.target.checked)
-              }
-              className="h-5 w-5 cursor-pointer accent-accent"
-            />
-          </SettingRow>
-
-          {/* ── Imposter hints ─────────────────────────────────────────────── */}
-          <SettingRow label={t("settings.imposterHintCount")}>
-            <div
-              className="flex gap-1"
-              role="group"
-              aria-label={t("settings.imposterHintCount")}
-            >
-              {HINT_COUNT_OPTIONS.map((n) => (
-                <button
-                  key={n}
-                  type="button"
-                  aria-pressed={local.imposter_hint_count === n}
-                  onClick={() => update("imposter_hint_count", n)}
-                  className={[
-                    "min-w-[2.5rem] rounded-lg px-2 py-1.5 text-sm font-semibold transition-colors",
-                    local.imposter_hint_count === n
-                      ? "bg-accent text-black"
-                      : "bg-bg text-fg hover:bg-fg/10",
-                  ].join(" ")}
+              {/* ── Imposter hints ─────────────────────────────────────────── */}
+              <SettingRow label={t("settings.imposterHintCount")}>
+                <div
+                  className="flex gap-1"
+                  role="group"
+                  aria-label={t("settings.imposterHintCount")}
                 >
-                  {hintLabel(n)}
-                </button>
-              ))}
+                  {HINT_COUNT_OPTIONS.map((n) => (
+                    <button
+                      key={n}
+                      type="button"
+                      aria-pressed={local.imposter_hint_count === n}
+                      onClick={() => update("imposter_hint_count", n)}
+                      className={[
+                        "min-w-[2.5rem] rounded-lg px-2 py-1.5 text-sm font-semibold transition-colors",
+                        local.imposter_hint_count === n
+                          ? "bg-accent text-black"
+                          : "bg-bg text-fg hover:bg-fg/10",
+                      ].join(" ")}
+                    >
+                      {hintLabel(n)}
+                    </button>
+                  ))}
+                </div>
+              </SettingRow>
+
+              {/* ── Voting section header ─────────────────────────────────── */}
+              <div className="pt-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
+                  {t("settings.votingSection")}
+                </p>
+              </div>
+
+              {/* ── Call-to-vote threshold ─────────────────────────────────── */}
+              <SettingRow
+                label={t("settings.voteThreshold")}
+                htmlFor="setting-threshold"
+              >
+                <select
+                  id="setting-threshold"
+                  value={local.vote_threshold_fraction}
+                  onChange={(e) =>
+                    update("vote_threshold_fraction", Number(e.target.value))
+                  }
+                  className="rounded-lg bg-bg px-3 py-2 text-sm text-fg focus:outline-none focus:ring-2 focus:ring-accent"
+                >
+                  {VOTE_THRESHOLD_OPTIONS.map((f) => (
+                    <option key={f} value={f}>
+                      {thresholdLabel(f)}
+                    </option>
+                  ))}
+                </select>
+              </SettingRow>
+
+              {/* ── Voting duration ────────────────────────────────────────── */}
+              <SettingRow
+                label={t("settings.votingDuration")}
+                htmlFor="setting-voting-duration"
+              >
+                <select
+                  id="setting-voting-duration"
+                  value={local.voting_duration_seconds}
+                  onChange={(e) =>
+                    update("voting_duration_seconds", Number(e.target.value))
+                  }
+                  className="rounded-lg bg-bg px-3 py-2 text-sm text-fg focus:outline-none focus:ring-2 focus:ring-accent"
+                >
+                  {VOTING_DURATION_OPTIONS.map((s) => (
+                    <option key={s} value={s}>
+                      {votingDurationLabel(s)}
+                    </option>
+                  ))}
+                </select>
+              </SettingRow>
+
+              {/* ── Live vote tally ────────────────────────────────────────── */}
+              <SettingRow
+                label={t("settings.liveVoteTally")}
+                htmlFor="setting-live-tally"
+              >
+                <input
+                  id="setting-live-tally"
+                  type="checkbox"
+                  checked={local.live_vote_tally}
+                  onChange={(e) => update("live_vote_tally", e.target.checked)}
+                  className="h-5 w-5 cursor-pointer accent-accent"
+                />
+              </SettingRow>
             </div>
-          </SettingRow>
-
-          {/* ── Number of games ────────────────────────────────────────────── */}
-          <SettingRow label={t("settings.numGames")}>
-            <div className="flex items-center gap-3">
-              <StepperButton
-                label="−"
-                onClick={() => update("num_games", local.num_games - 1)}
-                disabled={local.num_games <= 1}
-              />
-              <span className="w-6 text-center text-lg font-bold text-fg">
-                {local.num_games}
-              </span>
-              <StepperButton
-                label="+"
-                onClick={() => update("num_games", local.num_games + 1)}
-                disabled={local.num_games >= 20}
-              />
-            </div>
-          </SettingRow>
-
-          {/* ── Discussion timer ───────────────────────────────────────────── */}
-          <SettingRow
-            label={t("settings.timerDuration")}
-            htmlFor="setting-timer"
-          >
-            <select
-              id="setting-timer"
-              value={local.timer_seconds}
-              onChange={(e) => update("timer_seconds", Number(e.target.value))}
-              className="rounded-lg bg-bg px-3 py-2 text-sm text-fg focus:outline-none focus:ring-2 focus:ring-accent"
-            >
-              {TIMER_OPTIONS.map((s) => (
-                <option key={s} value={s}>
-                  {timerLabel(s)}
-                </option>
-              ))}
-            </select>
-          </SettingRow>
-
-          {/* ── Voting section header ──────────────────────────────────────── */}
-          <div className="pt-3">
-            <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
-              {t("settings.votingSection")}
-            </p>
-          </div>
-
-          {/* ── Call-to-vote threshold ─────────────────────────────────────── */}
-          <SettingRow
-            label={t("settings.voteThreshold")}
-            htmlFor="setting-threshold"
-          >
-            <select
-              id="setting-threshold"
-              value={local.vote_threshold_fraction}
-              onChange={(e) =>
-                update("vote_threshold_fraction", Number(e.target.value))
-              }
-              className="rounded-lg bg-bg px-3 py-2 text-sm text-fg focus:outline-none focus:ring-2 focus:ring-accent"
-            >
-              {VOTE_THRESHOLD_OPTIONS.map((f) => (
-                <option key={f} value={f}>
-                  {thresholdLabel(f)}
-                </option>
-              ))}
-            </select>
-          </SettingRow>
-
-          {/* ── Voting duration ────────────────────────────────────────────── */}
-          <SettingRow
-            label={t("settings.votingDuration")}
-            htmlFor="setting-voting-duration"
-          >
-            <select
-              id="setting-voting-duration"
-              value={local.voting_duration_seconds}
-              onChange={(e) =>
-                update("voting_duration_seconds", Number(e.target.value))
-              }
-              className="rounded-lg bg-bg px-3 py-2 text-sm text-fg focus:outline-none focus:ring-2 focus:ring-accent"
-            >
-              {VOTING_DURATION_OPTIONS.map((s) => (
-                <option key={s} value={s}>
-                  {votingDurationLabel(s)}
-                </option>
-              ))}
-            </select>
-          </SettingRow>
-
-          {/* ── Live vote tally ────────────────────────────────────────────── */}
-          <SettingRow
-            label={t("settings.liveVoteTally")}
-            htmlFor="setting-live-tally"
-          >
-            <input
-              id="setting-live-tally"
-              type="checkbox"
-              checked={local.live_vote_tally}
-              onChange={(e) => update("live_vote_tally", e.target.checked)}
-              className="h-5 w-5 cursor-pointer accent-accent"
-            />
-          </SettingRow>
+          )}
         </div>
       )}
     </div>

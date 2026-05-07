@@ -7,6 +7,7 @@ export { RoleReveal } from "./RoleReveal";
 export type { RoleRevealProps } from "./RoleReveal";
 export { NeutralRoundScreen } from "./NeutralRoundScreen";
 export { DiscussionScreen } from "./DiscussionScreen";
+export { VotingScreen } from "./VotingScreen";
 export { useMarkRoleSeen } from "./useMarkRoleSeen";
 export type { UseMarkRoleSeenReturn } from "./useMarkRoleSeen";
 export { useStartGameTimer } from "./useStartRoundTimer";

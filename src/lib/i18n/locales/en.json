@@ -30,9 +30,12 @@
     "activeRoomLeave": "Leave room",
     "activeRoomHint": "To start fresh, leave your current room first.",
     "activeRoomLeftToast": "You\u2019ve left the room."
+    ,"noRoomMessage": "Create a room or join an existing one to play."
   },
   "create": {
     "title": "Create a Room",
+    "subtitle": "Set the basics now. You can tweak the sneaky bits in the lobby.",
+    "lobbyHint": "More rules wait in the lobby once the room is live.",
     "cta": "Create Room",
     "errorCreate": "Failed to create the room. Please try again.",
     "errorAlreadyInRoom": "You\u2019re already in a room. Leave it first to create a new one."
@@ -59,6 +62,8 @@
     "shareText": "Use code {{code}} or tap the link to join.",
     "copyLink": "Copy link",
     "linkCopied": "Link copied!",
+    "copyCode": "Copy code",
+    "codeCopied": "Copied!",
     "playerCount": "{{count}} player",
     "playerCount_other": "{{count}} players",
     "host": "Host",
@@ -121,7 +126,12 @@
     "timerRunning": "Timer running",
     "endGameCta": "End Game",
     "endGameError": "Couldn’t end the game. Please try again.",
-    "gameEndedToast": "Game ended. Back to lobby."
+    "gameEndedToast": "Game ended. Back to lobby.",
+    "revealTitle": "Your role awaits",
+    "revealSubtitle": "Drag the lid to peek — nobody else can see.",
+    "revealContinueCta": "I've seen my role",
+    "peekAgainCta": "Peek at role",
+    "peekAgainModalTitle": "Your role"
   },
   "vote": {
     "sectionLabel": "Vote",
@@ -162,6 +172,10 @@
   "settings": {
     "title": "Game Settings",
     "frozenNote": "Settings are locked while a game is in progress.",
+    "basicSection": "Basic settings",
+    "advancedSection": "Advanced settings",
+    "advancedShow": "Show more rules",
+    "advancedHide": "Hide extra rules",
     "language": "Language",
     "categories": "Word categories",
     "category_food": "Food",
@@ -175,7 +189,6 @@
     "hintCount_none": "None",
     "hintCount_one": "1",
     "hintCount_two_plus": "{{count}}",
-    "numGames": "Games per set",
     "timerDuration": "Discussion timer",
     "timerOff": "Off",
     "timer_1min": "1 min",

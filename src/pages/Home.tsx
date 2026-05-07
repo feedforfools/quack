@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { useToast } from "@/components";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import { DisplayNamePrompt, useDeviceId } from "@/features/identity";
 import { useDisplayName } from "@/features/identity";
 import { useActiveRoom, useLeaveRoom } from "@/features/room";
@@ -26,7 +27,11 @@ export default function Home() {
   const navigate = useNavigate();
   const deviceId = useDeviceId();
   const { displayName, hasDisplayName, setDisplayName } = useDisplayName();
-  const { activeRoom, loading: activeRoomLoading, refetch: refetchActiveRoom } = useActiveRoom(deviceId);
+  const {
+    activeRoom,
+    loading: activeRoomLoading,
+    refetch: refetchActiveRoom,
+  } = useActiveRoom(deviceId);
   const { leaveRoom, loading: leaveLoading } = useLeaveRoom();
   const { toast } = useToast();
 
@@ -59,6 +64,10 @@ export default function Home() {
         />
       )}
 
+      <div className="fixed right-4 top-4 z-10">
+        <LanguageToggle />
+      </div>
+
       <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 py-10">
         {/* Brand */}
         <h1 className="text-5xl font-bold tracking-tight text-accent">Quack</h1>
@@ -90,9 +99,13 @@ export default function Home() {
                 variant="primary"
                 size="md"
                 className="w-full"
-                onClick={() => void navigate(`/r/${activeRoom.code.toUpperCase()}`)}
+                onClick={() =>
+                  void navigate(`/r/${activeRoom.code.toUpperCase()}`)
+                }
               >
-                {t("home.activeRoomResume", { code: activeRoom.code.toUpperCase() })}
+                {t("home.activeRoomResume", {
+                  code: activeRoom.code.toUpperCase(),
+                })}
               </Button>
               <Button
                 variant="ghost"
@@ -100,10 +113,16 @@ export default function Home() {
                 className="w-full text-danger"
                 disabled={leaveLoading}
                 onClick={async () => {
-                  const ok = await leaveRoom({ deviceId: deviceId ?? "", roomId: activeRoom.roomId });
+                  const ok = await leaveRoom({
+                    deviceId: deviceId ?? "",
+                    roomId: activeRoom.roomId,
+                  });
                   if (ok) {
                     refetchActiveRoom();
-                    toast({ title: t("home.activeRoomLeftToast"), variant: "default" });
+                    toast({
+                      title: t("home.activeRoomLeftToast"),
+                      variant: "default",
+                    });
                   }
                 }}
               >
@@ -132,6 +151,9 @@ export default function Home() {
             >
               {t("home.joinRoom")}
             </Button>
+            <p className="mt-2 text-center text-sm text-fg-muted">
+              {t("home.noRoomMessage")}
+            </p>
           </div>
         )}
 
@@ -156,6 +178,14 @@ export default function Home() {
               variant="ghost"
               size="sm"
               className="w-full border-yellow-500/30 text-yellow-500/80 hover:text-yellow-500"
+              onClick={() => void navigate("/dev")}
+            >
+              UI Playground
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="mt-2 w-full border-yellow-500/30 text-yellow-500/80 hover:text-yellow-500"
               onClick={async () => {
                 if (deviceId) {
                   await supabaseWithDevice(deviceId)
@@ -187,4 +217,3 @@ export default function Home() {
     </>
   );
 }
-

@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import { supabaseWithDevice } from "@/lib/supabase";
 import { log } from "@/lib/log";
 
+const VOTE_EXPIRY_BUFFER_MS = 250;
+
 export interface VoteTally {
   targetPlayerId: string;
   voteCount: number;
@@ -42,6 +44,9 @@ export interface UseVoteStateReturn {
  *
  * Re-fetches automatically whenever refetch() is called (triggered externally
  * by the `vote_state_changed` broadcast from useRoomPlayers).
+ * Also schedules a one-shot re-check at `vote_ends_at`; when the deadline
+ * passes, the hook attempts the idempotent `resolve_vote` RPC itself and then
+ * refetches so the client transitions even without another player action.
  *
  * Only queries when deviceId and gameId are non-null.
  */
@@ -136,6 +141,48 @@ export function useVoteState(
       isMounted = false;
     };
   }, [deviceId, gameId, liveTally, tick]);
+
+  useEffect(() => {
+    if (
+      !deviceId ||
+      !gameId ||
+      voteState?.state !== "active" ||
+      voteState.voteEndsAt === null
+    ) {
+      return;
+    }
+
+    let cancelled = false;
+    const deadlineMs = new Date(voteState.voteEndsAt).getTime();
+    const delayMs = Math.max(
+      VOTE_EXPIRY_BUFFER_MS,
+      deadlineMs - Date.now() + VOTE_EXPIRY_BUFFER_MS,
+    );
+
+    const timeoutId = window.setTimeout(() => {
+      void (async () => {
+        const { error } = await supabaseWithDevice(deviceId).rpc(
+          "resolve_vote",
+          {
+            p_game_id: gameId,
+          },
+        );
+
+        if (error && error.code !== "P0001") {
+          log.warn("useVoteState: auto resolve_vote error", error.code);
+        }
+
+        if (!cancelled) {
+          refetch();
+        }
+      })();
+    }, delayMs);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+    };
+  }, [deviceId, gameId, voteState, refetch]);
 
   return { voteState, loading, refetch };
 }

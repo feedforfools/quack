@@ -30,9 +30,12 @@
     "activeRoomLeave": "Lascia stanza",
     "activeRoomHint": "Per ricominciare, prima lascia la stanza attuale.",
     "activeRoomLeftToast": "Hai lasciato la stanza."
+    ,"noRoomMessage": "Crea una stanza o unisciti a una esistente per giocare."
   },
   "create": {
     "title": "Crea una Stanza",
+    "subtitle": "Imposta le basi adesso. Le regole pi\u00f9 infide le sistemi nella lobby.",
+    "lobbyHint": "Altre opzioni ti aspettano nella lobby, appena la stanza \u00e8 pronta.",
     "cta": "Crea Stanza",
     "errorCreate": "Impossibile creare la stanza. Riprova.",
     "errorAlreadyInRoom": "Sei gi\u00e0 in una stanza. Lasciala prima di crearne una nuova."
@@ -59,6 +62,8 @@
     "shareText": "Usa il codice {{code}} oppure tocca il link per entrare.",
     "copyLink": "Copia link",
     "linkCopied": "Link copiato!",
+    "copyCode": "Copia codice",
+    "codeCopied": "Copiato!",
     "playerCount": "{{count}} giocatore",
     "playerCount_other": "{{count}} giocatori",
     "host": "Host",
@@ -121,7 +126,12 @@
     "timerRunning": "Timer in corso",
     "endGameCta": "Termina partita",
     "endGameError": "Impossibile terminare la partita. Riprova.",
-    "gameEndedToast": "Partita terminata. Di ritorno alla lobby."
+    "gameEndedToast": "Partita terminata. Di ritorno alla lobby.",
+    "revealTitle": "Il tuo ruolo ti aspetta",
+    "revealSubtitle": "Trascina il coperchio per spiare — nessun altro può vedere.",
+    "revealContinueCta": "Ho visto il mio ruolo",
+    "peekAgainCta": "Spiare di nuovo",
+    "peekAgainModalTitle": "Il tuo ruolo"
   },
   "vote": {
     "sectionLabel": "Voto",
@@ -162,6 +172,10 @@
   "settings": {
     "title": "Impostazioni partita",
     "frozenNote": "Le impostazioni sono bloccate durante una partita.",
+    "basicSection": "Impostazioni base",
+    "advancedSection": "Impostazioni avanzate",
+    "advancedShow": "Mostra altre regole",
+    "advancedHide": "Nascondi regole extra",
     "language": "Lingua",
     "categories": "Categorie di parole",
     "category_food": "Cibo",
@@ -175,7 +189,6 @@
     "hintCount_none": "Nessuno",
     "hintCount_one": "1",
     "hintCount_two_plus": "{{count}}",
-    "numGames": "Partite per set",
     "timerDuration": "Timer discussione",
     "timerOff": "Disattivato",
     "timer_1min": "1 min",

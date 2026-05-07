@@ -6,6 +6,7 @@ import Join from "@/pages/Join";
 import Privacy from "@/pages/Privacy";
 import Room from "@/pages/Room";
 import NotFound from "@/pages/NotFound";
+import Playground from "@/pages/Playground";
 
 /**
  * Application router.
@@ -16,6 +17,7 @@ import NotFound from "@/pages/NotFound";
  *   /join       → Join    (code-input form)
  *   /r/:code    → Room    (lobby + active round; host and player views)
  *   /privacy    → Privacy (placeholder; final copy in Epic 5 / G3)
+ *   /dev        → Playground (dev-only UI component sandbox)
  *   *           → NotFound (stale links, typos)
  *
  * All routes are wrapped by AppLayout which provides the global header
@@ -32,6 +34,9 @@ export function AppRouter() {
           <Route path="/join" element={<Join />} />
           <Route path="/r/:code" element={<Room />} />
           <Route path="/privacy" element={<Privacy />} />
+          {import.meta.env.DEV && (
+            <Route path="/dev" element={<Playground />} />
+          )}
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

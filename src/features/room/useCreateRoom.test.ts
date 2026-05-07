@@ -1,5 +1,6 @@
 import { renderHook, act } from "@testing-library/react";
 import { useCreateRoom } from "./useCreateRoom";
+import { DEFAULT_ROOM_CONFIG, type RoomConfig } from "./roomConfig";
 
 // ─── Module mocks ─────────────────────────────────────────────────────────────
 //
@@ -42,7 +43,9 @@ function makeStub({
   playerInsertError?: unknown;
 }) {
   // Membership pre-check: from("players").select(...).eq(...).maybeSingle()
-  const memberMaybeSingle = vi.fn().mockResolvedValue({ data: existingMembership, error: null });
+  const memberMaybeSingle = vi
+    .fn()
+    .mockResolvedValue({ data: existingMembership, error: null });
   const memberEq = vi.fn().mockReturnValue({ maybeSingle: memberMaybeSingle });
   const memberSelect = vi.fn().mockReturnValue({ eq: memberEq });
 
@@ -50,14 +53,17 @@ function makeStub({
   const playerInsert = vi.fn().mockResolvedValue({ error: playerInsertError });
 
   // Room INSERT: from("rooms").insert({...}).select("id").single()
-  const roomSingle = vi.fn().mockResolvedValue({ data: roomInsertData, error: roomInsertError });
+  const roomSingle = vi
+    .fn()
+    .mockResolvedValue({ data: roomInsertData, error: roomInsertError });
   const roomInsertSelect = vi.fn().mockReturnValue({ single: roomSingle });
   const roomInsert = vi.fn().mockReturnValue({ select: roomInsertSelect });
 
   return {
     from: vi.fn((table: string) => {
       if (table === "rooms") return { insert: roomInsert };
-      if (table === "players") return { select: memberSelect, insert: playerInsert };
+      if (table === "players")
+        return { select: memberSelect, insert: playerInsert };
       throw new Error(`Unexpected table: ${table}`);
     }),
   };
@@ -156,6 +162,49 @@ describe("useCreateRoom", () => {
     expect(typeof secret).toBe("string");
   });
 
+  it("persists an optional config payload into the created room", async () => {
+    const roomInsertSelect = vi.fn().mockReturnValue({
+      single: vi.fn().mockResolvedValue({ data: { id: roomId }, error: null }),
+    });
+    const roomInsert = vi.fn().mockReturnValue({ select: roomInsertSelect });
+    const playerInsert = vi.fn().mockResolvedValue({ error: null });
+    const memberMaybeSingle = vi
+      .fn()
+      .mockResolvedValue({ data: null, error: null });
+    const memberEq = vi
+      .fn()
+      .mockReturnValue({ maybeSingle: memberMaybeSingle });
+    const memberSelect = vi.fn().mockReturnValue({ eq: memberEq });
+
+    mockClient.mockReturnValue({
+      from: vi.fn((table: string) => {
+        if (table === "rooms") return { insert: roomInsert };
+        if (table === "players")
+          return { select: memberSelect, insert: playerInsert };
+        throw new Error(`Unexpected table: ${table}`);
+      }),
+    } as unknown as ReturnType<typeof supabaseWithDevice>);
+
+    const { result } = renderHook(() => useCreateRoom());
+    const config: RoomConfig = {
+      ...DEFAULT_ROOM_CONFIG,
+      language: "it",
+      categories: ["food", "animals"],
+      imposter_count: 2,
+      timer_seconds: 120,
+    };
+
+    await act(async () => {
+      await result.current.createRoom({ deviceId, displayName, config });
+    });
+
+    expect(roomInsert).toHaveBeenCalledWith(
+      expect.objectContaining({
+        config,
+      }),
+    );
+  });
+
   it("sets loading while the call is in-flight and resets it when done", async () => {
     // The rooms INSERT is held pending so we can observe the loading state.
     let resolveInsert!: (v: unknown) => void;
@@ -163,8 +212,12 @@ describe("useCreateRoom", () => {
       resolveInsert = res;
     });
 
-    const memberMaybeSingle = vi.fn().mockResolvedValue({ data: null, error: null });
-    const memberEq = vi.fn().mockReturnValue({ maybeSingle: memberMaybeSingle });
+    const memberMaybeSingle = vi
+      .fn()
+      .mockResolvedValue({ data: null, error: null });
+    const memberEq = vi
+      .fn()
+      .mockReturnValue({ maybeSingle: memberMaybeSingle });
     const memberSelect = vi.fn().mockReturnValue({ eq: memberEq });
     const roomSingle = vi.fn().mockReturnValue(insertPromise);
     const roomInsertSelect = vi.fn().mockReturnValue({ single: roomSingle });
@@ -173,7 +226,8 @@ describe("useCreateRoom", () => {
     mockClient.mockReturnValue({
       from: (table: string) => {
         if (table === "rooms") return { insert: roomInsert };
-        if (table === "players") return { select: memberSelect, insert: vi.fn() };
+        if (table === "players")
+          return { select: memberSelect, insert: vi.fn() };
         throw new Error(`Unexpected: ${table}`);
       },
     } as unknown as ReturnType<typeof supabaseWithDevice>);

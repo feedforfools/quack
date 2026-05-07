@@ -28,6 +28,8 @@ export { useKickPlayer } from "./useKickPlayer";
 export type { UseKickPlayerReturn } from "./useKickPlayer";
 export { parseRoomConfig, DEFAULT_ROOM_CONFIG } from "./roomConfig";
 export type { RoomConfig } from "./roomConfig";
+export { BasicSettingsFields } from "./BasicSettingsFields";
+export type { BasicSettingsFieldsProps } from "./BasicSettingsFields";
 export { useUpdateRoomConfig } from "./useUpdateRoomConfig";
 export type { UseUpdateRoomConfigReturn } from "./useUpdateRoomConfig";
 export { SettingsPanel } from "./SettingsPanel";
