@@ -1,5 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { type ReactNode } from "react";
+import { Icon } from "@iconify/react";
 
 interface ModalProps {
   /** Controlled open state. */
@@ -85,20 +86,7 @@ export function Modal({
                   "min-h-[44px] min-w-[44px] flex items-center justify-center",
                 ].join(" ")}
               >
-                {/* ✕ */}
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5"
-                >
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
+                <Icon aria-hidden="true" icon="lucide:x" className="h-5 w-5" />
               </button>
             </Dialog.Close>
           )}

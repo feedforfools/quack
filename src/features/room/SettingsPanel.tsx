@@ -8,6 +8,7 @@
  */
 import { useState, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { Icon } from "@iconify/react";
 import { BasicSettingsFields } from "./BasicSettingsFields";
 import type { RoomConfig } from "./roomConfig";
 import { SettingRow } from "./settingsControls";
@@ -100,40 +101,24 @@ export function SettingsPanel({
         className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold text-fg transition-colors hover:bg-fg/5"
       >
         <span className="flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
+          <Icon
+            icon="lucide:settings"
             className="h-4 w-4 text-fg-muted"
             aria-hidden="true"
-          >
-            <path
-              fillRule="evenodd"
-              d="M7.84 1.804A1 1 0 0 1 8.82 1h2.36a1 1 0 0 1 .98.804l.331 1.652a6.993 6.993 0 0 1 1.929 1.115l1.598-.54a1 1 0 0 1 1.186.447l1.18 2.044a1 1 0 0 1-.205 1.251l-1.267 1.113a7.047 7.047 0 0 1 0 2.228l1.267 1.113a1 1 0 0 1 .206 1.25l-1.18 2.045a1 1 0 0 1-1.187.447l-1.598-.54a6.993 6.993 0 0 1-1.929 1.115l-.33 1.652a1 1 0 0 1-.98.804H8.82a1 1 0 0 1-.98-.804l-.331-1.652a6.993 6.993 0 0 1-1.929-1.115l-1.598.54a1 1 0 0 1-1.186-.447l-1.18-2.044a1 1 0 0 1 .205-1.251l1.267-1.114a7.05 7.05 0 0 1 0-2.227L1.821 7.773a1 1 0 0 1-.206-1.25l1.18-2.045a1 1 0 0 1 1.187-.447l1.598.54A6.992 6.992 0 0 1 7.51 3.456L7.84 1.804ZM10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-              clipRule="evenodd"
-            />
-          </svg>
+          />
           {t("settings.title")}
           {saving && (
             <span className="h-3 w-3 animate-spin rounded-full border-2 border-accent border-t-transparent" />
           )}
         </span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-          fill="currentColor"
+        <Icon
+          icon="lucide:chevron-down"
           className={[
             "h-4 w-4 text-fg-muted transition-transform",
             open ? "rotate-180" : "",
           ].join(" ")}
           aria-hidden="true"
-        >
-          <path
-            fillRule="evenodd"
-            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-            clipRule="evenodd"
-          />
-        </svg>
+        />
       </button>
 
       {/* Settings body */}
@@ -177,22 +162,14 @@ export function SettingsPanel({
                     : t("settings.advancedShow")}
                 </span>
               </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+              <Icon
+                icon="lucide:chevron-down"
                 className={[
                   "h-4 w-4 text-fg-muted transition-transform",
                   advancedOpen ? "rotate-180" : "",
                 ].join(" ")}
                 aria-hidden="true"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              />
             </button>
           </div>
 

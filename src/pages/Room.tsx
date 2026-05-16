@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useRef, useMemo } from "react";
+import { Icon } from "@iconify/react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
@@ -35,7 +36,8 @@ import {
   useGameResult,
   ResultScreen,
 } from "@/features/round";
-import { Button, Modal, QRCode, useToast } from "@/components";
+import { Button, Modal, QRCode, useToast, PlayerList } from "@/components";
+import type { PlayerModifiers } from "@/components";
 
 /** Minimum total players needed to start: imposter_count + 2 civilians. */
 const MIN_CIVILIAN_BUFFER = 2;
@@ -623,6 +625,8 @@ export default function Room() {
             assignment={assignment}
             roomCode={code}
             players={players}
+            connectedIds={connectedIds}
+            hostPlayerId={hostPlayerId}
             deviceId={deviceId}
             isHost={isHost}
             onEndRound={isHost ? handleEndRound : undefined}
@@ -713,6 +717,29 @@ export default function Room() {
   // Own player row for ready state.
   const ownPlayer = players.find((p) => p.id === deviceId);
 
+  // Lobby modifiers: ready checkmark for non-host non-spectator players;
+  // spectator label for late joiners.
+  const lobbyModifiers: Record<string, PlayerModifiers> = Object.fromEntries(
+    players.map((p) => [
+      p.id,
+      {
+        firstModifier: p.is_spectator ? (
+          <span className="rounded-full bg-fg/10 px-1.5 py-0.5 text-[10px] text-fg-muted">
+            {t("room.spectatorBadge")}
+          </span>
+        ) : null,
+        mainModifier:
+          !p.is_spectator && p.id !== hostPlayerId && p.is_ready ? (
+            <Icon
+              icon="lucide:check"
+              className="h-4 w-4 text-green-400"
+              aria-label={t("room.readyCta")}
+            />
+          ) : null,
+      },
+    ]),
+  );
+
   return (
     <main className="mx-auto flex h-dvh max-w-md flex-col px-4">
       {/* Reconnecting banner */}
@@ -755,85 +782,16 @@ export default function Room() {
             ))}
           </div>
         ) : (
-          <ul className="space-y-2">
-            {players.map((p) => (
-              <li
-                key={p.id}
-                className="flex items-center justify-between rounded-xl bg-bg-raised px-4 py-3"
-              >
-                <span className="truncate font-medium text-fg">
-                  {p.display_name}
-                </span>
-                <div className="flex shrink-0 items-center gap-2 pl-2">
-                  {p.id === deviceId && (
-                    <span className="rounded-full bg-accent/20 px-2 py-0.5 text-xs font-semibold text-accent">
-                      {t("room.you")}
-                    </span>
-                  )}
-                  {roomId && p.id === hostPlayerId && (
-                    <span className="rounded-full bg-fg/10 px-2 py-0.5 text-xs text-fg-muted">
-                      {t("room.host")}
-                    </span>
-                  )}
-                  {p.is_spectator ? (
-                    <span className="rounded-full bg-fg/10 px-2 py-0.5 text-xs text-fg-muted">
-                      {t("room.spectatorBadge")}
-                    </span>
-                  ) : (
-                    <>
-                      {p.id !== hostPlayerId && (
-                        <span
-                          aria-label={
-                            p.is_ready
-                              ? t("room.readyCta")
-                              : t("room.notReadyCta")
-                          }
-                          className={[
-                            "h-2.5 w-2.5 rounded-full border-2",
-                            p.is_ready
-                              ? "border-green-400 bg-green-400"
-                              : "border-fg-muted bg-transparent",
-                          ].join(" ")}
-                        />
-                      )}
-                      <span
-                        aria-label={
-                          connectedIds.has(p.id)
-                            ? t("room.connected")
-                            : t("room.disconnected")
-                        }
-                        className={[
-                          "h-2 w-2 rounded-full",
-                          connectedIds.has(p.id)
-                            ? "bg-green-400"
-                            : "bg-fg-subtle",
-                        ].join(" ")}
-                      />
-                    </>
-                  )}
-                  {isHost && p.id !== deviceId && roomState === "lobby" && (
-                    <button
-                      type="button"
-                      aria-label={t("room.kickCta")}
-                      disabled={kickLoading}
-                      onClick={() => void handleKick(p.id)}
-                      className="ml-1 flex h-5 w-5 items-center justify-center rounded-full text-fg-subtle transition-colors hover:bg-fg/10 hover:text-fg disabled:opacity-40"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 16 16"
-                        fill="currentColor"
-                        className="h-3 w-3"
-                        aria-hidden="true"
-                      >
-                        <path d="M5.28 4.22a.75.75 0 0 0-1.06 1.06L6.94 8l-2.72 2.72a.75.75 0 1 0 1.06 1.06L8 9.06l2.72 2.72a.75.75 0 1 0 1.06-1.06L9.06 8l2.72-2.72a.75.75 0 0 0-1.06-1.06L8 6.94 5.28 4.22Z" />
-                      </svg>
-                    </button>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
+          <PlayerList
+            players={players}
+            connectedIds={connectedIds}
+            hostPlayerId={hostPlayerId}
+            deviceId={deviceId}
+            isHost={isHost && roomState === "lobby"}
+            onKick={isHost && roomState === "lobby" ? handleKick : undefined}
+            kickLoading={kickLoading}
+            modifiers={lobbyModifiers}
+          />
         )}
       </section>
 
@@ -851,22 +809,13 @@ export default function Room() {
                 setSelectedSuccessor(null);
                 setShowLeaveModal(true);
               }}
-              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-danger text-danger-ink transition-opacity disabled:opacity-40 active:opacity-80"
+              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-danger text-black transition-opacity disabled:opacity-40 active:opacity-80"
             >
-              {/* Arrow-right-on-square (exit) icon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
+              <Icon
+                icon="lucide:log-out"
                 className="h-6 w-6"
                 aria-hidden="true"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5h-6Zm10.72 4.72a.75.75 0 0 1 1.06 0l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72H9a.75.75 0 0 1 0-1.5h10.94l-1.72-1.72a.75.75 0 0 1 0-1.06Z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              />
             </button>
 
             {/* Start — rectangular, yellow */}
@@ -883,7 +832,7 @@ export default function Room() {
                   aria-hidden="true"
                 />
               ) : (
-                "Start · Inizia"
+                t("room.startGame")
               )}
             </button>
 
@@ -894,19 +843,11 @@ export default function Room() {
               onClick={() => setShowSettings(true)}
               className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-border bg-bg-raised text-fg-muted transition-colors hover:bg-fg/5 active:opacity-80"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
+              <Icon
+                icon="lucide:settings"
                 className="h-6 w-6"
                 aria-hidden="true"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 0 0-2.282.819l-.922 1.597a1.875 1.875 0 0 0 .432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 0 0 0 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 0 0-.432 2.385l.922 1.597a1.875 1.875 0 0 0 2.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.986.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 0 0 2.28-.819l.923-1.597a1.875 1.875 0 0 0-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 0 0 0-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 0 0-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 0 0-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 0 0-1.85-1.567h-1.843ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              />
             </button>
           </div>
         )}
@@ -929,19 +870,11 @@ export default function Room() {
               onClick={() => void handleLeave()}
               className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-danger text-danger-ink transition-opacity disabled:opacity-40 active:opacity-80"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
+              <Icon
+                icon="lucide:log-out"
                 className="h-6 w-6"
                 aria-hidden="true"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5h-6Zm10.72 4.72a.75.75 0 0 1 1.06 0l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72H9a.75.75 0 0 1 0-1.5h10.94l-1.72-1.72a.75.75 0 0 1 0-1.06Z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              />
             </button>
 
             {/* Ready — rectangular, rest of width */}

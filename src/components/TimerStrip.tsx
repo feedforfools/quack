@@ -1,29 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { Icon } from "@iconify/react";
 
 function PlayIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M8 5v14l11-7z" />
-    </svg>
-  );
+  return <Icon icon="lucide:play" className={className} aria-hidden="true" />;
 }
 
 function PauseIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-    </svg>
-  );
+  return <Icon icon="lucide:pause" className={className} aria-hidden="true" />;
 }
 
 interface TimerStripProps {

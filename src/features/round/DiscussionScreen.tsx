@@ -1,9 +1,10 @@
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button, Modal, TimerStrip } from "@/components";
+import { Button, Modal, TimerStrip, PlayerList } from "@/components";
 import { RoleReveal } from "./RoleReveal";
 import type { RoleAssignment } from "./useRoleAssignment";
 import type { VoteState } from "./useVoteState";
+import type { PlayerRow } from "@/features/room";
 
 interface DiscussionScreenProps {
   /** The device's own role assignment — used for the peek-again modal. */
@@ -11,14 +12,15 @@ interface DiscussionScreenProps {
   /** Room code shown as a subtle anchor (helps players confirm their room). */
   roomCode?: string;
   /**
-   * All players currently in the room (names only — role information is
-   * never passed here; the roster never reveals assignments).
-   *
-   * `is_spectator` players (late joiners who arrived mid-game) are rendered
-   * in a separate "joining next game" section so they don't visually mingle
-   * with active participants and confuse the people currently playing.
+   * All players currently in the room.
+   * `is_spectator` players are rendered in a separate "joining next game"
+   * section so they don't visually mingle with active participants.
    */
-  players: { id: string; display_name: string; is_spectator?: boolean }[];
+  players: PlayerRow[];
+  /** Set of player IDs currently visible on the Realtime presence channel. */
+  connectedIds?: Set<string>;
+  /** Player ID of the room host — renders a crown icon. */
+  hostPlayerId?: string | null;
   /** The calling device's UUID — used to render the "You" badge. */
   deviceId: string | null;
   /** Whether the current player is the host. Shows End Round + Start Timer. */
@@ -97,6 +99,8 @@ export function DiscussionScreen({
   assignment,
   roomCode,
   players,
+  connectedIds = new Set(),
+  hostPlayerId = null,
   deviceId,
   isHost = false,
   onEndRound,
@@ -209,33 +213,21 @@ export function DiscussionScreen({
           {t("round.neutralSubtitle")}
         </p>
 
-        {/* Player roster — names only, no role info. Active participants only. */}
+        {/* Player roster — names + presence, no role info. Active participants only. */}
         {(() => {
           const activePlayers = players.filter((p) => !p.is_spectator);
           const spectators = players.filter((p) => p.is_spectator);
           return (
             <>
               {activePlayers.length > 0 && (
-                <ul
-                  className="mt-6 w-full space-y-2"
-                  aria-label={t("round.neutralPlayers")}
-                >
-                  {activePlayers.map((p) => (
-                    <li
-                      key={p.id}
-                      className="flex items-center rounded-xl bg-bg-raised px-4 py-3"
-                    >
-                      <span className="flex-1 truncate font-medium text-fg">
-                        {p.display_name}
-                      </span>
-                      {p.id === deviceId && (
-                        <span className="rounded-full bg-accent/20 px-2 py-0.5 text-xs font-semibold text-accent">
-                          {t("room.you")}
-                        </span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+                <div className="mt-6 w-full">
+                  <PlayerList
+                    players={activePlayers}
+                    connectedIds={connectedIds}
+                    hostPlayerId={hostPlayerId}
+                    deviceId={deviceId}
+                  />
+                </div>
               )}
 
               {/* Spectators — late joiners shown muted, set apart from the

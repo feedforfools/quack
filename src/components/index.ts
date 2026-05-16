@@ -16,3 +16,6 @@ export { CountdownDial } from "./CountdownDial";
 export { TimerStrip } from "./TimerStrip";
 
 export { LanguageToggle } from "./LanguageToggle";
+
+export { PlayerList } from "./PlayerList";
+export type { PlayerListProps, PlayerModifiers } from "./PlayerList";
