@@ -8,6 +8,10 @@
     "en": "EN",
     "it": "IT"
   },
+  "theme": {
+    "switchToLight": "Passa alla modalità chiara",
+    "switchToDark": "Passa alla modalità scura"
+  },
   "identity": {
     "prompt": {
       "title": "Come ti chiami?",
@@ -18,7 +22,7 @@
     }
   },
   "home": {
-    "tagline": "Scopri il cialtrone.",
+    "tagline": "Giochi di Dolo con i tuoi amici",
     "nameLabel": "Il tuo nome",
     "namePlaceholder": "es. Papero McQuack",
     "nameRequired": "Inserisci il tuo nome per continuare.",
@@ -26,9 +30,10 @@
     "joinRoom": "Entra",
     "privacyLink": "Privacy",
     "activeRoomTitle": "Sei in una stanza",
-    "activeRoomResume": "Riprendi stanza {{code}}",
+    "activeRoomResume": "Riprendi",
     "activeRoomLeave": "Lascia stanza",
-    "activeRoomHint": "Per ricominciare, prima lascia la stanza attuale.",
+    "activeRoomHint": "Riprendi la partita o esci per ricominciare",
+    "ctaHint": "Crea una stanza o unisciti a una esistente",
     "activeRoomLeftToast": "Hai lasciato la stanza."
     ,"noRoomMessage": "Crea una stanza o unisciti a una esistente per giocare."
   },

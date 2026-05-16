@@ -6,8 +6,12 @@ import { ToastProvider } from "@/components/Toast";
 import { i18n } from "@/lib/i18n";
 import "./index.css";
 
-// Dark mode is the MVP default; opt-in light mode is post-MVP.
-document.documentElement.classList.add("dark");
+// Initialise theme from localStorage; dark is the brand default.
+// Falls back to dark when no preference is saved.
+document.documentElement.classList.toggle(
+  "dark",
+  localStorage.getItem("theme") !== "light",
+);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

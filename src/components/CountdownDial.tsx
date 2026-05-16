@@ -78,10 +78,10 @@ export function CountdownDial({
   // Colour: green → yellow → red as time runs out
   const arcColour =
     progress > 0.5
-      ? "#22c55e" // success
+      ? "var(--color-success)" // success
       : progress > 0.2
-        ? "#facc15" // accent/warning
-        : "#ef4444"; // danger
+        ? "var(--color-accent)" // accent/warning
+        : "var(--color-danger)"; // danger
 
   // Label for screen readers (update every second)
   const displaySeconds = Math.ceil(remaining);
@@ -108,7 +108,7 @@ export function CountdownDial({
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="#27272a" /* border.DEFAULT */
+          style={{ stroke: "rgb(var(--color-border))" }}
           strokeWidth={stroke}
         />
         {/* Arc */}
@@ -117,12 +117,11 @@ export function CountdownDial({
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke={arcColour}
           strokeWidth={stroke}
           strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={dashOffset}
-          style={{ transition: "stroke 0.5s" }}
+          style={{ stroke: arcColour, transition: "stroke 0.5s" }}
         />
       </svg>
 

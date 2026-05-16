@@ -136,10 +136,10 @@ export function TimerStrip({
   // Colour ramp: static green before start; green → yellow → red when running.
   const fillColor =
     !running || progress > 0.5
-      ? "#22c55e"
+      ? "var(--color-success)"
       : progress > 0.2
-        ? "#facc15"
-        : "#ef4444";
+        ? "var(--color-accent)"
+        : "var(--color-danger)";
 
   const ariaLabel = onToggle
     ? `${timeStr} remaining, tap to ${running ? "pause" : "start"}`

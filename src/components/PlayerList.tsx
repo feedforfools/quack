@@ -165,7 +165,7 @@ function PlayerItem({
         className={[
           "shrink-0 rounded-full",
           compact ? "h-1.5 w-1.5" : "h-2 w-2",
-          isConnected ? "bg-green-400" : "bg-fg-subtle",
+          isConnected ? "bg-success" : "bg-fg-subtle",
         ].join(" ")}
       />
 

@@ -21,13 +21,18 @@ export function QRCode({ value, size = 192, label }: QRCodeProps) {
   useEffect(() => {
     if (!canvasRef.current) return;
 
+    const style = getComputedStyle(document.documentElement);
+    const dark = style.getPropertyValue("--color-qr-dark").trim() || "#1a1a1a";
+    const light =
+      style.getPropertyValue("--color-qr-light").trim() || "#ffffff";
+
     void QRCodeLib.toCanvas(canvasRef.current, value, {
       width: size, // * 2, // render at 2× for retina; CSS constrains display size
       margin: 1,
       errorCorrectionLevel: "H",
       color: {
-        dark: "#1a1a1a",
-        light: "#ffffff",
+        dark,
+        light,
       },
     });
   }, [value, size]);

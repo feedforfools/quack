@@ -8,6 +8,10 @@
     "en": "EN",
     "it": "IT"
   },
+  "theme": {
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  },
   "identity": {
     "prompt": {
       "title": "What\u2019s your name?",
@@ -18,17 +22,18 @@
     }
   },
   "home": {
-    "tagline": "Spot the impostor.",
+    "tagline": "Mole Play Games with your friends",
     "nameLabel": "Your name",
     "namePlaceholder": "e.g. Duck McQuack",
     "nameRequired": "Enter your name to continue.",
-    "createRoom": "Create Room",
+    "createRoom": "New Room",
     "joinRoom": "Join Room",
     "privacyLink": "Privacy",
     "activeRoomTitle": "You\u2019re in a room",
-    "activeRoomResume": "Resume room {{code}}",
+    "activeRoomResume": "Resume",
     "activeRoomLeave": "Leave room",
-    "activeRoomHint": "To start fresh, leave your current room first.",
+    "activeRoomHint": "Resume your game or leave to start fresh",
+    "ctaHint": "Create a room or join an existing one",
     "activeRoomLeftToast": "You\u2019ve left the room."
     ,"noRoomMessage": "Create a room or join an existing one to play."
   },

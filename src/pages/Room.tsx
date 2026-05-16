@@ -48,7 +48,7 @@ function ReconnectingBanner({ label }: { label: string }) {
     <div
       role="status"
       aria-live="polite"
-      className="fixed inset-x-0 top-0 z-50 flex items-center justify-center gap-2 bg-yellow-400/90 px-4 py-2 text-sm font-medium text-yellow-950 backdrop-blur-sm"
+      className="fixed inset-x-0 top-0 z-50 flex items-center justify-center gap-2 bg-accent/90 px-4 py-2 text-sm font-medium text-accent-ink backdrop-blur-sm"
     >
       <span
         className="h-3 w-3 animate-spin rounded-full border-2 border-current border-t-transparent"
@@ -732,7 +732,7 @@ export default function Room() {
           !p.is_spectator && p.id !== hostPlayerId && p.is_ready ? (
             <Icon
               icon="lucide:check"
-              className="h-4 w-4 text-green-400"
+              className="h-4 w-4 text-success"
               aria-label={t("room.readyCta")}
             />
           ) : null,

@@ -19,19 +19,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Surface palette — dark-first.
+        // Surface palette — CSS variables allow light/dark switching.
         bg: {
-          DEFAULT: "#0b0b0b", // page background
-          raised: "#161616", // cards, modals
-          sunken: "#070707", // insets, code, input wells
+          DEFAULT: "rgb(var(--color-bg) / <alpha-value>)",
+          raised: "rgb(var(--color-bg-raised) / <alpha-value>)",
+          sunken: "rgb(var(--color-bg-sunken) / <alpha-value>)",
         },
         // Foreground / text.
         fg: {
-          DEFAULT: "#f5f5f4", // primary text — ~14:1 on bg.DEFAULT
-          muted: "#a8a29e", // secondary text — ~6.5:1 on bg.DEFAULT
-          subtle: "#78716c", // tertiary / disabled — ~4.6:1 on bg.DEFAULT
+          DEFAULT: "rgb(var(--color-fg) / <alpha-value>)",
+          muted: "rgb(var(--color-fg-muted) / <alpha-value>)",
+          subtle: "rgb(var(--color-fg-subtle) / <alpha-value>)",
         },
-        // Warm yellow accent — the duck-bill cue.
+        // Warm yellow accent — the duck-bill cue (same in both themes).
         accent: {
           DEFAULT: "#facc15", // primary accent (yellow-400)
           hover: "#fde047", // hover/focus lift
@@ -48,8 +48,8 @@ const config: Config = {
         },
         // Borders / dividers.
         border: {
-          DEFAULT: "#27272a",
-          strong: "#3f3f46",
+          DEFAULT: "rgb(var(--color-border) / <alpha-value>)",
+          strong: "rgb(var(--color-border-strong) / <alpha-value>)",
         },
       },
       // Minimum tap target enforcement helper. Use as `min-h-tap min-w-tap`.

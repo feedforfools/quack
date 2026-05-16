@@ -18,4 +18,6 @@ export { TimerStrip } from "./TimerStrip";
 export { LanguageToggle } from "./LanguageToggle";
 
 export { PlayerList } from "./PlayerList";
+
+export { ThemeToggle } from "./ThemeToggle";
 export type { PlayerListProps, PlayerModifiers } from "./PlayerList";
