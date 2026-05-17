@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback, useRef, useMemo } from "react";
 import { Icon } from "@iconify/react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
   useDeviceId,
@@ -36,7 +36,7 @@ import {
   useGameResult,
   ResultScreen,
 } from "@/features/round";
-import { Button, Modal, QRCode, useToast, PlayerList } from "@/components";
+import { Button, Modal, ShareModal, useToast, PlayerList } from "@/components";
 import type { PlayerModifiers } from "@/components";
 
 /** Minimum total players needed to start: imposter_count + 2 civilians. */
@@ -65,14 +65,6 @@ function ReconnectingBanner({ label }: { label: string }) {
  * Entry paths:
  *  A. Created via Create page → device is already in the players table.
  *  B. Deep-link / shared URL → gate on display name then join idempotently.
- *
- * Lobby features:
- *  - Room code display (monospace, large)
- *  - QR code for the room URL
- *  - Share-sheet (Web Share API) with copy-link fallback
- *  - Player roster with ready / connection indicators
- *  - Ready toggle per player (E2-T8)
- *  - Host Start button, enabled when all ready + enough players (E2-T8)
  */
 export default function Room() {
   const { code } = useParams<{ code: string }>();
@@ -197,6 +189,7 @@ export default function Room() {
     roomId,
   );
   const [showLeaveModal, setShowLeaveModal] = useState(false);
+  const [showPlayerSettings, setShowPlayerSettings] = useState(false);
   const [selectedSuccessor, setSelectedSuccessor] = useState<string | null>(
     null,
   );
@@ -232,6 +225,14 @@ export default function Room() {
   }, [players.length, refetchRoom]);
 
   // Join on mount (idempotent — host's row already exists, no-op upsert).
+  // After a successful join we immediately re-fetch the player list and
+  // broadcast a roster_update to all connected clients. This is critical for
+  // the "join via link" flow: a brand-new player spends several seconds on
+  // the name-prompt screen, during which the Realtime channel has already
+  // subscribed and done its initial player-list fetch (finding the new player
+  // absent). Without the explicit refresh here, the joining player would see
+  // 0 players and existing players would not see them until someone else
+  // triggered a presence sync.
   useEffect(() => {
     if (!code || !deviceId || !hasDisplayName || joined) return;
 
@@ -239,21 +240,24 @@ export default function Room() {
       (result) => {
         if (result) {
           setJoined(true);
+          void broadcastRefetch();
         } else {
           setJoinFailed(true);
         }
       },
     );
-  }, [code, deviceId, hasDisplayName, displayName, joinRoom, joined]);
+  }, [
+    code,
+    deviceId,
+    hasDisplayName,
+    displayName,
+    joinRoom,
+    joined,
+    broadcastRefetch,
+  ]);
 
-  // Room URL used by the QR code.
+  // Room URL used by the QR code / share modal.
   const roomUrl = `${window.location.origin}/r/${code?.toUpperCase()}`;
-  // QR canvas size for the modal: half the viewport width, capped at half of max-w-md (224 px).
-  // useMemo so it's stable across re-renders; recalculates if the component remounts.
-  const qrSize = useMemo(
-    () => Math.floor(Math.min(window.innerWidth, 448) / 2),
-    [],
-  );
 
   // Derive language + categories from parsed room config (E5-T1).
   const configLanguage = parsedConfig.language;
@@ -745,27 +749,70 @@ export default function Room() {
       {/* Reconnecting banner */}
       {isReconnecting && <ReconnectingBanner label={t("room.reconnecting")} />}
 
-      {/* ── Header: "Room" · code centered · QR miniature button ── */}
-      <div className="grid flex-none grid-cols-[auto_1fr_auto] items-center gap-3 pt-4 pb-3">
-        <div className="justify-self-start">
-          <h1 className="text-xl font-semibold text-fg">{t("room.title")}</h1>
+      {/* ── Header: logo · code + share · player capacity ── */}
+      <div className="grid grid-cols-[1fr,auto,1fr] items-center py-3">
+        {/* Left: logo → home */}
+        <Link
+          to="/"
+          aria-label={t("common.backToHome")}
+          className="justify-self-start transition-opacity active:opacity-60"
+        >
+          <img
+            src="/quack_150.png"
+            alt="Quack"
+            className="h-10 w-auto select-none"
+            draggable={false}
+          />
+        </Link>
+
+        {/* Center: room code + ROOM label + share icon */}
+        <div className="relative flex flex-col items-center gap-0 justify-self-center">
+          <div className="flex items-center">
+            <button
+              type="button"
+              onClick={() => setShowQR(true)}
+              aria-label={t("room.shareLabel")}
+              className="inline-flex h-8 items-center gap-1 rounded-lg px-2.5 text-fg-muted transition-colors hover:bg-fg/10 active:opacity-60"
+            >
+              <span className="font-mono text-3xl font-bold tracking-widest text-accent">
+                {code?.toUpperCase()}
+              </span>
+              <Icon
+                icon="lucide:share-2"
+                className="h-4 w-4"
+                aria-hidden="true"
+              />
+            </button>
+          </div>
+          <span className="absolute top-full text-[10px] font-semibold uppercase tracking-[0.2em] text-fg-muted">
+            {t("room.lobby")}
+          </span>
         </div>
 
-        <span className="pointer-events-none justify-self-center font-mono text-4xl font-bold text-accent">
-          {code?.toUpperCase()}
-        </span>
-
-        <div className="justify-self-end">
-          <button
-            type="button"
-            onClick={() => setShowQR(true)}
-            aria-label={t("room.shareLabel")}
-            className="flex items-center justify-center transition-opacity active:opacity-60"
-          >
-            <QRCode value={roomUrl} size={36} label={t("room.shareLabel")} />
-          </button>
+        {/* Right: player capacity badge */}
+        <div className="flex flex-col items-end gap-0 justify-self-end">
+          <div className="flex items-center gap-0.5 rounded-xl bg-bg-raised px-2 py-1.5">
+            <Icon
+              icon="lucide:users"
+              className="h-3.5 w-3.5 text-fg-muted"
+              aria-hidden="true"
+            />
+            <span className="flex items-baseline gap-0">
+              <span className="text-sm font-bold tabular-nums leading-none text-fg">
+                {players.length}
+              </span>
+              <span className="text-sm tabular-nums leading-none text-fg-muted">
+                /{parsedConfig.max_players}
+              </span>
+            </span>
+          </div>
         </div>
       </div>
+
+      {/* ── Context description above the player list ── */}
+      <p className="flex-none pt-4 text-center text-xs text-fg-muted">
+        {t("room.lobbyDescription")}
+      </p>
 
       {/* ── Player roster — grows to fill available space ── */}
       <section
@@ -795,60 +842,62 @@ export default function Room() {
         )}
       </section>
 
+      {/* ── Context hint below the player list ── */}
+      <p className="flex-none py-2 text-center text-xs text-fg-muted">
+        {isHost ? t("room.lobbyHintHost") : t("room.lobbyHintPlayer")}
+      </p>
+
       {/* ── Bottom action row ── */}
       <div className="flex-none pb-6 pt-3">
         {/* Host: exit · start · settings */}
         {joined && isHost && !roomLoading && (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             {/* Exit — square, red */}
-            <button
-              type="button"
+            <Button
+              variant="danger"
+              size="md"
               aria-label={t("room.hostLeaveCta")}
               disabled={hostLeaveLoading}
               onClick={() => {
                 setSelectedSuccessor(null);
                 setShowLeaveModal(true);
               }}
-              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-danger text-black transition-opacity disabled:opacity-40 active:opacity-80"
+              style={{ aspectRatio: "1 / 1", padding: 0, minWidth: "44px" }}
             >
               <Icon
                 icon="lucide:log-out"
-                className="h-6 w-6"
+                className="h-5 w-5"
                 aria-hidden="true"
               />
-            </button>
+            </Button>
 
             {/* Start — rectangular, yellow */}
-            <button
-              type="button"
+            <Button
+              variant="primary"
+              size="md"
+              className="flex-1"
               onClick={() => void handleStart()}
               disabled={!canStart || startLoading}
+              loading={startLoading}
               aria-describedby={!canStart ? "start-hint" : undefined}
-              className="flex h-14 flex-1 items-center justify-center rounded-xl bg-accent text-base font-semibold text-accent-ink transition-opacity disabled:opacity-40 active:opacity-80"
             >
-              {startLoading ? (
-                <span
-                  className="h-5 w-5 animate-spin rounded-full border-2 border-accent-ink border-t-transparent"
-                  aria-hidden="true"
-                />
-              ) : (
-                t("room.startGame")
-              )}
-            </button>
+              {t("room.startGame")}
+            </Button>
 
             {/* Settings — square, neutral */}
-            <button
-              type="button"
+            <Button
+              variant="ghost"
+              size="md"
               aria-label={t("settings.title")}
               onClick={() => setShowSettings(true)}
-              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-border bg-bg-raised text-fg-muted transition-colors hover:bg-fg/5 active:opacity-80"
+              style={{ aspectRatio: "1 / 1", padding: 0, minWidth: "44px" }}
             >
               <Icon
-                icon="lucide:settings"
+                icon="carbon:settings-edit"
                 className="h-6 w-6"
                 aria-hidden="true"
               />
-            </button>
+            </Button>
           </div>
         )}
 
@@ -859,60 +908,104 @@ export default function Room() {
           </p>
         )}
 
-        {/* Non-host: exit · ready */}
+        {/* All-ready hint */}
+        {joined && isHost && !roomLoading && canStart && (
+          <p className="mt-2 text-center text-xs text-fg-muted">
+            {t("room.lobbyAllReady")}
+          </p>
+        )}
+
+        {/* Non-host: exit · ready · view-settings */}
         {joined && !isHost && !roomLoading && (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             {/* Exit — square, red */}
-            <button
-              type="button"
+            <Button
+              variant="danger"
+              size="md"
               aria-label={t("room.leaveCta")}
               disabled={leaveLoading}
               onClick={() => void handleLeave()}
-              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-danger text-danger-ink transition-opacity disabled:opacity-40 active:opacity-80"
+              style={{ aspectRatio: "1 / 1", padding: 0, minWidth: "44px" }}
             >
               <Icon
                 icon="lucide:log-out"
+                className="h-5 w-5"
+                aria-hidden="true"
+              />
+            </Button>
+
+            {/* Ready — rectangular, fills remaining space */}
+            <Button
+              variant={ownPlayer?.is_ready ? "ghost" : "primary"}
+              size="md"
+              className="flex-1"
+              onClick={() => void toggleReady(ownPlayer?.is_ready ?? false)}
+              disabled={readyLoading}
+            >
+              {ownPlayer?.is_ready ? t("room.notReadyCta") : t("room.readyCta")}
+            </Button>
+
+            {/* View settings — square, neutral */}
+            <Button
+              variant="ghost"
+              size="md"
+              aria-label={t("room.viewSettingsLabel")}
+              onClick={() => setShowPlayerSettings(true)}
+              style={{ aspectRatio: "1 / 1", padding: 0, minWidth: "44px" }}
+            >
+              <Icon
+                icon="carbon:settings-view"
                 className="h-6 w-6"
                 aria-hidden="true"
               />
-            </button>
-
-            {/* Ready — rectangular, rest of width */}
-            <button
-              type="button"
-              onClick={() => void toggleReady(ownPlayer?.is_ready ?? false)}
-              disabled={readyLoading}
-              className={[
-                "flex h-14 flex-1 items-center justify-center rounded-xl text-base font-semibold transition-opacity disabled:opacity-40 active:opacity-80",
-                ownPlayer?.is_ready
-                  ? "border border-border bg-transparent text-fg"
-                  : "bg-accent text-accent-ink",
-              ].join(" ")}
-            >
-              {ownPlayer?.is_ready ? t("room.notReadyCta") : t("room.readyCta")}
-            </button>
+            </Button>
           </div>
+        )}
+
+        {/* Player ready hint */}
+        {joined && !isHost && !roomLoading && (
+          <p className="mt-2 text-center text-xs text-fg-muted">
+            {ownPlayer?.is_ready
+              ? t("room.lobbyHintPlayerReady")
+              : t("room.lobbyHintPlayerCta")}
+          </p>
         )}
       </div>
 
-      {/* QR modal — full-size QR code for sharing the room URL */}
-      <Modal
+      {/* Share modal — room code copy, QR code, and URL share */}
+      <ShareModal
         open={showQR}
         onClose={() => setShowQR(false)}
-        title={t("room.shareLabel")}
-      >
-        <div className="flex justify-center py-4">
-          <QRCode value={roomUrl} size={qrSize} label={t("room.shareLabel")} />
-        </div>
-      </Modal>
+        code={code?.toUpperCase() ?? ""}
+        roomUrl={roomUrl}
+      />
 
-      {/* Settings modal — host only */}
+      {/* Player settings modal — read-only view for non-host players */}
+      {!isHost && (
+        <Modal
+          open={showPlayerSettings}
+          onClose={() => setShowPlayerSettings(false)}
+          title={t("settings.title")}
+        >
+          {/* TODO: replace with a dedicated read-only settings view */}
+          <SettingsPanel
+            config={parsedConfig}
+            onSave={async () => false}
+            saving={false}
+            disabled
+            defaultOpen
+          />
+        </Modal>
+      )}
+
+      {/* Host settings modal — editable by the host */}
       {isHost && (
         <Modal
           open={showSettings}
           onClose={() => setShowSettings(false)}
           title={t("settings.title")}
         >
+          {/* TODO: replace with a dedicated host settings editor */}
           <SettingsPanel
             config={parsedConfig}
             onSave={updateConfig}

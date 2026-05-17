@@ -1,7 +1,8 @@
 {
   "common": {
     "comingSoon": "Prossimamente.",
-    "backToHome": "Torna alla home"
+    "backToHome": "Torna alla home",
+    "close": "Chiudi"
   },
   "language": {
     "label": "Cambia lingua",
@@ -57,6 +58,7 @@
   },
   "room": {
     "title": "Stanza",
+    "code": "Codice stanza",
     "waitingForHost": "In attesa che l\u2019host avvii la partita\u2026",
     "waitingToReady": "Premi \"Sono pronto\" quando sei pronto!",
     "errorNotFound": "Questa stanza \u00e8 terminata.",
@@ -105,7 +107,18 @@
     "spectatorWaiting": "In attesa che la partita in corso finisca…",
     "kickCta": "Rimuovi",
     "kickedToast": "Sei stato rimosso dalla stanza.",
-    "reconnecting": "Riconnessione…"
+    "reconnecting": "Riconnessione…",
+    "lobby": "lobby",
+    "lobbyDescription": "Condividi il codice e invita i tuoi amici alla partita.",
+    "lobbyHintHost": "Apri le impostazioni per configurare le regole di gioco.",
+    "lobbyHintPlayer": "Apri le impostazioni per vedere le regole di gioco.",
+    "lobbyHintPlayerCta": "Premi Pronto quando sei pronto a giocare!",
+    "lobbyHintPlayerReady": "Sei pronto. Aspetta che l\u2019host avvii la partita.",
+    "lobbyAllReady": "Tutti pronti. Tocca Inizia per cominciare!",
+    "shareModalTitle": "Condividi stanza",
+    "shareModalHint": "Condividi il codice o il link con gli amici, o falli scansionare il QR per entrare.",
+    "viewSettingsLabel": "Vedi impostazioni",
+    "capacityOf": "di {{max}}"
   },
   "round": {
     "loading": "Recupero il tuo ruolo…",

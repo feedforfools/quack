@@ -1,7 +1,8 @@
 {
   "common": {
     "comingSoon": "Coming soon.",
-    "backToHome": "Back to home"
+    "backToHome": "Back to home",
+    "close": "Close"
   },
   "language": {
     "label": "Switch language",
@@ -57,6 +58,7 @@
   },
   "room": {
     "title": "Room",
+    "code": "Room code",
     "waitingForHost": "Waiting for the host to start\u2026",
     "waitingToReady": "Press \u201cI\u2019m Ready\u201d when you\u2019re set!",
     "errorNotFound": "This room has ended.",
@@ -105,7 +107,18 @@
     "spectatorWaiting": "Waiting for the current game to end…",
     "kickCta": "Kick",
     "kickedToast": "You were removed from the room.",
-    "reconnecting": "Reconnecting…"
+    "reconnecting": "Reconnecting…",
+    "lobby": "lobby",
+    "lobbyDescription": "Share the code and wait for your friends to join.",
+    "lobbyHintHost": "Tap the settings button to configure the game rules.",
+    "lobbyHintPlayer": "Tap the settings button to view the game rules.",
+    "lobbyHintPlayerCta": "Press Ready when you're set to play!",
+    "lobbyHintPlayerReady": "You're ready. Waiting for the host to start.",
+    "lobbyAllReady": "Everyone's ready. Tap Start to begin!",
+    "shareModalTitle": "Share room",
+    "shareModalHint": "Share the code or link with friends, or let them scan the QR to join.",
+    "viewSettingsLabel": "View game settings",
+    "capacityOf": "of {{max}}"
   },
   "round": {
     "loading": "Getting your role…",

@@ -58,12 +58,12 @@ export interface PlayerListProps {
 // ─── Icons ────────────────────────────────────────────────────────────────────
 
 function CrownIcon({ className }: { className?: string }) {
-  return <Icon icon="lucide:crown" className={className} aria-hidden="true" />;
+  return <Icon icon="mdi:crown" className={className} aria-hidden="true" />;
 }
 
 function TrashIcon({ className }: { className?: string }) {
   return (
-    <Icon icon="lucide:trash-2" className={className} aria-hidden="true" />
+    <Icon icon="ic:round-cancel" className={className} aria-hidden="true" />
   );
 }
 
@@ -237,13 +237,9 @@ function PlayerItem({
             // doesn't swallow this before the click fires.
             onPointerDown={(e) => e.stopPropagation()}
             onClick={handleKickClick}
-            className={[
-              "flex items-center justify-center rounded-full bg-danger text-danger-ink",
-              "transition-transform active:scale-95 disabled:opacity-40",
-              compact ? "h-5 w-5" : "h-6 w-6",
-            ].join(" ")}
+            className="flex items-center justify-center transition-transform active:scale-95 disabled:opacity-40"
           >
-            <TrashIcon className={compact ? "h-2.5 w-2.5" : "h-3 w-3"} />
+            <TrashIcon className="h-4 w-4 text-danger" />
           </button>
         )}
       </div>

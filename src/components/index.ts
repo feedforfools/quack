@@ -7,6 +7,8 @@ export { Input } from "./Input";
 
 export { Modal } from "./Modal";
 
+export { ShareModal } from "./ShareModal";
+
 export { QRCode } from "./QRCode";
 
 export { ToastProvider, useToast } from "./Toast";

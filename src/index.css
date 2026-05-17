@@ -6,7 +6,7 @@
   /* ── Color tokens: light (default) ── */
   :root {
     --color-bg:            250 250 249; /* stone-50  */
-    --color-bg-raised:     245 245 244; /* stone-100 */
+    --color-bg-raised:     242 243 243; /* stone-100 */
     --color-bg-sunken:     231 229 228; /* stone-200 */
     --color-fg:            28 25 23;    /* stone-900 */
     --color-fg-muted:      87 83 78;    /* stone-600 */

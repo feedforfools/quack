@@ -44,6 +44,11 @@ export interface RoomConfig {
    * Consumed in E5-T6 / E5-T8.
    */
   live_vote_tally: boolean;
+  /**
+   * Maximum number of players allowed in the lobby (including the host).
+   * Default 20, max 20.
+   */
+  max_players: number;
 }
 
 export const DEFAULT_ROOM_CONFIG: RoomConfig = {
@@ -56,6 +61,7 @@ export const DEFAULT_ROOM_CONFIG: RoomConfig = {
   vote_threshold_fraction: 0.5,
   voting_duration_seconds: 60,
   live_vote_tally: false,
+  max_players: 20,
 };
 
 function isWordPoolLang(v: unknown): v is WordPoolLang {
@@ -116,6 +122,13 @@ export function parseRoomConfig(raw: unknown): RoomConfig {
 
   const live_vote_tally = r["live_vote_tally"] === true;
 
+  const max_players =
+    typeof r["max_players"] === "number" &&
+    r["max_players"] >= 3 &&
+    r["max_players"] <= 20
+      ? Math.floor(r["max_players"])
+      : DEFAULT_ROOM_CONFIG.max_players;
+
   return {
     language,
     categories,
@@ -126,5 +139,6 @@ export function parseRoomConfig(raw: unknown): RoomConfig {
     vote_threshold_fraction,
     voting_duration_seconds,
     live_vote_tally,
+    max_players,
   };
 }
