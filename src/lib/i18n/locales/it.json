@@ -44,7 +44,17 @@
     "lobbyHint": "Altre opzioni ti aspettano nella lobby, appena la stanza \u00e8 pronta.",
     "cta": "Crea Stanza",
     "errorCreate": "Impossibile creare la stanza. Riprova.",
-    "errorAlreadyInRoom": "Sei gi\u00e0 in una stanza. Lasciala prima di crearne una nuova."
+    "errorAlreadyInRoom": "Sei già in una stanza. Lasciala prima di crearne una nuova.",
+    "selectTitle": "Scegli un Gioco",
+    "selectSubtitle": "Scegli il tipo di gioco che vuoi fare.",
+    "gameInfoLabel": "Info gioco",
+    "creating": "Creazione stanza…",
+    "imposterTitle": "L'Impostore",
+    "imposterDescription": "Un giocatore conosce una parola diversa. Mimetizzati, inganna, sopravvivi.",
+    "lupusTitle": "Lupus",
+    "lupusDescription": "I lupi mannari si nascondono tra i villici. Riuscirà il paese a scovarli in tempo?",
+    "secretHitlerTitle": "Secret Hitler",
+    "secretHitlerDescription": "Ruoli segreti, agende nascoste e intrighi politici. Non fidarti di nessuno."
   },
   "join": {
     "title": "Unisciti a una stanza",

@@ -44,7 +44,17 @@
     "lobbyHint": "More rules wait in the lobby once the room is live.",
     "cta": "Create Room",
     "errorCreate": "Failed to create the room. Please try again.",
-    "errorAlreadyInRoom": "You\u2019re already in a room. Leave it first to create a new one."
+    "errorAlreadyInRoom": "You're already in a room. Leave it first to create a new one.",
+    "selectTitle": "Choose a Game",
+    "selectSubtitle": "Pick the type of game you want to play.",
+    "gameInfoLabel": "Game info",
+    "creating": "Creating room…",
+    "imposterTitle": "Imposter",
+    "imposterDescription": "One player knows a different word. Blend in, deceive, survive.",
+    "lupusTitle": "Lupus",
+    "lupusDescription": "Werewolves hide among the villagers. Can the town find them before it's too late?",
+    "secretHitlerTitle": "Secret Hitler",
+    "secretHitlerDescription": "Hidden roles, secret agendas, and political intrigue. Trust no one."
   },
   "join": {
     "title": "Join a Room",
