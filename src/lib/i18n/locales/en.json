@@ -118,7 +118,11 @@
     "shareModalTitle": "Share room",
     "shareModalHint": "Share the code or link with friends, or let them scan the QR to join.",
     "viewSettingsLabel": "View game settings",
-    "capacityOf": "of {{max}}"
+    "capacityOf": "of {{max}}",
+    "nextGame": "NEXT GAME",
+    "gameImposter": "Imposter",
+    "nextGameEditSettings": "Edit game settings",
+    "nextGameViewSettings": "View game settings"
   },
   "round": {
     "loading": "Getting your role…",

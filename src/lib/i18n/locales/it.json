@@ -118,7 +118,11 @@
     "shareModalTitle": "Condividi stanza",
     "shareModalHint": "Condividi il codice o il link con gli amici, o falli scansionare il QR per entrare.",
     "viewSettingsLabel": "Vedi impostazioni",
-    "capacityOf": "di {{max}}"
+    "capacityOf": "di {{max}}",
+    "nextGame": "PROSSIMA PARTITA",
+    "gameImposter": "L'Impostore",
+    "nextGameEditSettings": "Modifica impostazioni",
+    "nextGameViewSettings": "Vedi impostazioni"
   },
   "round": {
     "loading": "Recupero il tuo ruolo…",

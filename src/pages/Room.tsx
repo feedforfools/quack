@@ -1,4 +1,11 @@
-import { useEffect, useState, useCallback, useRef, useMemo } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useState,
+  useCallback,
+  useRef,
+  useMemo,
+} from "react";
 import { Icon } from "@iconify/react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -193,6 +200,71 @@ export default function Room() {
   const [selectedSuccessor, setSelectedSuccessor] = useState<string | null>(
     null,
   );
+
+  // Player list container ref — used by the ResizeObserver that picks the
+  // optimal column count so the roster fits the available height without
+  // scroll. We also derive `listRows`: the max rows-per-column at the chosen
+  // size, so PlayerList can fill column-major (col 1 packed to the brim, then
+  // col 2, then col 3) instead of redistributing evenly.
+  const playerListRef = useRef<HTMLDivElement>(null);
+  const [listCols, setListCols] = useState<1 | 2 | 3>(1);
+  const [listRows, setListRows] = useState<number>(1);
+
+  // Recompute column count whenever the available height or player count changes.
+  useLayoutEffect(() => {
+    const el = playerListRef.current;
+    if (!el) return;
+
+    // Approximate row heights in px including the per-layout vertical gap.
+    // 1-col and 2-col share the SAME (non-compact) row sizing on purpose:
+    // the user requirement is that 2 columns must NOT shrink the font.
+    // Only the 3-column (compact) layout uses a smaller row height.
+    const NORMAL_ROW = 48; // py-3 + text-md content
+    const COMPACT_ROW = 36; // py-2 + text-sm content
+    const GAP_1 = 8; // gap-2 — 1-col
+    const GAP_2 = 6; // gap-1.5 — 2-col
+    const GAP_3 = 4; // gap-1 — 3-col
+
+    const fitRows = (h: number, rowH: number, gap: number) =>
+      Math.max(1, Math.floor((h + gap) / (rowH + gap)));
+
+    const compute = () => {
+      const h = el.clientHeight;
+      const n = players.length;
+      if (n === 0 || h <= 0) {
+        setListCols(1);
+        setListRows(Math.max(1, n));
+        return;
+      }
+
+      // 1 column — roomy rows.
+      const maxRows1 = fitRows(h, NORMAL_ROW, GAP_1);
+      if (n <= maxRows1) {
+        setListCols(1);
+        setListRows(n);
+        return;
+      }
+
+      // 2 columns — SAME row sizing as 1 column (no font shrink).
+      const maxRows2 = fitRows(h, NORMAL_ROW, GAP_2);
+      if (n <= 2 * maxRows2) {
+        setListCols(2);
+        setListRows(maxRows2);
+        return;
+      }
+
+      // 3 columns — compact rows. Ensure rowsPerColumn is at least ceil(n/3)
+      // so every player has a slot even if the height estimate is tight.
+      const maxRows3 = fitRows(h, COMPACT_ROW, GAP_3);
+      setListCols(3);
+      setListRows(Math.max(maxRows3, Math.ceil(n / 3)));
+    };
+
+    compute();
+    const ro = new ResizeObserver(compute);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [players.length]);
 
   // Start validation — only non-host, non-spectator players need to be ready.
   const nonHostPlayers = players.filter((p) => p.id !== hostPlayerId);
@@ -810,14 +882,16 @@ export default function Room() {
       </div>
 
       {/* ── Context description above the player list ── */}
-      <p className="flex-none pt-4 text-center text-xs text-fg-muted">
+      <p className="flex-none pt-2 text-center text-xs text-fg-muted">
         {t("room.lobbyDescription")}
       </p>
 
       {/* ── Player roster — grows to fill available space ── */}
-      <section
+      <div
+        ref={playerListRef}
+        role="region"
         aria-label={t("room.shareLabel")}
-        className="mt-3 min-h-0 flex-1 overflow-y-auto"
+        className="mt-2 min-h-0 flex-1 overflow-hidden"
       >
         {playersLoading ? (
           <div className="space-y-3">
@@ -838,12 +912,87 @@ export default function Room() {
             onKick={isHost && roomState === "lobby" ? handleKick : undefined}
             kickLoading={kickLoading}
             modifiers={lobbyModifiers}
+            columns={listCols}
+            rowsPerColumn={listRows}
           />
         )}
-      </section>
+      </div>
 
-      {/* ── Context hint below the player list ── */}
-      <p className="flex-none py-2 text-center text-xs text-fg-muted">
+      {/* ── Next Game Card ── */}
+      <div className="mt-2 flex-none rounded-xl bg-bg-raised px-3 py-3">
+        <div className="flex items-center gap-3">
+          {/* Game icon */}
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+            <Icon
+              icon="mdi:incognito"
+              className="h-6 w-6 text-accent"
+              aria-hidden="true"
+            />
+          </div>
+
+          {/* Game info */}
+          <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-fg-subtle">
+              {t("room.nextGame")}
+            </span>
+            <span className="text-sm font-bold leading-none text-fg">
+              {t("room.gameImposter")}
+            </span>
+            <div className="mt-1 flex flex-wrap items-center gap-1">
+              {/* Imposter count */}
+              <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
+                <Icon
+                  icon="lucide:user-x"
+                  className="h-3 w-3"
+                  aria-hidden="true"
+                />
+                {imposterCount}
+              </span>
+              {/* Categories */}
+              {configCategories.slice(0, 2).map((cat) => (
+                <span
+                  key={cat}
+                  className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted"
+                >
+                  {t(`settings.category_${cat}`)}
+                </span>
+              ))}
+              {configCategories.length > 2 && (
+                <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
+                  +{configCategories.length - 2}
+                </span>
+              )}
+              {/* Language */}
+              <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] font-medium uppercase text-fg-muted">
+                {configLanguage}
+              </span>
+            </div>
+          </div>
+
+          {/* Settings button */}
+          <button
+            type="button"
+            aria-label={
+              isHost
+                ? t("room.nextGameEditSettings")
+                : t("room.nextGameViewSettings")
+            }
+            onClick={() =>
+              isHost ? setShowSettings(true) : setShowPlayerSettings(true)
+            }
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-fg/8 transition-colors hover:bg-fg/12 active:opacity-60"
+          >
+            <Icon
+              icon={isHost ? "carbon:settings-edit" : "carbon:settings-view"}
+              className="h-5 w-5 text-fg-muted"
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+      </div>
+
+      {/* ── Context hint between card and buttons ── */}
+      <p className="flex-none pt-2 text-center text-xs text-fg-muted">
         {isHost ? t("room.lobbyHintHost") : t("room.lobbyHintPlayer")}
       </p>
 
@@ -882,21 +1031,6 @@ export default function Room() {
               aria-describedby={!canStart ? "start-hint" : undefined}
             >
               {t("room.startGame")}
-            </Button>
-
-            {/* Settings — square, neutral */}
-            <Button
-              variant="ghost"
-              size="md"
-              aria-label={t("settings.title")}
-              onClick={() => setShowSettings(true)}
-              style={{ aspectRatio: "1 / 1", padding: 0, minWidth: "44px" }}
-            >
-              <Icon
-                icon="carbon:settings-edit"
-                className="h-6 w-6"
-                aria-hidden="true"
-              />
             </Button>
           </div>
         )}
@@ -943,21 +1077,6 @@ export default function Room() {
               disabled={readyLoading}
             >
               {ownPlayer?.is_ready ? t("room.notReadyCta") : t("room.readyCta")}
-            </Button>
-
-            {/* View settings — square, neutral */}
-            <Button
-              variant="ghost"
-              size="md"
-              aria-label={t("room.viewSettingsLabel")}
-              onClick={() => setShowPlayerSettings(true)}
-              style={{ aspectRatio: "1 / 1", padding: 0, minWidth: "44px" }}
-            >
-              <Icon
-                icon="carbon:settings-view"
-                className="h-6 w-6"
-                aria-hidden="true"
-              />
             </Button>
           </div>
         )}
