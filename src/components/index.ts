@@ -7,6 +7,11 @@ export { Input } from "./Input";
 
 export { Modal } from "./Modal";
 
+export { Switch } from "./Switch";
+
+export { Select } from "./Select";
+export type { SelectOption, SelectProps } from "./Select";
+
 export { ShareModal } from "./ShareModal";
 
 export { QRCode } from "./QRCode";

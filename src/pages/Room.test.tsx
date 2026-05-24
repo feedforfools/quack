@@ -74,6 +74,7 @@ vi.mock("@/features/room", () => ({
   useEndGame: () => ({ endGame: vi.fn(), loading: false }),
   useKickPlayer: () => ({ kickPlayer: vi.fn(), loading: false }),
   parseRoomConfig: () => ({
+    game_type: "imposter",
     language: "en",
     categories: ["food"],
     imposter_count: 1,
@@ -83,9 +84,19 @@ vi.mock("@/features/room", () => ({
     vote_threshold_fraction: 0.5,
     voting_duration_seconds: 60,
     live_vote_tally: false,
+    max_players: 20,
   }),
   useUpdateRoomConfig: () => ({ updateConfig: vi.fn(), saving: false }),
-  SettingsPanel: () => null,
+  getGameModeOption: () => ({
+    id: "imposter",
+    icon: "mdi:incognito",
+    iconColor: "text-accent",
+    iconBg: "bg-accent/10",
+    titleKey: "create.imposterTitle",
+    descriptionKey: "create.imposterDescription",
+    available: true,
+  }),
+  GameSettingsModal: () => null,
 }));
 
 vi.mock("@/features/round", () => ({

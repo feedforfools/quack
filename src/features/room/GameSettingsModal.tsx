@@ -1,0 +1,881 @@
+import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import { Icon } from "@iconify/react";
+import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { Modal, Switch, Select, Button } from "@/components";
+import { WORD_POOL_CATEGORIES, type WordPoolCategory } from "@/lib/words";
+import { getGameModeOption } from "./gameModes";
+import { GameList } from "./GameList";
+import type { GameType, RoomConfig } from "./roomConfig";
+
+const TIMER_OPTIONS = [0, 60, 120, 180, 300] as const;
+const VOTING_DURATION_OPTIONS = [30, 60, 90, 120] as const;
+const VOTE_THRESHOLD_OPTIONS = [0.5, 0.67, 1.0] as const;
+const HINT_COUNT_OPTIONS = [0, 1, 2] as const;
+const MAX_IMPOSTERS = 9;
+
+type SettingsView = "settings" | "game-picker";
+type ImposterTab = "words" | "roles" | "vote";
+
+const CATEGORY_LABEL_KEYS: Record<
+  WordPoolCategory,
+  | "settings.category_food"
+  | "settings.category_animals"
+  | "settings.category_places"
+  | "settings.category_movies"
+  | "settings.category_objects"
+> = {
+  food: "settings.category_food",
+  animals: "settings.category_animals",
+  places: "settings.category_places",
+  movies: "settings.category_movies",
+  objects: "settings.category_objects",
+};
+
+export interface GameSettingsModalProps {
+  open: boolean;
+  onClose: () => void;
+  config: RoomConfig;
+  onSave: (config: RoomConfig) => Promise<boolean>;
+  saving: boolean;
+  disabled: boolean;
+  readOnlyReason?: string;
+}
+
+export function GameSettingsModal({
+  open,
+  onClose,
+  config,
+  onSave,
+  saving,
+  disabled,
+  readOnlyReason,
+}: GameSettingsModalProps) {
+  const { t } = useTranslation();
+  const [view, setView] = useState<SettingsView>("settings");
+  const [activeTab, setActiveTab] = useState<ImposterTab>("words");
+  const [local, setLocal] = useState<RoomConfig>(config);
+
+  // Reset local state to the committed config whenever the modal opens.
+  // Intentionally only dep on `open` so in-progress edits aren't clobbered
+  // by real-time parent updates while the user is editing.
+  useEffect(() => {
+    if (!open) return;
+    setLocal(config);
+    setView("settings");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+
+  const update = useCallback(
+    <Key extends keyof RoomConfig>(key: Key, value: RoomConfig[Key]) => {
+      if (disabled) return;
+      const next = { ...local, [key]: value };
+      setLocal(next);
+    },
+    [disabled, local],
+  );
+
+  const toggleCategory = useCallback(
+    (category: WordPoolCategory) => {
+      if (disabled) return;
+      const hasCategory = local.categories.includes(category);
+      if (hasCategory && local.categories.length === 1) return;
+
+      const categories = hasCategory
+        ? local.categories.filter((item) => item !== category)
+        : [...local.categories, category];
+
+      const next = { ...local, categories };
+      setLocal(next);
+    },
+    [disabled, local],
+  );
+
+  const selectedGame = getGameModeOption(local.game_type);
+
+  const handleSelectGame = (gameType: GameType) => {
+    update("game_type", gameType);
+    setView("settings");
+  };
+
+  const handleSave = useCallback(async () => {
+    const ok = await onSave(local);
+    if (ok) onClose();
+  }, [local, onSave, onClose]);
+
+  const handleCancel = useCallback(() => {
+    onClose();
+  }, [onClose]);
+
+  return (
+    <Modal
+      open={open}
+      onClose={onClose}
+      title={t("settings.title")}
+      contentClassName="h-[calc(100svh-2rem)] sm:h-[40rem]"
+      bodyClassName="flex min-h-0 flex-col"
+    >
+      <div className="flex min-h-0 flex-1 flex-col gap-4">
+        {view === "settings" ? (
+          <>
+            <GameCard
+              option={selectedGame}
+              disabled={disabled}
+              onChange={() => setView("game-picker")}
+            />
+
+            {disabled ? (
+              local.game_type === "imposter" ? (
+                <ImposterSummaryTabs
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+                  config={local}
+                  readOnlyReason={readOnlyReason}
+                />
+              ) : (
+                <UnavailableGamePanel gameType={local.game_type} />
+              )
+            ) : local.game_type === "imposter" ? (
+              <ImposterSettingsTabs
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+                local={local}
+                update={update}
+                toggleCategory={toggleCategory}
+              />
+            ) : (
+              <UnavailableGamePanel gameType={local.game_type} />
+            )}
+          </>
+        ) : (
+          <GamePickerView
+            selectedGameType={local.game_type}
+            disabled={disabled}
+            onBack={() => setView("settings")}
+            onSelectGame={handleSelectGame}
+          />
+        )}
+      </div>
+
+      {!disabled && view === "settings" && (
+        <div className="flex flex-none gap-3 border-t border-border/60 pt-4">
+          <Button variant="ghost" className="flex-1" onClick={handleCancel}>
+            {t("settings.cancel")}
+          </Button>
+          <Button
+            variant="primary"
+            className="flex-1"
+            loading={saving}
+            onClick={() => void handleSave()}
+          >
+            {t("settings.save")}
+          </Button>
+        </div>
+      )}
+    </Modal>
+  );
+}
+
+// ─── Header game card ──────────────────────────────────────────────────────
+
+function GameCard({
+  option,
+  disabled,
+  onChange,
+}: {
+  option: ReturnType<typeof getGameModeOption>;
+  disabled: boolean;
+  onChange: () => void;
+}) {
+  const { t } = useTranslation();
+
+  const content = (
+    <>
+      <span
+        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${option.iconBg}`}
+      >
+        <Icon
+          icon={option.icon}
+          className={`h-7 w-7 ${option.iconColor}`}
+          aria-hidden="true"
+        />
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block text-base font-bold leading-tight text-fg">
+          {t(option.titleKey)}
+        </span>
+        <span className="mt-0.5 line-clamp-2 block text-xs leading-snug text-fg-muted">
+          {t(option.descriptionKey)}
+        </span>
+      </span>
+    </>
+  );
+
+  if (disabled) {
+    return (
+      <div className="flex w-full items-center gap-3 rounded-2xl bg-bg-sunken px-4 py-3 text-left">
+        {content}
+        <button
+          type="button"
+          aria-label={t("create.gameInfoLabel")}
+          onClick={(e) => {
+            e.stopPropagation();
+            // Game info modal — coming in a later stage
+          }}
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-fg/8 text-fg-muted transition-colors hover:bg-fg/12 active:opacity-60"
+        >
+          <Icon
+            icon="ph:info-bold"
+            className="h-[17px] w-[17px]"
+            aria-hidden="true"
+          />
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={onChange}
+      aria-label={t("settings.changeGameMode")}
+      className={[
+        "flex w-full items-center gap-3 rounded-2xl bg-bg-sunken px-4 py-3 text-left transition-colors",
+        "hover:bg-fg/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+      ].join(" ")}
+    >
+      {content}
+      <Icon
+        icon="lucide:chevron-right"
+        className="h-5 w-5 shrink-0 text-fg-muted"
+        aria-hidden="true"
+      />
+    </button>
+  );
+}
+
+// ─── Tabs shell (shared between editable and read-only views) ─────────────
+
+function ImposterTabsShell({
+  activeTab,
+  setActiveTab,
+  words,
+  roles,
+  vote,
+}: {
+  activeTab: ImposterTab;
+  setActiveTab: (tab: ImposterTab) => void;
+  words: ReactNode;
+  roles: ReactNode;
+  vote: ReactNode;
+}) {
+  const { t } = useTranslation();
+  const tabs: { id: ImposterTab; icon: string; label: string }[] = [
+    { id: "words", icon: "lucide:languages", label: t("settings.wordsTab") },
+    { id: "roles", icon: "lucide:users", label: t("settings.rolesTab") },
+    { id: "vote", icon: "lucide:vote", label: t("settings.voteTab") },
+  ];
+
+  return (
+    <TabsPrimitive.Root
+      value={activeTab}
+      onValueChange={(value) => setActiveTab(value as ImposterTab)}
+      className="flex min-h-0 flex-1 flex-col gap-4"
+    >
+      <TabsPrimitive.List
+        aria-label={t("settings.tabsLabel")}
+        className="grid flex-none grid-cols-3 gap-1 rounded-2xl bg-bg-sunken p-1"
+      >
+        {tabs.map((tab) => (
+          <TabsPrimitive.Trigger
+            key={tab.id}
+            value={tab.id}
+            className={[
+              "flex h-10 items-center justify-center gap-1.5 rounded-xl text-sm font-semibold transition-colors",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+              "text-fg-muted hover:text-fg",
+              "data-[state=active]:bg-accent data-[state=active]:text-accent-ink data-[state=active]:hover:text-accent-ink",
+            ].join(" ")}
+          >
+            <Icon icon={tab.icon} className="h-4 w-4" aria-hidden="true" />
+            {tab.label}
+          </TabsPrimitive.Trigger>
+        ))}
+      </TabsPrimitive.List>
+
+      <div className="min-h-0 flex-1 overflow-y-auto">
+        <TabsPrimitive.Content
+          value="words"
+          className="focus-visible:outline-none"
+        >
+          {words}
+        </TabsPrimitive.Content>
+        <TabsPrimitive.Content
+          value="roles"
+          className="focus-visible:outline-none"
+        >
+          {roles}
+        </TabsPrimitive.Content>
+        <TabsPrimitive.Content
+          value="vote"
+          className="focus-visible:outline-none"
+        >
+          {vote}
+        </TabsPrimitive.Content>
+      </div>
+    </TabsPrimitive.Root>
+  );
+}
+
+// ─── Tabs (host, imposter mode) ────────────────────────────────────────────
+
+function ImposterSettingsTabs({
+  activeTab,
+  setActiveTab,
+  local,
+  update,
+  toggleCategory,
+}: {
+  activeTab: ImposterTab;
+  setActiveTab: (tab: ImposterTab) => void;
+  local: RoomConfig;
+  update: <Key extends keyof RoomConfig>(
+    key: Key,
+    value: RoomConfig[Key],
+  ) => void;
+  toggleCategory: (category: WordPoolCategory) => void;
+}) {
+  return (
+    <ImposterTabsShell
+      activeTab={activeTab}
+      setActiveTab={setActiveTab}
+      words={
+        <WordsTab
+          local={local}
+          update={update}
+          toggleCategory={toggleCategory}
+        />
+      }
+      roles={<RolesTab local={local} update={update} />}
+      vote={<VoteTab local={local} update={update} />}
+    />
+  );
+}
+
+// ─── Row primitives ────────────────────────────────────────────────────────
+
+/** A grouped list of rows on a single sunken surface, separated by hairlines. */
+function RowGroup({ children }: { children: ReactNode }) {
+  return (
+    <div className="divide-y divide-border/60 overflow-hidden rounded-2xl bg-bg-sunken">
+      {children}
+    </div>
+  );
+}
+
+function Row({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <div className="flex min-h-[3.5rem] items-center justify-between gap-3 px-4 py-2">
+      <span className="min-w-0 text-sm font-medium leading-snug text-fg">
+        {label}
+      </span>
+      <div className="shrink-0">{children}</div>
+    </div>
+  );
+}
+
+/** Segmented control built from buttons; consistent style for small option sets. */
+function Segmented<T extends string | number>({
+  options,
+  value,
+  onChange,
+  ariaLabel,
+}: {
+  options: { value: T; label: string }[];
+  value: T;
+  onChange: (value: T) => void;
+  ariaLabel: string;
+}) {
+  return (
+    <div
+      role="group"
+      aria-label={ariaLabel}
+      className="inline-flex rounded-xl bg-bg p-1"
+    >
+      {options.map((option) => {
+        const selected = option.value === value;
+        return (
+          <button
+            key={String(option.value)}
+            type="button"
+            aria-pressed={selected}
+            onClick={() => onChange(option.value)}
+            className={[
+              "h-8 min-w-10 rounded-lg px-3 text-xs font-bold uppercase transition-colors",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+              selected
+                ? "bg-accent text-accent-ink"
+                : "text-fg-muted hover:text-fg",
+            ].join(" ")}
+          >
+            {option.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+// ─── Tabs content ──────────────────────────────────────────────────────────
+
+function WordsTab({
+  local,
+  update,
+  toggleCategory,
+}: {
+  local: RoomConfig;
+  update: <Key extends keyof RoomConfig>(
+    key: Key,
+    value: RoomConfig[Key],
+  ) => void;
+  toggleCategory: (category: WordPoolCategory) => void;
+}) {
+  const { t } = useTranslation();
+
+  return (
+    <RowGroup>
+      <Row label={t("settings.language")}>
+        <Segmented<"en" | "it">
+          ariaLabel={t("settings.language")}
+          value={local.language}
+          onChange={(v) => update("language", v)}
+          options={[
+            { value: "en", label: "EN" },
+            { value: "it", label: "IT" },
+          ]}
+        />
+      </Row>
+
+      <div className="px-4 py-3">
+        <p className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-fg-muted">
+          {t("settings.categories")}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {WORD_POOL_CATEGORIES.map((category) => {
+            const selected = local.categories.includes(category);
+            return (
+              <button
+                key={category}
+                type="button"
+                aria-pressed={selected}
+                onClick={() => toggleCategory(category)}
+                className={[
+                  "h-7 rounded-full px-3 text-sm font-semibold transition-colors",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+                  selected
+                    ? "bg-accent text-accent-ink"
+                    : "bg-bg text-fg-muted hover:text-fg",
+                ].join(" ")}
+              >
+                {t(CATEGORY_LABEL_KEYS[category])}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </RowGroup>
+  );
+}
+
+function RolesTab({
+  local,
+  update,
+}: {
+  local: RoomConfig;
+  update: <Key extends keyof RoomConfig>(
+    key: Key,
+    value: RoomConfig[Key],
+  ) => void;
+}) {
+  const { t } = useTranslation();
+
+  return (
+    <RowGroup>
+      <Row label={t("settings.imposterCount")}>
+        <Stepper
+          value={local.imposter_count}
+          min={1}
+          max={MAX_IMPOSTERS}
+          onChange={(v) => update("imposter_count", v)}
+          ariaLabel={t("settings.imposterCount")}
+        />
+      </Row>
+
+      <Row label={t("settings.imposterHintCount")}>
+        <Segmented<number>
+          ariaLabel={t("settings.imposterHintCount")}
+          value={local.imposter_hint_count}
+          onChange={(v) => update("imposter_hint_count", v)}
+          options={HINT_COUNT_OPTIONS.map((count) => ({
+            value: count,
+            label:
+              count === 0
+                ? t("settings.hintCount_none")
+                : count === 1
+                  ? t("settings.hintCount_one")
+                  : t("settings.hintCount_two_plus", { count }),
+          }))}
+        />
+      </Row>
+
+      <Row label={t("settings.impostersSeeEachOther")}>
+        <Switch
+          aria-label={t("settings.impostersSeeEachOther")}
+          checked={local.imposters_see_each_other}
+          onCheckedChange={(checked) =>
+            update("imposters_see_each_other", checked)
+          }
+        />
+      </Row>
+    </RowGroup>
+  );
+}
+
+function VoteTab({
+  local,
+  update,
+}: {
+  local: RoomConfig;
+  update: <Key extends keyof RoomConfig>(
+    key: Key,
+    value: RoomConfig[Key],
+  ) => void;
+}) {
+  const { t } = useTranslation();
+
+  const timerLabel = (seconds: number) =>
+    seconds === 0
+      ? t("settings.timerOff")
+      : seconds < 120
+        ? t("settings.timer_1min")
+        : seconds < 180
+          ? t("settings.timer_2min")
+          : seconds < 300
+            ? t("settings.timer_3min")
+            : t("settings.timer_5min");
+
+  const thresholdLabel = (fraction: number) =>
+    fraction >= 1
+      ? t("settings.threshold_all")
+      : fraction >= 0.67
+        ? t("settings.threshold_two_thirds")
+        : t("settings.threshold_half");
+
+  return (
+    <RowGroup>
+      <Row label={t("settings.timerDuration")}>
+        <Select
+          ariaLabel={t("settings.timerDuration")}
+          value={String(local.timer_seconds)}
+          onValueChange={(v) => update("timer_seconds", Number(v))}
+          options={TIMER_OPTIONS.map((seconds) => ({
+            value: String(seconds),
+            label: timerLabel(seconds),
+          }))}
+        />
+      </Row>
+
+      <Row label={t("settings.voteThreshold")}>
+        <Select
+          ariaLabel={t("settings.voteThreshold")}
+          value={String(local.vote_threshold_fraction)}
+          onValueChange={(v) => update("vote_threshold_fraction", Number(v))}
+          options={VOTE_THRESHOLD_OPTIONS.map((fraction) => ({
+            value: String(fraction),
+            label: thresholdLabel(fraction),
+          }))}
+        />
+      </Row>
+
+      <Row label={t("settings.votingDuration")}>
+        <Select
+          ariaLabel={t("settings.votingDuration")}
+          value={String(local.voting_duration_seconds)}
+          onValueChange={(v) => update("voting_duration_seconds", Number(v))}
+          options={VOTING_DURATION_OPTIONS.map((seconds) => ({
+            value: String(seconds),
+            label: `${seconds}s`,
+          }))}
+        />
+      </Row>
+
+      <Row label={t("settings.liveVoteTally")}>
+        <Switch
+          aria-label={t("settings.liveVoteTally")}
+          checked={local.live_vote_tally}
+          onCheckedChange={(checked) => update("live_vote_tally", checked)}
+        />
+      </Row>
+    </RowGroup>
+  );
+}
+
+// ─── Stepper (shared Button-based) ─────────────────────────────────────────
+
+function Stepper({
+  value,
+  min,
+  max,
+  onChange,
+  ariaLabel,
+}: {
+  value: number;
+  min: number;
+  max: number;
+  onChange: (value: number) => void;
+  ariaLabel: string;
+}) {
+  const { t } = useTranslation();
+  return (
+    <div className="flex items-center gap-2">
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        aria-label={t("settings.decreaseSetting", { label: ariaLabel })}
+        disabled={value <= min}
+        onClick={() => onChange(value - 1)}
+        className="h-11 w-11 min-h-0 rounded-xl p-0"
+      >
+        <Icon icon="lucide:minus" className="h-4 w-4" aria-hidden="true" />
+      </Button>
+      <span className="w-6 text-center text-lg font-bold tabular-nums text-fg">
+        {value}
+      </span>
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        aria-label={t("settings.increaseSetting", { label: ariaLabel })}
+        disabled={value >= max}
+        onClick={() => onChange(value + 1)}
+        className="h-11 w-11 min-h-0 rounded-xl p-0"
+      >
+        <Icon icon="lucide:plus" className="h-4 w-4" aria-hidden="true" />
+      </Button>
+    </div>
+  );
+}
+
+// ─── Read-only tabs (non-host, or host with locked round) ─────────────────
+
+function ImposterSummaryTabs({
+  activeTab,
+  setActiveTab,
+  config,
+  readOnlyReason,
+}: {
+  activeTab: ImposterTab;
+  setActiveTab: (tab: ImposterTab) => void;
+  config: RoomConfig;
+  readOnlyReason?: string;
+}) {
+  return (
+    <div className="flex min-h-0 flex-1 flex-col gap-3">
+      {readOnlyReason && (
+        <p className="flex-none text-xs leading-snug text-fg-muted">
+          {readOnlyReason}
+        </p>
+      )}
+      <ImposterTabsShell
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        words={<WordsSummary config={config} />}
+        roles={<RolesSummary config={config} />}
+        vote={<VoteSummary config={config} />}
+      />
+    </div>
+  );
+}
+
+function WordsSummary({ config }: { config: RoomConfig }) {
+  const { t } = useTranslation();
+  return (
+    <RowGroup>
+      <SummaryRow
+        label={t("settings.language")}
+        value={config.language.toUpperCase()}
+      />
+      <div className="px-4 py-3">
+        <p className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-fg-muted">
+          {t("settings.categories")}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {config.categories.length === 0 ? (
+            <span className="text-sm text-fg-muted">
+              {t("settings.summary_off")}
+            </span>
+          ) : (
+            config.categories.map((category) => (
+              <span
+                key={category}
+                className="h-7 rounded-full bg-accent px-3 text-sm font-semibold leading-7 text-accent-ink"
+              >
+                {t(CATEGORY_LABEL_KEYS[category])}
+              </span>
+            ))
+          )}
+        </div>
+      </div>
+    </RowGroup>
+  );
+}
+
+function RolesSummary({ config }: { config: RoomConfig }) {
+  const { t } = useTranslation();
+  const hintLabel = (count: number) =>
+    count === 0
+      ? t("settings.hintCount_none")
+      : count === 1
+        ? t("settings.hintCount_one")
+        : t("settings.hintCount_two_plus", { count });
+  const yesNo = (value: boolean) =>
+    value ? t("settings.summary_on") : t("settings.summary_off");
+  return (
+    <RowGroup>
+      <SummaryRow
+        label={t("settings.imposterCount")}
+        value={String(config.imposter_count)}
+      />
+      <SummaryRow
+        label={t("settings.imposterHintCount")}
+        value={hintLabel(config.imposter_hint_count)}
+      />
+      <SummaryRow
+        label={t("settings.impostersSeeEachOther")}
+        value={yesNo(config.imposters_see_each_other)}
+      />
+    </RowGroup>
+  );
+}
+
+function VoteSummary({ config }: { config: RoomConfig }) {
+  const { t } = useTranslation();
+  const timerLabel = (seconds: number) =>
+    seconds === 0
+      ? t("settings.timerOff")
+      : seconds < 120
+        ? t("settings.timer_1min")
+        : seconds < 180
+          ? t("settings.timer_2min")
+          : seconds < 300
+            ? t("settings.timer_3min")
+            : t("settings.timer_5min");
+  const thresholdLabel = (fraction: number) =>
+    fraction >= 1
+      ? t("settings.threshold_all")
+      : fraction >= 0.67
+        ? t("settings.threshold_two_thirds")
+        : t("settings.threshold_half");
+  const yesNo = (value: boolean) =>
+    value ? t("settings.summary_on") : t("settings.summary_off");
+  return (
+    <RowGroup>
+      <SummaryRow
+        label={t("settings.timerDuration")}
+        value={timerLabel(config.timer_seconds)}
+      />
+      <SummaryRow
+        label={t("settings.voteThreshold")}
+        value={thresholdLabel(config.vote_threshold_fraction)}
+      />
+      <SummaryRow
+        label={t("settings.votingDuration")}
+        value={`${config.voting_duration_seconds}s`}
+      />
+      <SummaryRow
+        label={t("settings.liveVoteTally")}
+        value={yesNo(config.live_vote_tally)}
+      />
+    </RowGroup>
+  );
+}
+
+function SummaryRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex min-h-[3rem] items-center justify-between gap-3 px-4 py-2">
+      <span className="min-w-0 text-sm font-medium leading-snug text-fg-muted">
+        {label}
+      </span>
+      <span className="min-w-0 max-w-[60%] truncate text-right text-sm font-semibold text-fg">
+        {value}
+      </span>
+    </div>
+  );
+}
+
+// ─── Game picker ───────────────────────────────────────────────────────────
+
+function GamePickerView({
+  selectedGameType,
+  disabled,
+  onBack,
+  onSelectGame,
+}: {
+  selectedGameType: GameType;
+  disabled: boolean;
+  onBack: () => void;
+  onSelectGame: (gameType: GameType) => void;
+}) {
+  const { t } = useTranslation();
+
+  return (
+    <div className="flex min-h-0 flex-1 flex-col gap-4">
+      <button
+        type="button"
+        onClick={onBack}
+        aria-label={t("settings.backToSettings")}
+        className="flex w-fit items-center gap-1 text-fg-muted transition-colors hover:text-fg active:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 rounded-md"
+      >
+        <Icon
+          icon="lucide:chevron-left"
+          className="h-5 w-5"
+          aria-hidden="true"
+        />
+        <span className="text-sm font-semibold">
+          {t("settings.gamePickerTitle")}
+        </span>
+      </button>
+
+      <GameList
+        variant="modal"
+        onSelect={onSelectGame}
+        selectedId={selectedGameType}
+        disabled={disabled}
+      />
+    </div>
+  );
+}
+
+function UnavailableGamePanel({ gameType }: { gameType: GameType }) {
+  const { t } = useTranslation();
+  const game = getGameModeOption(gameType);
+
+  return (
+    <div className="flex min-h-0 flex-1 flex-col items-center justify-center rounded-2xl bg-bg-sunken px-6 py-8 text-center">
+      <div
+        className={`flex h-14 w-14 items-center justify-center rounded-2xl ${game.iconBg}`}
+      >
+        <Icon
+          icon={game.icon}
+          className={`h-8 w-8 ${game.iconColor}`}
+          aria-hidden="true"
+        />
+      </div>
+      <h2 className="mt-4 text-base font-bold text-fg">{t(game.titleKey)}</h2>
+      <p className="mt-2 text-sm leading-snug text-fg-muted">
+        {t("settings.unavailableGameBody", { game: t(game.titleKey) })}
+      </p>
+    </div>
+  );
+}

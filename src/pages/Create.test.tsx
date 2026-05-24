@@ -38,7 +38,7 @@ describe("Create", () => {
     await i18n.changeLanguage("en");
   });
 
-  it("renders basic settings and passes the selected config to createRoom", async () => {
+  it("creates an imposter room with the selected game type", async () => {
     const user = userEvent.setup();
 
     render(
@@ -49,31 +49,27 @@ describe("Create", () => {
       </I18nextProvider>,
     );
 
-    expect(screen.getByText(/set the basics now/i)).toBeInTheDocument();
-    expect(
-      screen.getByText(/more rules wait in the lobby/i),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/choose a game/i)).toBeInTheDocument();
+    expect(screen.getByText(/pick the type of game/i)).toBeInTheDocument();
 
-    await user.click(screen.getByRole("button", { name: "IT" }));
-    await user.click(screen.getByRole("button", { name: /animals/i }));
-    await user.click(screen.getByRole("button", { name: "+" }));
-    await user.selectOptions(screen.getByLabelText(/discussion timer/i), "120");
-    await user.click(screen.getByRole("button", { name: /create room/i }));
+    await user.click(screen.getByText(/^imposter$/i));
 
     await waitFor(() => expect(mocks.createRoom).toHaveBeenCalledTimes(1));
     expect(mocks.createRoom).toHaveBeenCalledWith({
       deviceId: "device-1",
       displayName: "Mallard",
       config: {
-        language: "it",
-        categories: ["food", "animals"],
-        imposter_count: 2,
+        game_type: "imposter",
+        language: "en",
+        categories: ["food"],
+        imposter_count: 1,
         imposters_see_each_other: false,
         imposter_hint_count: 0,
-        timer_seconds: 120,
+        timer_seconds: 0,
         vote_threshold_fraction: 0.5,
         voting_duration_seconds: 60,
         live_vote_tally: false,
+        max_players: 20,
       },
     });
   });

@@ -12,6 +12,15 @@ interface ModalProps {
   /** Optional subtitle rendered below the title. */
   description?: string;
   children: ReactNode;
+  /** Optional classes applied to the dialog panel. */
+  contentClassName?: string;
+  /** Optional classes applied to the body wrapper around children. */
+  bodyClassName?: string;
+  /**
+   * Optional accessory rendered in the header row, just left of the close
+   * button. Useful for a small "saving…" spinner.
+   */
+  headerAccessory?: ReactNode;
   /**
    * When true the user cannot dismiss by clicking the overlay or pressing
    * Escape. Use for destructive confirmation flows.
@@ -33,6 +42,9 @@ export function Modal({
   title,
   description,
   children,
+  contentClassName = "",
+  bodyClassName = "",
+  headerAccessory,
   dismissible = true,
 }: ModalProps) {
   return (
@@ -55,41 +67,61 @@ export function Modal({
           onEscapeKeyDown={(e) => {
             if (!dismissible) e.preventDefault();
           }}
+          {...(description ? {} : { "aria-describedby": undefined })}
           className={[
-            "fixed left-1/2 top-1/2 z-50 w-full max-w-sm -translate-x-1/2 -translate-y-1/2",
-            "rounded-2xl border border-border bg-bg-raised p-6 shadow-xl",
+            "fixed left-1/2 top-1/2 z-50 flex max-h-[calc(100svh-2rem)] w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden",
+            "rounded-2xl border border-border bg-bg-raised shadow-xl",
             "focus:outline-none",
             "data-[state=open]:animate-in data-[state=closed]:animate-out",
             "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
             "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-          ].join(" ")}
+            contentClassName,
+          ]
+            .filter(Boolean)
+            .join(" ")}
         >
-          <Dialog.Title className="text-lg font-semibold text-fg">
-            {title}
-          </Dialog.Title>
+          <div className="flex flex-none flex-col px-6 pb-4 pt-6">
+            <div className="flex items-center gap-3">
+              <Dialog.Title className="min-w-0 flex-1 text-xs font-semibold uppercase tracking-widest text-fg-muted">
+                {title}
+              </Dialog.Title>
+              {headerAccessory && (
+                <div className="flex h-6 items-center">{headerAccessory}</div>
+              )}
+              {dismissible && (
+                <Dialog.Close asChild>
+                  <button
+                    type="button"
+                    aria-label="Close dialog"
+                    className={[
+                      "-my-2 -mr-2 flex h-9 w-9 items-center justify-center rounded-xl p-2 text-fg-muted",
+                      "hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+                    ].join(" ")}
+                  >
+                    <Icon
+                      aria-hidden="true"
+                      icon="lucide:x"
+                      className="h-5 w-5"
+                    />
+                  </button>
+                </Dialog.Close>
+              )}
+            </div>
 
-          {description && (
-            <Dialog.Description className="mt-1 text-sm text-fg-muted">
-              {description}
-            </Dialog.Description>
-          )}
+            {description && (
+              <Dialog.Description className="mt-2 text-sm leading-snug text-fg-muted">
+                {description}
+              </Dialog.Description>
+            )}
+          </div>
 
-          <div className="mt-4">{children}</div>
-
-          {dismissible && (
-            <Dialog.Close asChild>
-              <button
-                aria-label="Close dialog"
-                className={[
-                  "absolute right-4 top-4 rounded-lg p-1 text-fg-muted",
-                  "hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
-                  "min-h-[44px] min-w-[44px] flex items-center justify-center",
-                ].join(" ")}
-              >
-                <Icon aria-hidden="true" icon="lucide:x" className="h-5 w-5" />
-              </button>
-            </Dialog.Close>
-          )}
+          <div
+            className={["min-h-0 flex-1 px-6 pb-6", bodyClassName]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {children}
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

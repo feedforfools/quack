@@ -12,7 +12,11 @@ import {
 
 export type { WordPoolCategory, WordPoolLang };
 
+export type GameType = "imposter" | "lupus" | "secret-hitler";
+
 export interface RoomConfig {
+  /** Selected game mode for the next game in the room. */
+  game_type: GameType;
   /** Word-pool language — EN or IT. */
   language: WordPoolLang;
   /** Which word categories to draw from (must be non-empty). */
@@ -52,6 +56,7 @@ export interface RoomConfig {
 }
 
 export const DEFAULT_ROOM_CONFIG: RoomConfig = {
+  game_type: "imposter",
   language: "en",
   categories: ["food"],
   imposter_count: 1,
@@ -72,6 +77,10 @@ function isWordPoolCategory(v: unknown): v is WordPoolCategory {
   return WORD_POOL_CATEGORIES.includes(v as WordPoolCategory);
 }
 
+function isGameType(v: unknown): v is GameType {
+  return v === "imposter" || v === "lupus" || v === "secret-hitler";
+}
+
 /**
  * Coerce arbitrary JSONB from the DB into a fully-typed `RoomConfig`,
  * filling in defaults for any missing or invalid fields.
@@ -81,6 +90,10 @@ export function parseRoomConfig(raw: unknown): RoomConfig {
     return { ...DEFAULT_ROOM_CONFIG };
   }
   const r = raw as Record<string, unknown>;
+
+  const game_type = isGameType(r["game_type"])
+    ? r["game_type"]
+    : DEFAULT_ROOM_CONFIG.game_type;
 
   const language = isWordPoolLang(r["language"])
     ? r["language"]
@@ -130,6 +143,7 @@ export function parseRoomConfig(raw: unknown): RoomConfig {
       : DEFAULT_ROOM_CONFIG.max_players;
 
   return {
+    game_type,
     language,
     categories,
     imposter_count,

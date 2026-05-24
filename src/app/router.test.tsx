@@ -26,7 +26,11 @@ beforeAll(async () => {
  * Render a single route inside MemoryRouter + AppLayout using the same
  * nested-route structure as the real AppRouter.
  */
-function renderRoute(path: string, routePath: string, element: React.ReactNode) {
+function renderRoute(
+  path: string,
+  routePath: string,
+  element: React.ReactNode,
+) {
   render(
     <I18nextProvider i18n={i18n}>
       <ToastProvider>
@@ -43,11 +47,9 @@ function renderRoute(path: string, routePath: string, element: React.ReactNode) 
 }
 
 describe("routing smoke", () => {
-  it("/ renders the Quack heading", () => {
+  it("/ renders the Quack brand", () => {
     renderRoute("/", "/", <Home />);
-    expect(
-      screen.getByRole("heading", { name: "Quack" }),
-    ).toBeInTheDocument();
+    expect(screen.getAllByAltText("YouQuack").length).toBeGreaterThan(0);
   });
 
   it("/create renders the Create heading", () => {
@@ -55,7 +57,7 @@ describe("routing smoke", () => {
     localStorage.setItem("quack_display_name", "Test Duck");
     renderRoute("/create", "/create", <Create />);
     expect(
-      screen.getByRole("heading", { name: i18n.t("create.title") }),
+      screen.getByRole("heading", { name: i18n.t("create.selectTitle") }),
     ).toBeInTheDocument();
     localStorage.removeItem("quack_display_name");
   });

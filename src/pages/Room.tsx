@@ -26,8 +26,10 @@ import {
   useKickPlayer,
   parseRoomConfig,
   useUpdateRoomConfig,
-  SettingsPanel,
+  GameSettingsModal,
+  getGameModeOption,
 } from "@/features/room";
+import type { RoomConfig } from "@/features/room";
 import {
   useRoleAssignment,
   DiscussionScreen,
@@ -132,6 +134,7 @@ export default function Room() {
       navigate("/");
       toast({ title: t("room.kickedToast"), variant: "danger" });
     },
+    onConfigChanged: refetchRoom,
   });
   const { toggleReady, loading: readyLoading } = useReadyToggle(
     deviceId,
@@ -150,10 +153,11 @@ export default function Room() {
   const { markRoleSeen } = useMarkRoleSeen();
   const { startTimer, loading: startTimerLoading } = useStartGameTimer();
   // Parse room config with full defaults via parseRoomConfig (E5-T1).
-  // Memoized so the reference is stable across renders — SettingsPanel's
-  // useEffect([config]) only fires when roomConfig actually changes from the DB,
-  // not on every re-render caused by saving-state toggles in useUpdateRoomConfig.
+  // Memoized so settings editors only sync local state when roomConfig changes
+  // from the DB, not on every render caused by saving-state toggles.
   const parsedConfig = useMemo(() => parseRoomConfig(roomConfig), [roomConfig]);
+  const selectedGame = getGameModeOption(parsedConfig.game_type);
+  const selectedGameSupported = selectedGame.available;
   const imposterCount = parsedConfig.imposter_count;
   const imposterHintCount = parsedConfig.imposter_hint_count;
   const minPlayers = imposterCount + MIN_CIVILIAN_BUFFER;
@@ -194,6 +198,17 @@ export default function Room() {
   const { updateConfig, saving: configSaving } = useUpdateRoomConfig(
     deviceId,
     roomId,
+  );
+  // Wrapper used by the host settings modal: persist + refetch the room row
+  // locally (Supabase broadcast does not echo to the sender by default), so
+  // reopening the modal shows the freshly saved config.
+  const saveRoomConfig = useCallback(
+    async (next: RoomConfig) => {
+      const ok = await updateConfig(next);
+      if (ok) await refetchRoom();
+      return ok;
+    },
+    [updateConfig, refetchRoom],
   );
   const [showLeaveModal, setShowLeaveModal] = useState(false);
   const [showPlayerSettings, setShowPlayerSettings] = useState(false);
@@ -273,18 +288,20 @@ export default function Room() {
     nonHostPlayers.length > 0 &&
     nonHostPlayers.filter((p) => !p.is_spectator).every((p) => p.is_ready);
   const enoughPlayers = activePlayers.length >= minPlayers;
-  const canStart = allReady && enoughPlayers;
+  const canStart = selectedGameSupported && allReady && enoughPlayers;
 
   // True while the Realtime channel is not SUBSCRIBED — drives the reconnecting banner (E4-T6).
   const isReconnecting =
     channelStatus !== null && channelStatus !== "SUBSCRIBED";
 
   // Friendly reason why Start is disabled.
-  const startDisabledReason = !enoughPlayers
-    ? t("room.startDisabledTooFew", { count: minPlayers })
-    : !allReady
-      ? t("room.startDisabledNotAllReady")
-      : undefined;
+  const startDisabledReason = !selectedGameSupported
+    ? t("room.startDisabledGameUnavailable")
+    : !enoughPlayers
+      ? t("room.startDisabledTooFew", { count: minPlayers })
+      : !allReady
+        ? t("room.startDisabledNotAllReady")
+        : undefined;
 
   // When the roster changes length, re-fetch room data to pick up host changes
   // (e.g., after a host handover the successor's isHost becomes true).
@@ -338,6 +355,13 @@ export default function Room() {
   // Start Game handler — calls start_round RPC then re-fetches room state.
   const handleStart = useCallback(async () => {
     if (!roomId || !deviceId) return;
+    if (parsedConfig.game_type !== "imposter") {
+      toast({
+        title: t("room.startErrorGameUnavailable"),
+        variant: "danger",
+      });
+      return;
+    }
     const ok = await startGame({
       deviceId,
       roomId,
@@ -370,6 +394,7 @@ export default function Room() {
     toast,
     t,
     startError,
+    parsedConfig.game_type,
   ]);
 
   // Kick player handler (host only).
@@ -922,10 +947,12 @@ export default function Room() {
       <div className="mt-2 flex-none rounded-xl bg-bg-raised px-3 py-3">
         <div className="flex items-center gap-3">
           {/* Game icon */}
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+          <div
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${selectedGame.iconBg}`}
+          >
             <Icon
-              icon="mdi:incognito"
-              className="h-6 w-6 text-accent"
+              icon={selectedGame.icon}
+              className={`h-6 w-6 ${selectedGame.iconColor}`}
               aria-hidden="true"
             />
           </div>
@@ -936,36 +963,41 @@ export default function Room() {
               {t("room.nextGame")}
             </span>
             <span className="text-sm font-bold leading-none text-fg">
-              {t("room.gameImposter")}
+              {t(selectedGame.titleKey)}
             </span>
             <div className="mt-1 flex flex-wrap items-center gap-1">
-              {/* Imposter count */}
-              <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
-                <Icon
-                  icon="lucide:user-x"
-                  className="h-3 w-3"
-                  aria-hidden="true"
-                />
-                {imposterCount}
-              </span>
-              {/* Categories */}
-              {configCategories.slice(0, 2).map((cat) => (
-                <span
-                  key={cat}
-                  className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted"
-                >
-                  {t(`settings.category_${cat}`)}
-                </span>
-              ))}
-              {configCategories.length > 2 && (
-                <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
-                  +{configCategories.length - 2}
+              {parsedConfig.game_type === "imposter" ? (
+                <>
+                  <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
+                    <Icon
+                      icon="lucide:user-x"
+                      className="h-3 w-3"
+                      aria-hidden="true"
+                    />
+                    {imposterCount}
+                  </span>
+                  {configCategories.slice(0, 2).map((cat) => (
+                    <span
+                      key={cat}
+                      className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted"
+                    >
+                      {t(`settings.category_${cat}`)}
+                    </span>
+                  ))}
+                  {configCategories.length > 2 && (
+                    <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
+                      +{configCategories.length - 2}
+                    </span>
+                  )}
+                  <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] font-medium uppercase text-fg-muted">
+                    {configLanguage}
+                  </span>
+                </>
+              ) : (
+                <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] font-medium text-fg-muted">
+                  {t("common.comingSoon")}
                 </span>
               )}
-              {/* Language */}
-              <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] font-medium uppercase text-fg-muted">
-                {configLanguage}
-              </span>
             </div>
           </div>
 
@@ -1101,38 +1133,30 @@ export default function Room() {
 
       {/* Player settings modal — read-only view for non-host players */}
       {!isHost && (
-        <Modal
+        <GameSettingsModal
           open={showPlayerSettings}
           onClose={() => setShowPlayerSettings(false)}
-          title={t("settings.title")}
-        >
-          {/* TODO: replace with a dedicated read-only settings view */}
-          <SettingsPanel
-            config={parsedConfig}
-            onSave={async () => false}
-            saving={false}
-            disabled
-            defaultOpen
-          />
-        </Modal>
+          config={parsedConfig}
+          onSave={async () => false}
+          saving={false}
+          disabled
+          readOnlyReason={t("settings.playerReadOnlyNote")}
+        />
       )}
 
       {/* Host settings modal — editable by the host */}
       {isHost && (
-        <Modal
+        <GameSettingsModal
           open={showSettings}
           onClose={() => setShowSettings(false)}
-          title={t("settings.title")}
-        >
-          {/* TODO: replace with a dedicated host settings editor */}
-          <SettingsPanel
-            config={parsedConfig}
-            onSave={updateConfig}
-            saving={configSaving}
-            disabled={roomState !== "lobby"}
-            defaultOpen
-          />
-        </Modal>
+          config={parsedConfig}
+          onSave={saveRoomConfig}
+          saving={configSaving}
+          disabled={roomState !== "lobby"}
+          readOnlyReason={
+            roomState !== "lobby" ? t("settings.frozenNote") : undefined
+          }
+        />
       )}
 
       {/* Host leave modal */}

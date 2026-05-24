@@ -108,6 +108,12 @@ export function useRoomPlayers(
      * a toast (E4-T5).
      */
     onKicked?: () => void;
+    /**
+     * Called when a `room_config_changed` broadcast is received. Use this
+     * in Room.tsx to refetch the room row so all clients pick up settings
+     * edits made by the host without a page reload.
+     */
+    onConfigChanged?: () => void;
   },
 ): UseRoomPlayersReturn {
   const [players, setPlayers] = useState<PlayerRow[]>([]);
@@ -127,6 +133,7 @@ export function useRoomPlayers(
   const onPeekUpdateRef = useRef(options?.onPeekUpdate);
   const onKickedRef = useRef(options?.onKicked);
   const onVoteStateChangedRef = useRef(options?.onVoteStateChanged);
+  const onConfigChangedRef = useRef(options?.onConfigChanged);
   // Keep callback refs current whenever the props change.
   useEffect(() => {
     onRoundEndRef.current = options?.onRoundEnd;
@@ -135,6 +142,7 @@ export function useRoomPlayers(
     onPeekUpdateRef.current = options?.onPeekUpdate;
     onKickedRef.current = options?.onKicked;
     onVoteStateChangedRef.current = options?.onVoteStateChanged;
+    onConfigChangedRef.current = options?.onConfigChanged;
   });
   // Ref to the broadcast function populated once the channel is subscribed.
   const broadcastRef = useRef<((event: string) => Promise<void>) | null>(null);
@@ -245,6 +253,12 @@ export function useRoomPlayers(
         } else {
           void fetchPlayers();
         }
+      })
+      // Host saved new room settings — all clients refetch the room row so
+      // the new config is reflected in their UI without a page reload.
+      .on("broadcast", { event: "room_config_changed" }, () => {
+        if (!isMounted) return;
+        onConfigChangedRef.current?.();
       })
       .subscribe((status) => {
         if (!isMounted) return;

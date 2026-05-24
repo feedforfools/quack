@@ -46,6 +46,30 @@ export function useUpdateRoomConfig(
         return false;
       }
       log.debug("useUpdateRoomConfig: config saved");
+
+      // Notify all clients in the room so they refetch the room row and pick
+      // up the new config without waiting for a page reload. Self does not
+      // receive its own broadcast by default — the caller is responsible for
+      // refetching locally if needed.
+      const broadcastChannel = client.channel(`room:${roomId}`);
+      broadcastChannel.subscribe((subStatus) => {
+        if (subStatus === "SUBSCRIBED") {
+          void broadcastChannel
+            .send({
+              type: "broadcast",
+              event: "room_config_changed",
+              payload: {},
+            })
+            .finally(
+              () =>
+                void setTimeout(
+                  () => void client.removeChannel(broadcastChannel),
+                  500,
+                ),
+            );
+        }
+      });
+
       return true;
     },
     [deviceId, roomId],

@@ -35,8 +35,8 @@
     "activeRoomLeave": "Leave room",
     "activeRoomHint": "Resume your game or leave to start fresh",
     "ctaHint": "Create a room or join an existing one",
-    "activeRoomLeftToast": "You\u2019ve left the room."
-    ,"noRoomMessage": "Create a room or join an existing one to play."
+    "activeRoomLeftToast": "You\u2019ve left the room.",
+    "noRoomMessage": "Create a room or join an existing one to play."
   },
   "create": {
     "title": "Create a Room",
@@ -92,6 +92,7 @@
     "startGame": "Start Game",
     "startDisabledNotAllReady": "Waiting for all players to be ready",
     "startDisabledTooFew": "Need at least {{count}} players to start",
+    "startDisabledGameUnavailable": "This game mode is coming soon",
     "leaveCta": "Leave Room",
     "leftRoom": "You\u2019ve left the room.",
     "leaveError": "Couldn\u2019t leave the room. Please try again.",
@@ -108,6 +109,7 @@
     "hostEndedRoom": "Room ended.",
     "hostLeaveError": "Couldn\u2019t update the room. Please try again.",
     "startErrorNotHost": "You\u2019re not the host of this room.",
+    "startErrorGameUnavailable": "This game mode is not ready yet.",
     "startErrorGeneric": "Couldn\u2019t start the round. Please try again.",
     "roundActiveTitle": "Round in progress",
     "roundActiveSubtitle": "Flip your card to see your role.",
@@ -204,6 +206,20 @@
   "settings": {
     "title": "Game Settings",
     "frozenNote": "Settings are locked while a game is in progress.",
+    "playerReadOnlyNote": "Only the host can change settings.",
+    "saving": "Saving settings",
+    "changeGameMode": "Change game mode",
+    "viewGameMode": "View game mode",
+    "gamePickerTitle": "Choose game",
+    "backToSettings": "Back to settings",
+    "selectedGame": "Selected",
+    "tabsLabel": "Imposter setting sections",
+    "wordsTab": "Words",
+    "rolesTab": "Roles",
+    "voteTab": "Vote",
+    "decreaseSetting": "Decrease {{label}}",
+    "increaseSetting": "Increase {{label}}",
+    "unavailableGameBody": "{{game}} settings will be added when this game is supported.",
     "basicSection": "Basic settings",
     "advancedSection": "Advanced settings",
     "advancedShow": "Show more rules",
@@ -234,6 +250,10 @@
     "threshold_all": "Unanimous",
     "votingDuration": "Voting timer",
     "liveVoteTally": "Show live vote count",
-    "saveError": "Couldn\u2019t save settings. Please try again."
+    "summary_on": "On",
+    "summary_off": "Off",
+    "saveError": "Couldn\u2019t save settings. Please try again.",
+    "save": "Save",
+    "cancel": "Cancel"
   }
 }
