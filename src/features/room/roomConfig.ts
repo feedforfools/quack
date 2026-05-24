@@ -49,6 +49,11 @@ export interface RoomConfig {
    */
   live_vote_tally: boolean;
   /**
+   * When true, players can initiate a call-to-vote during the discussion phase.
+   * When false, voting can only be triggered by the discussion timer expiring.
+   */
+  call_to_vote: boolean;
+  /**
    * Maximum number of players allowed in the lobby (including the host).
    * Default 20, max 20.
    */
@@ -62,10 +67,11 @@ export const DEFAULT_ROOM_CONFIG: RoomConfig = {
   imposter_count: 1,
   imposters_see_each_other: false,
   imposter_hint_count: 0,
-  timer_seconds: 0,
+  timer_seconds: 300,
   vote_threshold_fraction: 0.5,
   voting_duration_seconds: 60,
   live_vote_tally: false,
+  call_to_vote: true,
   max_players: 20,
 };
 
@@ -135,6 +141,8 @@ export function parseRoomConfig(raw: unknown): RoomConfig {
 
   const live_vote_tally = r["live_vote_tally"] === true;
 
+  const call_to_vote = r["call_to_vote"] !== false;
+
   const max_players =
     typeof r["max_players"] === "number" &&
     r["max_players"] >= 3 &&
@@ -153,6 +161,7 @@ export function parseRoomConfig(raw: unknown): RoomConfig {
     vote_threshold_fraction,
     voting_duration_seconds,
     live_vote_tally,
+    call_to_vote,
     max_players,
   };
 }

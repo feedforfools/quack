@@ -8,7 +8,7 @@ import { getGameModeOption } from "./gameModes";
 import { GameList } from "./GameList";
 import type { GameType, RoomConfig } from "./roomConfig";
 
-const TIMER_OPTIONS = [0, 60, 120, 180, 300] as const;
+const TIMER_OPTIONS = [0, 180, 300, 420, 600] as const;
 const VOTING_DURATION_OPTIONS = [30, 60, 90, 120] as const;
 const VOTE_THRESHOLD_OPTIONS = [0.5, 0.67, 1.0] as const;
 const HINT_COUNT_OPTIONS = [0, 1, 2] as const;
@@ -556,13 +556,13 @@ function VoteTab({
   const timerLabel = (seconds: number) =>
     seconds === 0
       ? t("settings.timerOff")
-      : seconds < 120
-        ? t("settings.timer_1min")
-        : seconds < 180
-          ? t("settings.timer_2min")
-          : seconds < 300
-            ? t("settings.timer_3min")
-            : t("settings.timer_5min");
+      : seconds <= 180
+        ? t("settings.timer_3min")
+        : seconds <= 300
+          ? t("settings.timer_5min")
+          : seconds <= 420
+            ? t("settings.timer_7min")
+            : t("settings.timer_10min");
 
   const thresholdLabel = (fraction: number) =>
     fraction >= 1
@@ -582,6 +582,14 @@ function VoteTab({
             value: String(seconds),
             label: timerLabel(seconds),
           }))}
+        />
+      </Row>
+
+      <Row label={t("settings.callToVote")}>
+        <Switch
+          aria-label={t("settings.callToVote")}
+          checked={local.call_to_vote}
+          onCheckedChange={(checked) => update("call_to_vote", checked)}
         />
       </Row>
 
@@ -764,13 +772,13 @@ function VoteSummary({ config }: { config: RoomConfig }) {
   const timerLabel = (seconds: number) =>
     seconds === 0
       ? t("settings.timerOff")
-      : seconds < 120
-        ? t("settings.timer_1min")
-        : seconds < 180
-          ? t("settings.timer_2min")
-          : seconds < 300
-            ? t("settings.timer_3min")
-            : t("settings.timer_5min");
+      : seconds <= 180
+        ? t("settings.timer_3min")
+        : seconds <= 300
+          ? t("settings.timer_5min")
+          : seconds <= 420
+            ? t("settings.timer_7min")
+            : t("settings.timer_10min");
   const thresholdLabel = (fraction: number) =>
     fraction >= 1
       ? t("settings.threshold_all")
@@ -784,6 +792,10 @@ function VoteSummary({ config }: { config: RoomConfig }) {
       <SummaryRow
         label={t("settings.timerDuration")}
         value={timerLabel(config.timer_seconds)}
+      />
+      <SummaryRow
+        label={t("settings.callToVote")}
+        value={yesNo(config.call_to_vote)}
       />
       <SummaryRow
         label={t("settings.voteThreshold")}

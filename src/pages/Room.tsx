@@ -701,7 +701,9 @@ export default function Room() {
             players={players}
             deviceId={deviceId}
             voteState={voteState}
-            onRequestVote={handleRequestVote}
+            onRequestVote={
+              parsedConfig.call_to_vote ? handleRequestVote : undefined
+            }
             requestVoteLoading={requestVoteLoading}
             voteThreshold={voteThreshold}
             onCastVote={handleCastVote}
@@ -738,7 +740,9 @@ export default function Room() {
             configTimerSeconds={parsedConfig.timer_seconds}
             voteState={voteState}
             voteThreshold={voteThreshold}
-            onRequestVote={handleRequestVote}
+            onRequestVote={
+              parsedConfig.call_to_vote ? handleRequestVote : undefined
+            }
             requestVoteLoading={requestVoteLoading}
             onFirstPeek={handleFirstPeek}
             onTimerComplete={handleDiscussionTimerComplete}
@@ -976,21 +980,24 @@ export default function Room() {
                     />
                     {imposterCount}
                   </span>
-                  {configCategories.slice(0, 2).map((cat) => (
-                    <span
-                      key={cat}
-                      className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted"
-                    >
-                      {t(`settings.category_${cat}`)}
-                    </span>
-                  ))}
-                  {configCategories.length > 2 && (
-                    <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
-                      +{configCategories.length - 2}
-                    </span>
-                  )}
                   <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] font-medium uppercase text-fg-muted">
                     {configLanguage}
+                  </span>
+                  <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
+                    <Icon
+                      icon="lucide:timer"
+                      className="h-3 w-3"
+                      aria-hidden="true"
+                    />
+                    {parsedConfig.timer_seconds === 0
+                      ? t("settings.timerOff")
+                      : parsedConfig.timer_seconds <= 180
+                        ? t("settings.timer_3min")
+                        : parsedConfig.timer_seconds <= 300
+                          ? t("settings.timer_5min")
+                          : parsedConfig.timer_seconds <= 420
+                            ? t("settings.timer_7min")
+                            : t("settings.timer_10min")}
                   </span>
                 </>
               ) : (
