@@ -28,3 +28,6 @@ export { PlayerList } from "./PlayerList";
 
 export { ThemeToggle } from "./ThemeToggle";
 export type { PlayerListProps, PlayerModifiers } from "./PlayerList";
+
+export { GameScaffold } from "./GameScaffold";
+export type { GameScaffoldProps } from "./GameScaffold";

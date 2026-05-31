@@ -36,16 +36,27 @@ import {
   VotingScreen,
   useMarkRoleSeen,
   useStartGameTimer,
+  useGameTimerControls,
   useAllPlayersSeen,
+  useSeenPlayers,
+  useVoteRequesters,
   useVoteState,
   useRequestVote,
   useCastVote,
   useRetractVote,
+  useRetractVoteRequest,
   useResolveVote,
   useGameResult,
   ResultScreen,
 } from "@/features/round";
-import { Button, Modal, ShareModal, useToast, PlayerList } from "@/components";
+import {
+  Button,
+  Modal,
+  ShareModal,
+  useToast,
+  PlayerList,
+  GameScaffold,
+} from "@/components";
 import type { PlayerModifiers } from "@/components";
 
 /** Minimum total players needed to start: imposter_count + 2 civilians. */
@@ -111,6 +122,10 @@ export default function Room() {
   // Ref so the useRoomPlayers option callback can call refetchVoteState
   // without creating a circular hook dependency (voteState is added below).
   const refetchVoteStateRef = useRef<(() => void) | null>(null);
+  // Refs for the per-player roster indicator refetchers (seen-card and
+  // called-to-vote), wired below once those hooks are declared.
+  const refetchSeenPlayersRef = useRef<(() => void) | null>(null);
+  const refetchVoteRequestersRef = useRef<(() => void) | null>(null);
   const {
     players,
     connectedIds,
@@ -128,8 +143,16 @@ export default function Room() {
     onRoundEnd: refetchRoom,
     onRoundStart: refetchRoom,
     onTimerStart: refetchAssignment,
-    onPeekUpdate: isHost ? refetchAllSeen : undefined,
-    onVoteStateChanged: () => refetchVoteStateRef.current?.(),
+    onPeekUpdate: () => {
+      // Every device refreshes the per-player "seen card" roster set; the
+      // host additionally refreshes the aggregate Start-Timer gate.
+      refetchSeenPlayersRef.current?.();
+      if (isHost) refetchAllSeen();
+    },
+    onVoteStateChanged: () => {
+      refetchVoteStateRef.current?.();
+      refetchVoteRequestersRef.current?.();
+    },
     onKicked: () => {
       navigate("/");
       toast({ title: t("room.kickedToast"), variant: "danger" });
@@ -152,6 +175,11 @@ export default function Room() {
   const { kickPlayer, loading: kickLoading } = useKickPlayer();
   const { markRoleSeen } = useMarkRoleSeen();
   const { startTimer, loading: startTimerLoading } = useStartGameTimer();
+  const {
+    pauseTimer,
+    resumeTimer,
+    loading: timerControlLoading,
+  } = useGameTimerControls();
   // Parse room config with full defaults via parseRoomConfig (E5-T1).
   // Memoized so settings editors only sync local state when roomConfig changes
   // from the DB, not on every render caused by saving-state toggles.
@@ -173,9 +201,31 @@ export default function Room() {
     refetchVoteStateRef.current = refetchVoteState;
   }, [refetchVoteState]);
 
+  // Per-player roster indicators for the Discussion screen (E5.5-T9):
+  //   * seenIds — who has peeked at their card (refreshed on peek_update).
+  //   * requesterIds — who has called to vote (refreshed on vote_state_changed);
+  //     only meaningful when call-to-vote is enabled, so gate the query on it.
+  const activeGameId =
+    roomState === "round_active" ? (assignment?.gameId ?? null) : null;
+  const { seenIds: seenPlayerIds, refetch: refetchSeenPlayers } =
+    useSeenPlayers(deviceId, activeGameId);
+  const { requesterIds: voteRequesterIds, refetch: refetchVoteRequesters } =
+    useVoteRequesters(
+      deviceId,
+      parsedConfig.call_to_vote ? activeGameId : null,
+    );
+  useEffect(() => {
+    refetchSeenPlayersRef.current = refetchSeenPlayers;
+  }, [refetchSeenPlayers]);
+  useEffect(() => {
+    refetchVoteRequestersRef.current = refetchVoteRequesters;
+  }, [refetchVoteRequesters]);
+
   const { requestVote, loading: requestVoteLoading } = useRequestVote();
   const { castVote, loading: castVoteLoading } = useCastVote();
   const { retractVote, loading: retractVoteLoading } = useRetractVote();
+  const { retractVoteRequest, loading: retractVoteRequestLoading } =
+    useRetractVoteRequest();
   const { resolveVote } = useResolveVote();
 
   // Fetch full game result once vote is resolved (E5-T9).
@@ -464,7 +514,9 @@ export default function Room() {
     void markRoleSeen({ deviceId, gameId: assignment.gameId }).then(() => {
       // Re-check all_players_seen so the host's Start Timer button unlocks.
       if (isHost) refetchAllSeen();
-      // Notify the host's screen that another player peeked.
+      // Refresh this device's own seen-card roster set immediately.
+      refetchSeenPlayers();
+      // Notify the other clients that another player peeked.
       void broadcastPeekUpdate();
     });
   }, [
@@ -473,6 +525,7 @@ export default function Room() {
     markRoleSeen,
     isHost,
     refetchAllSeen,
+    refetchSeenPlayers,
     broadcastPeekUpdate,
   ]);
 
@@ -499,6 +552,48 @@ export default function Room() {
     t,
   ]);
 
+  // Host pause / resume of the discussion timer — synced to every device via
+  // the timer_started broadcast (same channel the start uses).
+  const handlePauseTimer = useCallback(async (): Promise<boolean> => {
+    if (!deviceId || !roomId) return false;
+    const ok = await pauseTimer({ deviceId, roomId });
+    if (ok) {
+      refetchAssignment();
+      void broadcastTimerStart();
+    } else {
+      toast({ title: t("round.timerControlError"), variant: "danger" });
+    }
+    return ok;
+  }, [
+    deviceId,
+    roomId,
+    pauseTimer,
+    refetchAssignment,
+    broadcastTimerStart,
+    toast,
+    t,
+  ]);
+
+  const handleResumeTimer = useCallback(async (): Promise<boolean> => {
+    if (!deviceId || !roomId) return false;
+    const ok = await resumeTimer({ deviceId, roomId });
+    if (ok) {
+      refetchAssignment();
+      void broadcastTimerStart();
+    } else {
+      toast({ title: t("round.timerControlError"), variant: "danger" });
+    }
+    return ok;
+  }, [
+    deviceId,
+    roomId,
+    resumeTimer,
+    refetchAssignment,
+    broadcastTimerStart,
+    toast,
+    t,
+  ]);
+
   // Vote action handlers — broadcast vote_state_changed after each RPC
   // so all connected clients refetch their vote state.
   const handleRequestVote = useCallback(
@@ -506,11 +601,40 @@ export default function Room() {
       const ok = await requestVote(params);
       if (ok) {
         refetchVoteState();
+        refetchVoteRequesters();
         void broadcastVoteStateChanged();
       } else toast({ title: t("vote.requestError"), variant: "danger" });
       return ok;
     },
-    [requestVote, refetchVoteState, broadcastVoteStateChanged, toast, t],
+    [
+      requestVote,
+      refetchVoteState,
+      refetchVoteRequesters,
+      broadcastVoteStateChanged,
+      toast,
+      t,
+    ],
+  );
+
+  // Retract a pending "skip to vote" request (item 3).
+  const handleRetractVoteRequest = useCallback(
+    async (params: { deviceId: string; gameId: string }): Promise<boolean> => {
+      const ok = await retractVoteRequest(params);
+      if (ok) {
+        refetchVoteState();
+        refetchVoteRequesters();
+        void broadcastVoteStateChanged();
+      } else toast({ title: t("vote.retractRequestError"), variant: "danger" });
+      return ok;
+    },
+    [
+      retractVoteRequest,
+      refetchVoteState,
+      refetchVoteRequesters,
+      broadcastVoteStateChanged,
+      toast,
+      t,
+    ],
   );
 
   const handleCastVote = useCallback(
@@ -726,7 +850,6 @@ export default function Room() {
           )}
           <DiscussionScreen
             assignment={assignment}
-            roomCode={code}
             players={players}
             connectedIds={connectedIds}
             hostPlayerId={hostPlayerId}
@@ -736,6 +859,9 @@ export default function Room() {
             endRoundLoading={endRoundLoading}
             onStartTimer={isHost ? handleStartTimer : undefined}
             startTimerLoading={startTimerLoading}
+            onPauseTimer={isHost ? handlePauseTimer : undefined}
+            onResumeTimer={isHost ? handleResumeTimer : undefined}
+            timerControlLoading={timerControlLoading}
             allPlayersSeen={allPlayersSeen}
             configTimerSeconds={parsedConfig.timer_seconds}
             voteState={voteState}
@@ -744,8 +870,22 @@ export default function Room() {
               parsedConfig.call_to_vote ? handleRequestVote : undefined
             }
             requestVoteLoading={requestVoteLoading}
+            onRetractVoteRequest={
+              parsedConfig.call_to_vote ? handleRetractVoteRequest : undefined
+            }
+            retractVoteRequestLoading={retractVoteRequestLoading}
             onFirstPeek={handleFirstPeek}
             onTimerComplete={handleDiscussionTimerComplete}
+            // Per-player roster indicators, sourced live from the
+            // get_seen_player_ids / get_vote_requesters RPCs (E5.5-T9). The
+            // own device's seen state is merged in from its own assignment so
+            // its eye-check shows immediately, without waiting for a refetch.
+            seenIds={
+              assignment.seenAt && deviceId
+                ? new Set([...seenPlayerIds, deviceId])
+                : seenPlayerIds
+            }
+            skipRequestedIds={voteRequesterIds}
           />
         </>
       );
@@ -846,289 +986,290 @@ export default function Room() {
   );
 
   return (
-    <main className="mx-auto flex h-dvh max-w-md flex-col px-4">
+    <>
       {/* Reconnecting banner */}
       {isReconnecting && <ReconnectingBanner label={t("room.reconnecting")} />}
 
-      {/* ── Header: logo · code + share · player capacity ── */}
-      <div className="grid grid-cols-[1fr,auto,1fr] items-center py-3">
-        {/* Left: logo → home */}
-        <Link
-          to="/"
-          aria-label={t("common.backToHome")}
-          className="justify-self-start transition-opacity active:opacity-60"
-        >
-          <img
-            src="/quack_150.png"
-            alt="Quack"
-            className="h-10 w-auto select-none"
-            draggable={false}
-          />
-        </Link>
-
-        {/* Center: room code + ROOM label + share icon */}
-        <div className="relative flex flex-col items-center gap-0 justify-self-center">
-          <div className="flex items-center">
-            <button
-              type="button"
-              onClick={() => setShowQR(true)}
-              aria-label={t("room.shareLabel")}
-              className="inline-flex h-8 items-center gap-1 rounded-lg px-2.5 text-fg-muted transition-colors hover:bg-fg/10 active:opacity-60"
+      <GameScaffold
+        listRef={playerListRef}
+        listLabel={t("room.shareLabel")}
+        header={
+          /* Header: logo · code + share · player capacity */
+          <div className="grid grid-cols-[1fr,auto,1fr] items-center px-4 py-3">
+            {/* Left: logo → home */}
+            <Link
+              to="/"
+              aria-label={t("common.backToHome")}
+              className="justify-self-start transition-opacity active:opacity-60"
             >
-              <span className="font-mono text-3xl font-bold tracking-widest text-accent">
-                {code?.toUpperCase()}
-              </span>
-              <Icon
-                icon="lucide:share-2"
-                className="h-4 w-4"
-                aria-hidden="true"
+              <img
+                src="/quack_150.png"
+                alt="Quack"
+                className="h-10 w-auto select-none"
+                draggable={false}
               />
-            </button>
-          </div>
-          <span className="absolute top-full text-[10px] font-semibold uppercase tracking-[0.2em] text-fg-muted">
-            {t("room.lobby")}
-          </span>
-        </div>
+            </Link>
 
-        {/* Right: player capacity badge */}
-        <div className="flex flex-col items-end gap-0 justify-self-end">
-          <div className="flex items-center gap-0.5 rounded-xl bg-bg-raised px-2 py-1.5">
-            <Icon
-              icon="lucide:users"
-              className="h-3.5 w-3.5 text-fg-muted"
-              aria-hidden="true"
-            />
-            <span className="flex items-baseline gap-0">
-              <span className="text-sm font-bold tabular-nums leading-none text-fg">
-                {players.length}
+            {/* Center: room code + ROOM label + share icon */}
+            <div className="relative flex flex-col items-center gap-0 justify-self-center">
+              <div className="flex items-center">
+                <button
+                  type="button"
+                  onClick={() => setShowQR(true)}
+                  aria-label={t("room.shareLabel")}
+                  className="inline-flex h-8 items-center gap-1 rounded-lg px-2.5 text-fg-muted transition-colors hover:bg-fg/10 active:opacity-60"
+                >
+                  <span className="font-mono text-3xl font-bold tracking-widest text-accent">
+                    {code?.toUpperCase()}
+                  </span>
+                  <Icon
+                    icon="lucide:share-2"
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
+              <span className="absolute top-full text-[10px] font-semibold uppercase tracking-[0.2em] text-fg-muted">
+                {t("room.lobby")}
               </span>
-              <span className="text-sm tabular-nums leading-none text-fg-muted">
-                /{parsedConfig.max_players}
-              </span>
-            </span>
-          </div>
-        </div>
-      </div>
+            </div>
 
-      {/* ── Context description above the player list ── */}
-      <p className="flex-none pt-2 text-center text-xs text-fg-muted">
-        {t("room.lobbyDescription")}
-      </p>
-
-      {/* ── Player roster — grows to fill available space ── */}
-      <div
-        ref={playerListRef}
-        role="region"
-        aria-label={t("room.shareLabel")}
-        className="mt-2 min-h-0 flex-1 overflow-hidden"
-      >
-        {playersLoading ? (
-          <div className="space-y-3">
-            {[1, 2].map((i) => (
-              <div
-                key={i}
-                className="h-12 animate-pulse rounded-xl bg-bg-raised"
-              />
-            ))}
-          </div>
-        ) : (
-          <PlayerList
-            players={players}
-            connectedIds={connectedIds}
-            hostPlayerId={hostPlayerId}
-            deviceId={deviceId}
-            isHost={isHost && roomState === "lobby"}
-            onKick={isHost && roomState === "lobby" ? handleKick : undefined}
-            kickLoading={kickLoading}
-            modifiers={lobbyModifiers}
-            columns={listCols}
-            rowsPerColumn={listRows}
-          />
-        )}
-      </div>
-
-      {/* ── Next Game Card ── */}
-      <div className="mt-2 flex-none rounded-xl bg-bg-raised px-3 py-3">
-        <div className="flex items-center gap-3">
-          {/* Game icon */}
-          <div
-            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${selectedGame.iconBg}`}
-          >
-            <Icon
-              icon={selectedGame.icon}
-              className={`h-6 w-6 ${selectedGame.iconColor}`}
-              aria-hidden="true"
-            />
-          </div>
-
-          {/* Game info */}
-          <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-fg-subtle">
-              {t("room.nextGame")}
-            </span>
-            <span className="text-sm font-bold leading-none text-fg">
-              {t(selectedGame.titleKey)}
-            </span>
-            <div className="mt-1 flex flex-wrap items-center gap-1">
-              {parsedConfig.game_type === "imposter" ? (
-                <>
-                  <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
-                    <Icon
-                      icon="lucide:user-x"
-                      className="h-3 w-3"
-                      aria-hidden="true"
-                    />
-                    {imposterCount}
+            {/* Right: player capacity badge */}
+            <div className="flex flex-col items-end gap-0 justify-self-end">
+              <div className="flex items-center gap-0.5 rounded-xl bg-bg-raised px-2 py-1.5">
+                <Icon
+                  icon="lucide:users"
+                  className="h-3.5 w-3.5 text-fg-muted"
+                  aria-hidden="true"
+                />
+                <span className="flex items-baseline gap-0">
+                  <span className="text-sm font-bold tabular-nums leading-none text-fg">
+                    {players.length}
                   </span>
-                  <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] font-medium uppercase text-fg-muted">
-                    {configLanguage}
+                  <span className="text-sm tabular-nums leading-none text-fg-muted">
+                    /{parsedConfig.max_players}
                   </span>
-                  <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
-                    <Icon
-                      icon="lucide:timer"
-                      className="h-3 w-3"
-                      aria-hidden="true"
-                    />
-                    {parsedConfig.timer_seconds === 0
-                      ? t("settings.timerOff")
-                      : parsedConfig.timer_seconds <= 180
-                        ? t("settings.timer_3min")
-                        : parsedConfig.timer_seconds <= 300
-                          ? t("settings.timer_5min")
-                          : parsedConfig.timer_seconds <= 420
-                            ? t("settings.timer_7min")
-                            : t("settings.timer_10min")}
-                  </span>
-                </>
-              ) : (
-                <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] font-medium text-fg-muted">
-                  {t("common.comingSoon")}
                 </span>
-              )}
+              </div>
             </div>
           </div>
-
-          {/* Settings button */}
-          <button
-            type="button"
-            aria-label={
-              isHost
-                ? t("room.nextGameEditSettings")
-                : t("room.nextGameViewSettings")
-            }
-            onClick={() =>
-              isHost ? setShowSettings(true) : setShowPlayerSettings(true)
-            }
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-fg/8 transition-colors hover:bg-fg/12 active:opacity-60"
-          >
-            <Icon
-              icon={isHost ? "carbon:settings-edit" : "carbon:settings-view"}
-              className="h-5 w-5 text-fg-muted"
-              aria-hidden="true"
+        }
+        belowHeader={t("room.lobbyDescription")}
+        list={
+          playersLoading ? (
+            <div className="space-y-3">
+              {[1, 2].map((i) => (
+                <div
+                  key={i}
+                  className="h-12 animate-pulse rounded-xl bg-bg-raised"
+                />
+              ))}
+            </div>
+          ) : (
+            <PlayerList
+              players={players}
+              connectedIds={connectedIds}
+              hostPlayerId={hostPlayerId}
+              deviceId={deviceId}
+              isHost={isHost && roomState === "lobby"}
+              onKick={isHost && roomState === "lobby" ? handleKick : undefined}
+              kickLoading={kickLoading}
+              modifiers={lobbyModifiers}
+              columns={listCols}
+              rowsPerColumn={listRows}
             />
-          </button>
-        </div>
-      </div>
+          )
+        }
+        extra={
+          /* Next Game Card */
+          <div className="rounded-xl bg-bg-raised px-3 py-3">
+            <div className="flex items-center gap-3">
+              {/* Game icon */}
+              <div
+                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${selectedGame.iconBg}`}
+              >
+                <Icon
+                  icon={selectedGame.icon}
+                  className={`h-6 w-6 ${selectedGame.iconColor}`}
+                  aria-hidden="true"
+                />
+              </div>
 
-      {/* ── Context hint between card and buttons ── */}
-      <p className="flex-none pt-2 text-center text-xs text-fg-muted">
-        {isHost ? t("room.lobbyHintHost") : t("room.lobbyHintPlayer")}
-      </p>
+              {/* Game info */}
+              <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-fg-subtle">
+                  {t("room.nextGame")}
+                </span>
+                <span className="text-sm font-bold leading-none text-fg">
+                  {t(selectedGame.titleKey)}
+                </span>
+                <div className="mt-1 flex flex-wrap items-center gap-1">
+                  {parsedConfig.game_type === "imposter" ? (
+                    <>
+                      <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
+                        <Icon
+                          icon="lucide:user-x"
+                          className="h-3 w-3"
+                          aria-hidden="true"
+                        />
+                        {imposterCount}
+                      </span>
+                      <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] font-medium uppercase text-fg-muted">
+                        {configLanguage}
+                      </span>
+                      <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
+                        <Icon
+                          icon="lucide:timer"
+                          className="h-3 w-3"
+                          aria-hidden="true"
+                        />
+                        {parsedConfig.timer_seconds === 0
+                          ? t("settings.timerOff")
+                          : parsedConfig.timer_seconds <= 180
+                            ? t("settings.timer_3min")
+                            : parsedConfig.timer_seconds <= 300
+                              ? t("settings.timer_5min")
+                              : parsedConfig.timer_seconds <= 420
+                                ? t("settings.timer_7min")
+                                : t("settings.timer_10min")}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] font-medium text-fg-muted">
+                      {t("common.comingSoon")}
+                    </span>
+                  )}
+                </div>
+              </div>
 
-      {/* ── Bottom action row ── */}
-      <div className="flex-none pb-6 pt-3">
-        {/* Host: exit · start · settings */}
-        {joined && isHost && !roomLoading && (
-          <div className="flex items-center gap-3">
-            {/* Exit — square, red */}
-            <Button
-              variant="danger"
-              size="md"
-              aria-label={t("room.hostLeaveCta")}
-              disabled={hostLeaveLoading}
-              onClick={() => {
-                setSelectedSuccessor(null);
-                setShowLeaveModal(true);
-              }}
-              style={{ aspectRatio: "1 / 1", padding: 0, minWidth: "44px" }}
-            >
-              <Icon
-                icon="lucide:log-out"
-                className="h-5 w-5"
-                aria-hidden="true"
-              />
-            </Button>
-
-            {/* Start — rectangular, yellow */}
-            <Button
-              variant="primary"
-              size="md"
-              className="flex-1"
-              onClick={() => void handleStart()}
-              disabled={!canStart || startLoading}
-              loading={startLoading}
-              aria-describedby={!canStart ? "start-hint" : undefined}
-            >
-              {t("room.startGame")}
-            </Button>
+              {/* Settings button */}
+              <button
+                type="button"
+                aria-label={
+                  isHost
+                    ? t("room.nextGameEditSettings")
+                    : t("room.nextGameViewSettings")
+                }
+                onClick={() =>
+                  isHost ? setShowSettings(true) : setShowPlayerSettings(true)
+                }
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-fg/8 transition-colors hover:bg-fg/12 active:opacity-60"
+              >
+                <Icon
+                  icon={
+                    isHost ? "carbon:settings-edit" : "carbon:settings-view"
+                  }
+                  className="h-5 w-5 text-fg-muted"
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
           </div>
-        )}
+        }
+        aboveFooter={
+          isHost ? t("room.lobbyHintHost") : t("room.lobbyHintPlayer")
+        }
+        footer={
+          <>
+            {/* Host: exit · start · settings */}
+            {joined && isHost && !roomLoading && (
+              <div className="flex items-center gap-3">
+                {/* Exit — square, red */}
+                <Button
+                  variant="danger"
+                  size="md"
+                  aria-label={t("room.hostLeaveCta")}
+                  disabled={hostLeaveLoading}
+                  onClick={() => {
+                    setSelectedSuccessor(null);
+                    setShowLeaveModal(true);
+                  }}
+                  style={{ aspectRatio: "1 / 1", padding: 0, minWidth: "44px" }}
+                >
+                  <Icon
+                    icon="lucide:log-out"
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  />
+                </Button>
 
-        {/* Disabled-start hint */}
-        {joined && isHost && !roomLoading && !canStart && (
-          <p id="start-hint" className="mt-2 text-center text-xs text-fg-muted">
-            {startDisabledReason}
-          </p>
-        )}
+                {/* Start — rectangular, yellow */}
+                <Button
+                  variant="primary"
+                  size="md"
+                  className="flex-1"
+                  onClick={() => void handleStart()}
+                  disabled={!canStart || startLoading}
+                  loading={startLoading}
+                  aria-describedby={!canStart ? "start-hint" : undefined}
+                >
+                  {t("room.startGame")}
+                </Button>
+              </div>
+            )}
 
-        {/* All-ready hint */}
-        {joined && isHost && !roomLoading && canStart && (
-          <p className="mt-2 text-center text-xs text-fg-muted">
-            {t("room.lobbyAllReady")}
-          </p>
-        )}
+            {/* Disabled-start hint */}
+            {joined && isHost && !roomLoading && !canStart && (
+              <p
+                id="start-hint"
+                className="mt-2 text-center text-xs text-fg-muted"
+              >
+                {startDisabledReason}
+              </p>
+            )}
 
-        {/* Non-host: exit · ready · view-settings */}
-        {joined && !isHost && !roomLoading && (
-          <div className="flex items-center gap-3">
-            {/* Exit — square, red */}
-            <Button
-              variant="danger"
-              size="md"
-              aria-label={t("room.leaveCta")}
-              disabled={leaveLoading}
-              onClick={() => void handleLeave()}
-              style={{ aspectRatio: "1 / 1", padding: 0, minWidth: "44px" }}
-            >
-              <Icon
-                icon="lucide:log-out"
-                className="h-5 w-5"
-                aria-hidden="true"
-              />
-            </Button>
+            {/* All-ready hint */}
+            {joined && isHost && !roomLoading && canStart && (
+              <p className="mt-2 text-center text-xs text-fg-muted">
+                {t("room.lobbyAllReady")}
+              </p>
+            )}
 
-            {/* Ready — rectangular, fills remaining space */}
-            <Button
-              variant={ownPlayer?.is_ready ? "ghost" : "primary"}
-              size="md"
-              className="flex-1"
-              onClick={() => void toggleReady(ownPlayer?.is_ready ?? false)}
-              disabled={readyLoading}
-            >
-              {ownPlayer?.is_ready ? t("room.notReadyCta") : t("room.readyCta")}
-            </Button>
-          </div>
-        )}
+            {/* Non-host: exit · ready · view-settings */}
+            {joined && !isHost && !roomLoading && (
+              <div className="flex items-center gap-3">
+                {/* Exit — square, red */}
+                <Button
+                  variant="danger"
+                  size="md"
+                  aria-label={t("room.leaveCta")}
+                  disabled={leaveLoading}
+                  onClick={() => void handleLeave()}
+                  style={{ aspectRatio: "1 / 1", padding: 0, minWidth: "44px" }}
+                >
+                  <Icon
+                    icon="lucide:log-out"
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  />
+                </Button>
 
-        {/* Player ready hint */}
-        {joined && !isHost && !roomLoading && (
-          <p className="mt-2 text-center text-xs text-fg-muted">
-            {ownPlayer?.is_ready
-              ? t("room.lobbyHintPlayerReady")
-              : t("room.lobbyHintPlayerCta")}
-          </p>
-        )}
-      </div>
+                {/* Ready — rectangular, fills remaining space */}
+                <Button
+                  variant={ownPlayer?.is_ready ? "ghost" : "primary"}
+                  size="md"
+                  className="flex-1"
+                  onClick={() => void toggleReady(ownPlayer?.is_ready ?? false)}
+                  disabled={readyLoading}
+                >
+                  {ownPlayer?.is_ready
+                    ? t("room.notReadyCta")
+                    : t("room.readyCta")}
+                </Button>
+              </div>
+            )}
+
+            {/* Player ready hint */}
+            {joined && !isHost && !roomLoading && (
+              <p className="mt-2 text-center text-xs text-fg-muted">
+                {ownPlayer?.is_ready
+                  ? t("room.lobbyHintPlayerReady")
+                  : t("room.lobbyHintPlayerCta")}
+              </p>
+            )}
+          </>
+        }
+      />
 
       {/* Share modal — room code copy, QR code, and URL share */}
       <ShareModal
@@ -1232,6 +1373,6 @@ export default function Room() {
           </Button>
         </div>
       </Modal>
-    </main>
+    </>
   );
 }

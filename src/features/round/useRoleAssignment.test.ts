@@ -30,6 +30,10 @@ function makeClientStub({
     index: number;
     ends_at: string | null;
     started_at: string;
+    config_snapshot?: Record<string, unknown>;
+    timer_paused_seconds?: number | null;
+    starter_player_id?: string | null;
+    discussion_direction?: string | null;
   } | null,
   ra = {
     role: "civilian" as "civilian" | "imposter",
@@ -109,6 +113,9 @@ describe("useRoleAssignment", () => {
       word: "pizza",
       endsAt: null,
       timerSeconds: null,
+      pausedSeconds: null,
+      starterPlayerId: null,
+      discussionDirection: null,
       seenAt: null,
       coImposters: [],
       hints: [],
@@ -187,14 +194,16 @@ describe("useRoleAssignment", () => {
     expect(result.current.assignment).toBeNull();
   });
 
-  it("computes timerSeconds from ends_at and started_at", async () => {
-    // 90 seconds between started_at and ends_at → timerSeconds = 90
+  it("uses config_snapshot.timer_seconds as the timer total", async () => {
+    // timerSeconds is the configured duration so the strip starts full,
+    // independent of when the host actually started the countdown.
     const stub = makeClientStub({
       round: {
         id: GAME_ID,
         index: 1,
         started_at: "2026-01-01T00:00:00.000Z",
         ends_at: "2026-01-01T00:01:30.000Z",
+        config_snapshot: { timer_seconds: 300 },
       },
     });
     mockDevice.mockReturnValue(
@@ -207,18 +216,18 @@ describe("useRoleAssignment", () => {
 
     await waitFor(() => expect(result.current.loading).toBe(false));
 
-    expect(result.current.assignment?.timerSeconds).toBe(90);
+    expect(result.current.assignment?.timerSeconds).toBe(300);
     expect(result.current.assignment?.endsAt).toBe("2026-01-01T00:01:30.000Z");
   });
 
-  it("rounds a fractional second duration to nearest integer", async () => {
-    // 59_500 ms → Math.round(59.5) = 60
+  it("sets timerSeconds to null when config timer_seconds is 0", async () => {
     const stub = makeClientStub({
       round: {
         id: GAME_ID,
         index: 1,
         started_at: "2026-01-01T00:00:00.000Z",
         ends_at: "2026-01-01T00:00:59.500Z",
+        config_snapshot: { timer_seconds: 0 },
       },
     });
     mockDevice.mockReturnValue(
@@ -231,7 +240,7 @@ describe("useRoleAssignment", () => {
 
     await waitFor(() => expect(result.current.loading).toBe(false));
 
-    expect(result.current.assignment?.timerSeconds).toBe(60);
+    expect(result.current.assignment?.timerSeconds).toBeNull();
   });
 
   it("sets timerSeconds to null when ends_at is null", async () => {

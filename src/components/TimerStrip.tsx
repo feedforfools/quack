@@ -1,12 +1,38 @@
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 
-function PlayIcon({ className }: { className?: string }) {
-  return <Icon icon="lucide:play" className={className} aria-hidden="true" />;
+function PlayIcon({
+  className,
+  style,
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <Icon
+      icon="mdi:play"
+      className={className}
+      style={style}
+      aria-hidden="true"
+    />
+  );
 }
 
-function PauseIcon({ className }: { className?: string }) {
-  return <Icon icon="lucide:pause" className={className} aria-hidden="true" />;
+function PauseIcon({
+  className,
+  style,
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <Icon
+      icon="mdi:pause"
+      className={className}
+      style={style}
+      aria-hidden="true"
+    />
+  );
 }
 
 interface TimerStripProps {
@@ -26,6 +52,12 @@ interface TimerStripProps {
    * When false the strip freezes at the current remaining time (pause state).
    */
   running?: boolean;
+  /**
+   * Frozen remaining seconds when the timer is paused (server-driven). Used to
+   * restore the bar to the paused position on reload — otherwise a refreshing
+   * client would reset to the full `totalSeconds`. Ignored while running.
+   */
+  pausedSeconds?: number | null;
   /**
    * Called when the strip is pressed (play/pause toggle).
    * When omitted the strip renders as a display-only element (no button).
@@ -58,12 +90,16 @@ export function TimerStrip({
   endsAt,
   totalSeconds,
   running = false,
+  pausedSeconds,
   onToggle,
   onComplete,
 }: TimerStripProps) {
   const [remaining, setRemaining] = useState<number>(() => {
     if (running && endsAt) {
       return Math.max(0, (new Date(endsAt).getTime() - Date.now()) / 1000);
+    }
+    if (!running && pausedSeconds != null) {
+      return Math.max(0, pausedSeconds);
     }
     return totalSeconds;
   });
@@ -78,6 +114,17 @@ export function TimerStrip({
   // passes an un-memoised inline function.
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
+
+  // While paused (or freshly reloaded into a paused state), keep the frozen
+  // remaining in sync with the server-provided value so the bar holds at the
+  // exact spot the host paused it rather than snapping back to full.
+  useEffect(() => {
+    if (!running && pausedSeconds != null) {
+      const frozen = Math.max(0, pausedSeconds);
+      remainingRef.current = frozen;
+      setRemaining(frozen);
+    }
+  }, [running, pausedSeconds]);
 
   useEffect(() => {
     if (rafRef.current !== null) {
@@ -145,6 +192,15 @@ export function TimerStrip({
     ? `${timeStr} remaining, tap to ${running ? "pause" : "start"}`
     : `${timeStr} remaining`;
 
+  // Responsive sizing — the strip scales down on short viewports so it never
+  // dominates a small screen, but is capped at the original (large-screen)
+  // dimensions. Height drives the icon/font scale via shared clamp values.
+  const iconStyle = {
+    width: "clamp(2.25rem, 6.5vh, 4rem)",
+    height: "clamp(2.25rem, 6.5vh, 4rem)",
+  } as const;
+  const timeFontStyle = { fontSize: "clamp(2.75rem, 9vh, 6.3rem)" } as const;
+
   const inner = (
     <>
       {/* Coloured fill bar — no CSS transition; RAF drives smooth updates */}
@@ -163,13 +219,13 @@ export function TimerStrip({
       >
         {onToggle &&
           (running ? (
-            <PauseIcon className="h-16 w-16 shrink-0 text-accent-ink" />
+            <PauseIcon className="shrink-0 text-accent-ink" style={iconStyle} />
           ) : (
-            <PlayIcon className="h-16 w-16 shrink-0 text-accent-ink" />
+            <PlayIcon className="shrink-0 text-accent-ink" style={iconStyle} />
           ))}
         <span
           className="font-black tabular-nums leading-none text-accent-ink"
-          style={{ fontSize: "6.3rem" }}
+          style={timeFontStyle}
         >
           {timeStr}
         </span>
@@ -184,13 +240,13 @@ export function TimerStrip({
       >
         {onToggle &&
           (running ? (
-            <PauseIcon className="h-16 w-16 shrink-0 text-fg" />
+            <PauseIcon className="shrink-0 text-fg" style={iconStyle} />
           ) : (
-            <PlayIcon className="h-16 w-16 shrink-0 text-fg" />
+            <PlayIcon className="shrink-0 text-fg" style={iconStyle} />
           ))}
         <span
           className="font-black tabular-nums leading-none text-fg"
-          style={{ fontSize: "6.3rem" }}
+          style={timeFontStyle}
         >
           {timeStr}
         </span>
@@ -198,7 +254,8 @@ export function TimerStrip({
     </>
   );
 
-  const sharedClass = "relative h-28 w-full overflow-hidden bg-bg-raised";
+  const sharedClass = "relative w-full overflow-hidden bg-bg-raised";
+  const heightStyle = { height: "clamp(4.25rem, 12vh, 7rem)" } as const;
 
   if (onToggle) {
     return (
@@ -207,6 +264,7 @@ export function TimerStrip({
         aria-label={ariaLabel}
         onClick={onToggle}
         className={`${sharedClass} active:brightness-95`}
+        style={heightStyle}
       >
         {inner}
       </button>
@@ -214,7 +272,12 @@ export function TimerStrip({
   }
 
   return (
-    <div role="timer" aria-label={ariaLabel} className={sharedClass}>
+    <div
+      role="timer"
+      aria-label={ariaLabel}
+      className={sharedClass}
+      style={heightStyle}
+    >
       {inner}
     </div>
   );

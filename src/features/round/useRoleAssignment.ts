@@ -20,10 +20,25 @@ export interface RoleAssignment {
    */
   endsAt: string | null;
   /**
-   * Total timer duration in seconds (derived from ends_at − started_at).
-   * Null when no timer was configured for this round.
+   * Total timer duration in seconds — the configured value from the game's
+   * config_snapshot (NOT ends_at − started_at, which would include the gap
+   * between game start and the host tapping "start timer" and so make the bar
+   * begin partially filled). Null when no timer was configured.
    */
   timerSeconds: number | null;
+  /**
+   * Frozen remaining seconds while the host has paused the timer. Null when
+   * the timer is running or has not been started. Set by pause_game_timer.
+   */
+  pausedSeconds: number | null;
+  /**
+   * Player ID that should open the discussion (random per game), or null.
+   */
+  starterPlayerId: string | null;
+  /**
+   * Rotation hint for turn order: 'clockwise' | 'counterclockwise' | null.
+   */
+  discussionDirection: "clockwise" | "counterclockwise" | null;
   /**
    * Server-issued ISO timestamp of the player's first lid-peek, or null if
    * they have not yet peeked. Used by RoleReveal to restore peek state on
@@ -75,10 +90,13 @@ export function useRoleAssignment(
       const client = supabaseWithDevice(deviceId);
 
       // Step 1: Get the latest round for this room.
-      // ends_at and started_at are used to derive the timer duration.
+      // config_snapshot carries the configured timer duration; ends_at /
+      // timer_paused_seconds drive the live countdown and pause state.
       const { data: round, error: roundErr } = await client
         .from("games")
-        .select("id, index, ends_at, started_at")
+        .select(
+          "id, index, ends_at, started_at, config_snapshot, timer_paused_seconds, starter_player_id, discussion_direction",
+        )
         .eq("room_id", roomId)
         .order("index", { ascending: false })
         .limit(1)
@@ -117,15 +135,22 @@ export function useRoleAssignment(
       }
 
       // Compute timer fields from the round row.
-      // timerSeconds is derived server-side so all clients agree on the value.
+      // timerSeconds is the configured duration (config_snapshot.timer_seconds)
+      // so the strip always starts completely filled — independent of how long
+      // after game start the host actually tapped "start timer".
       const endsAt = round.ends_at ?? null;
+      const configSnapshot =
+        round.config_snapshot && typeof round.config_snapshot === "object"
+          ? (round.config_snapshot as Record<string, unknown>)
+          : null;
+      const configTimerSeconds = Number(configSnapshot?.["timer_seconds"] ?? 0);
       const timerSeconds =
-        endsAt && round.started_at
-          ? Math.round(
-              (new Date(endsAt).getTime() -
-                new Date(round.started_at).getTime()) /
-                1000,
-            )
+        Number.isFinite(configTimerSeconds) && configTimerSeconds > 0
+          ? configTimerSeconds
+          : null;
+      const pausedSeconds =
+        typeof round.timer_paused_seconds === "number"
+          ? round.timer_paused_seconds
           : null;
 
       // Extract hints from payload (imposter-only field set by start_game).
@@ -163,6 +188,13 @@ export function useRoleAssignment(
         word: ra.word,
         endsAt,
         timerSeconds,
+        pausedSeconds,
+        starterPlayerId: round.starter_player_id ?? null,
+        discussionDirection:
+          round.discussion_direction === "clockwise" ||
+          round.discussion_direction === "counterclockwise"
+            ? round.discussion_direction
+            : null,
         seenAt: ra.seen_at ?? null,
         coImposters,
         hints,

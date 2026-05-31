@@ -152,36 +152,45 @@ export type Database = {
       games: {
         Row: {
           config_snapshot: Json;
+          discussion_direction: string | null;
           ended_at: string | null;
           ends_at: string | null;
           id: string;
           index: number;
           room_id: string;
           started_at: string;
+          starter_player_id: string | null;
+          timer_paused_seconds: number | null;
           vote_ends_at: string | null;
           vote_request_count: number;
           vote_state: Database["public"]["Enums"]["vote_state"];
         };
         Insert: {
           config_snapshot?: Json;
+          discussion_direction?: string | null;
           ended_at?: string | null;
           ends_at?: string | null;
           id?: string;
           index: number;
           room_id: string;
           started_at?: string;
+          starter_player_id?: string | null;
+          timer_paused_seconds?: number | null;
           vote_ends_at?: string | null;
           vote_request_count?: number;
           vote_state?: Database["public"]["Enums"]["vote_state"];
         };
         Update: {
           config_snapshot?: Json;
+          discussion_direction?: string | null;
           ended_at?: string | null;
           ends_at?: string | null;
           id?: string;
           index?: number;
           room_id?: string;
           started_at?: string;
+          starter_player_id?: string | null;
+          timer_paused_seconds?: number | null;
           vote_ends_at?: string | null;
           vote_request_count?: number;
           vote_state?: Database["public"]["Enums"]["vote_state"];
@@ -252,6 +261,32 @@ export type Database = {
         Args: { p_game_id: string };
         Returns: { target_player_id: string; vote_count: number }[];
       };
+      get_seen_player_ids: {
+        Args: { p_game_id: string };
+        Returns: { player_id: string }[];
+      };
+      get_vote_requesters: {
+        Args: { p_game_id: string };
+        Returns: { player_id: string }[];
+      };
+      request_vote: { Args: { p_game_id: string }; Returns: undefined };
+      cast_vote: {
+        Args: { p_game_id: string; p_target_player_id: string };
+        Returns: undefined;
+      };
+      retract_vote: { Args: { p_game_id: string }; Returns: undefined };
+      retract_vote_request: { Args: { p_game_id: string }; Returns: undefined };
+      resolve_vote: { Args: { p_game_id: string }; Returns: undefined };
+      get_game_result: {
+        Args: { p_game_id: string };
+        Returns: {
+          outcome: "imposters_caught" | "imposters_win" | "tie";
+          voted_out_player_id: string | null;
+          voted_out_player_name: string | null;
+          secret_word: string | null;
+          imposters: Json;
+        }[];
+      };
       end_game: {
         Args: { p_host_secret_hash: string; p_room_id: string };
         Returns: undefined;
@@ -259,6 +294,14 @@ export type Database = {
       player_in_room: { Args: { p_room_id: string }; Returns: boolean };
       requesting_player_id: { Args: never; Returns: string };
       start_game_timer: {
+        Args: { p_room_id: string; p_host_secret_hash: string };
+        Returns: Json;
+      };
+      pause_game_timer: {
+        Args: { p_room_id: string; p_host_secret_hash: string };
+        Returns: Json;
+      };
+      resume_game_timer: {
         Args: { p_room_id: string; p_host_secret_hash: string };
         Returns: Json;
       };
