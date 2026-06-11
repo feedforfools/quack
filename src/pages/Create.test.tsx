@@ -65,10 +65,11 @@ describe("Create", () => {
         imposter_count: 1,
         imposters_see_each_other: false,
         imposter_hint_count: 0,
-        timer_seconds: 0,
+        timer_seconds: 300,
         vote_threshold_fraction: 0.5,
         voting_duration_seconds: 60,
         live_vote_tally: false,
+        call_to_vote: true,
         max_players: 20,
       },
     });

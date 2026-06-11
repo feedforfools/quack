@@ -84,6 +84,7 @@ vi.mock("@/features/room", () => ({
     vote_threshold_fraction: 0.5,
     voting_duration_seconds: 60,
     live_vote_tally: false,
+    call_to_vote: true,
     max_players: 20,
   }),
   useUpdateRoomConfig: () => ({ updateConfig: vi.fn(), saving: false }),

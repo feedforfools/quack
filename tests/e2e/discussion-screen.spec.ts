@@ -32,15 +32,27 @@ async function seedDisplayName(page: Page, name: string) {
 /**
  * Close the role-peek modal if it is currently open (it auto-opens on game
  * start or after a reload when seenAt is null). Safe to call even if closed.
+ * Retries with Escape as a fallback — the close button sits on the draggable
+ * lid, so a click can occasionally be swallowed by the drag handler.
  */
 async function closeModalIfOpen(page: Page): Promise<void> {
-  try {
-    await page
-      .getByRole("button", { name: "Close dialog" })
-      .click({ timeout: 3_000 });
-  } catch {
-    // Modal was not open — ignore.
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const open = await page
+      .getByRole("dialog")
+      .isVisible()
+      .catch(() => false);
+    if (!open) return;
+    if (attempt === 0) {
+      await page
+        .getByRole("button", { name: "Close card" })
+        .click({ timeout: 3_000 })
+        .catch(() => {});
+    } else {
+      await page.keyboard.press("Escape");
+    }
+    await page.waitForTimeout(500);
   }
+  await expect(page.getByRole("dialog")).not.toBeVisible({ timeout: 5_000 });
 }
 
 // ─── Test suite ───────────────────────────────────────────────────────────────
@@ -75,11 +87,13 @@ test.describe("discussion screen — paginated UX (E5.5-T6)", () => {
     ]);
 
     // ── Host creates room ──────────────────────────────────────────────
+    // The Create page is a game picker — tapping the Imposter card creates
+    // the room immediately with the default config.
     await hostPage.goto("/create");
     await expect(
-      hostPage.getByRole("button", { name: /create room/i }),
+      hostPage.getByRole("button", { name: /^imposter/i }),
     ).toBeVisible({ timeout: 10_000 });
-    await hostPage.getByRole("button", { name: /create room/i }).click();
+    await hostPage.getByRole("button", { name: /^imposter/i }).click();
     await hostPage.waitForURL(/\/r\/[A-Z2-9]{6}/, { timeout: 15_000 });
     const roomCode =
       hostPage.url().split("/r/")[1]?.slice(0, 6).toUpperCase() ?? "";
@@ -96,8 +110,8 @@ test.describe("discussion screen — paginated UX (E5.5-T6)", () => {
     ]);
 
     // ── Players mark ready ─────────────────────────────────────────────
-    await p1Page.getByRole("button", { name: /i['’]m ready/i }).click();
-    await p2Page.getByRole("button", { name: /i['’]m ready/i }).click();
+    await p1Page.getByRole("button", { name: "Ready", exact: true }).click();
+    await p2Page.getByRole("button", { name: "Ready", exact: true }).click();
 
     try {
       await expect(
@@ -136,53 +150,55 @@ test.describe("discussion screen — paginated UX (E5.5-T6)", () => {
 
     // ── 3. Closing the modal reveals the Discussion screen ────────────
     await Promise.all([
-      hostPage.getByRole("button", { name: "Close dialog" }).click(),
-      p1Page.getByRole("button", { name: "Close dialog" }).click(),
-      p2Page.getByRole("button", { name: "Close dialog" }).click(),
+      closeModalIfOpen(hostPage),
+      closeModalIfOpen(p1Page),
+      closeModalIfOpen(p2Page),
     ]);
 
+    // The Discussion screen action bar ("Your card") is now interactive.
     await Promise.all([
-      expect(
-        hostPage.getByRole("heading", { name: /discussion/i }),
-      ).toBeVisible({ timeout: 5_000 }),
-      expect(p1Page.getByRole("heading", { name: /discussion/i })).toBeVisible({
+      expect(hostPage.getByRole("button", { name: /your card/i })).toBeVisible({
         timeout: 5_000,
       }),
-      expect(p2Page.getByRole("heading", { name: /discussion/i })).toBeVisible({
+      expect(p1Page.getByRole("button", { name: /your card/i })).toBeVisible({
+        timeout: 5_000,
+      }),
+      expect(p2Page.getByRole("button", { name: /your card/i })).toBeVisible({
         timeout: 5_000,
       }),
     ]);
 
-    // ── 4. "Peek at role" button reopens the modal ─────────────────────
-    await p1Page.getByRole("button", { name: /peek at role/i }).click();
+    // ── 4. "Your card" button reopens the modal ────────────────────────
+    await p1Page.getByRole("button", { name: /your card/i }).click();
     await expect(p1Page.getByRole("dialog")).toBeVisible({ timeout: 5_000 });
-    await p1Page.getByRole("button", { name: "Close dialog" }).click();
+    await closeModalIfOpen(p1Page);
     await expect(p1Page.getByRole("dialog")).not.toBeVisible({
       timeout: 3_000,
     });
 
-    // ── 5. Call-to-vote section is visible for no-timer game ───────────
+    // ── 5. Call-to-vote affordance is visible (timer not started) ──────
     await expect(
-      p1Page.getByText(/think it's time to vote out the imposter\?/i),
+      p1Page.getByText(/call a vote when you.re ready\./i),
     ).toBeVisible({ timeout: 5_000 });
 
     // ── 6. Two players call to vote → threshold met → VotingScreen ─────
     // 3 active players, vote_threshold_fraction = 0.5 → CEIL(3 × 0.5) = 2.
-    await p1Page.getByRole("button", { name: /call to vote/i }).click();
+    // With the discussion timer not started, the button reads "Go to vote".
+    await p1Page.getByRole("button", { name: /go to vote/i }).click();
 
     // p2 may need a nudge if Realtime hasn't propagated yet.
     try {
       await expect(
-        p2Page.getByRole("button", { name: /call to vote/i }),
+        p2Page.getByRole("button", { name: /go to vote/i }),
       ).toBeVisible({ timeout: 10_000 });
     } catch {
       await p2Page.reload();
       await closeModalIfOpen(p2Page);
       await expect(
-        p2Page.getByRole("button", { name: /call to vote/i }),
+        p2Page.getByRole("button", { name: /go to vote/i }),
       ).toBeVisible({ timeout: 10_000 });
     }
-    await p2Page.getByRole("button", { name: /call to vote/i }).click();
+    await p2Page.getByRole("button", { name: /go to vote/i }).click();
 
     // All pages should show VotingScreen.
     const activeLabel = /voting in progress/i;

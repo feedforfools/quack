@@ -236,8 +236,9 @@ export default function Playground() {
             PlayerList — Discussion phase (skip votes + vote count)
           </h2>
           <p className="mb-3 text-xs text-fg-muted">
-            Yellow skip icon = voted to fast-forward to voting. "2" next to
-            Ethan = 2 votes received. No kick affordance (non-host view).
+            Yellow skip icon = voted to fast-forward to voting. &ldquo;2&rdquo;
+            next to Ethan = 2 votes received. No kick affordance (non-host
+            view).
           </p>
           <PlayerList
             players={visiblePlayers}

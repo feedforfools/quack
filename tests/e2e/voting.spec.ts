@@ -29,6 +29,32 @@ async function seedDisplayName(page: Page, name: string) {
   );
 }
 
+/**
+ * Close the role-peek modal if it is currently open (it auto-opens on game
+ * start or after a reload when seenAt is null). Safe to call even if closed.
+ * Retries with Escape as a fallback — the close button sits on the draggable
+ * lid, so a click can occasionally be swallowed by the drag handler.
+ */
+async function closeModalIfOpen(page: Page): Promise<void> {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const open = await page
+      .getByRole("dialog")
+      .isVisible()
+      .catch(() => false);
+    if (!open) return;
+    if (attempt === 0) {
+      await page
+        .getByRole("button", { name: "Close card" })
+        .click({ timeout: 3_000 })
+        .catch(() => {});
+    } else {
+      await page.keyboard.press("Escape");
+    }
+    await page.waitForTimeout(500);
+  }
+  await expect(page.getByRole("dialog")).not.toBeVisible({ timeout: 5_000 });
+}
+
 // ─── Test ─────────────────────────────────────────────────────────────────────
 
 test.describe("voting flow — 4 contexts", () => {
@@ -70,11 +96,13 @@ test.describe("voting flow — 4 contexts", () => {
     ]);
 
     // ── Host creates room ──────────────────────────────────────────────────
+    // The Create page is a game picker — tapping the Imposter card creates
+    // the room immediately with the default config.
     await hostPage.goto("/create");
     await expect(
-      hostPage.getByRole("button", { name: /create room/i }),
+      hostPage.getByRole("button", { name: /^imposter/i }),
     ).toBeVisible();
-    await hostPage.getByRole("button", { name: /create room/i }).click();
+    await hostPage.getByRole("button", { name: /^imposter/i }).click();
     await hostPage.waitForURL(/\/r\/[A-Z2-9]{6}/, { timeout: 15_000 });
     const roomCode =
       hostPage.url().split("/r/")[1]?.slice(0, 6).toUpperCase() ?? "";
@@ -93,9 +121,9 @@ test.describe("voting flow — 4 contexts", () => {
     ]);
 
     // ── Players mark ready ─────────────────────────────────────────────────
-    await p1Page.getByRole("button", { name: /i['’]m ready/i }).click();
-    await p2Page.getByRole("button", { name: /i['’]m ready/i }).click();
-    await p3Page.getByRole("button", { name: /i['’]m ready/i }).click();
+    await p1Page.getByRole("button", { name: "Ready", exact: true }).click();
+    await p2Page.getByRole("button", { name: "Ready", exact: true }).click();
+    await p3Page.getByRole("button", { name: "Ready", exact: true }).click();
 
     // Wait for host to see Start Game enabled (all ready). Reload as fallback.
     try {
@@ -133,23 +161,25 @@ test.describe("voting flow — 4 contexts", () => {
 
     // ── Dismiss the auto-opened role-peek modal for all players ───────────
     // The modal backdrop blocks clicks on elements behind it (e.g. the
-    // Call to Vote button). Close it before continuing with the vote flow.
+    // Go to vote button). Close it before continuing with the vote flow.
     await Promise.all([
-      hostPage.getByRole("button", { name: "Close dialog" }).click(),
-      p1Page.getByRole("button", { name: "Close dialog" }).click(),
-      p2Page.getByRole("button", { name: "Close dialog" }).click(),
-      p3Page.getByRole("button", { name: "Close dialog" }).click(),
+      closeModalIfOpen(hostPage),
+      closeModalIfOpen(p1Page),
+      closeModalIfOpen(p2Page),
+      closeModalIfOpen(p3Page),
     ]);
 
-    // ── Verify "Call to Vote" section is visible before voting starts ──────
-    // Default vote_state = 'none' → requestHint text is shown.
+    // ── Verify the call-to-vote affordance is visible before voting ────────
+    // Default vote_state = 'none' → discussion hint + "Go to vote" button
+    // (the discussion timer has not been started, so the label is not
+    // "Skip to vote").
     await expect(
-      p1Page.getByText(/think it's time to vote out the imposter\?/i),
+      p1Page.getByText(/call a vote when you.re ready\./i),
     ).toBeVisible({ timeout: 10_000 });
 
     // ── P1 calls to vote (1 of 2 threshold) ────────────────────────────────
     // CEIL(4 active players × 0.5 fraction) = 2.
-    await p1Page.getByRole("button", { name: /call to vote/i }).click();
+    await p1Page.getByRole("button", { name: /go to vote/i }).click();
 
     // P1 now sees the request count "1 of 2 votes to start".
     await expect(p1Page.getByText(/1 of 2 votes to start/i)).toBeVisible({
@@ -160,23 +190,17 @@ test.describe("voting flow — 4 contexts", () => {
     // Realtime may not have propagated the state to p2 yet — retry if needed.
     try {
       await expect(
-        p2Page.getByRole("button", { name: /call to vote/i }),
+        p2Page.getByRole("button", { name: /go to vote/i }),
       ).toBeVisible({ timeout: 10_000 });
     } catch {
       await p2Page.reload();
       // The peek modal auto-opens again after reload — close it first.
-      try {
-        await p2Page
-          .getByRole("button", { name: "Close dialog" })
-          .click({ timeout: 5_000 });
-      } catch {
-        // Modal wasn't open (seenAt already set) — safe to ignore.
-      }
+      await closeModalIfOpen(p2Page);
       await expect(
-        p2Page.getByRole("button", { name: /call to vote/i }),
+        p2Page.getByRole("button", { name: /go to vote/i }),
       ).toBeVisible({ timeout: 10_000 });
     }
-    await p2Page.getByRole("button", { name: /call to vote/i }).click();
+    await p2Page.getByRole("button", { name: /go to vote/i }).click();
 
     // ── All pages should now show the active voting UI ─────────────────────
     const activeLabel = /voting in progress/i;

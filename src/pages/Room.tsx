@@ -805,6 +805,10 @@ export default function Room() {
           )}
           <ResultScreen
             result={gameResult}
+            players={players}
+            connectedIds={connectedIds}
+            hostPlayerId={hostPlayerId}
+            deviceId={deviceId}
             isHost={isHost}
             onEndGame={isHost ? handleEndRound : undefined}
             endGameLoading={endRoundLoading}
@@ -823,12 +827,22 @@ export default function Room() {
           <VotingScreen
             assignment={assignment}
             players={players}
+            connectedIds={connectedIds}
+            hostPlayerId={hostPlayerId}
             deviceId={deviceId}
+            isHost={isHost}
+            onEndRound={isHost ? handleEndRound : undefined}
+            endRoundLoading={endRoundLoading}
             voteState={voteState}
             onRequestVote={
               parsedConfig.call_to_vote ? handleRequestVote : undefined
             }
             requestVoteLoading={requestVoteLoading}
+            onRetractVoteRequest={
+              parsedConfig.call_to_vote ? handleRetractVoteRequest : undefined
+            }
+            retractVoteRequestLoading={retractVoteRequestLoading}
+            skipRequestedIds={voteRequesterIds}
             voteThreshold={voteThreshold}
             onCastVote={handleCastVote}
             castVoteLoading={castVoteLoading}

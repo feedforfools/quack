@@ -1,10 +1,24 @@
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components";
+import { Icon } from "@iconify/react";
+import { Button, PlayerList, GameScaffold } from "@/components";
+import type { PlayerModifiers } from "@/components";
 import type { GameResult } from "./useGameResult";
+import type { PlayerRow } from "@/features/room";
 
 interface ResultScreenProps {
   /** Full game result returned by get_game_result RPC. */
   result: GameResult;
+  /**
+   * All players currently in the room — rendered as the role-reveal roster.
+   * Spectators are excluded (they did not play this game).
+   */
+  players: PlayerRow[];
+  /** Set of player IDs currently visible on the Realtime presence channel. */
+  connectedIds?: Set<string>;
+  /** Player ID of the room host — renders a crown icon. */
+  hostPlayerId?: string | null;
+  /** The calling device's UUID — own name renders in accent colour. */
+  deviceId: string | null;
   /** Whether the current player is the host — shows End Game button. */
   isHost?: boolean;
   /** Called when the host taps End Game to return the room to lobby. */
@@ -13,124 +27,180 @@ interface ResultScreenProps {
   endGameLoading?: boolean;
 }
 
+/** Per-outcome presentation: banner colours, emoji, copy keys. */
+const OUTCOME_PRESENTATION = {
+  imposters_caught: {
+    emoji: "🎉",
+    bannerBg: "bg-success",
+    bannerText: "text-success-ink",
+    headingKey: "result.outcomeCaught",
+    subtitleKey: "result.subtitleCaught",
+  },
+  imposters_win: {
+    emoji: "🕵️",
+    bannerBg: "bg-danger",
+    bannerText: "text-danger-ink",
+    headingKey: "result.outcomeWin",
+    subtitleKey: "result.subtitleWin",
+  },
+  tie: {
+    emoji: "🤝",
+    bannerBg: "bg-accent",
+    bannerText: "text-accent-ink",
+    headingKey: "result.outcomeTie",
+    subtitleKey: "result.subtitleTie",
+  },
+} as const;
+
 /**
- * Post-vote result screen (E5-T9).
+ * Post-vote result screen — in-game redesign (E5.5).
  *
- * Reveals to every player:
- *  1. The outcome (imposters caught / imposters win / tie).
- *  2. Who was voted out (or "Nobody" on a tie).
- *  3. The secret word.
- *  4. All imposters' names.
- *  5. "End Game" button (host only) that returns the room to lobby.
+ * Shares the GameScaffold anatomy with the lobby / Discussion / Voting
+ * screens so the whole game flow reads as one app:
+ *
+ *   1. Outcome banner — full-width coloured strip (echoes the TimerStrip
+ *      slot): green = imposters caught, red = imposters win, yellow = tie.
+ *   2. Short outcome subtitle.
+ *   3. Role-reveal roster — every player with their true role icon
+ *      (duck = civilian, incognito = imposter) and a "Voted out" pill on
+ *      whoever the room voted out.
+ *   4. Secret word card.
+ *   5. Imposters one-line summary (covers imposters who already left).
+ *   6. Footer — host: End Game; everyone else: waiting hint.
  */
 export function ResultScreen({
   result,
+  players,
+  connectedIds = new Set(),
+  hostPlayerId = null,
+  deviceId,
   isHost = false,
   onEndGame,
   endGameLoading = false,
 }: ResultScreenProps) {
   const { t } = useTranslation();
 
-  const { outcome, votedOutPlayerName, secretWord, imposters } = result;
+  const { outcome, votedOutPlayerId, secretWord, imposters } = result;
+  const view = OUTCOME_PRESENTATION[outcome];
 
-  // Outcome-specific display values.
-  const outcomeEmoji =
-    outcome === "imposters_caught"
-      ? "🎉"
-      : outcome === "imposters_win"
-        ? "🕵️"
-        : "🤝";
+  const activePlayers = players.filter((p) => !p.is_spectator);
+  const imposterIds = new Set(imposters.map((imp) => imp.player_id));
+  const imposterNames = imposters.map((imp) => imp.display_name).join(", ");
 
-  const outcomeKey =
-    outcome === "imposters_caught"
-      ? "result.outcomeCaught"
-      : outcome === "imposters_win"
-        ? "result.outcomeWin"
-        : "result.outcomeTie";
-
-  const outcomeColour =
-    outcome === "imposters_caught"
-      ? "text-success"
-      : outcome === "imposters_win"
-        ? "text-danger"
-        : "text-accent";
-
-  const votedOutLabel = votedOutPlayerName ?? t("result.nobody");
+  // Role reveal per roster row: voted-out pill (slot A) + role icon (slot B).
+  const modifiers: Record<string, PlayerModifiers> = Object.fromEntries(
+    activePlayers.map((p) => [
+      p.id,
+      {
+        firstModifier:
+          p.id === votedOutPlayerId ? (
+            <span className="rounded-full bg-danger/15 px-1.5 py-0.5 text-[10px] font-semibold text-danger">
+              {t("result.votedOutLabel")}
+            </span>
+          ) : null,
+        mainModifier: imposterIds.has(p.id) ? (
+          <span role="img" aria-label={t("round.roleImposter")}>
+            <Icon
+              icon="mdi:incognito"
+              className="h-4 w-4 text-danger"
+              aria-hidden="true"
+            />
+          </span>
+        ) : (
+          <span role="img" aria-label={t("round.roleCivilian")}>
+            <Icon
+              icon="mdi:duck"
+              className="h-4 w-4 text-success"
+              aria-hidden="true"
+            />
+          </span>
+        ),
+      },
+    ]),
+  );
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md flex-col items-center px-6 py-10">
-      {/* Outcome banner */}
-      <span className="text-6xl" aria-hidden="true">
-        {outcomeEmoji}
-      </span>
-      <h1
-        className={`mt-4 text-center text-3xl font-bold ${outcomeColour}`}
-        aria-live="polite"
-      >
-        {t(outcomeKey)}
-      </h1>
-
-      {/* Voted-out player */}
-      <section className="mt-8 w-full rounded-2xl bg-bg-raised px-5 py-4">
-        <p className="text-xs font-semibold uppercase tracking-widest text-fg-subtle">
-          {t("result.votedOutLabel")}
-        </p>
-        <p className="mt-1 text-xl font-semibold text-fg">{votedOutLabel}</p>
-      </section>
-
-      {/* Secret word */}
-      <section className="mt-4 w-full rounded-2xl bg-bg-raised px-5 py-4">
-        <p className="text-xs font-semibold uppercase tracking-widest text-fg-subtle">
-          {t("result.secretWordLabel")}
-        </p>
-        <p className="mt-1 text-xl font-semibold text-success">
-          {secretWord ?? "—"}
-        </p>
-      </section>
-
-      {/* All imposters revealed */}
-      <section className="mt-4 w-full rounded-2xl bg-bg-raised px-5 py-4">
-        <p className="text-xs font-semibold uppercase tracking-widest text-fg-subtle">
-          {t("result.impostersLabel")}
-        </p>
-        {imposters.length === 0 ? (
-          <p className="mt-1 text-sm text-fg-muted">—</p>
-        ) : (
-          <ul className="mt-2 space-y-1">
-            {imposters.map((imp) => (
-              <li
-                key={imp.player_id}
-                className="flex items-center gap-2 text-sm font-medium text-fg"
-              >
-                <span className="text-danger" aria-hidden="true">
-                  🕵️
-                </span>
-                {imp.display_name}
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-
-      {/* End Game — host-only, returns room to lobby */}
-      {isHost && onEndGame && (
-        <Button
-          variant="primary"
-          size="lg"
-          onClick={onEndGame}
-          disabled={endGameLoading}
-          className="mt-10 w-full max-w-xs"
+    <GameScaffold
+      scrollList
+      header={
+        /* Outcome banner — fills the same slot the TimerStrip occupies
+           in-game, so the phase change reads instantly. */
+        <div
+          className={`flex w-full items-center justify-center gap-3 px-4 ${view.bannerBg}`}
+          style={{ height: "clamp(4.25rem, 12vh, 7rem)" }}
         >
-          {endGameLoading ? "…" : t("result.endGameCta")}
-        </Button>
-      )}
-
-      {/* Non-host hint */}
-      {!isHost && (
-        <p className="mt-10 text-center text-sm text-fg-muted">
-          {t("result.waitingForHost")}
-        </p>
-      )}
-    </main>
+          <span
+            aria-hidden="true"
+            style={{ fontSize: "clamp(1.9rem, 5vh, 3rem)" }}
+          >
+            {view.emoji}
+          </span>
+          <h1
+            className={`font-black leading-none ${view.bannerText}`}
+            style={{ fontSize: "clamp(1.5rem, 4.5vh, 2.5rem)" }}
+            aria-live="polite"
+          >
+            {t(view.headingKey)}
+          </h1>
+        </div>
+      }
+      belowHeader={t(view.subtitleKey)}
+      list={
+        <PlayerList
+          players={activePlayers}
+          connectedIds={connectedIds}
+          hostPlayerId={hostPlayerId}
+          deviceId={deviceId}
+          modifiers={modifiers}
+        />
+      }
+      extra={
+        /* Secret word card — same card idiom as the lobby's game card. */
+        <div className="rounded-xl bg-bg-raised px-3 py-3">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/15">
+              <Icon
+                icon="lucide:key-round"
+                className="h-6 w-6 text-accent"
+                aria-hidden="true"
+              />
+            </div>
+            <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-fg-subtle">
+                {t("result.secretWordLabel")}
+              </span>
+              <span className="truncate text-lg font-bold leading-tight text-fg">
+                {secretWord ?? "—"}
+              </span>
+            </div>
+          </div>
+        </div>
+      }
+      aboveFooter={
+        /* Covers imposters who already left the room (not in the roster). */
+        imposterNames
+          ? t("result.impostersSummary", { names: imposterNames })
+          : undefined
+      }
+      footer={
+        isHost && onEndGame ? (
+          <Button
+            variant="primary"
+            size="md"
+            onClick={onEndGame}
+            disabled={endGameLoading}
+            loading={endGameLoading}
+            className="w-full"
+          >
+            {t("result.endGameCta")}
+          </Button>
+        ) : (
+          <p className="flex min-h-[44px] items-center justify-center text-center text-sm text-fg-muted">
+            {t("result.waitingForHost")}
+          </p>
+        )
+      }
+      belowFooter={isHost ? t("result.endGameHint") : undefined}
+    />
   );
 }

@@ -257,8 +257,14 @@ export function RoleCardModal({
                   aria-label={t("round.cardModalCloseLabel")}
                   // Stop the pointer-down from starting a lid drag.
                   onPointerDown={(e) => e.stopPropagation()}
+                  // Close on pointer-up as well: inside the touch-action:none
+                  // lid, mobile Chrome sometimes never synthesises the click
+                  // event for a tap, which left the card stuck open on phones.
+                  // The pointer-down above never reaches the lid, so a
+                  // pointer-up here is always a deliberate tap on the ✕.
+                  onPointerUp={onClose}
                   className={[
-                    "absolute right-2 top-2 z-10 flex h-9 w-9 items-center justify-center",
+                    "absolute right-1 top-1 z-10 flex h-11 w-11 items-center justify-center",
                     "text-fg-muted transition-colors hover:text-fg",
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
                   ].join(" ")}
