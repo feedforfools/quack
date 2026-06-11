@@ -48,17 +48,17 @@ export function DisplayNamePrompt({
       role="dialog"
       aria-modal="true"
       aria-labelledby={`${inputId}-title`}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 backdrop-blur-sm animate-in fade-in-0"
     >
       {/* Panel */}
-      <div className="w-full max-w-sm rounded-2xl bg-bg-raised p-6 shadow-xl">
+      <div className="w-full max-w-sm rounded-3xl border border-border/70 bg-bg-raised p-6 shadow-2xl animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-4 duration-300 ease-out">
         <h2
           id={`${inputId}-title`}
-          className="mb-1 text-xl font-semibold text-fg"
+          className="mb-1 text-xl font-extrabold tracking-tight text-fg"
         >
           {t("identity.prompt.title")}
         </h2>
-        <p className="mb-5 text-sm text-fg-muted">
+        <p className="mb-5 text-sm leading-relaxed text-fg-muted">
           {t("identity.prompt.subtitle")}
         </p>
 
@@ -76,10 +76,11 @@ export function DisplayNamePrompt({
             onChange={(e) => setValue(e.target.value)}
             placeholder={t("identity.prompt.placeholder")}
             className={[
-              "w-full rounded-xl border bg-bg-sunken px-4 py-3",
-              "text-base text-fg placeholder:text-fg-subtle",
+              "w-full rounded-full border bg-bg-sunken px-5 py-3",
+              "text-base text-fg caret-accent placeholder:text-fg-subtle",
+              "transition-[border-color,box-shadow] duration-150",
               "border-border focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40",
-              "min-h-[44px]", // tap target
+              "min-h-[48px]", // tap target
             ].join(" ")}
           />
 
@@ -87,10 +88,11 @@ export function DisplayNamePrompt({
             type="submit"
             disabled={!isValid}
             className={[
-              "mt-4 w-full rounded-xl px-4 font-semibold transition-opacity",
-              "min-h-[44px] text-base", // tap target
-              "bg-accent text-black",
-              "disabled:cursor-not-allowed disabled:opacity-40",
+              "mt-4 w-full rounded-full px-5 font-bold",
+              "min-h-[48px] text-base", // tap target
+              "bg-accent text-accent-ink shadow-glow",
+              "transition-all duration-200 ease-out hover:bg-accent-hover active:scale-[0.97]",
+              "disabled:cursor-not-allowed disabled:bg-accent/40 disabled:text-accent-ink/60 disabled:shadow-none disabled:active:scale-100",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60",
             ].join(" ")}
           >

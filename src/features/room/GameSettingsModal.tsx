@@ -213,7 +213,7 @@ function GameCard({
 
   if (disabled) {
     return (
-      <div className="flex w-full items-center gap-3 rounded-2xl bg-bg-sunken px-4 py-3 text-left">
+      <div className="flex w-full items-center gap-3 rounded-2xl bg-bg-sunken px-4 py-3 text-left ring-1 ring-inset ring-border/40">
         {content}
         <button
           type="button"
@@ -222,7 +222,7 @@ function GameCard({
             e.stopPropagation();
             // Game info modal — coming in a later stage
           }}
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-fg/8 text-fg-muted transition-colors hover:bg-fg/12 active:opacity-60"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-fg/10 text-fg-muted transition-all hover:bg-fg/15 active:scale-95"
         >
           <Icon
             icon="ph:info-bold"
@@ -240,8 +240,9 @@ function GameCard({
       onClick={onChange}
       aria-label={t("settings.changeGameMode")}
       className={[
-        "flex w-full items-center gap-3 rounded-2xl bg-bg-sunken px-4 py-3 text-left transition-colors",
-        "hover:bg-fg/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+        "flex w-full items-center gap-3 rounded-2xl bg-bg-sunken px-4 py-3 text-left ring-1 ring-inset ring-border/40",
+        "transition-[background-color,transform] duration-150 hover:bg-fg/10 active:scale-[0.98]",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
       ].join(" ")}
     >
       {content}
@@ -284,17 +285,17 @@ function ImposterTabsShell({
     >
       <TabsPrimitive.List
         aria-label={t("settings.tabsLabel")}
-        className="grid flex-none grid-cols-3 gap-1 rounded-2xl bg-bg-sunken p-1"
+        className="grid flex-none grid-cols-3 gap-1 rounded-full bg-bg-sunken p-1 ring-1 ring-inset ring-border/40"
       >
         {tabs.map((tab) => (
           <TabsPrimitive.Trigger
             key={tab.id}
             value={tab.id}
             className={[
-              "flex h-10 items-center justify-center gap-1.5 rounded-xl text-sm font-semibold transition-colors",
+              "flex h-10 items-center justify-center gap-1.5 rounded-full text-sm font-bold transition-colors",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
               "text-fg-muted hover:text-fg",
-              "data-[state=active]:bg-accent data-[state=active]:text-accent-ink data-[state=active]:hover:text-accent-ink",
+              "data-[state=active]:bg-accent data-[state=active]:text-accent-ink data-[state=active]:shadow-sm data-[state=active]:hover:text-accent-ink",
             ].join(" ")}
           >
             <Icon icon={tab.icon} className="h-4 w-4" aria-hidden="true" />
@@ -367,7 +368,7 @@ function ImposterSettingsTabs({
 /** A grouped list of rows on a single sunken surface, separated by hairlines. */
 function RowGroup({ children }: { children: ReactNode }) {
   return (
-    <div className="divide-y divide-border/60 overflow-hidden rounded-2xl bg-bg-sunken">
+    <div className="divide-y divide-border/60 overflow-hidden rounded-2xl bg-bg-sunken ring-1 ring-inset ring-border/40">
       {children}
     </div>
   );
@@ -400,7 +401,7 @@ function Segmented<T extends string | number>({
     <div
       role="group"
       aria-label={ariaLabel}
-      className="inline-flex rounded-xl bg-bg p-1"
+      className="inline-flex rounded-full bg-bg p-1 ring-1 ring-inset ring-border/40"
     >
       {options.map((option) => {
         const selected = option.value === value;
@@ -411,10 +412,10 @@ function Segmented<T extends string | number>({
             aria-pressed={selected}
             onClick={() => onChange(option.value)}
             className={[
-              "h-8 min-w-10 rounded-lg px-3 text-xs font-bold uppercase transition-colors",
+              "h-8 min-w-10 rounded-full px-3 text-xs font-bold uppercase transition-colors",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
               selected
-                ? "bg-accent text-accent-ink"
+                ? "bg-accent text-accent-ink shadow-sm"
                 : "text-fg-muted hover:text-fg",
             ].join(" ")}
           >
@@ -470,11 +471,11 @@ function WordsTab({
                 aria-pressed={selected}
                 onClick={() => toggleCategory(category)}
                 className={[
-                  "h-7 rounded-full px-3 text-sm font-semibold transition-colors",
+                  "h-8 rounded-full px-3.5 text-sm font-semibold transition-colors",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
                   selected
-                    ? "bg-accent text-accent-ink"
-                    : "bg-bg text-fg-muted hover:text-fg",
+                    ? "bg-accent text-accent-ink shadow-sm"
+                    : "bg-bg text-fg-muted ring-1 ring-inset ring-border/40 hover:text-fg",
                 ].join(" ")}
               >
                 {t(CATEGORY_LABEL_KEYS[category])}
@@ -653,7 +654,7 @@ function Stepper({
         aria-label={t("settings.decreaseSetting", { label: ariaLabel })}
         disabled={value <= min}
         onClick={() => onChange(value - 1)}
-        className="h-11 w-11 min-h-0 rounded-xl p-0"
+        className="h-11 w-11 min-h-0 p-0"
       >
         <Icon icon="lucide:minus" className="h-4 w-4" aria-hidden="true" />
       </Button>
@@ -667,7 +668,7 @@ function Stepper({
         aria-label={t("settings.increaseSetting", { label: ariaLabel })}
         disabled={value >= max}
         onClick={() => onChange(value + 1)}
-        className="h-11 w-11 min-h-0 rounded-xl p-0"
+        className="h-11 w-11 min-h-0 p-0"
       >
         <Icon icon="lucide:plus" className="h-4 w-4" aria-hidden="true" />
       </Button>
@@ -727,7 +728,7 @@ function WordsSummary({ config }: { config: RoomConfig }) {
             config.categories.map((category) => (
               <span
                 key={category}
-                className="h-7 rounded-full bg-accent px-3 text-sm font-semibold leading-7 text-accent-ink"
+                className="h-8 rounded-full bg-accent px-3.5 text-sm font-semibold leading-8 text-accent-ink shadow-sm"
               >
                 {t(CATEGORY_LABEL_KEYS[category])}
               </span>
@@ -874,7 +875,7 @@ function UnavailableGamePanel({ gameType }: { gameType: GameType }) {
   const game = getGameModeOption(gameType);
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col items-center justify-center rounded-2xl bg-bg-sunken px-6 py-8 text-center">
+    <div className="flex min-h-0 flex-1 flex-col items-center justify-center rounded-2xl bg-bg-sunken px-6 py-8 text-center ring-1 ring-inset ring-border/40">
       <div
         className={`flex h-14 w-14 items-center justify-center rounded-2xl ${game.iconBg}`}
       >

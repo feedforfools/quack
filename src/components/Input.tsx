@@ -25,8 +25,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const hasDesc = Boolean(hint ?? error);
 
     return (
-      <div className="flex flex-col gap-1">
-        <label htmlFor={id} className="text-sm font-medium text-fg">
+      <div className="flex flex-col gap-1.5">
+        <label
+          htmlFor={id}
+          className="px-1.5 text-sm font-semibold text-fg-muted"
+        >
           {label}
         </label>
 
@@ -36,9 +39,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           aria-describedby={hasDesc ? descId : undefined}
           aria-invalid={error ? true : undefined}
           className={[
-            "w-full rounded-xl border bg-bg-sunken px-4 py-3",
-            "text-base text-fg placeholder:text-fg-subtle",
-            "min-h-[44px]",
+            "w-full rounded-full border bg-bg-sunken px-5 py-3",
+            "text-base text-fg caret-accent placeholder:text-fg-subtle",
+            "min-h-[48px]",
+            "transition-[border-color,box-shadow] duration-150",
             "focus:outline-none focus-visible:ring-2",
             error
               ? "border-danger focus-visible:ring-danger/40"
@@ -55,7 +59,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <p
             id={descId}
             role={error ? "alert" : undefined}
-            className={`text-xs ${error ? "text-danger" : "text-fg-muted"}`}
+            className={`px-1.5 text-xs ${error ? "text-danger" : "text-fg-muted"}`}
           >
             {error ?? hint}
           </p>

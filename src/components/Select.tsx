@@ -51,8 +51,8 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
         ref={ref}
         aria-label={ariaLabel}
         className={[
-          "inline-flex h-10 min-w-[6.5rem] items-center justify-between gap-2 rounded-xl bg-bg-sunken px-3",
-          "text-sm font-semibold text-fg transition-colors",
+          "inline-flex h-10 min-w-[6.5rem] items-center justify-between gap-2 rounded-full bg-bg-sunken px-4",
+          "text-sm font-bold text-fg ring-1 ring-inset ring-border/60 transition-colors",
           "hover:bg-fg/10",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
           "disabled:cursor-not-allowed disabled:opacity-50",
@@ -80,22 +80,22 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           position="popper"
           sideOffset={6}
           className={[
-            "z-[60] min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-xl border border-border bg-bg-raised shadow-xl",
+            "z-[60] min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-2xl border border-border/70 bg-bg-raised shadow-2xl",
             "data-[state=open]:animate-in data-[state=closed]:animate-out",
             "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
             "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
           ].join(" ")}
         >
-          <SelectPrimitive.Viewport className="p-1">
+          <SelectPrimitive.Viewport className="p-1.5">
             {options.map((option) => (
               <SelectPrimitive.Item
                 key={option.value}
                 value={option.value}
                 className={[
-                  "relative flex h-9 cursor-pointer select-none items-center rounded-lg pl-8 pr-3",
-                  "text-sm font-medium text-fg outline-none",
+                  "relative flex h-10 cursor-pointer select-none items-center rounded-xl pl-8 pr-3",
+                  "text-sm font-medium text-fg outline-none transition-colors",
                   "data-[highlighted]:bg-fg/10",
-                  "data-[state=checked]:font-semibold data-[state=checked]:text-accent",
+                  "data-[state=checked]:font-bold data-[state=checked]:text-accent",
                   "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
                 ].join(" ")}
               >

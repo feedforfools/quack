@@ -50,11 +50,13 @@ export default function Join() {
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 py-10">
-      <h1 className="text-2xl font-semibold text-fg">{t("join.title")}</h1>
+      <h1 className="text-[1.75rem] font-extrabold leading-tight tracking-tight text-fg motion-safe:animate-fade-up">
+        {t("join.title")}
+      </h1>
 
       <form
         onSubmit={(e) => void handleSubmit(e)}
-        className="mt-8 flex w-full flex-col gap-4"
+        className="mt-8 flex w-full flex-col gap-4 motion-safe:animate-fade-up motion-safe:[animation-delay:80ms]"
         noValidate
       >
         <Input
@@ -70,7 +72,7 @@ export default function Join() {
           spellCheck={false}
           maxLength={ROOM_CODE_LENGTH * 2}
           error={error ? t(error) : undefined}
-          className="font-mono text-xl tracking-widest text-center uppercase"
+          className="text-center font-mono text-2xl font-bold uppercase tracking-[0.3em] placeholder:text-base placeholder:font-sans placeholder:font-normal placeholder:tracking-normal"
           disabled={loading}
         />
 

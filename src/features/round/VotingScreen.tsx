@@ -265,11 +265,12 @@ export function VotingScreen({
                       disabled={castVoteLoading}
                       aria-pressed={isMyVote}
                       className={[
-                        "flex w-full items-center gap-2.5 rounded-xl px-3 py-3 text-left transition-colors",
+                        "flex w-full items-center gap-2.5 rounded-2xl px-3 py-3 text-left shadow-sm",
+                        "transition-[background-color,box-shadow,transform] duration-150 active:scale-[0.98]",
                         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
                         isMyVote
-                          ? "bg-danger/15 ring-1 ring-inset ring-danger"
-                          : "bg-bg-raised hover:bg-bg-raised/70 active:opacity-80",
+                          ? "bg-danger/15 ring-2 ring-inset ring-danger/70"
+                          : "bg-bg-raised ring-1 ring-inset ring-border/50 hover:bg-bg-raised/70",
                       ].join(" ")}
                     >
                       {/* Presence dot — same idiom as the roster rows. */}
@@ -285,7 +286,7 @@ export function VotingScreen({
 
                       {/* Name + host crown */}
                       <span className="flex min-w-0 flex-1 items-center gap-1.5">
-                        <span className="text-md truncate font-medium leading-none text-fg">
+                        <span className="text-base truncate font-medium leading-none text-fg">
                           {p.display_name}
                         </span>
                         {p.id === hostPlayerId && (
@@ -305,7 +306,7 @@ export function VotingScreen({
                           </span>
                         )}
                         {count !== undefined && (
-                          <span className="rounded-full bg-fg/8 px-2 py-0.5 text-xs tabular-nums text-fg-muted">
+                          <span className="rounded-full bg-fg/10 px-2 py-0.5 text-xs tabular-nums text-fg-muted">
                             {t("vote.tallyCount", { count })}
                           </span>
                         )}
@@ -319,9 +320,9 @@ export function VotingScreen({
         }
         extra={
           /* Vote status card — same card idiom as the lobby's game card. */
-          <div className="rounded-xl bg-bg-raised px-3 py-3">
+          <div className="rounded-2xl bg-bg-raised px-3 py-3 shadow-sm ring-1 ring-border/60">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-danger/15">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-danger/15">
                 <Icon
                   icon="mdi:vote"
                   className="h-6 w-6 text-danger"
@@ -343,7 +344,7 @@ export function VotingScreen({
                 {/* Votes-cast chip — only when the live tally is visible. */}
                 {!isPreVote && votesCast > 0 && (
                   <div className="mt-1 flex flex-wrap items-center gap-1">
-                    <span className="inline-flex items-center gap-1 rounded-full bg-fg/8 px-2 py-0.5 text-[11px] tabular-nums text-fg-muted">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-fg/10 px-2 py-0.5 text-[11px] tabular-nums text-fg-muted">
                       <Icon
                         icon="lucide:check"
                         className="h-3 w-3"

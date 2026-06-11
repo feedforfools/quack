@@ -203,10 +203,11 @@ export function TimerStrip({
 
   const inner = (
     <>
-      {/* Coloured fill bar — no CSS transition; RAF drives smooth updates */}
+      {/* Coloured fill bar — width is RAF-driven (no transition), but the
+          colour ramp (green → yellow → red) cross-fades smoothly. */}
       <div
         aria-hidden="true"
-        className="absolute inset-y-0 left-0"
+        className="absolute inset-y-0 left-0 transition-[background-color] duration-700 ease-linear"
         style={{ width: fillPct, backgroundColor: fillColor }}
       />
 
@@ -254,7 +255,8 @@ export function TimerStrip({
     </>
   );
 
-  const sharedClass = "relative w-full overflow-hidden bg-bg-raised";
+  const sharedClass =
+    "relative w-full overflow-hidden border-b border-border/60 bg-bg-raised";
   const heightStyle = { height: "clamp(4.25rem, 12vh, 7rem)" } as const;
 
   if (onToggle) {

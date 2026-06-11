@@ -57,18 +57,22 @@ export function GameList({
         const itemCls =
           variant === "modal"
             ? [
-                "flex items-center gap-3 rounded-2xl bg-bg-sunken px-4 py-3 text-left transition-colors",
+                "flex items-center gap-3 rounded-2xl bg-bg-sunken px-4 py-3 text-left",
+                "transition-[background-color,box-shadow,transform] duration-150",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
                 isSelectable
-                  ? "cursor-pointer hover:bg-fg/10 active:opacity-70"
+                  ? "cursor-pointer hover:bg-fg/10 active:scale-[0.98]"
                   : "cursor-not-allowed opacity-60",
-                isSelected ? "ring-2 ring-accent" : "",
+                isSelected
+                  ? "ring-2 ring-inset ring-accent"
+                  : "ring-1 ring-inset ring-border/40",
               ].join(" ")
             : [
-                "flex items-center gap-3 rounded-xl border px-4 py-4 transition-colors",
+                "flex items-center gap-3 rounded-2xl border px-4 py-4 shadow-sm",
+                "transition-[background-color,box-shadow,transform] duration-150",
                 isSelectable
-                  ? "cursor-pointer border-border bg-bg-raised hover:bg-bg-raised/80 active:opacity-70"
-                  : "border-border/50 bg-bg-raised/40 opacity-60",
+                  ? "cursor-pointer border-border/70 bg-bg-raised hover:bg-bg-raised/80 active:scale-[0.98]"
+                  : "border-border/50 bg-bg-raised/40 opacity-60 shadow-none",
               ].join(" ");
 
         return (
@@ -107,7 +111,7 @@ export function GameList({
               )}
               {!game.available && (
                 <div
-                  className={`absolute inset-0 flex items-center justify-center ${iconRoundedCls} bg-bg/80`}
+                  className={`absolute inset-0 flex items-center justify-center ${iconRoundedCls} bg-bg/70 backdrop-blur-[2px]`}
                 >
                   <span className="text-center text-[8px] font-bold leading-tight tracking-widest text-fg-muted">
                     COMING
@@ -138,7 +142,7 @@ export function GameList({
                 e.stopPropagation();
                 // Game info modal — coming in a later stage
               }}
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-fg/8 text-fg-muted transition-colors hover:bg-fg/12 active:opacity-60"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-fg/10 text-fg-muted transition-all hover:bg-fg/15 active:scale-95"
             >
               <Icon
                 icon="ph:info-bold"

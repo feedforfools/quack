@@ -28,9 +28,10 @@ export function ShareModal({ open, onClose, code, roomUrl }: ShareModalProps) {
   const { t } = useTranslation();
   const [codeCopied, setCodeCopied] = useState(false);
 
-  // QR size: up to 256 px, but never wider than the viewport minus chrome.
+  // QR size: up to 256 px, but never wider than the viewport minus chrome
+  // (panel margin + panel padding + the white QR frame's own padding).
   const qrSize = useMemo(
-    () => Math.floor(Math.min(window.innerWidth - 80, 256)),
+    () => Math.floor(Math.min(window.innerWidth - 112, 256)),
     [],
   );
 
@@ -79,17 +80,18 @@ export function ShareModal({ open, onClose, code, roomUrl }: ShareModalProps) {
     >
       <Dialog.Portal>
         {/* Backdrop */}
-        <Dialog.Overlay className="fixed inset-0 z-40 bg-black/60 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+        <Dialog.Overlay className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
 
         {/* Panel — always narrower than the viewport */}
         <Dialog.Content
           className={[
             "fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 -translate-y-1/2",
-            "rounded-2xl border border-border bg-bg-raised p-6 shadow-xl",
+            "rounded-3xl border border-border/70 bg-bg-raised p-6 shadow-2xl",
             "focus:outline-none",
             "data-[state=open]:animate-in data-[state=closed]:animate-out",
             "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
             "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+            "data-[state=open]:slide-in-from-bottom-4 data-[state=open]:duration-300 data-[state=open]:ease-out",
           ].join(" ")}
         >
           {/* ── Modal title (visible) ────────────────────────────────── */}
@@ -127,25 +129,28 @@ export function ShareModal({ open, onClose, code, roomUrl }: ShareModalProps) {
               aria-label={t("common.close")}
               className={[
                 "absolute right-4 top-4 flex min-h-[44px] min-w-[44px] items-center justify-center",
-                "rounded-lg p-1 text-fg-muted",
-                "hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+                "rounded-full p-1 text-fg-muted transition-colors",
+                "hover:bg-fg/10 hover:text-fg active:scale-95",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
               ].join(" ")}
             >
               <Icon aria-hidden="true" icon="lucide:x" className="h-5 w-5" />
             </button>
           </Dialog.Close>
 
-          {/* ── QR code ─────────────────────────────────────────────── */}
+          {/* ── QR code — framed on white so it scans in dark mode too ── */}
           <div className="flex justify-center py-5">
-            <QRCode
-              value={roomUrl}
-              size={qrSize}
-              label={t("room.shareLabel")}
-            />
+            <div className="rounded-2xl bg-white p-3 shadow-sm ring-1 ring-border/50">
+              <QRCode
+                value={roomUrl}
+                size={qrSize}
+                label={t("room.shareLabel")}
+              />
+            </div>
           </div>
 
           {/* ── URL row with share / copy icon ──────────────────────── */}
-          <div className="flex items-center gap-1 rounded-xl bg-bg-sunken px-3 py-1.5">
+          <div className="flex items-center gap-1 rounded-full bg-bg-sunken py-1.5 pl-4 pr-1.5 ring-1 ring-inset ring-border/50">
             <span className="flex-1 truncate font-mono text-sm text-fg-muted">
               {displayUrl}
             </span>
@@ -155,8 +160,9 @@ export function ShareModal({ open, onClose, code, roomUrl }: ShareModalProps) {
               aria-label={t("room.shareLabel")}
               className={[
                 "flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center",
-                "rounded-lg p-1 text-fg-muted",
-                "hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+                "rounded-full p-1 text-fg-muted transition-colors",
+                "hover:bg-fg/10 hover:text-fg active:scale-95",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
               ].join(" ")}
             >
               <Icon

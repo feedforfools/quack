@@ -322,14 +322,14 @@ export function DiscussionScreen({
             {/* Spectators — late joiners shown muted, set apart from roster. */}
             {spectators.length > 0 && (
               <div className="mt-5 w-full">
-                <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-fg-subtle">
+                <p className="mb-2 text-xs font-bold uppercase tracking-widest text-fg-subtle">
                   {t("room.spectatorBadge")}
                 </p>
                 <ul className="space-y-2" aria-label={t("room.spectatorBadge")}>
                   {spectators.map((p) => (
                     <li
                       key={p.id}
-                      className="flex items-center rounded-xl border border-dashed border-fg-subtle/30 bg-bg-raised/50 px-4 py-3 text-fg-muted"
+                      className="flex items-center rounded-2xl border border-dashed border-fg-subtle/30 bg-bg-raised/50 px-4 py-3 text-fg-muted"
                     >
                       <span className="flex-1 truncate font-medium">
                         {p.display_name}
@@ -343,9 +343,9 @@ export function DiscussionScreen({
         }
         extra={
           starter ? (
-            <div className="rounded-xl bg-bg-raised px-3 py-3">
+            <div className="rounded-2xl bg-bg-raised px-3 py-3 shadow-sm ring-1 ring-border/60">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/15">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/15">
                   <Icon
                     icon="mdi:bullhorn-variant-outline"
                     className="h-6 w-6 text-accent"
@@ -365,7 +365,7 @@ export function DiscussionScreen({
                   </span>
                   {direction && (
                     <div className="mt-1 flex flex-wrap items-center gap-1">
-                      <span className="inline-flex items-center gap-1 rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
+                      <span className="inline-flex items-center gap-1 rounded-full bg-fg/10 px-2 py-0.5 text-[11px] text-fg-muted">
                         <Icon
                           icon={
                             direction === "clockwise"

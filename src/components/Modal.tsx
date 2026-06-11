@@ -56,7 +56,7 @@ export function Modal({
     >
       <Dialog.Portal>
         {/* Backdrop */}
-        <Dialog.Overlay className="fixed inset-0 z-40 bg-black/60 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+        <Dialog.Overlay className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
 
         {/* Panel */}
         <Dialog.Content
@@ -70,11 +70,12 @@ export function Modal({
           {...(description ? {} : { "aria-describedby": undefined })}
           className={[
             "fixed left-1/2 top-1/2 z-50 flex max-h-[calc(100svh-2rem)] w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden",
-            "rounded-2xl border border-border bg-bg-raised shadow-xl",
+            "rounded-3xl border border-border/70 bg-bg-raised shadow-2xl",
             "focus:outline-none",
             "data-[state=open]:animate-in data-[state=closed]:animate-out",
             "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
             "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+            "data-[state=open]:slide-in-from-bottom-4 data-[state=open]:duration-300 data-[state=open]:ease-out",
             contentClassName,
           ]
             .filter(Boolean)
@@ -94,8 +95,9 @@ export function Modal({
                     type="button"
                     aria-label="Close dialog"
                     className={[
-                      "-my-2 -mr-2 flex h-9 w-9 items-center justify-center rounded-xl p-2 text-fg-muted",
-                      "hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+                      "-my-2 -mr-2 flex h-9 w-9 items-center justify-center rounded-full p-2 text-fg-muted",
+                      "transition-colors hover:bg-fg/10 hover:text-fg active:scale-95",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
                     ].join(" ")}
                   >
                     <Icon

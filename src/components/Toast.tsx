@@ -38,9 +38,9 @@ const ToastContext = createContext<ToastContextValue | null>(null);
 // ---------------------------------------------------------------------------
 
 const variantClasses: Record<ToastVariant, string> = {
-  default: "border-border bg-bg-raised text-fg",
-  success: "border-success/40 bg-bg-raised text-fg",
-  danger: "border-danger/40 bg-bg-raised text-fg",
+  default: "border-border/80 bg-bg-raised/95 text-fg",
+  success: "border-success/40 bg-bg-raised/95 text-fg",
+  danger: "border-danger/40 bg-bg-raised/95 text-fg",
 };
 
 const iconClasses: Record<ToastVariant, string> = {
@@ -82,11 +82,12 @@ export function ToastProvider({ children }: { children: ReactNode }) {
               if (!open) dismiss(t.id);
             }}
             className={[
-              "flex items-start gap-3 rounded-xl border px-4 py-3 shadow-lg",
+              "flex items-start gap-3 rounded-2xl border px-4 py-3 shadow-xl backdrop-blur-md",
               "data-[state=open]:animate-in data-[state=closed]:animate-out",
               "data-[state=closed]:fade-out-80 data-[state=open]:fade-in-0",
-              "data-[state=closed]:slide-out-to-right-full data-[state=open]:slide-in-from-right-full",
-              "w-[min(360px,90vw)]",
+              "data-[state=closed]:slide-out-to-right-full data-[state=open]:slide-in-from-bottom-full",
+              "data-[state=open]:duration-300 data-[state=open]:ease-out",
+              "w-[min(360px,calc(100vw-2rem))]",
               variantClasses[t.variant ?? "default"],
             ].join(" ")}
           >
@@ -132,8 +133,10 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           </RadixToast.Root>
         ))}
 
-        {/* Viewport = the live region where toasts are announced + rendered */}
-        <RadixToast.Viewport className="fixed bottom-4 right-4 z-[100] flex flex-col gap-2 outline-none" />
+        {/* Viewport = the live region where toasts are announced + rendered.
+            Bottom-centred for one-hand reach on phones; respects the iOS
+            home-indicator safe area. */}
+        <RadixToast.Viewport className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-[100] flex -translate-x-1/2 flex-col items-center gap-2 outline-none" />
       </RadixToast.Provider>
     </ToastContext.Provider>
   );

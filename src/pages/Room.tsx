@@ -284,7 +284,7 @@ export default function Room() {
     // 1-col and 2-col share the SAME (non-compact) row sizing on purpose:
     // the user requirement is that 2 columns must NOT shrink the font.
     // Only the 3-column (compact) layout uses a smaller row height.
-    const NORMAL_ROW = 48; // py-3 + text-md content
+    const NORMAL_ROW = 48; // py-3 + text-base content
     const COMPACT_ROW = 36; // py-2 + text-sm content
     const GAP_1 = 8; // gap-2 — 1-col
     const GAP_2 = 6; // gap-1.5 — 2-col
@@ -740,7 +740,7 @@ export default function Room() {
             <span className="text-6xl" aria-hidden="true">
               🦆
             </span>
-            <h1 className="mt-6 text-center text-2xl font-semibold text-fg">
+            <h1 className="mt-6 text-center text-2xl font-extrabold tracking-tight text-fg">
               {t("room.spectatorTitle")}
             </h1>
             <p className="mt-3 text-center text-sm text-fg-muted">
@@ -930,7 +930,7 @@ export default function Room() {
           </Button>
           <button
             onClick={() => void navigate("/")}
-            className="text-center text-sm text-fg-muted underline underline-offset-4"
+            className="min-h-[44px] rounded-full text-center text-sm font-semibold text-fg-muted underline underline-offset-4 transition-colors hover:text-fg"
           >
             {t("common.backToHome")}
           </button>
@@ -964,7 +964,7 @@ export default function Room() {
           </Button>
           <button
             onClick={() => void navigate("/")}
-            className="text-center text-sm text-fg-muted underline underline-offset-4"
+            className="min-h-[44px] rounded-full text-center text-sm font-semibold text-fg-muted underline underline-offset-4 transition-colors hover:text-fg"
           >
             {t("common.backToHome")}
           </button>
@@ -1050,7 +1050,7 @@ export default function Room() {
 
             {/* Right: player capacity badge */}
             <div className="flex flex-col items-end gap-0 justify-self-end">
-              <div className="flex items-center gap-0.5 rounded-xl bg-bg-raised px-2 py-1.5">
+              <div className="flex items-center gap-1 rounded-full bg-bg-raised px-2.5 py-1.5 shadow-sm ring-1 ring-border/60">
                 <Icon
                   icon="lucide:users"
                   className="h-3.5 w-3.5 text-fg-muted"
@@ -1071,11 +1071,11 @@ export default function Room() {
         belowHeader={t("room.lobbyDescription")}
         list={
           playersLoading ? (
-            <div className="space-y-3">
+            <div className="space-y-2">
               {[1, 2].map((i) => (
                 <div
                   key={i}
-                  className="h-12 animate-pulse rounded-xl bg-bg-raised"
+                  className="h-12 animate-pulse rounded-2xl bg-bg-raised"
                 />
               ))}
             </div>
@@ -1096,11 +1096,11 @@ export default function Room() {
         }
         extra={
           /* Next Game Card */
-          <div className="rounded-xl bg-bg-raised px-3 py-3">
+          <div className="rounded-2xl bg-bg-raised px-3 py-3 shadow-sm ring-1 ring-border/60">
             <div className="flex items-center gap-3">
               {/* Game icon */}
               <div
-                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${selectedGame.iconBg}`}
+                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${selectedGame.iconBg}`}
               >
                 <Icon
                   icon={selectedGame.icon}
@@ -1120,7 +1120,7 @@ export default function Room() {
                 <div className="mt-1 flex flex-wrap items-center gap-1">
                   {parsedConfig.game_type === "imposter" ? (
                     <>
-                      <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
+                      <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/10 px-2 py-0.5 text-[11px] text-fg-muted">
                         <Icon
                           icon="lucide:user-x"
                           className="h-3 w-3"
@@ -1128,10 +1128,10 @@ export default function Room() {
                         />
                         {imposterCount}
                       </span>
-                      <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] font-medium uppercase text-fg-muted">
+                      <span className="rounded-full bg-fg/10 px-2 py-0.5 text-[11px] font-medium uppercase text-fg-muted">
                         {configLanguage}
                       </span>
-                      <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/8 px-2 py-0.5 text-[11px] text-fg-muted">
+                      <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/10 px-2 py-0.5 text-[11px] text-fg-muted">
                         <Icon
                           icon="lucide:timer"
                           className="h-3 w-3"
@@ -1149,7 +1149,7 @@ export default function Room() {
                       </span>
                     </>
                   ) : (
-                    <span className="rounded-full bg-fg/8 px-2 py-0.5 text-[11px] font-medium text-fg-muted">
+                    <span className="rounded-full bg-fg/10 px-2 py-0.5 text-[11px] font-medium text-fg-muted">
                       {t("common.comingSoon")}
                     </span>
                   )}
@@ -1167,7 +1167,7 @@ export default function Room() {
                 onClick={() =>
                   isHost ? setShowSettings(true) : setShowPlayerSettings(true)
                 }
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-fg/8 transition-colors hover:bg-fg/12 active:opacity-60"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-fg/10 transition-all hover:bg-fg/15 active:scale-95"
               >
                 <Icon
                   icon={
@@ -1343,14 +1343,14 @@ export default function Room() {
                 .filter((p) => p.id !== deviceId)
                 .map((p) => (
                   <li key={p.id}>
-                    <label className="flex cursor-pointer items-center gap-3 rounded-xl bg-bg p-3 has-[:checked]:ring-2 has-[:checked]:ring-accent">
+                    <label className="flex cursor-pointer items-center gap-3 rounded-2xl bg-bg-sunken p-3 ring-1 ring-inset ring-border/50 transition-shadow has-[:checked]:ring-2 has-[:checked]:ring-accent">
                       <input
                         type="radio"
                         name="successor"
                         value={p.id}
                         checked={selectedSuccessor === p.id}
                         onChange={() => setSelectedSuccessor(p.id)}
-                        className="accent-accent"
+                        className="h-4 w-4 accent-accent"
                       />
                       <span className="font-medium text-fg">
                         {p.display_name}

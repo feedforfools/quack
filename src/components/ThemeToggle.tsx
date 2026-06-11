@@ -49,15 +49,16 @@ export function ThemeToggle() {
       className={[
         "min-h-[44px] min-w-[44px] rounded-full",
         "flex items-center justify-center",
-        "transition-opacity duration-150 hover:opacity-70",
+        "bg-bg-raised/70 shadow-sm ring-1 ring-border/60 backdrop-blur-md",
+        "transition-all duration-150 hover:bg-bg-raised active:scale-95",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
       ].join(" ")}
     >
       <Icon
         icon={isDark ? "ph:sun-bold" : "ph:moon-bold"}
         className="text-fg"
-        width={24}
-        height={24}
+        width={22}
+        height={22}
       />
     </button>
   );

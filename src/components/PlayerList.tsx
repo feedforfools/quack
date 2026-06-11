@@ -163,9 +163,12 @@ function PlayerItem({
   return (
     <li
       className={[
-        "relative flex items-center rounded-xl bg-bg-raised transition-colors",
+        "relative flex items-center rounded-2xl shadow-sm ring-1 ring-inset transition-colors",
         compact ? "gap-1.5 px-2.5 py-2" : "gap-2.5 px-3 py-3",
-        showKick && "ring-1 ring-inset ring-danger/50",
+        isOwnPlayer
+          ? "bg-accent/[0.09] ring-accent/25"
+          : "bg-bg-raised ring-border/50",
+        showKick && "ring-danger/50",
         canKick && "select-none",
       ]
         .filter(Boolean)
@@ -176,14 +179,16 @@ function PlayerItem({
       onPointerCancel={cancelLongPress}
       onPointerMove={handlePointerMove}
     >
-      {/* ① Presence dot — green = connected, grey = disconnected */}
+      {/* ① Presence dot — green = connected (soft glow), grey = disconnected */}
       <span
         role="status"
         aria-label={isConnected ? "online" : "offline"}
         className={[
           "shrink-0 rounded-full",
           compact ? "h-1.5 w-1.5" : "h-2 w-2",
-          isConnected ? "bg-success" : "bg-fg-subtle",
+          isConnected
+            ? "bg-success shadow-[0_0_8px_1px_rgba(34,197,94,0.5)]"
+            : "bg-fg-subtle/60",
         ].join(" ")}
       />
 
@@ -197,7 +202,7 @@ function PlayerItem({
         <span
           className={[
             "truncate font-medium leading-none",
-            compact ? "text-sm" : "text-md",
+            compact ? "text-sm" : "text-base",
             isOwnPlayer ? "text-accent" : "text-fg",
           ].join(" ")}
         >
@@ -226,7 +231,7 @@ function PlayerItem({
           <span
             className={[
               "flex items-center text-fg-muted",
-              compact ? "text-[10px] leading-none" : "text-md",
+              compact ? "text-[10px] leading-none" : "text-base",
             ].join(" ")}
           >
             {modifiers.firstModifier}
@@ -238,7 +243,7 @@ function PlayerItem({
           <span
             className={[
               "flex items-center text-fg-muted",
-              compact ? "text-[10px] leading-none" : "text-md",
+              compact ? "text-[10px] leading-none" : "text-base",
             ].join(" ")}
           >
             {modifiers.mainModifier}
@@ -255,7 +260,7 @@ function PlayerItem({
             // doesn't swallow this before the click fires.
             onPointerDown={(e) => e.stopPropagation()}
             onClick={handleKickClick}
-            className="flex items-center justify-center transition-transform active:scale-95 disabled:opacity-40"
+            className="flex h-7 w-7 items-center justify-center rounded-full bg-danger/15 transition-transform active:scale-90 disabled:opacity-40"
           >
             <TrashIcon className="h-4 w-4 text-danger" />
           </button>

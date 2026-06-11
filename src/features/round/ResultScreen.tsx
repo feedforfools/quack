@@ -136,7 +136,7 @@ export function ResultScreen({
             {view.emoji}
           </span>
           <h1
-            className={`font-black leading-none ${view.bannerText}`}
+            className={`font-black leading-none tracking-tight ${view.bannerText}`}
             style={{ fontSize: "clamp(1.5rem, 4.5vh, 2.5rem)" }}
             aria-live="polite"
           >
@@ -156,9 +156,9 @@ export function ResultScreen({
       }
       extra={
         /* Secret word card — same card idiom as the lobby's game card. */
-        <div className="rounded-xl bg-bg-raised px-3 py-3">
+        <div className="rounded-2xl bg-bg-raised px-3 py-3 shadow-sm ring-1 ring-border/60">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/15">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/15">
               <Icon
                 icon="lucide:key-round"
                 className="h-6 w-6 text-accent"

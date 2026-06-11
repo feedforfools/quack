@@ -142,7 +142,7 @@ export function RoleCardModal({
       }}
     >
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-40 bg-black/70 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+        <Dialog.Overlay className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
 
         <Dialog.Content
           aria-describedby={undefined}
@@ -162,9 +162,15 @@ export function RoleCardModal({
 
           {/* Card frame — fixed playing-card proportions. */}
           <div className="relative h-[24rem] w-[17rem] max-w-[80vw]">
-            {/* ── Card face (role) — bottom of the stack ─────────────────── */}
+            {/* ── Card face (role) — bottom of the stack, tinted by role ── */}
             <div
-              className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl bg-bg-raised px-5 text-center shadow-inner"
+              className={[
+                "absolute inset-0 flex flex-col items-center justify-center rounded-3xl px-5 text-center shadow-inner",
+                "bg-gradient-to-b to-bg-raised ring-1 ring-inset",
+                isCivilian
+                  ? "from-success/15 ring-success/30"
+                  : "from-danger/15 ring-danger/30",
+              ].join(" ")}
               aria-hidden={!isVisible}
             >
               <span className="text-7xl" aria-hidden="true">
@@ -216,7 +222,7 @@ export function RoleCardModal({
             <div
               className={[
                 "absolute -inset-2 flex flex-col items-center justify-center gap-5 rounded-[1.75rem]",
-                "bg-bg-raised shadow-2xl ring-1 ring-border",
+                "bg-gradient-to-br from-bg-raised to-bg-sunken shadow-2xl ring-1 ring-border",
                 "select-none touch-none",
                 isDragging ? "cursor-grabbing" : "cursor-grab",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
@@ -249,6 +255,12 @@ export function RoleCardModal({
               <p className="pointer-events-none max-w-[12rem] px-2 text-center text-sm font-medium text-fg-muted">
                 {t("round.lidInstruction")}
               </p>
+
+              {/* Grab-handle affordance — signals the lid is draggable. */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute bottom-4 h-1.5 w-12 rounded-full bg-fg/15"
+              />
 
               {/* Close button — anchored to the lid so it moves with it. */}
               <Dialog.Close asChild>

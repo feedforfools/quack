@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 /**
  * Tailwind theme tokens for Quack.
@@ -63,7 +64,10 @@ const config: Config = {
         xl: "1rem",
       },
       fontFamily: {
+        // Nunito's rounded terminals carry the friendly party-game brand;
+        // system stack as fallback while the webfont loads (display=swap).
         sans: [
+          "Nunito",
           "system-ui",
           "-apple-system",
           "Segoe UI",
@@ -73,9 +77,22 @@ const config: Config = {
           "sans-serif",
         ],
       },
+      boxShadow: {
+        // Soft lift for primary CTAs — accent-tinted glow.
+        glow: "0 8px 24px -8px rgb(250 204 21 / 0.5)",
+      },
+      keyframes: {
+        "fade-up": {
+          from: { opacity: "0", transform: "translateY(12px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "fade-up": "fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both",
+      },
     },
   },
-  plugins: [],
+  plugins: [animate],
 };
 
 export default config;

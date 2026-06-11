@@ -59,25 +59,25 @@ export default function Create() {
         type="button"
         onClick={() => navigate(-1)}
         aria-label={t("common.backToHome")}
-        className="flex w-fit items-center gap-1 text-fg-muted transition-colors hover:text-fg active:opacity-60"
+        className="-ml-2 flex min-h-[44px] w-fit items-center gap-1 rounded-full px-2 text-fg-muted transition-colors hover:text-fg active:opacity-60"
       >
         <Icon
           icon="lucide:chevron-left"
           className="h-5 w-5"
           aria-hidden="true"
         />
-        <span className="text-sm">{t("common.backToHome")}</span>
+        <span className="text-sm font-semibold">{t("common.backToHome")}</span>
       </button>
 
       <div className="flex flex-1 flex-col justify-center">
-        <h1 className="text-2xl font-semibold text-fg">
+        <h1 className="text-[1.75rem] font-extrabold leading-tight tracking-tight text-fg motion-safe:animate-fade-up">
           {t("create.selectTitle")}
         </h1>
-        <p className="mt-2 text-sm text-fg-muted">
+        <p className="mt-2 text-sm leading-relaxed text-fg-muted motion-safe:animate-fade-up motion-safe:[animation-delay:60ms]">
           {t("create.selectSubtitle")}
         </p>
 
-        <div className="mt-6">
+        <div className="mt-6 motion-safe:animate-fade-up motion-safe:[animation-delay:120ms]">
           <GameList
             onSelect={handleSelectGame}
             loadingId={loading ? "imposter" : undefined}

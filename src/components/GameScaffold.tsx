@@ -68,7 +68,7 @@ export function GameScaffold({
   scrollList = false,
 }: GameScaffoldProps) {
   return (
-    <main className="mx-auto flex h-dvh max-w-md flex-col">
+    <main className="mx-auto flex h-dvh max-w-md flex-col pt-[env(safe-area-inset-top)]">
       {/* 1. Header — fixed, edge-to-edge (its own component owns any padding) */}
       <div className="flex-none">{header}</div>
 
@@ -93,8 +93,9 @@ export function GameScaffold({
       {/* 5. Hint above footer */}
       {aboveFooter != null && <Hint className="px-4 pt-2">{aboveFooter}</Hint>}
 
-      {/* 6 + 7. Footer buttons and the hint below them */}
-      <div className="flex-none px-4 pb-6 pt-3">
+      {/* 6 + 7. Footer buttons and the hint below them.
+          Bottom padding respects the iOS home-indicator safe area. */}
+      <div className="flex-none px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-3">
         {footer}
         {belowFooter != null && <Hint className="mt-2">{belowFooter}</Hint>}
       </div>

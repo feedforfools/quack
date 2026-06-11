@@ -35,15 +35,17 @@ export function LanguageToggle() {
       className={[
         "min-h-[44px] min-w-[44px] rounded-full",
         "flex items-center justify-center",
-        "transition-opacity duration-150 hover:opacity-70",
+        "bg-bg-raised/70 shadow-sm ring-1 ring-border/60 backdrop-blur-md",
+        "transition-all duration-150 hover:bg-bg-raised active:scale-95",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
       ].join(" ")}
     >
       <img
         src={`${FLAG_CDN}/${code}.svg`}
         alt={code}
-        width={23}
-        height={23}
-        className="rounded-full object-cover ring-2 ring-border"
+        width={22}
+        height={22}
+        className="rounded-full object-cover ring-1 ring-border"
         style={{ aspectRatio: "1 / 1" }}
       />
     </button>

@@ -13,17 +13,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    "bg-accent text-accent-ink hover:bg-accent-hover focus-visible:ring-accent/50 disabled:bg-accent/40 disabled:text-accent-ink/60",
+    "bg-accent text-accent-ink shadow-glow hover:bg-accent-hover focus-visible:ring-accent/50 disabled:bg-accent/40 disabled:text-accent-ink/60 disabled:shadow-none",
   ghost:
-    "bg-transparent text-fg border border-border hover:bg-bg-raised focus-visible:ring-fg/30 disabled:text-fg-subtle disabled:border-border",
+    "border border-border bg-fg/[0.04] text-fg hover:bg-fg/[0.08] focus-visible:ring-accent/50 disabled:text-fg-subtle disabled:border-border disabled:bg-transparent",
   danger:
     "bg-danger text-danger-ink hover:bg-danger/90 focus-visible:ring-danger/50 disabled:bg-danger/40",
 };
 
 const sizeClasses: Record<Size, string> = {
-  sm: "min-h-[44px] px-3 text-sm",
-  md: "min-h-[44px] px-5 text-base",
-  lg: "min-h-[52px] px-6 text-lg",
+  sm: "min-h-[44px] px-4 text-sm",
+  md: "min-h-[48px] px-5 text-base",
+  lg: "min-h-[56px] px-7 text-lg",
 };
 
 /**
@@ -56,11 +56,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={isDisabled}
         aria-busy={loading || undefined}
         className={[
-          "inline-flex items-center justify-center gap-2 rounded-xl font-semibold",
+          "inline-flex select-none items-center justify-center gap-2 rounded-full font-bold",
           "whitespace-nowrap",
-          "transition-colors duration-150",
+          "transition-all duration-200 ease-out",
+          "active:scale-[0.97]",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-offset-bg",
-          "disabled:cursor-not-allowed",
+          "disabled:cursor-not-allowed disabled:active:scale-100",
           variantClasses[variant],
           sizeClasses[size],
           className,

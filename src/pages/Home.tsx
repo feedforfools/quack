@@ -93,7 +93,7 @@ export default function Home() {
       <main className="mx-auto flex min-h-screen max-w-md flex-col px-6 py-10">
         <div className="flex flex-1 flex-col items-center justify-center">
           {/* Brand — both images are in the DOM; only the active one is visible */}
-          <div className="relative w-full max-w-[300px]">
+          <div className="relative w-full max-w-[300px] motion-safe:animate-fade-up">
             {/* Dark logo — in normal flow to define container height */}
             <img
               src="/youquack_dark.png"
@@ -114,12 +114,12 @@ export default function Home() {
               draggable={false}
             />
           </div>
-          <p className="mt-0 text-center text-sm text-fg-muted">
+          <p className="mt-1 text-center text-sm font-medium text-fg-muted motion-safe:animate-fade-up motion-safe:[animation-delay:60ms]">
             {t("home.tagline")}
           </p>
 
           {/* Name field */}
-          <div className="mt-10 w-full">
+          <div className="mt-10 w-full motion-safe:animate-fade-up motion-safe:[animation-delay:120ms]">
             <Input
               label={t("home.nameLabel")}
               placeholder={t("home.namePlaceholder")}
@@ -136,7 +136,7 @@ export default function Home() {
 
           {/* Active-room card — shown when the device already has a live players row. */}
           {!activeRoomLoading && activeRoom && (
-            <div className="mt-4 w-full rounded-2xl bg-bg-raised px-5 py-4">
+            <div className="mt-4 w-full rounded-2xl bg-bg-raised px-5 py-4 shadow-sm ring-1 ring-border/60 motion-safe:animate-fade-up motion-safe:[animation-delay:180ms]">
               <p className="text-sm text-fg-muted">
                 {t("home.activeRoomTitle")} ·{" "}
                 <span className="font-bold tracking-[0.15em] text-accent">
@@ -183,7 +183,7 @@ export default function Home() {
 
           {/* CTAs — hidden while the device has an active room. */}
           {!activeRoomLoading && !activeRoom && (
-            <div className="mt-4 flex w-full gap-3">
+            <div className="mt-4 flex w-full gap-3 motion-safe:animate-fade-up motion-safe:[animation-delay:180ms]">
               <Button
                 variant="primary"
                 size="md"
@@ -210,7 +210,7 @@ export default function Home() {
 
           {/* Context hint — one-liner beneath the action area */}
           {!activeRoomLoading && (
-            <p className="mt-3 text-center text-xs text-fg-subtle">
+            <p className="mt-3 text-center text-xs text-fg-subtle motion-safe:animate-fade-up motion-safe:[animation-delay:240ms]">
               {activeRoom ? t("home.activeRoomHint") : t("home.ctaHint")}
             </p>
           )}
