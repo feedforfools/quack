@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "science",
+  "words": [
+    {
+      "word": "razzo",
+      "hints": ["lancio", "spazio", "conto", "carburante", "NASA"]
+    },
+    {
+      "word": "pianeta",
+      "hints": ["orbita", "solare", "rotondo", "spazio", "sistema"]
+    },
+    {
+      "word": "galassia",
+      "hints": ["stelle", "spirale", "immensa", "universo", "lattea"]
+    },
+    {
+      "word": "buco nero",
+      "hints": ["gravità", "spazio", "luce", "misterioso", "enorme"]
+    },
+    {
+      "word": "telescopio",
+      "hints": ["stelle", "lente", "osservatorio", "lontano", "astronomo"]
+    },
+    {
+      "word": "atomo",
+      "hints": ["minuscolo", "nucleo", "fisica", "particelle", "materia"]
+    },
+    {
+      "word": "gravità",
+      "hints": ["cadere", "Newton", "mela", "forza", "Terra"]
+    },
+    {
+      "word": "DNA",
+      "hints": ["geni", "elica", "biologia", "codice", "ereditarietà"]
+    },
+    {
+      "word": "robot",
+      "hints": ["macchina", "artificiale", "metallo", "programmato", "futuro"]
+    },
+    {
+      "word": "satellite",
+      "hints": ["orbita", "segnale", "spazio", "parabola", "GPS"]
+    },
+    {
+      "word": "asteroide",
+      "hints": ["roccia", "spazio", "impatto", "fascia", "dinosauri"]
+    },
+    {
+      "word": "cometa",
+      "hints": ["coda", "ghiaccio", "cielo", "orbita", "luminosa"]
+    },
+    {
+      "word": "eclissi",
+      "hints": ["sole", "luna", "ombra", "rara", "occhialini"]
+    },
+    {
+      "word": "meteora",
+      "hints": ["cadente", "cielo", "bruciare", "desiderio", "notte"]
+    },
+    {
+      "word": "tuta spaziale",
+      "hints": ["astronauta", "bianca", "casco", "ossigeno", "ingombrante"]
+    },
+    {
+      "word": "alieno",
+      "hints": ["UFO", "verde", "spazio", "rapimento", "ignoto"]
+    },
+    {
+      "word": "UFO",
+      "hints": ["volante", "disco", "mistero", "luci", "avvistamento"]
+    },
+    {
+      "word": "Marte",
+      "hints": ["rosso", "pianeta", "rover", "colonia", "polvere"]
+    },
+    {
+      "word": "allunaggio",
+      "hints": ["Apollo", "bandiera", "astronauti", "impronta", "televisione"]
+    },
+    {
+      "word": "stazione spaziale",
+      "hints": ["orbita", "astronauti", "moduli", "fluttuare", "internazionale"]
+    },
+    {
+      "word": "vaccino",
+      "hints": ["ago", "immunità", "dottore", "protezione", "laboratorio"]
+    },
+    {
+      "word": "batteri",
+      "hints": ["microscopici", "germi", "infezione", "antibiotici", "ovunque"]
+    },
+    {
+      "word": "evoluzione",
+      "hints": ["Darwin", "specie", "adattamento", "graduale", "fossili"]
+    },
+    {
+      "word": "dinosauro",
+      "hints": ["estinto", "fossile", "enorme", "Jurassic", "ossa"]
+    },
+    {
+      "word": "fossile",
+      "hints": ["antico", "pietra", "ossa", "scavare", "museo"]
+    },
+    {
+      "word": "elettricità",
+      "hints": ["corrente", "fili", "scossa", "energia", "Tesla"]
+    },
+    {
+      "word": "calamita",
+      "hints": ["attrazione", "poli", "metallo", "frigorifero", "campo"]
+    },
+    {
+      "word": "laser",
+      "hints": ["raggio", "rosso", "preciso", "luce", "puntatore"]
+    },
+    {
+      "word": "esperimento",
+      "hints": ["laboratorio", "ipotesi", "prova", "risultati", "occhiali"]
+    },
+    {
+      "word": "chimica",
+      "hints": ["elementi", "reazioni", "laboratorio", "formule", "esplosioni"]
+    }
+  ]
+}

@@ -47,6 +47,12 @@ export interface UseRoomPlayersReturn {
    */
   broadcastVoteStateChanged: () => Promise<void>;
   /**
+   * Broadcast `round_advanced` so all connected clients refetch their vote
+   * state AND role assignment (the discussion timer was reset) after the
+   * host's `advance_round` RPC opens the next vote round (multi-round mode).
+   */
+  broadcastRoundAdvanced: () => Promise<void>;
+  /**
    * Realtime channel subscription status. `"SUBSCRIBED"` = connected;
    * `"CHANNEL_ERROR"` / `"TIMED_OUT"` / `"CLOSED"` = disconnected.
    * Use this to surface a non-blocking reconnecting banner (E4-T6).
@@ -103,6 +109,12 @@ export function useRoomPlayers(
      */
     onVoteStateChanged?: () => void;
     /**
+     * Called when a `round_advanced` broadcast is received (multi-round
+     * mode). Clients refetch vote state + role assignment so the new round's
+     * discussion screen appears with a clean timer.
+     */
+    onRoundAdvanced?: () => void;
+    /**
      * Called when a `player_kicked` broadcast is received and the kicked
      * player ID matches this device. The client should navigate home with
      * a toast (E4-T5).
@@ -133,6 +145,7 @@ export function useRoomPlayers(
   const onPeekUpdateRef = useRef(options?.onPeekUpdate);
   const onKickedRef = useRef(options?.onKicked);
   const onVoteStateChangedRef = useRef(options?.onVoteStateChanged);
+  const onRoundAdvancedRef = useRef(options?.onRoundAdvanced);
   const onConfigChangedRef = useRef(options?.onConfigChanged);
   // Keep callback refs current whenever the props change.
   useEffect(() => {
@@ -142,6 +155,7 @@ export function useRoomPlayers(
     onPeekUpdateRef.current = options?.onPeekUpdate;
     onKickedRef.current = options?.onKicked;
     onVoteStateChangedRef.current = options?.onVoteStateChanged;
+    onRoundAdvancedRef.current = options?.onRoundAdvanced;
     onConfigChangedRef.current = options?.onConfigChanged;
   });
   // Ref to the broadcast function populated once the channel is subscribed.
@@ -244,6 +258,11 @@ export function useRoomPlayers(
         if (!isMounted) return;
         onVoteStateChangedRef.current?.();
       })
+      // Host opened the next vote round — refetch vote state + assignment.
+      .on("broadcast", { event: "round_advanced" }, () => {
+        if (!isMounted) return;
+        onRoundAdvancedRef.current?.();
+      })
       // Host kicked a player — refetch roster; if it's this device, fire onKicked.
       .on("broadcast", { event: "player_kicked" }, ({ payload }) => {
         if (!isMounted) return;
@@ -309,6 +328,10 @@ export function useRoomPlayers(
     await broadcastRef.current?.("vote_state_changed");
   }, []);
 
+  const broadcastRoundAdvanced = useCallback(async () => {
+    await broadcastRef.current?.("round_advanced");
+  }, []);
+
   return {
     players,
     connectedIds,
@@ -322,5 +345,6 @@ export function useRoomPlayers(
     broadcastTimerStart,
     broadcastPeekUpdate,
     broadcastVoteStateChanged,
+    broadcastRoundAdvanced,
   };
 }

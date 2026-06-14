@@ -1,0 +1,133 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "spicy",
+  "words": [
+    {
+      "word": "bacio",
+      "hints": ["labbra", "romantico", "primo", "guancia", "francese"]
+    },
+    {
+      "word": "cotta",
+      "hints": ["segreta", "farfalle", "scuola", "arrossire", "sentimenti"]
+    },
+    {
+      "word": "flirt",
+      "hints": ["occhiolino", "complimenti", "bar", "sorriso", "fascino"]
+    },
+    {
+      "word": "appuntamento",
+      "hints": ["cena", "nervosismo", "ristorante", "romantico", "candele"]
+    },
+    {
+      "word": "luna di miele",
+      "hints": ["matrimonio", "viaggio", "romantica", "suite", "coppia"]
+    },
+    {
+      "word": "lettera d'amore",
+      "hints": ["carta", "romantica", "segreta", "profumo", "calligrafia"]
+    },
+    {
+      "word": "appuntamento al buio",
+      "hints": [
+        "sconosciuto",
+        "ristorante",
+        "sorpresa",
+        "imbarazzo",
+        "combinato"
+      ]
+    },
+    {
+      "word": "ex",
+      "hints": ["passato", "rottura", "dramma", "gelosia", "ricordi"]
+    },
+    {
+      "word": "rottura",
+      "hints": ["lacrime", "dramma", "single", "messaggio", "cuore"]
+    },
+    {
+      "word": "gelosia",
+      "hints": ["verde", "possessivo", "sospetti", "dramma", "partner"]
+    },
+    {
+      "word": "anima gemella",
+      "hints": ["destino", "per sempre", "perfetta", "legame", "amore"]
+    },
+    {
+      "word": "matrimonio",
+      "hints": ["abito", "fedi", "torta", "chiesa", "festa"]
+    },
+    {
+      "word": "proposta",
+      "hints": ["anello", "ginocchio", "sorpresa", "sì", "romantica"]
+    },
+    {
+      "word": "anniversario",
+      "hints": ["festeggiare", "coppia", "regali", "cena", "dimenticare"]
+    },
+    {
+      "word": "San Valentino",
+      "hints": ["febbraio", "rose", "biglietti", "romantico", "cioccolatini"]
+    },
+    {
+      "word": "succhiotto",
+      "hints": ["collo", "segno", "imbarazzo", "sciarpa", "passione"]
+    },
+    {
+      "word": "avventura di una notte",
+      "hints": ["sconosciuto", "mattina", "imbarazzo", "rimpianto", "festa"]
+    },
+    {
+      "word": "friendzone",
+      "hints": ["amici", "rifiuto", "speranza", "imbarazzo", "per sempre"]
+    },
+    {
+      "word": "app di incontri",
+      "hints": ["swipe", "profilo", "match", "chat", "foto"]
+    },
+    {
+      "word": "frase da rimorchio",
+      "hints": ["bar", "scontata", "flirt", "sorriso", "originale"]
+    },
+    {
+      "word": "seduzione",
+      "hints": ["fascino", "lentezza", "sguardi", "profumo", "tensione"]
+    },
+    {
+      "word": "lingerie",
+      "hints": ["pizzo", "camera", "regalo", "rosso", "segreto"]
+    },
+    {
+      "word": "bagno di mezzanotte",
+      "hints": ["nudi", "lago", "notte", "sfida", "freddo"]
+    },
+    {
+      "word": "triangolo amoroso",
+      "hints": ["dramma", "tre", "segreto", "gelosia", "scelta"]
+    },
+    {
+      "word": "ammiratore segreto",
+      "hints": ["anonimo", "lettere", "fiori", "mistero", "cotta"]
+    },
+    {
+      "word": "ballo lento",
+      "hints": ["festa", "vicini", "musica", "mani", "romantico"]
+    },
+    {
+      "word": "coccole",
+      "hints": ["divano", "calore", "coperta", "abbraccio", "tenerezza"]
+    },
+    {
+      "word": "farfalle nello stomaco",
+      "hints": ["nervosismo", "cotta", "sensazione", "battito", "emozione"]
+    },
+    {
+      "word": "cuore spezzato",
+      "hints": ["lacrime", "dolore", "canzoni", "cioccolato", "tempo"]
+    },
+    {
+      "word": "cotta per una star",
+      "hints": ["famoso", "poster", "fantasia", "adolescenza", "sogni"]
+    }
+  ]
+}

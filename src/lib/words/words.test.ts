@@ -78,8 +78,8 @@ describe("fetchWordPool", () => {
 
   it("WordPoolFetchError message includes lang and category", async () => {
     const fetcher = makeErrorFetcher(500);
-    await expect(fetchWordPool("it", "movies", fetcher)).rejects.toThrow(
-      /it\/movies/,
+    await expect(fetchWordPool("it", "music", fetcher)).rejects.toThrow(
+      /it\/music/,
     );
   });
 
@@ -179,7 +179,7 @@ describe("fetchWordPools", () => {
 
   it("rejects if any single pool fails", async () => {
     const fetcher = vi.fn().mockImplementation((url: string) =>
-      url.includes("movies")
+      url.includes("music")
         ? Promise.resolve({
             ok: false,
             status: 404,
@@ -191,7 +191,7 @@ describe("fetchWordPools", () => {
           } as unknown as Response),
     );
     await expect(
-      fetchWordPools("en", ["food", "movies"], fetcher),
+      fetchWordPools("en", ["food", "music"], fetcher),
     ).rejects.toBeInstanceOf(WordPoolFetchError);
   });
 });

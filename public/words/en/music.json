@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "music",
+  "words": [
+    {
+      "word": "guitar",
+      "hints": ["strings", "strumming", "rock", "acoustic", "chords"]
+    },
+    {
+      "word": "piano",
+      "hints": ["keys", "black", "white", "classical", "pedals"]
+    },
+    {
+      "word": "drums",
+      "hints": ["sticks", "rhythm", "loud", "kit", "beat"]
+    },
+    {
+      "word": "violin",
+      "hints": ["bow", "strings", "classical", "orchestra", "chin"]
+    },
+    {
+      "word": "microphone",
+      "hints": ["singing", "stage", "voice", "stand", "karaoke"]
+    },
+    {
+      "word": "concert",
+      "hints": ["stage", "crowd", "tickets", "live", "lights"]
+    },
+    {
+      "word": "orchestra",
+      "hints": ["conductor", "instruments", "classical", "symphony", "formal"]
+    },
+    {
+      "word": "DJ",
+      "hints": ["turntables", "club", "mixing", "headphones", "party"]
+    },
+    {
+      "word": "rapper",
+      "hints": ["rhymes", "beat", "microphone", "flow", "street"]
+    },
+    {
+      "word": "opera",
+      "hints": ["singing", "dramatic", "Italian", "soprano", "theater"]
+    },
+    {
+      "word": "jazz",
+      "hints": ["saxophone", "improvisation", "smooth", "club", "swing"]
+    },
+    {
+      "word": "rock",
+      "hints": ["guitar", "loud", "band", "leather", "concert"]
+    },
+    {
+      "word": "choir",
+      "hints": ["voices", "church", "harmony", "singing", "robes"]
+    },
+    {
+      "word": "saxophone",
+      "hints": ["jazz", "brass", "curved", "smooth", "solo"]
+    },
+    {
+      "word": "trumpet",
+      "hints": ["brass", "loud", "jazz", "valves", "fanfare"]
+    },
+    {
+      "word": "flute",
+      "hints": ["wind", "silver", "classical", "blowing", "delicate"]
+    },
+    {
+      "word": "harp",
+      "hints": ["strings", "angel", "elegant", "plucking", "golden"]
+    },
+    {
+      "word": "accordion",
+      "hints": ["squeezing", "folk", "buttons", "Paris", "polka"]
+    },
+    {
+      "word": "bagpipes",
+      "hints": ["Scotland", "kilt", "loud", "drone", "traditional"]
+    },
+    {
+      "word": "ukulele",
+      "hints": ["small", "Hawaii", "strings", "cheerful", "beach"]
+    },
+    {
+      "word": "melody",
+      "hints": ["tune", "humming", "catchy", "notes", "song"]
+    },
+    {
+      "word": "lyrics",
+      "hints": ["words", "song", "memorizing", "meaning", "singing"]
+    },
+    {
+      "word": "album",
+      "hints": ["songs", "cover", "artist", "release", "tracks"]
+    },
+    {
+      "word": "band",
+      "hints": ["members", "instruments", "tour", "garage", "fame"]
+    },
+    {
+      "word": "festival",
+      "hints": ["music", "camping", "stages", "summer", "crowds"]
+    },
+    {
+      "word": "playlist",
+      "hints": ["songs", "curated", "mood", "shuffle", "Spotify"]
+    },
+    {
+      "word": "autotune",
+      "hints": ["voice", "studio", "pitch", "robotic", "pop"]
+    },
+    {
+      "word": "encore",
+      "hints": ["concert", "more", "applause", "final", "crowd"]
+    },
+    {
+      "word": "conductor",
+      "hints": ["orchestra", "baton", "waving", "tempo", "tailcoat"]
+    },
+    {
+      "word": "beatbox",
+      "hints": ["mouth", "rhythm", "sounds", "street", "microphone"]
+    }
+  ]
+}

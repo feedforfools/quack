@@ -47,7 +47,12 @@ import {
   useRetractVoteRequest,
   useResolveVote,
   useGameResult,
+  useRoundResults,
+  useAdvanceRound,
+  useStartVote,
+  useDeclareWordGuessed,
   ResultScreen,
+  RoundResultScreen,
 } from "@/features/round";
 import {
   Button,
@@ -80,6 +85,47 @@ function ReconnectingBanner({ label }: { label: string }) {
 }
 
 /**
+ * Room-not-found / expired screen — shown when the room row is absent on join
+ * (stale share link) OR when a live room is purged for inactivity mid-session.
+ * Self-contained so it can render from an early return, ahead of the in-game
+ * screens, the moment `roomMissing` flips.
+ */
+function ExpiredRoomScreen() {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  return (
+    <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 py-10">
+      {/* Duck emoji as a lightweight visual anchor — no external asset needed. */}
+      <span className="text-6xl" aria-hidden="true">
+        🦆
+      </span>
+      <h1 className="mt-6 text-center text-2xl font-semibold text-fg">
+        {t("room.errorNotFound")}
+      </h1>
+      <p className="mt-3 text-center text-sm text-fg-muted">
+        {t("room.errorNotFoundSubtitle")}
+      </p>
+      <div className="mt-8 flex w-full flex-col gap-3">
+        <Button
+          variant="primary"
+          size="lg"
+          onClick={() => void navigate("/create")}
+          className="w-full"
+        >
+          {t("room.createNewRoom")}
+        </Button>
+        <button
+          onClick={() => void navigate("/")}
+          className="min-h-[44px] rounded-lg text-center text-sm font-semibold text-fg-muted underline underline-offset-4 transition-colors hover:text-fg"
+        >
+          {t("common.backToHome")}
+        </button>
+      </div>
+    </main>
+  );
+}
+
+/**
  * Room page — `/r/:code`
  *
  * Entry paths:
@@ -108,6 +154,7 @@ export default function Room() {
     isHost,
     roomConfig,
     roomState,
+    roomMissing,
     loading: roomLoading,
     refetch: refetchRoom,
   } = useRoom(deviceId, code);
@@ -126,6 +173,10 @@ export default function Room() {
   // called-to-vote), wired below once those hooks are declared.
   const refetchSeenPlayersRef = useRef<(() => void) | null>(null);
   const refetchVoteRequestersRef = useRef<(() => void) | null>(null);
+  // Ref for the round-results refetcher (eliminations + tallies, E6).
+  const refetchRoundResultsRef = useRef<(() => void) | null>(null);
+  // Ref so round_advanced can refetch the assignment (timer reset server-side).
+  const refetchAssignmentRef = useRef<(() => void) | null>(null);
   const {
     players,
     connectedIds,
@@ -139,6 +190,7 @@ export default function Room() {
     broadcastTimerStart,
     broadcastPeekUpdate,
     broadcastVoteStateChanged,
+    broadcastRoundAdvanced,
   } = useRoomPlayers(deviceId, roomId, {
     onRoundEnd: refetchRoom,
     onRoundStart: refetchRoom,
@@ -152,6 +204,16 @@ export default function Room() {
     onVoteStateChanged: () => {
       refetchVoteStateRef.current?.();
       refetchVoteRequestersRef.current?.();
+      // A resolution may have eliminated someone — refresh round results.
+      refetchRoundResultsRef.current?.();
+    },
+    onRoundAdvanced: () => {
+      // The next vote round opened: vote columns reset, discussion timer
+      // cleared. Refetch everything that drives the phase machine.
+      refetchVoteStateRef.current?.();
+      refetchVoteRequestersRef.current?.();
+      refetchRoundResultsRef.current?.();
+      refetchAssignmentRef.current?.();
     },
     onKicked: () => {
       navigate("/");
@@ -188,6 +250,9 @@ export default function Room() {
   const selectedGameSupported = selectedGame.available;
   const imposterCount = parsedConfig.imposter_count;
   const imposterHintCount = parsedConfig.imposter_hint_count;
+  // Multi-round elimination mode (E6). Settings are frozen while a game is
+  // active, so the room config matches the game's config_snapshot here.
+  const multiRound = parsedConfig.round_mode === "multi";
   const minPlayers = imposterCount + MIN_CIVILIAN_BUFFER;
 
   // Voting state (E5-T8) — only fetched during an active game.
@@ -200,6 +265,9 @@ export default function Room() {
   useEffect(() => {
     refetchVoteStateRef.current = refetchVoteState;
   }, [refetchVoteState]);
+  useEffect(() => {
+    refetchAssignmentRef.current = refetchAssignment;
+  }, [refetchAssignment]);
 
   // Per-player roster indicators for the Discussion screen (E5.5-T9):
   //   * seenIds — who has peeked at their card (refreshed on peek_update).
@@ -227,18 +295,43 @@ export default function Room() {
   const { retractVoteRequest, loading: retractVoteRequestLoading } =
     useRetractVoteRequest();
   const { resolveVote } = useResolveVote();
+  const { advanceRound, loading: advanceRoundLoading } = useAdvanceRound();
+  const { startVote, loading: startVoteLoading } = useStartVote();
+  const { declareWordGuessed, loading: declareWordGuessedLoading } =
+    useDeclareWordGuessed();
 
-  // Fetch full game result once vote is resolved (E5-T9).
+  // Per-round results (E6): who got eliminated each round + vote tallies.
+  // Drives the disabled roster rows, the round-result screen, and the vote
+  // counts on the final result screen. Empty until the first resolution.
+  const {
+    rounds: roundResults,
+    latest: latestRoundResult,
+    eliminatedIds,
+    refetch: refetchRoundResults,
+  } = useRoundResults(deviceId, activeGameId);
+  useEffect(() => {
+    refetchRoundResultsRef.current = refetchRoundResults;
+  }, [refetchRoundResults]);
+
+  const isEliminated = deviceId !== null && eliminatedIds.has(deviceId);
+  const currentRound = voteState?.currentRound ?? 1;
+
+  // Phase split of the resolved state (E6):
+  //  * final  — outcome stamped → full result screen.
+  //  * round  — multi-round mode, game continues → round-result screen.
   const isResolved = voteState?.state === "resolved";
+  const isFinalResult = isResolved && voteState?.outcome != null;
+  const isRoundResult = isResolved && voteState?.outcome == null;
   const { result: gameResult, loading: resultLoading } = useGameResult(
-    isResolved ? deviceId : null,
-    isResolved ? (assignment?.gameId ?? null) : null,
+    isFinalResult ? deviceId : null,
+    isFinalResult ? (assignment?.gameId ?? null) : null,
   );
 
-  // Reset timer-expired flag when a new game starts (gameId changes).
+  // Reset timer-expired flag when a new game starts or the next vote round
+  // opens (each round may run its own discussion timer).
   useEffect(() => {
     setDiscussionTimerExpired(false);
-  }, [assignment?.gameId]);
+  }, [assignment?.gameId, currentRound]);
 
   // Called by DiscussionScreen's TimerStrip when discussion time runs out.
   const handleDiscussionTimerComplete = useCallback(() => {
@@ -695,11 +788,94 @@ export default function Room() {
     broadcastVoteStateChanged,
   ]);
 
-  // Compute vote threshold to display in VotingPanel.
-  const activePlayerCount = players.filter((p) => !p.is_spectator).length;
-  const voteThreshold = Math.ceil(
-    activePlayerCount * parsedConfig.vote_threshold_fraction,
-  );
+  // Host: open the next vote round after an intermediate result (E6).
+  const handleAdvanceRound = useCallback(async () => {
+    if (!deviceId || !roomId || !assignment) return;
+    const ok = await advanceRound({
+      deviceId,
+      roomId,
+      gameId: assignment.gameId,
+    });
+    if (ok) {
+      refetchVoteState();
+      refetchVoteRequesters();
+      refetchRoundResults();
+      refetchAssignment();
+      void broadcastRoundAdvanced();
+    } else {
+      toast({ title: t("roundResult.nextRoundError"), variant: "danger" });
+    }
+  }, [
+    deviceId,
+    roomId,
+    assignment,
+    advanceRound,
+    refetchVoteState,
+    refetchVoteRequesters,
+    refetchRoundResults,
+    refetchAssignment,
+    broadcastRoundAdvanced,
+    toast,
+    t,
+  ]);
+
+  // Host: open the ballot directly — the only route to a vote when
+  // call-to-vote is disabled (E6-T3).
+  const handleStartVote = useCallback(async () => {
+    if (!deviceId || !roomId || !assignment) return;
+    const ok = await startVote({
+      deviceId,
+      roomId,
+      gameId: assignment.gameId,
+    });
+    if (ok) {
+      refetchVoteState();
+      void broadcastVoteStateChanged();
+    } else {
+      toast({ title: t("vote.startVoteError"), variant: "danger" });
+    }
+  }, [
+    deviceId,
+    roomId,
+    assignment,
+    startVote,
+    refetchVoteState,
+    broadcastVoteStateChanged,
+    toast,
+    t,
+  ]);
+
+  // Host: an imposter said the secret word out loud — imposters win (E6).
+  const handleDeclareWordGuessed = useCallback(async () => {
+    if (!deviceId || !roomId || !assignment) return;
+    const ok = await declareWordGuessed({
+      deviceId,
+      roomId,
+      gameId: assignment.gameId,
+    });
+    if (ok) {
+      refetchVoteState();
+      void broadcastVoteStateChanged();
+    } else {
+      toast({ title: t("round.wordGuessedError"), variant: "danger" });
+    }
+  }, [
+    deviceId,
+    roomId,
+    assignment,
+    declareWordGuessed,
+    refetchVoteState,
+    broadcastVoteStateChanged,
+    toast,
+    t,
+  ]);
+
+  // Vote threshold display — a STRICT majority of alive players, mirroring
+  // the request_vote RPC: floor(n/2) + 1 (4 players → 3, 3 players → 2).
+  const activePlayerCount = players.filter(
+    (p) => !p.is_spectator && !eliminatedIds.has(p.id),
+  ).length;
+  const voteThreshold = Math.floor(activePlayerCount / 2) + 1;
 
   // Leave room handler — non-host only.
   const handleLeave = useCallback(async () => {
@@ -721,6 +897,14 @@ export default function Room() {
         initialName={displayName ?? ""}
       />
     );
+  }
+
+  // Room not found / purged for inactivity — checked BEFORE the in-game and
+  // lobby screens so a server-side purge (which sends no broadcast) tears down
+  // the now-broken UI on the next poll instead of waiting for a manual refresh.
+  // Guarded by `!roomEnded` so a host-ended room keeps its dedicated copy below.
+  if ((joinFailed || roomMissing) && !roomEnded) {
+    return <ExpiredRoomScreen />;
   }
 
   // Round active — reveal flow.
@@ -768,21 +952,74 @@ export default function Room() {
     }
 
     // Derive the current game phase from server state + local flag.
-    // Phase order: discussion → voting → result.
-    //  - discussion: default — DiscussionScreen auto-opens the role-peek modal
-    //                when seenAt is null, so there is no separate reveal phase.
-    //  - voting:     vote is active, OR discussion timer has fired, OR the
-    //                assignment's endsAt is already in the past.
-    //  - result:     vote is resolved (show result screen)
+    // Phase order: discussion → voting → (round_result → discussion …) → result.
+    //  - discussion:   default — DiscussionScreen auto-opens the role-peek
+    //                  modal when seenAt is null (no separate reveal phase).
+    //  - voting:       vote is active, OR discussion timer has fired, OR the
+    //                  assignment's endsAt is already in the past.
+    //  - round_result: multi-round mode — the round resolved but the game has
+    //                  no final outcome yet; the host advances to next round.
+    //  - result:       final outcome stamped (show full result screen).
+    // Round mode has no discussion timer (the host paces each round), so the
+    // timer-expiry shortcuts only apply to single-vote games.
     const timerExpiredNow =
-      assignment.endsAt != null && new Date(assignment.endsAt) <= new Date();
-    const gamePhase = isResolved
+      !multiRound &&
+      assignment.endsAt != null &&
+      new Date(assignment.endsAt) <= new Date();
+    const gamePhase = isFinalResult
       ? "result"
-      : voteState?.state === "active" ||
-          discussionTimerExpired ||
-          timerExpiredNow
-        ? "voting"
-        : "discussion";
+      : isRoundResult
+        ? "round_result"
+        : voteState?.state === "active" ||
+            (!multiRound && discussionTimerExpired) ||
+            timerExpiredNow
+          ? "voting"
+          : "discussion";
+
+    // How many imposters have been voted out so far (multi-round mode).
+    const impostersEliminated = roundResults.filter(
+      (r) => r.eliminatedRole === "imposter",
+    ).length;
+
+    // Intermediate round result — between vote rounds (E6).
+    if (gamePhase === "round_result") {
+      if (!latestRoundResult) {
+        // The resolution broadcast can land before the round-results refetch.
+        return (
+          <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 py-10">
+            <div
+              className="h-8 w-8 animate-spin rounded-full border-4 border-accent border-t-transparent"
+              role="status"
+              aria-label={t("round.loading")}
+            />
+          </main>
+        );
+      }
+      return (
+        <>
+          {isReconnecting && (
+            <ReconnectingBanner label={t("room.reconnecting")} />
+          )}
+          <RoundResultScreen
+            result={latestRoundResult}
+            maxRounds={parsedConfig.max_rounds}
+            players={players}
+            connectedIds={connectedIds}
+            hostPlayerId={hostPlayerId}
+            deviceId={deviceId}
+            eliminatedIds={eliminatedIds}
+            showVoteCounts={parsedConfig.show_vote_counts}
+            imposterCount={imposterCount}
+            impostersEliminated={impostersEliminated}
+            isHost={isHost}
+            onNextRound={isHost ? () => void handleAdvanceRound() : undefined}
+            nextRoundLoading={advanceRoundLoading}
+            onEndRound={isHost ? handleEndRound : undefined}
+            endRoundLoading={endRoundLoading}
+          />
+        </>
+      );
+    }
 
     // Result screen — shown when voting is resolved (E5-T9).
     if (gamePhase === "result") {
@@ -812,6 +1049,10 @@ export default function Room() {
             isHost={isHost}
             onEndGame={isHost ? handleEndRound : undefined}
             endGameLoading={endRoundLoading}
+            // Votes received in the final round — the RPC already returns an
+            // empty tally when the host disabled show_vote_counts.
+            finalTally={latestRoundResult?.tally ?? []}
+            eliminatedIds={eliminatedIds}
           />
         </>
       );
@@ -850,6 +1091,14 @@ export default function Room() {
             retractVoteLoading={retractVoteLoading}
             onVoteTimerComplete={handleVoteTimerComplete}
             votingTotalSeconds={parsedConfig.voting_duration_seconds}
+            eliminatedIds={eliminatedIds}
+            isEliminated={isEliminated}
+            onStartVote={
+              !parsedConfig.call_to_vote && isHost
+                ? () => void handleStartVote()
+                : undefined
+            }
+            startVoteLoading={startVoteLoading}
           />
         </>
       );
@@ -877,7 +1126,8 @@ export default function Room() {
             onResumeTimer={isHost ? handleResumeTimer : undefined}
             timerControlLoading={timerControlLoading}
             allPlayersSeen={allPlayersSeen}
-            configTimerSeconds={parsedConfig.timer_seconds}
+            // Round mode runs without a discussion timer — the host paces.
+            configTimerSeconds={multiRound ? 0 : parsedConfig.timer_seconds}
             voteState={voteState}
             voteThreshold={voteThreshold}
             onRequestVote={
@@ -900,6 +1150,25 @@ export default function Room() {
                 : seenPlayerIds
             }
             skipRequestedIds={voteRequesterIds}
+            // Multi-round mode (E6): round badge, eliminated roster styling
+            // and the host's "imposter guessed the word" control.
+            multiRound={multiRound}
+            roundNumber={currentRound}
+            maxRounds={parsedConfig.max_rounds}
+            eliminatedIds={eliminatedIds}
+            isEliminated={isEliminated}
+            onDeclareWordGuessed={
+              multiRound && isHost
+                ? () => void handleDeclareWordGuessed()
+                : undefined
+            }
+            declareWordGuessedLoading={declareWordGuessedLoading}
+            onStartVote={
+              !parsedConfig.call_to_vote && isHost
+                ? () => void handleStartVote()
+                : undefined
+            }
+            startVoteLoading={startVoteLoading}
           />
         </>
       );
@@ -930,41 +1199,7 @@ export default function Room() {
           </Button>
           <button
             onClick={() => void navigate("/")}
-            className="min-h-[44px] rounded-full text-center text-sm font-semibold text-fg-muted underline underline-offset-4 transition-colors hover:text-fg"
-          >
-            {t("common.backToHome")}
-          </button>
-        </div>
-      </main>
-    );
-  }
-
-  // Room not found / expired — dedicated stale-room screen with Create CTA.
-  if (joinFailed) {
-    return (
-      <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 py-10">
-        {/* Duck emoji as a lightweight visual anchor — no external asset needed. */}
-        <span className="text-6xl" aria-hidden="true">
-          🦆
-        </span>
-        <h1 className="mt-6 text-center text-2xl font-semibold text-fg">
-          {t("room.errorNotFound")}
-        </h1>
-        <p className="mt-3 text-center text-sm text-fg-muted">
-          {t("room.errorNotFoundSubtitle")}
-        </p>
-        <div className="mt-8 flex w-full flex-col gap-3">
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={() => void navigate("/create")}
-            className="w-full"
-          >
-            {t("room.createNewRoom")}
-          </Button>
-          <button
-            onClick={() => void navigate("/")}
-            className="min-h-[44px] rounded-full text-center text-sm font-semibold text-fg-muted underline underline-offset-4 transition-colors hover:text-fg"
+            className="min-h-[44px] rounded-lg text-center text-sm font-semibold text-fg-muted underline underline-offset-4 transition-colors hover:text-fg"
           >
             {t("common.backToHome")}
           </button>
@@ -1131,6 +1366,16 @@ export default function Room() {
                       <span className="rounded-full bg-fg/10 px-2 py-0.5 text-[11px] font-medium uppercase text-fg-muted">
                         {configLanguage}
                       </span>
+                      {multiRound && (
+                        <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/10 px-2 py-0.5 text-[11px] text-fg-muted">
+                          <Icon
+                            icon="lucide:repeat"
+                            className="h-3 w-3"
+                            aria-hidden="true"
+                          />
+                          {parsedConfig.max_rounds}
+                        </span>
+                      )}
                       <span className="inline-flex items-center gap-0.5 rounded-full bg-fg/10 px-2 py-0.5 text-[11px] text-fg-muted">
                         <Icon
                           icon="lucide:timer"
@@ -1167,7 +1412,7 @@ export default function Room() {
                 onClick={() =>
                   isHost ? setShowSettings(true) : setShowPlayerSettings(true)
                 }
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-fg/10 transition-all hover:bg-fg/15 active:scale-95"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-fg/10 transition-all hover:bg-fg/15 active:scale-95"
               >
                 <Icon
                   icon={

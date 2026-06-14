@@ -6,31 +6,39 @@ import { Modal, Switch, Select, Button } from "@/components";
 import { WORD_POOL_CATEGORIES, type WordPoolCategory } from "@/lib/words";
 import { getGameModeOption } from "./gameModes";
 import { GameList } from "./GameList";
-import type { GameType, RoomConfig } from "./roomConfig";
+import {
+  MAX_ROUNDS_MIN,
+  MAX_ROUNDS_MAX,
+  type GameType,
+  type RoomConfig,
+  type RoundMode,
+} from "./roomConfig";
 
 const TIMER_OPTIONS = [0, 180, 300, 420, 600] as const;
-const VOTING_DURATION_OPTIONS = [30, 60, 90, 120] as const;
-const VOTE_THRESHOLD_OPTIONS = [0.5, 0.67, 1.0] as const;
 const HINT_COUNT_OPTIONS = [0, 1, 2] as const;
 const MAX_IMPOSTERS = 9;
 
 type SettingsView = "settings" | "game-picker";
 type ImposterTab = "words" | "roles" | "vote";
 
-const CATEGORY_LABEL_KEYS: Record<
-  WordPoolCategory,
-  | "settings.category_food"
-  | "settings.category_animals"
-  | "settings.category_places"
-  | "settings.category_movies"
-  | "settings.category_objects"
-> = {
-  food: "settings.category_food",
+const CATEGORY_LABEL_KEYS = {
+  easy: "settings.category_easy",
+  entertainment: "settings.category_entertainment",
+  everyday: "settings.category_everyday",
   animals: "settings.category_animals",
-  places: "settings.category_places",
-  movies: "settings.category_movies",
-  objects: "settings.category_objects",
-};
+  sports: "settings.category_sports",
+  school: "settings.category_school",
+  celebrities: "settings.category_celebrities",
+  spicy: "settings.category_spicy",
+  food: "settings.category_food",
+  professions: "settings.category_professions",
+  internet: "settings.category_internet",
+  retro: "settings.category_retro",
+  fantasy: "settings.category_fantasy",
+  science: "settings.category_science",
+  music: "settings.category_music",
+  world: "settings.category_world",
+} as const satisfies Record<WordPoolCategory, string>;
 
 export interface GameSettingsModalProps {
   open: boolean;
@@ -222,7 +230,7 @@ function GameCard({
             e.stopPropagation();
             // Game info modal — coming in a later stage
           }}
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-fg/10 text-fg-muted transition-all hover:bg-fg/15 active:scale-95"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-fg/10 text-fg-muted transition-all hover:bg-fg/15 active:scale-95"
         >
           <Icon
             icon="ph:info-bold"
@@ -304,22 +312,25 @@ function ImposterTabsShell({
         ))}
       </TabsPrimitive.List>
 
-      <div className="min-h-0 flex-1 overflow-y-auto">
+      {/* Each tab manages its own scrolling: Words keeps a fixed-height isle
+          with the category chips scrolling inside it; the other tabs scroll
+          as a whole if they ever outgrow the panel. */}
+      <div className="min-h-0 flex-1 overflow-hidden">
         <TabsPrimitive.Content
           value="words"
-          className="focus-visible:outline-none"
+          className="h-full focus-visible:outline-none"
         >
           {words}
         </TabsPrimitive.Content>
         <TabsPrimitive.Content
           value="roles"
-          className="focus-visible:outline-none"
+          className="h-full overflow-y-auto focus-visible:outline-none"
         >
           {roles}
         </TabsPrimitive.Content>
         <TabsPrimitive.Content
           value="vote"
-          className="focus-visible:outline-none"
+          className="h-full overflow-y-auto focus-visible:outline-none"
         >
           {vote}
         </TabsPrimitive.Content>
@@ -444,47 +455,53 @@ function WordsTab({
   const { t } = useTranslation();
 
   return (
-    <RowGroup>
-      <Row label={t("settings.language")}>
-        <Segmented<"en" | "it">
-          ariaLabel={t("settings.language")}
-          value={local.language}
-          onChange={(v) => update("language", v)}
-          options={[
-            { value: "en", label: "EN" },
-            { value: "it", label: "IT" },
-          ]}
-        />
-      </Row>
+    /* Fixed-height isle: the language row stays put, the category chips
+       scroll inside the remaining space. */
+    <div className="flex h-full flex-col divide-y divide-border/60 overflow-hidden rounded-2xl bg-bg-sunken ring-1 ring-inset ring-border/40">
+      <div className="shrink-0">
+        <Row label={t("settings.language")}>
+          <Segmented<"en" | "it">
+            ariaLabel={t("settings.language")}
+            value={local.language}
+            onChange={(v) => update("language", v)}
+            options={[
+              { value: "en", label: "EN" },
+              { value: "it", label: "IT" },
+            ]}
+          />
+        </Row>
+      </div>
 
-      <div className="px-4 py-3">
-        <p className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-fg-muted">
+      <div className="flex min-h-0 flex-1 flex-col px-4 py-3">
+        <p className="mb-2.5 shrink-0 text-xs font-semibold uppercase tracking-wider text-fg-muted">
           {t("settings.categories")}
         </p>
-        <div className="flex flex-wrap gap-2">
-          {WORD_POOL_CATEGORIES.map((category) => {
-            const selected = local.categories.includes(category);
-            return (
-              <button
-                key={category}
-                type="button"
-                aria-pressed={selected}
-                onClick={() => toggleCategory(category)}
-                className={[
-                  "h-8 rounded-full px-3.5 text-sm font-semibold transition-colors",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
-                  selected
-                    ? "bg-accent text-accent-ink shadow-sm"
-                    : "bg-bg text-fg-muted ring-1 ring-inset ring-border/40 hover:text-fg",
-                ].join(" ")}
-              >
-                {t(CATEGORY_LABEL_KEYS[category])}
-              </button>
-            );
-          })}
+        <div className="-mx-1 min-h-0 flex-1 overflow-y-auto px-1">
+          <div className="flex flex-wrap gap-2 pb-1">
+            {WORD_POOL_CATEGORIES.map((category) => {
+              const selected = local.categories.includes(category);
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() => toggleCategory(category)}
+                  className={[
+                    "h-8 rounded-full px-3.5 text-sm font-semibold transition-colors",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+                    selected
+                      ? "bg-accent text-accent-ink shadow-sm"
+                      : "bg-bg text-fg-muted ring-1 ring-inset ring-border/40 hover:text-fg",
+                  ].join(" ")}
+                >
+                  {t(CATEGORY_LABEL_KEYS[category])}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
-    </RowGroup>
+    </div>
   );
 }
 
@@ -565,26 +582,51 @@ function VoteTab({
             ? t("settings.timer_7min")
             : t("settings.timer_10min");
 
-  const thresholdLabel = (fraction: number) =>
-    fraction >= 1
-      ? t("settings.threshold_all")
-      : fraction >= 0.67
-        ? t("settings.threshold_two_thirds")
-        : t("settings.threshold_half");
-
+  // Deliberately lean: the call-to-vote threshold is a fixed strict majority,
+  // the voting timer is fixed at 30s, and both vote-count reveals are always
+  // on — none of those need a knob.
   return (
     <RowGroup>
-      <Row label={t("settings.timerDuration")}>
-        <Select
-          ariaLabel={t("settings.timerDuration")}
-          value={String(local.timer_seconds)}
-          onValueChange={(v) => update("timer_seconds", Number(v))}
-          options={TIMER_OPTIONS.map((seconds) => ({
-            value: String(seconds),
-            label: timerLabel(seconds),
-          }))}
+      {/* Game flow: one single vote, or elimination rounds until the
+          imposters are caught / reach parity / survive max_rounds. */}
+      <Row label={t("settings.roundMode")}>
+        <Segmented<RoundMode>
+          ariaLabel={t("settings.roundMode")}
+          value={local.round_mode}
+          onChange={(v) => update("round_mode", v)}
+          options={[
+            { value: "single", label: t("settings.roundMode_single") },
+            { value: "multi", label: t("settings.roundMode_multi") },
+          ]}
         />
       </Row>
+
+      {local.round_mode === "multi" && (
+        <Row label={t("settings.maxRounds")}>
+          <Stepper
+            value={local.max_rounds}
+            min={MAX_ROUNDS_MIN}
+            max={MAX_ROUNDS_MAX}
+            onChange={(v) => update("max_rounds", v)}
+            ariaLabel={t("settings.maxRounds")}
+          />
+        </Row>
+      )}
+
+      {/* Round mode has no discussion timer — the host paces each round. */}
+      {local.round_mode === "single" && (
+        <Row label={t("settings.timerDuration")}>
+          <Select
+            ariaLabel={t("settings.timerDuration")}
+            value={String(local.timer_seconds)}
+            onValueChange={(v) => update("timer_seconds", Number(v))}
+            options={TIMER_OPTIONS.map((seconds) => ({
+              value: String(seconds),
+              label: timerLabel(seconds),
+            }))}
+          />
+        </Row>
+      )}
 
       <Row label={t("settings.callToVote")}>
         <Switch
@@ -593,43 +635,24 @@ function VoteTab({
           onCheckedChange={(checked) => update("call_to_vote", checked)}
         />
       </Row>
-
-      <Row label={t("settings.voteThreshold")}>
-        <Select
-          ariaLabel={t("settings.voteThreshold")}
-          value={String(local.vote_threshold_fraction)}
-          onValueChange={(v) => update("vote_threshold_fraction", Number(v))}
-          options={VOTE_THRESHOLD_OPTIONS.map((fraction) => ({
-            value: String(fraction),
-            label: thresholdLabel(fraction),
-          }))}
-        />
-      </Row>
-
-      <Row label={t("settings.votingDuration")}>
-        <Select
-          ariaLabel={t("settings.votingDuration")}
-          value={String(local.voting_duration_seconds)}
-          onValueChange={(v) => update("voting_duration_seconds", Number(v))}
-          options={VOTING_DURATION_OPTIONS.map((seconds) => ({
-            value: String(seconds),
-            label: `${seconds}s`,
-          }))}
-        />
-      </Row>
-
-      <Row label={t("settings.liveVoteTally")}>
-        <Switch
-          aria-label={t("settings.liveVoteTally")}
-          checked={local.live_vote_tally}
-          onCheckedChange={(checked) => update("live_vote_tally", checked)}
-        />
-      </Row>
     </RowGroup>
   );
 }
 
-// ─── Stepper (shared Button-based) ─────────────────────────────────────────
+// ─── Stepper ────────────────────────────────────────────────────────────────
+
+/**
+ * Increment/decrement control. Styled after the Switch track (same sunken
+ * surface + hairline ring) so every control in the settings rows shares one
+ * visual family.
+ */
+const STEPPER_BUTTON_CLASSES = [
+  "flex h-9 w-9 items-center justify-center rounded-full",
+  "bg-bg-sunken text-fg ring-1 ring-inset ring-border/80",
+  "transition-all hover:bg-fg/10 active:scale-95",
+  "disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100",
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+].join(" ");
 
 function Stepper({
   value,
@@ -647,31 +670,27 @@ function Stepper({
   const { t } = useTranslation();
   return (
     <div className="flex items-center gap-2">
-      <Button
+      <button
         type="button"
-        variant="ghost"
-        size="sm"
         aria-label={t("settings.decreaseSetting", { label: ariaLabel })}
         disabled={value <= min}
         onClick={() => onChange(value - 1)}
-        className="h-11 w-11 min-h-0 p-0"
+        className={STEPPER_BUTTON_CLASSES}
       >
         <Icon icon="lucide:minus" className="h-4 w-4" aria-hidden="true" />
-      </Button>
+      </button>
       <span className="w-6 text-center text-lg font-bold tabular-nums text-fg">
         {value}
       </span>
-      <Button
+      <button
         type="button"
-        variant="ghost"
-        size="sm"
         aria-label={t("settings.increaseSetting", { label: ariaLabel })}
         disabled={value >= max}
         onClick={() => onChange(value + 1)}
-        className="h-11 w-11 min-h-0 p-0"
+        className={STEPPER_BUTTON_CLASSES}
       >
         <Icon icon="lucide:plus" className="h-4 w-4" aria-hidden="true" />
-      </Button>
+      </button>
     </div>
   );
 }
@@ -710,33 +729,37 @@ function ImposterSummaryTabs({
 function WordsSummary({ config }: { config: RoomConfig }) {
   const { t } = useTranslation();
   return (
-    <RowGroup>
-      <SummaryRow
-        label={t("settings.language")}
-        value={config.language.toUpperCase()}
-      />
-      <div className="px-4 py-3">
-        <p className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-fg-muted">
+    <div className="flex h-full flex-col divide-y divide-border/60 overflow-hidden rounded-2xl bg-bg-sunken ring-1 ring-inset ring-border/40">
+      <div className="shrink-0">
+        <SummaryRow
+          label={t("settings.language")}
+          value={config.language.toUpperCase()}
+        />
+      </div>
+      <div className="flex min-h-0 flex-1 flex-col px-4 py-3">
+        <p className="mb-2.5 shrink-0 text-xs font-semibold uppercase tracking-wider text-fg-muted">
           {t("settings.categories")}
         </p>
-        <div className="flex flex-wrap gap-2">
-          {config.categories.length === 0 ? (
-            <span className="text-sm text-fg-muted">
-              {t("settings.summary_off")}
-            </span>
-          ) : (
-            config.categories.map((category) => (
-              <span
-                key={category}
-                className="h-8 rounded-full bg-accent px-3.5 text-sm font-semibold leading-8 text-accent-ink shadow-sm"
-              >
-                {t(CATEGORY_LABEL_KEYS[category])}
+        <div className="-mx-1 min-h-0 flex-1 overflow-y-auto px-1">
+          <div className="flex flex-wrap gap-2 pb-1">
+            {config.categories.length === 0 ? (
+              <span className="text-sm text-fg-muted">
+                {t("settings.summary_off")}
               </span>
-            ))
-          )}
+            ) : (
+              config.categories.map((category) => (
+                <span
+                  key={category}
+                  className="h-8 rounded-full bg-accent px-3.5 text-sm font-semibold leading-8 text-accent-ink shadow-sm"
+                >
+                  {t(CATEGORY_LABEL_KEYS[category])}
+                </span>
+              ))
+            )}
+          </div>
         </div>
       </div>
-    </RowGroup>
+    </div>
   );
 }
 
@@ -780,35 +803,33 @@ function VoteSummary({ config }: { config: RoomConfig }) {
           : seconds <= 420
             ? t("settings.timer_7min")
             : t("settings.timer_10min");
-  const thresholdLabel = (fraction: number) =>
-    fraction >= 1
-      ? t("settings.threshold_all")
-      : fraction >= 0.67
-        ? t("settings.threshold_two_thirds")
-        : t("settings.threshold_half");
   const yesNo = (value: boolean) =>
     value ? t("settings.summary_on") : t("settings.summary_off");
   return (
     <RowGroup>
       <SummaryRow
-        label={t("settings.timerDuration")}
-        value={timerLabel(config.timer_seconds)}
+        label={t("settings.roundMode")}
+        value={
+          config.round_mode === "multi"
+            ? t("settings.roundMode_multi")
+            : t("settings.roundMode_single")
+        }
       />
+      {config.round_mode === "multi" && (
+        <SummaryRow
+          label={t("settings.maxRounds")}
+          value={String(config.max_rounds)}
+        />
+      )}
+      {config.round_mode === "single" && (
+        <SummaryRow
+          label={t("settings.timerDuration")}
+          value={timerLabel(config.timer_seconds)}
+        />
+      )}
       <SummaryRow
         label={t("settings.callToVote")}
         value={yesNo(config.call_to_vote)}
-      />
-      <SummaryRow
-        label={t("settings.voteThreshold")}
-        value={thresholdLabel(config.vote_threshold_fraction)}
-      />
-      <SummaryRow
-        label={t("settings.votingDuration")}
-        value={`${config.voting_duration_seconds}s`}
-      />
-      <SummaryRow
-        label={t("settings.liveVoteTally")}
-        value={yesNo(config.live_vote_tally)}
       />
     </RowGroup>
   );

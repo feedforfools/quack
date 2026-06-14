@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "celebrities",
+  "words": [
+    {
+      "word": "Lionel Messi",
+      "hints": ["calcio", "Argentina", "gol", "Barcellona", "campione"]
+    },
+    {
+      "word": "Cristiano Ronaldo",
+      "hints": ["calcio", "Portogallo", "gol", "muscoli", "esultanza"]
+    },
+    {
+      "word": "Beyoncé",
+      "hints": ["cantante", "regina", "pop", "diva", "Texas"]
+    },
+    {
+      "word": "Taylor Swift",
+      "hints": ["cantante", "eras", "pop", "fan", "bionda"]
+    },
+    {
+      "word": "Elon Musk",
+      "hints": ["miliardario", "razzi", "Tesla", "Twitter", "Marte"]
+    },
+    {
+      "word": "Barack Obama",
+      "hints": ["presidente", "America", "discorsi", "speranza", "Hawaii"]
+    },
+    {
+      "word": "Michael Jackson",
+      "hints": ["pop", "moonwalk", "guanto", "thriller", "re"]
+    },
+    {
+      "word": "Madonna",
+      "hints": ["pop", "regina", "ottanta", "bionda", "provocante"]
+    },
+    {
+      "word": "Leonardo DiCaprio",
+      "hints": ["attore", "Titanic", "Oscar", "ambiente", "Hollywood"]
+    },
+    {
+      "word": "Brad Pitt",
+      "hints": ["attore", "affascinante", "Hollywood", "biondo", "fight"]
+    },
+    {
+      "word": "Tom Cruise",
+      "hints": ["attore", "acrobazie", "missione", "pilota", "sorriso"]
+    },
+    {
+      "word": "Will Smith",
+      "hints": ["attore", "rap", "schiaffo", "principe", "Hollywood"]
+    },
+    {
+      "word": "Dwayne Johnson",
+      "hints": ["roccia", "muscoli", "wrestling", "calvo", "azione"]
+    },
+    {
+      "word": "Lady Gaga",
+      "hints": ["cantante", "outfit", "pop", "piano", "eccentrica"]
+    },
+    {
+      "word": "Shakira",
+      "hints": ["cantante", "fianchi", "Colombia", "ballo", "mondiali"]
+    },
+    {
+      "word": "Adele",
+      "hints": ["cantante", "britannica", "hello", "ballate", "voce"]
+    },
+    {
+      "word": "Ed Sheeran",
+      "hints": ["cantante", "rosso", "chitarra", "britannico", "shape"]
+    },
+    {
+      "word": "Emma Watson",
+      "hints": ["attrice", "Hermione", "britannica", "attivista", "magia"]
+    },
+    {
+      "word": "Johnny Depp",
+      "hints": ["attore", "pirata", "processo", "eccentrico", "cappelli"]
+    },
+    {
+      "word": "Usain Bolt",
+      "hints": ["velocista", "Giamaica", "record", "fulmine", "oro"]
+    },
+    {
+      "word": "Roger Federer",
+      "hints": ["tennis", "svizzero", "elegante", "campione", "racchetta"]
+    },
+    {
+      "word": "Mr. Bean",
+      "hints": ["comico", "muto", "britannico", "orsacchiotto", "smorfie"]
+    },
+    {
+      "word": "Vasco Rossi",
+      "hints": ["rock", "Zocca", "concerti", "vita", "spericolata"]
+    },
+    {
+      "word": "Laura Pausini",
+      "hints": ["cantante", "Sanremo", "solitudine", "Grammy", "romagnola"]
+    },
+    {
+      "word": "Jovanotti",
+      "hints": ["cantante", "rap", "estate", "bici", "ottimismo"]
+    },
+    {
+      "word": "Fiorello",
+      "hints": ["showman", "siciliano", "radio", "imitazioni", "mattina"]
+    },
+    {
+      "word": "Checco Zalone",
+      "hints": ["comico", "pugliese", "film", "record", "irriverente"]
+    },
+    {
+      "word": "Chiara Ferragni",
+      "hints": ["influencer", "moda", "Instagram", "imprenditrice", "bionda"]
+    },
+    {
+      "word": "Francesco Totti",
+      "hints": ["calcio", "Roma", "capitano", "cucchiaio", "bandiera"]
+    },
+    {
+      "word": "Måneskin",
+      "hints": ["rock", "band", "Eurovision", "Sanremo", "Damiano"]
+    }
+  ]
+}

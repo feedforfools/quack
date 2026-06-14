@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "everyday",
+  "words": [
+    {
+      "word": "ombrello",
+      "hints": ["pioggia", "pieghevole", "manico", "bagnato", "temporale"]
+    },
+    {
+      "word": "spazzolino",
+      "hints": ["bagno", "denti", "mattina", "dentifricio", "setole"]
+    },
+    {
+      "word": "portafoglio",
+      "hints": ["soldi", "tasca", "carte", "pelle", "contanti"]
+    },
+    {
+      "word": "zaino",
+      "hints": ["spalle", "cerniera", "libri", "trekking", "spallacci"]
+    },
+    {
+      "word": "specchio",
+      "hints": ["riflesso", "bagno", "vetro", "selfie", "parete"]
+    },
+    {
+      "word": "cuscino",
+      "hints": ["letto", "morbido", "sonno", "piume", "testa"]
+    },
+    {
+      "word": "asciugamano",
+      "hints": ["bagno", "asciugare", "spiaggia", "morbido", "doccia"]
+    },
+    {
+      "word": "forbici",
+      "hints": ["tagliare", "carta", "affilate", "lame", "lavoretti"]
+    },
+    {
+      "word": "candela",
+      "hints": ["fiamma", "cera", "compleanno", "romantica", "profumata"]
+    },
+    {
+      "word": "sapone",
+      "hints": ["lavare", "bolle", "bagno", "pulito", "mani"]
+    },
+    {
+      "word": "spugna",
+      "hints": ["cucina", "piatti", "assorbente", "gialla", "pulizie"]
+    },
+    {
+      "word": "scopa",
+      "hints": ["spazzare", "pavimento", "polvere", "manico", "strega"]
+    },
+    {
+      "word": "scala",
+      "hints": ["salire", "gradini", "muro", "imbiancare", "alta"]
+    },
+    {
+      "word": "martello",
+      "hints": ["chiodi", "attrezzo", "legno", "pesante", "colpi"]
+    },
+    {
+      "word": "torcia",
+      "hints": ["batterie", "buio", "fascio", "campeggio", "emergenza"]
+    },
+    {
+      "word": "caricabatterie",
+      "hints": ["cavo", "batteria", "telefono", "presa", "elettricità"]
+    },
+    {
+      "word": "cuffie",
+      "hints": ["musica", "orecchie", "wireless", "ascoltare", "silenzio"]
+    },
+    {
+      "word": "occhiali da sole",
+      "hints": ["estate", "occhi", "moda", "spiaggia", "scuri"]
+    },
+    {
+      "word": "valigia",
+      "hints": ["viaggio", "bagaglio", "rotelle", "aeroporto", "vestiti"]
+    },
+    {
+      "word": "coperta",
+      "hints": ["calda", "divano", "inverno", "morbida", "comoda"]
+    },
+    {
+      "word": "telecomando",
+      "hints": ["televisione", "tasti", "divano", "canali", "batterie"]
+    },
+    {
+      "word": "frigorifero",
+      "hints": ["cucina", "freddo", "cibo", "calamite", "avanzi"]
+    },
+    {
+      "word": "microonde",
+      "hints": ["cucina", "riscaldare", "bip", "avanzi", "minuti"]
+    },
+    {
+      "word": "lavatrice",
+      "hints": ["bucato", "vestiti", "centrifuga", "detersivo", "oblò"]
+    },
+    {
+      "word": "aspirapolvere",
+      "hints": ["pulizie", "tappeto", "polvere", "rumoroso", "sacchetto"]
+    },
+    {
+      "word": "bollitore",
+      "hints": ["tè", "bollire", "acqua", "fischio", "cucina"]
+    },
+    {
+      "word": "tostapane",
+      "hints": ["pane", "colazione", "croccante", "cucina", "briciole"]
+    },
+    {
+      "word": "sveglia",
+      "hints": ["mattina", "suonare", "posticipa", "alzarsi", "comodino"]
+    },
+    {
+      "word": "pattumiera",
+      "hints": ["spazzatura", "coperchio", "cucina", "odore", "sacchetti"]
+    },
+    {
+      "word": "cerotto",
+      "hints": ["taglio", "pelle", "adesivo", "ferita", "farmacia"]
+    }
+  ]
+}

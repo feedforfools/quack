@@ -2,11 +2,22 @@ export const WORD_POOL_LANGS = ["en", "it"] as const;
 export type WordPoolLang = (typeof WORD_POOL_LANGS)[number];
 
 export const WORD_POOL_CATEGORIES = [
-  "food",
+  "easy",
+  "entertainment",
+  "everyday",
   "animals",
-  "places",
-  "movies",
-  "objects",
+  "sports",
+  "school",
+  "celebrities",
+  "spicy",
+  "food",
+  "professions",
+  "internet",
+  "retro",
+  "fantasy",
+  "science",
+  "music",
+  "world",
 ] as const;
 export type WordPoolCategory = (typeof WORD_POOL_CATEGORIES)[number];
 
@@ -14,8 +25,9 @@ export type WordPoolCategory = (typeof WORD_POOL_CATEGORIES)[number];
 export interface WordEntry {
   word: string;
   /**
-   * Short phrases that help an imposter blend in (e.g. "Italian dish").
-   * Content reviewed under Epic 6 release gate G2.
+   * Broad single words associated with the secret word (e.g. "pizza" →
+   * "Italy", "cheese"). Each entry ships 5; the picker hands a random subset
+   * to the imposters. Content reviewed under Epic 6 release gate G2.
    */
   hints: string[];
 }

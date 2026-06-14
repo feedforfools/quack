@@ -1,0 +1,133 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "professions",
+  "words": [
+    {
+      "word": "doctor",
+      "hints": ["hospital", "stethoscope", "patients", "white", "prescription"]
+    },
+    {
+      "word": "firefighter",
+      "hints": ["flames", "truck", "helmet", "hose", "brave"]
+    },
+    {
+      "word": "police officer",
+      "hints": ["badge", "uniform", "siren", "handcuffs", "law"]
+    },
+    {
+      "word": "chef",
+      "hints": ["kitchen", "restaurant", "hat", "recipes", "knives"]
+    },
+    {
+      "word": "pilot",
+      "hints": ["airplane", "cockpit", "uniform", "sky", "captain"]
+    },
+    {
+      "word": "nurse",
+      "hints": ["hospital", "care", "injections", "scrubs", "patients"]
+    },
+    {
+      "word": "lawyer",
+      "hints": ["court", "suits", "arguments", "judge", "contracts"]
+    },
+    {
+      "word": "judge",
+      "hints": ["court", "gavel", "robe", "sentence", "justice"]
+    },
+    {
+      "word": "plumber",
+      "hints": ["pipes", "leaks", "wrench", "bathroom", "overalls"]
+    },
+    {
+      "word": "electrician",
+      "hints": ["wires", "voltage", "tools", "lights", "sparks"]
+    },
+    {
+      "word": "carpenter",
+      "hints": ["wood", "hammer", "sawdust", "furniture", "workshop"]
+    },
+    {
+      "word": "farmer",
+      "hints": ["fields", "tractor", "harvest", "animals", "dawn"]
+    },
+    {
+      "word": "fisherman",
+      "hints": ["boat", "nets", "sea", "patience", "catch"]
+    },
+    {
+      "word": "astronaut",
+      "hints": ["space", "helmet", "rocket", "floating", "NASA"]
+    },
+    {
+      "word": "scientist",
+      "hints": [
+        "laboratory",
+        "experiments",
+        "research",
+        "microscope",
+        "discovery"
+      ]
+    },
+    {
+      "word": "architect",
+      "hints": ["buildings", "blueprints", "design", "drawings", "models"]
+    },
+    {
+      "word": "photographer",
+      "hints": ["camera", "lens", "shooting", "lights", "editing"]
+    },
+    {
+      "word": "journalist",
+      "hints": ["news", "interviews", "deadline", "articles", "microphone"]
+    },
+    {
+      "word": "actor",
+      "hints": ["stage", "camera", "script", "fame", "roles"]
+    },
+    {
+      "word": "musician",
+      "hints": ["instruments", "concerts", "studio", "melody", "stage"]
+    },
+    {
+      "word": "dentist",
+      "hints": ["teeth", "drill", "chair", "fear", "smile"]
+    },
+    {
+      "word": "veterinarian",
+      "hints": ["animals", "clinic", "pets", "care", "injections"]
+    },
+    {
+      "word": "hairdresser",
+      "hints": ["scissors", "salon", "styling", "mirrors", "gossip"]
+    },
+    {
+      "word": "mechanic",
+      "hints": ["cars", "garage", "oil", "tools", "engine"]
+    },
+    {
+      "word": "waiter",
+      "hints": ["restaurant", "tray", "orders", "tips", "apron"]
+    },
+    {
+      "word": "barista",
+      "hints": ["coffee", "espresso", "foam", "counter", "morning"]
+    },
+    {
+      "word": "programmer",
+      "hints": ["computer", "code", "bugs", "keyboard", "coffee"]
+    },
+    {
+      "word": "designer",
+      "hints": ["creativity", "fashion", "sketches", "style", "trends"]
+    },
+    {
+      "word": "translator",
+      "hints": ["languages", "words", "documents", "bilingual", "meetings"]
+    },
+    {
+      "word": "surgeon",
+      "hints": ["operating", "precision", "scalpel", "mask", "hospital"]
+    }
+  ]
+}

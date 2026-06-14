@@ -95,7 +95,7 @@ export function Modal({
                     type="button"
                     aria-label="Close dialog"
                     className={[
-                      "-my-2 -mr-2 flex h-9 w-9 items-center justify-center rounded-full p-2 text-fg-muted",
+                      "-my-2 -mr-2 flex h-9 w-9 items-center justify-center rounded-xl p-2 text-fg-muted",
                       "transition-colors hover:bg-fg/10 hover:text-fg active:scale-95",
                       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
                     ].join(" ")}

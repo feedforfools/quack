@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "sports",
+  "words": [
+    {
+      "word": "soccer",
+      "hints": ["ball", "goal", "field", "eleven", "referee"]
+    },
+    {
+      "word": "basketball",
+      "hints": ["hoop", "dribbling", "court", "tall", "orange"]
+    },
+    {
+      "word": "tennis",
+      "hints": ["racket", "net", "court", "serve", "yellow"]
+    },
+    {
+      "word": "volleyball",
+      "hints": ["net", "beach", "spike", "team", "hands"]
+    },
+    {
+      "word": "swimming",
+      "hints": ["pool", "water", "strokes", "goggles", "laps"]
+    },
+    {
+      "word": "marathon",
+      "hints": ["running", "distance", "medal", "sweat", "finish"]
+    },
+    {
+      "word": "boxing",
+      "hints": ["gloves", "ring", "punch", "rounds", "knockout"]
+    },
+    {
+      "word": "skiing",
+      "hints": ["snow", "mountains", "slopes", "poles", "winter"]
+    },
+    {
+      "word": "surfing",
+      "hints": ["waves", "board", "ocean", "balance", "wetsuit"]
+    },
+    {
+      "word": "cycling",
+      "hints": ["bicycle", "helmet", "pedals", "race", "road"]
+    },
+    {
+      "word": "golf",
+      "hints": ["club", "holes", "green", "swing", "caddie"]
+    },
+    {
+      "word": "rugby",
+      "hints": ["oval", "tackle", "scrum", "team", "mud"]
+    },
+    {
+      "word": "baseball",
+      "hints": ["bat", "pitcher", "bases", "glove", "stadium"]
+    },
+    {
+      "word": "hockey",
+      "hints": ["ice", "stick", "puck", "skates", "goal"]
+    },
+    {
+      "word": "gymnastics",
+      "hints": ["flexibility", "routine", "mat", "flips", "balance"]
+    },
+    {
+      "word": "climbing",
+      "hints": ["rope", "wall", "harness", "mountain", "grip"]
+    },
+    {
+      "word": "skateboard",
+      "hints": ["wheels", "tricks", "ramp", "street", "balance"]
+    },
+    {
+      "word": "yoga",
+      "hints": ["mat", "stretching", "breathing", "poses", "calm"]
+    },
+    {
+      "word": "karate",
+      "hints": ["belt", "kicks", "dojo", "discipline", "white"]
+    },
+    {
+      "word": "fencing",
+      "hints": ["sword", "mask", "lunge", "duel", "white"]
+    },
+    {
+      "word": "archery",
+      "hints": ["bow", "arrow", "target", "aiming", "bullseye"]
+    },
+    {
+      "word": "bowling",
+      "hints": ["pins", "ball", "lane", "strike", "shoes"]
+    },
+    {
+      "word": "darts",
+      "hints": ["board", "throwing", "pub", "bullseye", "points"]
+    },
+    {
+      "word": "chess",
+      "hints": ["board", "pieces", "king", "strategy", "checkmate"]
+    },
+    {
+      "word": "table tennis",
+      "hints": ["paddle", "ball", "table", "net", "fast"]
+    },
+    {
+      "word": "racing",
+      "hints": ["cars", "speed", "circuit", "helmet", "pitstop"]
+    },
+    {
+      "word": "referee",
+      "hints": ["whistle", "rules", "cards", "field", "decisions"]
+    },
+    {
+      "word": "stadium",
+      "hints": ["crowd", "seats", "field", "cheering", "lights"]
+    },
+    {
+      "word": "trophy",
+      "hints": ["winner", "gold", "cup", "ceremony", "shelf"]
+    },
+    {
+      "word": "olympics",
+      "hints": ["games", "medals", "rings", "athletes", "torch"]
+    }
+  ]
+}

@@ -26,8 +26,13 @@ export { useEndGame } from "./useEndGame";
 export type { UseEndGameReturn, EndGameError } from "./useEndGame";
 export { useKickPlayer } from "./useKickPlayer";
 export type { UseKickPlayerReturn } from "./useKickPlayer";
-export { parseRoomConfig, DEFAULT_ROOM_CONFIG } from "./roomConfig";
-export type { GameType, RoomConfig } from "./roomConfig";
+export {
+  parseRoomConfig,
+  DEFAULT_ROOM_CONFIG,
+  MAX_ROUNDS_MIN,
+  MAX_ROUNDS_MAX,
+} from "./roomConfig";
+export type { GameType, RoomConfig, RoundMode } from "./roomConfig";
 export { GAME_MODE_OPTIONS, getGameModeOption } from "./gameModes";
 export type { GameModeOption } from "./gameModes";
 export { GameList } from "./GameList";

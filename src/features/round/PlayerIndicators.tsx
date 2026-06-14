@@ -39,3 +39,20 @@ export function SeenIndicator({ label }: { label?: string }) {
     />
   );
 }
+
+/**
+ * Eliminated indicator — a skull glyph shown on players voted out in a
+ * previous round (multi-round mode). Pairs with the roster row's `disabled`
+ * modifier, which greys the whole row out.
+ */
+export function EliminatedIndicator({ label }: { label?: string }) {
+  return (
+    <Icon
+      icon="lucide:skull"
+      className="h-4 w-4 text-fg-subtle"
+      aria-label={label}
+      role={label ? "img" : undefined}
+      aria-hidden={label ? undefined : true}
+    />
+  );
+}

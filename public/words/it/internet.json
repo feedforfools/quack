@@ -1,0 +1,139 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "internet",
+  "words": [
+    {
+      "word": "meme",
+      "hints": ["divertente", "virale", "immagine", "condividere", "internet"]
+    },
+    {
+      "word": "hashtag",
+      "hints": ["social", "tendenza", "simbolo", "Twitter", "post"]
+    },
+    {
+      "word": "selfie",
+      "hints": ["fotocamera", "frontale", "posa", "filtro", "condividere"]
+    },
+    {
+      "word": "influencer",
+      "hints": [
+        "follower",
+        "sponsorizzazioni",
+        "Instagram",
+        "contenuti",
+        "famoso"
+      ]
+    },
+    {
+      "word": "diretta",
+      "hints": ["live", "spettatori", "chat", "gaming", "telecamera"]
+    },
+    {
+      "word": "virale",
+      "hints": ["diffusione", "video", "milioni", "internet", "improvviso"]
+    },
+    {
+      "word": "emoji",
+      "hints": ["faccine", "messaggi", "gialle", "espressioni", "tastiera"]
+    },
+    {
+      "word": "filtro",
+      "hints": ["foto", "bellezza", "Instagram", "cagnolino", "ritocco"]
+    },
+    {
+      "word": "troll",
+      "hints": ["commenti", "provocare", "anonimo", "internet", "ignorare"]
+    },
+    {
+      "word": "spam",
+      "hints": ["email", "indesiderata", "cartella", "pubblicità", "fastidiosa"]
+    },
+    {
+      "word": "wifi",
+      "hints": ["internet", "password", "router", "segnale", "gratis"]
+    },
+    {
+      "word": "password",
+      "hints": ["segreta", "accesso", "dimenticata", "sicurezza", "asterischi"]
+    },
+    {
+      "word": "streaming",
+      "hints": ["Netflix", "guardare", "online", "serie", "maratona"]
+    },
+    {
+      "word": "youtuber",
+      "hints": ["video", "canale", "iscritti", "telecamera", "vlog"]
+    },
+    {
+      "word": "TikTok",
+      "hints": ["balletti", "brevi", "video", "tendenze", "scorrere"]
+    },
+    {
+      "word": "unboxing",
+      "hints": ["pacco", "telecamera", "reazione", "nuovo", "apertura"]
+    },
+    {
+      "word": "clickbait",
+      "hints": ["titolo", "curiosità", "ingannevole", "shock", "anteprima"]
+    },
+    {
+      "word": "screenshot",
+      "hints": ["cattura", "prova", "telefono", "condividere", "chat"]
+    },
+    {
+      "word": "notifica",
+      "hints": ["suono", "telefono", "pallino", "distrazione", "continua"]
+    },
+    {
+      "word": "algoritmo",
+      "hints": ["feed", "consigli", "misterioso", "contenuti", "dipendenza"]
+    },
+    {
+      "word": "avatar",
+      "hints": ["profilo", "immagine", "digitale", "identità", "personaggio"]
+    },
+    {
+      "word": "GIF",
+      "hints": ["animata", "loop", "reazione", "divertente", "messaggi"]
+    },
+    {
+      "word": "blog",
+      "hints": ["scrivere", "post", "personale", "internet", "lettori"]
+    },
+    {
+      "word": "vlog",
+      "hints": ["telecamera", "quotidiano", "youtube", "vita", "parlare"]
+    },
+    {
+      "word": "follower",
+      "hints": ["social", "numero", "Instagram", "fan", "crescere"]
+    },
+    {
+      "word": "like",
+      "hints": ["pollice", "cuore", "tasto", "approvazione", "contare"]
+    },
+    {
+      "word": "commenti",
+      "hints": ["opinioni", "litigi", "scorrere", "tossici", "risposte"]
+    },
+    {
+      "word": "download",
+      "hints": ["file", "internet", "avanzamento", "attesa", "salvare"]
+    },
+    {
+      "word": "gamer",
+      "hints": ["console", "cuffie", "streaming", "notte", "energetica"]
+    },
+    {
+      "word": "criptovalute",
+      "hints": [
+        "bitcoin",
+        "digitale",
+        "investimento",
+        "volatile",
+        "portafoglio"
+      ]
+    }
+  ]
+}

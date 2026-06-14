@@ -37,6 +37,12 @@ export interface PlayerModifiers {
    * "voted to end discussion", a skull for "eliminated", etc.
    */
   mainModifier?: ReactNode;
+  /**
+   * Visually disables the row — dimmed surface, struck-through name — without
+   * removing the player from the roster. Used for players eliminated during
+   * a multi-round game; reusable by any mode that knocks players out.
+   */
+  disabled?: boolean;
 }
 
 export interface PlayerListProps {
@@ -160,14 +166,18 @@ function PlayerItem({
     [onKick],
   );
 
+  const isDisabled = modifiers?.disabled === true;
+
   return (
     <li
+      data-disabled={isDisabled || undefined}
       className={[
         "relative flex items-center rounded-2xl shadow-sm ring-1 ring-inset transition-colors",
         compact ? "gap-1.5 px-2.5 py-2" : "gap-2.5 px-3 py-3",
         isOwnPlayer
           ? "bg-accent/[0.09] ring-accent/25"
           : "bg-bg-raised ring-border/50",
+        isDisabled && "opacity-45 saturate-50 shadow-none",
         showKick && "ring-danger/50",
         canKick && "select-none",
       ]
@@ -204,7 +214,10 @@ function PlayerItem({
             "truncate font-medium leading-none",
             compact ? "text-sm" : "text-base",
             isOwnPlayer ? "text-accent" : "text-fg",
-          ].join(" ")}
+            isDisabled && "line-through decoration-fg-subtle/70",
+          ]
+            .filter(Boolean)
+            .join(" ")}
         >
           {player.display_name}
         </span>
@@ -260,7 +273,7 @@ function PlayerItem({
             // doesn't swallow this before the click fires.
             onPointerDown={(e) => e.stopPropagation()}
             onClick={handleKickClick}
-            className="flex h-7 w-7 items-center justify-center rounded-full bg-danger/15 transition-transform active:scale-90 disabled:opacity-40"
+            className="flex h-7 w-7 items-center justify-center rounded-lg bg-danger/15 transition-transform active:scale-90 disabled:opacity-40"
           >
             <TrashIcon className="h-4 w-4 text-danger" />
           </button>

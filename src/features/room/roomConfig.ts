@@ -14,6 +14,16 @@ export type { WordPoolCategory, WordPoolLang };
 
 export type GameType = "imposter" | "lupus" | "secret-hitler";
 
+/**
+ * How a game progresses once started:
+ *  - "single": one discussion, one vote, done (original flow).
+ *  - "multi":  discussion → vote → eliminate, repeated round after round until
+ *    all imposters are out, imposters reach parity, max_rounds is hit, or an
+ *    imposter guesses the word. Also the natural structure for future
+ *    Mafia-style games.
+ */
+export type RoundMode = "single" | "multi";
+
 export interface RoomConfig {
   /** Selected game mode for the next game in the room. */
   game_type: GameType;
@@ -33,21 +43,34 @@ export interface RoomConfig {
    * pool must carry the hint field — added in E5-T5.
    */
   imposter_hint_count: number;
+  /** Single-shot vote or round-by-round eliminations. */
+  round_mode: RoundMode;
+  /**
+   * Maximum number of vote rounds in "multi" mode (1–10). When the cap is
+   * reached with imposters still alive, the imposters win. Ignored in
+   * "single" mode.
+   */
+  max_rounds: number;
   /** Discussion timer length in seconds. 0 = disabled. */
   timer_seconds: number;
   /**
-   * Fraction of players who must call-to-vote to trigger an active vote
-   * (e.g. 0.5 = simple majority). Consumed in E5-T7.
+   * DEPRECATED (E6-T3): the call-to-vote threshold is now a fixed strict
+   * majority of alive players (floor(n/2) + 1), computed server-side by
+   * request_vote. Kept only so older persisted configs still parse.
    */
   vote_threshold_fraction: number;
-  /** How long the voting window stays open, in seconds. */
+  /** How long the voting window stays open, in seconds (default 30). */
   voting_duration_seconds: number;
   /**
-   * When true, every player can see a running vote tally during voting.
-   * When false, only imposters can see each other's votes; civilians see none.
-   * Consumed in E5-T6 / E5-T8.
+   * When true (default), every player can see a running vote tally during
+   * voting. When false, only imposters can see each other's votes.
    */
   live_vote_tally: boolean;
+  /**
+   * When true (default), the result of each vote round shows how many votes
+   * every player received. Enforced server-side by get_round_results.
+   */
+  show_vote_counts: boolean;
   /**
    * When true, players can initiate a call-to-vote during the discussion phase.
    * When false, voting can only be triggered by the discussion timer expiring.
@@ -63,17 +86,24 @@ export interface RoomConfig {
 export const DEFAULT_ROOM_CONFIG: RoomConfig = {
   game_type: "imposter",
   language: "en",
-  categories: ["food"],
+  categories: ["easy"],
   imposter_count: 1,
   imposters_see_each_other: false,
   imposter_hint_count: 0,
+  round_mode: "single",
+  max_rounds: 5,
   timer_seconds: 300,
   vote_threshold_fraction: 0.5,
-  voting_duration_seconds: 60,
-  live_vote_tally: false,
+  voting_duration_seconds: 30,
+  live_vote_tally: true,
+  show_vote_counts: true,
   call_to_vote: true,
   max_players: 20,
 };
+
+/** Bounds for the multi-round cap (settings stepper + parser clamp). */
+export const MAX_ROUNDS_MIN = 1;
+export const MAX_ROUNDS_MAX = 10;
 
 function isWordPoolLang(v: unknown): v is WordPoolLang {
   return WORD_POOL_LANGS.includes(v as WordPoolLang);
@@ -123,6 +153,16 @@ export function parseRoomConfig(raw: unknown): RoomConfig {
       ? Math.floor(r["imposter_hint_count"])
       : DEFAULT_ROOM_CONFIG.imposter_hint_count;
 
+  const round_mode: RoundMode =
+    r["round_mode"] === "multi" ? "multi" : "single";
+
+  const max_rounds =
+    typeof r["max_rounds"] === "number" &&
+    r["max_rounds"] >= MAX_ROUNDS_MIN &&
+    r["max_rounds"] <= MAX_ROUNDS_MAX
+      ? Math.floor(r["max_rounds"])
+      : DEFAULT_ROOM_CONFIG.max_rounds;
+
   const timer_seconds =
     typeof r["timer_seconds"] === "number" && r["timer_seconds"] >= 0
       ? Math.floor(r["timer_seconds"])
@@ -139,7 +179,9 @@ export function parseRoomConfig(raw: unknown): RoomConfig {
       ? Math.floor(r["voting_duration_seconds"])
       : DEFAULT_ROOM_CONFIG.voting_duration_seconds;
 
-  const live_vote_tally = r["live_vote_tally"] === true;
+  const live_vote_tally = r["live_vote_tally"] !== false;
+
+  const show_vote_counts = r["show_vote_counts"] !== false;
 
   const call_to_vote = r["call_to_vote"] !== false;
 
@@ -157,10 +199,13 @@ export function parseRoomConfig(raw: unknown): RoomConfig {
     imposter_count,
     imposters_see_each_other,
     imposter_hint_count,
+    round_mode,
+    max_rounds,
     timer_seconds,
     vote_threshold_fraction,
     voting_duration_seconds,
     live_vote_tally,
+    show_vote_counts,
     call_to_vote,
     max_players,
   };

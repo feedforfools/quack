@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "fantasy",
+  "words": [
+    {
+      "word": "dragon",
+      "hints": ["fire", "wings", "treasure", "scales", "knight"]
+    },
+    {
+      "word": "wizard",
+      "hints": ["magic", "wand", "beard", "spells", "hat"]
+    },
+    {
+      "word": "unicorn",
+      "hints": ["horn", "rainbow", "white", "magical", "pure"]
+    },
+    {
+      "word": "fairy",
+      "hints": ["wings", "tiny", "dust", "forest", "wish"]
+    },
+    {
+      "word": "elf",
+      "hints": ["ears", "forest", "archer", "immortal", "graceful"]
+    },
+    {
+      "word": "dwarf",
+      "hints": ["beard", "mining", "axe", "short", "mountain"]
+    },
+    {
+      "word": "goblin",
+      "hints": ["green", "mischief", "treasure", "ugly", "cave"]
+    },
+    {
+      "word": "troll",
+      "hints": ["bridge", "big", "club", "stone", "smelly"]
+    },
+    {
+      "word": "mermaid",
+      "hints": ["tail", "ocean", "singing", "scales", "sailors"]
+    },
+    {
+      "word": "giant",
+      "hints": ["huge", "beanstalk", "footsteps", "clouds", "strength"]
+    },
+    {
+      "word": "witch",
+      "hints": ["broom", "cauldron", "spells", "hat", "cat"]
+    },
+    {
+      "word": "werewolf",
+      "hints": ["moon", "transformation", "howling", "silver", "curse"]
+    },
+    {
+      "word": "ghost",
+      "hints": ["haunting", "white", "transparent", "castle", "chains"]
+    },
+    {
+      "word": "phoenix",
+      "hints": ["fire", "rebirth", "ashes", "immortal", "wings"]
+    },
+    {
+      "word": "griffin",
+      "hints": ["eagle", "lion", "wings", "majestic", "guardian"]
+    },
+    {
+      "word": "castle",
+      "hints": ["towers", "king", "moat", "stone", "drawbridge"]
+    },
+    {
+      "word": "knight",
+      "hints": ["armor", "sword", "horse", "quest", "shield"]
+    },
+    {
+      "word": "princess",
+      "hints": ["crown", "tower", "royal", "dress", "rescue"]
+    },
+    {
+      "word": "king",
+      "hints": ["throne", "crown", "kingdom", "ruling", "royal"]
+    },
+    {
+      "word": "quest",
+      "hints": ["journey", "hero", "mission", "adventure", "reward"]
+    },
+    {
+      "word": "sword",
+      "hints": ["blade", "knight", "sharp", "legendary", "duel"]
+    },
+    {
+      "word": "potion",
+      "hints": ["bottle", "magic", "brewing", "ingredients", "bubbling"]
+    },
+    {
+      "word": "spell",
+      "hints": ["magic", "words", "wand", "casting", "curse"]
+    },
+    {
+      "word": "curse",
+      "hints": ["evil", "witch", "breaking", "doomed", "spell"]
+    },
+    {
+      "word": "treasure",
+      "hints": ["gold", "chest", "map", "pirates", "buried"]
+    },
+    {
+      "word": "prophecy",
+      "hints": ["future", "chosen", "ancient", "destiny", "scroll"]
+    },
+    {
+      "word": "portal",
+      "hints": ["doorway", "dimension", "glowing", "travel", "magic"]
+    },
+    {
+      "word": "kingdom",
+      "hints": ["realm", "king", "castle", "land", "throne"]
+    },
+    {
+      "word": "genie",
+      "hints": ["lamp", "wishes", "three", "smoke", "freed"]
+    },
+    {
+      "word": "pegasus",
+      "hints": ["horse", "wings", "flying", "white", "mythology"]
+    }
+  ]
+}

@@ -129,7 +129,7 @@ export function ShareModal({ open, onClose, code, roomUrl }: ShareModalProps) {
               aria-label={t("common.close")}
               className={[
                 "absolute right-4 top-4 flex min-h-[44px] min-w-[44px] items-center justify-center",
-                "rounded-full p-1 text-fg-muted transition-colors",
+                "rounded-xl p-1 text-fg-muted transition-colors",
                 "hover:bg-fg/10 hover:text-fg active:scale-95",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
               ].join(" ")}
@@ -160,7 +160,7 @@ export function ShareModal({ open, onClose, code, roomUrl }: ShareModalProps) {
               aria-label={t("room.shareLabel")}
               className={[
                 "flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center",
-                "rounded-full p-1 text-fg-muted transition-colors",
+                "rounded-xl p-1 text-fg-muted transition-colors",
                 "hover:bg-fg/10 hover:text-fg active:scale-95",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
               ].join(" ")}

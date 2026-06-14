@@ -54,9 +54,11 @@ function makeVoteStateClient(options: {
         : { target_player_id: options.myVoteTargetId },
     error: null,
   });
-  const votesSecondEq = vi
+  // Chain: .eq(game_id).eq(voter_player_id).eq(round).maybeSingle()
+  const votesThirdEq = vi
     .fn()
     .mockReturnValue({ maybeSingle: votesMaybeSingle });
+  const votesSecondEq = vi.fn().mockReturnValue({ eq: votesThirdEq });
   const votesFirstEq = vi.fn().mockReturnValue({ eq: votesSecondEq });
   const votesSelect = vi.fn().mockReturnValue({ eq: votesFirstEq });
 
@@ -142,6 +144,50 @@ describe("useVoteState", () => {
     });
     expect(result.current.voteState?.state).toBe("resolved");
     expect(spies.gamesMaybeSingle).toHaveBeenCalledTimes(2);
+  });
+
+  it("converges on the new vote_state via the poll when a broadcast was missed", async () => {
+    vi.setSystemTime(new Date("2026-05-03T12:00:00.000Z"));
+    // Mount sees a pre-vote 'requested' state; the threshold-crossing
+    // `vote_state_changed` broadcast never arrives, but a later poll picks up
+    // the server's transition to 'active' (the ballot opens without a refresh).
+    const { client, spies } = makeVoteStateClient({
+      gameRows: [
+        {
+          vote_state: "requested",
+          vote_request_count: 1,
+          vote_ends_at: null,
+        },
+        {
+          vote_state: "active",
+          vote_request_count: 2,
+          vote_ends_at: "2026-05-03T12:05:00.000Z",
+        },
+      ],
+    });
+    mockClientFactory.mockReturnValue(
+      client as unknown as ReturnType<typeof supabaseWithDevice>,
+    );
+
+    const { result } = renderHook(() =>
+      useVoteState("device-1", "game-1", false),
+    );
+
+    await act(async () => {
+      await flushMicrotasks();
+    });
+
+    expect(result.current.voteState?.state).toBe("requested");
+    expect(spies.gamesMaybeSingle).toHaveBeenCalledTimes(1);
+
+    // Advance past the poll interval — no broadcast, but the hook re-fetches.
+    await act(async () => {
+      vi.advanceTimersByTime(3_100);
+      await flushMicrotasks();
+    });
+
+    expect(spies.gamesMaybeSingle).toHaveBeenCalledTimes(2);
+    expect(result.current.voteState?.state).toBe("active");
   });
 
   it("also resolves shortly after mount when the fetched vote is already expired", async () => {

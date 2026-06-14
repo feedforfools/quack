@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "spicy",
+  "words": [
+    {
+      "word": "kiss",
+      "hints": ["lips", "romantic", "first", "cheek", "french"]
+    },
+    {
+      "word": "crush",
+      "hints": ["secret", "butterflies", "school", "blushing", "feelings"]
+    },
+    {
+      "word": "flirting",
+      "hints": ["winking", "compliments", "bar", "smile", "charming"]
+    },
+    {
+      "word": "date",
+      "hints": ["dinner", "nervous", "restaurant", "romantic", "candles"]
+    },
+    {
+      "word": "honeymoon",
+      "hints": ["wedding", "travel", "romantic", "suite", "couple"]
+    },
+    {
+      "word": "love letter",
+      "hints": ["paper", "romantic", "secret", "perfume", "handwritten"]
+    },
+    {
+      "word": "blind date",
+      "hints": ["stranger", "restaurant", "surprise", "awkward", "setup"]
+    },
+    {
+      "word": "ex",
+      "hints": ["past", "breakup", "drama", "jealousy", "memories"]
+    },
+    {
+      "word": "breakup",
+      "hints": ["tears", "drama", "single", "message", "heartbroken"]
+    },
+    {
+      "word": "jealousy",
+      "hints": ["green", "possessive", "suspicion", "drama", "partner"]
+    },
+    {
+      "word": "soulmate",
+      "hints": ["destiny", "forever", "perfect", "connection", "love"]
+    },
+    {
+      "word": "wedding",
+      "hints": ["dress", "rings", "cake", "church", "party"]
+    },
+    {
+      "word": "proposal",
+      "hints": ["ring", "knee", "surprise", "yes", "romantic"]
+    },
+    {
+      "word": "anniversary",
+      "hints": ["celebration", "couple", "gifts", "dinner", "forgetting"]
+    },
+    {
+      "word": "valentine",
+      "hints": ["february", "roses", "cards", "romantic", "chocolate"]
+    },
+    {
+      "word": "hickey",
+      "hints": ["neck", "mark", "embarrassing", "scarf", "passion"]
+    },
+    {
+      "word": "one-night stand",
+      "hints": ["stranger", "morning", "awkward", "regret", "party"]
+    },
+    {
+      "word": "friendzone",
+      "hints": ["friends", "rejection", "hope", "awkward", "forever"]
+    },
+    {
+      "word": "dating app",
+      "hints": ["swiping", "profile", "match", "chat", "photos"]
+    },
+    {
+      "word": "pickup line",
+      "hints": ["bar", "cheesy", "flirting", "smile", "original"]
+    },
+    {
+      "word": "seduction",
+      "hints": ["charm", "slow", "eyes", "perfume", "tension"]
+    },
+    {
+      "word": "lingerie",
+      "hints": ["lace", "bedroom", "gift", "red", "secret"]
+    },
+    {
+      "word": "skinny dipping",
+      "hints": ["naked", "lake", "night", "dare", "cold"]
+    },
+    {
+      "word": "love triangle",
+      "hints": ["drama", "three", "secret", "jealousy", "choice"]
+    },
+    {
+      "word": "secret admirer",
+      "hints": ["anonymous", "letters", "flowers", "mystery", "crush"]
+    },
+    {
+      "word": "slow dance",
+      "hints": ["prom", "close", "music", "hands", "romantic"]
+    },
+    {
+      "word": "cuddling",
+      "hints": ["sofa", "warm", "blanket", "hug", "cozy"]
+    },
+    {
+      "word": "butterflies",
+      "hints": ["stomach", "nervous", "crush", "feeling", "fluttering"]
+    },
+    {
+      "word": "heartbreak",
+      "hints": ["tears", "pain", "songs", "chocolate", "time"]
+    },
+    {
+      "word": "celebrity crush",
+      "hints": ["famous", "poster", "fantasy", "teenage", "dreamy"]
+    }
+  ]
+}

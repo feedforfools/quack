@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import { Button, PlayerList, GameScaffold } from "@/components";
 import type { PlayerModifiers } from "@/components";
 import type { GameResult } from "./useGameResult";
+import type { VoteTally } from "./useVoteState";
 import type { PlayerRow } from "@/features/room";
 
 interface ResultScreenProps {
@@ -25,6 +26,17 @@ interface ResultScreenProps {
   onEndGame?: () => void;
   /** Whether the end-game action is in-flight. */
   endGameLoading?: boolean;
+  /**
+   * Per-player votes received in the final vote round. Rendered as chips on
+   * the roster when the host left `show_vote_counts` on. Empty/omitted hides
+   * the chips.
+   */
+  finalTally?: VoteTally[];
+  /**
+   * Players eliminated across all rounds (multi-round mode) — rendered
+   * disabled so the endgame roster mirrors how the game finished.
+   */
+  eliminatedIds?: Set<string>;
 }
 
 /** Per-outcome presentation: banner colours, emoji, copy keys. */
@@ -49,6 +61,13 @@ const OUTCOME_PRESENTATION = {
     bannerText: "text-accent-ink",
     headingKey: "result.outcomeTie",
     subtitleKey: "result.subtitleTie",
+  },
+  word_guessed: {
+    emoji: "🎯",
+    bannerBg: "bg-danger",
+    bannerText: "text-danger-ink",
+    headingKey: "result.outcomeWordGuessed",
+    subtitleKey: "result.subtitleWordGuessed",
   },
 } as const;
 
@@ -77,6 +96,8 @@ export function ResultScreen({
   isHost = false,
   onEndGame,
   endGameLoading = false,
+  finalTally = [],
+  eliminatedIds = new Set(),
 }: ResultScreenProps) {
   const { t } = useTranslation();
 
@@ -86,16 +107,35 @@ export function ResultScreen({
   const activePlayers = players.filter((p) => !p.is_spectator);
   const imposterIds = new Set(imposters.map((imp) => imp.player_id));
   const imposterNames = imposters.map((imp) => imp.display_name).join(", ");
+  const tallyMap = new Map(
+    finalTally.map((e) => [e.targetPlayerId, e.voteCount]),
+  );
 
-  // Role reveal per roster row: voted-out pill (slot A) + role icon (slot B).
+  // Role reveal per roster row: voted-out pill + final-vote count (slot A),
+  // role icon (slot B); eliminated players render dimmed.
   const modifiers: Record<string, PlayerModifiers> = Object.fromEntries(
     activePlayers.map((p) => [
       p.id,
       {
+        disabled: eliminatedIds.has(p.id),
         firstModifier:
-          p.id === votedOutPlayerId ? (
-            <span className="rounded-full bg-danger/15 px-1.5 py-0.5 text-[10px] font-semibold text-danger">
-              {t("result.votedOutLabel")}
+          p.id === votedOutPlayerId || (tallyMap.get(p.id) ?? 0) > 0 ? (
+            <span className="flex items-center gap-1">
+              {p.id === votedOutPlayerId && (
+                <span className="rounded-full bg-danger/15 px-1.5 py-0.5 text-[10px] font-semibold text-danger">
+                  {t("result.votedOutLabel")}
+                </span>
+              )}
+              {(tallyMap.get(p.id) ?? 0) > 0 && (
+                <span
+                  className="rounded-full bg-fg/10 px-2 py-0.5 text-xs tabular-nums text-fg-muted"
+                  aria-label={t("roundResult.votesReceived", {
+                    count: tallyMap.get(p.id),
+                  })}
+                >
+                  {tallyMap.get(p.id)}
+                </span>
+              )}
             </span>
           ) : null,
         mainModifier: imposterIds.has(p.id) ? (

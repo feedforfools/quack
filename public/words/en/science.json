@@ -1,0 +1,133 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "science",
+  "words": [
+    {
+      "word": "rocket",
+      "hints": ["launch", "space", "countdown", "fuel", "NASA"]
+    },
+    {
+      "word": "planet",
+      "hints": ["orbit", "solar", "round", "space", "system"]
+    },
+    {
+      "word": "galaxy",
+      "hints": ["stars", "spiral", "vast", "universe", "milky"]
+    },
+    {
+      "word": "black hole",
+      "hints": ["gravity", "space", "light", "mysterious", "massive"]
+    },
+    {
+      "word": "telescope",
+      "hints": ["stars", "lens", "observatory", "distant", "astronomer"]
+    },
+    {
+      "word": "atom",
+      "hints": ["tiny", "nucleus", "physics", "particles", "matter"]
+    },
+    {
+      "word": "gravity",
+      "hints": ["falling", "Newton", "apple", "force", "Earth"]
+    },
+    {
+      "word": "DNA",
+      "hints": ["genes", "helix", "biology", "code", "inheritance"]
+    },
+    {
+      "word": "robot",
+      "hints": ["machine", "artificial", "metal", "programmed", "future"]
+    },
+    {
+      "word": "satellite",
+      "hints": ["orbit", "signal", "space", "dish", "GPS"]
+    },
+    {
+      "word": "asteroid",
+      "hints": ["rock", "space", "impact", "belt", "dinosaurs"]
+    },
+    {
+      "word": "comet",
+      "hints": ["tail", "ice", "sky", "orbit", "bright"]
+    },
+    {
+      "word": "eclipse",
+      "hints": ["sun", "moon", "shadow", "rare", "glasses"]
+    },
+    {
+      "word": "meteor",
+      "hints": ["shooting", "sky", "burning", "wish", "night"]
+    },
+    {
+      "word": "spacesuit",
+      "hints": ["astronaut", "white", "helmet", "oxygen", "bulky"]
+    },
+    {
+      "word": "alien",
+      "hints": ["UFO", "green", "space", "abduction", "unknown"]
+    },
+    {
+      "word": "UFO",
+      "hints": ["flying", "saucer", "mystery", "lights", "sighting"]
+    },
+    {
+      "word": "Mars",
+      "hints": ["red", "planet", "rover", "colony", "dust"]
+    },
+    {
+      "word": "moon landing",
+      "hints": ["Apollo", "flag", "astronauts", "footprint", "television"]
+    },
+    {
+      "word": "space station",
+      "hints": ["orbit", "astronauts", "modules", "floating", "international"]
+    },
+    {
+      "word": "vaccine",
+      "hints": ["needle", "immunity", "doctor", "protection", "laboratory"]
+    },
+    {
+      "word": "bacteria",
+      "hints": [
+        "microscopic",
+        "germs",
+        "infection",
+        "antibiotics",
+        "everywhere"
+      ]
+    },
+    {
+      "word": "evolution",
+      "hints": ["Darwin", "species", "adaptation", "gradual", "fossils"]
+    },
+    {
+      "word": "dinosaur",
+      "hints": ["extinct", "fossil", "huge", "Jurassic", "bones"]
+    },
+    {
+      "word": "fossil",
+      "hints": ["ancient", "stone", "bones", "digging", "museum"]
+    },
+    {
+      "word": "electricity",
+      "hints": ["current", "wires", "shock", "power", "Tesla"]
+    },
+    {
+      "word": "magnet",
+      "hints": ["attraction", "poles", "metal", "fridge", "field"]
+    },
+    {
+      "word": "laser",
+      "hints": ["beam", "red", "precise", "light", "pointer"]
+    },
+    {
+      "word": "experiment",
+      "hints": ["laboratory", "hypothesis", "test", "results", "goggles"]
+    },
+    {
+      "word": "chemistry",
+      "hints": ["elements", "reactions", "laboratory", "formulas", "explosions"]
+    }
+  ]
+}

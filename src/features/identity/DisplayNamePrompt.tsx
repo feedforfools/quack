@@ -88,7 +88,7 @@ export function DisplayNamePrompt({
             type="submit"
             disabled={!isValid}
             className={[
-              "mt-4 w-full rounded-full px-5 font-bold",
+              "mt-4 w-full rounded-xl px-5 font-bold",
               "min-h-[48px] text-base", // tap target
               "bg-accent text-accent-ink shadow-glow",
               "transition-all duration-200 ease-out hover:bg-accent-hover active:scale-[0.97]",

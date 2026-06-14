@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "everyday",
+  "words": [
+    {
+      "word": "umbrella",
+      "hints": ["rain", "folding", "handle", "wet", "storm"]
+    },
+    {
+      "word": "toothbrush",
+      "hints": ["bathroom", "teeth", "morning", "toothpaste", "bristles"]
+    },
+    {
+      "word": "wallet",
+      "hints": ["money", "pocket", "cards", "leather", "cash"]
+    },
+    {
+      "word": "backpack",
+      "hints": ["shoulders", "zipper", "books", "hiking", "straps"]
+    },
+    {
+      "word": "mirror",
+      "hints": ["reflection", "bathroom", "glass", "selfie", "wall"]
+    },
+    {
+      "word": "pillow",
+      "hints": ["bed", "soft", "sleep", "feathers", "head"]
+    },
+    {
+      "word": "towel",
+      "hints": ["bathroom", "drying", "beach", "soft", "shower"]
+    },
+    {
+      "word": "scissors",
+      "hints": ["cutting", "paper", "sharp", "blades", "craft"]
+    },
+    {
+      "word": "candle",
+      "hints": ["flame", "wax", "birthday", "romantic", "scented"]
+    },
+    {
+      "word": "soap",
+      "hints": ["washing", "bubbles", "bathroom", "clean", "hands"]
+    },
+    {
+      "word": "sponge",
+      "hints": ["kitchen", "dishes", "absorbing", "yellow", "cleaning"]
+    },
+    {
+      "word": "broom",
+      "hints": ["sweeping", "floor", "dust", "handle", "witch"]
+    },
+    {
+      "word": "ladder",
+      "hints": ["climbing", "steps", "wall", "painting", "tall"]
+    },
+    {
+      "word": "hammer",
+      "hints": ["nails", "tool", "wood", "heavy", "hitting"]
+    },
+    {
+      "word": "flashlight",
+      "hints": ["batteries", "darkness", "beam", "camping", "emergency"]
+    },
+    {
+      "word": "charger",
+      "hints": ["cable", "battery", "phone", "plug", "electricity"]
+    },
+    {
+      "word": "headphones",
+      "hints": ["music", "ears", "wireless", "listening", "silence"]
+    },
+    {
+      "word": "sunglasses",
+      "hints": ["summer", "eyes", "fashion", "beach", "dark"]
+    },
+    {
+      "word": "suitcase",
+      "hints": ["travel", "packing", "wheels", "airport", "clothes"]
+    },
+    {
+      "word": "blanket",
+      "hints": ["warm", "sofa", "winter", "soft", "cozy"]
+    },
+    {
+      "word": "remote",
+      "hints": ["television", "buttons", "sofa", "channels", "batteries"]
+    },
+    {
+      "word": "fridge",
+      "hints": ["kitchen", "cold", "food", "magnets", "leftovers"]
+    },
+    {
+      "word": "microwave",
+      "hints": ["kitchen", "heating", "beeping", "leftovers", "minutes"]
+    },
+    {
+      "word": "washing machine",
+      "hints": ["laundry", "clothes", "spinning", "detergent", "drum"]
+    },
+    {
+      "word": "vacuum",
+      "hints": ["cleaning", "carpet", "dust", "loud", "cordless"]
+    },
+    {
+      "word": "kettle",
+      "hints": ["tea", "boiling", "water", "whistle", "kitchen"]
+    },
+    {
+      "word": "toaster",
+      "hints": ["bread", "breakfast", "crispy", "kitchen", "crumbs"]
+    },
+    {
+      "word": "alarm clock",
+      "hints": ["morning", "ringing", "snooze", "waking", "bedside"]
+    },
+    {
+      "word": "trash can",
+      "hints": ["garbage", "lid", "kitchen", "smell", "bags"]
+    },
+    {
+      "word": "band-aid",
+      "hints": ["cut", "skin", "sticky", "wound", "pharmacy"]
+    }
+  ]
+}

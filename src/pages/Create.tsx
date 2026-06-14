@@ -59,7 +59,7 @@ export default function Create() {
         type="button"
         onClick={() => navigate(-1)}
         aria-label={t("common.backToHome")}
-        className="-ml-2 flex min-h-[44px] w-fit items-center gap-1 rounded-full px-2 text-fg-muted transition-colors hover:text-fg active:opacity-60"
+        className="-ml-2 flex min-h-[44px] w-fit items-center gap-1 rounded-lg px-2 text-fg-muted transition-colors hover:text-fg active:opacity-60"
       >
         <Icon
           icon="lucide:chevron-left"

@@ -1,0 +1,133 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "sports",
+  "words": [
+    {
+      "word": "calcio",
+      "hints": ["pallone", "gol", "campo", "undici", "arbitro"]
+    },
+    {
+      "word": "basket",
+      "hints": ["canestro", "palleggio", "campo", "alti", "arancione"]
+    },
+    {
+      "word": "tennis",
+      "hints": ["racchetta", "rete", "campo", "servizio", "gialla"]
+    },
+    {
+      "word": "pallavolo",
+      "hints": ["rete", "spiaggia", "schiacciata", "squadra", "mani"]
+    },
+    {
+      "word": "nuoto",
+      "hints": ["piscina", "acqua", "stili", "occhialini", "vasche"]
+    },
+    {
+      "word": "maratona",
+      "hints": ["corsa", "distanza", "medaglia", "sudore", "traguardo"]
+    },
+    {
+      "word": "boxe",
+      "hints": ["guantoni", "ring", "pugno", "riprese", "knockout"]
+    },
+    {
+      "word": "sci",
+      "hints": ["neve", "montagne", "piste", "bastoncini", "inverno"]
+    },
+    {
+      "word": "surf",
+      "hints": ["onde", "tavola", "oceano", "equilibrio", "muta"]
+    },
+    {
+      "word": "ciclismo",
+      "hints": ["bicicletta", "casco", "pedali", "gara", "strada"]
+    },
+    {
+      "word": "golf",
+      "hints": ["mazza", "buche", "prato", "swing", "caddie"]
+    },
+    {
+      "word": "rugby",
+      "hints": ["ovale", "placcaggio", "mischia", "squadra", "fango"]
+    },
+    {
+      "word": "baseball",
+      "hints": ["mazza", "lanciatore", "basi", "guantone", "stadio"]
+    },
+    {
+      "word": "hockey",
+      "hints": ["ghiaccio", "bastone", "disco", "pattini", "porta"]
+    },
+    {
+      "word": "ginnastica",
+      "hints": [
+        "flessibilità",
+        "esercizio",
+        "tappeto",
+        "capriole",
+        "equilibrio"
+      ]
+    },
+    {
+      "word": "arrampicata",
+      "hints": ["corda", "parete", "imbrago", "montagna", "presa"]
+    },
+    {
+      "word": "skateboard",
+      "hints": ["ruote", "trick", "rampa", "strada", "equilibrio"]
+    },
+    {
+      "word": "yoga",
+      "hints": ["tappetino", "stretching", "respiro", "posizioni", "calma"]
+    },
+    {
+      "word": "karate",
+      "hints": ["cintura", "calci", "dojo", "disciplina", "bianco"]
+    },
+    {
+      "word": "scherma",
+      "hints": ["spada", "maschera", "affondo", "duello", "bianco"]
+    },
+    {
+      "word": "tiro con l'arco",
+      "hints": ["arco", "freccia", "bersaglio", "mira", "centro"]
+    },
+    {
+      "word": "bowling",
+      "hints": ["birilli", "boccia", "pista", "strike", "scarpe"]
+    },
+    {
+      "word": "freccette",
+      "hints": ["bersaglio", "lancio", "pub", "centro", "punti"]
+    },
+    {
+      "word": "scacchi",
+      "hints": ["scacchiera", "pezzi", "re", "strategia", "scaccomatto"]
+    },
+    {
+      "word": "ping pong",
+      "hints": ["racchetta", "pallina", "tavolo", "rete", "veloce"]
+    },
+    {
+      "word": "automobilismo",
+      "hints": ["auto", "velocità", "circuito", "casco", "box"]
+    },
+    {
+      "word": "arbitro",
+      "hints": ["fischietto", "regole", "cartellini", "campo", "decisioni"]
+    },
+    {
+      "word": "stadio",
+      "hints": ["folla", "posti", "campo", "cori", "riflettori"]
+    },
+    {
+      "word": "trofeo",
+      "hints": ["vincitore", "oro", "coppa", "cerimonia", "bacheca"]
+    },
+    {
+      "word": "olimpiadi",
+      "hints": ["giochi", "medaglie", "cerchi", "atleti", "fiaccola"]
+    }
+  ]
+}

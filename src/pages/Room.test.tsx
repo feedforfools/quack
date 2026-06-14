@@ -66,6 +66,7 @@ vi.mock("@/features/room", () => ({
     broadcastTimerStart: vi.fn(),
     broadcastPeekUpdate: vi.fn(),
     broadcastVoteStateChanged: mocks.broadcastVoteStateChanged,
+    broadcastRoundAdvanced: vi.fn().mockResolvedValue(undefined),
   }),
   useReadyToggle: () => ({ toggleReady: vi.fn(), loading: false }),
   useLeaveRoom: () => ({ leaveRoom: vi.fn(), loading: false }),
@@ -80,10 +81,13 @@ vi.mock("@/features/room", () => ({
     imposter_count: 1,
     imposters_see_each_other: false,
     imposter_hint_count: 0,
+    round_mode: "single",
+    max_rounds: 5,
     timer_seconds: 0,
     vote_threshold_fraction: 0.5,
     voting_duration_seconds: 60,
     live_vote_tally: false,
+    show_vote_counts: true,
     call_to_vote: true,
     max_players: 20,
   }),
@@ -207,7 +211,21 @@ vi.mock("@/features/round", () => ({
   }),
   useResolveVote: () => ({ resolveVote: mocks.resolveVote }),
   useGameResult: () => ({ result: null, loading: false }),
+  useRoundResults: () => ({
+    rounds: [],
+    latest: null,
+    eliminatedIds: new Set(),
+    loading: false,
+    refetch: vi.fn(),
+  }),
+  useAdvanceRound: () => ({ advanceRound: vi.fn(), loading: false }),
+  useStartVote: () => ({ startVote: vi.fn(), loading: false }),
+  useDeclareWordGuessed: () => ({
+    declareWordGuessed: vi.fn(),
+    loading: false,
+  }),
   ResultScreen: () => null,
+  RoundResultScreen: () => null,
 }));
 
 vi.mock("@/components", () => ({

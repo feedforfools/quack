@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "internet",
+  "words": [
+    {
+      "word": "meme",
+      "hints": ["funny", "viral", "image", "sharing", "internet"]
+    },
+    {
+      "word": "hashtag",
+      "hints": ["social", "trending", "symbol", "Twitter", "posts"]
+    },
+    {
+      "word": "selfie",
+      "hints": ["camera", "front", "pose", "filter", "sharing"]
+    },
+    {
+      "word": "influencer",
+      "hints": ["followers", "sponsorship", "Instagram", "content", "famous"]
+    },
+    {
+      "word": "livestream",
+      "hints": ["live", "viewers", "chat", "gaming", "camera"]
+    },
+    {
+      "word": "viral",
+      "hints": ["spreading", "video", "millions", "internet", "overnight"]
+    },
+    {
+      "word": "emoji",
+      "hints": ["faces", "messages", "yellow", "expressions", "keyboard"]
+    },
+    {
+      "word": "filter",
+      "hints": ["photo", "beauty", "Instagram", "dog", "smoothing"]
+    },
+    {
+      "word": "troll",
+      "hints": ["comments", "provoking", "anonymous", "internet", "feeding"]
+    },
+    {
+      "word": "spam",
+      "hints": ["emails", "unwanted", "folder", "advertising", "annoying"]
+    },
+    {
+      "word": "wifi",
+      "hints": ["internet", "password", "router", "signal", "free"]
+    },
+    {
+      "word": "password",
+      "hints": ["secret", "login", "forgotten", "security", "asterisks"]
+    },
+    {
+      "word": "streaming",
+      "hints": ["Netflix", "watching", "online", "binge", "series"]
+    },
+    {
+      "word": "youtuber",
+      "hints": ["videos", "channel", "subscribers", "camera", "vlogs"]
+    },
+    {
+      "word": "TikTok",
+      "hints": ["dances", "short", "videos", "trends", "scrolling"]
+    },
+    {
+      "word": "unboxing",
+      "hints": ["package", "camera", "reaction", "new", "reveal"]
+    },
+    {
+      "word": "clickbait",
+      "hints": ["title", "curiosity", "misleading", "shocking", "thumbnail"]
+    },
+    {
+      "word": "screenshot",
+      "hints": ["capture", "proof", "phone", "sharing", "receipts"]
+    },
+    {
+      "word": "notification",
+      "hints": ["ping", "phone", "badge", "distraction", "endless"]
+    },
+    {
+      "word": "algorithm",
+      "hints": ["feed", "recommendations", "mysterious", "content", "addiction"]
+    },
+    {
+      "word": "avatar",
+      "hints": ["profile", "picture", "digital", "identity", "character"]
+    },
+    {
+      "word": "GIF",
+      "hints": ["animated", "loop", "reaction", "funny", "messages"]
+    },
+    {
+      "word": "blog",
+      "hints": ["writing", "posts", "personal", "internet", "readers"]
+    },
+    {
+      "word": "vlog",
+      "hints": ["camera", "daily", "youtube", "life", "talking"]
+    },
+    {
+      "word": "follower",
+      "hints": ["social", "count", "Instagram", "fans", "growing"]
+    },
+    {
+      "word": "like",
+      "hints": ["thumbs", "heart", "button", "approval", "counting"]
+    },
+    {
+      "word": "comment section",
+      "hints": ["opinions", "arguments", "scrolling", "toxic", "replies"]
+    },
+    {
+      "word": "download",
+      "hints": ["files", "internet", "progress", "waiting", "saving"]
+    },
+    {
+      "word": "gamer",
+      "hints": ["console", "headset", "streaming", "night", "energy"]
+    },
+    {
+      "word": "crypto",
+      "hints": ["bitcoin", "digital", "investment", "volatile", "wallet"]
+    }
+  ]
+}

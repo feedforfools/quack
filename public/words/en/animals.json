@@ -1,407 +1,127 @@
 {
-  "version": 1,
+  "version": 2,
   "lang": "en",
   "category": "animals",
   "words": [
     {
-      "word": "dog",
-      "hints": [
-        "loyal companion",
-        "wags its tail",
-        "barks"
-      ]
-    },
-    {
-      "word": "cat",
-      "hints": [
-        "purrs when content",
-        "chases mice",
-        "lands on its feet"
-      ]
+      "word": "lion",
+      "hints": ["savanna", "mane", "roar", "king", "pride"]
     },
     {
       "word": "elephant",
-      "hints": [
-        "largest land animal",
-        "has a trunk",
-        "never forgets"
-      ]
-    },
-    {
-      "word": "giraffe",
-      "hints": [
-        "tallest living animal",
-        "long spotted neck",
-        "eats from treetops"
-      ]
+      "hints": ["trunk", "gray", "huge", "Africa", "memory"]
     },
     {
       "word": "penguin",
-      "hints": [
-        "flightless bird",
-        "lives in cold climates",
-        "waddles when walking"
-      ]
+      "hints": ["ice", "waddling", "tuxedo", "Antarctica", "colony"]
     },
     {
       "word": "dolphin",
-      "hints": [
-        "highly intelligent marine mammal",
-        "leaps above water",
-        "uses echolocation"
-      ]
-    },
-    {
-      "word": "eagle",
-      "hints": [
-        "bird of prey",
-        "sharp talons",
-        "keen eyesight"
-      ]
-    },
-    {
-      "word": "lion",
-      "hints": [
-        "king of the savanna",
-        "males have a mane",
-        "roars loudly"
-      ]
-    },
-    {
-      "word": "tiger",
-      "hints": [
-        "striped big cat",
-        "solitary predator",
-        "excellent swimmer"
-      ]
-    },
-    {
-      "word": "bear",
-      "hints": [
-        "hibernates in winter",
-        "loves honey",
-        "very strong"
-      ]
-    },
-    {
-      "word": "wolf",
-      "hints": [
-        "howls at the moon",
-        "hunts in packs",
-        "ancestor of dogs"
-      ]
-    },
-    {
-      "word": "fox",
-      "hints": [
-        "clever and cunning",
-        "bushy tail",
-        "nocturnal hunter"
-      ]
-    },
-    {
-      "word": "rabbit",
-      "hints": [
-        "long ears",
-        "hops around",
-        "loves carrots"
-      ]
-    },
-    {
-      "word": "turtle",
-      "hints": [
-        "hard shell on its back",
-        "moves very slowly",
-        "can live for a century"
-      ]
-    },
-    {
-      "word": "parrot",
-      "hints": [
-        "colorful feathers",
-        "can mimic speech",
-        "lives in tropical forests"
-      ]
-    },
-    {
-      "word": "owl",
-      "hints": [
-        "hunts at night",
-        "can rotate its head",
-        "hoots"
-      ]
+      "hints": ["ocean", "intelligent", "jumping", "clicks", "friendly"]
     },
     {
       "word": "shark",
-      "hints": [
-        "apex ocean predator",
-        "rows of sharp teeth",
-        "dorsal fin above water"
-      ]
+      "hints": ["teeth", "ocean", "fin", "predator", "fear"]
     },
     {
-      "word": "whale",
-      "hints": [
-        "largest animal on Earth",
-        "lives in the ocean",
-        "breathes through a blowhole"
-      ]
+      "word": "eagle",
+      "hints": ["wings", "prey", "mountains", "talons", "symbol"]
     },
     {
-      "word": "octopus",
-      "hints": [
-        "eight arms",
-        "sprays ink",
-        "can change color"
-      ]
+      "word": "owl",
+      "hints": ["night", "wisdom", "hooting", "forest", "eyes"]
     },
     {
-      "word": "jellyfish",
-      "hints": [
-        "floats in the ocean",
-        "no brain or bones",
-        "can sting"
-      ]
+      "word": "wolf",
+      "hints": ["pack", "howling", "moon", "forest", "gray"]
+    },
+    {
+      "word": "fox",
+      "hints": ["cunning", "orange", "tail", "forest", "sly"]
+    },
+    {
+      "word": "bear",
+      "hints": ["honey", "hibernation", "forest", "strong", "fur"]
     },
     {
       "word": "butterfly",
-      "hints": [
-        "colorful wings",
-        "starts as a caterpillar",
-        "sips flower nectar"
-      ]
-    },
-    {
-      "word": "dragonfly",
-      "hints": [
-        "iridescent wings",
-        "hovers over water",
-        "eats mosquitoes"
-      ]
+      "hints": ["wings", "caterpillar", "flowers", "colorful", "fluttering"]
     },
     {
       "word": "bee",
-      "hints": [
-        "makes honey",
-        "lives in a hive",
-        "important pollinator"
-      ]
+      "hints": ["honey", "hive", "buzzing", "flowers", "sting"]
     },
     {
-      "word": "ant",
-      "hints": [
-        "extremely strong for its size",
-        "lives in colonies",
-        "tunnels underground"
-      ]
+      "word": "spider",
+      "hints": ["web", "eight", "legs", "insects", "corner"]
     },
     {
-      "word": "ladybug",
-      "hints": [
-        "red with black spots",
-        "considered good luck",
-        "eats aphids"
-      ]
+      "word": "snake",
+      "hints": ["slithering", "venom", "scales", "hissing", "long"]
     },
     {
-      "word": "flamingo",
-      "hints": [
-        "stands on one leg",
-        "pink feathers",
-        "lives near lagoons"
-      ]
+      "word": "frog",
+      "hints": ["pond", "jumping", "green", "croaking", "tadpole"]
     },
     {
-      "word": "zebra",
-      "hints": [
-        "black and white stripes",
-        "African plains animal",
-        "related to horses"
-      ]
+      "word": "horse",
+      "hints": ["riding", "gallop", "mane", "stable", "saddle"]
     },
     {
-      "word": "panda",
-      "hints": [
-        "black and white bear",
-        "eats bamboo",
-        "from China"
-      ]
+      "word": "rabbit",
+      "hints": ["ears", "hopping", "carrots", "fluffy", "fast"]
     },
     {
-      "word": "koala",
-      "hints": [
-        "clings to eucalyptus trees",
-        "sleeps most of the day",
-        "from Australia"
-      ]
+      "word": "turtle",
+      "hints": ["shell", "slow", "beach", "ancient", "swimming"]
+    },
+    {
+      "word": "octopus",
+      "hints": ["tentacles", "ink", "ocean", "eight", "clever"]
     },
     {
       "word": "kangaroo",
-      "hints": [
-        "carries young in a pouch",
-        "hops on powerful legs",
-        "from Australia"
-      ]
+      "hints": ["Australia", "pouch", "jumping", "boxing", "joey"]
     },
     {
-      "word": "crocodile",
-      "hints": [
-        "ancient reptile",
-        "lurks in rivers",
-        "powerful jaw"
-      ]
+      "word": "panda",
+      "hints": ["bamboo", "China", "lazy", "rare", "cuddly"]
     },
     {
-      "word": "chameleon",
-      "hints": [
-        "changes color",
-        "eyes move independently",
-        "long sticky tongue"
-      ]
+      "word": "giraffe",
+      "hints": ["neck", "tall", "spots", "Africa", "leaves"]
     },
     {
-      "word": "peacock",
-      "hints": [
-        "spectacular tail fan",
-        "brilliant blue plumage",
-        "loud call"
-      ]
+      "word": "volcano",
+      "hints": ["lava", "eruption", "mountain", "ash", "crater"]
     },
     {
-      "word": "pelican",
-      "hints": [
-        "large beak pouch",
-        "scoops fish from water",
-        "coastal bird"
-      ]
+      "word": "rainbow",
+      "hints": ["colors", "rain", "sky", "arc", "gold"]
     },
     {
-      "word": "starfish",
-      "hints": [
-        "five arms",
-        "lives on the sea floor",
-        "can regrow limbs"
-      ]
+      "word": "waterfall",
+      "hints": ["river", "cliff", "splash", "roaring", "mist"]
     },
     {
-      "word": "crab",
-      "hints": [
-        "walks sideways",
-        "hard shell",
-        "pincers"
-      ]
+      "word": "desert",
+      "hints": ["sand", "camels", "hot", "dunes", "cactus"]
     },
     {
-      "word": "lobster",
-      "hints": [
-        "large claws",
-        "red when cooked",
-        "lives on the ocean floor"
-      ]
+      "word": "jungle",
+      "hints": ["trees", "monkeys", "dense", "tropical", "vines"]
     },
     {
-      "word": "seahorse",
-      "hints": [
-        "males carry young",
-        "swims upright",
-        "wraps tail around seaweed"
-      ]
+      "word": "glacier",
+      "hints": ["ice", "slow", "mountains", "melting", "blue"]
     },
     {
-      "word": "cheetah",
-      "hints": [
-        "fastest land animal",
-        "black tear-stripe markings",
-        "sprints in short bursts"
-      ]
+      "word": "thunderstorm",
+      "hints": ["lightning", "rain", "loud", "clouds", "flash"]
     },
     {
-      "word": "gorilla",
-      "hints": [
-        "largest primate",
-        "knuckle walks",
-        "lives in mountain forests"
-      ]
-    },
-    {
-      "word": "toucan",
-      "hints": [
-        "enormous colorful beak",
-        "tropical bird",
-        "eats fruit"
-      ]
-    },
-    {
-      "word": "sloth",
-      "hints": [
-        "moves extremely slowly",
-        "hangs upside down",
-        "sleeps most of the day"
-      ]
-    },
-    {
-      "word": "hedgehog",
-      "hints": [
-        "covered in spines",
-        "rolls into a ball",
-        "nocturnal"
-      ]
-    },
-    {
-      "word": "raccoon",
-      "hints": [
-        "masked face markings",
-        "washes food in water",
-        "nocturnal scavenger"
-      ]
-    },
-    {
-      "word": "squirrel",
-      "hints": [
-        "bushy tail",
-        "collects nuts",
-        "climbs trees"
-      ]
-    },
-    {
-      "word": "deer",
-      "hints": [
-        "males have antlers",
-        "grazes in forests",
-        "very graceful"
-      ]
-    },
-    {
-      "word": "moose",
-      "hints": [
-        "largest member of the deer family",
-        "broad flat antlers",
-        "wades in lakes"
-      ]
-    },
-    {
-      "word": "camel",
-      "hints": [
-        "humps store energy",
-        "survives in the desert",
-        "spits when annoyed"
-      ]
-    },
-    {
-      "word": "otter",
-      "hints": [
-        "holds hands while sleeping",
-        "cracks shells on its belly",
-        "playful water mammal"
-      ]
-    },
-    {
-      "word": "platypus",
-      "hints": [
-        "duck bill and beaver tail",
-        "lays eggs",
-        "venomous spurs on hind legs"
-      ]
+      "word": "coral",
+      "hints": ["ocean", "colorful", "fish", "reef", "fragile"]
     }
   ]
 }

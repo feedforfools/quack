@@ -1,0 +1,133 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "entertainment",
+  "words": [
+    {
+      "word": "superhero",
+      "hints": ["cape", "powers", "comics", "villain", "mask"]
+    },
+    {
+      "word": "cartoon",
+      "hints": ["animation", "children", "drawing", "colorful", "television"]
+    },
+    {
+      "word": "cinema",
+      "hints": ["movies", "popcorn", "screen", "tickets", "seats"]
+    },
+    {
+      "word": "theater",
+      "hints": ["stage", "actors", "curtain", "play", "audience"]
+    },
+    {
+      "word": "circus",
+      "hints": ["clowns", "tent", "acrobats", "juggling", "elephants"]
+    },
+    {
+      "word": "magician",
+      "hints": ["tricks", "rabbit", "wand", "illusion", "cards"]
+    },
+    {
+      "word": "karaoke",
+      "hints": ["singing", "microphone", "lyrics", "bar", "friends"]
+    },
+    {
+      "word": "sitcom",
+      "hints": ["comedy", "episodes", "laughter", "television", "characters"]
+    },
+    {
+      "word": "zombie",
+      "hints": ["undead", "horror", "brains", "apocalypse", "slow"]
+    },
+    {
+      "word": "vampire",
+      "hints": ["fangs", "blood", "night", "garlic", "coffin"]
+    },
+    {
+      "word": "villain",
+      "hints": ["evil", "movie", "plan", "hero", "laughter"]
+    },
+    {
+      "word": "sequel",
+      "hints": ["movie", "second", "continuation", "franchise", "cinema"]
+    },
+    {
+      "word": "trailer",
+      "hints": ["preview", "movie", "short", "teaser", "spoiler"]
+    },
+    {
+      "word": "podcast",
+      "hints": ["audio", "episodes", "talking", "headphones", "interview"]
+    },
+    {
+      "word": "musical",
+      "hints": ["songs", "stage", "dancing", "Broadway", "singing"]
+    },
+    {
+      "word": "comedian",
+      "hints": ["jokes", "laughter", "stage", "microphone", "timing"]
+    },
+    {
+      "word": "video game",
+      "hints": ["console", "controller", "levels", "screen", "players"]
+    },
+    {
+      "word": "board game",
+      "hints": ["dice", "family", "table", "pieces", "rules"]
+    },
+    {
+      "word": "puppet",
+      "hints": ["strings", "hand", "show", "wooden", "theater"]
+    },
+    {
+      "word": "fireworks",
+      "hints": ["sky", "explosion", "colors", "celebration", "night"]
+    },
+    {
+      "word": "parade",
+      "hints": ["street", "floats", "music", "crowd", "celebration"]
+    },
+    {
+      "word": "casino",
+      "hints": ["gambling", "cards", "chips", "roulette", "luck"]
+    },
+    {
+      "word": "talent show",
+      "hints": ["stage", "judges", "votes", "singing", "audience"]
+    },
+    {
+      "word": "red carpet",
+      "hints": [
+        "celebrities",
+        "premiere",
+        "photographers",
+        "fashion",
+        "Hollywood"
+      ]
+    },
+    {
+      "word": "award",
+      "hints": ["trophy", "winner", "ceremony", "speech", "gold"]
+    },
+    {
+      "word": "soap opera",
+      "hints": ["drama", "television", "episodes", "romance", "endless"]
+    },
+    {
+      "word": "reality show",
+      "hints": ["cameras", "contestants", "drama", "television", "elimination"]
+    },
+    {
+      "word": "escape room",
+      "hints": ["puzzles", "locked", "team", "clues", "timer"]
+    },
+    {
+      "word": "amusement park",
+      "hints": ["rides", "rollercoaster", "queues", "fun", "tickets"]
+    },
+    {
+      "word": "horror movie",
+      "hints": ["scary", "screams", "darkness", "monster", "popcorn"]
+    }
+  ]
+}

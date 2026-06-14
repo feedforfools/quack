@@ -32,6 +32,8 @@ const sizeClasses: Record<Size, string> = {
  * - `variant`: "primary" (accent-fill) | "ghost" (outlined) | "danger" (red)
  * - `size`:    "sm" | "md" (default) | "lg"
  * - `loading`: shows a spinner, prevents clicks, and sets `aria-busy`
+ * - Corners are softly rounded (rounded-xl) so buttons keep a rectangular
+ *   silhouette rather than a pill shape.
  * - All tap targets are ≥ 44 × 44 CSS px.
  * - Focus ring visible on keyboard navigation only (`:focus-visible`).
  */
@@ -56,7 +58,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={isDisabled}
         aria-busy={loading || undefined}
         className={[
-          "inline-flex select-none items-center justify-center gap-2 rounded-full font-bold",
+          "inline-flex select-none items-center justify-center gap-2 rounded-xl font-bold",
           "whitespace-nowrap",
           "transition-all duration-200 ease-out",
           "active:scale-[0.97]",

@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "fantasy",
+  "words": [
+    {
+      "word": "drago",
+      "hints": ["fuoco", "ali", "tesoro", "squame", "cavaliere"]
+    },
+    {
+      "word": "mago",
+      "hints": ["magia", "bacchetta", "barba", "incantesimi", "cappello"]
+    },
+    {
+      "word": "unicorno",
+      "hints": ["corno", "arcobaleno", "bianco", "magico", "puro"]
+    },
+    {
+      "word": "fata",
+      "hints": ["ali", "minuscola", "polvere", "bosco", "desiderio"]
+    },
+    {
+      "word": "elfo",
+      "hints": ["orecchie", "bosco", "arciere", "immortale", "aggraziato"]
+    },
+    {
+      "word": "nano",
+      "hints": ["barba", "miniera", "ascia", "basso", "montagna"]
+    },
+    {
+      "word": "goblin",
+      "hints": ["verde", "dispetti", "tesoro", "brutto", "caverna"]
+    },
+    {
+      "word": "troll",
+      "hints": ["ponte", "grosso", "clava", "pietra", "puzzolente"]
+    },
+    {
+      "word": "sirena",
+      "hints": ["coda", "mare", "canto", "squame", "marinai"]
+    },
+    {
+      "word": "gigante",
+      "hints": ["enorme", "fagiolo", "passi", "nuvole", "forza"]
+    },
+    {
+      "word": "strega",
+      "hints": ["scopa", "calderone", "incantesimi", "cappello", "gatto"]
+    },
+    {
+      "word": "lupo mannaro",
+      "hints": ["luna", "trasformazione", "ululato", "argento", "maledizione"]
+    },
+    {
+      "word": "fantasma",
+      "hints": ["infestare", "bianco", "trasparente", "castello", "catene"]
+    },
+    {
+      "word": "fenice",
+      "hints": ["fuoco", "rinascita", "ceneri", "immortale", "ali"]
+    },
+    {
+      "word": "grifone",
+      "hints": ["aquila", "leone", "ali", "maestoso", "guardiano"]
+    },
+    {
+      "word": "castello",
+      "hints": ["torri", "re", "fossato", "pietra", "ponte"]
+    },
+    {
+      "word": "cavaliere",
+      "hints": ["armatura", "spada", "cavallo", "missione", "scudo"]
+    },
+    {
+      "word": "principessa",
+      "hints": ["corona", "torre", "reale", "abito", "salvataggio"]
+    },
+    {
+      "word": "re",
+      "hints": ["trono", "corona", "regno", "comando", "reale"]
+    },
+    {
+      "word": "missione",
+      "hints": ["viaggio", "eroe", "impresa", "avventura", "ricompensa"]
+    },
+    {
+      "word": "spada",
+      "hints": ["lama", "cavaliere", "affilata", "leggendaria", "duello"]
+    },
+    {
+      "word": "pozione",
+      "hints": ["bottiglia", "magia", "preparare", "ingredienti", "bollicine"]
+    },
+    {
+      "word": "incantesimo",
+      "hints": ["magia", "parole", "bacchetta", "lanciare", "maledizione"]
+    },
+    {
+      "word": "maledizione",
+      "hints": ["male", "strega", "spezzare", "condanna", "incantesimo"]
+    },
+    {
+      "word": "tesoro",
+      "hints": ["oro", "forziere", "mappa", "pirati", "sepolto"]
+    },
+    {
+      "word": "profezia",
+      "hints": ["futuro", "prescelto", "antica", "destino", "pergamena"]
+    },
+    {
+      "word": "portale",
+      "hints": ["passaggio", "dimensione", "luminoso", "viaggio", "magia"]
+    },
+    {
+      "word": "regno",
+      "hints": ["reame", "re", "castello", "terre", "trono"]
+    },
+    {
+      "word": "genio",
+      "hints": ["lampada", "desideri", "tre", "fumo", "liberato"]
+    },
+    {
+      "word": "pegaso",
+      "hints": ["cavallo", "ali", "volare", "bianco", "mitologia"]
+    }
+  ]
+}

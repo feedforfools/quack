@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "easy",
+  "words": [
+    {
+      "word": "sole",
+      "hints": ["cielo", "giallo", "caldo", "estate", "luce"]
+    },
+    {
+      "word": "casa",
+      "hints": ["tetto", "famiglia", "giardino", "mura", "chiavi"]
+    },
+    {
+      "word": "acqua",
+      "hints": ["bere", "mare", "pioggia", "bottiglia", "blu"]
+    },
+    {
+      "word": "albero",
+      "hints": ["bosco", "foglie", "legno", "verde", "radici"]
+    },
+    {
+      "word": "libro",
+      "hints": ["pagine", "lettura", "storia", "biblioteca", "carta"]
+    },
+    {
+      "word": "sedia",
+      "hints": ["seduta", "gambe", "tavolo", "legno", "ufficio"]
+    },
+    {
+      "word": "telefono",
+      "hints": ["chiamate", "schermo", "tasca", "app", "suoneria"]
+    },
+    {
+      "word": "macchina",
+      "hints": ["ruote", "strada", "guida", "motore", "garage"]
+    },
+    {
+      "word": "palla",
+      "hints": ["rotonda", "giochi", "rimbalzo", "sport", "lancio"]
+    },
+    {
+      "word": "letto",
+      "hints": ["sonno", "cuscino", "coperta", "notte", "sogni"]
+    },
+    {
+      "word": "porta",
+      "hints": ["apertura", "chiave", "bussare", "maniglia", "ingresso"]
+    },
+    {
+      "word": "scarpa",
+      "hints": ["piedi", "lacci", "camminare", "paio", "suola"]
+    },
+    {
+      "word": "orologio",
+      "hints": ["tempo", "lancette", "ticchettio", "polso", "sveglia"]
+    },
+    {
+      "word": "latte",
+      "hints": ["bianco", "mucca", "colazione", "bottiglia", "cereali"]
+    },
+    {
+      "word": "pioggia",
+      "hints": ["nuvole", "ombrello", "bagnato", "temporale", "gocce"]
+    },
+    {
+      "word": "fuoco",
+      "hints": ["caldo", "fiamme", "fumo", "rosso", "campeggio"]
+    },
+    {
+      "word": "luna",
+      "hints": ["notte", "cielo", "stelle", "piena", "astronauta"]
+    },
+    {
+      "word": "pane",
+      "hints": ["forno", "farina", "fetta", "burro", "fresco"]
+    },
+    {
+      "word": "chiave",
+      "hints": ["serratura", "porta", "metallo", "tasca", "mazzo"]
+    },
+    {
+      "word": "cappello",
+      "hints": ["testa", "sole", "visiera", "moda", "inverno"]
+    },
+    {
+      "word": "pesce",
+      "hints": ["acqua", "nuotare", "squame", "mare", "acquario"]
+    },
+    {
+      "word": "mela",
+      "hints": ["frutta", "rossa", "albero", "succo", "morso"]
+    },
+    {
+      "word": "spiaggia",
+      "hints": ["sabbia", "mare", "estate", "telo", "onde"]
+    },
+    {
+      "word": "neve",
+      "hints": ["inverno", "bianca", "freddo", "fiocchi", "pupazzo"]
+    },
+    {
+      "word": "uccello",
+      "hints": ["ali", "volare", "nido", "piume", "canto"]
+    },
+    {
+      "word": "torta",
+      "hints": ["compleanno", "dolce", "candeline", "forno", "fetta"]
+    },
+    {
+      "word": "stella",
+      "hints": ["notte", "cielo", "brillare", "desiderio", "spazio"]
+    },
+    {
+      "word": "giardino",
+      "hints": ["fiori", "piante", "erba", "annaffiare", "cortile"]
+    },
+    {
+      "word": "finestra",
+      "hints": ["vetro", "vista", "tende", "aprire", "luce"]
+    },
+    {
+      "word": "formaggio",
+      "hints": ["giallo", "topo", "latte", "buchi", "panino"]
+    }
+  ]
+}

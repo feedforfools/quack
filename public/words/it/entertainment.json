@@ -1,0 +1,139 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "entertainment",
+  "words": [
+    {
+      "word": "supereroe",
+      "hints": ["mantello", "poteri", "fumetti", "cattivo", "maschera"]
+    },
+    {
+      "word": "cartone animato",
+      "hints": ["animazione", "bambini", "disegni", "colorato", "televisione"]
+    },
+    {
+      "word": "cinema",
+      "hints": ["film", "popcorn", "schermo", "biglietti", "poltrone"]
+    },
+    {
+      "word": "teatro",
+      "hints": ["palco", "attori", "sipario", "spettacolo", "pubblico"]
+    },
+    {
+      "word": "circo",
+      "hints": ["pagliacci", "tendone", "acrobati", "giocoleria", "elefanti"]
+    },
+    {
+      "word": "mago",
+      "hints": ["trucchi", "coniglio", "bacchetta", "illusione", "carte"]
+    },
+    {
+      "word": "karaoke",
+      "hints": ["cantare", "microfono", "testi", "bar", "amici"]
+    },
+    {
+      "word": "sitcom",
+      "hints": ["commedia", "episodi", "risate", "televisione", "personaggi"]
+    },
+    {
+      "word": "zombie",
+      "hints": ["nonmorti", "horror", "cervelli", "apocalisse", "lenti"]
+    },
+    {
+      "word": "vampiro",
+      "hints": ["canini", "sangue", "notte", "aglio", "bara"]
+    },
+    {
+      "word": "cattivo",
+      "hints": ["malvagio", "film", "piano", "eroe", "risata"]
+    },
+    {
+      "word": "sequel",
+      "hints": ["film", "secondo", "continuazione", "saga", "cinema"]
+    },
+    {
+      "word": "trailer",
+      "hints": ["anteprima", "film", "breve", "teaser", "spoiler"]
+    },
+    {
+      "word": "podcast",
+      "hints": ["audio", "episodi", "parlare", "cuffie", "intervista"]
+    },
+    {
+      "word": "musical",
+      "hints": ["canzoni", "palco", "ballo", "Broadway", "cantare"]
+    },
+    {
+      "word": "comico",
+      "hints": ["battute", "risate", "palco", "microfono", "tempi"]
+    },
+    {
+      "word": "videogioco",
+      "hints": ["console", "controller", "livelli", "schermo", "giocatori"]
+    },
+    {
+      "word": "gioco da tavolo",
+      "hints": ["dadi", "famiglia", "tavolo", "pedine", "regole"]
+    },
+    {
+      "word": "burattino",
+      "hints": ["fili", "mano", "spettacolo", "legno", "teatro"]
+    },
+    {
+      "word": "fuochi d'artificio",
+      "hints": ["cielo", "esplosione", "colori", "festa", "notte"]
+    },
+    {
+      "word": "sfilata",
+      "hints": ["strada", "carri", "musica", "folla", "festa"]
+    },
+    {
+      "word": "casinò",
+      "hints": ["gioco", "carte", "fiches", "roulette", "fortuna"]
+    },
+    {
+      "word": "talent show",
+      "hints": ["palco", "giudici", "voti", "cantare", "pubblico"]
+    },
+    {
+      "word": "red carpet",
+      "hints": ["celebrità", "anteprima", "fotografi", "moda", "Hollywood"]
+    },
+    {
+      "word": "premio",
+      "hints": ["trofeo", "vincitore", "cerimonia", "discorso", "oro"]
+    },
+    {
+      "word": "telenovela",
+      "hints": ["dramma", "televisione", "puntate", "amore", "infinita"]
+    },
+    {
+      "word": "reality show",
+      "hints": [
+        "telecamere",
+        "concorrenti",
+        "dramma",
+        "televisione",
+        "eliminazione"
+      ]
+    },
+    {
+      "word": "escape room",
+      "hints": ["enigmi", "chiusi", "squadra", "indizi", "tempo"]
+    },
+    {
+      "word": "luna park",
+      "hints": [
+        "giostre",
+        "montagne russe",
+        "code",
+        "divertimento",
+        "biglietti"
+      ]
+    },
+    {
+      "word": "film horror",
+      "hints": ["paura", "urla", "buio", "mostro", "popcorn"]
+    }
+  ]
+}

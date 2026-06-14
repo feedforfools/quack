@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "retro",
+  "words": [
+    {
+      "word": "cassette",
+      "hints": ["tape", "music", "rewinding", "pencil", "walkman"]
+    },
+    {
+      "word": "vinyl",
+      "hints": ["record", "turntable", "grooves", "collector", "crackle"]
+    },
+    {
+      "word": "walkman",
+      "hints": ["music", "portable", "headphones", "cassette", "eighties"]
+    },
+    {
+      "word": "typewriter",
+      "hints": ["keys", "ink", "paper", "clacking", "vintage"]
+    },
+    {
+      "word": "floppy disk",
+      "hints": ["computer", "saving", "square", "obsolete", "data"]
+    },
+    {
+      "word": "VHS",
+      "hints": ["tape", "rewinding", "rental", "movies", "player"]
+    },
+    {
+      "word": "arcade",
+      "hints": ["coins", "joystick", "games", "neon", "highscore"]
+    },
+    {
+      "word": "jukebox",
+      "hints": ["diner", "coins", "songs", "glowing", "fifties"]
+    },
+    {
+      "word": "polaroid",
+      "hints": ["photo", "instant", "shaking", "white", "frame"]
+    },
+    {
+      "word": "rotary phone",
+      "hints": ["dial", "cord", "slow", "vintage", "ringing"]
+    },
+    {
+      "word": "pager",
+      "hints": ["beeper", "message", "doctor", "belt", "nineties"]
+    },
+    {
+      "word": "Game Boy",
+      "hints": ["Nintendo", "portable", "Tetris", "gray", "batteries"]
+    },
+    {
+      "word": "tamagotchi",
+      "hints": ["pet", "digital", "feeding", "beeping", "nineties"]
+    },
+    {
+      "word": "Rubik's cube",
+      "hints": ["puzzle", "colors", "twisting", "solving", "frustration"]
+    },
+    {
+      "word": "disco",
+      "hints": ["dancing", "ball", "seventies", "lights", "fever"]
+    },
+    {
+      "word": "mixtape",
+      "hints": ["songs", "cassette", "gift", "romantic", "curated"]
+    },
+    {
+      "word": "drive-in",
+      "hints": ["movies", "cars", "screen", "outdoor", "speakers"]
+    },
+    {
+      "word": "encyclopedia",
+      "hints": ["volumes", "knowledge", "shelf", "heavy", "alphabetical"]
+    },
+    {
+      "word": "fax",
+      "hints": ["machine", "paper", "office", "beeping", "obsolete"]
+    },
+    {
+      "word": "dial-up",
+      "hints": ["internet", "modem", "noise", "slow", "busy"]
+    },
+    {
+      "word": "roller skates",
+      "hints": ["wheels", "rink", "seventies", "falling", "disco"]
+    },
+    {
+      "word": "lava lamp",
+      "hints": ["glowing", "wax", "hypnotic", "bedroom", "psychedelic"]
+    },
+    {
+      "word": "boombox",
+      "hints": ["shoulder", "music", "batteries", "loud", "breakdance"]
+    },
+    {
+      "word": "phone booth",
+      "hints": ["coins", "glass", "street", "Superman", "obsolete"]
+    },
+    {
+      "word": "telegram",
+      "hints": ["message", "dots", "urgent", "stop", "wire"]
+    },
+    {
+      "word": "gramophone",
+      "hints": ["horn", "records", "antique", "crank", "music"]
+    },
+    {
+      "word": "slide projector",
+      "hints": ["photos", "clicking", "family", "wall", "vacation"]
+    },
+    {
+      "word": "milkman",
+      "hints": ["bottles", "delivery", "morning", "doorstep", "vintage"]
+    },
+    {
+      "word": "antenna",
+      "hints": ["roof", "signal", "channels", "adjusting", "static"]
+    },
+    {
+      "word": "record store",
+      "hints": ["vinyl", "browsing", "music", "posters", "weekends"]
+    }
+  ]
+}

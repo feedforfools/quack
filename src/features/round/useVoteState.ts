@@ -1,17 +1,41 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { supabaseWithDevice } from "@/lib/supabase";
 import { log } from "@/lib/log";
 
 const VOTE_EXPIRY_BUFFER_MS = 250;
+
+/**
+ * Reconciliation poll interval while a game is active. The vote_state machine
+ * (none → requested → active → resolved) propagates to other devices via the
+ * ephemeral `vote_state_changed` broadcast; if that broadcast is missed (a
+ * backgrounded mobile tab, a dropped socket, a race) the client would stay
+ * stuck on the wrong phase — e.g. never advancing to the ballot — until a
+ * manual refresh. A short poll lets every client converge on the server truth.
+ */
+const VOTE_POLL_MS = 3_000;
 
 export interface VoteTally {
   targetPlayerId: string;
   voteCount: number;
 }
 
+export type GameOutcome =
+  | "imposters_caught"
+  | "imposters_win"
+  | "tie"
+  | "word_guessed";
+
 export interface VoteState {
   /** Server-side vote_state for the current game. */
   state: "none" | "requested" | "active" | "resolved";
+  /** 1-based vote-round counter; always 1 in single-round mode. */
+  currentRound: number;
+  /**
+   * Final game outcome, stamped by resolve_vote / declare_word_guessed.
+   * In multi-round mode an intermediate round result is `state: "resolved"`
+   * with `outcome: null` — the game continues after advance_round.
+   */
+  outcome: GameOutcome | null;
   /** How many players have requested a vote so far. */
   requestCount: number;
   /** ISO timestamp when voting expires; null when state !== 'active'. */
@@ -59,12 +83,18 @@ export function useVoteState(
   const [loading, setLoading] = useState(false);
   const [tick, setTick] = useState(0);
 
+  // Serialized last-applied vote state — lets the poll skip setVoteState when
+  // nothing changed, so re-fetching every few seconds never re-renders the
+  // game UI (or re-arms the auto-resolve timer) unless the server truth moved.
+  const lastVoteJsonRef = useRef<string | null>(null);
+
   const refetch = useCallback(() => {
     setTick((n) => n + 1);
   }, []);
 
   useEffect(() => {
     if (!deviceId || !gameId) {
+      lastVoteJsonRef.current = null;
       setVoteState(null);
       return;
     }
@@ -79,7 +109,9 @@ export function useVoteState(
         // Step 1: game vote columns.
         const { data: game, error: gameErr } = await client
           .from("games")
-          .select("vote_state, vote_request_count, vote_ends_at")
+          .select(
+            "vote_state, vote_request_count, vote_ends_at, current_round, outcome",
+          )
           .eq("id", gameId)
           .maybeSingle();
 
@@ -90,13 +122,16 @@ export function useVoteState(
         if (!game) return;
 
         const state = game.vote_state as VoteState["state"];
+        const currentRound =
+          typeof game.current_round === "number" ? game.current_round : 1;
 
-        // Step 2: own vote row.
+        // Step 2: own vote row — scoped to the current round.
         const { data: myVote, error: voteErr } = await client
           .from("votes")
           .select("target_player_id")
           .eq("game_id", gameId)
           .eq("voter_player_id", deviceId)
+          .eq("round", currentRound)
           .maybeSingle();
 
         if (voteErr) {
@@ -123,13 +158,22 @@ export function useVoteState(
         }
 
         if (isMounted) {
-          setVoteState({
+          const next: VoteState = {
             state,
+            currentRound,
+            outcome: (game.outcome as GameOutcome | null) ?? null,
             requestCount: game.vote_request_count,
             voteEndsAt: game.vote_ends_at ?? null,
             myVoteTargetId: myVote?.target_player_id ?? null,
             tally,
-          });
+          };
+          // Only push a new object when the server truth actually changed, so
+          // the steady-state poll is a no-op for React.
+          const nextJson = JSON.stringify(next);
+          if (nextJson !== lastVoteJsonRef.current) {
+            lastVoteJsonRef.current = nextJson;
+            setVoteState(next);
+          }
         }
       } finally {
         if (isMounted) setLoading(false);
@@ -141,6 +185,24 @@ export function useVoteState(
       isMounted = false;
     };
   }, [deviceId, gameId, liveTally, tick]);
+
+  // Reconciliation poll + refetch on tab focus — converges on the server's
+  // vote_state even when the `vote_state_changed` broadcast was missed (see
+  // VOTE_POLL_MS). The change-guarded setVoteState above keeps this cheap.
+  useEffect(() => {
+    if (!deviceId || !gameId) return;
+
+    const intervalId = window.setInterval(refetch, VOTE_POLL_MS);
+    const onVisible = () => {
+      if (document.visibilityState === "visible") refetch();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+
+    return () => {
+      window.clearInterval(intervalId);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
+  }, [deviceId, gameId, refetch]);
 
   useEffect(() => {
     if (

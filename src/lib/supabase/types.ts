@@ -77,6 +77,7 @@ export type Database = {
       };
       role_assignments: {
         Row: {
+          eliminated_in_round: number | null;
           game_id: string;
           payload: Json;
           player_id: string;
@@ -86,6 +87,7 @@ export type Database = {
           word: string | null;
         };
         Insert: {
+          eliminated_in_round?: number | null;
           game_id: string;
           payload?: Json;
           player_id: string;
@@ -95,6 +97,7 @@ export type Database = {
           word?: string | null;
         };
         Update: {
+          eliminated_in_round?: number | null;
           game_id?: string;
           payload?: Json;
           player_id?: string;
@@ -152,11 +155,13 @@ export type Database = {
       games: {
         Row: {
           config_snapshot: Json;
+          current_round: number;
           discussion_direction: string | null;
           ended_at: string | null;
           ends_at: string | null;
           id: string;
           index: number;
+          outcome: Database["public"]["Enums"]["game_outcome"] | null;
           room_id: string;
           started_at: string;
           starter_player_id: string | null;
@@ -164,14 +169,17 @@ export type Database = {
           vote_ends_at: string | null;
           vote_request_count: number;
           vote_state: Database["public"]["Enums"]["vote_state"];
+          voted_out_player_id: string | null;
         };
         Insert: {
           config_snapshot?: Json;
+          current_round?: number;
           discussion_direction?: string | null;
           ended_at?: string | null;
           ends_at?: string | null;
           id?: string;
           index: number;
+          outcome?: Database["public"]["Enums"]["game_outcome"] | null;
           room_id: string;
           started_at?: string;
           starter_player_id?: string | null;
@@ -179,14 +187,17 @@ export type Database = {
           vote_ends_at?: string | null;
           vote_request_count?: number;
           vote_state?: Database["public"]["Enums"]["vote_state"];
+          voted_out_player_id?: string | null;
         };
         Update: {
           config_snapshot?: Json;
+          current_round?: number;
           discussion_direction?: string | null;
           ended_at?: string | null;
           ends_at?: string | null;
           id?: string;
           index?: number;
+          outcome?: Database["public"]["Enums"]["game_outcome"] | null;
           room_id?: string;
           started_at?: string;
           starter_player_id?: string | null;
@@ -194,6 +205,7 @@ export type Database = {
           vote_ends_at?: string | null;
           vote_request_count?: number;
           vote_state?: Database["public"]["Enums"]["vote_state"];
+          voted_out_player_id?: string | null;
         };
         Relationships: [
           {
@@ -209,24 +221,62 @@ export type Database = {
         Row: {
           created_at: string;
           game_id: string;
+          round: number;
           target_player_id: string;
           voter_player_id: string;
         };
         Insert: {
           created_at?: string;
           game_id: string;
+          round?: number;
           target_player_id: string;
           voter_player_id: string;
         };
         Update: {
           created_at?: string;
           game_id?: string;
+          round?: number;
           target_player_id?: string;
           voter_player_id?: string;
         };
         Relationships: [
           {
             foreignKeyName: "votes_game_id_fkey";
+            columns: ["game_id"];
+            isOneToOne: false;
+            referencedRelation: "games";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      round_results: {
+        Row: {
+          eliminated_player_id: string | null;
+          eliminated_role: Database["public"]["Enums"]["player_role"] | null;
+          game_id: string;
+          resolved_at: string;
+          round: number;
+          tally: Json;
+        };
+        Insert: {
+          eliminated_player_id?: string | null;
+          eliminated_role?: Database["public"]["Enums"]["player_role"] | null;
+          game_id: string;
+          resolved_at?: string;
+          round: number;
+          tally?: Json;
+        };
+        Update: {
+          eliminated_player_id?: string | null;
+          eliminated_role?: Database["public"]["Enums"]["player_role"] | null;
+          game_id?: string;
+          resolved_at?: string;
+          round?: number;
+          tally?: Json;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "round_results_game_id_fkey";
             columns: ["game_id"];
             isOneToOne: false;
             referencedRelation: "games";
@@ -277,10 +327,32 @@ export type Database = {
       retract_vote: { Args: { p_game_id: string }; Returns: undefined };
       retract_vote_request: { Args: { p_game_id: string }; Returns: undefined };
       resolve_vote: { Args: { p_game_id: string }; Returns: undefined };
+      advance_round: {
+        Args: { p_game_id: string; p_host_secret_hash: string };
+        Returns: undefined;
+      };
+      start_vote: {
+        Args: { p_game_id: string; p_host_secret_hash: string };
+        Returns: undefined;
+      };
+      declare_word_guessed: {
+        Args: { p_game_id: string; p_host_secret_hash: string };
+        Returns: undefined;
+      };
+      get_round_results: {
+        Args: { p_game_id: string };
+        Returns: {
+          round: number;
+          eliminated_player_id: string | null;
+          eliminated_player_name: string | null;
+          eliminated_role: Database["public"]["Enums"]["player_role"] | null;
+          tally: Json;
+        }[];
+      };
       get_game_result: {
         Args: { p_game_id: string };
         Returns: {
-          outcome: "imposters_caught" | "imposters_win" | "tie";
+          outcome: Database["public"]["Enums"]["game_outcome"];
           voted_out_player_id: string | null;
           voted_out_player_name: string | null;
           secret_word: string | null;
@@ -326,6 +398,11 @@ export type Database = {
       };
     };
     Enums: {
+      game_outcome:
+        | "imposters_caught"
+        | "imposters_win"
+        | "tie"
+        | "word_guessed";
       player_role: "civilian" | "imposter";
       room_state: "lobby" | "round_active" | "round_ended";
       vote_state: "none" | "requested" | "active" | "resolved";

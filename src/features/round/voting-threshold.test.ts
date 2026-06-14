@@ -1,11 +1,15 @@
 /**
- * E5-T10: Unit tests for vote-threshold maths and parseRoomConfig voting fields.
+ * E5-T10 / E6-T3: Unit tests for vote-threshold maths and parseRoomConfig
+ * voting fields.
  *
- * The server-side threshold formula is:
- *   threshold = CEIL(player_count × vote_threshold_fraction)
+ * Since E6-T3 the call-to-vote threshold is a fixed STRICT majority of alive
+ * players (the configurable fraction is deprecated):
  *
- * The client mirrors this in Room.tsx:
- *   const voteThreshold = Math.ceil(activePlayerCount * parsedConfig.vote_threshold_fraction)
+ *   threshold = floor(alive_count / 2) + 1
+ *
+ * The server implements this in request_vote; the client mirrors it in
+ * Room.tsx:
+ *   const voteThreshold = Math.floor(activePlayerCount / 2) + 1
  *
  * These tests document and verify that formula at key boundary values.
  */
@@ -17,91 +21,67 @@ import {
 
 // Pure implementation of the formula so tests read clearly without importing
 // the whole Room component.
-function computeThreshold(playerCount: number, fraction: number): number {
-  return Math.ceil(playerCount * fraction);
+function computeThreshold(aliveCount: number): number {
+  return Math.floor(aliveCount / 2) + 1;
 }
 
 // ─── computeThreshold ────────────────────────────────────────────────────────
 
-describe("vote threshold formula", () => {
-  it("4 players × 0.5 = 2 (default half-majority)", () => {
-    expect(computeThreshold(4, 0.5)).toBe(2);
+describe("vote threshold formula (strict majority)", () => {
+  it("4 players → 3 (half is not enough)", () => {
+    expect(computeThreshold(4)).toBe(3);
   });
 
-  it("3 players × 0.34 = 2 (CEIL(1.02) = 2)", () => {
-    expect(computeThreshold(3, 0.34)).toBe(2);
+  it("3 players → 2", () => {
+    expect(computeThreshold(3)).toBe(2);
   });
 
-  it("2 players × 0.5 = 1 (CEIL(1.0) = 1)", () => {
-    expect(computeThreshold(2, 0.5)).toBe(1);
+  it("2 players → 2 (both must agree)", () => {
+    expect(computeThreshold(2)).toBe(2);
   });
 
-  it("5 players × 0.5 = 3 (CEIL(2.5) = 3)", () => {
-    expect(computeThreshold(5, 0.5)).toBe(3);
+  it("5 players → 3", () => {
+    expect(computeThreshold(5)).toBe(3);
   });
 
-  it("4 players × 1.0 = 4 (unanimous)", () => {
-    expect(computeThreshold(4, 1.0)).toBe(4);
+  it("6 players → 4 (exactly half is not a majority)", () => {
+    expect(computeThreshold(6)).toBe(4);
   });
 
-  it("4 players × 0.67 = 3 (CEIL(2.68) = 3)", () => {
-    expect(computeThreshold(4, 0.67)).toBe(3);
+  it("7 players → 4", () => {
+    expect(computeThreshold(7)).toBe(4);
   });
 
-  it("1 player × 0.5 = 1 (CEIL(0.5) = 1)", () => {
-    expect(computeThreshold(1, 0.5)).toBe(1);
-  });
-
-  it("3 players × 0.67 = 3 (CEIL(2.01) = 3 — two-thirds requires all three)", () => {
-    expect(computeThreshold(3, 0.67)).toBe(3);
-  });
-
-  it("6 players × 0.5 = 3 (even count, exact half)", () => {
-    expect(computeThreshold(6, 0.5)).toBe(3);
-  });
-
-  it("6 players × 0.67 = 5 (CEIL(4.02) = 5)", () => {
-    expect(computeThreshold(6, 0.67)).toBe(5);
+  it("1 player → 1", () => {
+    expect(computeThreshold(1)).toBe(1);
   });
 });
 
 // ─── parseRoomConfig — vote-related fields ───────────────────────────────────
 
 describe("parseRoomConfig — voting fields", () => {
-  it("vote_threshold_fraction defaults to 0.5", () => {
-    expect(parseRoomConfig({}).vote_threshold_fraction).toBe(
-      DEFAULT_ROOM_CONFIG.vote_threshold_fraction,
+  it("voting_duration_seconds defaults to 30", () => {
+    expect(parseRoomConfig({}).voting_duration_seconds).toBe(30);
+    expect(parseRoomConfig({}).voting_duration_seconds).toBe(
+      DEFAULT_ROOM_CONFIG.voting_duration_seconds,
     );
-    expect(parseRoomConfig({}).vote_threshold_fraction).toBe(0.5);
   });
 
-  it("voting_duration_seconds defaults to 60", () => {
-    expect(parseRoomConfig({}).voting_duration_seconds).toBe(60);
+  it("live_vote_tally defaults to true", () => {
+    expect(parseRoomConfig({}).live_vote_tally).toBe(true);
   });
 
-  it("live_vote_tally defaults to false", () => {
-    expect(parseRoomConfig({}).live_vote_tally).toBe(false);
-  });
-
-  it("parses a valid vote_threshold_fraction", () => {
-    expect(
-      parseRoomConfig({ vote_threshold_fraction: 0.67 })
-        .vote_threshold_fraction,
-    ).toBe(0.67);
-  });
-
-  it("falls back to default for non-numeric vote_threshold_fraction", () => {
-    expect(
-      parseRoomConfig({ vote_threshold_fraction: "half" })
-        .vote_threshold_fraction,
-    ).toBe(0.5);
+  it("live_vote_tally can be explicitly disabled", () => {
+    expect(parseRoomConfig({ live_vote_tally: false }).live_vote_tally).toBe(
+      false,
+    );
   });
 
   it("falls back to default for zero voting_duration_seconds", () => {
     // Validation rule: voting_duration_seconds must be > 0.
     expect(
       parseRoomConfig({ voting_duration_seconds: 0 }).voting_duration_seconds,
-    ).toBe(60);
+    ).toBe(30);
   });
 
   it("parses a valid voting_duration_seconds", () => {
@@ -110,15 +90,18 @@ describe("parseRoomConfig — voting fields", () => {
     ).toBe(90);
   });
 
-  it("parses live_vote_tally = true", () => {
-    expect(parseRoomConfig({ live_vote_tally: true }).live_vote_tally).toBe(
-      true,
-    );
+  it("still parses the deprecated vote_threshold_fraction field", () => {
+    // The fraction no longer drives the threshold but must survive parsing
+    // so older persisted configs round-trip unchanged.
+    expect(
+      parseRoomConfig({ vote_threshold_fraction: 0.67 })
+        .vote_threshold_fraction,
+    ).toBe(0.67);
+    expect(parseRoomConfig({}).vote_threshold_fraction).toBe(0.5);
   });
 
-  it("falls back to false for non-boolean live_vote_tally", () => {
-    expect(parseRoomConfig({ live_vote_tally: "yes" }).live_vote_tally).toBe(
-      false,
-    );
+  it("call_to_vote defaults to true and can be disabled", () => {
+    expect(parseRoomConfig({}).call_to_vote).toBe(true);
+    expect(parseRoomConfig({ call_to_vote: false }).call_to_vote).toBe(false);
   });
 });

@@ -1,0 +1,133 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "professions",
+  "words": [
+    {
+      "word": "dottore",
+      "hints": ["ospedale", "stetoscopio", "pazienti", "camice", "ricetta"]
+    },
+    {
+      "word": "pompiere",
+      "hints": ["fiamme", "camion", "casco", "idrante", "coraggio"]
+    },
+    {
+      "word": "poliziotto",
+      "hints": ["distintivo", "divisa", "sirena", "manette", "legge"]
+    },
+    {
+      "word": "cuoco",
+      "hints": ["cucina", "ristorante", "cappello", "ricette", "coltelli"]
+    },
+    {
+      "word": "pilota",
+      "hints": ["aereo", "cabina", "divisa", "cielo", "comandante"]
+    },
+    {
+      "word": "infermiera",
+      "hints": ["ospedale", "cura", "iniezioni", "camice", "pazienti"]
+    },
+    {
+      "word": "avvocato",
+      "hints": ["tribunale", "completi", "arringa", "giudice", "contratti"]
+    },
+    {
+      "word": "giudice",
+      "hints": ["tribunale", "martelletto", "toga", "sentenza", "giustizia"]
+    },
+    {
+      "word": "idraulico",
+      "hints": ["tubi", "perdite", "chiave", "bagno", "tuta"]
+    },
+    {
+      "word": "elettricista",
+      "hints": ["fili", "corrente", "attrezzi", "luci", "scintille"]
+    },
+    {
+      "word": "falegname",
+      "hints": ["legno", "martello", "segatura", "mobili", "bottega"]
+    },
+    {
+      "word": "contadino",
+      "hints": ["campi", "trattore", "raccolto", "animali", "alba"]
+    },
+    {
+      "word": "pescatore",
+      "hints": ["barca", "reti", "mare", "pazienza", "pescato"]
+    },
+    {
+      "word": "astronauta",
+      "hints": ["spazio", "casco", "razzo", "fluttuare", "NASA"]
+    },
+    {
+      "word": "scienziato",
+      "hints": [
+        "laboratorio",
+        "esperimenti",
+        "ricerca",
+        "microscopio",
+        "scoperta"
+      ]
+    },
+    {
+      "word": "architetto",
+      "hints": ["edifici", "progetti", "design", "disegni", "modellini"]
+    },
+    {
+      "word": "fotografo",
+      "hints": ["macchina", "obiettivo", "scatti", "luci", "ritocco"]
+    },
+    {
+      "word": "giornalista",
+      "hints": ["notizie", "interviste", "scadenza", "articoli", "microfono"]
+    },
+    {
+      "word": "attore",
+      "hints": ["palco", "telecamera", "copione", "fama", "ruoli"]
+    },
+    {
+      "word": "musicista",
+      "hints": ["strumenti", "concerti", "studio", "melodia", "palco"]
+    },
+    {
+      "word": "dentista",
+      "hints": ["denti", "trapano", "poltrona", "paura", "sorriso"]
+    },
+    {
+      "word": "veterinario",
+      "hints": ["animali", "clinica", "cuccioli", "cura", "iniezioni"]
+    },
+    {
+      "word": "parrucchiere",
+      "hints": ["forbici", "salone", "piega", "specchi", "chiacchiere"]
+    },
+    {
+      "word": "meccanico",
+      "hints": ["auto", "officina", "olio", "attrezzi", "motore"]
+    },
+    {
+      "word": "cameriere",
+      "hints": ["ristorante", "vassoio", "ordini", "mance", "grembiule"]
+    },
+    {
+      "word": "barista",
+      "hints": ["caffè", "espresso", "schiuma", "bancone", "mattina"]
+    },
+    {
+      "word": "programmatore",
+      "hints": ["computer", "codice", "bug", "tastiera", "caffè"]
+    },
+    {
+      "word": "stilista",
+      "hints": ["creatività", "moda", "bozzetti", "stile", "tendenze"]
+    },
+    {
+      "word": "traduttore",
+      "hints": ["lingue", "parole", "documenti", "bilingue", "riunioni"]
+    },
+    {
+      "word": "chirurgo",
+      "hints": ["operazione", "precisione", "bisturi", "mascherina", "ospedale"]
+    }
+  ]
+}

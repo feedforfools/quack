@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "school",
+  "words": [
+    {
+      "word": "teacher",
+      "hints": ["classroom", "lessons", "blackboard", "students", "homework"]
+    },
+    {
+      "word": "homework",
+      "hints": ["evening", "exercises", "deadline", "notebook", "boring"]
+    },
+    {
+      "word": "blackboard",
+      "hints": ["chalk", "classroom", "writing", "eraser", "green"]
+    },
+    {
+      "word": "recess",
+      "hints": ["break", "playground", "bell", "friends", "games"]
+    },
+    {
+      "word": "exam",
+      "hints": ["questions", "stress", "grades", "silence", "studying"]
+    },
+    {
+      "word": "pencil",
+      "hints": ["writing", "sharpener", "eraser", "wood", "case"]
+    },
+    {
+      "word": "eraser",
+      "hints": ["mistakes", "rubber", "pencil", "pink", "smudge"]
+    },
+    {
+      "word": "notebook",
+      "hints": ["pages", "notes", "lines", "spiral", "writing"]
+    },
+    {
+      "word": "ruler",
+      "hints": ["measuring", "straight", "centimeters", "plastic", "lines"]
+    },
+    {
+      "word": "glue",
+      "hints": ["sticky", "craft", "paper", "bottle", "fingers"]
+    },
+    {
+      "word": "highlighter",
+      "hints": ["yellow", "marking", "text", "fluorescent", "studying"]
+    },
+    {
+      "word": "calculator",
+      "hints": ["math", "numbers", "buttons", "exam", "screen"]
+    },
+    {
+      "word": "microscope",
+      "hints": ["science", "lens", "tiny", "laboratory", "slides"]
+    },
+    {
+      "word": "globe",
+      "hints": ["geography", "spinning", "countries", "classroom", "round"]
+    },
+    {
+      "word": "dictionary",
+      "hints": ["words", "definitions", "thick", "alphabetical", "language"]
+    },
+    {
+      "word": "library",
+      "hints": ["books", "silence", "borrowing", "shelves", "studying"]
+    },
+    {
+      "word": "cafeteria",
+      "hints": ["lunch", "trays", "noise", "queue", "friends"]
+    },
+    {
+      "word": "principal",
+      "hints": ["office", "school", "authority", "announcements", "trouble"]
+    },
+    {
+      "word": "detention",
+      "hints": ["punishment", "boredom", "classroom", "rules", "silence"]
+    },
+    {
+      "word": "diploma",
+      "hints": ["graduation", "certificate", "ceremony", "proud", "rolled"]
+    },
+    {
+      "word": "graduation",
+      "hints": ["cap", "gown", "ceremony", "diploma", "celebration"]
+    },
+    {
+      "word": "classroom",
+      "hints": ["desks", "students", "teacher", "board", "lessons"]
+    },
+    {
+      "word": "desk",
+      "hints": ["chair", "classroom", "drawer", "wooden", "sitting"]
+    },
+    {
+      "word": "bell",
+      "hints": ["ringing", "break", "school", "sound", "classes"]
+    },
+    {
+      "word": "grade",
+      "hints": ["marks", "report", "teacher", "numbers", "parents"]
+    },
+    {
+      "word": "field trip",
+      "hints": ["bus", "museum", "excitement", "permission", "class"]
+    },
+    {
+      "word": "uniform",
+      "hints": ["clothes", "school", "identical", "tie", "rules"]
+    },
+    {
+      "word": "chalk",
+      "hints": ["blackboard", "white", "dust", "writing", "teacher"]
+    },
+    {
+      "word": "locker",
+      "hints": ["hallway", "code", "books", "metal", "storage"]
+    },
+    {
+      "word": "laboratory",
+      "hints": ["experiments", "goggles", "chemicals", "science", "safety"]
+    }
+  ]
+}

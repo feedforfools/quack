@@ -9,7 +9,7 @@ import {
   GameScaffold,
 } from "@/components";
 import type { PlayerModifiers } from "@/components";
-import { SkipIndicator } from "./PlayerIndicators";
+import { SkipIndicator, EliminatedIndicator } from "./PlayerIndicators";
 import type { RoleAssignment } from "./useRoleAssignment";
 import type { VoteState, VoteTally } from "./useVoteState";
 import type { PlayerRow } from "@/features/room";
@@ -92,6 +92,23 @@ interface VotingScreenProps {
    * bug that the old runtime approximation caused).
    */
   votingTotalSeconds: number;
+  /**
+   * Players voted out in earlier rounds (multi-round mode). They are excluded
+   * from the ballot and rendered disabled in the pre-vote roster.
+   */
+  eliminatedIds?: Set<string>;
+  /**
+   * True when this device's player has been eliminated: they watch the vote
+   * without casting one.
+   */
+  isEliminated?: boolean;
+  /**
+   * Host-only, when call-to-vote is disabled: opens the ballot directly from
+   * the pre-vote lobby (after a discussion timer expires, vote_state is still
+   * 'none' — without this the room would wait forever).
+   */
+  onStartVote?: () => void;
+  startVoteLoading?: boolean;
 }
 
 /**
@@ -134,6 +151,10 @@ export function VotingScreen({
   retractVoteLoading,
   onVoteTimerComplete,
   votingTotalSeconds,
+  eliminatedIds = new Set(),
+  isEliminated = false,
+  onStartVote,
+  startVoteLoading = false,
 }: VotingScreenProps) {
   const { t } = useTranslation();
   const { state, voteEndsAt, myVoteTargetId, tally } = voteState;
@@ -146,7 +167,9 @@ export function VotingScreen({
   );
 
   const activePlayers = players.filter((p) => !p.is_spectator);
-  const otherPlayers = activePlayers.filter((p) => p.id !== deviceId);
+  // Only alive players appear on the ballot and count towards the vote.
+  const alivePlayers = activePlayers.filter((p) => !eliminatedIds.has(p.id));
+  const ballotPlayers = alivePlayers.filter((p) => p.id !== deviceId);
 
   // ── Pre-vote call-to-vote state ────────────────────────────────────────────
   // Mirrors DiscussionScreen: server set `skipRequestedIds` is the source of
@@ -199,16 +222,54 @@ export function VotingScreen({
     void onRetractVote({ deviceId, gameId: assignment.gameId });
   }, [onRetractVote, deviceId, assignment.gameId]);
 
-  // Pre-vote roster indicators — who has already called to vote.
+  // Pre-vote roster indicators — who has already called to vote; eliminated
+  // players render disabled with a skull.
   const preVoteModifiers: Record<string, PlayerModifiers> = Object.fromEntries(
     activePlayers.map((p) => [
       p.id,
-      {
-        mainModifier: skipRequestedIds.has(p.id) ? (
-          <SkipIndicator label={t("round.skipIndicatorLabel")} />
-        ) : null,
-      },
+      eliminatedIds.has(p.id)
+        ? {
+            mainModifier: (
+              <EliminatedIndicator label={t("roundResult.eliminatedLabel")} />
+            ),
+            disabled: true,
+          }
+        : {
+            mainModifier: skipRequestedIds.has(p.id) ? (
+              <SkipIndicator label={t("round.skipIndicatorLabel")} />
+            ) : null,
+          },
     ]),
+  );
+
+  // Roster for an eliminated player watching an active vote: live tally chips
+  // (when visible) on alive players, disabled rows for the fallen.
+  const watchingModifiers: Record<string, PlayerModifiers> = Object.fromEntries(
+    activePlayers.map((p) => {
+      if (eliminatedIds.has(p.id)) {
+        return [
+          p.id,
+          {
+            mainModifier: (
+              <EliminatedIndicator label={t("roundResult.eliminatedLabel")} />
+            ),
+            disabled: true,
+          },
+        ];
+      }
+      const count = tallyMap.get(p.id);
+      return [
+        p.id,
+        {
+          mainModifier:
+            count !== undefined && count > 0 ? (
+              <span className="rounded-full bg-fg/10 px-2 py-0.5 text-xs tabular-nums text-fg-muted">
+                {t("vote.tallyCount", { count })}
+              </span>
+            ) : null,
+        },
+      ];
+    }),
   );
 
   // Votes cast so far — only known when the live tally is on.
@@ -232,21 +293,24 @@ export function VotingScreen({
           ) : null
         }
         belowHeader={
-          isPreVote
-            ? t("round.timerDone")
-            : myVoteTargetId
-              ? t("vote.changeVoteHint")
-              : t("vote.castVoteHint")
+          isEliminated
+            ? t("vote.eliminatedHint")
+            : isPreVote
+              ? t("round.timerDone")
+              : myVoteTargetId
+                ? t("vote.changeVoteHint")
+                : t("vote.castVoteHint")
         }
         list={
-          isPreVote ? (
-            /* Pre-vote lobby — regular roster with call-to-vote indicators. */
+          isPreVote || isEliminated ? (
+            /* Pre-vote lobby, or an eliminated player watching the vote —
+               regular roster with the phase indicators, never a ballot. */
             <PlayerList
               players={activePlayers}
               connectedIds={connectedIds}
               hostPlayerId={hostPlayerId}
               deviceId={deviceId}
-              modifiers={preVoteModifiers}
+              modifiers={isPreVote ? preVoteModifiers : watchingModifiers}
             />
           ) : (
             /* Ballot — roster-styled rows, tap to cast/change your vote. */
@@ -254,7 +318,7 @@ export function VotingScreen({
               className="flex flex-col gap-2"
               aria-label={t("vote.playerListLabel")}
             >
-              {otherPlayers.map((p) => {
+              {ballotPlayers.map((p) => {
                 const isMyVote = myVoteTargetId === p.id;
                 const count = tallyMap.get(p.id);
                 return (
@@ -350,7 +414,7 @@ export function VotingScreen({
                         className="h-3 w-3"
                         aria-hidden="true"
                       />
-                      {votesCast}/{activePlayers.length}
+                      {votesCast}/{alivePlayers.length}
                     </span>
                   </div>
                 )}
@@ -374,18 +438,36 @@ export function VotingScreen({
               </Button>
             )}
 
-            {isPreVote ? (
+            {isEliminated ? (
+              /* Eliminated players watch — no vote actions. */
+              <p className="flex min-h-[44px] flex-1 items-center justify-center text-center text-sm text-fg-muted">
+                {t("vote.eliminatedFooter")}
+              </p>
+            ) : isPreVote && onStartVote ? (
+              /* Call-to-vote disabled → the host opens the ballot. */
+              <Button
+                variant="primary"
+                size="md"
+                onClick={onStartVote}
+                disabled={startVoteLoading}
+                loading={startVoteLoading}
+                className="min-w-0 flex-1"
+              >
+                {t("round.startVoteCta")}
+              </Button>
+            ) : isPreVote && !onRequestVote ? (
+              /* Call-to-vote disabled, not the host — wait for the host. */
+              <p className="flex min-h-[44px] flex-1 items-center justify-center text-center text-sm text-fg-muted">
+                {t("vote.waitingForHostStart")}
+              </p>
+            ) : isPreVote ? (
               /* Call to vote / take it back — pre-vote lobby. */
               <Button
                 variant={hasRequestedVote ? "ghost" : "primary"}
                 size="md"
                 onClick={handleVoteButton}
-                disabled={
-                  !onRequestVote ||
-                  requestVoteLoading ||
-                  retractVoteRequestLoading
-                }
-                className="flex-1"
+                disabled={requestVoteLoading || retractVoteRequestLoading}
+                className="min-w-0 flex-1"
               >
                 {requestVoteLoading || retractVoteRequestLoading
                   ? t("vote.requestLoading")
@@ -410,7 +492,15 @@ export function VotingScreen({
           </div>
         }
         belowFooter={
-          isPreVote ? t("vote.requestHint") : t("vote.votingHintBottom")
+          isEliminated
+            ? undefined
+            : isPreVote
+              ? onStartVote
+                ? t("round.startVoteHint")
+                : onRequestVote
+                  ? t("vote.requestHint")
+                  : undefined
+              : t("vote.votingHintBottom")
         }
       />
 

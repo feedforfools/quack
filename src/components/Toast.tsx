@@ -19,9 +19,14 @@ interface ToastItem {
   title: string;
   description?: string;
   variant?: ToastVariant;
-  /** Duration in ms before auto-dismiss. Defaults to 4000. */
+  /** Duration in ms before auto-dismiss. Defaults to TOAST_DURATION_MS. */
   duration?: number;
 }
+
+/** Auto-dismiss delay for every toast unless explicitly overridden. */
+const TOAST_DURATION_MS = 3500;
+/** Max simultaneously visible toasts — older ones are dropped beyond this. */
+const MAX_VISIBLE_TOASTS = 3;
 
 interface ToastContextValue {
   toast: (item: Omit<ToastItem, "id">) => void;
@@ -62,7 +67,17 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 
   const toast = useCallback((item: Omit<ToastItem, "id">) => {
     const id = crypto.randomUUID();
-    setToasts((prev) => [...prev, { ...item, id }]);
+    setToasts((prev) => {
+      // Dedupe: re-firing the same message (e.g. a retried failing action)
+      // must not pile up identical toasts.
+      if (
+        prev.some((t) => t.title === item.title && t.variant === item.variant)
+      ) {
+        return prev;
+      }
+      // Stack newest-last, dropping the oldest beyond the cap.
+      return [...prev, { ...item, id }].slice(-MAX_VISIBLE_TOASTS);
+    });
   }, []);
 
   function dismiss(id: string) {
@@ -77,7 +92,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         {toasts.map((t) => (
           <RadixToast.Root
             key={t.id}
-            duration={t.duration ?? 4000}
+            duration={t.duration ?? TOAST_DURATION_MS}
             onOpenChange={(open) => {
               if (!open) dismiss(t.id);
             }}

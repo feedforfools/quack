@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "celebrities",
+  "words": [
+    {
+      "word": "Lionel Messi",
+      "hints": ["football", "Argentina", "goals", "Barcelona", "champion"]
+    },
+    {
+      "word": "Cristiano Ronaldo",
+      "hints": ["football", "Portugal", "goals", "muscles", "celebration"]
+    },
+    {
+      "word": "Beyoncé",
+      "hints": ["singer", "queen", "pop", "diva", "Texas"]
+    },
+    {
+      "word": "Taylor Swift",
+      "hints": ["singer", "eras", "pop", "fans", "blonde"]
+    },
+    {
+      "word": "Rihanna",
+      "hints": ["singer", "makeup", "Barbados", "umbrella", "fashion"]
+    },
+    {
+      "word": "Elon Musk",
+      "hints": ["billionaire", "rockets", "Tesla", "Twitter", "Mars"]
+    },
+    {
+      "word": "Barack Obama",
+      "hints": ["president", "America", "speech", "hope", "Hawaii"]
+    },
+    {
+      "word": "Queen Elizabeth",
+      "hints": ["royalty", "England", "crown", "corgis", "reign"]
+    },
+    {
+      "word": "Michael Jackson",
+      "hints": ["pop", "moonwalk", "glove", "thriller", "king"]
+    },
+    {
+      "word": "Madonna",
+      "hints": ["pop", "queen", "eighties", "blonde", "provocative"]
+    },
+    {
+      "word": "Leonardo DiCaprio",
+      "hints": ["actor", "Titanic", "Oscar", "environment", "Hollywood"]
+    },
+    {
+      "word": "Brad Pitt",
+      "hints": ["actor", "handsome", "Hollywood", "blonde", "fight"]
+    },
+    {
+      "word": "Angelina Jolie",
+      "hints": ["actress", "lips", "adoption", "action", "humanitarian"]
+    },
+    {
+      "word": "Tom Cruise",
+      "hints": ["actor", "stunts", "mission", "pilot", "smile"]
+    },
+    {
+      "word": "Will Smith",
+      "hints": ["actor", "rap", "slap", "prince", "Hollywood"]
+    },
+    {
+      "word": "Dwayne Johnson",
+      "hints": ["rock", "muscles", "wrestling", "bald", "action"]
+    },
+    {
+      "word": "Keanu Reeves",
+      "hints": ["actor", "matrix", "kindness", "action", "motorcycle"]
+    },
+    {
+      "word": "Lady Gaga",
+      "hints": ["singer", "outfits", "pop", "piano", "extravagant"]
+    },
+    {
+      "word": "Ariana Grande",
+      "hints": ["singer", "ponytail", "pop", "petite", "whistle"]
+    },
+    {
+      "word": "Justin Bieber",
+      "hints": ["singer", "Canada", "baby", "pop", "tattoos"]
+    },
+    {
+      "word": "Shakira",
+      "hints": ["singer", "hips", "Colombia", "dancing", "worldcup"]
+    },
+    {
+      "word": "Adele",
+      "hints": ["singer", "British", "hello", "ballads", "voice"]
+    },
+    {
+      "word": "Ed Sheeran",
+      "hints": ["singer", "redhead", "guitar", "British", "shape"]
+    },
+    {
+      "word": "Harry Styles",
+      "hints": ["singer", "British", "fashion", "boyband", "curls"]
+    },
+    {
+      "word": "Emma Watson",
+      "hints": ["actress", "Hermione", "British", "activist", "magic"]
+    },
+    {
+      "word": "Johnny Depp",
+      "hints": ["actor", "pirate", "trial", "eccentric", "hats"]
+    },
+    {
+      "word": "Serena Williams",
+      "hints": ["tennis", "champion", "power", "sister", "legend"]
+    },
+    {
+      "word": "Usain Bolt",
+      "hints": ["sprinter", "Jamaica", "fastest", "lightning", "gold"]
+    },
+    {
+      "word": "Roger Federer",
+      "hints": ["tennis", "Swiss", "elegant", "champion", "racket"]
+    },
+    {
+      "word": "Mr. Bean",
+      "hints": ["comedy", "silent", "British", "teddy", "grimaces"]
+    }
+  ]
+}

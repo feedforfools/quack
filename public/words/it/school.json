@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "school",
+  "words": [
+    {
+      "word": "maestra",
+      "hints": ["classe", "lezioni", "lavagna", "alunni", "compiti"]
+    },
+    {
+      "word": "compiti",
+      "hints": ["pomeriggio", "esercizi", "scadenza", "quaderno", "noiosi"]
+    },
+    {
+      "word": "lavagna",
+      "hints": ["gesso", "classe", "scrivere", "cancellino", "verde"]
+    },
+    {
+      "word": "ricreazione",
+      "hints": ["pausa", "cortile", "campanella", "amici", "merenda"]
+    },
+    {
+      "word": "verifica",
+      "hints": ["domande", "ansia", "voti", "silenzio", "studiare"]
+    },
+    {
+      "word": "matita",
+      "hints": ["scrivere", "temperino", "gomma", "legno", "astuccio"]
+    },
+    {
+      "word": "gomma",
+      "hints": ["errori", "cancellare", "matita", "rosa", "sbavature"]
+    },
+    {
+      "word": "quaderno",
+      "hints": ["pagine", "appunti", "righe", "spirale", "scrivere"]
+    },
+    {
+      "word": "righello",
+      "hints": ["misurare", "dritto", "centimetri", "plastica", "linee"]
+    },
+    {
+      "word": "colla",
+      "hints": ["appiccicosa", "lavoretti", "carta", "stick", "dita"]
+    },
+    {
+      "word": "evidenziatore",
+      "hints": ["giallo", "sottolineare", "testo", "fluorescente", "studiare"]
+    },
+    {
+      "word": "calcolatrice",
+      "hints": ["matematica", "numeri", "tasti", "verifica", "schermo"]
+    },
+    {
+      "word": "microscopio",
+      "hints": ["scienze", "lente", "minuscolo", "laboratorio", "vetrini"]
+    },
+    {
+      "word": "mappamondo",
+      "hints": ["geografia", "girare", "paesi", "classe", "rotondo"]
+    },
+    {
+      "word": "dizionario",
+      "hints": ["parole", "definizioni", "spesso", "alfabetico", "lingua"]
+    },
+    {
+      "word": "biblioteca",
+      "hints": ["libri", "silenzio", "prestito", "scaffali", "studiare"]
+    },
+    {
+      "word": "mensa",
+      "hints": ["pranzo", "vassoi", "rumore", "fila", "compagni"]
+    },
+    {
+      "word": "preside",
+      "hints": ["ufficio", "scuola", "autorità", "circolari", "guai"]
+    },
+    {
+      "word": "nota",
+      "hints": ["punizione", "registro", "genitori", "firma", "guai"]
+    },
+    {
+      "word": "diploma",
+      "hints": ["maturità", "certificato", "cerimonia", "orgoglio", "pergamena"]
+    },
+    {
+      "word": "interrogazione",
+      "hints": ["cattedra", "domande", "ansia", "voto", "ripassare"]
+    },
+    {
+      "word": "classe",
+      "hints": ["banchi", "alunni", "maestra", "lavagna", "lezioni"]
+    },
+    {
+      "word": "banco",
+      "hints": ["sedia", "classe", "compagno", "legno", "scritte"]
+    },
+    {
+      "word": "campanella",
+      "hints": ["suono", "pausa", "scuola", "uscita", "ore"]
+    },
+    {
+      "word": "pagella",
+      "hints": ["voti", "fine", "genitori", "numeri", "promosso"]
+    },
+    {
+      "word": "gita",
+      "hints": ["pullman", "museo", "entusiasmo", "permesso", "classe"]
+    },
+    {
+      "word": "grembiule",
+      "hints": ["vestito", "elementari", "uguale", "fiocco", "regole"]
+    },
+    {
+      "word": "gesso",
+      "hints": ["lavagna", "bianco", "polvere", "scrivere", "maestra"]
+    },
+    {
+      "word": "diario",
+      "hints": ["compiti", "date", "firme", "adesivi", "zaino"]
+    },
+    {
+      "word": "laboratorio",
+      "hints": ["esperimenti", "occhiali", "sostanze", "scienze", "sicurezza"]
+    }
+  ]
+}

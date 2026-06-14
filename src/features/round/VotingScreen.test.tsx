@@ -59,6 +59,8 @@ const players: PlayerRow[] = [
 function makeVoteState(overrides: Partial<VoteState> = {}): VoteState {
   return {
     state: "active",
+    currentRound: 1,
+    outcome: null,
     requestCount: 2,
     voteEndsAt: null,
     myVoteTargetId: null,

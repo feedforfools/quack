@@ -142,7 +142,7 @@ export function GameList({
                 e.stopPropagation();
                 // Game info modal — coming in a later stage
               }}
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-fg/10 text-fg-muted transition-all hover:bg-fg/15 active:scale-95"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-fg/10 text-fg-muted transition-all hover:bg-fg/15 active:scale-95"
             >
               <Icon
                 icon="ph:info-bold"

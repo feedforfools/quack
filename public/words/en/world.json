@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "world",
+  "words": [
+    {
+      "word": "Paris",
+      "hints": ["Eiffel", "France", "romance", "croissants", "fashion"]
+    },
+    {
+      "word": "Rome",
+      "hints": ["Colosseum", "Italy", "ancient", "pasta", "Vatican"]
+    },
+    {
+      "word": "London",
+      "hints": ["England", "rain", "queen", "bus", "tea"]
+    },
+    {
+      "word": "New York",
+      "hints": ["skyscrapers", "taxi", "Broadway", "apple", "Manhattan"]
+    },
+    {
+      "word": "Tokyo",
+      "hints": ["Japan", "neon", "sushi", "crowded", "technology"]
+    },
+    {
+      "word": "Venice",
+      "hints": ["canals", "gondola", "Italy", "masks", "bridges"]
+    },
+    {
+      "word": "Egypt",
+      "hints": ["pyramids", "pharaoh", "desert", "Nile", "sphinx"]
+    },
+    {
+      "word": "Sahara",
+      "hints": ["desert", "sand", "camels", "vast", "Africa"]
+    },
+    {
+      "word": "Amazon",
+      "hints": ["rainforest", "river", "Brazil", "jungle", "biodiversity"]
+    },
+    {
+      "word": "Everest",
+      "hints": ["mountain", "highest", "climbing", "Nepal", "snow"]
+    },
+    {
+      "word": "Hawaii",
+      "hints": ["islands", "surfing", "volcano", "flowers", "paradise"]
+    },
+    {
+      "word": "Australia",
+      "hints": ["kangaroo", "outback", "Sydney", "reef", "koala"]
+    },
+    {
+      "word": "Brazil",
+      "hints": ["carnival", "football", "samba", "beaches", "Rio"]
+    },
+    {
+      "word": "India",
+      "hints": ["spices", "Bollywood", "cows", "colors", "yoga"]
+    },
+    {
+      "word": "China",
+      "hints": ["wall", "dragon", "rice", "panda", "ancient"]
+    },
+    {
+      "word": "Iceland",
+      "hints": ["geysers", "ice", "volcano", "northern", "cold"]
+    },
+    {
+      "word": "Greece",
+      "hints": ["islands", "mythology", "ruins", "feta", "blue"]
+    },
+    {
+      "word": "Switzerland",
+      "hints": ["Alps", "chocolate", "watches", "neutral", "banks"]
+    },
+    {
+      "word": "Norway",
+      "hints": ["fjords", "vikings", "snow", "northern", "salmon"]
+    },
+    {
+      "word": "Morocco",
+      "hints": ["markets", "spices", "desert", "mint", "mosaic"]
+    },
+    {
+      "word": "Dubai",
+      "hints": ["skyscrapers", "luxury", "desert", "gold", "mall"]
+    },
+    {
+      "word": "Las Vegas",
+      "hints": ["casino", "lights", "desert", "weddings", "gambling"]
+    },
+    {
+      "word": "Great Wall",
+      "hints": ["China", "long", "ancient", "bricks", "watchtowers"]
+    },
+    {
+      "word": "Eiffel Tower",
+      "hints": ["Paris", "iron", "lights", "tall", "romantic"]
+    },
+    {
+      "word": "Colosseum",
+      "hints": ["Rome", "gladiators", "arena", "ancient", "ruins"]
+    },
+    {
+      "word": "Statue of Liberty",
+      "hints": ["America", "torch", "green", "island", "gift"]
+    },
+    {
+      "word": "Niagara",
+      "hints": ["waterfalls", "border", "mist", "boat", "honeymoon"]
+    },
+    {
+      "word": "Antarctica",
+      "hints": ["penguins", "ice", "cold", "research", "remote"]
+    },
+    {
+      "word": "Caribbean",
+      "hints": ["islands", "pirates", "beaches", "rum", "turquoise"]
+    },
+    {
+      "word": "safari",
+      "hints": ["Africa", "animals", "jeep", "binoculars", "savanna"]
+    }
+  ]
+}

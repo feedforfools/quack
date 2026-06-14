@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "en",
+  "category": "easy",
+  "words": [
+    {
+      "word": "sun",
+      "hints": ["sky", "yellow", "heat", "summer", "light"]
+    },
+    {
+      "word": "house",
+      "hints": ["home", "roof", "family", "garden", "walls"]
+    },
+    {
+      "word": "water",
+      "hints": ["drink", "ocean", "rain", "bottle", "blue"]
+    },
+    {
+      "word": "tree",
+      "hints": ["forest", "leaves", "wood", "green", "roots"]
+    },
+    {
+      "word": "book",
+      "hints": ["pages", "reading", "story", "library", "paper"]
+    },
+    {
+      "word": "chair",
+      "hints": ["sitting", "legs", "table", "wood", "office"]
+    },
+    {
+      "word": "phone",
+      "hints": ["calls", "screen", "pocket", "apps", "ringtone"]
+    },
+    {
+      "word": "car",
+      "hints": ["wheels", "road", "driving", "engine", "garage"]
+    },
+    {
+      "word": "ball",
+      "hints": ["round", "games", "bouncing", "sports", "throwing"]
+    },
+    {
+      "word": "bed",
+      "hints": ["sleep", "pillow", "blanket", "night", "dreams"]
+    },
+    {
+      "word": "door",
+      "hints": ["opening", "key", "knocking", "handle", "entrance"]
+    },
+    {
+      "word": "shoe",
+      "hints": ["feet", "laces", "walking", "pair", "sole"]
+    },
+    {
+      "word": "clock",
+      "hints": ["time", "hands", "ticking", "wall", "alarm"]
+    },
+    {
+      "word": "milk",
+      "hints": ["white", "cow", "breakfast", "bottle", "cereal"]
+    },
+    {
+      "word": "rain",
+      "hints": ["clouds", "umbrella", "wet", "storm", "drops"]
+    },
+    {
+      "word": "fire",
+      "hints": ["hot", "flames", "smoke", "red", "camping"]
+    },
+    {
+      "word": "moon",
+      "hints": ["night", "sky", "stars", "round", "astronaut"]
+    },
+    {
+      "word": "bread",
+      "hints": ["bakery", "flour", "toast", "slice", "butter"]
+    },
+    {
+      "word": "key",
+      "hints": ["lock", "door", "metal", "pocket", "ring"]
+    },
+    {
+      "word": "hat",
+      "hints": ["head", "sun", "cap", "fashion", "winter"]
+    },
+    {
+      "word": "fish",
+      "hints": ["water", "swimming", "scales", "ocean", "aquarium"]
+    },
+    {
+      "word": "apple",
+      "hints": ["fruit", "red", "tree", "juice", "bite"]
+    },
+    {
+      "word": "beach",
+      "hints": ["sand", "sea", "summer", "towel", "waves"]
+    },
+    {
+      "word": "snow",
+      "hints": ["winter", "white", "cold", "flakes", "snowman"]
+    },
+    {
+      "word": "bird",
+      "hints": ["wings", "flying", "nest", "feathers", "singing"]
+    },
+    {
+      "word": "cake",
+      "hints": ["birthday", "sweet", "candles", "oven", "slice"]
+    },
+    {
+      "word": "star",
+      "hints": ["night", "sky", "shining", "wish", "space"]
+    },
+    {
+      "word": "garden",
+      "hints": ["flowers", "plants", "grass", "watering", "backyard"]
+    },
+    {
+      "word": "window",
+      "hints": ["glass", "view", "curtains", "opening", "light"]
+    },
+    {
+      "word": "cheese",
+      "hints": ["yellow", "mouse", "milk", "holes", "sandwich"]
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "world",
+  "words": [
+    {
+      "word": "Parigi",
+      "hints": ["Eiffel", "Francia", "romantica", "croissant", "moda"]
+    },
+    {
+      "word": "Roma",
+      "hints": ["Colosseo", "Italia", "antica", "carbonara", "Vaticano"]
+    },
+    {
+      "word": "Londra",
+      "hints": ["Inghilterra", "pioggia", "regina", "autobus", "tè"]
+    },
+    {
+      "word": "New York",
+      "hints": ["grattacieli", "taxi", "Broadway", "mela", "Manhattan"]
+    },
+    {
+      "word": "Tokyo",
+      "hints": ["Giappone", "neon", "sushi", "affollata", "tecnologia"]
+    },
+    {
+      "word": "Venezia",
+      "hints": ["canali", "gondola", "Italia", "maschere", "ponti"]
+    },
+    {
+      "word": "Egitto",
+      "hints": ["piramidi", "faraone", "deserto", "Nilo", "sfinge"]
+    },
+    {
+      "word": "Sahara",
+      "hints": ["deserto", "sabbia", "cammelli", "immenso", "Africa"]
+    },
+    {
+      "word": "Amazzonia",
+      "hints": ["foresta", "fiume", "Brasile", "giungla", "biodiversità"]
+    },
+    {
+      "word": "Everest",
+      "hints": ["montagna", "altissima", "scalata", "Nepal", "neve"]
+    },
+    {
+      "word": "Hawaii",
+      "hints": ["isole", "surf", "vulcano", "fiori", "paradiso"]
+    },
+    {
+      "word": "Australia",
+      "hints": ["canguro", "outback", "Sydney", "barriera", "koala"]
+    },
+    {
+      "word": "Brasile",
+      "hints": ["carnevale", "calcio", "samba", "spiagge", "Rio"]
+    },
+    {
+      "word": "India",
+      "hints": ["spezie", "Bollywood", "mucche", "colori", "yoga"]
+    },
+    {
+      "word": "Cina",
+      "hints": ["muraglia", "drago", "riso", "panda", "antica"]
+    },
+    {
+      "word": "Islanda",
+      "hints": ["geyser", "ghiaccio", "vulcani", "aurora", "freddo"]
+    },
+    {
+      "word": "Grecia",
+      "hints": ["isole", "mitologia", "rovine", "feta", "azzurro"]
+    },
+    {
+      "word": "Svizzera",
+      "hints": ["Alpi", "cioccolato", "orologi", "neutrale", "banche"]
+    },
+    {
+      "word": "Norvegia",
+      "hints": ["fiordi", "vichinghi", "neve", "aurora", "salmone"]
+    },
+    {
+      "word": "Marocco",
+      "hints": ["mercati", "spezie", "deserto", "menta", "mosaici"]
+    },
+    {
+      "word": "Dubai",
+      "hints": ["grattacieli", "lusso", "deserto", "oro", "centri"]
+    },
+    {
+      "word": "Las Vegas",
+      "hints": ["casinò", "luci", "deserto", "matrimoni", "azzardo"]
+    },
+    {
+      "word": "Muraglia cinese",
+      "hints": ["Cina", "lunga", "antica", "mattoni", "torrette"]
+    },
+    {
+      "word": "Torre Eiffel",
+      "hints": ["Parigi", "ferro", "luci", "alta", "romantica"]
+    },
+    {
+      "word": "Colosseo",
+      "hints": ["Roma", "gladiatori", "arena", "antico", "rovine"]
+    },
+    {
+      "word": "Statua della Libertà",
+      "hints": ["America", "fiaccola", "verde", "isola", "regalo"]
+    },
+    {
+      "word": "Niagara",
+      "hints": ["cascate", "confine", "nebbiolina", "battello", "viaggio"]
+    },
+    {
+      "word": "Antartide",
+      "hints": ["pinguini", "ghiaccio", "freddo", "ricerca", "remota"]
+    },
+    {
+      "word": "Caraibi",
+      "hints": ["isole", "pirati", "spiagge", "rum", "turchese"]
+    },
+    {
+      "word": "safari",
+      "hints": ["Africa", "animali", "jeep", "binocolo", "savana"]
+    }
+  ]
+}

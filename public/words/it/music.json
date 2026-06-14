@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "music",
+  "words": [
+    {
+      "word": "chitarra",
+      "hints": ["corde", "strimpellare", "rock", "acustica", "accordi"]
+    },
+    {
+      "word": "pianoforte",
+      "hints": ["tasti", "nero", "bianco", "classica", "pedali"]
+    },
+    {
+      "word": "batteria",
+      "hints": ["bacchette", "ritmo", "rumorosa", "piatti", "tempo"]
+    },
+    {
+      "word": "violino",
+      "hints": ["archetto", "corde", "classica", "orchestra", "mento"]
+    },
+    {
+      "word": "microfono",
+      "hints": ["cantare", "palco", "voce", "asta", "karaoke"]
+    },
+    {
+      "word": "concerto",
+      "hints": ["palco", "folla", "biglietti", "live", "luci"]
+    },
+    {
+      "word": "orchestra",
+      "hints": ["direttore", "strumenti", "classica", "sinfonia", "eleganza"]
+    },
+    {
+      "word": "DJ",
+      "hints": ["console", "discoteca", "mixare", "cuffie", "festa"]
+    },
+    {
+      "word": "rapper",
+      "hints": ["rime", "beat", "microfono", "flow", "strada"]
+    },
+    {
+      "word": "opera",
+      "hints": ["canto", "drammatica", "italiana", "soprano", "teatro"]
+    },
+    {
+      "word": "jazz",
+      "hints": ["sassofono", "improvvisazione", "morbido", "club", "swing"]
+    },
+    {
+      "word": "rock",
+      "hints": ["chitarra", "forte", "band", "pelle", "concerto"]
+    },
+    {
+      "word": "coro",
+      "hints": ["voci", "chiesa", "armonia", "cantare", "tuniche"]
+    },
+    {
+      "word": "sassofono",
+      "hints": ["jazz", "ottone", "curvo", "morbido", "assolo"]
+    },
+    {
+      "word": "tromba",
+      "hints": ["ottone", "forte", "jazz", "pistoni", "fanfara"]
+    },
+    {
+      "word": "flauto",
+      "hints": ["fiato", "argento", "classica", "soffiare", "delicato"]
+    },
+    {
+      "word": "arpa",
+      "hints": ["corde", "angelo", "elegante", "pizzicare", "dorata"]
+    },
+    {
+      "word": "fisarmonica",
+      "hints": ["mantice", "folk", "bottoni", "liscio", "balera"]
+    },
+    {
+      "word": "cornamusa",
+      "hints": ["Scozia", "kilt", "forte", "bordone", "tradizione"]
+    },
+    {
+      "word": "ukulele",
+      "hints": ["piccolo", "Hawaii", "corde", "allegro", "spiaggia"]
+    },
+    {
+      "word": "melodia",
+      "hints": ["motivo", "canticchiare", "orecchiabile", "note", "canzone"]
+    },
+    {
+      "word": "testo",
+      "hints": ["parole", "canzone", "memorizzare", "significato", "cantare"]
+    },
+    {
+      "word": "album",
+      "hints": ["canzoni", "copertina", "artista", "uscita", "tracce"]
+    },
+    {
+      "word": "band",
+      "hints": ["membri", "strumenti", "tour", "garage", "fama"]
+    },
+    {
+      "word": "festival",
+      "hints": ["musica", "campeggio", "palchi", "estate", "folla"]
+    },
+    {
+      "word": "playlist",
+      "hints": ["canzoni", "selezione", "umore", "casuale", "Spotify"]
+    },
+    {
+      "word": "autotune",
+      "hints": ["voce", "studio", "intonazione", "robotica", "trap"]
+    },
+    {
+      "word": "bis",
+      "hints": ["concerto", "ancora", "applausi", "finale", "pubblico"]
+    },
+    {
+      "word": "direttore d'orchestra",
+      "hints": ["orchestra", "bacchetta", "gesti", "tempo", "frac"]
+    },
+    {
+      "word": "Sanremo",
+      "hints": ["festival", "febbraio", "fiori", "canzoni", "televoto"]
+    }
+  ]
+}

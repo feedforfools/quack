@@ -1,0 +1,133 @@
+{
+  "version": 2,
+  "lang": "it",
+  "category": "retro",
+  "words": [
+    {
+      "word": "musicassetta",
+      "hints": ["nastro", "musica", "riavvolgere", "matita", "walkman"]
+    },
+    {
+      "word": "vinile",
+      "hints": ["disco", "giradischi", "solchi", "collezionisti", "fruscio"]
+    },
+    {
+      "word": "walkman",
+      "hints": ["musica", "portatile", "cuffie", "cassetta", "ottanta"]
+    },
+    {
+      "word": "macchina da scrivere",
+      "hints": ["tasti", "inchiostro", "carta", "ticchettio", "vintage"]
+    },
+    {
+      "word": "floppy disk",
+      "hints": ["computer", "salvare", "quadrato", "obsoleto", "dati"]
+    },
+    {
+      "word": "videocassetta",
+      "hints": [
+        "nastro",
+        "riavvolgere",
+        "noleggio",
+        "film",
+        "videoregistratore"
+      ]
+    },
+    {
+      "word": "sala giochi",
+      "hints": ["gettoni", "joystick", "cabinati", "neon", "record"]
+    },
+    {
+      "word": "jukebox",
+      "hints": ["bar", "monete", "canzoni", "luminoso", "cinquanta"]
+    },
+    {
+      "word": "polaroid",
+      "hints": ["foto", "istantanea", "scuotere", "bianco", "cornice"]
+    },
+    {
+      "word": "telefono a disco",
+      "hints": ["rotella", "filo", "lento", "vintage", "squillo"]
+    },
+    {
+      "word": "gettone",
+      "hints": ["cabina", "telefonata", "moneta", "bar", "scanalature"]
+    },
+    {
+      "word": "Game Boy",
+      "hints": ["Nintendo", "portatile", "Tetris", "grigio", "batterie"]
+    },
+    {
+      "word": "tamagotchi",
+      "hints": ["animaletto", "digitale", "nutrire", "bip", "novanta"]
+    },
+    {
+      "word": "cubo di Rubik",
+      "hints": ["rompicapo", "colori", "ruotare", "risolvere", "frustrazione"]
+    },
+    {
+      "word": "discoteca",
+      "hints": ["ballare", "sfera", "settanta", "luci", "febbre"]
+    },
+    {
+      "word": "mixtape",
+      "hints": ["canzoni", "cassetta", "regalo", "romantico", "selezione"]
+    },
+    {
+      "word": "drive-in",
+      "hints": ["film", "auto", "schermo", "aperto", "altoparlanti"]
+    },
+    {
+      "word": "enciclopedia",
+      "hints": ["volumi", "sapere", "scaffale", "pesante", "alfabetico"]
+    },
+    {
+      "word": "fax",
+      "hints": ["macchina", "carta", "ufficio", "bip", "obsoleto"]
+    },
+    {
+      "word": "modem 56k",
+      "hints": ["internet", "rumore", "lento", "occupato", "attesa"]
+    },
+    {
+      "word": "pattini a rotelle",
+      "hints": ["ruote", "pista", "settanta", "cadute", "discoteca"]
+    },
+    {
+      "word": "lampada lava",
+      "hints": ["bagliore", "cera", "ipnotica", "cameretta", "psichedelica"]
+    },
+    {
+      "word": "stereo portatile",
+      "hints": ["spalla", "musica", "batterie", "volume", "breakdance"]
+    },
+    {
+      "word": "cabina telefonica",
+      "hints": ["gettoni", "vetro", "strada", "Superman", "obsoleta"]
+    },
+    {
+      "word": "telegramma",
+      "hints": ["messaggio", "urgente", "stop", "poste", "antico"]
+    },
+    {
+      "word": "grammofono",
+      "hints": ["tromba", "dischi", "antico", "manovella", "musica"]
+    },
+    {
+      "word": "proiettore diapositive",
+      "hints": ["foto", "clic", "famiglia", "parete", "vacanze"]
+    },
+    {
+      "word": "carosello",
+      "hints": ["televisione", "pubblicità", "sera", "bambini", "nonni"]
+    },
+    {
+      "word": "antenna",
+      "hints": ["tetto", "segnale", "canali", "orientare", "disturbo"]
+    },
+    {
+      "word": "negozio di dischi",
+      "hints": ["vinili", "sfogliare", "musica", "poster", "weekend"]
+    }
+  ]
+}

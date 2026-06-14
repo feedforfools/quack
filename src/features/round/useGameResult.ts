@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { supabaseWithDevice } from "@/lib/supabase";
 import { log } from "@/lib/log";
 import type { Json } from "@/lib/supabase/types";
+import type { GameOutcome } from "./useVoteState";
 
 export interface GameImposter {
   player_id: string;
@@ -9,7 +10,7 @@ export interface GameImposter {
 }
 
 export interface GameResult {
-  outcome: "imposters_caught" | "imposters_win" | "tie";
+  outcome: GameOutcome;
   votedOutPlayerId: string | null;
   votedOutPlayerName: string | null;
   secretWord: string | null;
