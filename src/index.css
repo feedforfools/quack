@@ -19,9 +19,6 @@
     --color-success: #22c55e; /* green-500   — positive state */
     --color-danger:  #ef4444; /* red-500     — destructive / urgent */
 
-    /* ── Ambient brand glow (top radial behind every page) ── */
-    --ambient-alpha: 0.07;
-
     /* ── Browser chrome / meta theme-color ── */
     --color-meta-theme: #fafaf9; /* matches --color-bg in light */
 
@@ -40,8 +37,6 @@
     --color-fg-subtle:     124 117 110; /* warm stone-500  */
     --color-border:        51 46 41;    /* warm hairline   */
     --color-border-strong: 76 68 61;    /* warm emphasis   */
-
-    --ambient-alpha: 0.09;
 
     /* ── Browser chrome / meta theme-color ── */
     --color-meta-theme: #0e0c0a; /* matches --color-bg in dark */
@@ -62,22 +57,6 @@
 
   body {
     @apply bg-bg text-fg font-sans antialiased;
-  }
-
-  /* Ambient brand glow — a soft accent radial bleeding in from the top.
-     Painted behind all content (negative z-index child of <body>), fixed so
-     it doesn't scroll. Gives every screen quiet depth without layout cost. */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background: radial-gradient(
-      110% 52% at 50% -6%,
-      rgb(250 204 21 / var(--ambient-alpha)),
-      transparent 64%
-    );
   }
 
   /* Native tap flash is replaced by explicit active states on controls. */

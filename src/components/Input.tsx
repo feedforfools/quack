@@ -39,7 +39,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           aria-describedby={hasDesc ? descId : undefined}
           aria-invalid={error ? true : undefined}
           className={[
-            "w-full rounded-full border bg-bg-sunken px-5 py-3",
+            "w-full rounded-xl border bg-bg-sunken px-5 py-3",
             "text-base text-fg caret-accent placeholder:text-fg-subtle",
             "min-h-[48px]",
             "transition-[border-color,box-shadow] duration-150",
