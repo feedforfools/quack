@@ -2,7 +2,8 @@
   "common": {
     "comingSoon": "Coming soon.",
     "backToHome": "Back to home",
-    "close": "Close"
+    "close": "Close",
+    "loading": "Loading…"
   },
   "language": {
     "label": "Switch language",

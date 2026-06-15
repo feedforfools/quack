@@ -1,12 +1,46 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { AppLayout } from "./Layout";
 import Home from "@/pages/Home";
-import Create from "@/pages/Create";
-import Join from "@/pages/Join";
-import Privacy from "@/pages/Privacy";
-import Room from "@/pages/Room";
-import NotFound from "@/pages/NotFound";
-import Playground from "@/pages/Playground";
+
+/**
+ * Route-level code splitting (E6-T6).
+ *
+ * Only Home is statically imported so the landing screen paints immediately.
+ * Every other route — most importantly the large Room screen and its
+ * voting / game-mode features — is a lazily-loaded chunk pulled in on
+ * navigation. This keeps first-load JS under the 200 KB gzipped budget
+ * (Constraint #8) by keeping non-landing code off the critical path.
+ */
+const Create = lazy(() => import("@/pages/Create"));
+const Join = lazy(() => import("@/pages/Join"));
+const Privacy = lazy(() => import("@/pages/Privacy"));
+const Room = lazy(() => import("@/pages/Room"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
+// Dev-only sandbox: the conditional keeps it (and its chunk) out of
+// production builds entirely.
+const Playground = import.meta.env.DEV
+  ? lazy(() => import("@/pages/Playground"))
+  : null;
+
+/** Lightweight, glance-safe fallback shown while a route chunk loads. */
+function RouteFallback() {
+  const { t } = useTranslation();
+  return (
+    <div
+      className="flex min-h-screen items-center justify-center bg-bg"
+      role="status"
+      aria-live="polite"
+    >
+      <div
+        className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-accent"
+        aria-hidden
+      />
+      <span className="sr-only">{t("common.loading")}</span>
+    </div>
+  );
+}
 
 /**
  * Application router.
@@ -27,19 +61,19 @@ import Playground from "@/pages/Playground";
 export function AppRouter() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<AppLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/join" element={<Join />} />
-          <Route path="/r/:code" element={<Room />} />
-          <Route path="/privacy" element={<Privacy />} />
-          {import.meta.env.DEV && (
-            <Route path="/dev" element={<Playground />} />
-          )}
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<RouteFallback />}>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/create" element={<Create />} />
+            <Route path="/join" element={<Join />} />
+            <Route path="/r/:code" element={<Room />} />
+            <Route path="/privacy" element={<Privacy />} />
+            {Playground && <Route path="/dev" element={<Playground />} />}
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }
