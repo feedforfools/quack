@@ -40,7 +40,10 @@ describe("EN locale", () => {
 
   it("provides privacy keys", () => {
     expect(i18n.t("privacy.title")).toBeTruthy();
-    expect(i18n.t("privacy.placeholder")).toBeTruthy();
+    expect(i18n.t("privacy.intro")).toBeTruthy();
+    expect(i18n.t("privacy.deletionBody")).toBeTruthy();
+    expect(i18n.t("privacy.neverAccounts")).toBeTruthy();
+    expect(i18n.t("privacy.closing")).toBeTruthy();
   });
 
   it("provides common.backToHome", () => {
@@ -78,6 +81,11 @@ describe("IT locale", () => {
 
   it("provides privacy keys in Italian", () => {
     expect(i18n.t("privacy.title")).toBeTruthy();
+    expect(i18n.t("privacy.intro")).toBeTruthy();
+    // Should differ from English
+    expect(i18n.t("privacy.intro")).not.toBe(
+      "Quack is built to forget you. No account, no email, no tracking — you play, you laugh, and within an hour of finishing, your room and everything in it is gone for good.",
+    );
   });
 });
 

@@ -263,8 +263,22 @@
     "message": "Questa stanza potrebbe essere terminata, o il link è errato."
   },
   "privacy": {
-    "title": "Informativa sulla Privacy",
-    "placeholder": "Informativa completa in arrivo. Quack non raccoglie dati personali e non memorizza nulla oltre al nome visualizzato scelto nel tuo browser."
+    "title": "Privacy",
+    "intro": "Quack è fatto per dimenticarti. Nessun account, nessuna email, nessun tracciamento — giochi, ridi e, entro un’ora dalla fine, la tua stanza e tutto ciò che contiene sparisce per sempre.",
+    "deviceTitle": "Cosa resta sul tuo dispositivo",
+    "deviceBody": "Il tuo browser conserva un ID dispositivo casuale (non legato alla tua vera identità), il nome che scegli e — se sei l’host — un segreto che dimostra che la stanza è tua. Lascia il dispositivo solo per far funzionare il gioco, e cancellando i dati del browser lo elimini.",
+    "serverTitle": "Cosa vede il gioco",
+    "serverBody": "Per tenere sincronizzati tutti i telefoni, inviamo solo ciò che serve al gioco: il tuo nome visualizzato, quell’ID dispositivo casuale, il codice stanza, le impostazioni scelte e lo stato di gioco come ruoli e voti. Le regole di sicurezza fanno sì che tu possa vedere solo il tuo ruolo segreto — mai quello degli altri.",
+    "deletionTitle": "Si autodistrugge tutto",
+    "deletionBody": "Le stanze sono usa e getta. Un’ora dopo che una stanza diventa inattiva, lei e tutto ciò che contiene — giocatori, nomi, ruoli, voti — viene eliminata definitivamente dal database. Non resta nulla da recuperare.",
+    "neverTitle": "Cosa non facciamo mai",
+    "neverAccounts": "Niente account, email o password.",
+    "neverTracking": "Niente analisi, pixel di tracciamento o pubblicità.",
+    "neverCookies": "Niente cookie che ti seguono in giro per il web.",
+    "neverSelling": "Niente vendita o condivisione dei tuoi dati — non c’è nulla da vendere.",
+    "hostingTitle": "Chi gestisce l’infrastruttura",
+    "hostingBody": "L’app è servita da Vercel e il gioco dal vivo gira su Supabase. Gestiscono questi dati di gioco usa e getta solo per tenere sincronizzata la tua stanza — niente di più.",
+    "closing": "Questa è tutta l’informativa. Quack raccoglie il minimo indispensabile per far sì che un tavolo di amici possa accusarsi a vicenda di essere un impostore. Buon divertimento."
   },
   "settings": {
     "title": "Impostazioni partita",

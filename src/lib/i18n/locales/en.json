@@ -263,8 +263,22 @@
     "message": "This room may have ended, or the link is wrong."
   },
   "privacy": {
-    "title": "Privacy Policy",
-    "placeholder": "Full privacy policy coming soon. Quack collects no personal data and stores nothing beyond your chosen display name in your browser."
+    "title": "Privacy",
+    "intro": "Quack is built to forget you. No account, no email, no tracking — you play, you laugh, and within an hour of finishing, your room and everything in it is gone for good.",
+    "deviceTitle": "What stays on your device",
+    "deviceBody": "Your browser keeps a random device ID (not tied to your real identity), the display name you pick, and — if you’re the host — a secret that proves the room is yours. It only leaves your device to run the game, and clearing your browser data wipes it.",
+    "serverTitle": "What the game sees",
+    "serverBody": "To keep every phone in sync, we send only what the game needs: your display name, that random device ID, the room code, the chosen settings, and live play state like roles and votes. Security rules make sure you can read only your own secret role — never anyone else’s.",
+    "deletionTitle": "It all self-destructs",
+    "deletionBody": "Rooms are disposable. One hour after a room goes quiet, it and everything in it — players, names, roles, votes — is permanently deleted from the database. There’s nothing left to dig up later.",
+    "neverTitle": "What we never do",
+    "neverAccounts": "No accounts, emails, or passwords.",
+    "neverTracking": "No analytics, tracking pixels, or advertising.",
+    "neverCookies": "No cookies that trail you around the web.",
+    "neverSelling": "No selling or sharing your data — there’s nothing to sell.",
+    "hostingTitle": "Who runs the plumbing",
+    "hostingBody": "The app is served by Vercel and the live game runs on Supabase. They handle this throwaway game data purely to keep your room in sync — nothing more.",
+    "closing": "That’s the whole policy. Quack collects the bare minimum so a table of friends can accuse each other of being a fake. Have fun."
   },
   "settings": {
     "title": "Game Settings",
