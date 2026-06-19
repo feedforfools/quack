@@ -5,123 +5,723 @@
   "words": [
     {
       "word": "meme",
-      "hints": ["funny", "viral", "image", "sharing", "internet"]
+      "hints": [
+        "funny",
+        "image",
+        "share",
+        "internet",
+        "viral"
+      ]
     },
     {
       "word": "hashtag",
-      "hints": ["social", "trending", "symbol", "Twitter", "posts"]
+      "hints": [
+        "symbol",
+        "trending",
+        "posts",
+        "social",
+        "tag"
+      ]
     },
     {
       "word": "selfie",
-      "hints": ["camera", "front", "pose", "filter", "sharing"]
+      "hints": [
+        "camera",
+        "self",
+        "pose",
+        "phone",
+        "share"
+      ]
     },
     {
       "word": "influencer",
-      "hints": ["followers", "sponsorship", "Instagram", "content", "famous"]
+      "hints": [
+        "followers",
+        "sponsor",
+        "content",
+        "famous",
+        "social"
+      ]
     },
     {
       "word": "livestream",
-      "hints": ["live", "viewers", "chat", "gaming", "camera"]
+      "hints": [
+        "live",
+        "viewers",
+        "chat",
+        "real-time",
+        "camera"
+      ]
     },
     {
       "word": "viral",
-      "hints": ["spreading", "video", "millions", "internet", "overnight"]
+      "hints": [
+        "spreading",
+        "millions",
+        "fast",
+        "popular",
+        "everywhere"
+      ]
     },
     {
       "word": "emoji",
-      "hints": ["faces", "messages", "yellow", "expressions", "keyboard"]
+      "hints": [
+        "faces",
+        "messages",
+        "small",
+        "expressions",
+        "yellow"
+      ]
     },
     {
       "word": "filter",
-      "hints": ["photo", "beauty", "Instagram", "dog", "smoothing"]
+      "hints": [
+        "photo",
+        "beauty",
+        "effect",
+        "smooth",
+        "edit"
+      ]
     },
     {
       "word": "troll",
-      "hints": ["comments", "provoking", "anonymous", "internet", "feeding"]
+      "hints": [
+        "comments",
+        "provoke",
+        "anonymous",
+        "annoying",
+        "online"
+      ]
     },
     {
       "word": "spam",
-      "hints": ["emails", "unwanted", "folder", "advertising", "annoying"]
+      "hints": [
+        "unwanted",
+        "emails",
+        "junk",
+        "folder",
+        "annoying"
+      ]
     },
     {
       "word": "wifi",
-      "hints": ["internet", "password", "router", "signal", "free"]
+      "hints": [
+        "internet",
+        "password",
+        "signal",
+        "wireless",
+        "connection"
+      ]
     },
     {
       "word": "password",
-      "hints": ["secret", "login", "forgotten", "security", "asterisks"]
+      "hints": [
+        "secret",
+        "login",
+        "forgotten",
+        "security",
+        "letters"
+      ]
     },
     {
       "word": "streaming",
-      "hints": ["Netflix", "watching", "online", "binge", "series"]
+      "hints": [
+        "watching",
+        "online",
+        "series",
+        "binge",
+        "subscription"
+      ]
     },
     {
       "word": "youtuber",
-      "hints": ["videos", "channel", "subscribers", "camera", "vlogs"]
+      "hints": [
+        "videos",
+        "channel",
+        "subscribers",
+        "camera",
+        "content"
+      ]
     },
     {
       "word": "TikTok",
-      "hints": ["dances", "short", "videos", "trends", "scrolling"]
+      "hints": [
+        "dances",
+        "short",
+        "videos",
+        "trends",
+        "scroll"
+      ]
     },
     {
       "word": "unboxing",
-      "hints": ["package", "camera", "reaction", "new", "reveal"]
+      "hints": [
+        "package",
+        "reveal",
+        "new",
+        "reaction",
+        "video"
+      ]
     },
     {
       "word": "clickbait",
-      "hints": ["title", "curiosity", "misleading", "shocking", "thumbnail"]
+      "hints": [
+        "title",
+        "curiosity",
+        "misleading",
+        "shocking",
+        "trick"
+      ]
     },
     {
       "word": "screenshot",
-      "hints": ["capture", "proof", "phone", "sharing", "receipts"]
+      "hints": [
+        "capture",
+        "proof",
+        "phone",
+        "image",
+        "share"
+      ]
     },
     {
       "word": "notification",
-      "hints": ["ping", "phone", "badge", "distraction", "endless"]
+      "hints": [
+        "ping",
+        "phone",
+        "alert",
+        "distraction",
+        "badge"
+      ]
     },
     {
       "word": "algorithm",
-      "hints": ["feed", "recommendations", "mysterious", "content", "addiction"]
+      "hints": [
+        "feed",
+        "recommendations",
+        "mysterious",
+        "content",
+        "code"
+      ]
     },
     {
       "word": "avatar",
-      "hints": ["profile", "picture", "digital", "identity", "character"]
+      "hints": [
+        "profile",
+        "picture",
+        "digital",
+        "identity",
+        "character"
+      ]
     },
     {
       "word": "GIF",
-      "hints": ["animated", "loop", "reaction", "funny", "messages"]
+      "hints": [
+        "animated",
+        "loop",
+        "reaction",
+        "funny",
+        "short"
+      ]
     },
     {
       "word": "blog",
-      "hints": ["writing", "posts", "personal", "internet", "readers"]
+      "hints": [
+        "writing",
+        "posts",
+        "personal",
+        "online",
+        "readers"
+      ]
     },
     {
       "word": "vlog",
-      "hints": ["camera", "daily", "youtube", "life", "talking"]
+      "hints": [
+        "camera",
+        "daily",
+        "video",
+        "life",
+        "talking"
+      ]
     },
     {
       "word": "follower",
-      "hints": ["social", "count", "Instagram", "fans", "growing"]
+      "hints": [
+        "social",
+        "count",
+        "fans",
+        "growing",
+        "audience"
+      ]
     },
     {
       "word": "like",
-      "hints": ["thumbs", "heart", "button", "approval", "counting"]
+      "hints": [
+        "thumbs",
+        "heart",
+        "button",
+        "approval",
+        "tap"
+      ]
     },
     {
       "word": "comment section",
-      "hints": ["opinions", "arguments", "scrolling", "toxic", "replies"]
+      "hints": [
+        "opinions",
+        "arguments",
+        "scrolling",
+        "replies",
+        "toxic"
+      ]
     },
     {
       "word": "download",
-      "hints": ["files", "internet", "progress", "waiting", "saving"]
+      "hints": [
+        "files",
+        "online",
+        "progress",
+        "saving",
+        "wait"
+      ]
     },
     {
       "word": "gamer",
-      "hints": ["console", "headset", "streaming", "night", "energy"]
+      "hints": [
+        "console",
+        "headset",
+        "night",
+        "screen",
+        "energy"
+      ]
     },
     {
       "word": "crypto",
-      "hints": ["bitcoin", "digital", "investment", "volatile", "wallet"]
+      "hints": [
+        "digital",
+        "money",
+        "investment",
+        "volatile",
+        "wallet"
+      ]
+    },
+    {
+      "word": "DM",
+      "hints": [
+        "private",
+        "message",
+        "direct",
+        "chat",
+        "inbox"
+      ]
+    },
+    {
+      "word": "group chat",
+      "hints": [
+        "friends",
+        "messages",
+        "many",
+        "notifications",
+        "chat"
+      ]
+    },
+    {
+      "word": "video call",
+      "hints": [
+        "face",
+        "screen",
+        "talk",
+        "camera",
+        "remote"
+      ]
+    },
+    {
+      "word": "webcam",
+      "hints": [
+        "camera",
+        "computer",
+        "face",
+        "video",
+        "small"
+      ]
+    },
+    {
+      "word": "sticker",
+      "hints": [
+        "chat",
+        "cute",
+        "image",
+        "fun",
+        "send"
+      ]
+    },
+    {
+      "word": "story",
+      "hints": [
+        "photos",
+        "24 hours",
+        "share",
+        "disappear",
+        "daily"
+      ]
+    },
+    {
+      "word": "reel",
+      "hints": [
+        "short",
+        "video",
+        "vertical",
+        "scroll",
+        "trendy"
+      ]
+    },
+    {
+      "word": "swipe",
+      "hints": [
+        "finger",
+        "left",
+        "right",
+        "screen",
+        "choose"
+      ]
+    },
+    {
+      "word": "feed",
+      "hints": [
+        "scroll",
+        "posts",
+        "endless",
+        "updates",
+        "home"
+      ]
+    },
+    {
+      "word": "profile",
+      "hints": [
+        "picture",
+        "info",
+        "account",
+        "bio",
+        "page"
+      ]
+    },
+    {
+      "word": "bio",
+      "hints": [
+        "short",
+        "description",
+        "profile",
+        "about",
+        "words"
+      ]
+    },
+    {
+      "word": "repost",
+      "hints": [
+        "share",
+        "again",
+        "others",
+        "spread",
+        "credit"
+      ]
+    },
+    {
+      "word": "share",
+      "hints": [
+        "send",
+        "spread",
+        "others",
+        "button",
+        "post"
+      ]
+    },
+    {
+      "word": "bookmark",
+      "hints": [
+        "save",
+        "later",
+        "page",
+        "keep",
+        "favorite"
+      ]
+    },
+    {
+      "word": "subscribe",
+      "hints": [
+        "follow",
+        "channel",
+        "updates",
+        "button",
+        "bell"
+      ]
+    },
+    {
+      "word": "block",
+      "hints": [
+        "stop",
+        "remove",
+        "ignore",
+        "annoying",
+        "button"
+      ]
+    },
+    {
+      "word": "mute",
+      "hints": [
+        "silence",
+        "quiet",
+        "ignore",
+        "notifications",
+        "off"
+      ]
+    },
+    {
+      "word": "catfish",
+      "hints": [
+        "fake",
+        "identity",
+        "online",
+        "lie",
+        "photos"
+      ]
+    },
+    {
+      "word": "doomscrolling",
+      "hints": [
+        "endless",
+        "bad news",
+        "scroll",
+        "addictive",
+        "late"
+      ]
+    },
+    {
+      "word": "FOMO",
+      "hints": [
+        "missing out",
+        "anxiety",
+        "others",
+        "fear",
+        "social"
+      ]
+    },
+    {
+      "word": "trending",
+      "hints": [
+        "popular",
+        "now",
+        "topic",
+        "rising",
+        "everyone"
+      ]
+    },
+    {
+      "word": "challenge",
+      "hints": [
+        "dare",
+        "viral",
+        "video",
+        "copy",
+        "trend"
+      ]
+    },
+    {
+      "word": "tutorial",
+      "hints": [
+        "how-to",
+        "steps",
+        "learn",
+        "video",
+        "guide"
+      ]
+    },
+    {
+      "word": "thumbnail",
+      "hints": [
+        "image",
+        "preview",
+        "small",
+        "click",
+        "video"
+      ]
+    },
+    {
+      "word": "subscriber",
+      "hints": [
+        "follower",
+        "channel",
+        "count",
+        "loyal",
+        "notification"
+      ]
+    },
+    {
+      "word": "pop-up",
+      "hints": [
+        "window",
+        "annoying",
+        "ad",
+        "close",
+        "sudden"
+      ]
+    },
+    {
+      "word": "captcha",
+      "hints": [
+        "robot",
+        "verify",
+        "puzzle",
+        "human",
+        "letters"
+      ]
+    },
+    {
+      "word": "VPN",
+      "hints": [
+        "hidden",
+        "private",
+        "secure",
+        "location",
+        "connection"
+      ]
+    },
+    {
+      "word": "cloud",
+      "hints": [
+        "storage",
+        "online",
+        "files",
+        "backup",
+        "remote"
+      ]
+    },
+    {
+      "word": "upload",
+      "hints": [
+        "send",
+        "files",
+        "online",
+        "progress",
+        "share"
+      ]
+    },
+    {
+      "word": "buffering",
+      "hints": [
+        "loading",
+        "wait",
+        "spinning",
+        "slow",
+        "video"
+      ]
+    },
+    {
+      "word": "lag",
+      "hints": [
+        "slow",
+        "delay",
+        "gaming",
+        "frustrating",
+        "connection"
+      ]
+    },
+    {
+      "word": "server",
+      "hints": [
+        "computers",
+        "host",
+        "online",
+        "data",
+        "crash"
+      ]
+    },
+    {
+      "word": "glitch",
+      "hints": [
+        "error",
+        "bug",
+        "weird",
+        "screen",
+        "broken"
+      ]
+    },
+    {
+      "word": "update",
+      "hints": [
+        "new version",
+        "download",
+        "improve",
+        "software",
+        "wait"
+      ]
+    },
+    {
+      "word": "browser",
+      "hints": [
+        "internet",
+        "tabs",
+        "search",
+        "web",
+        "window"
+      ]
+    },
+    {
+      "word": "search engine",
+      "hints": [
+        "search",
+        "results",
+        "web",
+        "questions",
+        "find"
+      ]
+    },
+    {
+      "word": "URL",
+      "hints": [
+        "address",
+        "web",
+        "link",
+        "bar",
+        "type"
+      ]
+    },
+    {
+      "word": "phishing",
+      "hints": [
+        "scam",
+        "fake",
+        "email",
+        "steal",
+        "trick"
+      ]
+    },
+    {
+      "word": "hacker",
+      "hints": [
+        "computer",
+        "break in",
+        "code",
+        "steal",
+        "anonymous"
+      ]
+    },
+    {
+      "word": "chatbot",
+      "hints": [
+        "AI",
+        "messages",
+        "automatic",
+        "reply",
+        "robot"
+      ]
+    },
+    {
+      "word": "deepfake",
+      "hints": [
+        "fake",
+        "video",
+        "AI",
+        "realistic",
+        "face"
+      ]
     }
   ]
 }

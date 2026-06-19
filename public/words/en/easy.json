@@ -5,123 +5,903 @@
   "words": [
     {
       "word": "sun",
-      "hints": ["sky", "yellow", "heat", "summer", "light"]
+      "hints": [
+        "sky",
+        "warm",
+        "light",
+        "day",
+        "bright"
+      ]
     },
     {
       "word": "house",
-      "hints": ["home", "roof", "family", "garden", "walls"]
+      "hints": [
+        "roof",
+        "rooms",
+        "family",
+        "street",
+        "walls"
+      ]
     },
     {
       "word": "water",
-      "hints": ["drink", "ocean", "rain", "bottle", "blue"]
+      "hints": [
+        "drink",
+        "clear",
+        "river",
+        "thirst",
+        "wet"
+      ]
     },
     {
       "word": "tree",
-      "hints": ["forest", "leaves", "wood", "green", "roots"]
+      "hints": [
+        "forest",
+        "leaves",
+        "wood",
+        "shade",
+        "tall"
+      ]
     },
     {
       "word": "book",
-      "hints": ["pages", "reading", "story", "library", "paper"]
+      "hints": [
+        "pages",
+        "reading",
+        "shelf",
+        "story",
+        "paper"
+      ]
     },
     {
       "word": "chair",
-      "hints": ["sitting", "legs", "table", "wood", "office"]
+      "hints": [
+        "sitting",
+        "legs",
+        "table",
+        "wood",
+        "rest"
+      ]
     },
     {
       "word": "phone",
-      "hints": ["calls", "screen", "pocket", "apps", "ringtone"]
+      "hints": [
+        "screen",
+        "pocket",
+        "calls",
+        "apps",
+        "charging"
+      ]
     },
     {
       "word": "car",
-      "hints": ["wheels", "road", "driving", "engine", "garage"]
+      "hints": [
+        "road",
+        "wheels",
+        "engine",
+        "driving",
+        "garage"
+      ]
     },
     {
       "word": "ball",
-      "hints": ["round", "games", "bouncing", "sports", "throwing"]
+      "hints": [
+        "round",
+        "throw",
+        "play",
+        "bounce",
+        "game"
+      ]
     },
     {
       "word": "bed",
-      "hints": ["sleep", "pillow", "blanket", "night", "dreams"]
+      "hints": [
+        "sleep",
+        "pillow",
+        "night",
+        "rest",
+        "blanket"
+      ]
     },
     {
       "word": "door",
-      "hints": ["opening", "key", "knocking", "handle", "entrance"]
+      "hints": [
+        "open",
+        "handle",
+        "wall",
+        "entrance",
+        "knock"
+      ]
     },
     {
       "word": "shoe",
-      "hints": ["feet", "laces", "walking", "pair", "sole"]
+      "hints": [
+        "feet",
+        "pair",
+        "walking",
+        "laces",
+        "sole"
+      ]
     },
     {
       "word": "clock",
-      "hints": ["time", "hands", "ticking", "wall", "alarm"]
+      "hints": [
+        "time",
+        "wall",
+        "hands",
+        "tick",
+        "numbers"
+      ]
     },
     {
       "word": "milk",
-      "hints": ["white", "cow", "breakfast", "bottle", "cereal"]
+      "hints": [
+        "white",
+        "glass",
+        "breakfast",
+        "drink",
+        "carton"
+      ]
     },
     {
       "word": "rain",
-      "hints": ["clouds", "umbrella", "wet", "storm", "drops"]
+      "hints": [
+        "clouds",
+        "wet",
+        "umbrella",
+        "grey",
+        "drops"
+      ]
     },
     {
       "word": "fire",
-      "hints": ["hot", "flames", "smoke", "red", "camping"]
+      "hints": [
+        "hot",
+        "smoke",
+        "light",
+        "red",
+        "danger"
+      ]
     },
     {
       "word": "moon",
-      "hints": ["night", "sky", "stars", "round", "astronaut"]
+      "hints": [
+        "night",
+        "sky",
+        "round",
+        "stars",
+        "glow"
+      ]
     },
     {
       "word": "bread",
-      "hints": ["bakery", "flour", "toast", "slice", "butter"]
+      "hints": [
+        "bakery",
+        "slice",
+        "flour",
+        "breakfast",
+        "soft"
+      ]
     },
     {
       "word": "key",
-      "hints": ["lock", "door", "metal", "pocket", "ring"]
+      "hints": [
+        "lock",
+        "metal",
+        "pocket",
+        "small",
+        "ring"
+      ]
     },
     {
       "word": "hat",
-      "hints": ["head", "sun", "cap", "fashion", "winter"]
+      "hints": [
+        "head",
+        "wear",
+        "sun",
+        "fashion",
+        "round"
+      ]
     },
     {
       "word": "fish",
-      "hints": ["water", "swimming", "scales", "ocean", "aquarium"]
+      "hints": [
+        "water",
+        "swim",
+        "scales",
+        "sea",
+        "fins"
+      ]
     },
     {
       "word": "apple",
-      "hints": ["fruit", "red", "tree", "juice", "bite"]
+      "hints": [
+        "fruit",
+        "red",
+        "tree",
+        "sweet",
+        "bite"
+      ]
     },
     {
       "word": "beach",
-      "hints": ["sand", "sea", "summer", "towel", "waves"]
+      "hints": [
+        "sand",
+        "sea",
+        "summer",
+        "waves",
+        "sun"
+      ]
     },
     {
       "word": "snow",
-      "hints": ["winter", "white", "cold", "flakes", "snowman"]
+      "hints": [
+        "winter",
+        "white",
+        "cold",
+        "soft",
+        "falling"
+      ]
     },
     {
       "word": "bird",
-      "hints": ["wings", "flying", "nest", "feathers", "singing"]
+      "hints": [
+        "wings",
+        "fly",
+        "nest",
+        "feathers",
+        "song"
+      ]
     },
     {
       "word": "cake",
-      "hints": ["birthday", "sweet", "candles", "oven", "slice"]
+      "hints": [
+        "sweet",
+        "party",
+        "candles",
+        "bakery",
+        "slice"
+      ]
     },
     {
       "word": "star",
-      "hints": ["night", "sky", "shining", "wish", "space"]
+      "hints": [
+        "night",
+        "sky",
+        "shine",
+        "tiny",
+        "space"
+      ]
     },
     {
       "word": "garden",
-      "hints": ["flowers", "plants", "grass", "watering", "backyard"]
+      "hints": [
+        "plants",
+        "grass",
+        "flowers",
+        "outside",
+        "green"
+      ]
     },
     {
       "word": "window",
-      "hints": ["glass", "view", "curtains", "opening", "light"]
+      "hints": [
+        "glass",
+        "view",
+        "light",
+        "frame",
+        "open"
+      ]
     },
     {
       "word": "cheese",
-      "hints": ["yellow", "mouse", "milk", "holes", "sandwich"]
+      "hints": [
+        "yellow",
+        "milk",
+        "slice",
+        "snack",
+        "dairy"
+      ]
+    },
+    {
+      "word": "table",
+      "hints": [
+        "legs",
+        "wood",
+        "kitchen",
+        "flat",
+        "dinner"
+      ]
+    },
+    {
+      "word": "cup",
+      "hints": [
+        "drink",
+        "handle",
+        "coffee",
+        "small",
+        "kitchen"
+      ]
+    },
+    {
+      "word": "spoon",
+      "hints": [
+        "eat",
+        "soup",
+        "metal",
+        "kitchen",
+        "round"
+      ]
+    },
+    {
+      "word": "plate",
+      "hints": [
+        "food",
+        "round",
+        "dinner",
+        "kitchen",
+        "flat"
+      ]
+    },
+    {
+      "word": "knife",
+      "hints": [
+        "cut",
+        "sharp",
+        "kitchen",
+        "blade",
+        "metal"
+      ]
+    },
+    {
+      "word": "fork",
+      "hints": [
+        "eat",
+        "metal",
+        "kitchen",
+        "points",
+        "dinner"
+      ]
+    },
+    {
+      "word": "bag",
+      "hints": [
+        "carry",
+        "shoulder",
+        "shopping",
+        "handle",
+        "pockets"
+      ]
+    },
+    {
+      "word": "shirt",
+      "hints": [
+        "wear",
+        "buttons",
+        "cotton",
+        "sleeves",
+        "clothes"
+      ]
+    },
+    {
+      "word": "sock",
+      "hints": [
+        "foot",
+        "pair",
+        "warm",
+        "wool",
+        "clothes"
+      ]
+    },
+    {
+      "word": "glove",
+      "hints": [
+        "hand",
+        "warm",
+        "pair",
+        "winter",
+        "fingers"
+      ]
+    },
+    {
+      "word": "coat",
+      "hints": [
+        "winter",
+        "warm",
+        "wear",
+        "buttons",
+        "outside"
+      ]
+    },
+    {
+      "word": "ring",
+      "hints": [
+        "finger",
+        "gold",
+        "round",
+        "wedding",
+        "small"
+      ]
+    },
+    {
+      "word": "lamp",
+      "hints": [
+        "light",
+        "table",
+        "bulb",
+        "switch",
+        "evening"
+      ]
+    },
+    {
+      "word": "paper",
+      "hints": [
+        "white",
+        "writing",
+        "thin",
+        "sheet",
+        "office"
+      ]
+    },
+    {
+      "word": "box",
+      "hints": [
+        "cardboard",
+        "square",
+        "storage",
+        "lid",
+        "carry"
+      ]
+    },
+    {
+      "word": "bottle",
+      "hints": [
+        "drink",
+        "plastic",
+        "cap",
+        "water",
+        "glass"
+      ]
+    },
+    {
+      "word": "glass",
+      "hints": [
+        "drink",
+        "clear",
+        "fragile",
+        "water",
+        "transparent"
+      ]
+    },
+    {
+      "word": "plant",
+      "hints": [
+        "green",
+        "pot",
+        "leaves",
+        "water",
+        "grow"
+      ]
+    },
+    {
+      "word": "flower",
+      "hints": [
+        "petals",
+        "garden",
+        "smell",
+        "colors",
+        "spring"
+      ]
+    },
+    {
+      "word": "grass",
+      "hints": [
+        "green",
+        "garden",
+        "lawn",
+        "soft",
+        "field"
+      ]
+    },
+    {
+      "word": "leaf",
+      "hints": [
+        "tree",
+        "green",
+        "autumn",
+        "fall",
+        "thin"
+      ]
+    },
+    {
+      "word": "stone",
+      "hints": [
+        "hard",
+        "grey",
+        "ground",
+        "heavy",
+        "throw"
+      ]
+    },
+    {
+      "word": "cloud",
+      "hints": [
+        "sky",
+        "white",
+        "rain",
+        "soft",
+        "float"
+      ]
+    },
+    {
+      "word": "wind",
+      "hints": [
+        "air",
+        "blow",
+        "cold",
+        "leaves",
+        "storm"
+      ]
+    },
+    {
+      "word": "ice",
+      "hints": [
+        "cold",
+        "frozen",
+        "water",
+        "slippery",
+        "winter"
+      ]
+    },
+    {
+      "word": "river",
+      "hints": [
+        "water",
+        "flow",
+        "bank",
+        "fish",
+        "bridge"
+      ]
+    },
+    {
+      "word": "lake",
+      "hints": [
+        "water",
+        "calm",
+        "swim",
+        "fish",
+        "shore"
+      ]
+    },
+    {
+      "word": "mountain",
+      "hints": [
+        "high",
+        "climb",
+        "snow",
+        "rocks",
+        "peak"
+      ]
+    },
+    {
+      "word": "road",
+      "hints": [
+        "cars",
+        "long",
+        "travel",
+        "grey",
+        "signs"
+      ]
+    },
+    {
+      "word": "bridge",
+      "hints": [
+        "river",
+        "cross",
+        "over",
+        "cars",
+        "stone"
+      ]
+    },
+    {
+      "word": "train",
+      "hints": [
+        "tracks",
+        "travel",
+        "station",
+        "long",
+        "fast"
+      ]
+    },
+    {
+      "word": "boat",
+      "hints": [
+        "water",
+        "sail",
+        "float",
+        "river",
+        "fishing"
+      ]
+    },
+    {
+      "word": "bike",
+      "hints": [
+        "wheels",
+        "pedals",
+        "ride",
+        "two",
+        "road"
+      ]
+    },
+    {
+      "word": "plane",
+      "hints": [
+        "sky",
+        "fly",
+        "travel",
+        "wings",
+        "airport"
+      ]
+    },
+    {
+      "word": "kite",
+      "hints": [
+        "sky",
+        "wind",
+        "string",
+        "fly",
+        "colorful"
+      ]
+    },
+    {
+      "word": "balloon",
+      "hints": [
+        "air",
+        "party",
+        "float",
+        "colorful",
+        "pop"
+      ]
+    },
+    {
+      "word": "toy",
+      "hints": [
+        "child",
+        "play",
+        "fun",
+        "plastic",
+        "colorful"
+      ]
+    },
+    {
+      "word": "egg",
+      "hints": [
+        "white",
+        "breakfast",
+        "shell",
+        "round",
+        "cook"
+      ]
+    },
+    {
+      "word": "rice",
+      "hints": [
+        "white",
+        "grains",
+        "cook",
+        "bowl",
+        "small"
+      ]
+    },
+    {
+      "word": "salt",
+      "hints": [
+        "white",
+        "taste",
+        "kitchen",
+        "grains",
+        "season"
+      ]
+    },
+    {
+      "word": "sugar",
+      "hints": [
+        "sweet",
+        "white",
+        "spoon",
+        "coffee",
+        "grains"
+      ]
+    },
+    {
+      "word": "button",
+      "hints": [
+        "shirt",
+        "small",
+        "round",
+        "press",
+        "sew"
+      ]
+    },
+    {
+      "word": "needle",
+      "hints": [
+        "sharp",
+        "sew",
+        "thin",
+        "thread",
+        "small"
+      ]
+    },
+    {
+      "word": "rope",
+      "hints": [
+        "tie",
+        "long",
+        "knot",
+        "pull",
+        "strong"
+      ]
+    },
+    {
+      "word": "brush",
+      "hints": [
+        "hair",
+        "clean",
+        "bristles",
+        "handle",
+        "paint"
+      ]
+    },
+    {
+      "word": "comb",
+      "hints": [
+        "hair",
+        "teeth",
+        "plastic",
+        "morning",
+        "neat"
+      ]
+    },
+    {
+      "word": "candy",
+      "hints": [
+        "sweet",
+        "sugar",
+        "colorful",
+        "children",
+        "treat"
+      ]
+    },
+    {
+      "word": "cookie",
+      "hints": [
+        "sweet",
+        "bake",
+        "round",
+        "snack",
+        "chocolate"
+      ]
+    },
+    {
+      "word": "hand",
+      "hints": [
+        "fingers",
+        "body",
+        "wave",
+        "hold",
+        "five"
+      ]
+    },
+    {
+      "word": "foot",
+      "hints": [
+        "body",
+        "walk",
+        "toes",
+        "shoe",
+        "ground"
+      ]
+    },
+    {
+      "word": "eye",
+      "hints": [
+        "see",
+        "face",
+        "color",
+        "blink",
+        "two"
+      ]
+    },
+    {
+      "word": "nose",
+      "hints": [
+        "face",
+        "smell",
+        "breathe",
+        "center",
+        "sneeze"
+      ]
+    },
+    {
+      "word": "hair",
+      "hints": [
+        "head",
+        "long",
+        "brush",
+        "color",
+        "cut"
+      ]
+    },
+    {
+      "word": "tooth",
+      "hints": [
+        "mouth",
+        "white",
+        "bite",
+        "dentist",
+        "smile"
+      ]
+    },
+    {
+      "word": "smile",
+      "hints": [
+        "happy",
+        "face",
+        "teeth",
+        "friendly",
+        "photo"
+      ]
+    },
+    {
+      "word": "baby",
+      "hints": [
+        "small",
+        "cry",
+        "cute",
+        "newborn",
+        "cradle"
+      ]
+    },
+    {
+      "word": "dog",
+      "hints": [
+        "pet",
+        "bark",
+        "tail",
+        "loyal",
+        "walk"
+      ]
+    },
+    {
+      "word": "cat",
+      "hints": [
+        "pet",
+        "purr",
+        "whiskers",
+        "soft",
+        "mouse"
+      ]
+    },
+    {
+      "word": "cow",
+      "hints": [
+        "farm",
+        "milk",
+        "field",
+        "grass",
+        "spots"
+      ]
+    },
+    {
+      "word": "duck",
+      "hints": [
+        "water",
+        "pond",
+        "feathers",
+        "swim",
+        "yellow"
+      ]
     }
   ]
 }

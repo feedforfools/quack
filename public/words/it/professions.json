@@ -5,129 +5,903 @@
   "words": [
     {
       "word": "dottore",
-      "hints": ["ospedale", "stetoscopio", "pazienti", "camice", "ricetta"]
+      "hints": [
+        "ospedale",
+        "pazienti",
+        "salute",
+        "cura",
+        "studio"
+      ]
     },
     {
       "word": "pompiere",
-      "hints": ["fiamme", "camion", "casco", "idrante", "coraggio"]
+      "hints": [
+        "fuoco",
+        "soccorso",
+        "coraggio",
+        "pericolo",
+        "divisa"
+      ]
     },
     {
       "word": "poliziotto",
-      "hints": ["distintivo", "divisa", "sirena", "manette", "legge"]
+      "hints": [
+        "legge",
+        "divisa",
+        "sicurezza",
+        "crimine",
+        "pattuglia"
+      ]
     },
     {
       "word": "cuoco",
-      "hints": ["cucina", "ristorante", "cappello", "ricette", "coltelli"]
+      "hints": [
+        "cucina",
+        "ristorante",
+        "cucinare",
+        "ricette",
+        "cibo"
+      ]
     },
     {
       "word": "pilota",
-      "hints": ["aereo", "cabina", "divisa", "cielo", "comandante"]
+      "hints": [
+        "aereo",
+        "cielo",
+        "viaggio",
+        "divisa",
+        "comandante"
+      ]
     },
     {
       "word": "infermiera",
-      "hints": ["ospedale", "cura", "iniezioni", "camice", "pazienti"]
+      "hints": [
+        "ospedale",
+        "cura",
+        "pazienti",
+        "salute",
+        "turni"
+      ]
     },
     {
       "word": "avvocato",
-      "hints": ["tribunale", "completi", "arringa", "giudice", "contratti"]
+      "hints": [
+        "tribunale",
+        "legge",
+        "completi",
+        "arringa",
+        "giustizia"
+      ]
     },
     {
       "word": "giudice",
-      "hints": ["tribunale", "martelletto", "toga", "sentenza", "giustizia"]
+      "hints": [
+        "tribunale",
+        "legge",
+        "decisioni",
+        "giustizia",
+        "toga"
+      ]
     },
     {
       "word": "idraulico",
-      "hints": ["tubi", "perdite", "chiave", "bagno", "tuta"]
+      "hints": [
+        "tubi",
+        "acqua",
+        "attrezzi",
+        "riparare",
+        "bagno"
+      ]
     },
     {
       "word": "elettricista",
-      "hints": ["fili", "corrente", "attrezzi", "luci", "scintille"]
+      "hints": [
+        "fili",
+        "corrente",
+        "attrezzi",
+        "luci",
+        "riparare"
+      ]
     },
     {
       "word": "falegname",
-      "hints": ["legno", "martello", "segatura", "mobili", "bottega"]
+      "hints": [
+        "legno",
+        "attrezzi",
+        "costruire",
+        "mobili",
+        "bottega"
+      ]
     },
     {
       "word": "contadino",
-      "hints": ["campi", "trattore", "raccolto", "animali", "alba"]
+      "hints": [
+        "campi",
+        "raccolto",
+        "animali",
+        "trattore",
+        "alba"
+      ]
     },
     {
       "word": "pescatore",
-      "hints": ["barca", "reti", "mare", "pazienza", "pescato"]
+      "hints": [
+        "barca",
+        "mare",
+        "reti",
+        "pescato",
+        "pazienza"
+      ]
     },
     {
       "word": "astronauta",
-      "hints": ["spazio", "casco", "razzo", "fluttuare", "NASA"]
+      "hints": [
+        "spazio",
+        "razzo",
+        "addestramento",
+        "casco",
+        "coraggio"
+      ]
     },
     {
       "word": "scienziato",
       "hints": [
         "laboratorio",
-        "esperimenti",
         "ricerca",
-        "microscopio",
-        "scoperta"
+        "esperimenti",
+        "scoperta",
+        "studio"
       ]
     },
     {
       "word": "architetto",
-      "hints": ["edifici", "progetti", "design", "disegni", "modellini"]
+      "hints": [
+        "edifici",
+        "progetti",
+        "disegni",
+        "piani",
+        "creativo"
+      ]
     },
     {
       "word": "fotografo",
-      "hints": ["macchina", "obiettivo", "scatti", "luci", "ritocco"]
+      "hints": [
+        "macchina",
+        "foto",
+        "luce",
+        "attimi",
+        "ritocco"
+      ]
     },
     {
       "word": "giornalista",
-      "hints": ["notizie", "interviste", "scadenza", "articoli", "microfono"]
+      "hints": [
+        "notizie",
+        "scrivere",
+        "interviste",
+        "storie",
+        "scadenza"
+      ]
     },
     {
       "word": "attore",
-      "hints": ["palco", "telecamera", "copione", "fama", "ruoli"]
+      "hints": [
+        "palco",
+        "ruoli",
+        "telecamera",
+        "fama",
+        "recitazione"
+      ]
     },
     {
       "word": "musicista",
-      "hints": ["strumenti", "concerti", "studio", "melodia", "palco"]
+      "hints": [
+        "strumenti",
+        "concerti",
+        "suono",
+        "palco",
+        "esercizio"
+      ]
     },
     {
       "word": "dentista",
-      "hints": ["denti", "trapano", "poltrona", "paura", "sorriso"]
+      "hints": [
+        "denti",
+        "studio",
+        "poltrona",
+        "salute",
+        "appuntamento"
+      ]
     },
     {
       "word": "veterinario",
-      "hints": ["animali", "clinica", "cuccioli", "cura", "iniezioni"]
+      "hints": [
+        "animali",
+        "clinica",
+        "cura",
+        "cuccioli",
+        "salute"
+      ]
     },
     {
       "word": "parrucchiere",
-      "hints": ["forbici", "salone", "piega", "specchi", "chiacchiere"]
+      "hints": [
+        "forbici",
+        "salone",
+        "piega",
+        "specchi",
+        "appuntamento"
+      ]
     },
     {
       "word": "meccanico",
-      "hints": ["auto", "officina", "olio", "attrezzi", "motore"]
+      "hints": [
+        "auto",
+        "motore",
+        "officina",
+        "attrezzi",
+        "olio"
+      ]
     },
     {
       "word": "cameriere",
-      "hints": ["ristorante", "vassoio", "ordini", "mance", "grembiule"]
+      "hints": [
+        "ristorante",
+        "ordini",
+        "vassoio",
+        "mance",
+        "servizio"
+      ]
     },
     {
       "word": "barista",
-      "hints": ["caffè", "espresso", "schiuma", "bancone", "mattina"]
+      "hints": [
+        "caffè",
+        "bancone",
+        "schiuma",
+        "mattina",
+        "bar"
+      ]
     },
     {
       "word": "programmatore",
-      "hints": ["computer", "codice", "bug", "tastiera", "caffè"]
+      "hints": [
+        "computer",
+        "codice",
+        "schermo",
+        "logica",
+        "tastiera"
+      ]
     },
     {
       "word": "stilista",
-      "hints": ["creatività", "moda", "bozzetti", "stile", "tendenze"]
+      "hints": [
+        "creatività",
+        "stile",
+        "bozzetti",
+        "tendenze",
+        "idee"
+      ]
     },
     {
       "word": "traduttore",
-      "hints": ["lingue", "parole", "documenti", "bilingue", "riunioni"]
+      "hints": [
+        "lingue",
+        "parole",
+        "documenti",
+        "bilingue",
+        "significato"
+      ]
     },
     {
       "word": "chirurgo",
-      "hints": ["operazione", "precisione", "bisturi", "mascherina", "ospedale"]
+      "hints": [
+        "operazione",
+        "precisione",
+        "ospedale",
+        "mascherina",
+        "mani"
+      ]
+    },
+    {
+      "word": "insegnante",
+      "hints": [
+        "scuola",
+        "lezioni",
+        "alunni",
+        "lavagna",
+        "spiegare"
+      ]
+    },
+    {
+      "word": "contabile",
+      "hints": [
+        "numeri",
+        "soldi",
+        "ufficio",
+        "tasse",
+        "fogli"
+      ]
+    },
+    {
+      "word": "banchiere",
+      "hints": [
+        "soldi",
+        "ufficio",
+        "completo",
+        "prestiti",
+        "finanza"
+      ]
+    },
+    {
+      "word": "cassiere",
+      "hints": [
+        "negozio",
+        "soldi",
+        "bancone",
+        "cassa",
+        "clienti"
+      ]
+    },
+    {
+      "word": "bibliotecario",
+      "hints": [
+        "libri",
+        "silenzio",
+        "scaffali",
+        "lettura",
+        "ordine"
+      ]
+    },
+    {
+      "word": "professore",
+      "hints": [
+        "università",
+        "lezioni",
+        "studenti",
+        "ricerca",
+        "sapere"
+      ]
+    },
+    {
+      "word": "ingegnere",
+      "hints": [
+        "macchine",
+        "progettare",
+        "costruire",
+        "matematica",
+        "risolvere"
+      ]
+    },
+    {
+      "word": "imbianchino",
+      "hints": [
+        "pareti",
+        "pennello",
+        "colore",
+        "stanze",
+        "scala"
+      ]
+    },
+    {
+      "word": "intonacatore",
+      "hints": [
+        "pareti",
+        "liscio",
+        "cantiere",
+        "attrezzi",
+        "bagnato"
+      ]
+    },
+    {
+      "word": "saldatore",
+      "hints": [
+        "metallo",
+        "scintille",
+        "maschera",
+        "unire",
+        "calore"
+      ]
+    },
+    {
+      "word": "fabbro",
+      "hints": [
+        "metallo",
+        "martello",
+        "fuoco",
+        "forgia",
+        "ferro"
+      ]
+    },
+    {
+      "word": "sarto",
+      "hints": [
+        "vestiti",
+        "cucire",
+        "misure",
+        "stoffa",
+        "ago"
+      ]
+    },
+    {
+      "word": "macellaio",
+      "hints": [
+        "carne",
+        "coltello",
+        "negozio",
+        "tagliare",
+        "grembiule"
+      ]
+    },
+    {
+      "word": "panettiere",
+      "hints": [
+        "pane",
+        "forno",
+        "presto",
+        "farina",
+        "negozio"
+      ]
+    },
+    {
+      "word": "barman",
+      "hints": [
+        "drink",
+        "bar",
+        "notte",
+        "cocktail",
+        "bancone"
+      ]
+    },
+    {
+      "word": "custode",
+      "hints": [
+        "pulizie",
+        "edificio",
+        "mocio",
+        "chiavi",
+        "notte"
+      ]
+    },
+    {
+      "word": "giardiniere",
+      "hints": [
+        "piante",
+        "aperto",
+        "attrezzi",
+        "terra",
+        "verde"
+      ]
+    },
+    {
+      "word": "fioraio",
+      "hints": [
+        "fiori",
+        "negozio",
+        "mazzo",
+        "colore",
+        "comporre"
+      ]
+    },
+    {
+      "word": "minatore",
+      "hints": [
+        "sottoterra",
+        "buio",
+        "casco",
+        "carbone",
+        "scavare"
+      ]
+    },
+    {
+      "word": "boscaiolo",
+      "hints": [
+        "alberi",
+        "ascia",
+        "bosco",
+        "legno",
+        "forte"
+      ]
+    },
+    {
+      "word": "marinaio",
+      "hints": [
+        "mare",
+        "nave",
+        "onde",
+        "divisa",
+        "viaggio"
+      ]
+    },
+    {
+      "word": "soldato",
+      "hints": [
+        "esercito",
+        "divisa",
+        "guerra",
+        "coraggio",
+        "disciplina"
+      ]
+    },
+    {
+      "word": "investigatore",
+      "hints": [
+        "indizi",
+        "mistero",
+        "risolvere",
+        "crimine",
+        "indagare"
+      ]
+    },
+    {
+      "word": "guardia giurata",
+      "hints": [
+        "sorvegliare",
+        "divisa",
+        "notte",
+        "porte",
+        "proteggere"
+      ]
+    },
+    {
+      "word": "allenatore",
+      "hints": [
+        "squadra",
+        "allenamento",
+        "sport",
+        "motivare",
+        "fischietto"
+      ]
+    },
+    {
+      "word": "ballerino",
+      "hints": [
+        "palco",
+        "movimento",
+        "musica",
+        "grazia",
+        "esercizio"
+      ]
+    },
+    {
+      "word": "cantante",
+      "hints": [
+        "voce",
+        "palco",
+        "canzoni",
+        "microfono",
+        "fan"
+      ]
+    },
+    {
+      "word": "scultore",
+      "hints": [
+        "statue",
+        "pietra",
+        "arte",
+        "mani",
+        "modellare"
+      ]
+    },
+    {
+      "word": "scrittore",
+      "hints": [
+        "parole",
+        "libri",
+        "storie",
+        "fantasia",
+        "scrivania"
+      ]
+    },
+    {
+      "word": "pagliaccio",
+      "hints": [
+        "circo",
+        "buffo",
+        "trucco",
+        "bambini",
+        "colorato"
+      ]
+    },
+    {
+      "word": "farmacista",
+      "hints": [
+        "medicine",
+        "bancone",
+        "salute",
+        "pillole",
+        "camice"
+      ]
+    },
+    {
+      "word": "paramedico",
+      "hints": [
+        "ambulanza",
+        "emergenza",
+        "soccorso",
+        "veloce",
+        "cura"
+      ]
+    },
+    {
+      "word": "psicologo",
+      "hints": [
+        "mente",
+        "parlare",
+        "emozioni",
+        "ascoltare",
+        "aiutare"
+      ]
+    },
+    {
+      "word": "ottico",
+      "hints": [
+        "occhi",
+        "occhiali",
+        "vista",
+        "esame",
+        "montature"
+      ]
+    },
+    {
+      "word": "politico",
+      "hints": [
+        "governo",
+        "discorsi",
+        "voti",
+        "potere",
+        "promesse"
+      ]
+    },
+    {
+      "word": "diplomatico",
+      "hints": [
+        "paesi",
+        "incontri",
+        "trattative",
+        "ambasciata",
+        "formale"
+      ]
+    },
+    {
+      "word": "agente immobiliare",
+      "hints": [
+        "case",
+        "vendere",
+        "chiavi",
+        "visite",
+        "affari"
+      ]
+    },
+    {
+      "word": "imprenditore",
+      "hints": [
+        "impresa",
+        "idee",
+        "rischio",
+        "startup",
+        "soldi"
+      ]
+    },
+    {
+      "word": "consulente",
+      "hints": [
+        "consigli",
+        "azienda",
+        "riunioni",
+        "esperto",
+        "ufficio"
+      ]
+    },
+    {
+      "word": "assistente di volo",
+      "hints": [
+        "aereo",
+        "servizio",
+        "divisa",
+        "viaggio",
+        "sicurezza"
+      ]
+    },
+    {
+      "word": "autista d'autobus",
+      "hints": [
+        "autobus",
+        "percorso",
+        "passeggeri",
+        "città",
+        "volante"
+      ]
+    },
+    {
+      "word": "tassista",
+      "hints": [
+        "auto",
+        "città",
+        "passeggeri",
+        "tariffa",
+        "strade"
+      ]
+    },
+    {
+      "word": "camionista",
+      "hints": [
+        "camion",
+        "autostrada",
+        "lungo",
+        "carico",
+        "volante"
+      ]
+    },
+    {
+      "word": "postino",
+      "hints": [
+        "lettere",
+        "consegna",
+        "divisa",
+        "camminare",
+        "posta"
+      ]
+    },
+    {
+      "word": "vetraio",
+      "hints": [
+        "vetro",
+        "finestre",
+        "tagliare",
+        "attrezzi",
+        "riparare"
+      ]
+    },
+    {
+      "word": "gioielliere",
+      "hints": [
+        "oro",
+        "anelli",
+        "preziosi",
+        "piccolo",
+        "negozio"
+      ]
+    },
+    {
+      "word": "orologiaio",
+      "hints": [
+        "tempo",
+        "minuscolo",
+        "ingranaggi",
+        "preciso",
+        "riparare"
+      ]
+    },
+    {
+      "word": "truccatore",
+      "hints": [
+        "volti",
+        "pennelli",
+        "bellezza",
+        "colore",
+        "trasformare"
+      ]
+    },
+    {
+      "word": "tatuatore",
+      "hints": [
+        "inchiostro",
+        "pelle",
+        "ago",
+        "arte",
+        "disegno"
+      ]
+    },
+    {
+      "word": "barbiere",
+      "hints": [
+        "capelli",
+        "negozio",
+        "rasoio",
+        "uomini",
+        "spuntare"
+      ]
+    },
+    {
+      "word": "bagnino",
+      "hints": [
+        "spiaggia",
+        "piscina",
+        "soccorso",
+        "fischietto",
+        "sorvegliare"
+      ]
+    },
+    {
+      "word": "personal trainer",
+      "hints": [
+        "palestra",
+        "fitness",
+        "muscoli",
+        "motivare",
+        "esercizio"
+      ]
+    },
+    {
+      "word": "sommelier",
+      "hints": [
+        "vino",
+        "ristorante",
+        "gusto",
+        "calici",
+        "esperto"
+      ]
+    },
+    {
+      "word": "pescivendolo",
+      "hints": [
+        "pesce",
+        "mercato",
+        "fresco",
+        "ghiaccio",
+        "negozio"
+      ]
+    },
+    {
+      "word": "negoziante",
+      "hints": [
+        "negozio",
+        "clienti",
+        "merce",
+        "bancone",
+        "vendere"
+      ]
+    },
+    {
+      "word": "guida turistica",
+      "hints": [
+        "turisti",
+        "luoghi",
+        "storia",
+        "gruppo",
+        "spiegare"
+      ]
+    },
+    {
+      "word": "corriere",
+      "hints": [
+        "pacchi",
+        "consegna",
+        "veloce",
+        "bici",
+        "porte"
+      ]
+    },
+    {
+      "word": "muratore",
+      "hints": [
+        "pietra",
+        "costruire",
+        "muri",
+        "attrezzi",
+        "cantiere"
+      ]
+    },
+    {
+      "word": "ostetrica",
+      "hints": [
+        "nascita",
+        "neonati",
+        "ospedale",
+        "mamme",
+        "cura"
+      ]
+    },
+    {
+      "word": "apicoltore",
+      "hints": [
+        "api",
+        "miele",
+        "tuta",
+        "arnie",
+        "velo"
+      ]
     }
   ]
 }

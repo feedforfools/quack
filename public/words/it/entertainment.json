@@ -5,107 +5,263 @@
   "words": [
     {
       "word": "supereroe",
-      "hints": ["mantello", "poteri", "fumetti", "cattivo", "maschera"]
+      "hints": [
+        "mantello",
+        "poteri",
+        "salvare",
+        "maschera",
+        "forte"
+      ]
     },
     {
       "word": "cartone animato",
-      "hints": ["animazione", "bambini", "disegni", "colorato", "televisione"]
+      "hints": [
+        "disegni",
+        "bambini",
+        "colorato",
+        "animato",
+        "televisione"
+      ]
     },
     {
       "word": "cinema",
-      "hints": ["film", "popcorn", "schermo", "biglietti", "poltrone"]
+      "hints": [
+        "film",
+        "schermo",
+        "biglietti",
+        "buio",
+        "poltrone"
+      ]
     },
     {
       "word": "teatro",
-      "hints": ["palco", "attori", "sipario", "spettacolo", "pubblico"]
+      "hints": [
+        "palco",
+        "attori",
+        "dal vivo",
+        "pubblico",
+        "spettacolo"
+      ]
     },
     {
       "word": "circo",
-      "hints": ["pagliacci", "tendone", "acrobati", "giocoleria", "elefanti"]
+      "hints": [
+        "tendone",
+        "acrobati",
+        "pagliacci",
+        "spettacolo",
+        "animali"
+      ]
     },
     {
       "word": "mago",
-      "hints": ["trucchi", "coniglio", "bacchetta", "illusione", "carte"]
+      "hints": [
+        "trucchi",
+        "illusione",
+        "carte",
+        "palco",
+        "mistero"
+      ]
     },
     {
       "word": "karaoke",
-      "hints": ["cantare", "microfono", "testi", "bar", "amici"]
+      "hints": [
+        "cantare",
+        "microfono",
+        "bar",
+        "amici",
+        "canzoni"
+      ]
     },
     {
       "word": "sitcom",
-      "hints": ["commedia", "episodi", "risate", "televisione", "personaggi"]
+      "hints": [
+        "commedia",
+        "episodi",
+        "risate",
+        "televisione",
+        "personaggi"
+      ]
     },
     {
       "word": "zombie",
-      "hints": ["nonmorti", "horror", "cervelli", "apocalisse", "lenti"]
+      "hints": [
+        "nonmorto",
+        "horror",
+        "lento",
+        "spaventoso",
+        "apocalisse"
+      ]
     },
     {
       "word": "vampiro",
-      "hints": ["canini", "sangue", "notte", "aglio", "bara"]
+      "hints": [
+        "notte",
+        "sangue",
+        "canini",
+        "oscuro",
+        "immortale"
+      ]
     },
     {
       "word": "cattivo",
-      "hints": ["malvagio", "film", "piano", "eroe", "risata"]
+      "hints": [
+        "malvagio",
+        "brutto",
+        "film",
+        "piano",
+        "nemico"
+      ]
     },
     {
       "word": "sequel",
-      "hints": ["film", "secondo", "continuazione", "saga", "cinema"]
+      "hints": [
+        "film",
+        "secondo",
+        "continuazione",
+        "seguito",
+        "prossimo"
+      ]
     },
     {
       "word": "trailer",
-      "hints": ["anteprima", "film", "breve", "teaser", "spoiler"]
+      "hints": [
+        "anteprima",
+        "film",
+        "breve",
+        "teaser",
+        "spezzoni"
+      ]
     },
     {
       "word": "podcast",
-      "hints": ["audio", "episodi", "parlare", "cuffie", "intervista"]
+      "hints": [
+        "audio",
+        "episodi",
+        "parlare",
+        "ascoltare",
+        "intervista"
+      ]
     },
     {
       "word": "musical",
-      "hints": ["canzoni", "palco", "ballo", "Broadway", "cantare"]
+      "hints": [
+        "canzoni",
+        "palco",
+        "ballo",
+        "cantare",
+        "spettacolo"
+      ]
     },
     {
       "word": "comico",
-      "hints": ["battute", "risate", "palco", "microfono", "tempi"]
+      "hints": [
+        "battute",
+        "risate",
+        "palco",
+        "buffo",
+        "tempi"
+      ]
     },
     {
       "word": "videogioco",
-      "hints": ["console", "controller", "livelli", "schermo", "giocatori"]
+      "hints": [
+        "console",
+        "controller",
+        "schermo",
+        "livelli",
+        "giocatori"
+      ]
     },
     {
       "word": "gioco da tavolo",
-      "hints": ["dadi", "famiglia", "tavolo", "pedine", "regole"]
+      "hints": [
+        "dadi",
+        "famiglia",
+        "tavolo",
+        "pedine",
+        "regole"
+      ]
     },
     {
       "word": "burattino",
-      "hints": ["fili", "mano", "spettacolo", "legno", "teatro"]
+      "hints": [
+        "fili",
+        "mano",
+        "spettacolo",
+        "legno",
+        "bambini"
+      ]
     },
     {
       "word": "fuochi d'artificio",
-      "hints": ["cielo", "esplosione", "colori", "festa", "notte"]
+      "hints": [
+        "cielo",
+        "esplosione",
+        "colori",
+        "festa",
+        "notte"
+      ]
     },
     {
       "word": "sfilata",
-      "hints": ["strada", "carri", "musica", "folla", "festa"]
+      "hints": [
+        "strada",
+        "carri",
+        "musica",
+        "folla",
+        "festa"
+      ]
     },
     {
       "word": "casinò",
-      "hints": ["gioco", "carte", "fiches", "roulette", "fortuna"]
+      "hints": [
+        "gioco",
+        "carte",
+        "fiches",
+        "fortuna",
+        "soldi"
+      ]
     },
     {
       "word": "talent show",
-      "hints": ["palco", "giudici", "voti", "cantare", "pubblico"]
+      "hints": [
+        "palco",
+        "giudici",
+        "voti",
+        "esibizione",
+        "pubblico"
+      ]
     },
     {
       "word": "red carpet",
-      "hints": ["celebrità", "anteprima", "fotografi", "moda", "Hollywood"]
+      "hints": [
+        "celebrità",
+        "anteprima",
+        "telecamere",
+        "moda",
+        "fama"
+      ]
     },
     {
       "word": "premio",
-      "hints": ["trofeo", "vincitore", "cerimonia", "discorso", "oro"]
+      "hints": [
+        "trofeo",
+        "vincitore",
+        "cerimonia",
+        "discorso",
+        "oro"
+      ]
     },
     {
       "word": "telenovela",
-      "hints": ["dramma", "televisione", "puntate", "amore", "infinita"]
+      "hints": [
+        "dramma",
+        "televisione",
+        "puntate",
+        "amore",
+        "infinita"
+      ]
     },
     {
       "word": "reality show",
@@ -119,21 +275,513 @@
     },
     {
       "word": "escape room",
-      "hints": ["enigmi", "chiusi", "squadra", "indizi", "tempo"]
+      "hints": [
+        "enigmi",
+        "chiusi",
+        "squadra",
+        "indizi",
+        "tempo"
+      ]
     },
     {
       "word": "luna park",
       "hints": [
         "giostre",
-        "montagne russe",
-        "code",
         "divertimento",
-        "biglietti"
+        "code",
+        "biglietti",
+        "famiglie"
       ]
     },
     {
       "word": "film horror",
-      "hints": ["paura", "urla", "buio", "mostro", "popcorn"]
+      "hints": [
+        "paura",
+        "urla",
+        "buio",
+        "mostro",
+        "terrore"
+      ]
+    },
+    {
+      "word": "documentario",
+      "hints": [
+        "reale",
+        "fatti",
+        "educativo",
+        "vero",
+        "voce narrante"
+      ]
+    },
+    {
+      "word": "thriller",
+      "hints": [
+        "suspense",
+        "tensione",
+        "avvincente",
+        "pericolo",
+        "brivido"
+      ]
+    },
+    {
+      "word": "film d'azione",
+      "hints": [
+        "esplosioni",
+        "combattimenti",
+        "veloce",
+        "eroe",
+        "inseguimento"
+      ]
+    },
+    {
+      "word": "blockbuster",
+      "hints": [
+        "popolare",
+        "costoso",
+        "grande",
+        "estate",
+        "successo"
+      ]
+    },
+    {
+      "word": "anteprima",
+      "hints": [
+        "prima",
+        "proiezione",
+        "celebrità",
+        "evento",
+        "tappeto"
+      ]
+    },
+    {
+      "word": "maratona di serie",
+      "hints": [
+        "episodi",
+        "divano",
+        "ore",
+        "serie",
+        "ininterrotta"
+      ]
+    },
+    {
+      "word": "spin-off",
+      "hints": [
+        "nuova serie",
+        "personaggio",
+        "derivata",
+        "collegata",
+        "serie"
+      ]
+    },
+    {
+      "word": "remake",
+      "hints": [
+        "nuova versione",
+        "vecchio",
+        "di nuovo",
+        "aggiornato",
+        "film"
+      ]
+    },
+    {
+      "word": "colpo di scena",
+      "hints": [
+        "sorpresa",
+        "inaspettato",
+        "storia",
+        "shock",
+        "finale"
+      ]
+    },
+    {
+      "word": "finale sospeso",
+      "hints": [
+        "suspense",
+        "finale",
+        "attesa",
+        "irrisolto",
+        "prossima puntata"
+      ]
+    },
+    {
+      "word": "cameo",
+      "hints": [
+        "breve",
+        "celebrità",
+        "comparsa",
+        "sorpresa",
+        "corto"
+      ]
+    },
+    {
+      "word": "effetti speciali",
+      "hints": [
+        "film",
+        "computer",
+        "esplosioni",
+        "finti",
+        "visivi"
+      ]
+    },
+    {
+      "word": "colonna sonora",
+      "hints": [
+        "musica",
+        "film",
+        "canzoni",
+        "sottofondo",
+        "tema"
+      ]
+    },
+    {
+      "word": "sottotitoli",
+      "hints": [
+        "testo",
+        "basso",
+        "traduzione",
+        "leggere",
+        "schermo"
+      ]
+    },
+    {
+      "word": "doppiaggio",
+      "hints": [
+        "voci",
+        "lingua",
+        "traduzione",
+        "labbra",
+        "audio"
+      ]
+    },
+    {
+      "word": "regista",
+      "hints": [
+        "film",
+        "azione",
+        "sedia",
+        "visione",
+        "controllo"
+      ]
+    },
+    {
+      "word": "provino",
+      "hints": [
+        "recitare",
+        "tentare",
+        "selezione",
+        "nervoso",
+        "ruolo"
+      ]
+    },
+    {
+      "word": "paparazzi",
+      "hints": [
+        "telecamere",
+        "celebrità",
+        "foto",
+        "inseguire",
+        "fama"
+      ]
+    },
+    {
+      "word": "tabloid",
+      "hints": [
+        "gossip",
+        "celebrità",
+        "titoli",
+        "scandalo",
+        "rivista"
+      ]
+    },
+    {
+      "word": "autografo",
+      "hints": [
+        "firma",
+        "celebrità",
+        "fan",
+        "carta",
+        "firmare"
+      ]
+    },
+    {
+      "word": "tombola",
+      "hints": [
+        "numeri",
+        "cartelle",
+        "fortuna",
+        "Natale",
+        "vincere"
+      ]
+    },
+    {
+      "word": "lotteria",
+      "hints": [
+        "numeri",
+        "biglietti",
+        "fortuna",
+        "jackpot",
+        "vincere"
+      ]
+    },
+    {
+      "word": "flipper",
+      "hints": [
+        "macchina",
+        "pallina",
+        "leve",
+        "sala giochi",
+        "luci"
+      ]
+    },
+    {
+      "word": "ruota panoramica",
+      "hints": [
+        "rotonda",
+        "alta",
+        "fiera",
+        "vista",
+        "lenta"
+      ]
+    },
+    {
+      "word": "montagne russe",
+      "hints": [
+        "giostra",
+        "veloce",
+        "giri",
+        "urlare",
+        "fiera"
+      ]
+    },
+    {
+      "word": "autoscontro",
+      "hints": [
+        "scontro",
+        "divertimento",
+        "fiera",
+        "elettrico",
+        "giostra"
+      ]
+    },
+    {
+      "word": "casa stregata",
+      "hints": [
+        "paura",
+        "fantasmi",
+        "buio",
+        "urla",
+        "fiera"
+      ]
+    },
+    {
+      "word": "giocoliere",
+      "hints": [
+        "palle",
+        "lanciare",
+        "circo",
+        "abilità",
+        "prendere"
+      ]
+    },
+    {
+      "word": "acrobata",
+      "hints": [
+        "salti",
+        "circo",
+        "equilibrio",
+        "agile",
+        "esibizione"
+      ]
+    },
+    {
+      "word": "corda tesa",
+      "hints": [
+        "equilibrio",
+        "alta",
+        "circo",
+        "fune",
+        "pericolo"
+      ]
+    },
+    {
+      "word": "mimo",
+      "hints": [
+        "silenzioso",
+        "gesti",
+        "viso bianco",
+        "invisibile",
+        "strada"
+      ]
+    },
+    {
+      "word": "ventriloquo",
+      "hints": [
+        "pupazzo",
+        "voce",
+        "labbra",
+        "burattino",
+        "trucco"
+      ]
+    },
+    {
+      "word": "cabaret",
+      "hints": [
+        "battute",
+        "microfono",
+        "palco",
+        "risate",
+        "solo"
+      ]
+    },
+    {
+      "word": "improvvisazione",
+      "hints": [
+        "non scritta",
+        "spontanea",
+        "buffa",
+        "palco",
+        "inventata"
+      ]
+    },
+    {
+      "word": "sketch",
+      "hints": [
+        "breve",
+        "commedia",
+        "scena",
+        "buffa",
+        "siparietto"
+      ]
+    },
+    {
+      "word": "gioco a premi",
+      "hints": [
+        "concorrenti",
+        "premi",
+        "conduttore",
+        "televisione",
+        "domande"
+      ]
+    },
+    {
+      "word": "quiz",
+      "hints": [
+        "domande",
+        "risposte",
+        "conoscenza",
+        "premi",
+        "conduttore"
+      ]
+    },
+    {
+      "word": "talk show",
+      "hints": [
+        "conduttore",
+        "ospiti",
+        "intervista",
+        "divano",
+        "televisione"
+      ]
+    },
+    {
+      "word": "programma di cucina",
+      "hints": [
+        "chef",
+        "ricette",
+        "cucina",
+        "cibo",
+        "televisione"
+      ]
+    },
+    {
+      "word": "anime",
+      "hints": [
+        "Giappone",
+        "animato",
+        "colorato",
+        "personaggi",
+        "disegnato"
+      ]
+    },
+    {
+      "word": "fumetto",
+      "hints": [
+        "pagine",
+        "disegni",
+        "supereroe",
+        "vignette",
+        "storia"
+      ]
+    },
+    {
+      "word": "cosplay",
+      "hints": [
+        "costume",
+        "personaggio",
+        "travestirsi",
+        "fiera",
+        "fan"
+      ]
+    },
+    {
+      "word": "fuori onda",
+      "hints": [
+        "errore",
+        "buffo",
+        "riprese",
+        "papera",
+        "ridere"
+      ]
+    },
+    {
+      "word": "serata quiz",
+      "hints": [
+        "domande",
+        "pub",
+        "squadre",
+        "conoscenza",
+        "divertimento"
+      ]
+    },
+    {
+      "word": "microfono aperto",
+      "hints": [
+        "palco",
+        "chiunque",
+        "esibirsi",
+        "bar",
+        "microfono"
+      ]
+    },
+    {
+      "word": "locale notturno",
+      "hints": [
+        "ballare",
+        "musica",
+        "notte",
+        "drink",
+        "luci"
+      ]
+    },
+    {
+      "word": "rave",
+      "hints": [
+        "musica",
+        "ballare",
+        "luci",
+        "notte",
+        "elettronica"
+      ]
+    },
+    {
+      "word": "controfigura",
+      "hints": [
+        "pericolo",
+        "attore",
+        "sostituire",
+        "azione",
+        "rischioso"
+      ]
     }
   ]
 }

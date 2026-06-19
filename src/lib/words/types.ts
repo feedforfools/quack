@@ -9,7 +9,6 @@ export const WORD_POOL_CATEGORIES = [
   "sports",
   "school",
   "celebrities",
-  "spicy",
   "food",
   "professions",
   "internet",

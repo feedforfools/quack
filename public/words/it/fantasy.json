@@ -5,123 +5,783 @@
   "words": [
     {
       "word": "drago",
-      "hints": ["fuoco", "ali", "tesoro", "squame", "cavaliere"]
+      "hints": [
+        "fuoco",
+        "ali",
+        "squame",
+        "enorme",
+        "leggenda"
+      ]
     },
     {
       "word": "mago",
-      "hints": ["magia", "bacchetta", "barba", "incantesimi", "cappello"]
+      "hints": [
+        "magia",
+        "tunica",
+        "vecchio",
+        "incantesimi",
+        "potente"
+      ]
     },
     {
       "word": "unicorno",
-      "hints": ["corno", "arcobaleno", "bianco", "magico", "puro"]
+      "hints": [
+        "corno",
+        "bianco",
+        "magico",
+        "puro",
+        "arcobaleno"
+      ]
     },
     {
       "word": "fata",
-      "hints": ["ali", "minuscola", "polvere", "bosco", "desiderio"]
+      "hints": [
+        "minuscola",
+        "ali",
+        "magia",
+        "bosco",
+        "bagliore"
+      ]
     },
     {
       "word": "elfo",
-      "hints": ["orecchie", "bosco", "arciere", "immortale", "aggraziato"]
+      "hints": [
+        "orecchie a punta",
+        "bosco",
+        "aggraziato",
+        "magico",
+        "arciere"
+      ]
     },
     {
       "word": "nano",
-      "hints": ["barba", "miniera", "ascia", "basso", "montagna"]
+      "hints": [
+        "basso",
+        "barba",
+        "montagna",
+        "miniera",
+        "robusto"
+      ]
     },
     {
       "word": "goblin",
-      "hints": ["verde", "dispetti", "tesoro", "brutto", "caverna"]
+      "hints": [
+        "piccolo",
+        "verde",
+        "brutto",
+        "dispetto",
+        "caverna"
+      ]
     },
     {
       "word": "troll",
-      "hints": ["ponte", "grosso", "clava", "pietra", "puzzolente"]
+      "hints": [
+        "grosso",
+        "brutto",
+        "ponte",
+        "pietra",
+        "lento"
+      ]
     },
     {
       "word": "sirena",
-      "hints": ["coda", "mare", "canto", "squame", "marinai"]
+      "hints": [
+        "mare",
+        "coda",
+        "metà pesce",
+        "bella",
+        "cantare"
+      ]
     },
     {
       "word": "gigante",
-      "hints": ["enorme", "fagiolo", "passi", "nuvole", "forza"]
+      "hints": [
+        "enorme",
+        "alto",
+        "forte",
+        "passi",
+        "nuvole"
+      ]
     },
     {
       "word": "strega",
-      "hints": ["scopa", "calderone", "incantesimi", "cappello", "gatto"]
+      "hints": [
+        "magia",
+        "incantesimi",
+        "cappello",
+        "risata",
+        "pozioni"
+      ]
     },
     {
       "word": "lupo mannaro",
-      "hints": ["luna", "trasformazione", "ululato", "argento", "maledizione"]
+      "hints": [
+        "luna",
+        "trasformare",
+        "pelo",
+        "bestia",
+        "maledizione"
+      ]
     },
     {
       "word": "fantasma",
-      "hints": ["infestare", "bianco", "trasparente", "castello", "catene"]
+      "hints": [
+        "bianco",
+        "trasparente",
+        "infestare",
+        "spettrale",
+        "morto"
+      ]
     },
     {
       "word": "fenice",
-      "hints": ["fuoco", "rinascita", "ceneri", "immortale", "ali"]
+      "hints": [
+        "fuoco",
+        "rinascita",
+        "uccello",
+        "ceneri",
+        "immortale"
+      ]
     },
     {
       "word": "grifone",
-      "hints": ["aquila", "leone", "ali", "maestoso", "guardiano"]
+      "hints": [
+        "ali",
+        "bestia",
+        "maestoso",
+        "guardiano",
+        "mitico"
+      ]
     },
     {
       "word": "castello",
-      "hints": ["torri", "re", "fossato", "pietra", "ponte"]
+      "hints": [
+        "pietra",
+        "torri",
+        "re",
+        "antico",
+        "mura"
+      ]
     },
     {
       "word": "cavaliere",
-      "hints": ["armatura", "spada", "cavallo", "missione", "scudo"]
+      "hints": [
+        "armatura",
+        "spada",
+        "cavallo",
+        "coraggioso",
+        "onore"
+      ]
     },
     {
       "word": "principessa",
-      "hints": ["corona", "torre", "reale", "abito", "salvataggio"]
+      "hints": [
+        "corona",
+        "reale",
+        "abito",
+        "torre",
+        "bella"
+      ]
     },
     {
       "word": "re",
-      "hints": ["trono", "corona", "regno", "comando", "reale"]
+      "hints": [
+        "corona",
+        "trono",
+        "comandare",
+        "reale",
+        "potere"
+      ]
     },
     {
       "word": "missione",
-      "hints": ["viaggio", "eroe", "impresa", "avventura", "ricompensa"]
+      "hints": [
+        "viaggio",
+        "eroe",
+        "avventura",
+        "impresa",
+        "ricompensa"
+      ]
     },
     {
       "word": "spada",
-      "hints": ["lama", "cavaliere", "affilata", "leggendaria", "duello"]
+      "hints": [
+        "lama",
+        "affilata",
+        "metallo",
+        "combattere",
+        "leggendaria"
+      ]
     },
     {
       "word": "pozione",
-      "hints": ["bottiglia", "magia", "preparare", "ingredienti", "bollicine"]
+      "hints": [
+        "bottiglia",
+        "magia",
+        "liquido",
+        "preparare",
+        "effetto"
+      ]
     },
     {
       "word": "incantesimo",
-      "hints": ["magia", "parole", "bacchetta", "lanciare", "maledizione"]
+      "hints": [
+        "magia",
+        "parole",
+        "lanciare",
+        "potere",
+        "mago"
+      ]
     },
     {
       "word": "maledizione",
-      "hints": ["male", "strega", "spezzare", "condanna", "incantesimo"]
+      "hints": [
+        "male",
+        "sfortuna",
+        "spezzare",
+        "condanna",
+        "magia"
+      ]
     },
     {
       "word": "tesoro",
-      "hints": ["oro", "forziere", "mappa", "pirati", "sepolto"]
+      "hints": [
+        "oro",
+        "forziere",
+        "sepolto",
+        "prezioso",
+        "mappa"
+      ]
     },
     {
       "word": "profezia",
-      "hints": ["futuro", "prescelto", "antica", "destino", "pergamena"]
+      "hints": [
+        "futuro",
+        "prescelto",
+        "antica",
+        "destino",
+        "predetta"
+      ]
     },
     {
       "word": "portale",
-      "hints": ["passaggio", "dimensione", "luminoso", "viaggio", "magia"]
+      "hints": [
+        "passaggio",
+        "magia",
+        "viaggio",
+        "bagliore",
+        "altro mondo"
+      ]
     },
     {
       "word": "regno",
-      "hints": ["reame", "re", "castello", "terre", "trono"]
+      "hints": [
+        "reame",
+        "re",
+        "terra",
+        "castello",
+        "comando"
+      ]
     },
     {
       "word": "genio",
-      "hints": ["lampada", "desideri", "tre", "fumo", "liberato"]
+      "hints": [
+        "lampada",
+        "desideri",
+        "magia",
+        "fumo",
+        "esaudire"
+      ]
     },
     {
       "word": "pegaso",
-      "hints": ["cavallo", "ali", "volare", "bianco", "mitologia"]
+      "hints": [
+        "cavallo",
+        "ali",
+        "volare",
+        "bianco",
+        "mitico"
+      ]
+    },
+    {
+      "word": "orco",
+      "hints": [
+        "grande",
+        "brutto",
+        "verde",
+        "cattivo",
+        "palude"
+      ]
+    },
+    {
+      "word": "orchetto",
+      "hints": [
+        "brutto",
+        "guerriero",
+        "verde",
+        "brutale",
+        "armata"
+      ]
+    },
+    {
+      "word": "centauro",
+      "hints": [
+        "metà cavallo",
+        "uomo",
+        "bosco",
+        "arciere",
+        "mitico"
+      ]
+    },
+    {
+      "word": "minotauro",
+      "hints": [
+        "toro",
+        "labirinto",
+        "bestia",
+        "corna",
+        "antico"
+      ]
+    },
+    {
+      "word": "ciclope",
+      "hints": [
+        "un occhio",
+        "gigante",
+        "antico",
+        "caverna",
+        "enorme"
+      ]
+    },
+    {
+      "word": "kraken",
+      "hints": [
+        "mare",
+        "tentacoli",
+        "mostro",
+        "enorme",
+        "navi"
+      ]
+    },
+    {
+      "word": "gargolla",
+      "hints": [
+        "pietra",
+        "statua",
+        "tetto",
+        "ali",
+        "guardiano"
+      ]
+    },
+    {
+      "word": "gnomo",
+      "hints": [
+        "piccolo",
+        "giardino",
+        "barba",
+        "cappello",
+        "appuntito"
+      ]
+    },
+    {
+      "word": "folletto",
+      "hints": [
+        "piccolo",
+        "irlandese",
+        "oro",
+        "verde",
+        "fortunato"
+      ]
+    },
+    {
+      "word": "demone",
+      "hints": [
+        "male",
+        "inferno",
+        "corna",
+        "oscuro",
+        "fuoco"
+      ]
+    },
+    {
+      "word": "angelo",
+      "hints": [
+        "ali",
+        "bianco",
+        "paradiso",
+        "aureola",
+        "puro"
+      ]
+    },
+    {
+      "word": "stregone",
+      "hints": [
+        "magia",
+        "oscuro",
+        "potente",
+        "incantesimi",
+        "tunica"
+      ]
+    },
+    {
+      "word": "incantatrice",
+      "hints": [
+        "magia",
+        "bella",
+        "incantesimi",
+        "fascino",
+        "misteriosa"
+      ]
+    },
+    {
+      "word": "negromante",
+      "hints": [
+        "oscuro",
+        "morti",
+        "magia",
+        "evocare",
+        "malvagio"
+      ]
+    },
+    {
+      "word": "paladino",
+      "hints": [
+        "sacro",
+        "cavaliere",
+        "armatura",
+        "giusto",
+        "spada"
+      ]
+    },
+    {
+      "word": "barbaro",
+      "hints": [
+        "forte",
+        "selvaggio",
+        "ascia",
+        "feroce",
+        "pelliccia"
+      ]
+    },
+    {
+      "word": "bardo",
+      "hints": [
+        "musica",
+        "storie",
+        "liuto",
+        "taverna",
+        "racconti"
+      ]
+    },
+    {
+      "word": "druido",
+      "hints": [
+        "natura",
+        "bosco",
+        "magia",
+        "antico",
+        "tunica"
+      ]
+    },
+    {
+      "word": "alchimista",
+      "hints": [
+        "pozioni",
+        "oro",
+        "esperimento",
+        "mescolare",
+        "vecchio"
+      ]
+    },
+    {
+      "word": "oracolo",
+      "hints": [
+        "futuro",
+        "saggio",
+        "tempio",
+        "visione",
+        "antico"
+      ]
+    },
+    {
+      "word": "giullare",
+      "hints": [
+        "buffone",
+        "corte",
+        "buffo",
+        "sonagli",
+        "colorato"
+      ]
+    },
+    {
+      "word": "regina",
+      "hints": [
+        "corona",
+        "reale",
+        "trono",
+        "comandare",
+        "elegante"
+      ]
+    },
+    {
+      "word": "principe",
+      "hints": [
+        "reale",
+        "corona",
+        "giovane",
+        "erede",
+        "castello"
+      ]
+    },
+    {
+      "word": "trono",
+      "hints": [
+        "seggio",
+        "reale",
+        "oro",
+        "re",
+        "potere"
+      ]
+    },
+    {
+      "word": "corona",
+      "hints": [
+        "oro",
+        "testa",
+        "reale",
+        "gioielli",
+        "re"
+      ]
+    },
+    {
+      "word": "scudo",
+      "hints": [
+        "proteggere",
+        "metallo",
+        "cavaliere",
+        "parare",
+        "rotondo"
+      ]
+    },
+    {
+      "word": "armatura",
+      "hints": [
+        "metallo",
+        "cavaliere",
+        "proteggere",
+        "lucente",
+        "battaglia"
+      ]
+    },
+    {
+      "word": "bacchetta",
+      "hints": [
+        "magia",
+        "bastoncino",
+        "mago",
+        "agitare",
+        "incantesimi"
+      ]
+    },
+    {
+      "word": "bastone",
+      "hints": [
+        "magia",
+        "lungo",
+        "mago",
+        "legno",
+        "potere"
+      ]
+    },
+    {
+      "word": "sfera di cristallo",
+      "hints": [
+        "futuro",
+        "vetro",
+        "rotonda",
+        "visione",
+        "magia"
+      ]
+    },
+    {
+      "word": "pergamena",
+      "hints": [
+        "carta",
+        "arrotolata",
+        "antica",
+        "scrittura",
+        "segreti"
+      ]
+    },
+    {
+      "word": "libro degli incantesimi",
+      "hints": [
+        "magia",
+        "pagine",
+        "incantesimi",
+        "antico",
+        "mago"
+      ]
+    },
+    {
+      "word": "amuleto",
+      "hints": [
+        "magia",
+        "collana",
+        "proteggere",
+        "antico",
+        "portafortuna"
+      ]
+    },
+    {
+      "word": "magia",
+      "hints": [
+        "incantesimi",
+        "potere",
+        "mistero",
+        "meraviglia",
+        "soprannaturale"
+      ]
+    },
+    {
+      "word": "runa",
+      "hints": [
+        "simbolo",
+        "antica",
+        "pietra",
+        "magia",
+        "incisa"
+      ]
+    },
+    {
+      "word": "prigione sotterranea",
+      "hints": [
+        "buia",
+        "sotterranea",
+        "prigione",
+        "pietra",
+        "spaventosa"
+      ]
+    },
+    {
+      "word": "tana",
+      "hints": [
+        "nascosta",
+        "bestia",
+        "caverna",
+        "segreta",
+        "pericolosa"
+      ]
+    },
+    {
+      "word": "torre",
+      "hints": [
+        "alta",
+        "pietra",
+        "elevata",
+        "solitaria",
+        "castello"
+      ]
+    },
+    {
+      "word": "fossato",
+      "hints": [
+        "acqua",
+        "castello",
+        "attorno",
+        "difesa",
+        "profondo"
+      ]
+    },
+    {
+      "word": "ponte levatoio",
+      "hints": [
+        "castello",
+        "legno",
+        "catene",
+        "alzare",
+        "ingresso"
+      ]
+    },
+    {
+      "word": "catapulta",
+      "hints": [
+        "lanciare",
+        "assedio",
+        "legno",
+        "massi",
+        "guerra"
+      ]
+    },
+    {
+      "word": "scopa volante",
+      "hints": [
+        "strega",
+        "volare",
+        "legno",
+        "spazzare",
+        "magia"
+      ]
+    },
+    {
+      "word": "calderone",
+      "hints": [
+        "strega",
+        "pentola",
+        "bollire",
+        "pozione",
+        "ribollire"
+      ]
+    },
+    {
+      "word": "gemma",
+      "hints": [
+        "preziosa",
+        "lucente",
+        "pietra",
+        "valore",
+        "colorata"
+      ]
+    },
+    {
+      "word": "cappello da mago",
+      "hints": [
+        "appuntito",
+        "magia",
+        "stella",
+        "alto",
+        "indossare"
+      ]
+    },
+    {
+      "word": "tappeto volante",
+      "hints": [
+        "volare",
+        "tappeto",
+        "arabo",
+        "fluttuare",
+        "cavalcare"
+      ]
+    },
+    {
+      "word": "fiaba",
+      "hints": [
+        "storia",
+        "magia",
+        "lieto fine",
+        "bambini",
+        "c'era una volta"
+      ]
+    },
+    {
+      "word": "foresta incantata",
+      "hints": [
+        "magia",
+        "alberi",
+        "misteriosa",
+        "creature",
+        "luminosa"
+      ]
     }
   ]
 }

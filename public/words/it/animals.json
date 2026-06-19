@@ -5,123 +5,903 @@
   "words": [
     {
       "word": "leone",
-      "hints": ["savana", "criniera", "ruggito", "re", "branco"]
+      "hints": [
+        "savana",
+        "Africa",
+        "caccia",
+        "pelo",
+        "forza"
+      ]
     },
     {
       "word": "elefante",
-      "hints": ["proboscide", "grigio", "enorme", "Africa", "memoria"]
+      "hints": [
+        "enorme",
+        "grigio",
+        "Africa",
+        "orecchie",
+        "pesante"
+      ]
     },
     {
       "word": "pinguino",
-      "hints": ["ghiaccio", "dondolare", "frac", "Antartide", "colonia"]
+      "hints": [
+        "freddo",
+        "ghiaccio",
+        "nero",
+        "nuotare",
+        "colonia"
+      ]
     },
     {
       "word": "delfino",
-      "hints": ["mare", "intelligente", "salti", "fischi", "amichevole"]
+      "hints": [
+        "mare",
+        "nuotare",
+        "intelligente",
+        "salti",
+        "amichevole"
+      ]
     },
     {
       "word": "squalo",
-      "hints": ["denti", "oceano", "pinna", "predatore", "paura"]
+      "hints": [
+        "mare",
+        "denti",
+        "veloce",
+        "predatore",
+        "paura"
+      ]
     },
     {
       "word": "aquila",
-      "hints": ["ali", "preda", "montagne", "artigli", "simbolo"]
+      "hints": [
+        "ali",
+        "cielo",
+        "caccia",
+        "montagne",
+        "acuta"
+      ]
     },
     {
       "word": "gufo",
-      "hints": ["notte", "saggezza", "verso", "bosco", "occhi"]
+      "hints": [
+        "notte",
+        "ali",
+        "bosco",
+        "occhi",
+        "silenzioso"
+      ]
     },
     {
       "word": "lupo",
-      "hints": ["branco", "ululato", "luna", "bosco", "grigio"]
+      "hints": [
+        "branco",
+        "bosco",
+        "selvaggio",
+        "grigio",
+        "denti"
+      ]
     },
     {
       "word": "volpe",
-      "hints": ["astuta", "arancione", "coda", "bosco", "furba"]
+      "hints": [
+        "bosco",
+        "arancione",
+        "astuta",
+        "coda",
+        "piccola"
+      ]
     },
     {
       "word": "orso",
-      "hints": ["miele", "letargo", "bosco", "forte", "pelliccia"]
+      "hints": [
+        "bosco",
+        "grande",
+        "forte",
+        "pelo",
+        "tana"
+      ]
     },
     {
       "word": "farfalla",
-      "hints": ["ali", "bruco", "fiori", "colorata", "svolazzare"]
+      "hints": [
+        "ali",
+        "colorata",
+        "fiori",
+        "volare",
+        "delicata"
+      ]
     },
     {
       "word": "ape",
-      "hints": ["miele", "alveare", "ronzio", "fiori", "pungiglione"]
+      "hints": [
+        "volare",
+        "ronzio",
+        "fiori",
+        "gialla",
+        "pungiglione"
+      ]
     },
     {
       "word": "ragno",
-      "hints": ["ragnatela", "otto", "zampe", "insetti", "angolo"]
+      "hints": [
+        "ragnatela",
+        "zampe",
+        "piccolo",
+        "angolo",
+        "strisciare"
+      ]
     },
     {
       "word": "serpente",
-      "hints": ["strisciare", "veleno", "squame", "sibilo", "lungo"]
+      "hints": [
+        "lungo",
+        "strisciare",
+        "terra",
+        "squame",
+        "sibilo"
+      ]
     },
     {
       "word": "rana",
-      "hints": ["stagno", "saltare", "verde", "gracidare", "girino"]
+      "hints": [
+        "stagno",
+        "saltare",
+        "verde",
+        "bagnata",
+        "piccola"
+      ]
     },
     {
       "word": "cavallo",
-      "hints": ["cavalcare", "galoppo", "criniera", "stalla", "sella"]
+      "hints": [
+        "cavalcare",
+        "galoppo",
+        "stalla",
+        "fattoria",
+        "veloce"
+      ]
     },
     {
       "word": "coniglio",
-      "hints": ["orecchie", "saltellare", "carote", "morbido", "veloce"]
+      "hints": [
+        "orecchie",
+        "saltellare",
+        "veloce",
+        "morbido",
+        "campo"
+      ]
     },
     {
       "word": "tartaruga",
-      "hints": ["guscio", "lenta", "spiaggia", "antica", "nuotare"]
+      "hints": [
+        "lenta",
+        "guscio",
+        "acqua",
+        "antica",
+        "calma"
+      ]
     },
     {
       "word": "polpo",
-      "hints": ["tentacoli", "inchiostro", "mare", "otto", "furbo"]
+      "hints": [
+        "mare",
+        "tentacoli",
+        "inchiostro",
+        "furbo",
+        "molle"
+      ]
     },
     {
       "word": "canguro",
-      "hints": ["Australia", "marsupio", "salti", "boxe", "cucciolo"]
+      "hints": [
+        "Australia",
+        "saltare",
+        "marsupio",
+        "coda",
+        "balzo"
+      ]
     },
     {
       "word": "panda",
-      "hints": ["bambù", "Cina", "pigro", "raro", "coccolone"]
+      "hints": [
+        "bambù",
+        "Cina",
+        "nero",
+        "pigro",
+        "raro"
+      ]
     },
     {
       "word": "giraffa",
-      "hints": ["collo", "alta", "macchie", "Africa", "foglie"]
+      "hints": [
+        "alta",
+        "Africa",
+        "macchie",
+        "foglie",
+        "gentile"
+      ]
     },
     {
       "word": "vulcano",
-      "hints": ["lava", "eruzione", "montagna", "cenere", "cratere"]
+      "hints": [
+        "montagna",
+        "lava",
+        "caldo",
+        "cenere",
+        "eruzione"
+      ]
     },
     {
       "word": "arcobaleno",
-      "hints": ["colori", "pioggia", "cielo", "arco", "oro"]
+      "hints": [
+        "colori",
+        "cielo",
+        "pioggia",
+        "arco",
+        "luminoso"
+      ]
     },
     {
       "word": "cascata",
-      "hints": ["fiume", "salto", "spruzzi", "fragore", "nebbiolina"]
+      "hints": [
+        "acqua",
+        "rupe",
+        "cadere",
+        "fiume",
+        "fragore"
+      ]
     },
     {
       "word": "deserto",
-      "hints": ["sabbia", "cammelli", "caldo", "dune", "cactus"]
+      "hints": [
+        "sabbia",
+        "caldo",
+        "secco",
+        "dune",
+        "vuoto"
+      ]
     },
     {
       "word": "giungla",
-      "hints": ["alberi", "scimmie", "fitta", "tropicale", "liane"]
+      "hints": [
+        "alberi",
+        "verde",
+        "fitta",
+        "tropicale",
+        "selvaggia"
+      ]
     },
     {
       "word": "ghiacciaio",
-      "hints": ["ghiaccio", "lento", "montagne", "scioglimento", "blu"]
+      "hints": [
+        "montagne",
+        "freddo",
+        "lento",
+        "antico",
+        "bianco"
+      ]
     },
     {
       "word": "temporale",
-      "hints": ["fulmini", "pioggia", "tuoni", "nuvole", "lampi"]
+      "hints": [
+        "nuvole",
+        "pioggia",
+        "forte",
+        "lampo",
+        "buio"
+      ]
     },
     {
       "word": "corallo",
-      "hints": ["mare", "colorato", "pesci", "barriera", "fragile"]
+      "hints": [
+        "mare",
+        "colorato",
+        "barriera",
+        "fragile",
+        "subacqueo"
+      ]
+    },
+    {
+      "word": "tigre",
+      "hints": [
+        "giungla",
+        "strisce",
+        "arancione",
+        "caccia",
+        "Asia"
+      ]
+    },
+    {
+      "word": "leopardo",
+      "hints": [
+        "macchie",
+        "giungla",
+        "veloce",
+        "caccia",
+        "arrampicarsi"
+      ]
+    },
+    {
+      "word": "ghepardo",
+      "hints": [
+        "veloce",
+        "macchie",
+        "Africa",
+        "corsa",
+        "caccia"
+      ]
+    },
+    {
+      "word": "zebra",
+      "hints": [
+        "strisce",
+        "Africa",
+        "savana",
+        "branco",
+        "nera"
+      ]
+    },
+    {
+      "word": "ippopotamo",
+      "hints": [
+        "acqua",
+        "Africa",
+        "enorme",
+        "fiume",
+        "pesante"
+      ]
+    },
+    {
+      "word": "rinoceronte",
+      "hints": [
+        "Africa",
+        "enorme",
+        "grigio",
+        "pesante",
+        "spesso"
+      ]
+    },
+    {
+      "word": "coccodrillo",
+      "hints": [
+        "fiume",
+        "denti",
+        "acqua",
+        "squame",
+        "morso"
+      ]
+    },
+    {
+      "word": "scimmia",
+      "hints": [
+        "giungla",
+        "alberi",
+        "arrampicarsi",
+        "coda",
+        "banana"
+      ]
+    },
+    {
+      "word": "gorilla",
+      "hints": [
+        "giungla",
+        "grande",
+        "forte",
+        "nero",
+        "petto"
+      ]
+    },
+    {
+      "word": "bradipo",
+      "hints": [
+        "lento",
+        "alberi",
+        "pigro",
+        "appeso",
+        "giungla"
+      ]
+    },
+    {
+      "word": "koala",
+      "hints": [
+        "Australia",
+        "alberi",
+        "assonnato",
+        "grigio",
+        "foglie"
+      ]
+    },
+    {
+      "word": "cammello",
+      "hints": [
+        "deserto",
+        "sabbia",
+        "viaggio",
+        "alto",
+        "secco"
+      ]
+    },
+    {
+      "word": "cervo",
+      "hints": [
+        "bosco",
+        "veloce",
+        "elegante",
+        "marrone",
+        "gentile"
+      ]
+    },
+    {
+      "word": "scoiattolo",
+      "hints": [
+        "alberi",
+        "noci",
+        "coda",
+        "veloce",
+        "piccolo"
+      ]
+    },
+    {
+      "word": "riccio",
+      "hints": [
+        "piccolo",
+        "giardino",
+        "palla",
+        "notte",
+        "marrone"
+      ]
+    },
+    {
+      "word": "pipistrello",
+      "hints": [
+        "notte",
+        "volare",
+        "grotta",
+        "buio",
+        "ali"
+      ]
+    },
+    {
+      "word": "procione",
+      "hints": [
+        "notte",
+        "spazzatura",
+        "furbo",
+        "strisce",
+        "grigio"
+      ]
+    },
+    {
+      "word": "lontra",
+      "hints": [
+        "fiume",
+        "nuotare",
+        "giocosa",
+        "acqua",
+        "pelo"
+      ]
+    },
+    {
+      "word": "foca",
+      "hints": [
+        "mare",
+        "nuotare",
+        "freddo",
+        "liscia",
+        "spiaggia"
+      ]
+    },
+    {
+      "word": "balena",
+      "hints": [
+        "mare",
+        "enorme",
+        "profondo",
+        "blu",
+        "nuotare"
+      ]
+    },
+    {
+      "word": "medusa",
+      "hints": [
+        "mare",
+        "molle",
+        "punge",
+        "fluttuare",
+        "trasparente"
+      ]
+    },
+    {
+      "word": "granchio",
+      "hints": [
+        "spiaggia",
+        "chele",
+        "guscio",
+        "laterale",
+        "sabbia"
+      ]
+    },
+    {
+      "word": "stella marina",
+      "hints": [
+        "mare",
+        "cinque",
+        "spiaggia",
+        "lenta",
+        "bassa"
+      ]
+    },
+    {
+      "word": "cigno",
+      "hints": [
+        "lago",
+        "bianco",
+        "elegante",
+        "grazioso",
+        "piume"
+      ]
+    },
+    {
+      "word": "pavone",
+      "hints": [
+        "colorato",
+        "piume",
+        "fiero",
+        "blu",
+        "ventaglio"
+      ]
+    },
+    {
+      "word": "fenicottero",
+      "hints": [
+        "rosa",
+        "acqua",
+        "alto",
+        "zampe",
+        "tropicale"
+      ]
+    },
+    {
+      "word": "pappagallo",
+      "hints": [
+        "colorato",
+        "tropicale",
+        "parlare",
+        "piume",
+        "becco"
+      ]
+    },
+    {
+      "word": "struzzo",
+      "hints": [
+        "grande",
+        "veloce",
+        "Africa",
+        "piume",
+        "corsa"
+      ]
+    },
+    {
+      "word": "corvo",
+      "hints": [
+        "nero",
+        "cielo",
+        "furbo",
+        "rumoroso",
+        "piume"
+      ]
+    },
+    {
+      "word": "gallina",
+      "hints": [
+        "fattoria",
+        "uova",
+        "piume",
+        "beccare",
+        "aia"
+      ]
+    },
+    {
+      "word": "maiale",
+      "hints": [
+        "fattoria",
+        "rosa",
+        "fango",
+        "tondo",
+        "grasso"
+      ]
+    },
+    {
+      "word": "pecora",
+      "hints": [
+        "fattoria",
+        "lana",
+        "bianca",
+        "gregge",
+        "campo"
+      ]
+    },
+    {
+      "word": "capra",
+      "hints": [
+        "fattoria",
+        "corna",
+        "arrampicarsi",
+        "latte",
+        "campo"
+      ]
+    },
+    {
+      "word": "asino",
+      "hints": [
+        "fattoria",
+        "grigio",
+        "orecchie",
+        "testardo",
+        "portare"
+      ]
+    },
+    {
+      "word": "lama",
+      "hints": [
+        "montagne",
+        "lana",
+        "sputo",
+        "alto",
+        "Ande"
+      ]
+    },
+    {
+      "word": "formica",
+      "hints": [
+        "piccola",
+        "terra",
+        "colonia",
+        "lavoro",
+        "portare"
+      ]
+    },
+    {
+      "word": "coccinella",
+      "hints": [
+        "piccola",
+        "rossa",
+        "puntini",
+        "giardino",
+        "volare"
+      ]
+    },
+    {
+      "word": "zanzara",
+      "hints": [
+        "piccola",
+        "puntura",
+        "estate",
+        "ronzio",
+        "fastidiosa"
+      ]
+    },
+    {
+      "word": "libellula",
+      "hints": [
+        "ali",
+        "stagno",
+        "volare",
+        "estate",
+        "veloce"
+      ]
+    },
+    {
+      "word": "lumaca",
+      "hints": [
+        "lenta",
+        "guscio",
+        "giardino",
+        "scia",
+        "piccola"
+      ]
+    },
+    {
+      "word": "scorpione",
+      "hints": [
+        "deserto",
+        "puntura",
+        "coda",
+        "piccolo",
+        "chele"
+      ]
+    },
+    {
+      "word": "topo",
+      "hints": [
+        "piccolo",
+        "formaggio",
+        "veloce",
+        "grigio",
+        "coda"
+      ]
+    },
+    {
+      "word": "lucertola",
+      "hints": [
+        "piccola",
+        "squame",
+        "sole",
+        "veloce",
+        "coda"
+      ]
+    },
+    {
+      "word": "camaleonte",
+      "hints": [
+        "colori",
+        "cambiare",
+        "albero",
+        "lento",
+        "lingua"
+      ]
+    },
+    {
+      "word": "criceto",
+      "hints": [
+        "piccolo",
+        "animale",
+        "gabbia",
+        "ruota",
+        "guance"
+      ]
+    },
+    {
+      "word": "grotta",
+      "hints": [
+        "buio",
+        "roccia",
+        "profonda",
+        "sotterranea",
+        "eco"
+      ]
+    },
+    {
+      "word": "foresta",
+      "hints": [
+        "alberi",
+        "verde",
+        "selvaggia",
+        "animali",
+        "ombra"
+      ]
+    },
+    {
+      "word": "palude",
+      "hints": [
+        "acqua",
+        "fango",
+        "bagnata",
+        "verde",
+        "torbida"
+      ]
+    },
+    {
+      "word": "canyon",
+      "hints": [
+        "roccia",
+        "profondo",
+        "fiume",
+        "pareti",
+        "vasto"
+      ]
+    },
+    {
+      "word": "scogliera",
+      "hints": [
+        "alta",
+        "roccia",
+        "bordo",
+        "mare",
+        "ripida"
+      ]
+    },
+    {
+      "word": "isola",
+      "hints": [
+        "mare",
+        "terra",
+        "sola",
+        "spiaggia",
+        "remota"
+      ]
+    },
+    {
+      "word": "tornado",
+      "hints": [
+        "vento",
+        "girare",
+        "tempesta",
+        "imbuto",
+        "distruggere"
+      ]
+    },
+    {
+      "word": "valanga",
+      "hints": [
+        "neve",
+        "montagna",
+        "cadere",
+        "veloce",
+        "pericolo"
+      ]
+    },
+    {
+      "word": "terremoto",
+      "hints": [
+        "scuotere",
+        "terra",
+        "pericolo",
+        "improvviso",
+        "crepe"
+      ]
+    },
+    {
+      "word": "geyser",
+      "hints": [
+        "caldo",
+        "acqua",
+        "spruzzo",
+        "terra",
+        "getto"
+      ]
+    },
+    {
+      "word": "aurora",
+      "hints": [
+        "cielo",
+        "luci",
+        "nord",
+        "colori",
+        "notte"
+      ]
+    },
+    {
+      "word": "prato",
+      "hints": [
+        "erba",
+        "fiori",
+        "campo",
+        "aperto",
+        "verde"
+      ]
+    },
+    {
+      "word": "barriera corallina",
+      "hints": [
+        "mare",
+        "pesci",
+        "colorata",
+        "subacquea",
+        "barriera"
+      ]
+    },
+    {
+      "word": "nebbia",
+      "hints": [
+        "foschia",
+        "grigia",
+        "mattina",
+        "fitta",
+        "nascondere"
+      ]
+    },
+    {
+      "word": "tramonto",
+      "hints": [
+        "sera",
+        "arancione",
+        "cielo",
+        "orizzonte",
+        "bello"
+      ]
     }
   ]
 }

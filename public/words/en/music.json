@@ -5,123 +5,843 @@
   "words": [
     {
       "word": "guitar",
-      "hints": ["strings", "strumming", "rock", "acoustic", "chords"]
+      "hints": [
+        "strings",
+        "band",
+        "rock",
+        "wood",
+        "strum"
+      ]
     },
     {
       "word": "piano",
-      "hints": ["keys", "black", "white", "classical", "pedals"]
+      "hints": [
+        "keys",
+        "black",
+        "white",
+        "classical",
+        "elegant"
+      ]
     },
     {
       "word": "drums",
-      "hints": ["sticks", "rhythm", "loud", "kit", "beat"]
+      "hints": [
+        "beat",
+        "sticks",
+        "loud",
+        "rhythm",
+        "band"
+      ]
     },
     {
       "word": "violin",
-      "hints": ["bow", "strings", "classical", "orchestra", "chin"]
+      "hints": [
+        "strings",
+        "bow",
+        "classical",
+        "small",
+        "orchestra"
+      ]
     },
     {
       "word": "microphone",
-      "hints": ["singing", "stage", "voice", "stand", "karaoke"]
+      "hints": [
+        "singing",
+        "voice",
+        "stage",
+        "amplify",
+        "stand"
+      ]
     },
     {
       "word": "concert",
-      "hints": ["stage", "crowd", "tickets", "live", "lights"]
+      "hints": [
+        "stage",
+        "crowd",
+        "live",
+        "tickets",
+        "loud"
+      ]
     },
     {
       "word": "orchestra",
-      "hints": ["conductor", "instruments", "classical", "symphony", "formal"]
+      "hints": [
+        "many",
+        "classical",
+        "instruments",
+        "conductor",
+        "formal"
+      ]
     },
     {
       "word": "DJ",
-      "hints": ["turntables", "club", "mixing", "headphones", "party"]
+      "hints": [
+        "club",
+        "mixing",
+        "party",
+        "beats",
+        "headphones"
+      ]
     },
     {
       "word": "rapper",
-      "hints": ["rhymes", "beat", "microphone", "flow", "street"]
+      "hints": [
+        "rhymes",
+        "beat",
+        "words",
+        "fast",
+        "street"
+      ]
     },
     {
       "word": "opera",
-      "hints": ["singing", "dramatic", "Italian", "soprano", "theater"]
+      "hints": [
+        "singing",
+        "dramatic",
+        "classical",
+        "voice",
+        "theater"
+      ]
     },
     {
       "word": "jazz",
-      "hints": ["saxophone", "improvisation", "smooth", "club", "swing"]
+      "hints": [
+        "smooth",
+        "improvise",
+        "club",
+        "swing",
+        "brass"
+      ]
     },
     {
       "word": "rock",
-      "hints": ["guitar", "loud", "band", "leather", "concert"]
+      "hints": [
+        "loud",
+        "guitar",
+        "band",
+        "energy",
+        "concert"
+      ]
     },
     {
       "word": "choir",
-      "hints": ["voices", "church", "harmony", "singing", "robes"]
+      "hints": [
+        "voices",
+        "group",
+        "harmony",
+        "church",
+        "singing"
+      ]
     },
     {
       "word": "saxophone",
-      "hints": ["jazz", "brass", "curved", "smooth", "solo"]
+      "hints": [
+        "brass",
+        "jazz",
+        "smooth",
+        "curved",
+        "blow"
+      ]
     },
     {
       "word": "trumpet",
-      "hints": ["brass", "loud", "jazz", "valves", "fanfare"]
+      "hints": [
+        "brass",
+        "loud",
+        "blow",
+        "valves",
+        "bright"
+      ]
     },
     {
       "word": "flute",
-      "hints": ["wind", "silver", "classical", "blowing", "delicate"]
+      "hints": [
+        "wind",
+        "high",
+        "blow",
+        "silver",
+        "delicate"
+      ]
     },
     {
       "word": "harp",
-      "hints": ["strings", "angel", "elegant", "plucking", "golden"]
+      "hints": [
+        "strings",
+        "elegant",
+        "pluck",
+        "golden",
+        "large"
+      ]
     },
     {
       "word": "accordion",
-      "hints": ["squeezing", "folk", "buttons", "Paris", "polka"]
+      "hints": [
+        "squeeze",
+        "folk",
+        "buttons",
+        "bellows",
+        "street"
+      ]
     },
     {
       "word": "bagpipes",
-      "hints": ["Scotland", "kilt", "loud", "drone", "traditional"]
+      "hints": [
+        "Scotland",
+        "loud",
+        "wind",
+        "traditional",
+        "drone"
+      ]
     },
     {
       "word": "ukulele",
-      "hints": ["small", "Hawaii", "strings", "cheerful", "beach"]
+      "hints": [
+        "small",
+        "strings",
+        "Hawaii",
+        "cheerful",
+        "strum"
+      ]
     },
     {
       "word": "melody",
-      "hints": ["tune", "humming", "catchy", "notes", "song"]
+      "hints": [
+        "tune",
+        "notes",
+        "catchy",
+        "hum",
+        "song"
+      ]
     },
     {
       "word": "lyrics",
-      "hints": ["words", "song", "memorizing", "meaning", "singing"]
+      "hints": [
+        "words",
+        "song",
+        "meaning",
+        "verses",
+        "memorize"
+      ]
     },
     {
       "word": "album",
-      "hints": ["songs", "cover", "artist", "release", "tracks"]
+      "hints": [
+        "songs",
+        "cover",
+        "release",
+        "collection",
+        "artist"
+      ]
     },
     {
       "word": "band",
-      "hints": ["members", "instruments", "tour", "garage", "fame"]
+      "hints": [
+        "group",
+        "instruments",
+        "tour",
+        "members",
+        "stage"
+      ]
     },
     {
       "word": "festival",
-      "hints": ["music", "camping", "stages", "summer", "crowds"]
+      "hints": [
+        "outdoor",
+        "summer",
+        "crowds",
+        "stages",
+        "camping"
+      ]
     },
     {
       "word": "playlist",
-      "hints": ["songs", "curated", "mood", "shuffle", "Spotify"]
+      "hints": [
+        "songs",
+        "list",
+        "mood",
+        "shuffle",
+        "phone"
+      ]
     },
     {
       "word": "autotune",
-      "hints": ["voice", "studio", "pitch", "robotic", "pop"]
+      "hints": [
+        "voice",
+        "studio",
+        "pitch",
+        "robotic",
+        "effect"
+      ]
     },
     {
       "word": "encore",
-      "hints": ["concert", "more", "applause", "final", "crowd"]
+      "hints": [
+        "more",
+        "applause",
+        "end",
+        "crowd",
+        "extra"
+      ]
     },
     {
       "word": "conductor",
-      "hints": ["orchestra", "baton", "waving", "tempo", "tailcoat"]
+      "hints": [
+        "orchestra",
+        "baton",
+        "lead",
+        "wave",
+        "tempo"
+      ]
     },
     {
       "word": "beatbox",
-      "hints": ["mouth", "rhythm", "sounds", "street", "microphone"]
+      "hints": [
+        "mouth",
+        "rhythm",
+        "sounds",
+        "street",
+        "vocal"
+      ]
+    },
+    {
+      "word": "cello",
+      "hints": [
+        "strings",
+        "large",
+        "bow",
+        "classical",
+        "deep"
+      ]
+    },
+    {
+      "word": "clarinet",
+      "hints": [
+        "wind",
+        "black",
+        "blow",
+        "keys",
+        "classical"
+      ]
+    },
+    {
+      "word": "trombone",
+      "hints": [
+        "brass",
+        "slide",
+        "loud",
+        "blow",
+        "jazz"
+      ]
+    },
+    {
+      "word": "tuba",
+      "hints": [
+        "brass",
+        "big",
+        "deep",
+        "loud",
+        "heavy"
+      ]
+    },
+    {
+      "word": "banjo",
+      "hints": [
+        "strings",
+        "country",
+        "twang",
+        "round",
+        "pluck"
+      ]
+    },
+    {
+      "word": "harmonica",
+      "hints": [
+        "small",
+        "blow",
+        "pocket",
+        "blues",
+        "wind"
+      ]
+    },
+    {
+      "word": "tambourine",
+      "hints": [
+        "shake",
+        "jingle",
+        "round",
+        "rhythm",
+        "hand"
+      ]
+    },
+    {
+      "word": "xylophone",
+      "hints": [
+        "bars",
+        "mallets",
+        "colorful",
+        "tap",
+        "notes"
+      ]
+    },
+    {
+      "word": "cymbals",
+      "hints": [
+        "crash",
+        "metal",
+        "loud",
+        "round",
+        "clash"
+      ]
+    },
+    {
+      "word": "maracas",
+      "hints": [
+        "shake",
+        "rhythm",
+        "pair",
+        "Latin",
+        "rattle"
+      ]
+    },
+    {
+      "word": "bongos",
+      "hints": [
+        "drums",
+        "hands",
+        "pair",
+        "rhythm",
+        "Latin"
+      ]
+    },
+    {
+      "word": "synthesizer",
+      "hints": [
+        "electronic",
+        "keys",
+        "sounds",
+        "studio",
+        "digital"
+      ]
+    },
+    {
+      "word": "keyboard",
+      "hints": [
+        "keys",
+        "electronic",
+        "play",
+        "portable",
+        "buttons"
+      ]
+    },
+    {
+      "word": "amplifier",
+      "hints": [
+        "loud",
+        "speaker",
+        "electric",
+        "volume",
+        "stage"
+      ]
+    },
+    {
+      "word": "speaker",
+      "hints": [
+        "loud",
+        "sound",
+        "box",
+        "music",
+        "volume"
+      ]
+    },
+    {
+      "word": "earbuds",
+      "hints": [
+        "ears",
+        "small",
+        "wireless",
+        "music",
+        "pocket"
+      ]
+    },
+    {
+      "word": "pop",
+      "hints": [
+        "catchy",
+        "charts",
+        "popular",
+        "radio",
+        "mainstream"
+      ]
+    },
+    {
+      "word": "classical",
+      "hints": [
+        "orchestra",
+        "old",
+        "elegant",
+        "formal",
+        "instruments"
+      ]
+    },
+    {
+      "word": "blues",
+      "hints": [
+        "sad",
+        "guitar",
+        "soulful",
+        "slow",
+        "old"
+      ]
+    },
+    {
+      "word": "country",
+      "hints": [
+        "guitar",
+        "rural",
+        "America",
+        "stories",
+        "boots"
+      ]
+    },
+    {
+      "word": "reggae",
+      "hints": [
+        "Jamaica",
+        "relaxed",
+        "rhythm",
+        "island",
+        "slow"
+      ]
+    },
+    {
+      "word": "hip hop",
+      "hints": [
+        "beats",
+        "rhymes",
+        "street",
+        "culture",
+        "urban"
+      ]
+    },
+    {
+      "word": "techno",
+      "hints": [
+        "electronic",
+        "beats",
+        "club",
+        "fast",
+        "repetitive"
+      ]
+    },
+    {
+      "word": "metal",
+      "hints": [
+        "loud",
+        "heavy",
+        "guitar",
+        "aggressive",
+        "long hair"
+      ]
+    },
+    {
+      "word": "folk",
+      "hints": [
+        "traditional",
+        "acoustic",
+        "stories",
+        "simple",
+        "old"
+      ]
+    },
+    {
+      "word": "funk",
+      "hints": [
+        "groovy",
+        "bass",
+        "rhythm",
+        "dance",
+        "seventies"
+      ]
+    },
+    {
+      "word": "punk",
+      "hints": [
+        "fast",
+        "loud",
+        "rebel",
+        "raw",
+        "energy"
+      ]
+    },
+    {
+      "word": "gospel",
+      "hints": [
+        "church",
+        "voices",
+        "soulful",
+        "uplifting",
+        "choir"
+      ]
+    },
+    {
+      "word": "composer",
+      "hints": [
+        "writes",
+        "music",
+        "classical",
+        "notes",
+        "creator"
+      ]
+    },
+    {
+      "word": "drummer",
+      "hints": [
+        "beat",
+        "sticks",
+        "rhythm",
+        "band",
+        "back"
+      ]
+    },
+    {
+      "word": "guitarist",
+      "hints": [
+        "strings",
+        "band",
+        "solo",
+        "rock",
+        "play"
+      ]
+    },
+    {
+      "word": "pianist",
+      "hints": [
+        "keys",
+        "fingers",
+        "classical",
+        "play",
+        "elegant"
+      ]
+    },
+    {
+      "word": "stage",
+      "hints": [
+        "performance",
+        "lights",
+        "audience",
+        "platform",
+        "show"
+      ]
+    },
+    {
+      "word": "backstage",
+      "hints": [
+        "behind",
+        "hidden",
+        "performers",
+        "preparing",
+        "private"
+      ]
+    },
+    {
+      "word": "tour",
+      "hints": [
+        "travel",
+        "cities",
+        "shows",
+        "bus",
+        "concerts"
+      ]
+    },
+    {
+      "word": "single",
+      "hints": [
+        "one",
+        "song",
+        "release",
+        "radio",
+        "hit"
+      ]
+    },
+    {
+      "word": "hit",
+      "hints": [
+        "popular",
+        "charts",
+        "successful",
+        "famous",
+        "catchy"
+      ]
+    },
+    {
+      "word": "chorus",
+      "hints": [
+        "repeat",
+        "catchy",
+        "song",
+        "sing-along",
+        "part"
+      ]
+    },
+    {
+      "word": "verse",
+      "hints": [
+        "song",
+        "lyrics",
+        "part",
+        "story",
+        "lines"
+      ]
+    },
+    {
+      "word": "beat",
+      "hints": [
+        "rhythm",
+        "pulse",
+        "drums",
+        "steady",
+        "tempo"
+      ]
+    },
+    {
+      "word": "rhythm",
+      "hints": [
+        "beat",
+        "pattern",
+        "movement",
+        "steady",
+        "dance"
+      ]
+    },
+    {
+      "word": "tempo",
+      "hints": [
+        "speed",
+        "fast",
+        "slow",
+        "pace",
+        "beat"
+      ]
+    },
+    {
+      "word": "note",
+      "hints": [
+        "sound",
+        "pitch",
+        "written",
+        "single",
+        "music"
+      ]
+    },
+    {
+      "word": "chord",
+      "hints": [
+        "notes",
+        "together",
+        "harmony",
+        "guitar",
+        "sound"
+      ]
+    },
+    {
+      "word": "sheet music",
+      "hints": [
+        "paper",
+        "notes",
+        "read",
+        "play",
+        "written"
+      ]
+    },
+    {
+      "word": "vinyl record",
+      "hints": [
+        "disc",
+        "black",
+        "spin",
+        "old",
+        "player"
+      ]
+    },
+    {
+      "word": "busker",
+      "hints": [
+        "street",
+        "perform",
+        "coins",
+        "guitar",
+        "public"
+      ]
+    },
+    {
+      "word": "serenade",
+      "hints": [
+        "romantic",
+        "evening",
+        "song",
+        "love",
+        "outside"
+      ]
+    },
+    {
+      "word": "anthem",
+      "hints": [
+        "national",
+        "proud",
+        "stand",
+        "country",
+        "official"
+      ]
+    },
+    {
+      "word": "ballad",
+      "hints": [
+        "slow",
+        "emotional",
+        "love",
+        "story",
+        "soft"
+      ]
+    },
+    {
+      "word": "lullaby",
+      "hints": [
+        "baby",
+        "soft",
+        "sleep",
+        "gentle",
+        "night"
+      ]
+    },
+    {
+      "word": "remix",
+      "hints": [
+        "new version",
+        "studio",
+        "beats",
+        "electronic",
+        "edit"
+      ]
+    },
+    {
+      "word": "bass guitar",
+      "hints": [
+        "strings",
+        "low",
+        "deep",
+        "band",
+        "rhythm"
+      ]
+    },
+    {
+      "word": "cowbell",
+      "hints": [
+        "metal",
+        "clang",
+        "percussion",
+        "hit",
+        "rhythm"
+      ]
     }
   ]
 }

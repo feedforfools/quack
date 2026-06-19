@@ -5,123 +5,903 @@
   "words": [
     {
       "word": "pizza",
-      "hints": ["Italy", "cheese", "oven", "slices", "delivery"]
+      "hints": [
+        "Italy",
+        "cheese",
+        "round",
+        "slices",
+        "baked"
+      ]
     },
     {
       "word": "sushi",
-      "hints": ["Japan", "rice", "fish", "chopsticks", "soy"]
+      "hints": [
+        "Japan",
+        "rice",
+        "raw",
+        "small",
+        "fresh"
+      ]
     },
     {
       "word": "burger",
-      "hints": ["meat", "buns", "fries", "American", "ketchup"]
+      "hints": [
+        "meat",
+        "bun",
+        "fast food",
+        "American",
+        "grill"
+      ]
     },
     {
       "word": "pasta",
-      "hints": ["Italy", "sauce", "shapes", "boiling", "fork"]
+      "hints": [
+        "Italy",
+        "sauce",
+        "boiled",
+        "wheat",
+        "fork"
+      ]
     },
     {
       "word": "chocolate",
-      "hints": ["sweet", "cocoa", "dark", "gift", "melting"]
+      "hints": [
+        "sweet",
+        "brown",
+        "cocoa",
+        "gift",
+        "melt"
+      ]
     },
     {
       "word": "ice cream",
-      "hints": ["cold", "cone", "summer", "flavors", "scoop"]
+      "hints": [
+        "cold",
+        "sweet",
+        "summer",
+        "scoop",
+        "cone"
+      ]
     },
     {
       "word": "coffee",
-      "hints": ["morning", "caffeine", "espresso", "cup", "awake"]
+      "hints": [
+        "morning",
+        "hot",
+        "bitter",
+        "cup",
+        "awake"
+      ]
     },
     {
       "word": "tea",
-      "hints": ["hot", "leaves", "British", "cup", "calming"]
+      "hints": [
+        "hot",
+        "leaves",
+        "cup",
+        "calm",
+        "afternoon"
+      ]
     },
     {
       "word": "wine",
-      "hints": ["grapes", "glass", "red", "cellar", "toast"]
+      "hints": [
+        "grapes",
+        "glass",
+        "red",
+        "alcohol",
+        "dinner"
+      ]
     },
     {
       "word": "beer",
-      "hints": ["foam", "pub", "cold", "bottle", "friends"]
+      "hints": [
+        "foam",
+        "pub",
+        "cold",
+        "bottle",
+        "alcohol"
+      ]
     },
     {
       "word": "cocktail",
-      "hints": ["bar", "colorful", "umbrella", "alcohol", "shaker"]
+      "hints": [
+        "bar",
+        "colorful",
+        "alcohol",
+        "mix",
+        "glass"
+      ]
     },
     {
       "word": "smoothie",
-      "hints": ["fruit", "blender", "healthy", "breakfast", "straw"]
+      "hints": [
+        "fruit",
+        "blend",
+        "healthy",
+        "cold",
+        "straw"
+      ]
     },
     {
       "word": "pancake",
-      "hints": ["breakfast", "syrup", "flat", "stack", "flipping"]
+      "hints": [
+        "breakfast",
+        "flat",
+        "stack",
+        "sweet",
+        "pan"
+      ]
     },
     {
       "word": "croissant",
-      "hints": ["France", "buttery", "breakfast", "flaky", "bakery"]
+      "hints": [
+        "France",
+        "buttery",
+        "breakfast",
+        "flaky",
+        "bakery"
+      ]
     },
     {
       "word": "sandwich",
-      "hints": ["bread", "lunch", "filling", "quick", "picnic"]
+      "hints": [
+        "bread",
+        "lunch",
+        "filling",
+        "quick",
+        "layers"
+      ]
     },
     {
       "word": "salad",
-      "hints": ["healthy", "vegetables", "dressing", "green", "bowl"]
+      "hints": [
+        "healthy",
+        "vegetables",
+        "green",
+        "bowl",
+        "fresh"
+      ]
     },
     {
       "word": "soup",
-      "hints": ["hot", "bowl", "spoon", "winter", "broth"]
+      "hints": [
+        "hot",
+        "bowl",
+        "spoon",
+        "winter",
+        "liquid"
+      ]
     },
     {
       "word": "steak",
-      "hints": ["meat", "grill", "rare", "knife", "juicy"]
+      "hints": [
+        "meat",
+        "grill",
+        "dinner",
+        "knife",
+        "juicy"
+      ]
     },
     {
       "word": "taco",
-      "hints": ["Mexico", "shell", "spicy", "street", "filling"]
+      "hints": [
+        "Mexico",
+        "shell",
+        "filling",
+        "spicy",
+        "street"
+      ]
     },
     {
       "word": "ramen",
-      "hints": ["Japan", "noodles", "broth", "bowl", "slurping"]
+      "hints": [
+        "Japan",
+        "noodles",
+        "broth",
+        "bowl",
+        "hot"
+      ]
     },
     {
       "word": "curry",
-      "hints": ["India", "spicy", "rice", "sauce", "yellow"]
+      "hints": [
+        "India",
+        "spicy",
+        "sauce",
+        "rice",
+        "yellow"
+      ]
     },
     {
       "word": "lasagna",
-      "hints": ["layers", "Italy", "oven", "cheese", "Sunday"]
+      "hints": [
+        "Italy",
+        "layers",
+        "oven",
+        "cheese",
+        "baked"
+      ]
     },
     {
       "word": "tiramisu",
-      "hints": ["coffee", "Italy", "dessert", "mascarpone", "cocoa"]
+      "hints": [
+        "Italy",
+        "coffee",
+        "dessert",
+        "cream",
+        "cocoa"
+      ]
     },
     {
       "word": "donut",
-      "hints": ["ring", "glaze", "sweet", "fried", "sprinkles"]
+      "hints": [
+        "sweet",
+        "ring",
+        "glaze",
+        "fried",
+        "round"
+      ]
     },
     {
       "word": "popcorn",
-      "hints": ["cinema", "corn", "butter", "bucket", "popping"]
+      "hints": [
+        "cinema",
+        "corn",
+        "butter",
+        "bucket",
+        "snack"
+      ]
     },
     {
       "word": "honey",
-      "hints": ["bees", "sweet", "golden", "sticky", "jar"]
+      "hints": [
+        "sweet",
+        "golden",
+        "sticky",
+        "jar",
+        "natural"
+      ]
     },
     {
       "word": "lemonade",
-      "hints": ["summer", "sour", "refreshing", "yellow", "pitcher"]
+      "hints": [
+        "summer",
+        "sour",
+        "cold",
+        "yellow",
+        "refreshing"
+      ]
     },
     {
       "word": "champagne",
-      "hints": ["bubbles", "celebration", "cork", "French", "toast"]
+      "hints": [
+        "bubbles",
+        "celebration",
+        "alcohol",
+        "France",
+        "toast"
+      ]
     },
     {
       "word": "espresso",
-      "hints": ["Italy", "small", "strong", "bar", "cup"]
+      "hints": [
+        "Italy",
+        "small",
+        "strong",
+        "bar",
+        "coffee"
+      ]
     },
     {
       "word": "barbecue",
-      "hints": ["grill", "smoke", "summer", "meat", "garden"]
+      "hints": [
+        "grill",
+        "smoke",
+        "summer",
+        "meat",
+        "garden"
+      ]
+    },
+    {
+      "word": "fries",
+      "hints": [
+        "potato",
+        "salty",
+        "fast food",
+        "yellow",
+        "crispy"
+      ]
+    },
+    {
+      "word": "hot dog",
+      "hints": [
+        "sausage",
+        "bun",
+        "street",
+        "ketchup",
+        "snack"
+      ]
+    },
+    {
+      "word": "fried chicken",
+      "hints": [
+        "crispy",
+        "meat",
+        "American",
+        "bucket",
+        "fried"
+      ]
+    },
+    {
+      "word": "nachos",
+      "hints": [
+        "cheese",
+        "Mexico",
+        "crispy",
+        "share",
+        "snack"
+      ]
+    },
+    {
+      "word": "hummus",
+      "hints": [
+        "chickpeas",
+        "dip",
+        "smooth",
+        "Middle East",
+        "spread"
+      ]
+    },
+    {
+      "word": "kebab",
+      "hints": [
+        "meat",
+        "skewer",
+        "street",
+        "spicy",
+        "grill"
+      ]
+    },
+    {
+      "word": "paella",
+      "hints": [
+        "Spain",
+        "rice",
+        "seafood",
+        "pan",
+        "yellow"
+      ]
+    },
+    {
+      "word": "risotto",
+      "hints": [
+        "Italy",
+        "rice",
+        "creamy",
+        "stir",
+        "dinner"
+      ]
+    },
+    {
+      "word": "gnocchi",
+      "hints": [
+        "Italy",
+        "potato",
+        "soft",
+        "small",
+        "sauce"
+      ]
+    },
+    {
+      "word": "ravioli",
+      "hints": [
+        "Italy",
+        "filling",
+        "pasta",
+        "stuffed",
+        "sauce"
+      ]
+    },
+    {
+      "word": "pesto",
+      "hints": [
+        "Italy",
+        "green",
+        "basil",
+        "sauce",
+        "pasta"
+      ]
+    },
+    {
+      "word": "carbonara",
+      "hints": [
+        "Italy",
+        "pasta",
+        "egg",
+        "bacon",
+        "creamy"
+      ]
+    },
+    {
+      "word": "bruschetta",
+      "hints": [
+        "Italy",
+        "bread",
+        "tomato",
+        "starter",
+        "toasted"
+      ]
+    },
+    {
+      "word": "focaccia",
+      "hints": [
+        "Italy",
+        "bread",
+        "oil",
+        "flat",
+        "baked"
+      ]
+    },
+    {
+      "word": "bagel",
+      "hints": [
+        "bread",
+        "ring",
+        "breakfast",
+        "cream cheese",
+        "round"
+      ]
+    },
+    {
+      "word": "waffle",
+      "hints": [
+        "breakfast",
+        "squares",
+        "syrup",
+        "sweet",
+        "iron"
+      ]
+    },
+    {
+      "word": "omelette",
+      "hints": [
+        "eggs",
+        "breakfast",
+        "pan",
+        "fold",
+        "fluffy"
+      ]
+    },
+    {
+      "word": "bacon",
+      "hints": [
+        "meat",
+        "breakfast",
+        "crispy",
+        "salty",
+        "strips"
+      ]
+    },
+    {
+      "word": "cereal",
+      "hints": [
+        "breakfast",
+        "milk",
+        "bowl",
+        "morning",
+        "crunchy"
+      ]
+    },
+    {
+      "word": "yogurt",
+      "hints": [
+        "creamy",
+        "breakfast",
+        "healthy",
+        "cup",
+        "fruit"
+      ]
+    },
+    {
+      "word": "muffin",
+      "hints": [
+        "sweet",
+        "breakfast",
+        "baked",
+        "small",
+        "blueberry"
+      ]
+    },
+    {
+      "word": "brownie",
+      "hints": [
+        "chocolate",
+        "sweet",
+        "square",
+        "baked",
+        "dense"
+      ]
+    },
+    {
+      "word": "cheesecake",
+      "hints": [
+        "dessert",
+        "creamy",
+        "sweet",
+        "slice",
+        "baked"
+      ]
+    },
+    {
+      "word": "apple pie",
+      "hints": [
+        "dessert",
+        "fruit",
+        "baked",
+        "warm",
+        "crust"
+      ]
+    },
+    {
+      "word": "pudding",
+      "hints": [
+        "dessert",
+        "sweet",
+        "soft",
+        "creamy",
+        "spoon"
+      ]
+    },
+    {
+      "word": "marshmallow",
+      "hints": [
+        "sweet",
+        "soft",
+        "white",
+        "fire",
+        "fluffy"
+      ]
+    },
+    {
+      "word": "macaron",
+      "hints": [
+        "France",
+        "colorful",
+        "sweet",
+        "small",
+        "round"
+      ]
+    },
+    {
+      "word": "cannoli",
+      "hints": [
+        "Italy",
+        "sweet",
+        "cream",
+        "crunchy",
+        "Sicily"
+      ]
+    },
+    {
+      "word": "churros",
+      "hints": [
+        "Spain",
+        "fried",
+        "sugar",
+        "sweet",
+        "stick"
+      ]
+    },
+    {
+      "word": "pretzel",
+      "hints": [
+        "salty",
+        "twisted",
+        "bread",
+        "snack",
+        "knot"
+      ]
+    },
+    {
+      "word": "dumpling",
+      "hints": [
+        "Asia",
+        "filling",
+        "steamed",
+        "small",
+        "dough"
+      ]
+    },
+    {
+      "word": "spring roll",
+      "hints": [
+        "Asia",
+        "crispy",
+        "filling",
+        "rolled",
+        "fried"
+      ]
+    },
+    {
+      "word": "fried rice",
+      "hints": [
+        "Asia",
+        "rice",
+        "pan",
+        "vegetables",
+        "quick"
+      ]
+    },
+    {
+      "word": "noodles",
+      "hints": [
+        "Asia",
+        "long",
+        "boiled",
+        "slurp",
+        "bowl"
+      ]
+    },
+    {
+      "word": "pho",
+      "hints": [
+        "Vietnam",
+        "broth",
+        "noodles",
+        "bowl",
+        "hot"
+      ]
+    },
+    {
+      "word": "tempura",
+      "hints": [
+        "Japan",
+        "fried",
+        "crispy",
+        "batter",
+        "light"
+      ]
+    },
+    {
+      "word": "burrito",
+      "hints": [
+        "Mexico",
+        "wrap",
+        "filling",
+        "rolled",
+        "big"
+      ]
+    },
+    {
+      "word": "quesadilla",
+      "hints": [
+        "Mexico",
+        "cheese",
+        "tortilla",
+        "folded",
+        "melted"
+      ]
+    },
+    {
+      "word": "guacamole",
+      "hints": [
+        "Mexico",
+        "avocado",
+        "green",
+        "dip",
+        "fresh"
+      ]
+    },
+    {
+      "word": "ceviche",
+      "hints": [
+        "fish",
+        "lime",
+        "fresh",
+        "raw",
+        "cold"
+      ]
+    },
+    {
+      "word": "hot chocolate",
+      "hints": [
+        "warm",
+        "sweet",
+        "winter",
+        "cup",
+        "cocoa"
+      ]
+    },
+    {
+      "word": "milkshake",
+      "hints": [
+        "sweet",
+        "cold",
+        "thick",
+        "straw",
+        "blend"
+      ]
+    },
+    {
+      "word": "juice",
+      "hints": [
+        "fruit",
+        "drink",
+        "fresh",
+        "morning",
+        "glass"
+      ]
+    },
+    {
+      "word": "soda",
+      "hints": [
+        "fizzy",
+        "sweet",
+        "cold",
+        "can",
+        "bubbles"
+      ]
+    },
+    {
+      "word": "mojito",
+      "hints": [
+        "mint",
+        "rum",
+        "cocktail",
+        "fresh",
+        "lime"
+      ]
+    },
+    {
+      "word": "margarita",
+      "hints": [
+        "Mexico",
+        "tequila",
+        "lime",
+        "salt",
+        "cocktail"
+      ]
+    },
+    {
+      "word": "sangria",
+      "hints": [
+        "Spain",
+        "wine",
+        "fruit",
+        "summer",
+        "jug"
+      ]
+    },
+    {
+      "word": "whiskey",
+      "hints": [
+        "strong",
+        "amber",
+        "glass",
+        "alcohol",
+        "aged"
+      ]
+    },
+    {
+      "word": "prosecco",
+      "hints": [
+        "Italy",
+        "bubbles",
+        "sparkling",
+        "toast",
+        "light"
+      ]
+    },
+    {
+      "word": "cappuccino",
+      "hints": [
+        "Italy",
+        "coffee",
+        "foam",
+        "milk",
+        "morning"
+      ]
+    },
+    {
+      "word": "matcha",
+      "hints": [
+        "Japan",
+        "green",
+        "tea",
+        "powder",
+        "bitter"
+      ]
+    },
+    {
+      "word": "oyster",
+      "hints": [
+        "sea",
+        "shell",
+        "raw",
+        "salty",
+        "luxury"
+      ]
+    },
+    {
+      "word": "shrimp",
+      "hints": [
+        "sea",
+        "pink",
+        "small",
+        "seafood",
+        "grill"
+      ]
+    },
+    {
+      "word": "calamari",
+      "hints": [
+        "sea",
+        "fried",
+        "rings",
+        "squid",
+        "crispy"
+      ]
+    },
+    {
+      "word": "caviar",
+      "hints": [
+        "luxury",
+        "fish",
+        "tiny",
+        "expensive",
+        "black"
+      ]
+    },
+    {
+      "word": "fondue",
+      "hints": [
+        "cheese",
+        "melted",
+        "dip",
+        "Swiss",
+        "pot"
+      ]
+    },
+    {
+      "word": "gelato",
+      "hints": [
+        "Italy",
+        "cold",
+        "creamy",
+        "scoop",
+        "sweet"
+      ]
+    },
+    {
+      "word": "crepe",
+      "hints": [
+        "France",
+        "thin",
+        "filling",
+        "sweet",
+        "fold"
+      ]
+    },
+    {
+      "word": "mozzarella",
+      "hints": [
+        "Italy",
+        "cheese",
+        "white",
+        "soft",
+        "fresh"
+      ]
+    },
+    {
+      "word": "olives",
+      "hints": [
+        "green",
+        "salty",
+        "small",
+        "Mediterranean",
+        "snack"
+      ]
     }
   ]
 }

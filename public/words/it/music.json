@@ -5,123 +5,843 @@
   "words": [
     {
       "word": "chitarra",
-      "hints": ["corde", "strimpellare", "rock", "acustica", "accordi"]
+      "hints": [
+        "corde",
+        "band",
+        "rock",
+        "legno",
+        "strimpellare"
+      ]
     },
     {
       "word": "pianoforte",
-      "hints": ["tasti", "nero", "bianco", "classica", "pedali"]
+      "hints": [
+        "tasti",
+        "nero",
+        "bianco",
+        "classica",
+        "elegante"
+      ]
     },
     {
       "word": "batteria",
-      "hints": ["bacchette", "ritmo", "rumorosa", "piatti", "tempo"]
+      "hints": [
+        "ritmo",
+        "bacchette",
+        "rumorosa",
+        "tempo",
+        "band"
+      ]
     },
     {
       "word": "violino",
-      "hints": ["archetto", "corde", "classica", "orchestra", "mento"]
+      "hints": [
+        "corde",
+        "archetto",
+        "classica",
+        "piccolo",
+        "orchestra"
+      ]
     },
     {
       "word": "microfono",
-      "hints": ["cantare", "palco", "voce", "asta", "karaoke"]
+      "hints": [
+        "cantare",
+        "voce",
+        "palco",
+        "amplificare",
+        "asta"
+      ]
     },
     {
       "word": "concerto",
-      "hints": ["palco", "folla", "biglietti", "live", "luci"]
+      "hints": [
+        "palco",
+        "folla",
+        "live",
+        "biglietti",
+        "forte"
+      ]
     },
     {
       "word": "orchestra",
-      "hints": ["direttore", "strumenti", "classica", "sinfonia", "eleganza"]
+      "hints": [
+        "molti",
+        "classica",
+        "strumenti",
+        "direttore",
+        "formale"
+      ]
     },
     {
       "word": "DJ",
-      "hints": ["console", "discoteca", "mixare", "cuffie", "festa"]
+      "hints": [
+        "discoteca",
+        "mixare",
+        "festa",
+        "beat",
+        "cuffie"
+      ]
     },
     {
       "word": "rapper",
-      "hints": ["rime", "beat", "microfono", "flow", "strada"]
+      "hints": [
+        "rime",
+        "beat",
+        "parole",
+        "veloce",
+        "strada"
+      ]
     },
     {
       "word": "opera",
-      "hints": ["canto", "drammatica", "italiana", "soprano", "teatro"]
+      "hints": [
+        "canto",
+        "drammatica",
+        "classica",
+        "voce",
+        "teatro"
+      ]
     },
     {
       "word": "jazz",
-      "hints": ["sassofono", "improvvisazione", "morbido", "club", "swing"]
+      "hints": [
+        "morbido",
+        "improvvisare",
+        "club",
+        "swing",
+        "ottoni"
+      ]
     },
     {
       "word": "rock",
-      "hints": ["chitarra", "forte", "band", "pelle", "concerto"]
+      "hints": [
+        "forte",
+        "chitarra",
+        "band",
+        "energia",
+        "concerto"
+      ]
     },
     {
       "word": "coro",
-      "hints": ["voci", "chiesa", "armonia", "cantare", "tuniche"]
+      "hints": [
+        "voci",
+        "gruppo",
+        "armonia",
+        "chiesa",
+        "cantare"
+      ]
     },
     {
       "word": "sassofono",
-      "hints": ["jazz", "ottone", "curvo", "morbido", "assolo"]
+      "hints": [
+        "ottone",
+        "jazz",
+        "morbido",
+        "curvo",
+        "soffiare"
+      ]
     },
     {
       "word": "tromba",
-      "hints": ["ottone", "forte", "jazz", "pistoni", "fanfara"]
+      "hints": [
+        "ottone",
+        "forte",
+        "soffiare",
+        "pistoni",
+        "squillante"
+      ]
     },
     {
       "word": "flauto",
-      "hints": ["fiato", "argento", "classica", "soffiare", "delicato"]
+      "hints": [
+        "fiato",
+        "acuto",
+        "soffiare",
+        "argento",
+        "delicato"
+      ]
     },
     {
       "word": "arpa",
-      "hints": ["corde", "angelo", "elegante", "pizzicare", "dorata"]
+      "hints": [
+        "corde",
+        "elegante",
+        "pizzicare",
+        "dorata",
+        "grande"
+      ]
     },
     {
       "word": "fisarmonica",
-      "hints": ["mantice", "folk", "bottoni", "liscio", "balera"]
+      "hints": [
+        "stringere",
+        "folk",
+        "bottoni",
+        "mantice",
+        "strada"
+      ]
     },
     {
       "word": "cornamusa",
-      "hints": ["Scozia", "kilt", "forte", "bordone", "tradizione"]
+      "hints": [
+        "Scozia",
+        "forte",
+        "fiato",
+        "tradizione",
+        "bordone"
+      ]
     },
     {
       "word": "ukulele",
-      "hints": ["piccolo", "Hawaii", "corde", "allegro", "spiaggia"]
+      "hints": [
+        "piccolo",
+        "corde",
+        "Hawaii",
+        "allegro",
+        "strimpellare"
+      ]
     },
     {
       "word": "melodia",
-      "hints": ["motivo", "canticchiare", "orecchiabile", "note", "canzone"]
+      "hints": [
+        "motivo",
+        "note",
+        "orecchiabile",
+        "canticchiare",
+        "canzone"
+      ]
     },
     {
       "word": "testo",
-      "hints": ["parole", "canzone", "memorizzare", "significato", "cantare"]
+      "hints": [
+        "parole",
+        "canzone",
+        "significato",
+        "strofe",
+        "memorizzare"
+      ]
     },
     {
       "word": "album",
-      "hints": ["canzoni", "copertina", "artista", "uscita", "tracce"]
+      "hints": [
+        "canzoni",
+        "copertina",
+        "uscita",
+        "raccolta",
+        "artista"
+      ]
     },
     {
       "word": "band",
-      "hints": ["membri", "strumenti", "tour", "garage", "fama"]
+      "hints": [
+        "gruppo",
+        "strumenti",
+        "tour",
+        "membri",
+        "palco"
+      ]
     },
     {
       "word": "festival",
-      "hints": ["musica", "campeggio", "palchi", "estate", "folla"]
+      "hints": [
+        "aperto",
+        "estate",
+        "folla",
+        "palchi",
+        "campeggio"
+      ]
     },
     {
       "word": "playlist",
-      "hints": ["canzoni", "selezione", "umore", "casuale", "Spotify"]
+      "hints": [
+        "canzoni",
+        "lista",
+        "umore",
+        "casuale",
+        "telefono"
+      ]
     },
     {
       "word": "autotune",
-      "hints": ["voce", "studio", "intonazione", "robotica", "trap"]
+      "hints": [
+        "voce",
+        "studio",
+        "intonazione",
+        "robotica",
+        "effetto"
+      ]
     },
     {
       "word": "bis",
-      "hints": ["concerto", "ancora", "applausi", "finale", "pubblico"]
+      "hints": [
+        "ancora",
+        "applausi",
+        "fine",
+        "pubblico",
+        "extra"
+      ]
     },
     {
       "word": "direttore d'orchestra",
-      "hints": ["orchestra", "bacchetta", "gesti", "tempo", "frac"]
+      "hints": [
+        "orchestra",
+        "bacchetta",
+        "guidare",
+        "gesti",
+        "tempo"
+      ]
     },
     {
       "word": "Sanremo",
-      "hints": ["festival", "febbraio", "fiori", "canzoni", "televoto"]
+      "hints": [
+        "festival",
+        "Italia",
+        "febbraio",
+        "canzoni",
+        "televoto"
+      ]
+    },
+    {
+      "word": "violoncello",
+      "hints": [
+        "corde",
+        "grande",
+        "archetto",
+        "classica",
+        "profondo"
+      ]
+    },
+    {
+      "word": "clarinetto",
+      "hints": [
+        "fiato",
+        "nero",
+        "soffiare",
+        "chiavi",
+        "classica"
+      ]
+    },
+    {
+      "word": "trombone",
+      "hints": [
+        "ottone",
+        "coulisse",
+        "forte",
+        "soffiare",
+        "jazz"
+      ]
+    },
+    {
+      "word": "tuba",
+      "hints": [
+        "ottone",
+        "grande",
+        "profonda",
+        "forte",
+        "pesante"
+      ]
+    },
+    {
+      "word": "banjo",
+      "hints": [
+        "corde",
+        "country",
+        "vibrante",
+        "rotondo",
+        "pizzicare"
+      ]
+    },
+    {
+      "word": "armonica",
+      "hints": [
+        "piccola",
+        "soffiare",
+        "tasca",
+        "blues",
+        "fiato"
+      ]
+    },
+    {
+      "word": "tamburello",
+      "hints": [
+        "scuotere",
+        "sonagli",
+        "rotondo",
+        "ritmo",
+        "mano"
+      ]
+    },
+    {
+      "word": "xilofono",
+      "hints": [
+        "barrette",
+        "mazzuoli",
+        "colorato",
+        "battere",
+        "note"
+      ]
+    },
+    {
+      "word": "piatti",
+      "hints": [
+        "fragore",
+        "metallo",
+        "forti",
+        "rotondi",
+        "scontrare"
+      ]
+    },
+    {
+      "word": "maracas",
+      "hints": [
+        "scuotere",
+        "ritmo",
+        "coppia",
+        "latino",
+        "sonaglio"
+      ]
+    },
+    {
+      "word": "bonghi",
+      "hints": [
+        "tamburi",
+        "mani",
+        "coppia",
+        "ritmo",
+        "latino"
+      ]
+    },
+    {
+      "word": "sintetizzatore",
+      "hints": [
+        "elettronico",
+        "tasti",
+        "suoni",
+        "studio",
+        "digitale"
+      ]
+    },
+    {
+      "word": "tastiera",
+      "hints": [
+        "tasti",
+        "elettronica",
+        "suonare",
+        "portatile",
+        "pulsanti"
+      ]
+    },
+    {
+      "word": "amplificatore",
+      "hints": [
+        "forte",
+        "cassa",
+        "elettrico",
+        "volume",
+        "palco"
+      ]
+    },
+    {
+      "word": "cassa",
+      "hints": [
+        "forte",
+        "suono",
+        "scatola",
+        "musica",
+        "volume"
+      ]
+    },
+    {
+      "word": "auricolari",
+      "hints": [
+        "orecchie",
+        "piccoli",
+        "wireless",
+        "musica",
+        "tasca"
+      ]
+    },
+    {
+      "word": "pop",
+      "hints": [
+        "orecchiabile",
+        "classifiche",
+        "popolare",
+        "radio",
+        "commerciale"
+      ]
+    },
+    {
+      "word": "classica",
+      "hints": [
+        "orchestra",
+        "antica",
+        "elegante",
+        "formale",
+        "strumenti"
+      ]
+    },
+    {
+      "word": "blues",
+      "hints": [
+        "triste",
+        "chitarra",
+        "anima",
+        "lento",
+        "antico"
+      ]
+    },
+    {
+      "word": "country",
+      "hints": [
+        "chitarra",
+        "rurale",
+        "America",
+        "storie",
+        "stivali"
+      ]
+    },
+    {
+      "word": "reggae",
+      "hints": [
+        "Giamaica",
+        "rilassato",
+        "ritmo",
+        "isola",
+        "lento"
+      ]
+    },
+    {
+      "word": "hip hop",
+      "hints": [
+        "beat",
+        "rime",
+        "strada",
+        "cultura",
+        "urbano"
+      ]
+    },
+    {
+      "word": "techno",
+      "hints": [
+        "elettronica",
+        "beat",
+        "discoteca",
+        "veloce",
+        "ripetitiva"
+      ]
+    },
+    {
+      "word": "metal",
+      "hints": [
+        "forte",
+        "pesante",
+        "chitarra",
+        "aggressivo",
+        "capelli lunghi"
+      ]
+    },
+    {
+      "word": "folk",
+      "hints": [
+        "tradizionale",
+        "acustica",
+        "storie",
+        "semplice",
+        "antica"
+      ]
+    },
+    {
+      "word": "funk",
+      "hints": [
+        "ritmata",
+        "basso",
+        "ritmo",
+        "ballo",
+        "settanta"
+      ]
+    },
+    {
+      "word": "punk",
+      "hints": [
+        "veloce",
+        "forte",
+        "ribelle",
+        "grezzo",
+        "energia"
+      ]
+    },
+    {
+      "word": "gospel",
+      "hints": [
+        "chiesa",
+        "voci",
+        "anima",
+        "esaltante",
+        "coro"
+      ]
+    },
+    {
+      "word": "compositore",
+      "hints": [
+        "scrive",
+        "musica",
+        "classica",
+        "note",
+        "creatore"
+      ]
+    },
+    {
+      "word": "batterista",
+      "hints": [
+        "ritmo",
+        "bacchette",
+        "tempo",
+        "band",
+        "dietro"
+      ]
+    },
+    {
+      "word": "chitarrista",
+      "hints": [
+        "corde",
+        "band",
+        "assolo",
+        "rock",
+        "suonare"
+      ]
+    },
+    {
+      "word": "pianista",
+      "hints": [
+        "tasti",
+        "dita",
+        "classica",
+        "suonare",
+        "elegante"
+      ]
+    },
+    {
+      "word": "palco",
+      "hints": [
+        "esibizione",
+        "luci",
+        "pubblico",
+        "pedana",
+        "spettacolo"
+      ]
+    },
+    {
+      "word": "dietro le quinte",
+      "hints": [
+        "dietro",
+        "nascosto",
+        "artisti",
+        "preparare",
+        "privato"
+      ]
+    },
+    {
+      "word": "tournée",
+      "hints": [
+        "viaggio",
+        "città",
+        "spettacoli",
+        "pullman",
+        "concerti"
+      ]
+    },
+    {
+      "word": "singolo",
+      "hints": [
+        "uno",
+        "canzone",
+        "uscita",
+        "radio",
+        "successo"
+      ]
+    },
+    {
+      "word": "successo",
+      "hints": [
+        "popolare",
+        "classifiche",
+        "famoso",
+        "vincente",
+        "orecchiabile"
+      ]
+    },
+    {
+      "word": "ritornello",
+      "hints": [
+        "ripetere",
+        "orecchiabile",
+        "canzone",
+        "cantare",
+        "parte"
+      ]
+    },
+    {
+      "word": "strofa",
+      "hints": [
+        "canzone",
+        "testo",
+        "parte",
+        "storia",
+        "versi"
+      ]
+    },
+    {
+      "word": "beat",
+      "hints": [
+        "ritmo",
+        "pulsazione",
+        "tamburi",
+        "costante",
+        "tempo"
+      ]
+    },
+    {
+      "word": "ritmo",
+      "hints": [
+        "beat",
+        "schema",
+        "movimento",
+        "costante",
+        "ballo"
+      ]
+    },
+    {
+      "word": "tempo",
+      "hints": [
+        "velocità",
+        "veloce",
+        "lento",
+        "andatura",
+        "battito"
+      ]
+    },
+    {
+      "word": "nota",
+      "hints": [
+        "suono",
+        "altezza",
+        "scritta",
+        "singola",
+        "musica"
+      ]
+    },
+    {
+      "word": "accordo",
+      "hints": [
+        "note",
+        "insieme",
+        "armonia",
+        "chitarra",
+        "suono"
+      ]
+    },
+    {
+      "word": "spartito",
+      "hints": [
+        "carta",
+        "note",
+        "leggere",
+        "suonare",
+        "scritto"
+      ]
+    },
+    {
+      "word": "disco in vinile",
+      "hints": [
+        "disco",
+        "nero",
+        "girare",
+        "antico",
+        "giradischi"
+      ]
+    },
+    {
+      "word": "artista di strada",
+      "hints": [
+        "strada",
+        "esibirsi",
+        "monete",
+        "chitarra",
+        "pubblico"
+      ]
+    },
+    {
+      "word": "serenata",
+      "hints": [
+        "romantica",
+        "sera",
+        "canzone",
+        "amore",
+        "fuori"
+      ]
+    },
+    {
+      "word": "inno",
+      "hints": [
+        "nazionale",
+        "orgoglio",
+        "in piedi",
+        "patria",
+        "ufficiale"
+      ]
+    },
+    {
+      "word": "ballata",
+      "hints": [
+        "lenta",
+        "emozionante",
+        "amore",
+        "storia",
+        "dolce"
+      ]
+    },
+    {
+      "word": "ninnananna",
+      "hints": [
+        "neonato",
+        "dolce",
+        "sonno",
+        "delicata",
+        "notte"
+      ]
+    },
+    {
+      "word": "remix",
+      "hints": [
+        "nuova versione",
+        "studio",
+        "beat",
+        "elettronica",
+        "modifica"
+      ]
+    },
+    {
+      "word": "basso",
+      "hints": [
+        "corde",
+        "bassa",
+        "profonda",
+        "band",
+        "ritmo"
+      ]
+    },
+    {
+      "word": "campanaccio",
+      "hints": [
+        "metallo",
+        "rintocco",
+        "percussione",
+        "colpire",
+        "ritmo"
+      ]
     }
   ]
 }

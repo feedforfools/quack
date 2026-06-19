@@ -5,123 +5,843 @@
   "words": [
     {
       "word": "razzo",
-      "hints": ["lancio", "spazio", "conto", "carburante", "NASA"]
+      "hints": [
+        "spazio",
+        "lancio",
+        "veloce",
+        "fuoco",
+        "alto"
+      ]
     },
     {
       "word": "pianeta",
-      "hints": ["orbita", "solare", "rotondo", "spazio", "sistema"]
+      "hints": [
+        "spazio",
+        "rotondo",
+        "orbita",
+        "sistema",
+        "lontano"
+      ]
     },
     {
       "word": "galassia",
-      "hints": ["stelle", "spirale", "immensa", "universo", "lattea"]
+      "hints": [
+        "spazio",
+        "stelle",
+        "immensa",
+        "spirale",
+        "lontana"
+      ]
     },
     {
       "word": "buco nero",
-      "hints": ["gravità", "spazio", "luce", "misterioso", "enorme"]
+      "hints": [
+        "spazio",
+        "buio",
+        "gravità",
+        "misterioso",
+        "profondo"
+      ]
     },
     {
       "word": "telescopio",
-      "hints": ["stelle", "lente", "osservatorio", "lontano", "astronomo"]
+      "hints": [
+        "stelle",
+        "lente",
+        "guardare",
+        "lontano",
+        "notte"
+      ]
     },
     {
       "word": "atomo",
-      "hints": ["minuscolo", "nucleo", "fisica", "particelle", "materia"]
+      "hints": [
+        "minuscolo",
+        "particella",
+        "materia",
+        "fisica",
+        "invisibile"
+      ]
     },
     {
       "word": "gravità",
-      "hints": ["cadere", "Newton", "mela", "forza", "Terra"]
+      "hints": [
+        "cadere",
+        "tirare",
+        "forza",
+        "giù",
+        "Terra"
+      ]
     },
     {
       "word": "DNA",
-      "hints": ["geni", "elica", "biologia", "codice", "ereditarietà"]
+      "hints": [
+        "geni",
+        "minuscolo",
+        "biologia",
+        "codice",
+        "ereditare"
+      ]
     },
     {
       "word": "robot",
-      "hints": ["macchina", "artificiale", "metallo", "programmato", "futuro"]
+      "hints": [
+        "macchina",
+        "metallo",
+        "artificiale",
+        "futuro",
+        "programmato"
+      ]
     },
     {
       "word": "satellite",
-      "hints": ["orbita", "segnale", "spazio", "parabola", "GPS"]
+      "hints": [
+        "spazio",
+        "orbita",
+        "segnale",
+        "cielo",
+        "tecnologia"
+      ]
     },
     {
       "word": "asteroide",
-      "hints": ["roccia", "spazio", "impatto", "fascia", "dinosauri"]
+      "hints": [
+        "spazio",
+        "roccia",
+        "volante",
+        "fascia",
+        "impatto"
+      ]
     },
     {
       "word": "cometa",
-      "hints": ["coda", "ghiaccio", "cielo", "orbita", "luminosa"]
+      "hints": [
+        "spazio",
+        "ghiaccio",
+        "coda",
+        "cielo",
+        "luminosa"
+      ]
     },
     {
       "word": "eclissi",
-      "hints": ["sole", "luna", "ombra", "rara", "occhialini"]
+      "hints": [
+        "sole",
+        "luna",
+        "ombra",
+        "rara",
+        "buio"
+      ]
     },
     {
       "word": "meteora",
-      "hints": ["cadente", "cielo", "bruciare", "desiderio", "notte"]
+      "hints": [
+        "cielo",
+        "cadente",
+        "bruciare",
+        "veloce",
+        "notte"
+      ]
     },
     {
       "word": "tuta spaziale",
-      "hints": ["astronauta", "bianca", "casco", "ossigeno", "ingombrante"]
+      "hints": [
+        "astronauta",
+        "bianca",
+        "ossigeno",
+        "ingombrante",
+        "casco"
+      ]
     },
     {
       "word": "alieno",
-      "hints": ["UFO", "verde", "spazio", "rapimento", "ignoto"]
+      "hints": [
+        "spazio",
+        "ignoto",
+        "verde",
+        "strano",
+        "visitatore"
+      ]
     },
     {
       "word": "UFO",
-      "hints": ["volante", "disco", "mistero", "luci", "avvistamento"]
+      "hints": [
+        "volante",
+        "mistero",
+        "luci",
+        "cielo",
+        "ignoto"
+      ]
     },
     {
       "word": "Marte",
-      "hints": ["rosso", "pianeta", "rover", "colonia", "polvere"]
+      "hints": [
+        "rosso",
+        "pianeta",
+        "spazio",
+        "polvere",
+        "lontano"
+      ]
     },
     {
       "word": "allunaggio",
-      "hints": ["Apollo", "bandiera", "astronauti", "impronta", "televisione"]
+      "hints": [
+        "astronauti",
+        "storia",
+        "bandiera",
+        "spazio",
+        "famoso"
+      ]
     },
     {
       "word": "stazione spaziale",
-      "hints": ["orbita", "astronauti", "moduli", "fluttuare", "internazionale"]
+      "hints": [
+        "orbita",
+        "astronauti",
+        "fluttuare",
+        "moduli",
+        "internazionale"
+      ]
     },
     {
       "word": "vaccino",
-      "hints": ["ago", "immunità", "dottore", "protezione", "laboratorio"]
+      "hints": [
+        "ago",
+        "protezione",
+        "dottore",
+        "immunità",
+        "salute"
+      ]
     },
     {
       "word": "batteri",
-      "hints": ["microscopici", "germi", "infezione", "antibiotici", "ovunque"]
+      "hints": [
+        "minuscoli",
+        "germi",
+        "invisibili",
+        "ovunque",
+        "infezione"
+      ]
     },
     {
       "word": "evoluzione",
-      "hints": ["Darwin", "specie", "adattamento", "graduale", "fossili"]
+      "hints": [
+        "specie",
+        "cambiamento",
+        "lento",
+        "adattarsi",
+        "Darwin"
+      ]
     },
     {
       "word": "dinosauro",
-      "hints": ["estinto", "fossile", "enorme", "Jurassic", "ossa"]
+      "hints": [
+        "estinto",
+        "enorme",
+        "antico",
+        "ossa",
+        "rettile"
+      ]
     },
     {
       "word": "fossile",
-      "hints": ["antico", "pietra", "ossa", "scavare", "museo"]
+      "hints": [
+        "antico",
+        "pietra",
+        "ossa",
+        "scavare",
+        "museo"
+      ]
     },
     {
       "word": "elettricità",
-      "hints": ["corrente", "fili", "scossa", "energia", "Tesla"]
+      "hints": [
+        "energia",
+        "fili",
+        "corrente",
+        "scossa",
+        "potenza"
+      ]
     },
     {
       "word": "calamita",
-      "hints": ["attrazione", "poli", "metallo", "frigorifero", "campo"]
+      "hints": [
+        "attrarre",
+        "metallo",
+        "poli",
+        "frigorifero",
+        "tirare"
+      ]
     },
     {
       "word": "laser",
-      "hints": ["raggio", "rosso", "preciso", "luce", "puntatore"]
+      "hints": [
+        "raggio",
+        "luce",
+        "preciso",
+        "rosso",
+        "concentrato"
+      ]
     },
     {
       "word": "esperimento",
-      "hints": ["laboratorio", "ipotesi", "prova", "risultati", "occhiali"]
+      "hints": [
+        "laboratorio",
+        "prova",
+        "risultati",
+        "tentare",
+        "scienza"
+      ]
     },
     {
       "word": "chimica",
-      "hints": ["elementi", "reazioni", "laboratorio", "formule", "esplosioni"]
+      "hints": [
+        "elementi",
+        "reazioni",
+        "laboratorio",
+        "mescolare",
+        "formule"
+      ]
+    },
+    {
+      "word": "microscopio",
+      "hints": [
+        "lente",
+        "minuscolo",
+        "laboratorio",
+        "guardare",
+        "ingrandire"
+      ]
+    },
+    {
+      "word": "cellula",
+      "hints": [
+        "minuscola",
+        "biologia",
+        "vivente",
+        "corpo",
+        "mattone"
+      ]
+    },
+    {
+      "word": "virus",
+      "hints": [
+        "minuscolo",
+        "malattia",
+        "diffondere",
+        "infezione",
+        "invisibile"
+      ]
+    },
+    {
+      "word": "cervello",
+      "hints": [
+        "pensare",
+        "testa",
+        "nervi",
+        "controllo",
+        "memoria"
+      ]
+    },
+    {
+      "word": "scheletro",
+      "hints": [
+        "ossa",
+        "corpo",
+        "struttura",
+        "bianco",
+        "telaio"
+      ]
+    },
+    {
+      "word": "sangue",
+      "hints": [
+        "rosso",
+        "corpo",
+        "vene",
+        "cuore",
+        "scorrere"
+      ]
+    },
+    {
+      "word": "ossigeno",
+      "hints": [
+        "aria",
+        "respirare",
+        "gas",
+        "vita",
+        "invisibile"
+      ]
+    },
+    {
+      "word": "molecola",
+      "hints": [
+        "minuscola",
+        "atomi",
+        "materia",
+        "struttura",
+        "chimica"
+      ]
+    },
+    {
+      "word": "elettrone",
+      "hints": [
+        "minuscolo",
+        "atomo",
+        "carica",
+        "particella",
+        "negativo"
+      ]
+    },
+    {
+      "word": "nucleo",
+      "hints": [
+        "centro",
+        "atomo",
+        "minuscolo",
+        "cuore",
+        "particelle"
+      ]
+    },
+    {
+      "word": "energia",
+      "hints": [
+        "potenza",
+        "forza",
+        "movimento",
+        "carburante",
+        "invisibile"
+      ]
+    },
+    {
+      "word": "forza",
+      "hints": [
+        "spingere",
+        "tirare",
+        "fisica",
+        "potenza",
+        "movimento"
+      ]
+    },
+    {
+      "word": "attrito",
+      "hints": [
+        "sfregare",
+        "calore",
+        "resistenza",
+        "superfici",
+        "rallentare"
+      ]
+    },
+    {
+      "word": "velocità",
+      "hints": [
+        "rapidità",
+        "veloce",
+        "movimento",
+        "direzione",
+        "fisica"
+      ]
+    },
+    {
+      "word": "luce",
+      "hints": [
+        "luminosa",
+        "vedere",
+        "veloce",
+        "onde",
+        "sole"
+      ]
+    },
+    {
+      "word": "suono",
+      "hints": [
+        "sentire",
+        "onde",
+        "forte",
+        "orecchie",
+        "vibrazione"
+      ]
+    },
+    {
+      "word": "onda",
+      "hints": [
+        "movimento",
+        "energia",
+        "mare",
+        "su e giù",
+        "frequenza"
+      ]
+    },
+    {
+      "word": "radiazione",
+      "hints": [
+        "invisibile",
+        "energia",
+        "pericolo",
+        "raggi",
+        "nucleare"
+      ]
+    },
+    {
+      "word": "raggi X",
+      "hints": [
+        "ossa",
+        "ospedale",
+        "immagine",
+        "invisibili",
+        "scansione"
+      ]
+    },
+    {
+      "word": "elemento",
+      "hints": [
+        "chimica",
+        "basilare",
+        "tavola",
+        "puro",
+        "atomo"
+      ]
+    },
+    {
+      "word": "acido",
+      "hints": [
+        "aspro",
+        "bruciare",
+        "liquido",
+        "chimica",
+        "pericolo"
+      ]
+    },
+    {
+      "word": "cristallo",
+      "hints": [
+        "trasparente",
+        "lucente",
+        "roccia",
+        "geometrico",
+        "crescere"
+      ]
+    },
+    {
+      "word": "minerale",
+      "hints": [
+        "roccia",
+        "terra",
+        "naturale",
+        "solido",
+        "miniera"
+      ]
+    },
+    {
+      "word": "costellazione",
+      "hints": [
+        "stelle",
+        "cielo",
+        "disegno",
+        "notte",
+        "forme"
+      ]
+    },
+    {
+      "word": "nebulosa",
+      "hints": [
+        "spazio",
+        "nube",
+        "colorata",
+        "stelle",
+        "lontana"
+      ]
+    },
+    {
+      "word": "supernova",
+      "hints": [
+        "stella",
+        "esplosione",
+        "spazio",
+        "luminosa",
+        "morte"
+      ]
+    },
+    {
+      "word": "cratere",
+      "hints": [
+        "buco",
+        "luna",
+        "impatto",
+        "rotondo",
+        "profondo"
+      ]
+    },
+    {
+      "word": "Saturno",
+      "hints": [
+        "pianeta",
+        "anelli",
+        "spazio",
+        "gas",
+        "lontano"
+      ]
+    },
+    {
+      "word": "Giove",
+      "hints": [
+        "pianeta",
+        "enorme",
+        "spazio",
+        "gas",
+        "tempesta"
+      ]
+    },
+    {
+      "word": "Venere",
+      "hints": [
+        "pianeta",
+        "caldo",
+        "spazio",
+        "luminosa",
+        "nuvoloso"
+      ]
+    },
+    {
+      "word": "Mercurio",
+      "hints": [
+        "pianeta",
+        "piccolo",
+        "spazio",
+        "vicino",
+        "veloce"
+      ]
+    },
+    {
+      "word": "Nettuno",
+      "hints": [
+        "pianeta",
+        "blu",
+        "spazio",
+        "lontano",
+        "freddo"
+      ]
+    },
+    {
+      "word": "Plutone",
+      "hints": [
+        "piccolo",
+        "lontano",
+        "freddo",
+        "spazio",
+        "nano"
+      ]
+    },
+    {
+      "word": "sistema solare",
+      "hints": [
+        "pianeti",
+        "sole",
+        "spazio",
+        "orbite",
+        "otto"
+      ]
+    },
+    {
+      "word": "universo",
+      "hints": [
+        "tutto",
+        "immenso",
+        "spazio",
+        "infinito",
+        "stelle"
+      ]
+    },
+    {
+      "word": "big bang",
+      "hints": [
+        "inizio",
+        "esplosione",
+        "universo",
+        "teoria",
+        "espandere"
+      ]
+    },
+    {
+      "word": "cosmonauta",
+      "hints": [
+        "spazio",
+        "russo",
+        "casco",
+        "orbita",
+        "tuta"
+      ]
+    },
+    {
+      "word": "rover",
+      "hints": [
+        "Marte",
+        "ruote",
+        "esplorare",
+        "robot",
+        "superficie"
+      ]
+    },
+    {
+      "word": "sonda",
+      "hints": [
+        "spazio",
+        "esplorare",
+        "segnale",
+        "lontana",
+        "robot"
+      ]
+    },
+    {
+      "word": "provetta",
+      "hints": [
+        "laboratorio",
+        "vetro",
+        "liquido",
+        "piccola",
+        "esperimento"
+      ]
+    },
+    {
+      "word": "becher",
+      "hints": [
+        "laboratorio",
+        "vetro",
+        "liquido",
+        "misurare",
+        "chimica"
+      ]
+    },
+    {
+      "word": "formula",
+      "hints": [
+        "chimica",
+        "simboli",
+        "equazione",
+        "ricetta",
+        "scienza"
+      ]
+    },
+    {
+      "word": "ipotesi",
+      "hints": [
+        "supposizione",
+        "provare",
+        "scienza",
+        "idea",
+        "teoria"
+      ]
+    },
+    {
+      "word": "teoria",
+      "hints": [
+        "idea",
+        "scienza",
+        "spiegare",
+        "provata",
+        "studio"
+      ]
+    },
+    {
+      "word": "circuito",
+      "hints": [
+        "elettricità",
+        "fili",
+        "anello",
+        "potenza",
+        "componenti"
+      ]
+    },
+    {
+      "word": "batteria",
+      "hints": [
+        "potenza",
+        "energia",
+        "accumulare",
+        "carica",
+        "portatile"
+      ]
+    },
+    {
+      "word": "pannello solare",
+      "hints": [
+        "sole",
+        "energia",
+        "tetto",
+        "elettricità",
+        "pulita"
+      ]
+    },
+    {
+      "word": "nucleare",
+      "hints": [
+        "potenza",
+        "atomo",
+        "energia",
+        "pericolo",
+        "reattore"
+      ]
+    },
+    {
+      "word": "reattore",
+      "hints": [
+        "nucleare",
+        "potenza",
+        "energia",
+        "calore",
+        "centrale"
+      ]
+    },
+    {
+      "word": "fotosintesi",
+      "hints": [
+        "piante",
+        "sole",
+        "verde",
+        "ossigeno",
+        "foglie"
+      ]
+    },
+    {
+      "word": "ecosistema",
+      "hints": [
+        "natura",
+        "equilibrio",
+        "vivente",
+        "ambiente",
+        "connesso"
+      ]
+    },
+    {
+      "word": "clima",
+      "hints": [
+        "tempo",
+        "a lungo termine",
+        "globale",
+        "temperatura",
+        "cambiamento"
+      ]
+    },
+    {
+      "word": "gene",
+      "hints": [
+        "DNA",
+        "ereditare",
+        "minuscolo",
+        "tratti",
+        "codice"
+      ]
+    },
+    {
+      "word": "neurone",
+      "hints": [
+        "cervello",
+        "nervo",
+        "segnale",
+        "minuscolo",
+        "connettere"
+      ]
     }
   ]
 }

@@ -5,123 +5,903 @@
   "words": [
     {
       "word": "umbrella",
-      "hints": ["rain", "folding", "handle", "wet", "storm"]
+      "hints": [
+        "rain",
+        "fold",
+        "handle",
+        "wet",
+        "carry"
+      ]
     },
     {
       "word": "toothbrush",
-      "hints": ["bathroom", "teeth", "morning", "toothpaste", "bristles"]
+      "hints": [
+        "bathroom",
+        "morning",
+        "bristles",
+        "small",
+        "daily"
+      ]
     },
     {
       "word": "wallet",
-      "hints": ["money", "pocket", "cards", "leather", "cash"]
+      "hints": [
+        "pocket",
+        "leather",
+        "cards",
+        "small",
+        "folded"
+      ]
     },
     {
       "word": "backpack",
-      "hints": ["shoulders", "zipper", "books", "hiking", "straps"]
+      "hints": [
+        "shoulders",
+        "straps",
+        "carry",
+        "school",
+        "zipper"
+      ]
     },
     {
       "word": "mirror",
-      "hints": ["reflection", "bathroom", "glass", "selfie", "wall"]
+      "hints": [
+        "reflection",
+        "glass",
+        "wall",
+        "bathroom",
+        "look"
+      ]
     },
     {
       "word": "pillow",
-      "hints": ["bed", "soft", "sleep", "feathers", "head"]
+      "hints": [
+        "bed",
+        "soft",
+        "sleep",
+        "head",
+        "feathers"
+      ]
     },
     {
       "word": "towel",
-      "hints": ["bathroom", "drying", "beach", "soft", "shower"]
+      "hints": [
+        "bathroom",
+        "drying",
+        "soft",
+        "shower",
+        "cotton"
+      ]
     },
     {
       "word": "scissors",
-      "hints": ["cutting", "paper", "sharp", "blades", "craft"]
+      "hints": [
+        "cut",
+        "sharp",
+        "blades",
+        "paper",
+        "pair"
+      ]
     },
     {
       "word": "candle",
-      "hints": ["flame", "wax", "birthday", "romantic", "scented"]
+      "hints": [
+        "flame",
+        "wax",
+        "light",
+        "romantic",
+        "scented"
+      ]
     },
     {
       "word": "soap",
-      "hints": ["washing", "bubbles", "bathroom", "clean", "hands"]
+      "hints": [
+        "wash",
+        "bubbles",
+        "bathroom",
+        "clean",
+        "hands"
+      ]
     },
     {
       "word": "sponge",
-      "hints": ["kitchen", "dishes", "absorbing", "yellow", "cleaning"]
+      "hints": [
+        "kitchen",
+        "wet",
+        "cleaning",
+        "soft",
+        "absorb"
+      ]
     },
     {
       "word": "broom",
-      "hints": ["sweeping", "floor", "dust", "handle", "witch"]
+      "hints": [
+        "sweep",
+        "floor",
+        "handle",
+        "dust",
+        "bristles"
+      ]
     },
     {
       "word": "ladder",
-      "hints": ["climbing", "steps", "wall", "painting", "tall"]
+      "hints": [
+        "climb",
+        "steps",
+        "tall",
+        "reach",
+        "metal"
+      ]
     },
     {
       "word": "hammer",
-      "hints": ["nails", "tool", "wood", "heavy", "hitting"]
+      "hints": [
+        "nails",
+        "tool",
+        "heavy",
+        "hit",
+        "wood"
+      ]
     },
     {
       "word": "flashlight",
-      "hints": ["batteries", "darkness", "beam", "camping", "emergency"]
+      "hints": [
+        "battery",
+        "dark",
+        "beam",
+        "camping",
+        "pocket"
+      ]
     },
     {
       "word": "charger",
-      "hints": ["cable", "battery", "phone", "plug", "electricity"]
+      "hints": [
+        "cable",
+        "battery",
+        "plug",
+        "power",
+        "phone"
+      ]
     },
     {
       "word": "headphones",
-      "hints": ["music", "ears", "wireless", "listening", "silence"]
+      "hints": [
+        "music",
+        "ears",
+        "listening",
+        "wireless",
+        "sound"
+      ]
     },
     {
       "word": "sunglasses",
-      "hints": ["summer", "eyes", "fashion", "beach", "dark"]
+      "hints": [
+        "summer",
+        "eyes",
+        "fashion",
+        "dark",
+        "sun"
+      ]
     },
     {
       "word": "suitcase",
-      "hints": ["travel", "packing", "wheels", "airport", "clothes"]
+      "hints": [
+        "travel",
+        "packing",
+        "wheels",
+        "airport",
+        "trip"
+      ]
     },
     {
       "word": "blanket",
-      "hints": ["warm", "sofa", "winter", "soft", "cozy"]
+      "hints": [
+        "warm",
+        "sofa",
+        "winter",
+        "soft",
+        "cozy"
+      ]
     },
     {
       "word": "remote",
-      "hints": ["television", "buttons", "sofa", "channels", "batteries"]
+      "hints": [
+        "buttons",
+        "sofa",
+        "television",
+        "channels",
+        "battery"
+      ]
     },
     {
       "word": "fridge",
-      "hints": ["kitchen", "cold", "food", "magnets", "leftovers"]
+      "hints": [
+        "kitchen",
+        "cold",
+        "food",
+        "white",
+        "door"
+      ]
     },
     {
       "word": "microwave",
-      "hints": ["kitchen", "heating", "beeping", "leftovers", "minutes"]
+      "hints": [
+        "kitchen",
+        "heating",
+        "beep",
+        "fast",
+        "box"
+      ]
     },
     {
       "word": "washing machine",
-      "hints": ["laundry", "clothes", "spinning", "detergent", "drum"]
+      "hints": [
+        "laundry",
+        "clothes",
+        "spin",
+        "water",
+        "drum"
+      ]
     },
     {
       "word": "vacuum",
-      "hints": ["cleaning", "carpet", "dust", "loud", "cordless"]
+      "hints": [
+        "cleaning",
+        "carpet",
+        "dust",
+        "loud",
+        "floor"
+      ]
     },
     {
       "word": "kettle",
-      "hints": ["tea", "boiling", "water", "whistle", "kitchen"]
+      "hints": [
+        "boil",
+        "water",
+        "hot",
+        "kitchen",
+        "spout"
+      ]
     },
     {
       "word": "toaster",
-      "hints": ["bread", "breakfast", "crispy", "kitchen", "crumbs"]
+      "hints": [
+        "bread",
+        "breakfast",
+        "crispy",
+        "kitchen",
+        "pop"
+      ]
     },
     {
       "word": "alarm clock",
-      "hints": ["morning", "ringing", "snooze", "waking", "bedside"]
+      "hints": [
+        "morning",
+        "ring",
+        "bedside",
+        "wake",
+        "snooze"
+      ]
     },
     {
       "word": "trash can",
-      "hints": ["garbage", "lid", "kitchen", "smell", "bags"]
+      "hints": [
+        "garbage",
+        "lid",
+        "kitchen",
+        "bags",
+        "smell"
+      ]
     },
     {
       "word": "band-aid",
-      "hints": ["cut", "skin", "sticky", "wound", "pharmacy"]
+      "hints": [
+        "cut",
+        "skin",
+        "sticky",
+        "small",
+        "pharmacy"
+      ]
+    },
+    {
+      "word": "razor",
+      "hints": [
+        "shave",
+        "sharp",
+        "blade",
+        "bathroom",
+        "morning"
+      ]
+    },
+    {
+      "word": "shampoo",
+      "hints": [
+        "hair",
+        "wash",
+        "bottle",
+        "shower",
+        "bubbles"
+      ]
+    },
+    {
+      "word": "toothpaste",
+      "hints": [
+        "bathroom",
+        "tube",
+        "white",
+        "morning",
+        "mint"
+      ]
+    },
+    {
+      "word": "hairdryer",
+      "hints": [
+        "hair",
+        "hot",
+        "air",
+        "loud",
+        "bathroom"
+      ]
+    },
+    {
+      "word": "iron",
+      "hints": [
+        "clothes",
+        "hot",
+        "flat",
+        "steam",
+        "wrinkles"
+      ]
+    },
+    {
+      "word": "hanger",
+      "hints": [
+        "clothes",
+        "closet",
+        "wire",
+        "hang",
+        "wardrobe"
+      ]
+    },
+    {
+      "word": "bucket",
+      "hints": [
+        "water",
+        "carry",
+        "handle",
+        "plastic",
+        "cleaning"
+      ]
+    },
+    {
+      "word": "mop",
+      "hints": [
+        "floor",
+        "wet",
+        "cleaning",
+        "handle",
+        "bucket"
+      ]
+    },
+    {
+      "word": "dustpan",
+      "hints": [
+        "sweep",
+        "dust",
+        "floor",
+        "broom",
+        "small"
+      ]
+    },
+    {
+      "word": "cloth",
+      "hints": [
+        "wipe",
+        "clean",
+        "soft",
+        "fabric",
+        "kitchen"
+      ]
+    },
+    {
+      "word": "detergent",
+      "hints": [
+        "laundry",
+        "clothes",
+        "clean",
+        "liquid",
+        "bottle"
+      ]
+    },
+    {
+      "word": "dishwasher",
+      "hints": [
+        "kitchen",
+        "plates",
+        "water",
+        "clean",
+        "machine"
+      ]
+    },
+    {
+      "word": "oven",
+      "hints": [
+        "kitchen",
+        "hot",
+        "baking",
+        "door",
+        "heat"
+      ]
+    },
+    {
+      "word": "stove",
+      "hints": [
+        "kitchen",
+        "cook",
+        "flame",
+        "hot",
+        "pots"
+      ]
+    },
+    {
+      "word": "blender",
+      "hints": [
+        "kitchen",
+        "blade",
+        "smooth",
+        "fruit",
+        "noisy"
+      ]
+    },
+    {
+      "word": "whisk",
+      "hints": [
+        "kitchen",
+        "mix",
+        "metal",
+        "eggs",
+        "wire"
+      ]
+    },
+    {
+      "word": "grater",
+      "hints": [
+        "kitchen",
+        "cheese",
+        "sharp",
+        "metal",
+        "shred"
+      ]
+    },
+    {
+      "word": "peeler",
+      "hints": [
+        "kitchen",
+        "skin",
+        "vegetables",
+        "small",
+        "blade"
+      ]
+    },
+    {
+      "word": "can opener",
+      "hints": [
+        "kitchen",
+        "metal",
+        "tin",
+        "turn",
+        "tool"
+      ]
+    },
+    {
+      "word": "corkscrew",
+      "hints": [
+        "wine",
+        "bottle",
+        "spiral",
+        "open",
+        "metal"
+      ]
+    },
+    {
+      "word": "spatula",
+      "hints": [
+        "kitchen",
+        "flip",
+        "flat",
+        "cooking",
+        "handle"
+      ]
+    },
+    {
+      "word": "rolling pin",
+      "hints": [
+        "kitchen",
+        "dough",
+        "wood",
+        "flat",
+        "baking"
+      ]
+    },
+    {
+      "word": "cutting board",
+      "hints": [
+        "kitchen",
+        "wood",
+        "chop",
+        "knife",
+        "flat"
+      ]
+    },
+    {
+      "word": "colander",
+      "hints": [
+        "kitchen",
+        "holes",
+        "drain",
+        "pasta",
+        "water"
+      ]
+    },
+    {
+      "word": "thermos",
+      "hints": [
+        "hot",
+        "drink",
+        "travel",
+        "metal",
+        "keep"
+      ]
+    },
+    {
+      "word": "lunchbox",
+      "hints": [
+        "food",
+        "school",
+        "carry",
+        "midday",
+        "container"
+      ]
+    },
+    {
+      "word": "napkin",
+      "hints": [
+        "table",
+        "wipe",
+        "paper",
+        "dinner",
+        "mouth"
+      ]
+    },
+    {
+      "word": "tablecloth",
+      "hints": [
+        "table",
+        "fabric",
+        "dinner",
+        "cover",
+        "cloth"
+      ]
+    },
+    {
+      "word": "coaster",
+      "hints": [
+        "drink",
+        "table",
+        "round",
+        "protect",
+        "small"
+      ]
+    },
+    {
+      "word": "vase",
+      "hints": [
+        "flowers",
+        "glass",
+        "table",
+        "water",
+        "decoration"
+      ]
+    },
+    {
+      "word": "picture frame",
+      "hints": [
+        "photo",
+        "wall",
+        "memory",
+        "glass",
+        "hang"
+      ]
+    },
+    {
+      "word": "curtain",
+      "hints": [
+        "window",
+        "fabric",
+        "light",
+        "hang",
+        "privacy"
+      ]
+    },
+    {
+      "word": "rug",
+      "hints": [
+        "floor",
+        "soft",
+        "decoration",
+        "room",
+        "warm"
+      ]
+    },
+    {
+      "word": "cushion",
+      "hints": [
+        "sofa",
+        "soft",
+        "comfort",
+        "decoration",
+        "square"
+      ]
+    },
+    {
+      "word": "sofa",
+      "hints": [
+        "living room",
+        "sit",
+        "soft",
+        "relax",
+        "cushions"
+      ]
+    },
+    {
+      "word": "armchair",
+      "hints": [
+        "sit",
+        "comfort",
+        "living room",
+        "relax",
+        "arms"
+      ]
+    },
+    {
+      "word": "bookshelf",
+      "hints": [
+        "books",
+        "wood",
+        "wall",
+        "shelves",
+        "library"
+      ]
+    },
+    {
+      "word": "wardrobe",
+      "hints": [
+        "clothes",
+        "bedroom",
+        "doors",
+        "storage",
+        "wood"
+      ]
+    },
+    {
+      "word": "drawer",
+      "hints": [
+        "pull",
+        "storage",
+        "desk",
+        "handle",
+        "wood"
+      ]
+    },
+    {
+      "word": "stool",
+      "hints": [
+        "sit",
+        "legs",
+        "kitchen",
+        "small",
+        "tall"
+      ]
+    },
+    {
+      "word": "light bulb",
+      "hints": [
+        "light",
+        "glass",
+        "screw",
+        "bright",
+        "electricity"
+      ]
+    },
+    {
+      "word": "switch",
+      "hints": [
+        "light",
+        "wall",
+        "on",
+        "press",
+        "electricity"
+      ]
+    },
+    {
+      "word": "batteries",
+      "hints": [
+        "power",
+        "small",
+        "remote",
+        "energy",
+        "double-A"
+      ]
+    },
+    {
+      "word": "lighter",
+      "hints": [
+        "flame",
+        "pocket",
+        "fire",
+        "small",
+        "spark"
+      ]
+    },
+    {
+      "word": "matches",
+      "hints": [
+        "flame",
+        "box",
+        "strike",
+        "small",
+        "wood"
+      ]
+    },
+    {
+      "word": "pen",
+      "hints": [
+        "write",
+        "ink",
+        "paper",
+        "pocket",
+        "blue"
+      ]
+    },
+    {
+      "word": "tape",
+      "hints": [
+        "sticky",
+        "roll",
+        "stick",
+        "clear",
+        "wrap"
+      ]
+    },
+    {
+      "word": "envelope",
+      "hints": [
+        "letter",
+        "paper",
+        "mail",
+        "seal",
+        "address"
+      ]
+    },
+    {
+      "word": "stamp",
+      "hints": [
+        "mail",
+        "letter",
+        "small",
+        "sticky",
+        "postage"
+      ]
+    },
+    {
+      "word": "calendar",
+      "hints": [
+        "dates",
+        "wall",
+        "months",
+        "days",
+        "plan"
+      ]
+    },
+    {
+      "word": "thermometer",
+      "hints": [
+        "temperature",
+        "fever",
+        "glass",
+        "measure",
+        "doctor"
+      ]
+    },
+    {
+      "word": "scale",
+      "hints": [
+        "weight",
+        "bathroom",
+        "numbers",
+        "morning",
+        "measure"
+      ]
+    },
+    {
+      "word": "tweezers",
+      "hints": [
+        "small",
+        "pull",
+        "metal",
+        "precise",
+        "eyebrows"
+      ]
+    },
+    {
+      "word": "tissue",
+      "hints": [
+        "nose",
+        "soft",
+        "paper",
+        "box",
+        "sneeze"
+      ]
+    },
+    {
+      "word": "toilet paper",
+      "hints": [
+        "bathroom",
+        "roll",
+        "soft",
+        "white",
+        "paper"
+      ]
+    },
+    {
+      "word": "screwdriver",
+      "hints": [
+        "tool",
+        "turn",
+        "screw",
+        "metal",
+        "handle"
+      ]
+    },
+    {
+      "word": "wrench",
+      "hints": [
+        "tool",
+        "bolt",
+        "metal",
+        "turn",
+        "tighten"
+      ]
+    },
+    {
+      "word": "pliers",
+      "hints": [
+        "tool",
+        "grip",
+        "metal",
+        "bend",
+        "hold"
+      ]
+    },
+    {
+      "word": "nail",
+      "hints": [
+        "hammer",
+        "metal",
+        "wood",
+        "small",
+        "sharp"
+      ]
+    },
+    {
+      "word": "watering can",
+      "hints": [
+        "plants",
+        "water",
+        "garden",
+        "spout",
+        "pour"
+      ]
     }
   ]
 }

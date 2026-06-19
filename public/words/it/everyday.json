@@ -5,123 +5,903 @@
   "words": [
     {
       "word": "ombrello",
-      "hints": ["pioggia", "pieghevole", "manico", "bagnato", "temporale"]
+      "hints": [
+        "pioggia",
+        "aprire",
+        "manico",
+        "bagnato",
+        "portare"
+      ]
     },
     {
       "word": "spazzolino",
-      "hints": ["bagno", "denti", "mattina", "dentifricio", "setole"]
+      "hints": [
+        "bagno",
+        "mattina",
+        "setole",
+        "piccolo",
+        "quotidiano"
+      ]
     },
     {
       "word": "portafoglio",
-      "hints": ["soldi", "tasca", "carte", "pelle", "contanti"]
+      "hints": [
+        "tasca",
+        "pelle",
+        "carte",
+        "piccolo",
+        "piegato"
+      ]
     },
     {
       "word": "zaino",
-      "hints": ["spalle", "cerniera", "libri", "trekking", "spallacci"]
+      "hints": [
+        "spalle",
+        "spallacci",
+        "portare",
+        "scuola",
+        "cerniera"
+      ]
     },
     {
       "word": "specchio",
-      "hints": ["riflesso", "bagno", "vetro", "selfie", "parete"]
+      "hints": [
+        "riflesso",
+        "vetro",
+        "parete",
+        "bagno",
+        "guardarsi"
+      ]
     },
     {
       "word": "cuscino",
-      "hints": ["letto", "morbido", "sonno", "piume", "testa"]
+      "hints": [
+        "letto",
+        "morbido",
+        "sonno",
+        "testa",
+        "piume"
+      ]
     },
     {
       "word": "asciugamano",
-      "hints": ["bagno", "asciugare", "spiaggia", "morbido", "doccia"]
+      "hints": [
+        "bagno",
+        "asciugare",
+        "morbido",
+        "doccia",
+        "cotone"
+      ]
     },
     {
       "word": "forbici",
-      "hints": ["tagliare", "carta", "affilate", "lame", "lavoretti"]
+      "hints": [
+        "tagliare",
+        "affilate",
+        "lame",
+        "carta",
+        "paio"
+      ]
     },
     {
       "word": "candela",
-      "hints": ["fiamma", "cera", "compleanno", "romantica", "profumata"]
+      "hints": [
+        "fiamma",
+        "cera",
+        "luce",
+        "romantica",
+        "profumata"
+      ]
     },
     {
       "word": "sapone",
-      "hints": ["lavare", "bolle", "bagno", "pulito", "mani"]
+      "hints": [
+        "lavare",
+        "bolle",
+        "bagno",
+        "pulito",
+        "mani"
+      ]
     },
     {
       "word": "spugna",
-      "hints": ["cucina", "piatti", "assorbente", "gialla", "pulizie"]
+      "hints": [
+        "cucina",
+        "bagnata",
+        "pulizie",
+        "morbida",
+        "assorbire"
+      ]
     },
     {
       "word": "scopa",
-      "hints": ["spazzare", "pavimento", "polvere", "manico", "strega"]
+      "hints": [
+        "spazzare",
+        "pavimento",
+        "manico",
+        "polvere",
+        "setole"
+      ]
     },
     {
       "word": "scala",
-      "hints": ["salire", "gradini", "muro", "imbiancare", "alta"]
+      "hints": [
+        "salire",
+        "gradini",
+        "alta",
+        "raggiungere",
+        "metallo"
+      ]
     },
     {
       "word": "martello",
-      "hints": ["chiodi", "attrezzo", "legno", "pesante", "colpi"]
+      "hints": [
+        "chiodi",
+        "attrezzo",
+        "pesante",
+        "colpire",
+        "legno"
+      ]
     },
     {
       "word": "torcia",
-      "hints": ["batterie", "buio", "fascio", "campeggio", "emergenza"]
+      "hints": [
+        "batteria",
+        "buio",
+        "fascio",
+        "campeggio",
+        "tasca"
+      ]
     },
     {
       "word": "caricabatterie",
-      "hints": ["cavo", "batteria", "telefono", "presa", "elettricità"]
+      "hints": [
+        "cavo",
+        "batteria",
+        "presa",
+        "energia",
+        "telefono"
+      ]
     },
     {
       "word": "cuffie",
-      "hints": ["musica", "orecchie", "wireless", "ascoltare", "silenzio"]
+      "hints": [
+        "musica",
+        "orecchie",
+        "ascoltare",
+        "wireless",
+        "suono"
+      ]
     },
     {
       "word": "occhiali da sole",
-      "hints": ["estate", "occhi", "moda", "spiaggia", "scuri"]
+      "hints": [
+        "estate",
+        "occhi",
+        "moda",
+        "scuri",
+        "sole"
+      ]
     },
     {
       "word": "valigia",
-      "hints": ["viaggio", "bagaglio", "rotelle", "aeroporto", "vestiti"]
+      "hints": [
+        "viaggio",
+        "bagaglio",
+        "rotelle",
+        "aeroporto",
+        "gita"
+      ]
     },
     {
       "word": "coperta",
-      "hints": ["calda", "divano", "inverno", "morbida", "comoda"]
+      "hints": [
+        "calda",
+        "divano",
+        "inverno",
+        "morbida",
+        "comoda"
+      ]
     },
     {
       "word": "telecomando",
-      "hints": ["televisione", "tasti", "divano", "canali", "batterie"]
+      "hints": [
+        "tasti",
+        "divano",
+        "televisione",
+        "canali",
+        "batteria"
+      ]
     },
     {
       "word": "frigorifero",
-      "hints": ["cucina", "freddo", "cibo", "calamite", "avanzi"]
+      "hints": [
+        "cucina",
+        "freddo",
+        "cibo",
+        "bianco",
+        "sportello"
+      ]
     },
     {
       "word": "microonde",
-      "hints": ["cucina", "riscaldare", "bip", "avanzi", "minuti"]
+      "hints": [
+        "cucina",
+        "riscaldare",
+        "bip",
+        "veloce",
+        "scatola"
+      ]
     },
     {
       "word": "lavatrice",
-      "hints": ["bucato", "vestiti", "centrifuga", "detersivo", "oblò"]
+      "hints": [
+        "bucato",
+        "vestiti",
+        "centrifuga",
+        "acqua",
+        "oblò"
+      ]
     },
     {
       "word": "aspirapolvere",
-      "hints": ["pulizie", "tappeto", "polvere", "rumoroso", "sacchetto"]
+      "hints": [
+        "pulizie",
+        "tappeto",
+        "polvere",
+        "rumoroso",
+        "pavimento"
+      ]
     },
     {
       "word": "bollitore",
-      "hints": ["tè", "bollire", "acqua", "fischio", "cucina"]
+      "hints": [
+        "bollire",
+        "acqua",
+        "caldo",
+        "cucina",
+        "beccuccio"
+      ]
     },
     {
       "word": "tostapane",
-      "hints": ["pane", "colazione", "croccante", "cucina", "briciole"]
+      "hints": [
+        "pane",
+        "colazione",
+        "croccante",
+        "cucina",
+        "saltare"
+      ]
     },
     {
       "word": "sveglia",
-      "hints": ["mattina", "suonare", "posticipa", "alzarsi", "comodino"]
+      "hints": [
+        "mattina",
+        "suono",
+        "comodino",
+        "svegliarsi",
+        "posticipa"
+      ]
     },
     {
       "word": "pattumiera",
-      "hints": ["spazzatura", "coperchio", "cucina", "odore", "sacchetti"]
+      "hints": [
+        "spazzatura",
+        "coperchio",
+        "cucina",
+        "sacchetti",
+        "odore"
+      ]
     },
     {
       "word": "cerotto",
-      "hints": ["taglio", "pelle", "adesivo", "ferita", "farmacia"]
+      "hints": [
+        "taglio",
+        "pelle",
+        "adesivo",
+        "piccolo",
+        "farmacia"
+      ]
+    },
+    {
+      "word": "rasoio",
+      "hints": [
+        "radersi",
+        "affilato",
+        "lama",
+        "bagno",
+        "mattina"
+      ]
+    },
+    {
+      "word": "shampoo",
+      "hints": [
+        "capelli",
+        "lavare",
+        "bottiglia",
+        "doccia",
+        "bolle"
+      ]
+    },
+    {
+      "word": "dentifricio",
+      "hints": [
+        "bagno",
+        "tubetto",
+        "bianco",
+        "mattina",
+        "menta"
+      ]
+    },
+    {
+      "word": "asciugacapelli",
+      "hints": [
+        "capelli",
+        "caldo",
+        "aria",
+        "rumoroso",
+        "bagno"
+      ]
+    },
+    {
+      "word": "ferro da stiro",
+      "hints": [
+        "vestiti",
+        "caldo",
+        "piatto",
+        "vapore",
+        "pieghe"
+      ]
+    },
+    {
+      "word": "gruccia",
+      "hints": [
+        "vestiti",
+        "armadio",
+        "filo",
+        "appendere",
+        "guardaroba"
+      ]
+    },
+    {
+      "word": "secchio",
+      "hints": [
+        "acqua",
+        "portare",
+        "manico",
+        "plastica",
+        "pulizie"
+      ]
+    },
+    {
+      "word": "mocio",
+      "hints": [
+        "pavimento",
+        "bagnato",
+        "pulizie",
+        "manico",
+        "secchio"
+      ]
+    },
+    {
+      "word": "paletta",
+      "hints": [
+        "spazzare",
+        "polvere",
+        "pavimento",
+        "scopa",
+        "piccola"
+      ]
+    },
+    {
+      "word": "straccio",
+      "hints": [
+        "pulire",
+        "stoffa",
+        "morbido",
+        "cucina",
+        "passare"
+      ]
+    },
+    {
+      "word": "detersivo",
+      "hints": [
+        "bucato",
+        "vestiti",
+        "pulito",
+        "liquido",
+        "bottiglia"
+      ]
+    },
+    {
+      "word": "lavastoviglie",
+      "hints": [
+        "cucina",
+        "piatti",
+        "acqua",
+        "pulito",
+        "macchina"
+      ]
+    },
+    {
+      "word": "forno",
+      "hints": [
+        "cucina",
+        "caldo",
+        "cuocere",
+        "sportello",
+        "calore"
+      ]
+    },
+    {
+      "word": "fornello",
+      "hints": [
+        "cucina",
+        "cuocere",
+        "fiamma",
+        "caldo",
+        "pentole"
+      ]
+    },
+    {
+      "word": "frullatore",
+      "hints": [
+        "cucina",
+        "lama",
+        "liscio",
+        "frutta",
+        "rumore"
+      ]
+    },
+    {
+      "word": "frusta",
+      "hints": [
+        "cucina",
+        "montare",
+        "metallo",
+        "uova",
+        "fili"
+      ]
+    },
+    {
+      "word": "grattugia",
+      "hints": [
+        "cucina",
+        "formaggio",
+        "affilata",
+        "metallo",
+        "sminuzzare"
+      ]
+    },
+    {
+      "word": "pelapatate",
+      "hints": [
+        "cucina",
+        "buccia",
+        "verdure",
+        "piccolo",
+        "lama"
+      ]
+    },
+    {
+      "word": "apriscatole",
+      "hints": [
+        "cucina",
+        "metallo",
+        "latta",
+        "girare",
+        "attrezzo"
+      ]
+    },
+    {
+      "word": "cavatappi",
+      "hints": [
+        "vino",
+        "bottiglia",
+        "spirale",
+        "aprire",
+        "metallo"
+      ]
+    },
+    {
+      "word": "spatola",
+      "hints": [
+        "cucina",
+        "girare",
+        "piatta",
+        "cucinare",
+        "manico"
+      ]
+    },
+    {
+      "word": "mattarello",
+      "hints": [
+        "cucina",
+        "impasto",
+        "legno",
+        "stendere",
+        "dolci"
+      ]
+    },
+    {
+      "word": "tagliere",
+      "hints": [
+        "cucina",
+        "legno",
+        "tagliare",
+        "coltello",
+        "piano"
+      ]
+    },
+    {
+      "word": "scolapasta",
+      "hints": [
+        "cucina",
+        "buchi",
+        "scolare",
+        "pasta",
+        "acqua"
+      ]
+    },
+    {
+      "word": "thermos",
+      "hints": [
+        "caldo",
+        "bevanda",
+        "viaggio",
+        "metallo",
+        "mantenere"
+      ]
+    },
+    {
+      "word": "portapranzo",
+      "hints": [
+        "cibo",
+        "scuola",
+        "portare",
+        "mezzogiorno",
+        "contenitore"
+      ]
+    },
+    {
+      "word": "tovagliolo",
+      "hints": [
+        "tavola",
+        "pulire",
+        "carta",
+        "cena",
+        "bocca"
+      ]
+    },
+    {
+      "word": "tovaglia",
+      "hints": [
+        "tavola",
+        "stoffa",
+        "cena",
+        "coprire",
+        "panno"
+      ]
+    },
+    {
+      "word": "sottobicchiere",
+      "hints": [
+        "bere",
+        "tavolo",
+        "tondo",
+        "proteggere",
+        "piccolo"
+      ]
+    },
+    {
+      "word": "vaso",
+      "hints": [
+        "fiori",
+        "vetro",
+        "tavolo",
+        "acqua",
+        "decorazione"
+      ]
+    },
+    {
+      "word": "cornice",
+      "hints": [
+        "foto",
+        "parete",
+        "ricordo",
+        "vetro",
+        "appendere"
+      ]
+    },
+    {
+      "word": "tenda",
+      "hints": [
+        "finestra",
+        "stoffa",
+        "luce",
+        "appendere",
+        "privacy"
+      ]
+    },
+    {
+      "word": "tappeto",
+      "hints": [
+        "pavimento",
+        "morbido",
+        "decorazione",
+        "stanza",
+        "caldo"
+      ]
+    },
+    {
+      "word": "asse da stiro",
+      "hints": [
+        "vestiti",
+        "stirare",
+        "piana",
+        "pieghe",
+        "lunga"
+      ]
+    },
+    {
+      "word": "divano",
+      "hints": [
+        "salotto",
+        "sedersi",
+        "morbido",
+        "relax",
+        "cuscini"
+      ]
+    },
+    {
+      "word": "poltrona",
+      "hints": [
+        "sedersi",
+        "comoda",
+        "salotto",
+        "relax",
+        "braccioli"
+      ]
+    },
+    {
+      "word": "libreria",
+      "hints": [
+        "libri",
+        "legno",
+        "parete",
+        "scaffali",
+        "lettura"
+      ]
+    },
+    {
+      "word": "armadio",
+      "hints": [
+        "vestiti",
+        "camera",
+        "ante",
+        "deposito",
+        "legno"
+      ]
+    },
+    {
+      "word": "cassetto",
+      "hints": [
+        "tirare",
+        "deposito",
+        "scrivania",
+        "maniglia",
+        "legno"
+      ]
+    },
+    {
+      "word": "sgabello",
+      "hints": [
+        "sedersi",
+        "gambe",
+        "cucina",
+        "piccolo",
+        "alto"
+      ]
+    },
+    {
+      "word": "lampadina",
+      "hints": [
+        "luce",
+        "vetro",
+        "avvitare",
+        "brillante",
+        "elettricità"
+      ]
+    },
+    {
+      "word": "interruttore",
+      "hints": [
+        "luce",
+        "parete",
+        "accendere",
+        "premere",
+        "elettricità"
+      ]
+    },
+    {
+      "word": "pile",
+      "hints": [
+        "energia",
+        "piccole",
+        "telecomando",
+        "carica",
+        "stilo"
+      ]
+    },
+    {
+      "word": "accendino",
+      "hints": [
+        "fiamma",
+        "tasca",
+        "fuoco",
+        "piccolo",
+        "scintilla"
+      ]
+    },
+    {
+      "word": "fiammiferi",
+      "hints": [
+        "fiamma",
+        "scatola",
+        "sfregare",
+        "piccoli",
+        "legno"
+      ]
+    },
+    {
+      "word": "penna",
+      "hints": [
+        "scrivere",
+        "inchiostro",
+        "carta",
+        "tasca",
+        "blu"
+      ]
+    },
+    {
+      "word": "nastro adesivo",
+      "hints": [
+        "appiccicoso",
+        "rotolo",
+        "attaccare",
+        "trasparente",
+        "avvolgere"
+      ]
+    },
+    {
+      "word": "busta",
+      "hints": [
+        "lettera",
+        "carta",
+        "posta",
+        "chiudere",
+        "indirizzo"
+      ]
+    },
+    {
+      "word": "francobollo",
+      "hints": [
+        "posta",
+        "lettera",
+        "piccolo",
+        "adesivo",
+        "affrancare"
+      ]
+    },
+    {
+      "word": "calendario",
+      "hints": [
+        "date",
+        "parete",
+        "mesi",
+        "giorni",
+        "pianificare"
+      ]
+    },
+    {
+      "word": "termometro",
+      "hints": [
+        "temperatura",
+        "febbre",
+        "vetro",
+        "misurare",
+        "dottore"
+      ]
+    },
+    {
+      "word": "bilancia",
+      "hints": [
+        "peso",
+        "bagno",
+        "numeri",
+        "mattina",
+        "misurare"
+      ]
+    },
+    {
+      "word": "pinzette",
+      "hints": [
+        "piccole",
+        "tirare",
+        "metallo",
+        "precise",
+        "sopracciglia"
+      ]
+    },
+    {
+      "word": "fazzoletto",
+      "hints": [
+        "naso",
+        "morbido",
+        "carta",
+        "scatola",
+        "starnuto"
+      ]
+    },
+    {
+      "word": "carta igienica",
+      "hints": [
+        "bagno",
+        "rotolo",
+        "morbida",
+        "bianca",
+        "carta"
+      ]
+    },
+    {
+      "word": "cacciavite",
+      "hints": [
+        "attrezzo",
+        "girare",
+        "vite",
+        "metallo",
+        "manico"
+      ]
+    },
+    {
+      "word": "chiave inglese",
+      "hints": [
+        "attrezzo",
+        "bullone",
+        "metallo",
+        "girare",
+        "stringere"
+      ]
+    },
+    {
+      "word": "pinza",
+      "hints": [
+        "attrezzo",
+        "presa",
+        "metallo",
+        "piegare",
+        "tenere"
+      ]
+    },
+    {
+      "word": "chiodo",
+      "hints": [
+        "martello",
+        "metallo",
+        "legno",
+        "piccolo",
+        "appuntito"
+      ]
+    },
+    {
+      "word": "annaffiatoio",
+      "hints": [
+        "piante",
+        "acqua",
+        "giardino",
+        "beccuccio",
+        "versare"
+      ]
     }
   ]
 }

@@ -5,123 +5,903 @@
   "words": [
     {
       "word": "Paris",
-      "hints": ["Eiffel", "France", "romance", "croissants", "fashion"]
+      "hints": [
+        "France",
+        "romance",
+        "fashion",
+        "art",
+        "river"
+      ]
     },
     {
       "word": "Rome",
-      "hints": ["Colosseum", "Italy", "ancient", "pasta", "Vatican"]
+      "hints": [
+        "Italy",
+        "ancient",
+        "history",
+        "ruins",
+        "capital"
+      ]
     },
     {
       "word": "London",
-      "hints": ["England", "rain", "queen", "bus", "tea"]
+      "hints": [
+        "England",
+        "rain",
+        "river",
+        "red",
+        "history"
+      ]
     },
     {
       "word": "New York",
-      "hints": ["skyscrapers", "taxi", "Broadway", "apple", "Manhattan"]
+      "hints": [
+        "America",
+        "skyscrapers",
+        "busy",
+        "taxi",
+        "island"
+      ]
     },
     {
       "word": "Tokyo",
-      "hints": ["Japan", "neon", "sushi", "crowded", "technology"]
+      "hints": [
+        "Japan",
+        "neon",
+        "crowded",
+        "modern",
+        "technology"
+      ]
     },
     {
       "word": "Venice",
-      "hints": ["canals", "gondola", "Italy", "masks", "bridges"]
+      "hints": [
+        "Italy",
+        "water",
+        "canals",
+        "boats",
+        "romantic"
+      ]
     },
     {
       "word": "Egypt",
-      "hints": ["pyramids", "pharaoh", "desert", "Nile", "sphinx"]
+      "hints": [
+        "desert",
+        "ancient",
+        "river",
+        "Africa",
+        "pharaohs"
+      ]
     },
     {
       "word": "Sahara",
-      "hints": ["desert", "sand", "camels", "vast", "Africa"]
+      "hints": [
+        "desert",
+        "sand",
+        "Africa",
+        "vast",
+        "hot"
+      ]
     },
     {
       "word": "Amazon",
-      "hints": ["rainforest", "river", "Brazil", "jungle", "biodiversity"]
+      "hints": [
+        "rainforest",
+        "river",
+        "jungle",
+        "South America",
+        "wild"
+      ]
     },
     {
       "word": "Everest",
-      "hints": ["mountain", "highest", "climbing", "Nepal", "snow"]
+      "hints": [
+        "mountain",
+        "highest",
+        "snow",
+        "climbing",
+        "Nepal"
+      ]
     },
     {
       "word": "Hawaii",
-      "hints": ["islands", "surfing", "volcano", "flowers", "paradise"]
+      "hints": [
+        "islands",
+        "beaches",
+        "tropical",
+        "volcano",
+        "Pacific"
+      ]
     },
     {
       "word": "Australia",
-      "hints": ["kangaroo", "outback", "Sydney", "reef", "koala"]
+      "hints": [
+        "island",
+        "outback",
+        "beaches",
+        "kangaroo",
+        "remote"
+      ]
     },
     {
       "word": "Brazil",
-      "hints": ["carnival", "football", "samba", "beaches", "Rio"]
+      "hints": [
+        "South America",
+        "carnival",
+        "football",
+        "beaches",
+        "samba"
+      ]
     },
     {
       "word": "India",
-      "hints": ["spices", "Bollywood", "cows", "colors", "yoga"]
+      "hints": [
+        "Asia",
+        "spices",
+        "colorful",
+        "crowded",
+        "temples"
+      ]
     },
     {
       "word": "China",
-      "hints": ["wall", "dragon", "rice", "panda", "ancient"]
+      "hints": [
+        "Asia",
+        "ancient",
+        "huge",
+        "rice",
+        "wall"
+      ]
     },
     {
       "word": "Iceland",
-      "hints": ["geysers", "ice", "volcano", "northern", "cold"]
+      "hints": [
+        "cold",
+        "north",
+        "volcano",
+        "ice",
+        "remote"
+      ]
     },
     {
       "word": "Greece",
-      "hints": ["islands", "mythology", "ruins", "feta", "blue"]
+      "hints": [
+        "islands",
+        "ancient",
+        "blue",
+        "Mediterranean",
+        "ruins"
+      ]
     },
     {
       "word": "Switzerland",
-      "hints": ["Alps", "chocolate", "watches", "neutral", "banks"]
+      "hints": [
+        "mountains",
+        "chocolate",
+        "neutral",
+        "watches",
+        "Alps"
+      ]
     },
     {
       "word": "Norway",
-      "hints": ["fjords", "vikings", "snow", "northern", "salmon"]
+      "hints": [
+        "north",
+        "cold",
+        "fjords",
+        "mountains",
+        "Scandinavia"
+      ]
     },
     {
       "word": "Morocco",
-      "hints": ["markets", "spices", "desert", "mint", "mosaic"]
+      "hints": [
+        "Africa",
+        "markets",
+        "spices",
+        "desert",
+        "colorful"
+      ]
     },
     {
       "word": "Dubai",
-      "hints": ["skyscrapers", "luxury", "desert", "gold", "mall"]
+      "hints": [
+        "desert",
+        "luxury",
+        "skyscrapers",
+        "gold",
+        "modern"
+      ]
     },
     {
       "word": "Las Vegas",
-      "hints": ["casino", "lights", "desert", "weddings", "gambling"]
+      "hints": [
+        "desert",
+        "lights",
+        "casino",
+        "gambling",
+        "neon"
+      ]
     },
     {
       "word": "Great Wall",
-      "hints": ["China", "long", "ancient", "bricks", "watchtowers"]
+      "hints": [
+        "China",
+        "long",
+        "ancient",
+        "stone",
+        "defense"
+      ]
     },
     {
       "word": "Eiffel Tower",
-      "hints": ["Paris", "iron", "lights", "tall", "romantic"]
+      "hints": [
+        "Paris",
+        "iron",
+        "tall",
+        "landmark",
+        "romantic"
+      ]
     },
     {
       "word": "Colosseum",
-      "hints": ["Rome", "gladiators", "arena", "ancient", "ruins"]
+      "hints": [
+        "Rome",
+        "ancient",
+        "arena",
+        "ruins",
+        "stone"
+      ]
     },
     {
       "word": "Statue of Liberty",
-      "hints": ["America", "torch", "green", "island", "gift"]
+      "hints": [
+        "America",
+        "torch",
+        "green",
+        "harbor",
+        "freedom"
+      ]
     },
     {
       "word": "Niagara",
-      "hints": ["waterfalls", "border", "mist", "boat", "honeymoon"]
+      "hints": [
+        "waterfalls",
+        "border",
+        "mist",
+        "powerful",
+        "tourists"
+      ]
     },
     {
       "word": "Antarctica",
-      "hints": ["penguins", "ice", "cold", "research", "remote"]
+      "hints": [
+        "ice",
+        "cold",
+        "remote",
+        "penguins",
+        "south"
+      ]
     },
     {
       "word": "Caribbean",
-      "hints": ["islands", "pirates", "beaches", "rum", "turquoise"]
+      "hints": [
+        "islands",
+        "beaches",
+        "tropical",
+        "turquoise",
+        "pirates"
+      ]
     },
     {
       "word": "safari",
-      "hints": ["Africa", "animals", "jeep", "binoculars", "savanna"]
+      "hints": [
+        "Africa",
+        "animals",
+        "jeep",
+        "wild",
+        "savanna"
+      ]
+    },
+    {
+      "word": "Barcelona",
+      "hints": [
+        "Spain",
+        "beach",
+        "architecture",
+        "football",
+        "art"
+      ]
+    },
+    {
+      "word": "Berlin",
+      "hints": [
+        "Germany",
+        "history",
+        "wall",
+        "capital",
+        "modern"
+      ]
+    },
+    {
+      "word": "Amsterdam",
+      "hints": [
+        "Netherlands",
+        "canals",
+        "bikes",
+        "tulips",
+        "flat"
+      ]
+    },
+    {
+      "word": "Vienna",
+      "hints": [
+        "Austria",
+        "music",
+        "elegant",
+        "palaces",
+        "coffee"
+      ]
+    },
+    {
+      "word": "Prague",
+      "hints": [
+        "Czech",
+        "bridges",
+        "old",
+        "Europe",
+        "castle"
+      ]
+    },
+    {
+      "word": "Istanbul",
+      "hints": [
+        "Turkey",
+        "bridge",
+        "two continents",
+        "mosques",
+        "bazaar"
+      ]
+    },
+    {
+      "word": "Athens",
+      "hints": [
+        "Greece",
+        "ancient",
+        "ruins",
+        "history",
+        "capital"
+      ]
+    },
+    {
+      "word": "Dublin",
+      "hints": [
+        "Ireland",
+        "green",
+        "pubs",
+        "rain",
+        "friendly"
+      ]
+    },
+    {
+      "word": "Moscow",
+      "hints": [
+        "Russia",
+        "cold",
+        "red",
+        "capital",
+        "snow"
+      ]
+    },
+    {
+      "word": "Bangkok",
+      "hints": [
+        "Thailand",
+        "temples",
+        "hot",
+        "street food",
+        "busy"
+      ]
+    },
+    {
+      "word": "Singapore",
+      "hints": [
+        "Asia",
+        "modern",
+        "clean",
+        "island",
+        "skyline"
+      ]
+    },
+    {
+      "word": "Seoul",
+      "hints": [
+        "Korea",
+        "modern",
+        "technology",
+        "busy",
+        "Asia"
+      ]
+    },
+    {
+      "word": "Rio de Janeiro",
+      "hints": [
+        "Brazil",
+        "beaches",
+        "carnival",
+        "mountains",
+        "statue"
+      ]
+    },
+    {
+      "word": "Buenos Aires",
+      "hints": [
+        "Argentina",
+        "tango",
+        "South America",
+        "passion",
+        "European"
+      ]
+    },
+    {
+      "word": "Los Angeles",
+      "hints": [
+        "America",
+        "Hollywood",
+        "beaches",
+        "sunny",
+        "cars"
+      ]
+    },
+    {
+      "word": "San Francisco",
+      "hints": [
+        "America",
+        "bridge",
+        "hills",
+        "fog",
+        "tech"
+      ]
+    },
+    {
+      "word": "Toronto",
+      "hints": [
+        "Canada",
+        "tall tower",
+        "cold",
+        "diverse",
+        "lake"
+      ]
+    },
+    {
+      "word": "Sydney",
+      "hints": [
+        "Australia",
+        "harbor",
+        "opera",
+        "beaches",
+        "sunny"
+      ]
+    },
+    {
+      "word": "Cape Town",
+      "hints": [
+        "South Africa",
+        "mountain",
+        "ocean",
+        "beaches",
+        "scenic"
+      ]
+    },
+    {
+      "word": "Marrakech",
+      "hints": [
+        "Morocco",
+        "market",
+        "spices",
+        "desert",
+        "colorful"
+      ]
+    },
+    {
+      "word": "Japan",
+      "hints": [
+        "Asia",
+        "islands",
+        "technology",
+        "tradition",
+        "cherry blossom"
+      ]
+    },
+    {
+      "word": "Mexico",
+      "hints": [
+        "spicy",
+        "sombrero",
+        "ancient",
+        "beaches",
+        "tequila"
+      ]
+    },
+    {
+      "word": "Spain",
+      "hints": [
+        "sun",
+        "flamenco",
+        "beaches",
+        "football",
+        "fiesta"
+      ]
+    },
+    {
+      "word": "Germany",
+      "hints": [
+        "Europe",
+        "beer",
+        "cars",
+        "efficient",
+        "castles"
+      ]
+    },
+    {
+      "word": "Canada",
+      "hints": [
+        "cold",
+        "maple",
+        "snow",
+        "huge",
+        "polite"
+      ]
+    },
+    {
+      "word": "Russia",
+      "hints": [
+        "cold",
+        "huge",
+        "snow",
+        "vodka",
+        "east"
+      ]
+    },
+    {
+      "word": "Thailand",
+      "hints": [
+        "Asia",
+        "beaches",
+        "temples",
+        "spicy",
+        "tropical"
+      ]
+    },
+    {
+      "word": "Kenya",
+      "hints": [
+        "Africa",
+        "safari",
+        "savanna",
+        "animals",
+        "runners"
+      ]
+    },
+    {
+      "word": "Peru",
+      "hints": [
+        "South America",
+        "mountains",
+        "ancient",
+        "llamas",
+        "Andes"
+      ]
+    },
+    {
+      "word": "Ireland",
+      "hints": [
+        "green",
+        "rain",
+        "pubs",
+        "island",
+        "music"
+      ]
+    },
+    {
+      "word": "Scotland",
+      "hints": [
+        "kilts",
+        "bagpipes",
+        "highlands",
+        "rain",
+        "castles"
+      ]
+    },
+    {
+      "word": "Portugal",
+      "hints": [
+        "coast",
+        "Atlantic",
+        "tiles",
+        "sardines",
+        "sunny"
+      ]
+    },
+    {
+      "word": "Turkey",
+      "hints": [
+        "bridge",
+        "bazaar",
+        "tea",
+        "history",
+        "mosques"
+      ]
+    },
+    {
+      "word": "Jamaica",
+      "hints": [
+        "island",
+        "reggae",
+        "beaches",
+        "tropical",
+        "rum"
+      ]
+    },
+    {
+      "word": "Cuba",
+      "hints": [
+        "island",
+        "cigars",
+        "old cars",
+        "rum",
+        "music"
+      ]
+    },
+    {
+      "word": "Vietnam",
+      "hints": [
+        "Asia",
+        "rice",
+        "motorbikes",
+        "noodles",
+        "war history"
+      ]
+    },
+    {
+      "word": "New Zealand",
+      "hints": [
+        "islands",
+        "sheep",
+        "green",
+        "remote",
+        "mountains"
+      ]
+    },
+    {
+      "word": "Nepal",
+      "hints": [
+        "mountains",
+        "Himalaya",
+        "temples",
+        "trekking",
+        "Asia"
+      ]
+    },
+    {
+      "word": "Taj Mahal",
+      "hints": [
+        "India",
+        "white",
+        "marble",
+        "love",
+        "monument"
+      ]
+    },
+    {
+      "word": "Pyramids",
+      "hints": [
+        "Egypt",
+        "ancient",
+        "desert",
+        "triangles",
+        "tombs"
+      ]
+    },
+    {
+      "word": "Big Ben",
+      "hints": [
+        "London",
+        "clock",
+        "tower",
+        "tall",
+        "landmark"
+      ]
+    },
+    {
+      "word": "Leaning Tower",
+      "hints": [
+        "Italy",
+        "tilted",
+        "tower",
+        "white",
+        "monument"
+      ]
+    },
+    {
+      "word": "Sagrada Familia",
+      "hints": [
+        "Spain",
+        "church",
+        "tall",
+        "unfinished",
+        "Barcelona"
+      ]
+    },
+    {
+      "word": "Machu Picchu",
+      "hints": [
+        "Peru",
+        "ancient",
+        "mountains",
+        "ruins",
+        "Inca"
+      ]
+    },
+    {
+      "word": "Christ the Redeemer",
+      "hints": [
+        "Brazil",
+        "statue",
+        "hill",
+        "arms",
+        "Rio"
+      ]
+    },
+    {
+      "word": "Mount Fuji",
+      "hints": [
+        "Japan",
+        "mountain",
+        "snow",
+        "sacred",
+        "symbol"
+      ]
+    },
+    {
+      "word": "Grand Canyon",
+      "hints": [
+        "America",
+        "vast",
+        "rock",
+        "river",
+        "deep"
+      ]
+    },
+    {
+      "word": "Stonehenge",
+      "hints": [
+        "England",
+        "ancient",
+        "stones",
+        "mystery",
+        "circle"
+      ]
+    },
+    {
+      "word": "Acropolis",
+      "hints": [
+        "Greece",
+        "ancient",
+        "columns",
+        "hill",
+        "ruins"
+      ]
+    },
+    {
+      "word": "Hollywood",
+      "hints": [
+        "America",
+        "movies",
+        "stars",
+        "fame",
+        "sign"
+      ]
+    },
+    {
+      "word": "Times Square",
+      "hints": [
+        "New York",
+        "lights",
+        "crowds",
+        "billboards",
+        "busy"
+      ]
+    },
+    {
+      "word": "Petra",
+      "hints": [
+        "Jordan",
+        "stone",
+        "ancient",
+        "carved",
+        "desert"
+      ]
+    },
+    {
+      "word": "Sphinx",
+      "hints": [
+        "Egypt",
+        "stone",
+        "lion",
+        "ancient",
+        "desert"
+      ]
+    },
+    {
+      "word": "Alps",
+      "hints": [
+        "mountains",
+        "snow",
+        "Europe",
+        "skiing",
+        "peaks"
+      ]
+    },
+    {
+      "word": "Andes",
+      "hints": [
+        "mountains",
+        "South America",
+        "long",
+        "high",
+        "snow"
+      ]
+    },
+    {
+      "word": "Kilimanjaro",
+      "hints": [
+        "Africa",
+        "mountain",
+        "highest",
+        "snow",
+        "climb"
+      ]
+    },
+    {
+      "word": "Maldives",
+      "hints": [
+        "islands",
+        "beaches",
+        "turquoise",
+        "tropical",
+        "luxury"
+      ]
+    },
+    {
+      "word": "Bali",
+      "hints": [
+        "island",
+        "Indonesia",
+        "temples",
+        "beaches",
+        "tropical"
+      ]
+    },
+    {
+      "word": "Nile",
+      "hints": [
+        "river",
+        "Egypt",
+        "Africa",
+        "long",
+        "ancient"
+      ]
+    },
+    {
+      "word": "Mediterranean",
+      "hints": [
+        "sea",
+        "blue",
+        "warm",
+        "coast",
+        "Europe"
+      ]
     }
   ]
 }

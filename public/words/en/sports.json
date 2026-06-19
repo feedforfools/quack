@@ -5,123 +5,843 @@
   "words": [
     {
       "word": "soccer",
-      "hints": ["ball", "goal", "field", "eleven", "referee"]
+      "hints": [
+        "ball",
+        "goal",
+        "field",
+        "team",
+        "kick"
+      ]
     },
     {
       "word": "basketball",
-      "hints": ["hoop", "dribbling", "court", "tall", "orange"]
+      "hints": [
+        "hoop",
+        "court",
+        "ball",
+        "tall",
+        "dribble"
+      ]
     },
     {
       "word": "tennis",
-      "hints": ["racket", "net", "court", "serve", "yellow"]
+      "hints": [
+        "racket",
+        "net",
+        "court",
+        "serve",
+        "ball"
+      ]
     },
     {
       "word": "volleyball",
-      "hints": ["net", "beach", "spike", "team", "hands"]
+      "hints": [
+        "net",
+        "team",
+        "beach",
+        "hands",
+        "court"
+      ]
     },
     {
       "word": "swimming",
-      "hints": ["pool", "water", "strokes", "goggles", "laps"]
+      "hints": [
+        "pool",
+        "water",
+        "strokes",
+        "laps",
+        "wet"
+      ]
     },
     {
       "word": "marathon",
-      "hints": ["running", "distance", "medal", "sweat", "finish"]
+      "hints": [
+        "running",
+        "long",
+        "endurance",
+        "finish",
+        "sweat"
+      ]
     },
     {
       "word": "boxing",
-      "hints": ["gloves", "ring", "punch", "rounds", "knockout"]
+      "hints": [
+        "gloves",
+        "ring",
+        "punch",
+        "fight",
+        "rounds"
+      ]
     },
     {
       "word": "skiing",
-      "hints": ["snow", "mountains", "slopes", "poles", "winter"]
+      "hints": [
+        "snow",
+        "mountains",
+        "slopes",
+        "winter",
+        "speed"
+      ]
     },
     {
       "word": "surfing",
-      "hints": ["waves", "board", "ocean", "balance", "wetsuit"]
+      "hints": [
+        "waves",
+        "board",
+        "ocean",
+        "balance",
+        "beach"
+      ]
     },
     {
       "word": "cycling",
-      "hints": ["bicycle", "helmet", "pedals", "race", "road"]
+      "hints": [
+        "bicycle",
+        "road",
+        "pedals",
+        "race",
+        "helmet"
+      ]
     },
     {
       "word": "golf",
-      "hints": ["club", "holes", "green", "swing", "caddie"]
+      "hints": [
+        "club",
+        "course",
+        "hole",
+        "swing",
+        "green"
+      ]
     },
     {
       "word": "rugby",
-      "hints": ["oval", "tackle", "scrum", "team", "mud"]
+      "hints": [
+        "ball",
+        "tackle",
+        "team",
+        "mud",
+        "tough"
+      ]
     },
     {
       "word": "baseball",
-      "hints": ["bat", "pitcher", "bases", "glove", "stadium"]
+      "hints": [
+        "bat",
+        "field",
+        "bases",
+        "glove",
+        "America"
+      ]
     },
     {
       "word": "hockey",
-      "hints": ["ice", "stick", "puck", "skates", "goal"]
+      "hints": [
+        "ice",
+        "stick",
+        "goal",
+        "fast",
+        "team"
+      ]
     },
     {
       "word": "gymnastics",
-      "hints": ["flexibility", "routine", "mat", "flips", "balance"]
+      "hints": [
+        "flexible",
+        "routine",
+        "balance",
+        "flips",
+        "mat"
+      ]
     },
     {
       "word": "climbing",
-      "hints": ["rope", "wall", "harness", "mountain", "grip"]
+      "hints": [
+        "rope",
+        "wall",
+        "height",
+        "grip",
+        "mountain"
+      ]
     },
     {
       "word": "skateboard",
-      "hints": ["wheels", "tricks", "ramp", "street", "balance"]
+      "hints": [
+        "wheels",
+        "tricks",
+        "street",
+        "balance",
+        "ramp"
+      ]
     },
     {
       "word": "yoga",
-      "hints": ["mat", "stretching", "breathing", "poses", "calm"]
+      "hints": [
+        "mat",
+        "stretching",
+        "calm",
+        "poses",
+        "breathing"
+      ]
     },
     {
       "word": "karate",
-      "hints": ["belt", "kicks", "dojo", "discipline", "white"]
+      "hints": [
+        "belt",
+        "kicks",
+        "discipline",
+        "fight",
+        "mat"
+      ]
     },
     {
       "word": "fencing",
-      "hints": ["sword", "mask", "lunge", "duel", "white"]
+      "hints": [
+        "sword",
+        "mask",
+        "duel",
+        "white",
+        "lunge"
+      ]
     },
     {
       "word": "archery",
-      "hints": ["bow", "arrow", "target", "aiming", "bullseye"]
+      "hints": [
+        "bow",
+        "arrow",
+        "target",
+        "aim",
+        "focus"
+      ]
     },
     {
       "word": "bowling",
-      "hints": ["pins", "ball", "lane", "strike", "shoes"]
+      "hints": [
+        "pins",
+        "ball",
+        "lane",
+        "roll",
+        "shoes"
+      ]
     },
     {
       "word": "darts",
-      "hints": ["board", "throwing", "pub", "bullseye", "points"]
+      "hints": [
+        "board",
+        "throw",
+        "pub",
+        "aim",
+        "points"
+      ]
     },
     {
       "word": "chess",
-      "hints": ["board", "pieces", "king", "strategy", "checkmate"]
+      "hints": [
+        "board",
+        "pieces",
+        "strategy",
+        "thinking",
+        "king"
+      ]
     },
     {
       "word": "table tennis",
-      "hints": ["paddle", "ball", "table", "net", "fast"]
+      "hints": [
+        "paddle",
+        "ball",
+        "table",
+        "fast",
+        "net"
+      ]
     },
     {
       "word": "racing",
-      "hints": ["cars", "speed", "circuit", "helmet", "pitstop"]
+      "hints": [
+        "cars",
+        "speed",
+        "track",
+        "fast",
+        "finish"
+      ]
     },
     {
       "word": "referee",
-      "hints": ["whistle", "rules", "cards", "field", "decisions"]
+      "hints": [
+        "whistle",
+        "rules",
+        "field",
+        "fair",
+        "decisions"
+      ]
     },
     {
       "word": "stadium",
-      "hints": ["crowd", "seats", "field", "cheering", "lights"]
+      "hints": [
+        "crowd",
+        "seats",
+        "field",
+        "cheering",
+        "big"
+      ]
     },
     {
       "word": "trophy",
-      "hints": ["winner", "gold", "cup", "ceremony", "shelf"]
+      "hints": [
+        "winner",
+        "gold",
+        "cup",
+        "shelf",
+        "prize"
+      ]
     },
     {
       "word": "olympics",
-      "hints": ["games", "medals", "rings", "athletes", "torch"]
+      "hints": [
+        "games",
+        "medals",
+        "athletes",
+        "rings",
+        "global"
+      ]
+    },
+    {
+      "word": "badminton",
+      "hints": [
+        "net",
+        "racket",
+        "shuttlecock",
+        "light",
+        "court"
+      ]
+    },
+    {
+      "word": "cricket",
+      "hints": [
+        "bat",
+        "ball",
+        "field",
+        "England",
+        "wickets"
+      ]
+    },
+    {
+      "word": "handball",
+      "hints": [
+        "ball",
+        "goal",
+        "team",
+        "throw",
+        "court"
+      ]
+    },
+    {
+      "word": "water polo",
+      "hints": [
+        "pool",
+        "ball",
+        "team",
+        "swim",
+        "goal"
+      ]
+    },
+    {
+      "word": "lacrosse",
+      "hints": [
+        "stick",
+        "net",
+        "ball",
+        "team",
+        "field"
+      ]
+    },
+    {
+      "word": "squash",
+      "hints": [
+        "racket",
+        "ball",
+        "wall",
+        "court",
+        "fast"
+      ]
+    },
+    {
+      "word": "ice skating",
+      "hints": [
+        "ice",
+        "blades",
+        "glide",
+        "balance",
+        "cold"
+      ]
+    },
+    {
+      "word": "figure skating",
+      "hints": [
+        "ice",
+        "spins",
+        "grace",
+        "jumps",
+        "music"
+      ]
+    },
+    {
+      "word": "snowboarding",
+      "hints": [
+        "snow",
+        "board",
+        "mountain",
+        "winter",
+        "tricks"
+      ]
+    },
+    {
+      "word": "curling",
+      "hints": [
+        "ice",
+        "stones",
+        "brooms",
+        "sweep",
+        "target"
+      ]
+    },
+    {
+      "word": "wrestling",
+      "hints": [
+        "mat",
+        "grip",
+        "strength",
+        "pin",
+        "fight"
+      ]
+    },
+    {
+      "word": "judo",
+      "hints": [
+        "mat",
+        "throws",
+        "belt",
+        "grip",
+        "discipline"
+      ]
+    },
+    {
+      "word": "taekwondo",
+      "hints": [
+        "kicks",
+        "belt",
+        "Korea",
+        "discipline",
+        "fight"
+      ]
+    },
+    {
+      "word": "sumo",
+      "hints": [
+        "Japan",
+        "heavy",
+        "push",
+        "ring",
+        "tradition"
+      ]
+    },
+    {
+      "word": "kickboxing",
+      "hints": [
+        "kicks",
+        "gloves",
+        "punch",
+        "ring",
+        "fight"
+      ]
+    },
+    {
+      "word": "weightlifting",
+      "hints": [
+        "heavy",
+        "muscles",
+        "barbell",
+        "strength",
+        "gym"
+      ]
+    },
+    {
+      "word": "rowing",
+      "hints": [
+        "boat",
+        "oars",
+        "water",
+        "team",
+        "pull"
+      ]
+    },
+    {
+      "word": "kayaking",
+      "hints": [
+        "boat",
+        "paddle",
+        "river",
+        "water",
+        "rapids"
+      ]
+    },
+    {
+      "word": "sailing",
+      "hints": [
+        "boat",
+        "wind",
+        "sea",
+        "sails",
+        "ropes"
+      ]
+    },
+    {
+      "word": "windsurfing",
+      "hints": [
+        "board",
+        "sail",
+        "wind",
+        "sea",
+        "balance"
+      ]
+    },
+    {
+      "word": "diving",
+      "hints": [
+        "board",
+        "pool",
+        "jump",
+        "splash",
+        "flip"
+      ]
+    },
+    {
+      "word": "scuba diving",
+      "hints": [
+        "ocean",
+        "mask",
+        "deep",
+        "tank",
+        "underwater"
+      ]
+    },
+    {
+      "word": "rafting",
+      "hints": [
+        "river",
+        "rapids",
+        "boat",
+        "team",
+        "paddle"
+      ]
+    },
+    {
+      "word": "triathlon",
+      "hints": [
+        "swim",
+        "bike",
+        "run",
+        "endurance",
+        "three"
+      ]
+    },
+    {
+      "word": "hurdles",
+      "hints": [
+        "running",
+        "jump",
+        "track",
+        "barriers",
+        "speed"
+      ]
+    },
+    {
+      "word": "sprint",
+      "hints": [
+        "running",
+        "fast",
+        "short",
+        "track",
+        "speed"
+      ]
+    },
+    {
+      "word": "long jump",
+      "hints": [
+        "jump",
+        "sand",
+        "track",
+        "distance",
+        "run"
+      ]
+    },
+    {
+      "word": "high jump",
+      "hints": [
+        "jump",
+        "bar",
+        "track",
+        "height",
+        "arch"
+      ]
+    },
+    {
+      "word": "pole vault",
+      "hints": [
+        "pole",
+        "jump",
+        "height",
+        "track",
+        "bar"
+      ]
+    },
+    {
+      "word": "javelin",
+      "hints": [
+        "throw",
+        "spear",
+        "track",
+        "distance",
+        "field"
+      ]
+    },
+    {
+      "word": "discus",
+      "hints": [
+        "throw",
+        "spin",
+        "disc",
+        "track",
+        "field"
+      ]
+    },
+    {
+      "word": "shot put",
+      "hints": [
+        "throw",
+        "heavy",
+        "ball",
+        "track",
+        "strength"
+      ]
+    },
+    {
+      "word": "horse racing",
+      "hints": [
+        "horses",
+        "track",
+        "bets",
+        "speed",
+        "jockey"
+      ]
+    },
+    {
+      "word": "equestrian",
+      "hints": [
+        "horse",
+        "jumps",
+        "rider",
+        "elegant",
+        "saddle"
+      ]
+    },
+    {
+      "word": "motocross",
+      "hints": [
+        "motorbike",
+        "dirt",
+        "jumps",
+        "race",
+        "mud"
+      ]
+    },
+    {
+      "word": "rally",
+      "hints": [
+        "cars",
+        "dirt",
+        "race",
+        "speed",
+        "navigator"
+      ]
+    },
+    {
+      "word": "BMX",
+      "hints": [
+        "bike",
+        "tricks",
+        "dirt",
+        "jumps",
+        "ramps"
+      ]
+    },
+    {
+      "word": "mountain biking",
+      "hints": [
+        "bike",
+        "trails",
+        "off-road",
+        "hills",
+        "helmet"
+      ]
+    },
+    {
+      "word": "parkour",
+      "hints": [
+        "jumping",
+        "city",
+        "walls",
+        "agile",
+        "free"
+      ]
+    },
+    {
+      "word": "skydiving",
+      "hints": [
+        "plane",
+        "parachute",
+        "fall",
+        "sky",
+        "thrill"
+      ]
+    },
+    {
+      "word": "paragliding",
+      "hints": [
+        "sky",
+        "glide",
+        "wind",
+        "parachute",
+        "mountain"
+      ]
+    },
+    {
+      "word": "snorkeling",
+      "hints": [
+        "sea",
+        "mask",
+        "shallow",
+        "fish",
+        "swim"
+      ]
+    },
+    {
+      "word": "hiking",
+      "hints": [
+        "trail",
+        "mountains",
+        "boots",
+        "nature",
+        "walk"
+      ]
+    },
+    {
+      "word": "frisbee",
+      "hints": [
+        "disc",
+        "throw",
+        "park",
+        "catch",
+        "fly"
+      ]
+    },
+    {
+      "word": "billiards",
+      "hints": [
+        "table",
+        "balls",
+        "cue",
+        "pockets",
+        "green"
+      ]
+    },
+    {
+      "word": "snooker",
+      "hints": [
+        "table",
+        "balls",
+        "cue",
+        "red",
+        "pockets"
+      ]
+    },
+    {
+      "word": "paintball",
+      "hints": [
+        "guns",
+        "team",
+        "hide",
+        "colors",
+        "field"
+      ]
+    },
+    {
+      "word": "medal",
+      "hints": [
+        "winner",
+        "gold",
+        "neck",
+        "ceremony",
+        "prize"
+      ]
+    },
+    {
+      "word": "goalkeeper",
+      "hints": [
+        "goal",
+        "gloves",
+        "save",
+        "net",
+        "defend"
+      ]
+    },
+    {
+      "word": "whistle",
+      "hints": [
+        "referee",
+        "blow",
+        "loud",
+        "stop",
+        "rules"
+      ]
+    },
+    {
+      "word": "jersey",
+      "hints": [
+        "team",
+        "number",
+        "shirt",
+        "colors",
+        "wear"
+      ]
+    },
+    {
+      "word": "scoreboard",
+      "hints": [
+        "points",
+        "numbers",
+        "game",
+        "display",
+        "screen"
+      ]
+    },
+    {
+      "word": "podium",
+      "hints": [
+        "winners",
+        "three",
+        "ceremony",
+        "stand",
+        "medals"
+      ]
+    },
+    {
+      "word": "champion",
+      "hints": [
+        "winner",
+        "best",
+        "title",
+        "trophy",
+        "top"
+      ]
     }
   ]
 }

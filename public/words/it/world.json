@@ -5,123 +5,903 @@
   "words": [
     {
       "word": "Parigi",
-      "hints": ["Eiffel", "Francia", "romantica", "croissant", "moda"]
+      "hints": [
+        "Francia",
+        "romantica",
+        "moda",
+        "arte",
+        "fiume"
+      ]
     },
     {
       "word": "Roma",
-      "hints": ["Colosseo", "Italia", "antica", "carbonara", "Vaticano"]
+      "hints": [
+        "Italia",
+        "antica",
+        "storia",
+        "rovine",
+        "capitale"
+      ]
     },
     {
       "word": "Londra",
-      "hints": ["Inghilterra", "pioggia", "regina", "autobus", "tè"]
+      "hints": [
+        "Inghilterra",
+        "pioggia",
+        "fiume",
+        "rosso",
+        "storia"
+      ]
     },
     {
       "word": "New York",
-      "hints": ["grattacieli", "taxi", "Broadway", "mela", "Manhattan"]
+      "hints": [
+        "America",
+        "grattacieli",
+        "frenetica",
+        "taxi",
+        "isola"
+      ]
     },
     {
       "word": "Tokyo",
-      "hints": ["Giappone", "neon", "sushi", "affollata", "tecnologia"]
+      "hints": [
+        "Giappone",
+        "neon",
+        "affollata",
+        "moderna",
+        "tecnologia"
+      ]
     },
     {
       "word": "Venezia",
-      "hints": ["canali", "gondola", "Italia", "maschere", "ponti"]
+      "hints": [
+        "Italia",
+        "acqua",
+        "canali",
+        "barche",
+        "romantica"
+      ]
     },
     {
       "word": "Egitto",
-      "hints": ["piramidi", "faraone", "deserto", "Nilo", "sfinge"]
+      "hints": [
+        "deserto",
+        "antico",
+        "fiume",
+        "Africa",
+        "faraoni"
+      ]
     },
     {
       "word": "Sahara",
-      "hints": ["deserto", "sabbia", "cammelli", "immenso", "Africa"]
+      "hints": [
+        "deserto",
+        "sabbia",
+        "Africa",
+        "immenso",
+        "caldo"
+      ]
     },
     {
       "word": "Amazzonia",
-      "hints": ["foresta", "fiume", "Brasile", "giungla", "biodiversità"]
+      "hints": [
+        "foresta",
+        "fiume",
+        "giungla",
+        "Sudamerica",
+        "selvaggia"
+      ]
     },
     {
       "word": "Everest",
-      "hints": ["montagna", "altissima", "scalata", "Nepal", "neve"]
+      "hints": [
+        "montagna",
+        "altissima",
+        "neve",
+        "scalata",
+        "Nepal"
+      ]
     },
     {
       "word": "Hawaii",
-      "hints": ["isole", "surf", "vulcano", "fiori", "paradiso"]
+      "hints": [
+        "isole",
+        "spiagge",
+        "tropicali",
+        "vulcano",
+        "Pacifico"
+      ]
     },
     {
       "word": "Australia",
-      "hints": ["canguro", "outback", "Sydney", "barriera", "koala"]
+      "hints": [
+        "isola",
+        "outback",
+        "spiagge",
+        "canguro",
+        "remota"
+      ]
     },
     {
       "word": "Brasile",
-      "hints": ["carnevale", "calcio", "samba", "spiagge", "Rio"]
+      "hints": [
+        "Sudamerica",
+        "carnevale",
+        "calcio",
+        "spiagge",
+        "samba"
+      ]
     },
     {
       "word": "India",
-      "hints": ["spezie", "Bollywood", "mucche", "colori", "yoga"]
+      "hints": [
+        "Asia",
+        "spezie",
+        "colorata",
+        "affollata",
+        "templi"
+      ]
     },
     {
       "word": "Cina",
-      "hints": ["muraglia", "drago", "riso", "panda", "antica"]
+      "hints": [
+        "Asia",
+        "antica",
+        "enorme",
+        "riso",
+        "muraglia"
+      ]
     },
     {
       "word": "Islanda",
-      "hints": ["geyser", "ghiaccio", "vulcani", "aurora", "freddo"]
+      "hints": [
+        "freddo",
+        "nord",
+        "vulcano",
+        "ghiaccio",
+        "remota"
+      ]
     },
     {
       "word": "Grecia",
-      "hints": ["isole", "mitologia", "rovine", "feta", "azzurro"]
+      "hints": [
+        "isole",
+        "antica",
+        "azzurra",
+        "Mediterraneo",
+        "rovine"
+      ]
     },
     {
       "word": "Svizzera",
-      "hints": ["Alpi", "cioccolato", "orologi", "neutrale", "banche"]
+      "hints": [
+        "montagne",
+        "cioccolato",
+        "neutrale",
+        "orologi",
+        "Alpi"
+      ]
     },
     {
       "word": "Norvegia",
-      "hints": ["fiordi", "vichinghi", "neve", "aurora", "salmone"]
+      "hints": [
+        "nord",
+        "freddo",
+        "fiordi",
+        "montagne",
+        "Scandinavia"
+      ]
     },
     {
       "word": "Marocco",
-      "hints": ["mercati", "spezie", "deserto", "menta", "mosaici"]
+      "hints": [
+        "Africa",
+        "mercati",
+        "spezie",
+        "deserto",
+        "colorato"
+      ]
     },
     {
       "word": "Dubai",
-      "hints": ["grattacieli", "lusso", "deserto", "oro", "centri"]
+      "hints": [
+        "deserto",
+        "lusso",
+        "grattacieli",
+        "oro",
+        "moderna"
+      ]
     },
     {
       "word": "Las Vegas",
-      "hints": ["casinò", "luci", "deserto", "matrimoni", "azzardo"]
+      "hints": [
+        "deserto",
+        "luci",
+        "casinò",
+        "azzardo",
+        "neon"
+      ]
     },
     {
       "word": "Muraglia cinese",
-      "hints": ["Cina", "lunga", "antica", "mattoni", "torrette"]
+      "hints": [
+        "Cina",
+        "lunga",
+        "antica",
+        "pietra",
+        "difesa"
+      ]
     },
     {
       "word": "Torre Eiffel",
-      "hints": ["Parigi", "ferro", "luci", "alta", "romantica"]
+      "hints": [
+        "Parigi",
+        "ferro",
+        "alta",
+        "monumento",
+        "romantica"
+      ]
     },
     {
       "word": "Colosseo",
-      "hints": ["Roma", "gladiatori", "arena", "antico", "rovine"]
+      "hints": [
+        "Roma",
+        "antico",
+        "arena",
+        "rovine",
+        "pietra"
+      ]
     },
     {
       "word": "Statua della Libertà",
-      "hints": ["America", "fiaccola", "verde", "isola", "regalo"]
+      "hints": [
+        "America",
+        "fiaccola",
+        "verde",
+        "porto",
+        "libertà"
+      ]
     },
     {
       "word": "Niagara",
-      "hints": ["cascate", "confine", "nebbiolina", "battello", "viaggio"]
+      "hints": [
+        "cascate",
+        "confine",
+        "nebbiolina",
+        "possente",
+        "turisti"
+      ]
     },
     {
       "word": "Antartide",
-      "hints": ["pinguini", "ghiaccio", "freddo", "ricerca", "remota"]
+      "hints": [
+        "ghiaccio",
+        "freddo",
+        "remota",
+        "pinguini",
+        "sud"
+      ]
     },
     {
       "word": "Caraibi",
-      "hints": ["isole", "pirati", "spiagge", "rum", "turchese"]
+      "hints": [
+        "isole",
+        "spiagge",
+        "tropicali",
+        "turchese",
+        "pirati"
+      ]
     },
     {
       "word": "safari",
-      "hints": ["Africa", "animali", "jeep", "binocolo", "savana"]
+      "hints": [
+        "Africa",
+        "animali",
+        "jeep",
+        "selvaggio",
+        "savana"
+      ]
+    },
+    {
+      "word": "Barcellona",
+      "hints": [
+        "Spagna",
+        "spiaggia",
+        "architettura",
+        "calcio",
+        "arte"
+      ]
+    },
+    {
+      "word": "Berlino",
+      "hints": [
+        "Germania",
+        "storia",
+        "muro",
+        "capitale",
+        "moderna"
+      ]
+    },
+    {
+      "word": "Amsterdam",
+      "hints": [
+        "Olanda",
+        "canali",
+        "biciclette",
+        "tulipani",
+        "piatta"
+      ]
+    },
+    {
+      "word": "Vienna",
+      "hints": [
+        "Austria",
+        "musica",
+        "elegante",
+        "palazzi",
+        "caffè"
+      ]
+    },
+    {
+      "word": "Praga",
+      "hints": [
+        "Repubblica Ceca",
+        "ponti",
+        "antica",
+        "Europa",
+        "castello"
+      ]
+    },
+    {
+      "word": "Istanbul",
+      "hints": [
+        "Turchia",
+        "ponte",
+        "due continenti",
+        "moschee",
+        "bazar"
+      ]
+    },
+    {
+      "word": "Atene",
+      "hints": [
+        "Grecia",
+        "antica",
+        "rovine",
+        "storia",
+        "capitale"
+      ]
+    },
+    {
+      "word": "Dublino",
+      "hints": [
+        "Irlanda",
+        "verde",
+        "pub",
+        "pioggia",
+        "accogliente"
+      ]
+    },
+    {
+      "word": "Mosca",
+      "hints": [
+        "Russia",
+        "freddo",
+        "rossa",
+        "capitale",
+        "neve"
+      ]
+    },
+    {
+      "word": "Bangkok",
+      "hints": [
+        "Thailandia",
+        "templi",
+        "caldo",
+        "street food",
+        "frenetica"
+      ]
+    },
+    {
+      "word": "Singapore",
+      "hints": [
+        "Asia",
+        "moderna",
+        "pulita",
+        "isola",
+        "grattacieli"
+      ]
+    },
+    {
+      "word": "Seul",
+      "hints": [
+        "Corea",
+        "moderna",
+        "tecnologia",
+        "frenetica",
+        "Asia"
+      ]
+    },
+    {
+      "word": "Rio de Janeiro",
+      "hints": [
+        "Brasile",
+        "spiagge",
+        "carnevale",
+        "montagne",
+        "statua"
+      ]
+    },
+    {
+      "word": "Buenos Aires",
+      "hints": [
+        "Argentina",
+        "tango",
+        "Sudamerica",
+        "passione",
+        "europea"
+      ]
+    },
+    {
+      "word": "Los Angeles",
+      "hints": [
+        "America",
+        "Hollywood",
+        "spiagge",
+        "soleggiata",
+        "auto"
+      ]
+    },
+    {
+      "word": "San Francisco",
+      "hints": [
+        "America",
+        "ponte",
+        "colline",
+        "nebbia",
+        "tecnologia"
+      ]
+    },
+    {
+      "word": "Toronto",
+      "hints": [
+        "Canada",
+        "torre alta",
+        "freddo",
+        "multietnica",
+        "lago"
+      ]
+    },
+    {
+      "word": "Sydney",
+      "hints": [
+        "Australia",
+        "porto",
+        "opera",
+        "spiagge",
+        "soleggiata"
+      ]
+    },
+    {
+      "word": "Città del Capo",
+      "hints": [
+        "Sudafrica",
+        "montagna",
+        "oceano",
+        "spiagge",
+        "panoramica"
+      ]
+    },
+    {
+      "word": "Marrakech",
+      "hints": [
+        "Marocco",
+        "mercato",
+        "spezie",
+        "deserto",
+        "colorata"
+      ]
+    },
+    {
+      "word": "Giappone",
+      "hints": [
+        "Asia",
+        "isole",
+        "tecnologia",
+        "tradizione",
+        "ciliegi"
+      ]
+    },
+    {
+      "word": "Messico",
+      "hints": [
+        "piccante",
+        "sombrero",
+        "antico",
+        "spiagge",
+        "tequila"
+      ]
+    },
+    {
+      "word": "Spagna",
+      "hints": [
+        "sole",
+        "flamenco",
+        "spiagge",
+        "calcio",
+        "fiesta"
+      ]
+    },
+    {
+      "word": "Germania",
+      "hints": [
+        "Europa",
+        "birra",
+        "auto",
+        "efficiente",
+        "castelli"
+      ]
+    },
+    {
+      "word": "Canada",
+      "hints": [
+        "freddo",
+        "acero",
+        "neve",
+        "enorme",
+        "gentile"
+      ]
+    },
+    {
+      "word": "Russia",
+      "hints": [
+        "freddo",
+        "enorme",
+        "neve",
+        "vodka",
+        "est"
+      ]
+    },
+    {
+      "word": "Thailandia",
+      "hints": [
+        "Asia",
+        "spiagge",
+        "templi",
+        "piccante",
+        "tropicale"
+      ]
+    },
+    {
+      "word": "Kenya",
+      "hints": [
+        "Africa",
+        "safari",
+        "savana",
+        "animali",
+        "corridori"
+      ]
+    },
+    {
+      "word": "Perù",
+      "hints": [
+        "Sudamerica",
+        "montagne",
+        "antico",
+        "lama",
+        "Ande"
+      ]
+    },
+    {
+      "word": "Irlanda",
+      "hints": [
+        "verde",
+        "pioggia",
+        "pub",
+        "isola",
+        "musica"
+      ]
+    },
+    {
+      "word": "Scozia",
+      "hints": [
+        "kilt",
+        "cornamuse",
+        "highlands",
+        "pioggia",
+        "castelli"
+      ]
+    },
+    {
+      "word": "Portogallo",
+      "hints": [
+        "costa",
+        "Atlantico",
+        "azulejos",
+        "sardine",
+        "soleggiato"
+      ]
+    },
+    {
+      "word": "Turchia",
+      "hints": [
+        "ponte",
+        "bazar",
+        "tè",
+        "storia",
+        "moschee"
+      ]
+    },
+    {
+      "word": "Giamaica",
+      "hints": [
+        "isola",
+        "reggae",
+        "spiagge",
+        "tropicale",
+        "rum"
+      ]
+    },
+    {
+      "word": "Cuba",
+      "hints": [
+        "isola",
+        "sigari",
+        "auto d'epoca",
+        "rum",
+        "musica"
+      ]
+    },
+    {
+      "word": "Vietnam",
+      "hints": [
+        "Asia",
+        "riso",
+        "motorini",
+        "noodles",
+        "guerra"
+      ]
+    },
+    {
+      "word": "Nuova Zelanda",
+      "hints": [
+        "isole",
+        "pecore",
+        "verde",
+        "remota",
+        "montagne"
+      ]
+    },
+    {
+      "word": "Nepal",
+      "hints": [
+        "montagne",
+        "Himalaya",
+        "templi",
+        "trekking",
+        "Asia"
+      ]
+    },
+    {
+      "word": "Taj Mahal",
+      "hints": [
+        "India",
+        "bianco",
+        "marmo",
+        "amore",
+        "monumento"
+      ]
+    },
+    {
+      "word": "Piramidi",
+      "hints": [
+        "Egitto",
+        "antiche",
+        "deserto",
+        "triangoli",
+        "tombe"
+      ]
+    },
+    {
+      "word": "Big Ben",
+      "hints": [
+        "Londra",
+        "orologio",
+        "torre",
+        "alta",
+        "monumento"
+      ]
+    },
+    {
+      "word": "Torre di Pisa",
+      "hints": [
+        "Italia",
+        "pendente",
+        "torre",
+        "bianca",
+        "monumento"
+      ]
+    },
+    {
+      "word": "Sagrada Familia",
+      "hints": [
+        "Spagna",
+        "chiesa",
+        "alta",
+        "incompiuta",
+        "Barcellona"
+      ]
+    },
+    {
+      "word": "Machu Picchu",
+      "hints": [
+        "Perù",
+        "antico",
+        "montagne",
+        "rovine",
+        "Inca"
+      ]
+    },
+    {
+      "word": "Cristo Redentore",
+      "hints": [
+        "Brasile",
+        "statua",
+        "collina",
+        "braccia",
+        "Rio"
+      ]
+    },
+    {
+      "word": "Monte Fuji",
+      "hints": [
+        "Giappone",
+        "montagna",
+        "neve",
+        "sacro",
+        "simbolo"
+      ]
+    },
+    {
+      "word": "Grand Canyon",
+      "hints": [
+        "America",
+        "vasto",
+        "roccia",
+        "fiume",
+        "profondo"
+      ]
+    },
+    {
+      "word": "Stonehenge",
+      "hints": [
+        "Inghilterra",
+        "antico",
+        "pietre",
+        "mistero",
+        "cerchio"
+      ]
+    },
+    {
+      "word": "Acropoli",
+      "hints": [
+        "Grecia",
+        "antica",
+        "colonne",
+        "collina",
+        "rovine"
+      ]
+    },
+    {
+      "word": "Hollywood",
+      "hints": [
+        "America",
+        "film",
+        "stelle",
+        "fama",
+        "scritta"
+      ]
+    },
+    {
+      "word": "Times Square",
+      "hints": [
+        "New York",
+        "luci",
+        "folla",
+        "cartelloni",
+        "frenetica"
+      ]
+    },
+    {
+      "word": "Petra",
+      "hints": [
+        "Giordania",
+        "pietra",
+        "antica",
+        "scolpita",
+        "deserto"
+      ]
+    },
+    {
+      "word": "Sfinge",
+      "hints": [
+        "Egitto",
+        "pietra",
+        "leone",
+        "antica",
+        "deserto"
+      ]
+    },
+    {
+      "word": "Alpi",
+      "hints": [
+        "montagne",
+        "neve",
+        "Europa",
+        "sci",
+        "cime"
+      ]
+    },
+    {
+      "word": "Ande",
+      "hints": [
+        "montagne",
+        "Sudamerica",
+        "lunghe",
+        "alte",
+        "neve"
+      ]
+    },
+    {
+      "word": "Kilimangiaro",
+      "hints": [
+        "Africa",
+        "montagna",
+        "altissima",
+        "neve",
+        "scalata"
+      ]
+    },
+    {
+      "word": "Maldive",
+      "hints": [
+        "isole",
+        "spiagge",
+        "turchese",
+        "tropicali",
+        "lusso"
+      ]
+    },
+    {
+      "word": "Bali",
+      "hints": [
+        "isola",
+        "Indonesia",
+        "templi",
+        "spiagge",
+        "tropicale"
+      ]
+    },
+    {
+      "word": "Nilo",
+      "hints": [
+        "fiume",
+        "Egitto",
+        "Africa",
+        "lungo",
+        "antico"
+      ]
+    },
+    {
+      "word": "Mediterraneo",
+      "hints": [
+        "mare",
+        "azzurro",
+        "caldo",
+        "costa",
+        "Europa"
+      ]
     }
   ]
 }

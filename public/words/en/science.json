@@ -5,129 +5,843 @@
   "words": [
     {
       "word": "rocket",
-      "hints": ["launch", "space", "countdown", "fuel", "NASA"]
+      "hints": [
+        "space",
+        "launch",
+        "fast",
+        "fire",
+        "tall"
+      ]
     },
     {
       "word": "planet",
-      "hints": ["orbit", "solar", "round", "space", "system"]
+      "hints": [
+        "space",
+        "round",
+        "orbit",
+        "system",
+        "distant"
+      ]
     },
     {
       "word": "galaxy",
-      "hints": ["stars", "spiral", "vast", "universe", "milky"]
+      "hints": [
+        "space",
+        "stars",
+        "vast",
+        "spiral",
+        "far"
+      ]
     },
     {
       "word": "black hole",
-      "hints": ["gravity", "space", "light", "mysterious", "massive"]
+      "hints": [
+        "space",
+        "dark",
+        "gravity",
+        "mysterious",
+        "deep"
+      ]
     },
     {
       "word": "telescope",
-      "hints": ["stars", "lens", "observatory", "distant", "astronomer"]
+      "hints": [
+        "stars",
+        "lens",
+        "look",
+        "distant",
+        "night"
+      ]
     },
     {
       "word": "atom",
-      "hints": ["tiny", "nucleus", "physics", "particles", "matter"]
+      "hints": [
+        "tiny",
+        "particle",
+        "matter",
+        "physics",
+        "invisible"
+      ]
     },
     {
       "word": "gravity",
-      "hints": ["falling", "Newton", "apple", "force", "Earth"]
+      "hints": [
+        "fall",
+        "pull",
+        "force",
+        "down",
+        "Earth"
+      ]
     },
     {
       "word": "DNA",
-      "hints": ["genes", "helix", "biology", "code", "inheritance"]
+      "hints": [
+        "genes",
+        "tiny",
+        "biology",
+        "code",
+        "inherit"
+      ]
     },
     {
       "word": "robot",
-      "hints": ["machine", "artificial", "metal", "programmed", "future"]
+      "hints": [
+        "machine",
+        "metal",
+        "artificial",
+        "future",
+        "programmed"
+      ]
     },
     {
       "word": "satellite",
-      "hints": ["orbit", "signal", "space", "dish", "GPS"]
+      "hints": [
+        "space",
+        "orbit",
+        "signal",
+        "sky",
+        "technology"
+      ]
     },
     {
       "word": "asteroid",
-      "hints": ["rock", "space", "impact", "belt", "dinosaurs"]
+      "hints": [
+        "space",
+        "rock",
+        "flying",
+        "belt",
+        "impact"
+      ]
     },
     {
       "word": "comet",
-      "hints": ["tail", "ice", "sky", "orbit", "bright"]
+      "hints": [
+        "space",
+        "ice",
+        "tail",
+        "sky",
+        "bright"
+      ]
     },
     {
       "word": "eclipse",
-      "hints": ["sun", "moon", "shadow", "rare", "glasses"]
+      "hints": [
+        "sun",
+        "moon",
+        "shadow",
+        "rare",
+        "dark"
+      ]
     },
     {
       "word": "meteor",
-      "hints": ["shooting", "sky", "burning", "wish", "night"]
+      "hints": [
+        "sky",
+        "falling",
+        "burning",
+        "fast",
+        "night"
+      ]
     },
     {
       "word": "spacesuit",
-      "hints": ["astronaut", "white", "helmet", "oxygen", "bulky"]
+      "hints": [
+        "astronaut",
+        "white",
+        "oxygen",
+        "bulky",
+        "helmet"
+      ]
     },
     {
       "word": "alien",
-      "hints": ["UFO", "green", "space", "abduction", "unknown"]
+      "hints": [
+        "space",
+        "unknown",
+        "green",
+        "strange",
+        "visitor"
+      ]
     },
     {
       "word": "UFO",
-      "hints": ["flying", "saucer", "mystery", "lights", "sighting"]
+      "hints": [
+        "flying",
+        "mystery",
+        "lights",
+        "sky",
+        "unknown"
+      ]
     },
     {
       "word": "Mars",
-      "hints": ["red", "planet", "rover", "colony", "dust"]
+      "hints": [
+        "red",
+        "planet",
+        "space",
+        "dust",
+        "distant"
+      ]
     },
     {
       "word": "moon landing",
-      "hints": ["Apollo", "flag", "astronauts", "footprint", "television"]
+      "hints": [
+        "astronauts",
+        "history",
+        "flag",
+        "space",
+        "famous"
+      ]
     },
     {
       "word": "space station",
-      "hints": ["orbit", "astronauts", "modules", "floating", "international"]
+      "hints": [
+        "orbit",
+        "astronauts",
+        "floating",
+        "modules",
+        "international"
+      ]
     },
     {
       "word": "vaccine",
-      "hints": ["needle", "immunity", "doctor", "protection", "laboratory"]
+      "hints": [
+        "needle",
+        "protection",
+        "doctor",
+        "immunity",
+        "health"
+      ]
     },
     {
       "word": "bacteria",
       "hints": [
-        "microscopic",
+        "tiny",
         "germs",
-        "infection",
-        "antibiotics",
-        "everywhere"
+        "invisible",
+        "everywhere",
+        "infection"
       ]
     },
     {
       "word": "evolution",
-      "hints": ["Darwin", "species", "adaptation", "gradual", "fossils"]
+      "hints": [
+        "species",
+        "change",
+        "slow",
+        "adapt",
+        "Darwin"
+      ]
     },
     {
       "word": "dinosaur",
-      "hints": ["extinct", "fossil", "huge", "Jurassic", "bones"]
+      "hints": [
+        "extinct",
+        "huge",
+        "ancient",
+        "bones",
+        "reptile"
+      ]
     },
     {
       "word": "fossil",
-      "hints": ["ancient", "stone", "bones", "digging", "museum"]
+      "hints": [
+        "ancient",
+        "stone",
+        "bones",
+        "dig",
+        "museum"
+      ]
     },
     {
       "word": "electricity",
-      "hints": ["current", "wires", "shock", "power", "Tesla"]
+      "hints": [
+        "power",
+        "wires",
+        "current",
+        "shock",
+        "energy"
+      ]
     },
     {
       "word": "magnet",
-      "hints": ["attraction", "poles", "metal", "fridge", "field"]
+      "hints": [
+        "attract",
+        "metal",
+        "poles",
+        "fridge",
+        "pull"
+      ]
     },
     {
       "word": "laser",
-      "hints": ["beam", "red", "precise", "light", "pointer"]
+      "hints": [
+        "beam",
+        "light",
+        "precise",
+        "red",
+        "focused"
+      ]
     },
     {
       "word": "experiment",
-      "hints": ["laboratory", "hypothesis", "test", "results", "goggles"]
+      "hints": [
+        "laboratory",
+        "test",
+        "results",
+        "try",
+        "science"
+      ]
     },
     {
       "word": "chemistry",
-      "hints": ["elements", "reactions", "laboratory", "formulas", "explosions"]
+      "hints": [
+        "elements",
+        "reactions",
+        "laboratory",
+        "mixing",
+        "formulas"
+      ]
+    },
+    {
+      "word": "microscope",
+      "hints": [
+        "lens",
+        "tiny",
+        "laboratory",
+        "look",
+        "magnify"
+      ]
+    },
+    {
+      "word": "cell",
+      "hints": [
+        "tiny",
+        "biology",
+        "living",
+        "body",
+        "building block"
+      ]
+    },
+    {
+      "word": "virus",
+      "hints": [
+        "tiny",
+        "sick",
+        "spread",
+        "infection",
+        "invisible"
+      ]
+    },
+    {
+      "word": "brain",
+      "hints": [
+        "thinking",
+        "head",
+        "nerves",
+        "control",
+        "memory"
+      ]
+    },
+    {
+      "word": "skeleton",
+      "hints": [
+        "bones",
+        "body",
+        "structure",
+        "white",
+        "frame"
+      ]
+    },
+    {
+      "word": "blood",
+      "hints": [
+        "red",
+        "body",
+        "veins",
+        "heart",
+        "flow"
+      ]
+    },
+    {
+      "word": "oxygen",
+      "hints": [
+        "air",
+        "breathe",
+        "gas",
+        "life",
+        "invisible"
+      ]
+    },
+    {
+      "word": "molecule",
+      "hints": [
+        "tiny",
+        "atoms",
+        "matter",
+        "structure",
+        "chemistry"
+      ]
+    },
+    {
+      "word": "electron",
+      "hints": [
+        "tiny",
+        "atom",
+        "charge",
+        "particle",
+        "negative"
+      ]
+    },
+    {
+      "word": "nucleus",
+      "hints": [
+        "center",
+        "atom",
+        "tiny",
+        "core",
+        "particles"
+      ]
+    },
+    {
+      "word": "energy",
+      "hints": [
+        "power",
+        "force",
+        "movement",
+        "fuel",
+        "invisible"
+      ]
+    },
+    {
+      "word": "force",
+      "hints": [
+        "push",
+        "pull",
+        "physics",
+        "strength",
+        "motion"
+      ]
+    },
+    {
+      "word": "friction",
+      "hints": [
+        "rub",
+        "heat",
+        "resistance",
+        "surfaces",
+        "slow"
+      ]
+    },
+    {
+      "word": "velocity",
+      "hints": [
+        "speed",
+        "fast",
+        "motion",
+        "direction",
+        "physics"
+      ]
+    },
+    {
+      "word": "light",
+      "hints": [
+        "bright",
+        "see",
+        "fast",
+        "waves",
+        "sun"
+      ]
+    },
+    {
+      "word": "sound",
+      "hints": [
+        "hear",
+        "waves",
+        "loud",
+        "ears",
+        "vibration"
+      ]
+    },
+    {
+      "word": "wave",
+      "hints": [
+        "motion",
+        "energy",
+        "ocean",
+        "up and down",
+        "frequency"
+      ]
+    },
+    {
+      "word": "radiation",
+      "hints": [
+        "invisible",
+        "energy",
+        "danger",
+        "rays",
+        "nuclear"
+      ]
+    },
+    {
+      "word": "x-ray",
+      "hints": [
+        "bones",
+        "hospital",
+        "image",
+        "invisible",
+        "scan"
+      ]
+    },
+    {
+      "word": "element",
+      "hints": [
+        "chemistry",
+        "basic",
+        "table",
+        "pure",
+        "atom"
+      ]
+    },
+    {
+      "word": "acid",
+      "hints": [
+        "sour",
+        "burn",
+        "liquid",
+        "chemistry",
+        "danger"
+      ]
+    },
+    {
+      "word": "crystal",
+      "hints": [
+        "clear",
+        "shiny",
+        "rock",
+        "geometric",
+        "grow"
+      ]
+    },
+    {
+      "word": "mineral",
+      "hints": [
+        "rock",
+        "ground",
+        "natural",
+        "solid",
+        "mining"
+      ]
+    },
+    {
+      "word": "constellation",
+      "hints": [
+        "stars",
+        "sky",
+        "pattern",
+        "night",
+        "shapes"
+      ]
+    },
+    {
+      "word": "nebula",
+      "hints": [
+        "space",
+        "cloud",
+        "colorful",
+        "stars",
+        "distant"
+      ]
+    },
+    {
+      "word": "supernova",
+      "hints": [
+        "star",
+        "explosion",
+        "space",
+        "bright",
+        "death"
+      ]
+    },
+    {
+      "word": "crater",
+      "hints": [
+        "hole",
+        "moon",
+        "impact",
+        "round",
+        "deep"
+      ]
+    },
+    {
+      "word": "Saturn",
+      "hints": [
+        "planet",
+        "rings",
+        "space",
+        "gas",
+        "distant"
+      ]
+    },
+    {
+      "word": "Jupiter",
+      "hints": [
+        "planet",
+        "huge",
+        "space",
+        "gas",
+        "storm"
+      ]
+    },
+    {
+      "word": "Venus",
+      "hints": [
+        "planet",
+        "hot",
+        "space",
+        "bright",
+        "cloudy"
+      ]
+    },
+    {
+      "word": "Mercury",
+      "hints": [
+        "planet",
+        "small",
+        "space",
+        "close",
+        "fast"
+      ]
+    },
+    {
+      "word": "Neptune",
+      "hints": [
+        "planet",
+        "blue",
+        "space",
+        "far",
+        "cold"
+      ]
+    },
+    {
+      "word": "Pluto",
+      "hints": [
+        "small",
+        "far",
+        "cold",
+        "space",
+        "dwarf"
+      ]
+    },
+    {
+      "word": "solar system",
+      "hints": [
+        "planets",
+        "sun",
+        "space",
+        "orbits",
+        "eight"
+      ]
+    },
+    {
+      "word": "universe",
+      "hints": [
+        "everything",
+        "vast",
+        "space",
+        "endless",
+        "stars"
+      ]
+    },
+    {
+      "word": "big bang",
+      "hints": [
+        "beginning",
+        "explosion",
+        "universe",
+        "theory",
+        "expand"
+      ]
+    },
+    {
+      "word": "cosmonaut",
+      "hints": [
+        "space",
+        "Russian",
+        "helmet",
+        "orbit",
+        "suit"
+      ]
+    },
+    {
+      "word": "rover",
+      "hints": [
+        "Mars",
+        "wheels",
+        "explore",
+        "robot",
+        "surface"
+      ]
+    },
+    {
+      "word": "probe",
+      "hints": [
+        "space",
+        "explore",
+        "signal",
+        "distant",
+        "robot"
+      ]
+    },
+    {
+      "word": "test tube",
+      "hints": [
+        "laboratory",
+        "glass",
+        "liquid",
+        "small",
+        "experiment"
+      ]
+    },
+    {
+      "word": "beaker",
+      "hints": [
+        "laboratory",
+        "glass",
+        "liquid",
+        "measure",
+        "chemistry"
+      ]
+    },
+    {
+      "word": "formula",
+      "hints": [
+        "chemistry",
+        "symbols",
+        "equation",
+        "recipe",
+        "science"
+      ]
+    },
+    {
+      "word": "hypothesis",
+      "hints": [
+        "guess",
+        "test",
+        "science",
+        "idea",
+        "theory"
+      ]
+    },
+    {
+      "word": "theory",
+      "hints": [
+        "idea",
+        "science",
+        "explain",
+        "proven",
+        "study"
+      ]
+    },
+    {
+      "word": "circuit",
+      "hints": [
+        "electricity",
+        "wires",
+        "loop",
+        "power",
+        "components"
+      ]
+    },
+    {
+      "word": "battery",
+      "hints": [
+        "power",
+        "energy",
+        "store",
+        "charge",
+        "portable"
+      ]
+    },
+    {
+      "word": "solar panel",
+      "hints": [
+        "sun",
+        "energy",
+        "roof",
+        "electricity",
+        "clean"
+      ]
+    },
+    {
+      "word": "nuclear",
+      "hints": [
+        "power",
+        "atom",
+        "energy",
+        "danger",
+        "reactor"
+      ]
+    },
+    {
+      "word": "reactor",
+      "hints": [
+        "nuclear",
+        "power",
+        "energy",
+        "heat",
+        "plant"
+      ]
+    },
+    {
+      "word": "photosynthesis",
+      "hints": [
+        "plants",
+        "sun",
+        "green",
+        "oxygen",
+        "leaves"
+      ]
+    },
+    {
+      "word": "ecosystem",
+      "hints": [
+        "nature",
+        "balance",
+        "living",
+        "environment",
+        "connected"
+      ]
+    },
+    {
+      "word": "climate",
+      "hints": [
+        "weather",
+        "long-term",
+        "global",
+        "temperature",
+        "change"
+      ]
+    },
+    {
+      "word": "gene",
+      "hints": [
+        "DNA",
+        "inherit",
+        "tiny",
+        "traits",
+        "code"
+      ]
+    },
+    {
+      "word": "neuron",
+      "hints": [
+        "brain",
+        "nerve",
+        "signal",
+        "tiny",
+        "connect"
+      ]
     }
   ]
 }

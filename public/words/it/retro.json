@@ -5,129 +5,543 @@
   "words": [
     {
       "word": "musicassetta",
-      "hints": ["nastro", "musica", "riavvolgere", "matita", "walkman"]
+      "hints": [
+        "nastro",
+        "musica",
+        "vecchia",
+        "plastica",
+        "ascoltare"
+      ]
     },
     {
       "word": "vinile",
-      "hints": ["disco", "giradischi", "solchi", "collezionisti", "fruscio"]
+      "hints": [
+        "disco",
+        "nero",
+        "girare",
+        "musica",
+        "fruscio"
+      ]
     },
     {
       "word": "walkman",
-      "hints": ["musica", "portatile", "cuffie", "cassetta", "ottanta"]
+      "hints": [
+        "musica",
+        "portatile",
+        "vecchio",
+        "cuffie",
+        "tasca"
+      ]
     },
     {
       "word": "macchina da scrivere",
-      "hints": ["tasti", "inchiostro", "carta", "ticchettio", "vintage"]
+      "hints": [
+        "tasti",
+        "inchiostro",
+        "carta",
+        "ticchettio",
+        "vecchia"
+      ]
     },
     {
       "word": "floppy disk",
-      "hints": ["computer", "salvare", "quadrato", "obsoleto", "dati"]
+      "hints": [
+        "computer",
+        "salvare",
+        "quadrato",
+        "vecchio",
+        "dati"
+      ]
     },
     {
       "word": "videocassetta",
       "hints": [
         "nastro",
-        "riavvolgere",
-        "noleggio",
         "film",
-        "videoregistratore"
+        "vecchia",
+        "riavvolgere",
+        "lettore"
       ]
     },
     {
       "word": "sala giochi",
-      "hints": ["gettoni", "joystick", "cabinati", "neon", "record"]
+      "hints": [
+        "gettoni",
+        "giochi",
+        "neon",
+        "vecchia",
+        "schermo"
+      ]
     },
     {
       "word": "jukebox",
-      "hints": ["bar", "monete", "canzoni", "luminoso", "cinquanta"]
+      "hints": [
+        "musica",
+        "monete",
+        "canzoni",
+        "luminoso",
+        "bar"
+      ]
     },
     {
       "word": "polaroid",
-      "hints": ["foto", "istantanea", "scuotere", "bianco", "cornice"]
+      "hints": [
+        "foto",
+        "istantanea",
+        "scuotere",
+        "vecchia",
+        "cornice"
+      ]
     },
     {
       "word": "telefono a disco",
-      "hints": ["rotella", "filo", "lento", "vintage", "squillo"]
+      "hints": [
+        "rotella",
+        "vecchio",
+        "filo",
+        "squillo",
+        "lento"
+      ]
     },
     {
       "word": "gettone",
-      "hints": ["cabina", "telefonata", "moneta", "bar", "scanalature"]
+      "hints": [
+        "telefono",
+        "moneta",
+        "cabina",
+        "vecchio",
+        "bar"
+      ]
     },
     {
       "word": "Game Boy",
-      "hints": ["Nintendo", "portatile", "Tetris", "grigio", "batterie"]
+      "hints": [
+        "giochi",
+        "portatile",
+        "vecchio",
+        "tasti",
+        "grigio"
+      ]
     },
     {
       "word": "tamagotchi",
-      "hints": ["animaletto", "digitale", "nutrire", "bip", "novanta"]
+      "hints": [
+        "animaletto",
+        "digitale",
+        "nutrire",
+        "vecchio",
+        "bip"
+      ]
     },
     {
       "word": "cubo di Rubik",
-      "hints": ["rompicapo", "colori", "ruotare", "risolvere", "frustrazione"]
+      "hints": [
+        "rompicapo",
+        "colori",
+        "ruotare",
+        "risolvere",
+        "frustrante"
+      ]
     },
     {
       "word": "discoteca",
-      "hints": ["ballare", "sfera", "settanta", "luci", "febbre"]
+      "hints": [
+        "ballare",
+        "luci",
+        "settanta",
+        "sfera",
+        "musica"
+      ]
     },
     {
       "word": "mixtape",
-      "hints": ["canzoni", "cassetta", "regalo", "romantico", "selezione"]
+      "hints": [
+        "canzoni",
+        "nastro",
+        "regalo",
+        "vecchio",
+        "selezione"
+      ]
     },
     {
       "word": "drive-in",
-      "hints": ["film", "auto", "schermo", "aperto", "altoparlanti"]
+      "hints": [
+        "film",
+        "auto",
+        "schermo",
+        "aperto",
+        "vecchio"
+      ]
     },
     {
       "word": "enciclopedia",
-      "hints": ["volumi", "sapere", "scaffale", "pesante", "alfabetico"]
+      "hints": [
+        "libri",
+        "sapere",
+        "pesante",
+        "vecchia",
+        "volumi"
+      ]
     },
     {
       "word": "fax",
-      "hints": ["macchina", "carta", "ufficio", "bip", "obsoleto"]
+      "hints": [
+        "macchina",
+        "carta",
+        "ufficio",
+        "vecchio",
+        "bip"
+      ]
     },
     {
       "word": "modem 56k",
-      "hints": ["internet", "rumore", "lento", "occupato", "attesa"]
+      "hints": [
+        "internet",
+        "lento",
+        "rumore",
+        "vecchio",
+        "connessione"
+      ]
     },
     {
       "word": "pattini a rotelle",
-      "hints": ["ruote", "pista", "settanta", "cadute", "discoteca"]
+      "hints": [
+        "ruote",
+        "piedi",
+        "vecchi",
+        "pista",
+        "cadere"
+      ]
     },
     {
       "word": "lampada lava",
-      "hints": ["bagliore", "cera", "ipnotica", "cameretta", "psichedelica"]
+      "hints": [
+        "bagliore",
+        "cera",
+        "ipnotica",
+        "vecchia",
+        "colorata"
+      ]
     },
     {
       "word": "stereo portatile",
-      "hints": ["spalla", "musica", "batterie", "volume", "breakdance"]
+      "hints": [
+        "musica",
+        "forte",
+        "spalla",
+        "vecchio",
+        "batterie"
+      ]
     },
     {
       "word": "cabina telefonica",
-      "hints": ["gettoni", "vetro", "strada", "Superman", "obsoleta"]
+      "hints": [
+        "gettoni",
+        "vetro",
+        "strada",
+        "vecchia",
+        "telefonata"
+      ]
     },
     {
       "word": "telegramma",
-      "hints": ["messaggio", "urgente", "stop", "poste", "antico"]
+      "hints": [
+        "messaggio",
+        "vecchio",
+        "urgente",
+        "filo",
+        "stop"
+      ]
     },
     {
       "word": "grammofono",
-      "hints": ["tromba", "dischi", "antico", "manovella", "musica"]
+      "hints": [
+        "tromba",
+        "dischi",
+        "vecchio",
+        "manovella",
+        "musica"
+      ]
     },
     {
       "word": "proiettore diapositive",
-      "hints": ["foto", "clic", "famiglia", "parete", "vacanze"]
+      "hints": [
+        "foto",
+        "clic",
+        "vecchio",
+        "parete",
+        "famiglia"
+      ]
     },
     {
       "word": "carosello",
-      "hints": ["televisione", "pubblicità", "sera", "bambini", "nonni"]
+      "hints": [
+        "televisione",
+        "pubblicità",
+        "sera",
+        "vecchio",
+        "bambini"
+      ]
     },
     {
       "word": "antenna",
-      "hints": ["tetto", "segnale", "canali", "orientare", "disturbo"]
+      "hints": [
+        "tetto",
+        "segnale",
+        "vecchia",
+        "orientare",
+        "disturbo"
+      ]
     },
     {
       "word": "negozio di dischi",
-      "hints": ["vinili", "sfogliare", "musica", "poster", "weekend"]
+      "hints": [
+        "vinili",
+        "sfogliare",
+        "musica",
+        "vecchio",
+        "poster"
+      ]
+    },
+    {
+      "word": "Discman",
+      "hints": [
+        "musica",
+        "portatile",
+        "CD",
+        "vecchio",
+        "rotondo"
+      ]
+    },
+    {
+      "word": "lettore mp3",
+      "hints": [
+        "musica",
+        "piccolo",
+        "digitale",
+        "canzoni",
+        "cuffie"
+      ]
+    },
+    {
+      "word": "cellulare a conchiglia",
+      "hints": [
+        "telefono",
+        "aprire",
+        "vecchio",
+        "tasti",
+        "piccolo"
+      ]
+    },
+    {
+      "word": "stereo 8",
+      "hints": [
+        "nastro",
+        "musica",
+        "vecchio",
+        "auto",
+        "ingombrante"
+      ]
+    },
+    {
+      "word": "View-Master",
+      "hints": [
+        "immagini",
+        "occhi",
+        "clic",
+        "vecchio",
+        "giocattolo"
+      ]
+    },
+    {
+      "word": "macchina fotografica a rullino",
+      "hints": [
+        "foto",
+        "rullino",
+        "vecchia",
+        "scatto",
+        "sviluppare"
+      ]
+    },
+    {
+      "word": "macchina fotografica usa e getta",
+      "hints": [
+        "foto",
+        "usa e getta",
+        "vecchia",
+        "economica",
+        "caricare"
+      ]
+    },
+    {
+      "word": "radiolina",
+      "hints": [
+        "radio",
+        "piccola",
+        "vecchia",
+        "batterie",
+        "suono"
+      ]
+    },
+    {
+      "word": "TV in bianco e nero",
+      "hints": [
+        "televisione",
+        "vecchia",
+        "grigia",
+        "senza colore",
+        "schermo"
+      ]
+    },
+    {
+      "word": "videoregistratore",
+      "hints": [
+        "nastro",
+        "film",
+        "vecchio",
+        "riprodurre",
+        "riavvolgere"
+      ]
+    },
+    {
+      "word": "Atari",
+      "hints": [
+        "giochi",
+        "vecchio",
+        "console",
+        "pixel",
+        "joystick"
+      ]
+    },
+    {
+      "word": "Pac-Man",
+      "hints": [
+        "gioco",
+        "giallo",
+        "labirinto",
+        "vecchio",
+        "fantasmi"
+      ]
+    },
+    {
+      "word": "joystick",
+      "hints": [
+        "giochi",
+        "controllo",
+        "leva",
+        "vecchio",
+        "tasti"
+      ]
+    },
+    {
+      "word": "yo-yo",
+      "hints": [
+        "filo",
+        "giocattolo",
+        "su e giù",
+        "vecchio",
+        "girare"
+      ]
+    },
+    {
+      "word": "hula hoop",
+      "hints": [
+        "rotondo",
+        "vita",
+        "girare",
+        "giocattolo",
+        "vecchio"
+      ]
+    },
+    {
+      "word": "lavagna magica",
+      "hints": [
+        "disegnare",
+        "manopole",
+        "giocattolo",
+        "vecchia",
+        "scuotere"
+      ]
+    },
+    {
+      "word": "slinky",
+      "hints": [
+        "molla",
+        "scale",
+        "giocattolo",
+        "vecchio",
+        "metallo"
+      ]
+    },
+    {
+      "word": "walkie-talkie",
+      "hints": [
+        "radio",
+        "parlare",
+        "vecchio",
+        "tasti",
+        "portata"
+      ]
+    },
+    {
+      "word": "rolodex",
+      "hints": [
+        "contatti",
+        "schede",
+        "ufficio",
+        "vecchio",
+        "girare"
+      ]
+    },
+    {
+      "word": "carta carbone",
+      "hints": [
+        "copia",
+        "ufficio",
+        "vecchia",
+        "inchiostro",
+        "fogli"
+      ]
+    },
+    {
+      "word": "lavagna luminosa",
+      "hints": [
+        "luce",
+        "lucido",
+        "vecchia",
+        "classe",
+        "parete"
+      ]
+    },
+    {
+      "word": "mangiadischi",
+      "hints": [
+        "dischi",
+        "musica",
+        "portatile",
+        "vecchio",
+        "colorato"
+      ]
+    },
+    {
+      "word": "registratore di cassa",
+      "hints": [
+        "soldi",
+        "negozio",
+        "vecchio",
+        "cassetto",
+        "squillo"
+      ]
+    },
+    {
+      "word": "centralinista",
+      "hints": [
+        "chiamate",
+        "collegare",
+        "vecchio",
+        "cuffia",
+        "centralino"
+      ]
     }
   ]
 }

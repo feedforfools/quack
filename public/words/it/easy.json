@@ -5,123 +5,903 @@
   "words": [
     {
       "word": "sole",
-      "hints": ["cielo", "giallo", "caldo", "estate", "luce"]
+      "hints": [
+        "cielo",
+        "caldo",
+        "luce",
+        "giorno",
+        "splendente"
+      ]
     },
     {
       "word": "casa",
-      "hints": ["tetto", "famiglia", "giardino", "mura", "chiavi"]
+      "hints": [
+        "tetto",
+        "stanze",
+        "famiglia",
+        "via",
+        "mura"
+      ]
     },
     {
       "word": "acqua",
-      "hints": ["bere", "mare", "pioggia", "bottiglia", "blu"]
+      "hints": [
+        "bere",
+        "limpida",
+        "fiume",
+        "sete",
+        "bagnata"
+      ]
     },
     {
       "word": "albero",
-      "hints": ["bosco", "foglie", "legno", "verde", "radici"]
+      "hints": [
+        "bosco",
+        "foglie",
+        "legno",
+        "ombra",
+        "alto"
+      ]
     },
     {
       "word": "libro",
-      "hints": ["pagine", "lettura", "storia", "biblioteca", "carta"]
+      "hints": [
+        "pagine",
+        "lettura",
+        "scaffale",
+        "storia",
+        "carta"
+      ]
     },
     {
       "word": "sedia",
-      "hints": ["seduta", "gambe", "tavolo", "legno", "ufficio"]
+      "hints": [
+        "sedersi",
+        "gambe",
+        "tavolo",
+        "legno",
+        "riposo"
+      ]
     },
     {
       "word": "telefono",
-      "hints": ["chiamate", "schermo", "tasca", "app", "suoneria"]
+      "hints": [
+        "schermo",
+        "tasca",
+        "chiamate",
+        "app",
+        "carica"
+      ]
     },
     {
       "word": "macchina",
-      "hints": ["ruote", "strada", "guida", "motore", "garage"]
+      "hints": [
+        "strada",
+        "ruote",
+        "motore",
+        "guida",
+        "garage"
+      ]
     },
     {
       "word": "palla",
-      "hints": ["rotonda", "giochi", "rimbalzo", "sport", "lancio"]
+      "hints": [
+        "rotonda",
+        "lancio",
+        "gioco",
+        "rimbalzo",
+        "partita"
+      ]
     },
     {
       "word": "letto",
-      "hints": ["sonno", "cuscino", "coperta", "notte", "sogni"]
+      "hints": [
+        "dormire",
+        "cuscino",
+        "notte",
+        "riposo",
+        "coperta"
+      ]
     },
     {
       "word": "porta",
-      "hints": ["apertura", "chiave", "bussare", "maniglia", "ingresso"]
+      "hints": [
+        "aprire",
+        "maniglia",
+        "muro",
+        "ingresso",
+        "bussare"
+      ]
     },
     {
       "word": "scarpa",
-      "hints": ["piedi", "lacci", "camminare", "paio", "suola"]
+      "hints": [
+        "piedi",
+        "paio",
+        "camminare",
+        "lacci",
+        "suola"
+      ]
     },
     {
       "word": "orologio",
-      "hints": ["tempo", "lancette", "ticchettio", "polso", "sveglia"]
+      "hints": [
+        "tempo",
+        "muro",
+        "lancette",
+        "tic",
+        "numeri"
+      ]
     },
     {
       "word": "latte",
-      "hints": ["bianco", "mucca", "colazione", "bottiglia", "cereali"]
+      "hints": [
+        "bianco",
+        "bicchiere",
+        "colazione",
+        "bere",
+        "cartone"
+      ]
     },
     {
       "word": "pioggia",
-      "hints": ["nuvole", "ombrello", "bagnato", "temporale", "gocce"]
+      "hints": [
+        "nuvole",
+        "bagnato",
+        "ombrello",
+        "grigio",
+        "gocce"
+      ]
     },
     {
       "word": "fuoco",
-      "hints": ["caldo", "fiamme", "fumo", "rosso", "campeggio"]
+      "hints": [
+        "caldo",
+        "fumo",
+        "luce",
+        "rosso",
+        "pericolo"
+      ]
     },
     {
       "word": "luna",
-      "hints": ["notte", "cielo", "stelle", "piena", "astronauta"]
+      "hints": [
+        "notte",
+        "cielo",
+        "rotonda",
+        "stelle",
+        "bagliore"
+      ]
     },
     {
       "word": "pane",
-      "hints": ["forno", "farina", "fetta", "burro", "fresco"]
+      "hints": [
+        "forno",
+        "fetta",
+        "farina",
+        "colazione",
+        "morbido"
+      ]
     },
     {
       "word": "chiave",
-      "hints": ["serratura", "porta", "metallo", "tasca", "mazzo"]
+      "hints": [
+        "serratura",
+        "metallo",
+        "tasca",
+        "piccola",
+        "mazzo"
+      ]
     },
     {
       "word": "cappello",
-      "hints": ["testa", "sole", "visiera", "moda", "inverno"]
+      "hints": [
+        "testa",
+        "indossare",
+        "sole",
+        "moda",
+        "tondo"
+      ]
     },
     {
       "word": "pesce",
-      "hints": ["acqua", "nuotare", "squame", "mare", "acquario"]
+      "hints": [
+        "acqua",
+        "nuotare",
+        "squame",
+        "mare",
+        "pinne"
+      ]
     },
     {
       "word": "mela",
-      "hints": ["frutta", "rossa", "albero", "succo", "morso"]
+      "hints": [
+        "frutta",
+        "rossa",
+        "albero",
+        "dolce",
+        "morso"
+      ]
     },
     {
       "word": "spiaggia",
-      "hints": ["sabbia", "mare", "estate", "telo", "onde"]
+      "hints": [
+        "sabbia",
+        "mare",
+        "estate",
+        "onde",
+        "sole"
+      ]
     },
     {
       "word": "neve",
-      "hints": ["inverno", "bianca", "freddo", "fiocchi", "pupazzo"]
+      "hints": [
+        "inverno",
+        "bianca",
+        "freddo",
+        "soffice",
+        "cadere"
+      ]
     },
     {
       "word": "uccello",
-      "hints": ["ali", "volare", "nido", "piume", "canto"]
+      "hints": [
+        "ali",
+        "volare",
+        "nido",
+        "piume",
+        "canto"
+      ]
     },
     {
       "word": "torta",
-      "hints": ["compleanno", "dolce", "candeline", "forno", "fetta"]
+      "hints": [
+        "dolce",
+        "festa",
+        "candeline",
+        "forno",
+        "fetta"
+      ]
     },
     {
       "word": "stella",
-      "hints": ["notte", "cielo", "brillare", "desiderio", "spazio"]
+      "hints": [
+        "notte",
+        "cielo",
+        "brillare",
+        "piccola",
+        "spazio"
+      ]
     },
     {
       "word": "giardino",
-      "hints": ["fiori", "piante", "erba", "annaffiare", "cortile"]
+      "hints": [
+        "piante",
+        "erba",
+        "fiori",
+        "fuori",
+        "verde"
+      ]
     },
     {
       "word": "finestra",
-      "hints": ["vetro", "vista", "tende", "aprire", "luce"]
+      "hints": [
+        "vetro",
+        "vista",
+        "luce",
+        "cornice",
+        "aperta"
+      ]
     },
     {
       "word": "formaggio",
-      "hints": ["giallo", "topo", "latte", "buchi", "panino"]
+      "hints": [
+        "giallo",
+        "latte",
+        "fetta",
+        "spuntino",
+        "stagionato"
+      ]
+    },
+    {
+      "word": "tavolo",
+      "hints": [
+        "gambe",
+        "legno",
+        "cucina",
+        "piano",
+        "cena"
+      ]
+    },
+    {
+      "word": "tazza",
+      "hints": [
+        "bere",
+        "manico",
+        "caffè",
+        "piccola",
+        "cucina"
+      ]
+    },
+    {
+      "word": "cucchiaio",
+      "hints": [
+        "mangiare",
+        "zuppa",
+        "metallo",
+        "cucina",
+        "tondo"
+      ]
+    },
+    {
+      "word": "piatto",
+      "hints": [
+        "cibo",
+        "tondo",
+        "cena",
+        "cucina",
+        "piano"
+      ]
+    },
+    {
+      "word": "coltello",
+      "hints": [
+        "tagliare",
+        "affilato",
+        "cucina",
+        "lama",
+        "metallo"
+      ]
+    },
+    {
+      "word": "forchetta",
+      "hints": [
+        "mangiare",
+        "metallo",
+        "cucina",
+        "punte",
+        "cena"
+      ]
+    },
+    {
+      "word": "borsa",
+      "hints": [
+        "portare",
+        "spalla",
+        "spesa",
+        "manico",
+        "tasche"
+      ]
+    },
+    {
+      "word": "maglietta",
+      "hints": [
+        "indossare",
+        "cotone",
+        "maniche",
+        "estate",
+        "vestiti"
+      ]
+    },
+    {
+      "word": "calzino",
+      "hints": [
+        "piede",
+        "paio",
+        "caldo",
+        "lana",
+        "vestiti"
+      ]
+    },
+    {
+      "word": "guanto",
+      "hints": [
+        "mano",
+        "caldo",
+        "paio",
+        "inverno",
+        "dita"
+      ]
+    },
+    {
+      "word": "cappotto",
+      "hints": [
+        "inverno",
+        "caldo",
+        "indossare",
+        "bottoni",
+        "fuori"
+      ]
+    },
+    {
+      "word": "anello",
+      "hints": [
+        "dito",
+        "oro",
+        "tondo",
+        "matrimonio",
+        "piccolo"
+      ]
+    },
+    {
+      "word": "lampada",
+      "hints": [
+        "luce",
+        "tavolo",
+        "lampadina",
+        "interruttore",
+        "sera"
+      ]
+    },
+    {
+      "word": "carta",
+      "hints": [
+        "bianca",
+        "scrivere",
+        "sottile",
+        "foglio",
+        "ufficio"
+      ]
+    },
+    {
+      "word": "scatola",
+      "hints": [
+        "cartone",
+        "quadrata",
+        "deposito",
+        "coperchio",
+        "portare"
+      ]
+    },
+    {
+      "word": "bottiglia",
+      "hints": [
+        "bere",
+        "plastica",
+        "tappo",
+        "acqua",
+        "vetro"
+      ]
+    },
+    {
+      "word": "bicchiere",
+      "hints": [
+        "bere",
+        "trasparente",
+        "fragile",
+        "acqua",
+        "vetro"
+      ]
+    },
+    {
+      "word": "pianta",
+      "hints": [
+        "verde",
+        "vaso",
+        "foglie",
+        "acqua",
+        "crescere"
+      ]
+    },
+    {
+      "word": "fiore",
+      "hints": [
+        "petali",
+        "giardino",
+        "profumo",
+        "colori",
+        "primavera"
+      ]
+    },
+    {
+      "word": "erba",
+      "hints": [
+        "verde",
+        "giardino",
+        "prato",
+        "soffice",
+        "campo"
+      ]
+    },
+    {
+      "word": "foglia",
+      "hints": [
+        "albero",
+        "verde",
+        "autunno",
+        "cadere",
+        "sottile"
+      ]
+    },
+    {
+      "word": "sasso",
+      "hints": [
+        "duro",
+        "grigio",
+        "terra",
+        "pesante",
+        "lanciare"
+      ]
+    },
+    {
+      "word": "nuvola",
+      "hints": [
+        "cielo",
+        "bianca",
+        "pioggia",
+        "soffice",
+        "fluttuare"
+      ]
+    },
+    {
+      "word": "vento",
+      "hints": [
+        "aria",
+        "soffiare",
+        "freddo",
+        "foglie",
+        "tempesta"
+      ]
+    },
+    {
+      "word": "ghiaccio",
+      "hints": [
+        "freddo",
+        "gelo",
+        "acqua",
+        "scivoloso",
+        "inverno"
+      ]
+    },
+    {
+      "word": "fiume",
+      "hints": [
+        "acqua",
+        "scorrere",
+        "riva",
+        "pesci",
+        "ponte"
+      ]
+    },
+    {
+      "word": "lago",
+      "hints": [
+        "acqua",
+        "calmo",
+        "nuotare",
+        "pesci",
+        "riva"
+      ]
+    },
+    {
+      "word": "montagna",
+      "hints": [
+        "alta",
+        "scalare",
+        "neve",
+        "rocce",
+        "vetta"
+      ]
+    },
+    {
+      "word": "strada",
+      "hints": [
+        "auto",
+        "lunga",
+        "viaggio",
+        "grigia",
+        "cartelli"
+      ]
+    },
+    {
+      "word": "ponte",
+      "hints": [
+        "fiume",
+        "attraversare",
+        "sopra",
+        "auto",
+        "pietra"
+      ]
+    },
+    {
+      "word": "treno",
+      "hints": [
+        "binari",
+        "viaggio",
+        "stazione",
+        "lungo",
+        "veloce"
+      ]
+    },
+    {
+      "word": "barca",
+      "hints": [
+        "acqua",
+        "vela",
+        "galleggiare",
+        "fiume",
+        "pesca"
+      ]
+    },
+    {
+      "word": "bicicletta",
+      "hints": [
+        "ruote",
+        "pedali",
+        "andare",
+        "due",
+        "strada"
+      ]
+    },
+    {
+      "word": "aereo",
+      "hints": [
+        "cielo",
+        "volare",
+        "viaggio",
+        "ali",
+        "aeroporto"
+      ]
+    },
+    {
+      "word": "aquilone",
+      "hints": [
+        "cielo",
+        "vento",
+        "filo",
+        "volare",
+        "colorato"
+      ]
+    },
+    {
+      "word": "palloncino",
+      "hints": [
+        "aria",
+        "festa",
+        "fluttuare",
+        "colorato",
+        "scoppio"
+      ]
+    },
+    {
+      "word": "giocattolo",
+      "hints": [
+        "bambino",
+        "giocare",
+        "divertimento",
+        "plastica",
+        "colorato"
+      ]
+    },
+    {
+      "word": "uovo",
+      "hints": [
+        "bianco",
+        "colazione",
+        "guscio",
+        "tondo",
+        "cuocere"
+      ]
+    },
+    {
+      "word": "riso",
+      "hints": [
+        "bianco",
+        "chicchi",
+        "cuocere",
+        "ciotola",
+        "piccolo"
+      ]
+    },
+    {
+      "word": "sale",
+      "hints": [
+        "bianco",
+        "sapore",
+        "cucina",
+        "grani",
+        "condire"
+      ]
+    },
+    {
+      "word": "zucchero",
+      "hints": [
+        "dolce",
+        "bianco",
+        "cucchiaio",
+        "caffè",
+        "grani"
+      ]
+    },
+    {
+      "word": "bottone",
+      "hints": [
+        "camicia",
+        "piccolo",
+        "tondo",
+        "premere",
+        "cucire"
+      ]
+    },
+    {
+      "word": "ago",
+      "hints": [
+        "affilato",
+        "cucire",
+        "sottile",
+        "filo",
+        "piccolo"
+      ]
+    },
+    {
+      "word": "corda",
+      "hints": [
+        "legare",
+        "lunga",
+        "nodo",
+        "tirare",
+        "robusta"
+      ]
+    },
+    {
+      "word": "spazzola",
+      "hints": [
+        "capelli",
+        "pulire",
+        "setole",
+        "manico",
+        "pittura"
+      ]
+    },
+    {
+      "word": "pettine",
+      "hints": [
+        "capelli",
+        "denti",
+        "plastica",
+        "mattina",
+        "ordinato"
+      ]
+    },
+    {
+      "word": "caramella",
+      "hints": [
+        "dolce",
+        "zucchero",
+        "colorata",
+        "bambini",
+        "golosità"
+      ]
+    },
+    {
+      "word": "biscotto",
+      "hints": [
+        "dolce",
+        "forno",
+        "tondo",
+        "spuntino",
+        "cioccolato"
+      ]
+    },
+    {
+      "word": "mano",
+      "hints": [
+        "dita",
+        "corpo",
+        "salutare",
+        "tenere",
+        "cinque"
+      ]
+    },
+    {
+      "word": "piede",
+      "hints": [
+        "corpo",
+        "camminare",
+        "dita",
+        "scarpa",
+        "terra"
+      ]
+    },
+    {
+      "word": "occhio",
+      "hints": [
+        "vedere",
+        "viso",
+        "colore",
+        "battere",
+        "due"
+      ]
+    },
+    {
+      "word": "naso",
+      "hints": [
+        "viso",
+        "odore",
+        "respirare",
+        "centro",
+        "starnuto"
+      ]
+    },
+    {
+      "word": "capelli",
+      "hints": [
+        "testa",
+        "lunghi",
+        "spazzola",
+        "colore",
+        "taglio"
+      ]
+    },
+    {
+      "word": "dente",
+      "hints": [
+        "bocca",
+        "bianco",
+        "mordere",
+        "dentista",
+        "sorriso"
+      ]
+    },
+    {
+      "word": "sorriso",
+      "hints": [
+        "felice",
+        "viso",
+        "denti",
+        "amichevole",
+        "foto"
+      ]
+    },
+    {
+      "word": "neonato",
+      "hints": [
+        "piccolo",
+        "pianto",
+        "tenero",
+        "culla",
+        "nascita"
+      ]
+    },
+    {
+      "word": "cane",
+      "hints": [
+        "animale",
+        "abbaiare",
+        "coda",
+        "fedele",
+        "passeggiata"
+      ]
+    },
+    {
+      "word": "gatto",
+      "hints": [
+        "animale",
+        "fusa",
+        "baffi",
+        "morbido",
+        "topo"
+      ]
+    },
+    {
+      "word": "mucca",
+      "hints": [
+        "fattoria",
+        "latte",
+        "campo",
+        "erba",
+        "macchie"
+      ]
+    },
+    {
+      "word": "anatra",
+      "hints": [
+        "acqua",
+        "stagno",
+        "piume",
+        "nuotare",
+        "gialla"
+      ]
     }
   ]
 }

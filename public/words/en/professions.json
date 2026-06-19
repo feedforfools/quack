@@ -5,129 +5,903 @@
   "words": [
     {
       "word": "doctor",
-      "hints": ["hospital", "stethoscope", "patients", "white", "prescription"]
+      "hints": [
+        "hospital",
+        "patients",
+        "health",
+        "care",
+        "study"
+      ]
     },
     {
       "word": "firefighter",
-      "hints": ["flames", "truck", "helmet", "hose", "brave"]
+      "hints": [
+        "fire",
+        "rescue",
+        "brave",
+        "danger",
+        "uniform"
+      ]
     },
     {
       "word": "police officer",
-      "hints": ["badge", "uniform", "siren", "handcuffs", "law"]
+      "hints": [
+        "law",
+        "uniform",
+        "safety",
+        "crime",
+        "patrol"
+      ]
     },
     {
       "word": "chef",
-      "hints": ["kitchen", "restaurant", "hat", "recipes", "knives"]
+      "hints": [
+        "kitchen",
+        "restaurant",
+        "cooking",
+        "recipes",
+        "food"
+      ]
     },
     {
       "word": "pilot",
-      "hints": ["airplane", "cockpit", "uniform", "sky", "captain"]
+      "hints": [
+        "airplane",
+        "sky",
+        "travel",
+        "uniform",
+        "captain"
+      ]
     },
     {
       "word": "nurse",
-      "hints": ["hospital", "care", "injections", "scrubs", "patients"]
+      "hints": [
+        "hospital",
+        "care",
+        "patients",
+        "health",
+        "shifts"
+      ]
     },
     {
       "word": "lawyer",
-      "hints": ["court", "suits", "arguments", "judge", "contracts"]
+      "hints": [
+        "court",
+        "law",
+        "suits",
+        "arguments",
+        "justice"
+      ]
     },
     {
       "word": "judge",
-      "hints": ["court", "gavel", "robe", "sentence", "justice"]
+      "hints": [
+        "court",
+        "law",
+        "decisions",
+        "justice",
+        "robe"
+      ]
     },
     {
       "word": "plumber",
-      "hints": ["pipes", "leaks", "wrench", "bathroom", "overalls"]
+      "hints": [
+        "pipes",
+        "water",
+        "tools",
+        "repair",
+        "bathroom"
+      ]
     },
     {
       "word": "electrician",
-      "hints": ["wires", "voltage", "tools", "lights", "sparks"]
+      "hints": [
+        "wires",
+        "power",
+        "tools",
+        "lights",
+        "repair"
+      ]
     },
     {
       "word": "carpenter",
-      "hints": ["wood", "hammer", "sawdust", "furniture", "workshop"]
+      "hints": [
+        "wood",
+        "tools",
+        "building",
+        "furniture",
+        "workshop"
+      ]
     },
     {
       "word": "farmer",
-      "hints": ["fields", "tractor", "harvest", "animals", "dawn"]
+      "hints": [
+        "fields",
+        "crops",
+        "animals",
+        "tractor",
+        "harvest"
+      ]
     },
     {
       "word": "fisherman",
-      "hints": ["boat", "nets", "sea", "patience", "catch"]
+      "hints": [
+        "boat",
+        "sea",
+        "nets",
+        "catch",
+        "patience"
+      ]
     },
     {
       "word": "astronaut",
-      "hints": ["space", "helmet", "rocket", "floating", "NASA"]
+      "hints": [
+        "space",
+        "rocket",
+        "training",
+        "helmet",
+        "brave"
+      ]
     },
     {
       "word": "scientist",
       "hints": [
         "laboratory",
-        "experiments",
         "research",
-        "microscope",
-        "discovery"
+        "experiments",
+        "discovery",
+        "study"
       ]
     },
     {
       "word": "architect",
-      "hints": ["buildings", "blueprints", "design", "drawings", "models"]
+      "hints": [
+        "buildings",
+        "design",
+        "drawings",
+        "plans",
+        "creative"
+      ]
     },
     {
       "word": "photographer",
-      "hints": ["camera", "lens", "shooting", "lights", "editing"]
+      "hints": [
+        "camera",
+        "pictures",
+        "light",
+        "moments",
+        "editing"
+      ]
     },
     {
       "word": "journalist",
-      "hints": ["news", "interviews", "deadline", "articles", "microphone"]
+      "hints": [
+        "news",
+        "writing",
+        "interviews",
+        "stories",
+        "deadline"
+      ]
     },
     {
       "word": "actor",
-      "hints": ["stage", "camera", "script", "fame", "roles"]
+      "hints": [
+        "stage",
+        "roles",
+        "camera",
+        "fame",
+        "performance"
+      ]
     },
     {
       "word": "musician",
-      "hints": ["instruments", "concerts", "studio", "melody", "stage"]
+      "hints": [
+        "instruments",
+        "concerts",
+        "sound",
+        "stage",
+        "practice"
+      ]
     },
     {
       "word": "dentist",
-      "hints": ["teeth", "drill", "chair", "fear", "smile"]
+      "hints": [
+        "teeth",
+        "clinic",
+        "chair",
+        "health",
+        "appointment"
+      ]
     },
     {
       "word": "veterinarian",
-      "hints": ["animals", "clinic", "pets", "care", "injections"]
+      "hints": [
+        "animals",
+        "clinic",
+        "care",
+        "pets",
+        "health"
+      ]
     },
     {
       "word": "hairdresser",
-      "hints": ["scissors", "salon", "styling", "mirrors", "gossip"]
+      "hints": [
+        "scissors",
+        "salon",
+        "styling",
+        "mirrors",
+        "appointment"
+      ]
     },
     {
       "word": "mechanic",
-      "hints": ["cars", "garage", "oil", "tools", "engine"]
+      "hints": [
+        "cars",
+        "engine",
+        "garage",
+        "tools",
+        "oil"
+      ]
     },
     {
       "word": "waiter",
-      "hints": ["restaurant", "tray", "orders", "tips", "apron"]
+      "hints": [
+        "restaurant",
+        "orders",
+        "tray",
+        "tips",
+        "service"
+      ]
     },
     {
       "word": "barista",
-      "hints": ["coffee", "espresso", "foam", "counter", "morning"]
+      "hints": [
+        "coffee",
+        "counter",
+        "foam",
+        "morning",
+        "café"
+      ]
     },
     {
       "word": "programmer",
-      "hints": ["computer", "code", "bugs", "keyboard", "coffee"]
+      "hints": [
+        "computer",
+        "code",
+        "screen",
+        "logic",
+        "keyboard"
+      ]
     },
     {
       "word": "designer",
-      "hints": ["creativity", "fashion", "sketches", "style", "trends"]
+      "hints": [
+        "creative",
+        "style",
+        "sketches",
+        "trends",
+        "ideas"
+      ]
     },
     {
       "word": "translator",
-      "hints": ["languages", "words", "documents", "bilingual", "meetings"]
+      "hints": [
+        "languages",
+        "words",
+        "documents",
+        "bilingual",
+        "meaning"
+      ]
     },
     {
       "word": "surgeon",
-      "hints": ["operating", "precision", "scalpel", "mask", "hospital"]
+      "hints": [
+        "operating",
+        "precision",
+        "hospital",
+        "mask",
+        "hands"
+      ]
+    },
+    {
+      "word": "teacher",
+      "hints": [
+        "school",
+        "lessons",
+        "students",
+        "board",
+        "explain"
+      ]
+    },
+    {
+      "word": "accountant",
+      "hints": [
+        "numbers",
+        "money",
+        "office",
+        "taxes",
+        "spreadsheet"
+      ]
+    },
+    {
+      "word": "banker",
+      "hints": [
+        "money",
+        "office",
+        "suit",
+        "loans",
+        "finance"
+      ]
+    },
+    {
+      "word": "cashier",
+      "hints": [
+        "shop",
+        "money",
+        "counter",
+        "register",
+        "customers"
+      ]
+    },
+    {
+      "word": "librarian",
+      "hints": [
+        "books",
+        "quiet",
+        "shelves",
+        "reading",
+        "order"
+      ]
+    },
+    {
+      "word": "professor",
+      "hints": [
+        "university",
+        "lectures",
+        "students",
+        "research",
+        "knowledge"
+      ]
+    },
+    {
+      "word": "engineer",
+      "hints": [
+        "machines",
+        "design",
+        "build",
+        "math",
+        "solve"
+      ]
+    },
+    {
+      "word": "painter",
+      "hints": [
+        "walls",
+        "brush",
+        "color",
+        "rooms",
+        "ladder"
+      ]
+    },
+    {
+      "word": "plasterer",
+      "hints": [
+        "walls",
+        "smooth",
+        "construction",
+        "tools",
+        "wet"
+      ]
+    },
+    {
+      "word": "welder",
+      "hints": [
+        "metal",
+        "sparks",
+        "mask",
+        "join",
+        "heat"
+      ]
+    },
+    {
+      "word": "blacksmith",
+      "hints": [
+        "metal",
+        "hammer",
+        "fire",
+        "forge",
+        "iron"
+      ]
+    },
+    {
+      "word": "tailor",
+      "hints": [
+        "clothes",
+        "sewing",
+        "measure",
+        "fabric",
+        "needle"
+      ]
+    },
+    {
+      "word": "butcher",
+      "hints": [
+        "meat",
+        "knife",
+        "shop",
+        "cut",
+        "apron"
+      ]
+    },
+    {
+      "word": "baker",
+      "hints": [
+        "bread",
+        "oven",
+        "early",
+        "flour",
+        "shop"
+      ]
+    },
+    {
+      "word": "bartender",
+      "hints": [
+        "drinks",
+        "bar",
+        "night",
+        "cocktails",
+        "counter"
+      ]
+    },
+    {
+      "word": "janitor",
+      "hints": [
+        "cleaning",
+        "building",
+        "mop",
+        "keys",
+        "night"
+      ]
+    },
+    {
+      "word": "gardener",
+      "hints": [
+        "plants",
+        "outdoors",
+        "tools",
+        "soil",
+        "green"
+      ]
+    },
+    {
+      "word": "florist",
+      "hints": [
+        "flowers",
+        "shop",
+        "bouquet",
+        "color",
+        "arrange"
+      ]
+    },
+    {
+      "word": "miner",
+      "hints": [
+        "underground",
+        "dark",
+        "helmet",
+        "coal",
+        "dig"
+      ]
+    },
+    {
+      "word": "lumberjack",
+      "hints": [
+        "trees",
+        "axe",
+        "forest",
+        "wood",
+        "strong"
+      ]
+    },
+    {
+      "word": "sailor",
+      "hints": [
+        "sea",
+        "ship",
+        "waves",
+        "uniform",
+        "travel"
+      ]
+    },
+    {
+      "word": "soldier",
+      "hints": [
+        "army",
+        "uniform",
+        "war",
+        "brave",
+        "discipline"
+      ]
+    },
+    {
+      "word": "detective",
+      "hints": [
+        "clues",
+        "mystery",
+        "solve",
+        "crime",
+        "investigate"
+      ]
+    },
+    {
+      "word": "security guard",
+      "hints": [
+        "watch",
+        "uniform",
+        "night",
+        "doors",
+        "protect"
+      ]
+    },
+    {
+      "word": "coach",
+      "hints": [
+        "team",
+        "training",
+        "sport",
+        "motivate",
+        "whistle"
+      ]
+    },
+    {
+      "word": "dancer",
+      "hints": [
+        "stage",
+        "movement",
+        "music",
+        "graceful",
+        "practice"
+      ]
+    },
+    {
+      "word": "singer",
+      "hints": [
+        "voice",
+        "stage",
+        "songs",
+        "microphone",
+        "fans"
+      ]
+    },
+    {
+      "word": "sculptor",
+      "hints": [
+        "statues",
+        "stone",
+        "art",
+        "hands",
+        "shape"
+      ]
+    },
+    {
+      "word": "writer",
+      "hints": [
+        "words",
+        "books",
+        "stories",
+        "imagination",
+        "desk"
+      ]
+    },
+    {
+      "word": "clown",
+      "hints": [
+        "circus",
+        "funny",
+        "makeup",
+        "children",
+        "colorful"
+      ]
+    },
+    {
+      "word": "pharmacist",
+      "hints": [
+        "medicine",
+        "counter",
+        "health",
+        "pills",
+        "white"
+      ]
+    },
+    {
+      "word": "paramedic",
+      "hints": [
+        "ambulance",
+        "emergency",
+        "rescue",
+        "fast",
+        "care"
+      ]
+    },
+    {
+      "word": "psychologist",
+      "hints": [
+        "mind",
+        "talk",
+        "feelings",
+        "listen",
+        "help"
+      ]
+    },
+    {
+      "word": "optician",
+      "hints": [
+        "eyes",
+        "glasses",
+        "vision",
+        "test",
+        "frames"
+      ]
+    },
+    {
+      "word": "politician",
+      "hints": [
+        "government",
+        "speeches",
+        "votes",
+        "power",
+        "promises"
+      ]
+    },
+    {
+      "word": "diplomat",
+      "hints": [
+        "countries",
+        "meetings",
+        "talks",
+        "embassy",
+        "formal"
+      ]
+    },
+    {
+      "word": "real estate agent",
+      "hints": [
+        "houses",
+        "selling",
+        "keys",
+        "tours",
+        "deals"
+      ]
+    },
+    {
+      "word": "entrepreneur",
+      "hints": [
+        "business",
+        "ideas",
+        "risk",
+        "startup",
+        "money"
+      ]
+    },
+    {
+      "word": "consultant",
+      "hints": [
+        "advice",
+        "business",
+        "meetings",
+        "expert",
+        "office"
+      ]
+    },
+    {
+      "word": "flight attendant",
+      "hints": [
+        "airplane",
+        "service",
+        "uniform",
+        "travel",
+        "safety"
+      ]
+    },
+    {
+      "word": "bus driver",
+      "hints": [
+        "bus",
+        "route",
+        "passengers",
+        "city",
+        "wheel"
+      ]
+    },
+    {
+      "word": "taxi driver",
+      "hints": [
+        "car",
+        "city",
+        "passengers",
+        "fare",
+        "streets"
+      ]
+    },
+    {
+      "word": "truck driver",
+      "hints": [
+        "truck",
+        "highway",
+        "long",
+        "cargo",
+        "wheel"
+      ]
+    },
+    {
+      "word": "postman",
+      "hints": [
+        "letters",
+        "delivery",
+        "uniform",
+        "walking",
+        "mail"
+      ]
+    },
+    {
+      "word": "glazier",
+      "hints": [
+        "glass",
+        "windows",
+        "cut",
+        "tools",
+        "repair"
+      ]
+    },
+    {
+      "word": "jeweler",
+      "hints": [
+        "gold",
+        "rings",
+        "precious",
+        "small",
+        "shop"
+      ]
+    },
+    {
+      "word": "watchmaker",
+      "hints": [
+        "time",
+        "tiny",
+        "gears",
+        "precise",
+        "repair"
+      ]
+    },
+    {
+      "word": "makeup artist",
+      "hints": [
+        "faces",
+        "brushes",
+        "beauty",
+        "color",
+        "transform"
+      ]
+    },
+    {
+      "word": "tattoo artist",
+      "hints": [
+        "ink",
+        "skin",
+        "needle",
+        "art",
+        "design"
+      ]
+    },
+    {
+      "word": "barber",
+      "hints": [
+        "hair",
+        "shop",
+        "razor",
+        "men",
+        "trim"
+      ]
+    },
+    {
+      "word": "lifeguard",
+      "hints": [
+        "beach",
+        "pool",
+        "rescue",
+        "whistle",
+        "watch"
+      ]
+    },
+    {
+      "word": "personal trainer",
+      "hints": [
+        "gym",
+        "fitness",
+        "muscles",
+        "motivate",
+        "exercise"
+      ]
+    },
+    {
+      "word": "sommelier",
+      "hints": [
+        "wine",
+        "restaurant",
+        "taste",
+        "glasses",
+        "expert"
+      ]
+    },
+    {
+      "word": "fishmonger",
+      "hints": [
+        "fish",
+        "market",
+        "fresh",
+        "ice",
+        "shop"
+      ]
+    },
+    {
+      "word": "shopkeeper",
+      "hints": [
+        "store",
+        "customers",
+        "goods",
+        "counter",
+        "sell"
+      ]
+    },
+    {
+      "word": "tour guide",
+      "hints": [
+        "tourists",
+        "places",
+        "history",
+        "group",
+        "explain"
+      ]
+    },
+    {
+      "word": "courier",
+      "hints": [
+        "packages",
+        "delivery",
+        "fast",
+        "bike",
+        "doors"
+      ]
+    },
+    {
+      "word": "mason",
+      "hints": [
+        "stone",
+        "building",
+        "walls",
+        "tools",
+        "construction"
+      ]
+    },
+    {
+      "word": "midwife",
+      "hints": [
+        "birth",
+        "babies",
+        "hospital",
+        "mothers",
+        "care"
+      ]
+    },
+    {
+      "word": "beekeeper",
+      "hints": [
+        "bees",
+        "honey",
+        "suit",
+        "hives",
+        "veil"
+      ]
     }
   ]
 }

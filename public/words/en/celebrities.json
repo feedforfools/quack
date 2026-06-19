@@ -5,123 +5,543 @@
   "words": [
     {
       "word": "Lionel Messi",
-      "hints": ["football", "Argentina", "goals", "Barcelona", "champion"]
+      "hints": [
+        "football",
+        "South America",
+        "legend",
+        "small",
+        "left-footed"
+      ]
     },
     {
       "word": "Cristiano Ronaldo",
-      "hints": ["football", "Portugal", "goals", "muscles", "celebration"]
+      "hints": [
+        "football",
+        "Europe",
+        "muscles",
+        "famous",
+        "goals"
+      ]
     },
     {
       "word": "Beyoncé",
-      "hints": ["singer", "queen", "pop", "diva", "Texas"]
+      "hints": [
+        "singer",
+        "American",
+        "pop",
+        "powerful",
+        "diva"
+      ]
     },
     {
       "word": "Taylor Swift",
-      "hints": ["singer", "eras", "pop", "fans", "blonde"]
+      "hints": [
+        "singer",
+        "American",
+        "pop",
+        "blonde",
+        "fans"
+      ]
     },
     {
       "word": "Rihanna",
-      "hints": ["singer", "makeup", "Barbados", "umbrella", "fashion"]
+      "hints": [
+        "singer",
+        "fashion",
+        "island",
+        "business",
+        "bold"
+      ]
     },
     {
       "word": "Elon Musk",
-      "hints": ["billionaire", "rockets", "Tesla", "Twitter", "Mars"]
+      "hints": [
+        "billionaire",
+        "tech",
+        "cars",
+        "space",
+        "controversial"
+      ]
     },
     {
       "word": "Barack Obama",
-      "hints": ["president", "America", "speech", "hope", "Hawaii"]
+      "hints": [
+        "president",
+        "American",
+        "speeches",
+        "history",
+        "calm"
+      ]
     },
     {
       "word": "Queen Elizabeth",
-      "hints": ["royalty", "England", "crown", "corgis", "reign"]
+      "hints": [
+        "royalty",
+        "British",
+        "crown",
+        "long reign",
+        "monarch"
+      ]
     },
     {
       "word": "Michael Jackson",
-      "hints": ["pop", "moonwalk", "glove", "thriller", "king"]
+      "hints": [
+        "pop",
+        "dancing",
+        "legend",
+        "gloved",
+        "iconic"
+      ]
     },
     {
       "word": "Madonna",
-      "hints": ["pop", "queen", "eighties", "blonde", "provocative"]
+      "hints": [
+        "pop",
+        "queen",
+        "eighties",
+        "blonde",
+        "provocative"
+      ]
     },
     {
       "word": "Leonardo DiCaprio",
-      "hints": ["actor", "Titanic", "Oscar", "environment", "Hollywood"]
+      "hints": [
+        "actor",
+        "Hollywood",
+        "awards",
+        "environment",
+        "famous"
+      ]
     },
     {
       "word": "Brad Pitt",
-      "hints": ["actor", "handsome", "Hollywood", "blonde", "fight"]
+      "hints": [
+        "actor",
+        "handsome",
+        "Hollywood",
+        "blonde",
+        "famous"
+      ]
     },
     {
       "word": "Angelina Jolie",
-      "hints": ["actress", "lips", "adoption", "action", "humanitarian"]
+      "hints": [
+        "actress",
+        "Hollywood",
+        "humanitarian",
+        "beautiful",
+        "famous"
+      ]
     },
     {
       "word": "Tom Cruise",
-      "hints": ["actor", "stunts", "mission", "pilot", "smile"]
+      "hints": [
+        "actor",
+        "stunts",
+        "Hollywood",
+        "smile",
+        "action"
+      ]
     },
     {
       "word": "Will Smith",
-      "hints": ["actor", "rap", "slap", "prince", "Hollywood"]
+      "hints": [
+        "actor",
+        "American",
+        "rap",
+        "Hollywood",
+        "charisma"
+      ]
     },
     {
       "word": "Dwayne Johnson",
-      "hints": ["rock", "muscles", "wrestling", "bald", "action"]
+      "hints": [
+        "actor",
+        "muscles",
+        "wrestling",
+        "bald",
+        "action"
+      ]
     },
     {
       "word": "Keanu Reeves",
-      "hints": ["actor", "matrix", "kindness", "action", "motorcycle"]
+      "hints": [
+        "actor",
+        "action",
+        "kind",
+        "humble",
+        "Hollywood"
+      ]
     },
     {
       "word": "Lady Gaga",
-      "hints": ["singer", "outfits", "pop", "piano", "extravagant"]
+      "hints": [
+        "singer",
+        "outfits",
+        "pop",
+        "extravagant",
+        "talented"
+      ]
     },
     {
       "word": "Ariana Grande",
-      "hints": ["singer", "ponytail", "pop", "petite", "whistle"]
+      "hints": [
+        "singer",
+        "ponytail",
+        "pop",
+        "petite",
+        "young"
+      ]
     },
     {
       "word": "Justin Bieber",
-      "hints": ["singer", "Canada", "baby", "pop", "tattoos"]
+      "hints": [
+        "singer",
+        "Canadian",
+        "pop",
+        "young",
+        "tattoos"
+      ]
     },
     {
       "word": "Shakira",
-      "hints": ["singer", "hips", "Colombia", "dancing", "worldcup"]
+      "hints": [
+        "singer",
+        "dancing",
+        "South America",
+        "energetic",
+        "hips"
+      ]
     },
     {
       "word": "Adele",
-      "hints": ["singer", "British", "hello", "ballads", "voice"]
+      "hints": [
+        "singer",
+        "British",
+        "powerful voice",
+        "ballads",
+        "emotional"
+      ]
     },
     {
       "word": "Ed Sheeran",
-      "hints": ["singer", "redhead", "guitar", "British", "shape"]
+      "hints": [
+        "singer",
+        "British",
+        "guitar",
+        "redhead",
+        "solo"
+      ]
     },
     {
       "word": "Harry Styles",
-      "hints": ["singer", "British", "fashion", "boyband", "curls"]
+      "hints": [
+        "singer",
+        "British",
+        "fashion",
+        "former boyband",
+        "curls"
+      ]
     },
     {
       "word": "Emma Watson",
-      "hints": ["actress", "Hermione", "British", "activist", "magic"]
+      "hints": [
+        "actress",
+        "British",
+        "wizard films",
+        "activist",
+        "young"
+      ]
     },
     {
       "word": "Johnny Depp",
-      "hints": ["actor", "pirate", "trial", "eccentric", "hats"]
+      "hints": [
+        "actor",
+        "eccentric",
+        "Hollywood",
+        "pirate role",
+        "quirky"
+      ]
     },
     {
       "word": "Serena Williams",
-      "hints": ["tennis", "champion", "power", "sister", "legend"]
+      "hints": [
+        "tennis",
+        "American",
+        "powerful",
+        "champion",
+        "legend"
+      ]
     },
     {
       "word": "Usain Bolt",
-      "hints": ["sprinter", "Jamaica", "fastest", "lightning", "gold"]
+      "hints": [
+        "sprinter",
+        "fastest",
+        "island",
+        "gold",
+        "tall"
+      ]
     },
     {
       "word": "Roger Federer",
-      "hints": ["tennis", "Swiss", "elegant", "champion", "racket"]
+      "hints": [
+        "tennis",
+        "European",
+        "elegant",
+        "champion",
+        "legend"
+      ]
     },
     {
       "word": "Mr. Bean",
-      "hints": ["comedy", "silent", "British", "teddy", "grimaces"]
+      "hints": [
+        "comedy",
+        "British",
+        "silent",
+        "funny",
+        "character"
+      ]
+    },
+    {
+      "word": "Oprah Winfrey",
+      "hints": [
+        "talk show",
+        "American",
+        "rich",
+        "influential",
+        "host"
+      ]
+    },
+    {
+      "word": "Kim Kardashian",
+      "hints": [
+        "reality",
+        "famous",
+        "fashion",
+        "social media",
+        "family"
+      ]
+    },
+    {
+      "word": "Drake",
+      "hints": [
+        "rapper",
+        "Canadian",
+        "popular",
+        "music",
+        "successful"
+      ]
+    },
+    {
+      "word": "Eminem",
+      "hints": [
+        "rapper",
+        "American",
+        "fast",
+        "blonde",
+        "intense"
+      ]
+    },
+    {
+      "word": "Billie Eilish",
+      "hints": [
+        "singer",
+        "young",
+        "whisper",
+        "green hair",
+        "unique"
+      ]
+    },
+    {
+      "word": "The Weeknd",
+      "hints": [
+        "singer",
+        "Canadian",
+        "moody",
+        "R&B",
+        "popular"
+      ]
+    },
+    {
+      "word": "Dua Lipa",
+      "hints": [
+        "singer",
+        "British",
+        "pop",
+        "dance",
+        "young"
+      ]
+    },
+    {
+      "word": "Jennifer Lopez",
+      "hints": [
+        "singer",
+        "dancer",
+        "American",
+        "glamorous",
+        "Latina"
+      ]
+    },
+    {
+      "word": "Britney Spears",
+      "hints": [
+        "singer",
+        "pop",
+        "American",
+        "nineties",
+        "comeback"
+      ]
+    },
+    {
+      "word": "Tom Hanks",
+      "hints": [
+        "actor",
+        "American",
+        "beloved",
+        "Hollywood",
+        "everyman"
+      ]
+    },
+    {
+      "word": "Morgan Freeman",
+      "hints": [
+        "actor",
+        "deep voice",
+        "American",
+        "wise",
+        "narrator"
+      ]
+    },
+    {
+      "word": "Robert Downey Jr",
+      "hints": [
+        "actor",
+        "superhero",
+        "Hollywood",
+        "comeback",
+        "witty"
+      ]
+    },
+    {
+      "word": "Scarlett Johansson",
+      "hints": [
+        "actress",
+        "Hollywood",
+        "beautiful",
+        "action",
+        "voice"
+      ]
+    },
+    {
+      "word": "Zendaya",
+      "hints": [
+        "actress",
+        "young",
+        "fashion",
+        "talented",
+        "American"
+      ]
+    },
+    {
+      "word": "Ryan Reynolds",
+      "hints": [
+        "actor",
+        "funny",
+        "Canadian",
+        "superhero",
+        "charming"
+      ]
+    },
+    {
+      "word": "Jim Carrey",
+      "hints": [
+        "comedian",
+        "actor",
+        "rubber face",
+        "nineties",
+        "Canadian"
+      ]
+    },
+    {
+      "word": "Bill Gates",
+      "hints": [
+        "billionaire",
+        "tech",
+        "software",
+        "philanthropy",
+        "glasses"
+      ]
+    },
+    {
+      "word": "Mark Zuckerberg",
+      "hints": [
+        "tech",
+        "social media",
+        "billionaire",
+        "young",
+        "founder"
+      ]
+    },
+    {
+      "word": "Steve Jobs",
+      "hints": [
+        "tech",
+        "Apple",
+        "visionary",
+        "turtleneck",
+        "founder"
+      ]
+    },
+    {
+      "word": "Michael Jordan",
+      "hints": [
+        "basketball",
+        "legend",
+        "American",
+        "jumping",
+        "champion"
+      ]
+    },
+    {
+      "word": "LeBron James",
+      "hints": [
+        "basketball",
+        "American",
+        "powerful",
+        "champion",
+        "star"
+      ]
+    },
+    {
+      "word": "David Beckham",
+      "hints": [
+        "football",
+        "British",
+        "handsome",
+        "fashion",
+        "retired"
+      ]
+    },
+    {
+      "word": "Lewis Hamilton",
+      "hints": [
+        "racing",
+        "British",
+        "fast",
+        "champion",
+        "fashion"
+      ]
+    },
+    {
+      "word": "Greta Thunberg",
+      "hints": [
+        "activist",
+        "young",
+        "climate",
+        "Swedish",
+        "passionate"
+      ]
     }
   ]
 }

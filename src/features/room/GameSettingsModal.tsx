@@ -29,7 +29,6 @@ const CATEGORY_LABEL_KEYS = {
   sports: "settings.category_sports",
   school: "settings.category_school",
   celebrities: "settings.category_celebrities",
-  spicy: "settings.category_spicy",
   food: "settings.category_food",
   professions: "settings.category_professions",
   internet: "settings.category_internet",

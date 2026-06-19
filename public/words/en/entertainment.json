@@ -5,129 +5,783 @@
   "words": [
     {
       "word": "superhero",
-      "hints": ["cape", "powers", "comics", "villain", "mask"]
+      "hints": [
+        "cape",
+        "powers",
+        "save",
+        "mask",
+        "strong"
+      ]
     },
     {
       "word": "cartoon",
-      "hints": ["animation", "children", "drawing", "colorful", "television"]
+      "hints": [
+        "drawing",
+        "children",
+        "colorful",
+        "animated",
+        "television"
+      ]
     },
     {
       "word": "cinema",
-      "hints": ["movies", "popcorn", "screen", "tickets", "seats"]
+      "hints": [
+        "movies",
+        "screen",
+        "tickets",
+        "dark",
+        "seats"
+      ]
     },
     {
       "word": "theater",
-      "hints": ["stage", "actors", "curtain", "play", "audience"]
+      "hints": [
+        "stage",
+        "actors",
+        "live",
+        "audience",
+        "play"
+      ]
     },
     {
       "word": "circus",
-      "hints": ["clowns", "tent", "acrobats", "juggling", "elephants"]
+      "hints": [
+        "tent",
+        "acrobats",
+        "clowns",
+        "show",
+        "animals"
+      ]
     },
     {
       "word": "magician",
-      "hints": ["tricks", "rabbit", "wand", "illusion", "cards"]
+      "hints": [
+        "tricks",
+        "illusion",
+        "cards",
+        "stage",
+        "mystery"
+      ]
     },
     {
       "word": "karaoke",
-      "hints": ["singing", "microphone", "lyrics", "bar", "friends"]
+      "hints": [
+        "singing",
+        "microphone",
+        "bar",
+        "friends",
+        "songs"
+      ]
     },
     {
       "word": "sitcom",
-      "hints": ["comedy", "episodes", "laughter", "television", "characters"]
+      "hints": [
+        "comedy",
+        "episodes",
+        "laughter",
+        "television",
+        "characters"
+      ]
     },
     {
       "word": "zombie",
-      "hints": ["undead", "horror", "brains", "apocalypse", "slow"]
+      "hints": [
+        "undead",
+        "horror",
+        "slow",
+        "scary",
+        "apocalypse"
+      ]
     },
     {
       "word": "vampire",
-      "hints": ["fangs", "blood", "night", "garlic", "coffin"]
+      "hints": [
+        "night",
+        "blood",
+        "fangs",
+        "dark",
+        "immortal"
+      ]
     },
     {
       "word": "villain",
-      "hints": ["evil", "movie", "plan", "hero", "laughter"]
+      "hints": [
+        "evil",
+        "bad",
+        "movie",
+        "plan",
+        "enemy"
+      ]
     },
     {
       "word": "sequel",
-      "hints": ["movie", "second", "continuation", "franchise", "cinema"]
+      "hints": [
+        "movie",
+        "second",
+        "continuation",
+        "follow-up",
+        "next"
+      ]
     },
     {
       "word": "trailer",
-      "hints": ["preview", "movie", "short", "teaser", "spoiler"]
+      "hints": [
+        "preview",
+        "movie",
+        "short",
+        "teaser",
+        "clips"
+      ]
     },
     {
       "word": "podcast",
-      "hints": ["audio", "episodes", "talking", "headphones", "interview"]
+      "hints": [
+        "audio",
+        "episodes",
+        "talking",
+        "listen",
+        "interview"
+      ]
     },
     {
       "word": "musical",
-      "hints": ["songs", "stage", "dancing", "Broadway", "singing"]
+      "hints": [
+        "songs",
+        "stage",
+        "dancing",
+        "singing",
+        "show"
+      ]
     },
     {
       "word": "comedian",
-      "hints": ["jokes", "laughter", "stage", "microphone", "timing"]
+      "hints": [
+        "jokes",
+        "laughter",
+        "stage",
+        "funny",
+        "timing"
+      ]
     },
     {
       "word": "video game",
-      "hints": ["console", "controller", "levels", "screen", "players"]
+      "hints": [
+        "console",
+        "controller",
+        "screen",
+        "levels",
+        "players"
+      ]
     },
     {
       "word": "board game",
-      "hints": ["dice", "family", "table", "pieces", "rules"]
+      "hints": [
+        "dice",
+        "family",
+        "table",
+        "pieces",
+        "rules"
+      ]
     },
     {
       "word": "puppet",
-      "hints": ["strings", "hand", "show", "wooden", "theater"]
+      "hints": [
+        "strings",
+        "hand",
+        "show",
+        "wooden",
+        "children"
+      ]
     },
     {
       "word": "fireworks",
-      "hints": ["sky", "explosion", "colors", "celebration", "night"]
+      "hints": [
+        "sky",
+        "explosion",
+        "colors",
+        "celebration",
+        "night"
+      ]
     },
     {
       "word": "parade",
-      "hints": ["street", "floats", "music", "crowd", "celebration"]
+      "hints": [
+        "street",
+        "floats",
+        "music",
+        "crowd",
+        "celebration"
+      ]
     },
     {
       "word": "casino",
-      "hints": ["gambling", "cards", "chips", "roulette", "luck"]
+      "hints": [
+        "gambling",
+        "cards",
+        "chips",
+        "luck",
+        "money"
+      ]
     },
     {
       "word": "talent show",
-      "hints": ["stage", "judges", "votes", "singing", "audience"]
+      "hints": [
+        "stage",
+        "judges",
+        "votes",
+        "performance",
+        "audience"
+      ]
     },
     {
       "word": "red carpet",
       "hints": [
         "celebrities",
         "premiere",
-        "photographers",
+        "cameras",
         "fashion",
-        "Hollywood"
+        "fame"
       ]
     },
     {
       "word": "award",
-      "hints": ["trophy", "winner", "ceremony", "speech", "gold"]
+      "hints": [
+        "trophy",
+        "winner",
+        "ceremony",
+        "speech",
+        "gold"
+      ]
     },
     {
       "word": "soap opera",
-      "hints": ["drama", "television", "episodes", "romance", "endless"]
+      "hints": [
+        "drama",
+        "television",
+        "episodes",
+        "romance",
+        "endless"
+      ]
     },
     {
       "word": "reality show",
-      "hints": ["cameras", "contestants", "drama", "television", "elimination"]
+      "hints": [
+        "cameras",
+        "contestants",
+        "drama",
+        "television",
+        "elimination"
+      ]
     },
     {
       "word": "escape room",
-      "hints": ["puzzles", "locked", "team", "clues", "timer"]
+      "hints": [
+        "puzzles",
+        "locked",
+        "team",
+        "clues",
+        "timer"
+      ]
     },
     {
       "word": "amusement park",
-      "hints": ["rides", "rollercoaster", "queues", "fun", "tickets"]
+      "hints": [
+        "rides",
+        "fun",
+        "queues",
+        "tickets",
+        "families"
+      ]
     },
     {
       "word": "horror movie",
-      "hints": ["scary", "screams", "darkness", "monster", "popcorn"]
+      "hints": [
+        "scary",
+        "screams",
+        "dark",
+        "monster",
+        "fear"
+      ]
+    },
+    {
+      "word": "documentary",
+      "hints": [
+        "real",
+        "facts",
+        "educational",
+        "true",
+        "narrator"
+      ]
+    },
+    {
+      "word": "thriller",
+      "hints": [
+        "suspense",
+        "tension",
+        "exciting",
+        "danger",
+        "edge"
+      ]
+    },
+    {
+      "word": "action movie",
+      "hints": [
+        "explosions",
+        "fights",
+        "fast",
+        "hero",
+        "chase"
+      ]
+    },
+    {
+      "word": "blockbuster",
+      "hints": [
+        "popular",
+        "expensive",
+        "big",
+        "summer",
+        "hit"
+      ]
+    },
+    {
+      "word": "premiere",
+      "hints": [
+        "first",
+        "screening",
+        "celebrities",
+        "event",
+        "carpet"
+      ]
+    },
+    {
+      "word": "binge-watching",
+      "hints": [
+        "episodes",
+        "couch",
+        "hours",
+        "series",
+        "marathon"
+      ]
+    },
+    {
+      "word": "spin-off",
+      "hints": [
+        "new show",
+        "character",
+        "branch",
+        "related",
+        "series"
+      ]
+    },
+    {
+      "word": "remake",
+      "hints": [
+        "new version",
+        "old",
+        "again",
+        "updated",
+        "movie"
+      ]
+    },
+    {
+      "word": "plot twist",
+      "hints": [
+        "surprise",
+        "unexpected",
+        "story",
+        "shock",
+        "ending"
+      ]
+    },
+    {
+      "word": "cliffhanger",
+      "hints": [
+        "suspense",
+        "ending",
+        "wait",
+        "unresolved",
+        "next episode"
+      ]
+    },
+    {
+      "word": "cameo",
+      "hints": [
+        "brief",
+        "celebrity",
+        "appearance",
+        "surprise",
+        "short"
+      ]
+    },
+    {
+      "word": "special effects",
+      "hints": [
+        "movie",
+        "computer",
+        "explosions",
+        "fake",
+        "visual"
+      ]
+    },
+    {
+      "word": "soundtrack",
+      "hints": [
+        "music",
+        "movie",
+        "songs",
+        "background",
+        "score"
+      ]
+    },
+    {
+      "word": "subtitles",
+      "hints": [
+        "text",
+        "bottom",
+        "translation",
+        "reading",
+        "screen"
+      ]
+    },
+    {
+      "word": "dubbing",
+      "hints": [
+        "voices",
+        "language",
+        "translation",
+        "lips",
+        "audio"
+      ]
+    },
+    {
+      "word": "director",
+      "hints": [
+        "movie",
+        "action",
+        "chair",
+        "vision",
+        "control"
+      ]
+    },
+    {
+      "word": "audition",
+      "hints": [
+        "acting",
+        "trying",
+        "casting",
+        "nervous",
+        "role"
+      ]
+    },
+    {
+      "word": "paparazzi",
+      "hints": [
+        "cameras",
+        "celebrities",
+        "photos",
+        "chasing",
+        "fame"
+      ]
+    },
+    {
+      "word": "tabloid",
+      "hints": [
+        "gossip",
+        "celebrities",
+        "headlines",
+        "scandal",
+        "magazine"
+      ]
+    },
+    {
+      "word": "autograph",
+      "hints": [
+        "signature",
+        "celebrity",
+        "fan",
+        "paper",
+        "sign"
+      ]
+    },
+    {
+      "word": "bingo",
+      "hints": [
+        "numbers",
+        "cards",
+        "luck",
+        "elderly",
+        "win"
+      ]
+    },
+    {
+      "word": "lottery",
+      "hints": [
+        "numbers",
+        "tickets",
+        "luck",
+        "jackpot",
+        "win"
+      ]
+    },
+    {
+      "word": "pinball",
+      "hints": [
+        "machine",
+        "ball",
+        "flippers",
+        "arcade",
+        "lights"
+      ]
+    },
+    {
+      "word": "ferris wheel",
+      "hints": [
+        "round",
+        "high",
+        "fair",
+        "view",
+        "slow"
+      ]
+    },
+    {
+      "word": "roller coaster",
+      "hints": [
+        "ride",
+        "fast",
+        "loops",
+        "scream",
+        "fair"
+      ]
+    },
+    {
+      "word": "bumper cars",
+      "hints": [
+        "crash",
+        "fun",
+        "fair",
+        "electric",
+        "ride"
+      ]
+    },
+    {
+      "word": "haunted house",
+      "hints": [
+        "scary",
+        "ghosts",
+        "dark",
+        "screams",
+        "fair"
+      ]
+    },
+    {
+      "word": "juggler",
+      "hints": [
+        "balls",
+        "throw",
+        "circus",
+        "skill",
+        "catch"
+      ]
+    },
+    {
+      "word": "acrobat",
+      "hints": [
+        "flips",
+        "circus",
+        "balance",
+        "agile",
+        "performance"
+      ]
+    },
+    {
+      "word": "tightrope",
+      "hints": [
+        "balance",
+        "high",
+        "circus",
+        "rope",
+        "danger"
+      ]
+    },
+    {
+      "word": "mime",
+      "hints": [
+        "silent",
+        "gestures",
+        "white face",
+        "invisible",
+        "street"
+      ]
+    },
+    {
+      "word": "ventriloquist",
+      "hints": [
+        "dummy",
+        "voice",
+        "lips",
+        "puppet",
+        "trick"
+      ]
+    },
+    {
+      "word": "stand-up comedy",
+      "hints": [
+        "jokes",
+        "microphone",
+        "stage",
+        "laughter",
+        "solo"
+      ]
+    },
+    {
+      "word": "improv",
+      "hints": [
+        "unscripted",
+        "spontaneous",
+        "funny",
+        "stage",
+        "made-up"
+      ]
+    },
+    {
+      "word": "sketch",
+      "hints": [
+        "short",
+        "comedy",
+        "scene",
+        "funny",
+        "skit"
+      ]
+    },
+    {
+      "word": "game show",
+      "hints": [
+        "contestants",
+        "prizes",
+        "host",
+        "television",
+        "questions"
+      ]
+    },
+    {
+      "word": "quiz show",
+      "hints": [
+        "questions",
+        "answers",
+        "knowledge",
+        "prizes",
+        "host"
+      ]
+    },
+    {
+      "word": "talk show",
+      "hints": [
+        "host",
+        "guests",
+        "interview",
+        "couch",
+        "television"
+      ]
+    },
+    {
+      "word": "cooking show",
+      "hints": [
+        "chef",
+        "recipes",
+        "kitchen",
+        "food",
+        "television"
+      ]
+    },
+    {
+      "word": "anime",
+      "hints": [
+        "Japan",
+        "animated",
+        "colorful",
+        "characters",
+        "drawn"
+      ]
+    },
+    {
+      "word": "comic book",
+      "hints": [
+        "pages",
+        "drawings",
+        "superhero",
+        "panels",
+        "story"
+      ]
+    },
+    {
+      "word": "cosplay",
+      "hints": [
+        "costume",
+        "character",
+        "dress up",
+        "convention",
+        "fans"
+      ]
+    },
+    {
+      "word": "blooper",
+      "hints": [
+        "mistake",
+        "funny",
+        "filming",
+        "outtake",
+        "laugh"
+      ]
+    },
+    {
+      "word": "trivia night",
+      "hints": [
+        "questions",
+        "pub",
+        "teams",
+        "knowledge",
+        "fun"
+      ]
+    },
+    {
+      "word": "open mic",
+      "hints": [
+        "stage",
+        "anyone",
+        "perform",
+        "bar",
+        "microphone"
+      ]
+    },
+    {
+      "word": "nightclub",
+      "hints": [
+        "dancing",
+        "music",
+        "night",
+        "drinks",
+        "lights"
+      ]
+    },
+    {
+      "word": "rave",
+      "hints": [
+        "music",
+        "dancing",
+        "lights",
+        "night",
+        "electronic"
+      ]
+    },
+    {
+      "word": "stunt double",
+      "hints": [
+        "danger",
+        "actor",
+        "replace",
+        "action",
+        "risky"
+      ]
     }
   ]
 }

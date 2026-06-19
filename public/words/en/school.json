@@ -5,123 +5,723 @@
   "words": [
     {
       "word": "teacher",
-      "hints": ["classroom", "lessons", "blackboard", "students", "homework"]
+      "hints": [
+        "classroom",
+        "lessons",
+        "students",
+        "explain",
+        "homework"
+      ]
     },
     {
       "word": "homework",
-      "hints": ["evening", "exercises", "deadline", "notebook", "boring"]
+      "hints": [
+        "evening",
+        "exercises",
+        "deadline",
+        "boring",
+        "assignment"
+      ]
     },
     {
       "word": "blackboard",
-      "hints": ["chalk", "classroom", "writing", "eraser", "green"]
+      "hints": [
+        "chalk",
+        "classroom",
+        "writing",
+        "wall",
+        "green"
+      ]
     },
     {
       "word": "recess",
-      "hints": ["break", "playground", "bell", "friends", "games"]
+      "hints": [
+        "break",
+        "playground",
+        "friends",
+        "free",
+        "outside"
+      ]
     },
     {
       "word": "exam",
-      "hints": ["questions", "stress", "grades", "silence", "studying"]
+      "hints": [
+        "questions",
+        "stress",
+        "grades",
+        "silent",
+        "study"
+      ]
     },
     {
       "word": "pencil",
-      "hints": ["writing", "sharpener", "eraser", "wood", "case"]
+      "hints": [
+        "writing",
+        "wood",
+        "eraser",
+        "yellow",
+        "case"
+      ]
     },
     {
       "word": "eraser",
-      "hints": ["mistakes", "rubber", "pencil", "pink", "smudge"]
+      "hints": [
+        "mistakes",
+        "rubber",
+        "pencil",
+        "small",
+        "rub"
+      ]
     },
     {
       "word": "notebook",
-      "hints": ["pages", "notes", "lines", "spiral", "writing"]
+      "hints": [
+        "pages",
+        "notes",
+        "lines",
+        "writing",
+        "school"
+      ]
     },
     {
       "word": "ruler",
-      "hints": ["measuring", "straight", "centimeters", "plastic", "lines"]
+      "hints": [
+        "measure",
+        "straight",
+        "plastic",
+        "lines",
+        "centimeters"
+      ]
     },
     {
       "word": "glue",
-      "hints": ["sticky", "craft", "paper", "bottle", "fingers"]
+      "hints": [
+        "sticky",
+        "craft",
+        "paper",
+        "bottle",
+        "stick"
+      ]
     },
     {
       "word": "highlighter",
-      "hints": ["yellow", "marking", "text", "fluorescent", "studying"]
+      "hints": [
+        "yellow",
+        "marking",
+        "text",
+        "bright",
+        "study"
+      ]
     },
     {
       "word": "calculator",
-      "hints": ["math", "numbers", "buttons", "exam", "screen"]
+      "hints": [
+        "math",
+        "numbers",
+        "buttons",
+        "exam",
+        "screen"
+      ]
     },
     {
       "word": "microscope",
-      "hints": ["science", "lens", "tiny", "laboratory", "slides"]
+      "hints": [
+        "science",
+        "lens",
+        "tiny",
+        "look",
+        "lab"
+      ]
     },
     {
       "word": "globe",
-      "hints": ["geography", "spinning", "countries", "classroom", "round"]
+      "hints": [
+        "geography",
+        "round",
+        "countries",
+        "spin",
+        "world"
+      ]
     },
     {
       "word": "dictionary",
-      "hints": ["words", "definitions", "thick", "alphabetical", "language"]
+      "hints": [
+        "words",
+        "definitions",
+        "thick",
+        "alphabetical",
+        "language"
+      ]
     },
     {
       "word": "library",
-      "hints": ["books", "silence", "borrowing", "shelves", "studying"]
+      "hints": [
+        "books",
+        "quiet",
+        "borrow",
+        "shelves",
+        "study"
+      ]
     },
     {
       "word": "cafeteria",
-      "hints": ["lunch", "trays", "noise", "queue", "friends"]
+      "hints": [
+        "lunch",
+        "trays",
+        "noise",
+        "queue",
+        "friends"
+      ]
     },
     {
       "word": "principal",
-      "hints": ["office", "school", "authority", "announcements", "trouble"]
+      "hints": [
+        "office",
+        "school",
+        "authority",
+        "boss",
+        "trouble"
+      ]
     },
     {
       "word": "detention",
-      "hints": ["punishment", "boredom", "classroom", "rules", "silence"]
+      "hints": [
+        "punishment",
+        "boredom",
+        "rules",
+        "stay",
+        "silent"
+      ]
     },
     {
       "word": "diploma",
-      "hints": ["graduation", "certificate", "ceremony", "proud", "rolled"]
+      "hints": [
+        "graduation",
+        "certificate",
+        "ceremony",
+        "proud",
+        "paper"
+      ]
     },
     {
       "word": "graduation",
-      "hints": ["cap", "gown", "ceremony", "diploma", "celebration"]
+      "hints": [
+        "cap",
+        "gown",
+        "ceremony",
+        "diploma",
+        "celebration"
+      ]
     },
     {
       "word": "classroom",
-      "hints": ["desks", "students", "teacher", "board", "lessons"]
+      "hints": [
+        "desks",
+        "students",
+        "teacher",
+        "board",
+        "lessons"
+      ]
     },
     {
       "word": "desk",
-      "hints": ["chair", "classroom", "drawer", "wooden", "sitting"]
+      "hints": [
+        "chair",
+        "classroom",
+        "drawer",
+        "wooden",
+        "sitting"
+      ]
     },
     {
       "word": "bell",
-      "hints": ["ringing", "break", "school", "sound", "classes"]
+      "hints": [
+        "ringing",
+        "break",
+        "school",
+        "sound",
+        "classes"
+      ]
     },
     {
       "word": "grade",
-      "hints": ["marks", "report", "teacher", "numbers", "parents"]
+      "hints": [
+        "marks",
+        "report",
+        "teacher",
+        "numbers",
+        "parents"
+      ]
     },
     {
       "word": "field trip",
-      "hints": ["bus", "museum", "excitement", "permission", "class"]
+      "hints": [
+        "bus",
+        "museum",
+        "excitement",
+        "permission",
+        "class"
+      ]
     },
     {
       "word": "uniform",
-      "hints": ["clothes", "school", "identical", "tie", "rules"]
+      "hints": [
+        "clothes",
+        "school",
+        "identical",
+        "tie",
+        "rules"
+      ]
     },
     {
       "word": "chalk",
-      "hints": ["blackboard", "white", "dust", "writing", "teacher"]
+      "hints": [
+        "blackboard",
+        "white",
+        "dust",
+        "writing",
+        "teacher"
+      ]
     },
     {
       "word": "locker",
-      "hints": ["hallway", "code", "books", "metal", "storage"]
+      "hints": [
+        "hallway",
+        "code",
+        "books",
+        "metal",
+        "storage"
+      ]
     },
     {
       "word": "laboratory",
-      "hints": ["experiments", "goggles", "chemicals", "science", "safety"]
+      "hints": [
+        "experiments",
+        "goggles",
+        "chemicals",
+        "science",
+        "safety"
+      ]
+    },
+    {
+      "word": "student",
+      "hints": [
+        "learn",
+        "classroom",
+        "young",
+        "homework",
+        "books"
+      ]
+    },
+    {
+      "word": "classmate",
+      "hints": [
+        "friend",
+        "classroom",
+        "same age",
+        "together",
+        "school"
+      ]
+    },
+    {
+      "word": "backpack",
+      "hints": [
+        "shoulders",
+        "books",
+        "carry",
+        "straps",
+        "school"
+      ]
+    },
+    {
+      "word": "pencil case",
+      "hints": [
+        "zipper",
+        "pens",
+        "school",
+        "small",
+        "supplies"
+      ]
+    },
+    {
+      "word": "marker",
+      "hints": [
+        "colorful",
+        "draw",
+        "tip",
+        "smell",
+        "board"
+      ]
+    },
+    {
+      "word": "crayon",
+      "hints": [
+        "colorful",
+        "wax",
+        "children",
+        "draw",
+        "box"
+      ]
+    },
+    {
+      "word": "sharpener",
+      "hints": [
+        "pencil",
+        "small",
+        "shavings",
+        "point",
+        "twist"
+      ]
+    },
+    {
+      "word": "stapler",
+      "hints": [
+        "paper",
+        "metal",
+        "press",
+        "office",
+        "join"
+      ]
+    },
+    {
+      "word": "compass",
+      "hints": [
+        "circle",
+        "math",
+        "point",
+        "draw",
+        "geometry"
+      ]
+    },
+    {
+      "word": "protractor",
+      "hints": [
+        "angles",
+        "math",
+        "half-circle",
+        "measure",
+        "degrees"
+      ]
+    },
+    {
+      "word": "textbook",
+      "hints": [
+        "heavy",
+        "subject",
+        "pages",
+        "study",
+        "chapters"
+      ]
+    },
+    {
+      "word": "folder",
+      "hints": [
+        "papers",
+        "organize",
+        "school",
+        "documents",
+        "hold"
+      ]
+    },
+    {
+      "word": "whiteboard",
+      "hints": [
+        "markers",
+        "wipe",
+        "classroom",
+        "white",
+        "write"
+      ]
+    },
+    {
+      "word": "projector",
+      "hints": [
+        "screen",
+        "light",
+        "presentation",
+        "wall",
+        "images"
+      ]
+    },
+    {
+      "word": "report card",
+      "hints": [
+        "grades",
+        "parents",
+        "marks",
+        "end of term",
+        "results"
+      ]
+    },
+    {
+      "word": "test",
+      "hints": [
+        "questions",
+        "answers",
+        "grade",
+        "study",
+        "exam"
+      ]
+    },
+    {
+      "word": "essay",
+      "hints": [
+        "writing",
+        "long",
+        "paragraphs",
+        "topic",
+        "homework"
+      ]
+    },
+    {
+      "word": "presentation",
+      "hints": [
+        "slides",
+        "speak",
+        "class",
+        "project",
+        "front"
+      ]
+    },
+    {
+      "word": "lecture",
+      "hints": [
+        "listen",
+        "professor",
+        "notes",
+        "long",
+        "hall"
+      ]
+    },
+    {
+      "word": "math",
+      "hints": [
+        "numbers",
+        "calculations",
+        "subject",
+        "hard",
+        "equations"
+      ]
+    },
+    {
+      "word": "history",
+      "hints": [
+        "past",
+        "dates",
+        "events",
+        "subject",
+        "old"
+      ]
+    },
+    {
+      "word": "geography",
+      "hints": [
+        "maps",
+        "countries",
+        "world",
+        "subject",
+        "places"
+      ]
+    },
+    {
+      "word": "biology",
+      "hints": [
+        "life",
+        "cells",
+        "subject",
+        "living",
+        "science"
+      ]
+    },
+    {
+      "word": "physics",
+      "hints": [
+        "forces",
+        "energy",
+        "subject",
+        "hard",
+        "science"
+      ]
+    },
+    {
+      "word": "grammar",
+      "hints": [
+        "rules",
+        "language",
+        "writing",
+        "subject",
+        "correct"
+      ]
+    },
+    {
+      "word": "spelling",
+      "hints": [
+        "letters",
+        "words",
+        "correct",
+        "writing",
+        "practice"
+      ]
+    },
+    {
+      "word": "alphabet",
+      "hints": [
+        "letters",
+        "twenty-six",
+        "order",
+        "ABC",
+        "basic"
+      ]
+    },
+    {
+      "word": "multiplication",
+      "hints": [
+        "numbers",
+        "times",
+        "math",
+        "tables",
+        "memorize"
+      ]
+    },
+    {
+      "word": "atlas",
+      "hints": [
+        "maps",
+        "countries",
+        "book",
+        "geography",
+        "world"
+      ]
+    },
+    {
+      "word": "flashcards",
+      "hints": [
+        "memorize",
+        "cards",
+        "study",
+        "questions",
+        "quick"
+      ]
+    },
+    {
+      "word": "counselor",
+      "hints": [
+        "advice",
+        "school",
+        "talk",
+        "help",
+        "office"
+      ]
+    },
+    {
+      "word": "hallway",
+      "hints": [
+        "lockers",
+        "corridor",
+        "walking",
+        "school",
+        "long"
+      ]
+    },
+    {
+      "word": "assembly",
+      "hints": [
+        "gather",
+        "hall",
+        "students",
+        "announcements",
+        "morning"
+      ]
+    },
+    {
+      "word": "gymnasium",
+      "hints": [
+        "sports",
+        "indoor",
+        "PE",
+        "big",
+        "exercise"
+      ]
+    },
+    {
+      "word": "auditorium",
+      "hints": [
+        "stage",
+        "seats",
+        "events",
+        "big",
+        "shows"
+      ]
+    },
+    {
+      "word": "science fair",
+      "hints": [
+        "projects",
+        "experiments",
+        "display",
+        "competition",
+        "students"
+      ]
+    },
+    {
+      "word": "spelling bee",
+      "hints": [
+        "words",
+        "competition",
+        "letters",
+        "stage",
+        "nervous"
+      ]
+    },
+    {
+      "word": "yearbook",
+      "hints": [
+        "photos",
+        "memories",
+        "graduation",
+        "classmates",
+        "signatures"
+      ]
+    },
+    {
+      "word": "timetable",
+      "hints": [
+        "schedule",
+        "classes",
+        "times",
+        "grid",
+        "subjects"
+      ]
+    },
+    {
+      "word": "attendance",
+      "hints": [
+        "present",
+        "names",
+        "roll call",
+        "morning",
+        "list"
+      ]
+    },
+    {
+      "word": "gold star",
+      "hints": [
+        "reward",
+        "good",
+        "sticker",
+        "praise",
+        "shiny"
+      ]
+    },
+    {
+      "word": "scholarship",
+      "hints": [
+        "money",
+        "study",
+        "merit",
+        "award",
+        "university"
+      ]
     }
   ]
 }

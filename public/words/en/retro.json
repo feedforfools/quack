@@ -5,123 +5,543 @@
   "words": [
     {
       "word": "cassette",
-      "hints": ["tape", "music", "rewinding", "pencil", "walkman"]
+      "hints": [
+        "tape",
+        "music",
+        "old",
+        "plastic",
+        "play"
+      ]
     },
     {
       "word": "vinyl",
-      "hints": ["record", "turntable", "grooves", "collector", "crackle"]
+      "hints": [
+        "record",
+        "black",
+        "spin",
+        "music",
+        "crackle"
+      ]
     },
     {
       "word": "walkman",
-      "hints": ["music", "portable", "headphones", "cassette", "eighties"]
+      "hints": [
+        "music",
+        "portable",
+        "old",
+        "headphones",
+        "pocket"
+      ]
     },
     {
       "word": "typewriter",
-      "hints": ["keys", "ink", "paper", "clacking", "vintage"]
+      "hints": [
+        "keys",
+        "ink",
+        "paper",
+        "clack",
+        "old"
+      ]
     },
     {
       "word": "floppy disk",
-      "hints": ["computer", "saving", "square", "obsolete", "data"]
+      "hints": [
+        "computer",
+        "save",
+        "square",
+        "old",
+        "data"
+      ]
     },
     {
       "word": "VHS",
-      "hints": ["tape", "rewinding", "rental", "movies", "player"]
+      "hints": [
+        "tape",
+        "movie",
+        "old",
+        "rewind",
+        "player"
+      ]
     },
     {
       "word": "arcade",
-      "hints": ["coins", "joystick", "games", "neon", "highscore"]
+      "hints": [
+        "coins",
+        "games",
+        "neon",
+        "old",
+        "screen"
+      ]
     },
     {
       "word": "jukebox",
-      "hints": ["diner", "coins", "songs", "glowing", "fifties"]
+      "hints": [
+        "music",
+        "coins",
+        "songs",
+        "glow",
+        "diner"
+      ]
     },
     {
       "word": "polaroid",
-      "hints": ["photo", "instant", "shaking", "white", "frame"]
+      "hints": [
+        "photo",
+        "instant",
+        "shake",
+        "old",
+        "frame"
+      ]
     },
     {
       "word": "rotary phone",
-      "hints": ["dial", "cord", "slow", "vintage", "ringing"]
+      "hints": [
+        "dial",
+        "old",
+        "cord",
+        "ring",
+        "slow"
+      ]
     },
     {
       "word": "pager",
-      "hints": ["beeper", "message", "doctor", "belt", "nineties"]
+      "hints": [
+        "message",
+        "beep",
+        "old",
+        "belt",
+        "doctor"
+      ]
     },
     {
       "word": "Game Boy",
-      "hints": ["Nintendo", "portable", "Tetris", "gray", "batteries"]
+      "hints": [
+        "games",
+        "portable",
+        "old",
+        "buttons",
+        "grey"
+      ]
     },
     {
       "word": "tamagotchi",
-      "hints": ["pet", "digital", "feeding", "beeping", "nineties"]
+      "hints": [
+        "pet",
+        "digital",
+        "feed",
+        "old",
+        "beep"
+      ]
     },
     {
       "word": "Rubik's cube",
-      "hints": ["puzzle", "colors", "twisting", "solving", "frustration"]
+      "hints": [
+        "puzzle",
+        "colors",
+        "twist",
+        "solve",
+        "frustrating"
+      ]
     },
     {
       "word": "disco",
-      "hints": ["dancing", "ball", "seventies", "lights", "fever"]
+      "hints": [
+        "dancing",
+        "lights",
+        "seventies",
+        "ball",
+        "music"
+      ]
     },
     {
       "word": "mixtape",
-      "hints": ["songs", "cassette", "gift", "romantic", "curated"]
+      "hints": [
+        "songs",
+        "tape",
+        "gift",
+        "old",
+        "selection"
+      ]
     },
     {
       "word": "drive-in",
-      "hints": ["movies", "cars", "screen", "outdoor", "speakers"]
+      "hints": [
+        "movies",
+        "cars",
+        "screen",
+        "outdoor",
+        "old"
+      ]
     },
     {
       "word": "encyclopedia",
-      "hints": ["volumes", "knowledge", "shelf", "heavy", "alphabetical"]
+      "hints": [
+        "books",
+        "knowledge",
+        "heavy",
+        "old",
+        "volumes"
+      ]
     },
     {
       "word": "fax",
-      "hints": ["machine", "paper", "office", "beeping", "obsolete"]
+      "hints": [
+        "machine",
+        "paper",
+        "office",
+        "old",
+        "beep"
+      ]
     },
     {
       "word": "dial-up",
-      "hints": ["internet", "modem", "noise", "slow", "busy"]
+      "hints": [
+        "internet",
+        "slow",
+        "noise",
+        "old",
+        "modem"
+      ]
     },
     {
       "word": "roller skates",
-      "hints": ["wheels", "rink", "seventies", "falling", "disco"]
+      "hints": [
+        "wheels",
+        "feet",
+        "old",
+        "rink",
+        "fall"
+      ]
     },
     {
       "word": "lava lamp",
-      "hints": ["glowing", "wax", "hypnotic", "bedroom", "psychedelic"]
+      "hints": [
+        "glow",
+        "wax",
+        "hypnotic",
+        "old",
+        "colorful"
+      ]
     },
     {
       "word": "boombox",
-      "hints": ["shoulder", "music", "batteries", "loud", "breakdance"]
+      "hints": [
+        "music",
+        "loud",
+        "shoulder",
+        "old",
+        "batteries"
+      ]
     },
     {
       "word": "phone booth",
-      "hints": ["coins", "glass", "street", "Superman", "obsolete"]
+      "hints": [
+        "coins",
+        "glass",
+        "street",
+        "old",
+        "call"
+      ]
     },
     {
       "word": "telegram",
-      "hints": ["message", "dots", "urgent", "stop", "wire"]
+      "hints": [
+        "message",
+        "old",
+        "urgent",
+        "wire",
+        "stop"
+      ]
     },
     {
       "word": "gramophone",
-      "hints": ["horn", "records", "antique", "crank", "music"]
+      "hints": [
+        "horn",
+        "records",
+        "old",
+        "crank",
+        "music"
+      ]
     },
     {
       "word": "slide projector",
-      "hints": ["photos", "clicking", "family", "wall", "vacation"]
+      "hints": [
+        "photos",
+        "click",
+        "old",
+        "wall",
+        "family"
+      ]
     },
     {
       "word": "milkman",
-      "hints": ["bottles", "delivery", "morning", "doorstep", "vintage"]
+      "hints": [
+        "bottles",
+        "delivery",
+        "morning",
+        "old",
+        "doorstep"
+      ]
     },
     {
       "word": "antenna",
-      "hints": ["roof", "signal", "channels", "adjusting", "static"]
+      "hints": [
+        "roof",
+        "signal",
+        "old",
+        "adjust",
+        "static"
+      ]
     },
     {
       "word": "record store",
-      "hints": ["vinyl", "browsing", "music", "posters", "weekends"]
+      "hints": [
+        "vinyl",
+        "browse",
+        "music",
+        "old",
+        "posters"
+      ]
+    },
+    {
+      "word": "Discman",
+      "hints": [
+        "music",
+        "portable",
+        "CD",
+        "old",
+        "round"
+      ]
+    },
+    {
+      "word": "mp3 player",
+      "hints": [
+        "music",
+        "small",
+        "digital",
+        "songs",
+        "headphones"
+      ]
+    },
+    {
+      "word": "flip phone",
+      "hints": [
+        "phone",
+        "fold",
+        "old",
+        "buttons",
+        "small"
+      ]
+    },
+    {
+      "word": "8-track",
+      "hints": [
+        "tape",
+        "music",
+        "old",
+        "car",
+        "bulky"
+      ]
+    },
+    {
+      "word": "View-Master",
+      "hints": [
+        "pictures",
+        "eyes",
+        "click",
+        "old",
+        "toy"
+      ]
+    },
+    {
+      "word": "film camera",
+      "hints": [
+        "photos",
+        "roll",
+        "old",
+        "click",
+        "develop"
+      ]
+    },
+    {
+      "word": "disposable camera",
+      "hints": [
+        "photos",
+        "single-use",
+        "old",
+        "cheap",
+        "wind"
+      ]
+    },
+    {
+      "word": "transistor radio",
+      "hints": [
+        "radio",
+        "small",
+        "old",
+        "batteries",
+        "sound"
+      ]
+    },
+    {
+      "word": "black-and-white TV",
+      "hints": [
+        "television",
+        "old",
+        "grey",
+        "no color",
+        "screen"
+      ]
+    },
+    {
+      "word": "VCR",
+      "hints": [
+        "tape",
+        "movie",
+        "old",
+        "play",
+        "rewind"
+      ]
+    },
+    {
+      "word": "Atari",
+      "hints": [
+        "games",
+        "old",
+        "console",
+        "pixels",
+        "joystick"
+      ]
+    },
+    {
+      "word": "Pac-Man",
+      "hints": [
+        "game",
+        "yellow",
+        "maze",
+        "old",
+        "ghosts"
+      ]
+    },
+    {
+      "word": "joystick",
+      "hints": [
+        "games",
+        "control",
+        "stick",
+        "old",
+        "buttons"
+      ]
+    },
+    {
+      "word": "yo-yo",
+      "hints": [
+        "string",
+        "toy",
+        "up and down",
+        "old",
+        "spin"
+      ]
+    },
+    {
+      "word": "hula hoop",
+      "hints": [
+        "round",
+        "waist",
+        "spin",
+        "toy",
+        "old"
+      ]
+    },
+    {
+      "word": "Etch A Sketch",
+      "hints": [
+        "draw",
+        "knobs",
+        "toy",
+        "old",
+        "shake"
+      ]
+    },
+    {
+      "word": "slinky",
+      "hints": [
+        "spring",
+        "stairs",
+        "toy",
+        "old",
+        "metal"
+      ]
+    },
+    {
+      "word": "walkie-talkie",
+      "hints": [
+        "radio",
+        "talk",
+        "old",
+        "buttons",
+        "range"
+      ]
+    },
+    {
+      "word": "rolodex",
+      "hints": [
+        "contacts",
+        "cards",
+        "office",
+        "old",
+        "spin"
+      ]
+    },
+    {
+      "word": "carbon paper",
+      "hints": [
+        "copy",
+        "office",
+        "old",
+        "ink",
+        "sheets"
+      ]
+    },
+    {
+      "word": "overhead projector",
+      "hints": [
+        "light",
+        "transparency",
+        "old",
+        "classroom",
+        "wall"
+      ]
+    },
+    {
+      "word": "soda fountain",
+      "hints": [
+        "drinks",
+        "diner",
+        "old",
+        "fizzy",
+        "counter"
+      ]
+    },
+    {
+      "word": "cash register",
+      "hints": [
+        "money",
+        "shop",
+        "old",
+        "drawer",
+        "ring"
+      ]
+    },
+    {
+      "word": "telephone operator",
+      "hints": [
+        "calls",
+        "connect",
+        "old",
+        "headset",
+        "switchboard"
+      ]
     }
   ]
 }

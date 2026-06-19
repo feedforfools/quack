@@ -5,123 +5,543 @@
   "words": [
     {
       "word": "Lionel Messi",
-      "hints": ["calcio", "Argentina", "gol", "Barcellona", "campione"]
+      "hints": [
+        "calcio",
+        "Sudamerica",
+        "leggenda",
+        "piccolo",
+        "sinistro"
+      ]
     },
     {
       "word": "Cristiano Ronaldo",
-      "hints": ["calcio", "Portogallo", "gol", "muscoli", "esultanza"]
+      "hints": [
+        "calcio",
+        "Europa",
+        "muscoli",
+        "famoso",
+        "gol"
+      ]
     },
     {
       "word": "Beyoncé",
-      "hints": ["cantante", "regina", "pop", "diva", "Texas"]
+      "hints": [
+        "cantante",
+        "americana",
+        "pop",
+        "potente",
+        "diva"
+      ]
     },
     {
       "word": "Taylor Swift",
-      "hints": ["cantante", "eras", "pop", "fan", "bionda"]
+      "hints": [
+        "cantante",
+        "americana",
+        "pop",
+        "bionda",
+        "fan"
+      ]
     },
     {
       "word": "Elon Musk",
-      "hints": ["miliardario", "razzi", "Tesla", "Twitter", "Marte"]
+      "hints": [
+        "miliardario",
+        "tecnologia",
+        "auto",
+        "spazio",
+        "controverso"
+      ]
     },
     {
       "word": "Barack Obama",
-      "hints": ["presidente", "America", "discorsi", "speranza", "Hawaii"]
+      "hints": [
+        "presidente",
+        "americano",
+        "discorsi",
+        "storia",
+        "calmo"
+      ]
     },
     {
       "word": "Michael Jackson",
-      "hints": ["pop", "moonwalk", "guanto", "thriller", "re"]
+      "hints": [
+        "pop",
+        "ballo",
+        "leggenda",
+        "guanto",
+        "iconico"
+      ]
     },
     {
       "word": "Madonna",
-      "hints": ["pop", "regina", "ottanta", "bionda", "provocante"]
+      "hints": [
+        "pop",
+        "regina",
+        "anni ottanta",
+        "bionda",
+        "provocante"
+      ]
     },
     {
       "word": "Leonardo DiCaprio",
-      "hints": ["attore", "Titanic", "Oscar", "ambiente", "Hollywood"]
+      "hints": [
+        "attore",
+        "Hollywood",
+        "premi",
+        "ambiente",
+        "famoso"
+      ]
     },
     {
       "word": "Brad Pitt",
-      "hints": ["attore", "affascinante", "Hollywood", "biondo", "fight"]
+      "hints": [
+        "attore",
+        "affascinante",
+        "Hollywood",
+        "biondo",
+        "famoso"
+      ]
     },
     {
       "word": "Tom Cruise",
-      "hints": ["attore", "acrobazie", "missione", "pilota", "sorriso"]
+      "hints": [
+        "attore",
+        "acrobazie",
+        "Hollywood",
+        "sorriso",
+        "azione"
+      ]
     },
     {
       "word": "Will Smith",
-      "hints": ["attore", "rap", "schiaffo", "principe", "Hollywood"]
+      "hints": [
+        "attore",
+        "americano",
+        "rap",
+        "Hollywood",
+        "carisma"
+      ]
     },
     {
       "word": "Dwayne Johnson",
-      "hints": ["roccia", "muscoli", "wrestling", "calvo", "azione"]
+      "hints": [
+        "attore",
+        "muscoli",
+        "wrestling",
+        "calvo",
+        "azione"
+      ]
     },
     {
       "word": "Lady Gaga",
-      "hints": ["cantante", "outfit", "pop", "piano", "eccentrica"]
+      "hints": [
+        "cantante",
+        "outfit",
+        "pop",
+        "eccentrica",
+        "talentuosa"
+      ]
     },
     {
       "word": "Shakira",
-      "hints": ["cantante", "fianchi", "Colombia", "ballo", "mondiali"]
+      "hints": [
+        "cantante",
+        "ballo",
+        "Sudamerica",
+        "energica",
+        "fianchi"
+      ]
     },
     {
       "word": "Adele",
-      "hints": ["cantante", "britannica", "hello", "ballate", "voce"]
+      "hints": [
+        "cantante",
+        "britannica",
+        "voce potente",
+        "ballate",
+        "emozionante"
+      ]
     },
     {
       "word": "Ed Sheeran",
-      "hints": ["cantante", "rosso", "chitarra", "britannico", "shape"]
+      "hints": [
+        "cantante",
+        "britannico",
+        "chitarra",
+        "rosso",
+        "solista"
+      ]
     },
     {
       "word": "Emma Watson",
-      "hints": ["attrice", "Hermione", "britannica", "attivista", "magia"]
+      "hints": [
+        "attrice",
+        "britannica",
+        "film di magia",
+        "attivista",
+        "giovane"
+      ]
     },
     {
       "word": "Johnny Depp",
-      "hints": ["attore", "pirata", "processo", "eccentrico", "cappelli"]
+      "hints": [
+        "attore",
+        "eccentrico",
+        "Hollywood",
+        "ruolo da pirata",
+        "stravagante"
+      ]
     },
     {
       "word": "Usain Bolt",
-      "hints": ["velocista", "Giamaica", "record", "fulmine", "oro"]
+      "hints": [
+        "velocista",
+        "il più veloce",
+        "isola",
+        "oro",
+        "alto"
+      ]
     },
     {
       "word": "Roger Federer",
-      "hints": ["tennis", "svizzero", "elegante", "campione", "racchetta"]
+      "hints": [
+        "tennis",
+        "europeo",
+        "elegante",
+        "campione",
+        "leggenda"
+      ]
     },
     {
       "word": "Mr. Bean",
-      "hints": ["comico", "muto", "britannico", "orsacchiotto", "smorfie"]
+      "hints": [
+        "comicità",
+        "britannico",
+        "muto",
+        "buffo",
+        "personaggio"
+      ]
     },
     {
       "word": "Vasco Rossi",
-      "hints": ["rock", "Zocca", "concerti", "vita", "spericolata"]
+      "hints": [
+        "rock",
+        "italiano",
+        "concerti",
+        "ribelle",
+        "leggenda"
+      ]
     },
     {
       "word": "Laura Pausini",
-      "hints": ["cantante", "Sanremo", "solitudine", "Grammy", "romagnola"]
+      "hints": [
+        "cantante",
+        "italiana",
+        "ballate",
+        "Sanremo",
+        "internazionale"
+      ]
     },
     {
       "word": "Jovanotti",
-      "hints": ["cantante", "rap", "estate", "bici", "ottimismo"]
+      "hints": [
+        "cantante",
+        "italiano",
+        "rap",
+        "estate",
+        "ottimista"
+      ]
     },
     {
       "word": "Fiorello",
-      "hints": ["showman", "siciliano", "radio", "imitazioni", "mattina"]
+      "hints": [
+        "showman",
+        "italiano",
+        "radio",
+        "imitazioni",
+        "simpatico"
+      ]
     },
     {
       "word": "Checco Zalone",
-      "hints": ["comico", "pugliese", "film", "record", "irriverente"]
+      "hints": [
+        "comico",
+        "italiano",
+        "film",
+        "record",
+        "irriverente"
+      ]
     },
     {
       "word": "Chiara Ferragni",
-      "hints": ["influencer", "moda", "Instagram", "imprenditrice", "bionda"]
+      "hints": [
+        "influencer",
+        "italiana",
+        "moda",
+        "imprenditrice",
+        "bionda"
+      ]
     },
     {
       "word": "Francesco Totti",
-      "hints": ["calcio", "Roma", "capitano", "cucchiaio", "bandiera"]
+      "hints": [
+        "calcio",
+        "Roma",
+        "capitano",
+        "bandiera",
+        "leggenda"
+      ]
     },
     {
       "word": "Måneskin",
-      "hints": ["rock", "band", "Eurovision", "Sanremo", "Damiano"]
+      "hints": [
+        "rock",
+        "band",
+        "italiana",
+        "giovani",
+        "Eurovision"
+      ]
+    },
+    {
+      "word": "Drake",
+      "hints": [
+        "rapper",
+        "canadese",
+        "popolare",
+        "musica",
+        "successo"
+      ]
+    },
+    {
+      "word": "Eminem",
+      "hints": [
+        "rapper",
+        "americano",
+        "veloce",
+        "biondo",
+        "intenso"
+      ]
+    },
+    {
+      "word": "Billie Eilish",
+      "hints": [
+        "cantante",
+        "giovane",
+        "sussurro",
+        "capelli verdi",
+        "originale"
+      ]
+    },
+    {
+      "word": "Jennifer Lopez",
+      "hints": [
+        "cantante",
+        "ballerina",
+        "americana",
+        "glamour",
+        "latina"
+      ]
+    },
+    {
+      "word": "Britney Spears",
+      "hints": [
+        "cantante",
+        "pop",
+        "americana",
+        "anni novanta",
+        "ritorno"
+      ]
+    },
+    {
+      "word": "Tom Hanks",
+      "hints": [
+        "attore",
+        "americano",
+        "amato",
+        "Hollywood",
+        "gente comune"
+      ]
+    },
+    {
+      "word": "Morgan Freeman",
+      "hints": [
+        "attore",
+        "voce profonda",
+        "americano",
+        "saggio",
+        "narratore"
+      ]
+    },
+    {
+      "word": "Robert Downey Jr",
+      "hints": [
+        "attore",
+        "supereroe",
+        "Hollywood",
+        "ritorno",
+        "spiritoso"
+      ]
+    },
+    {
+      "word": "Zendaya",
+      "hints": [
+        "attrice",
+        "giovane",
+        "moda",
+        "talentuosa",
+        "americana"
+      ]
+    },
+    {
+      "word": "Bill Gates",
+      "hints": [
+        "miliardario",
+        "tecnologia",
+        "software",
+        "beneficenza",
+        "occhiali"
+      ]
+    },
+    {
+      "word": "Steve Jobs",
+      "hints": [
+        "tecnologia",
+        "mela",
+        "visionario",
+        "dolcevita",
+        "fondatore"
+      ]
+    },
+    {
+      "word": "Michael Jordan",
+      "hints": [
+        "basket",
+        "leggenda",
+        "americano",
+        "saltare",
+        "campione"
+      ]
+    },
+    {
+      "word": "David Beckham",
+      "hints": [
+        "calcio",
+        "britannico",
+        "affascinante",
+        "moda",
+        "ritirato"
+      ]
+    },
+    {
+      "word": "Lewis Hamilton",
+      "hints": [
+        "automobilismo",
+        "britannico",
+        "veloce",
+        "campione",
+        "moda"
+      ]
+    },
+    {
+      "word": "Greta Thunberg",
+      "hints": [
+        "attivista",
+        "giovane",
+        "clima",
+        "svedese",
+        "appassionata"
+      ]
+    },
+    {
+      "word": "Sophia Loren",
+      "hints": [
+        "attrice",
+        "italiana",
+        "icona",
+        "bella",
+        "leggenda"
+      ]
+    },
+    {
+      "word": "Roberto Benigni",
+      "hints": [
+        "comico",
+        "italiano",
+        "Oscar",
+        "esuberante",
+        "toscano"
+      ]
+    },
+    {
+      "word": "Eros Ramazzotti",
+      "hints": [
+        "cantante",
+        "italiano",
+        "romantico",
+        "internazionale",
+        "voce"
+      ]
+    },
+    {
+      "word": "Andrea Bocelli",
+      "hints": [
+        "cantante",
+        "italiano",
+        "lirica",
+        "voce",
+        "cieco"
+      ]
+    },
+    {
+      "word": "Valentino Rossi",
+      "hints": [
+        "moto",
+        "italiano",
+        "campione",
+        "giallo",
+        "leggenda"
+      ]
+    },
+    {
+      "word": "Federica Pellegrini",
+      "hints": [
+        "nuoto",
+        "italiana",
+        "campionessa",
+        "olimpiadi",
+        "vasca"
+      ]
+    },
+    {
+      "word": "Gianluigi Buffon",
+      "hints": [
+        "calcio",
+        "italiano",
+        "portiere",
+        "veterano",
+        "campione"
+      ]
+    },
+    {
+      "word": "Zlatan Ibrahimović",
+      "hints": [
+        "calcio",
+        "svedese",
+        "alto",
+        "arrogante",
+        "talento"
+      ]
+    },
+    {
+      "word": "Monica Bellucci",
+      "hints": [
+        "attrice",
+        "italiana",
+        "bella",
+        "internazionale",
+        "elegante"
+      ]
     }
   ]
 }

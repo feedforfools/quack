@@ -5,123 +5,903 @@
   "words": [
     {
       "word": "lion",
-      "hints": ["savanna", "mane", "roar", "king", "pride"]
+      "hints": [
+        "savanna",
+        "Africa",
+        "hunt",
+        "fur",
+        "powerful"
+      ]
     },
     {
       "word": "elephant",
-      "hints": ["trunk", "gray", "huge", "Africa", "memory"]
+      "hints": [
+        "huge",
+        "grey",
+        "Africa",
+        "ears",
+        "heavy"
+      ]
     },
     {
       "word": "penguin",
-      "hints": ["ice", "waddling", "tuxedo", "Antarctica", "colony"]
+      "hints": [
+        "cold",
+        "ice",
+        "black",
+        "swim",
+        "colony"
+      ]
     },
     {
       "word": "dolphin",
-      "hints": ["ocean", "intelligent", "jumping", "clicks", "friendly"]
+      "hints": [
+        "ocean",
+        "swim",
+        "smart",
+        "jump",
+        "friendly"
+      ]
     },
     {
       "word": "shark",
-      "hints": ["teeth", "ocean", "fin", "predator", "fear"]
+      "hints": [
+        "ocean",
+        "teeth",
+        "fast",
+        "predator",
+        "fear"
+      ]
     },
     {
       "word": "eagle",
-      "hints": ["wings", "prey", "mountains", "talons", "symbol"]
+      "hints": [
+        "wings",
+        "sky",
+        "hunt",
+        "mountains",
+        "sharp"
+      ]
     },
     {
       "word": "owl",
-      "hints": ["night", "wisdom", "hooting", "forest", "eyes"]
+      "hints": [
+        "night",
+        "wings",
+        "forest",
+        "eyes",
+        "quiet"
+      ]
     },
     {
       "word": "wolf",
-      "hints": ["pack", "howling", "moon", "forest", "gray"]
+      "hints": [
+        "pack",
+        "forest",
+        "wild",
+        "grey",
+        "teeth"
+      ]
     },
     {
       "word": "fox",
-      "hints": ["cunning", "orange", "tail", "forest", "sly"]
+      "hints": [
+        "forest",
+        "orange",
+        "clever",
+        "tail",
+        "small"
+      ]
     },
     {
       "word": "bear",
-      "hints": ["honey", "hibernation", "forest", "strong", "fur"]
+      "hints": [
+        "forest",
+        "big",
+        "strong",
+        "fur",
+        "cave"
+      ]
     },
     {
       "word": "butterfly",
-      "hints": ["wings", "caterpillar", "flowers", "colorful", "fluttering"]
+      "hints": [
+        "wings",
+        "colorful",
+        "flowers",
+        "fly",
+        "delicate"
+      ]
     },
     {
       "word": "bee",
-      "hints": ["honey", "hive", "buzzing", "flowers", "sting"]
+      "hints": [
+        "fly",
+        "buzz",
+        "flowers",
+        "yellow",
+        "sting"
+      ]
     },
     {
       "word": "spider",
-      "hints": ["web", "eight", "legs", "insects", "corner"]
+      "hints": [
+        "web",
+        "legs",
+        "small",
+        "corner",
+        "crawl"
+      ]
     },
     {
       "word": "snake",
-      "hints": ["slithering", "venom", "scales", "hissing", "long"]
+      "hints": [
+        "long",
+        "slither",
+        "ground",
+        "scales",
+        "hiss"
+      ]
     },
     {
       "word": "frog",
-      "hints": ["pond", "jumping", "green", "croaking", "tadpole"]
+      "hints": [
+        "pond",
+        "jump",
+        "green",
+        "wet",
+        "small"
+      ]
     },
     {
       "word": "horse",
-      "hints": ["riding", "gallop", "mane", "stable", "saddle"]
+      "hints": [
+        "ride",
+        "gallop",
+        "stable",
+        "farm",
+        "fast"
+      ]
     },
     {
       "word": "rabbit",
-      "hints": ["ears", "hopping", "carrots", "fluffy", "fast"]
+      "hints": [
+        "ears",
+        "hop",
+        "fast",
+        "soft",
+        "field"
+      ]
     },
     {
       "word": "turtle",
-      "hints": ["shell", "slow", "beach", "ancient", "swimming"]
+      "hints": [
+        "slow",
+        "shell",
+        "water",
+        "old",
+        "calm"
+      ]
     },
     {
       "word": "octopus",
-      "hints": ["tentacles", "ink", "ocean", "eight", "clever"]
+      "hints": [
+        "ocean",
+        "arms",
+        "ink",
+        "clever",
+        "soft"
+      ]
     },
     {
       "word": "kangaroo",
-      "hints": ["Australia", "pouch", "jumping", "boxing", "joey"]
+      "hints": [
+        "Australia",
+        "jump",
+        "pouch",
+        "tail",
+        "hop"
+      ]
     },
     {
       "word": "panda",
-      "hints": ["bamboo", "China", "lazy", "rare", "cuddly"]
+      "hints": [
+        "bamboo",
+        "China",
+        "black",
+        "lazy",
+        "rare"
+      ]
     },
     {
       "word": "giraffe",
-      "hints": ["neck", "tall", "spots", "Africa", "leaves"]
+      "hints": [
+        "tall",
+        "Africa",
+        "spots",
+        "leaves",
+        "gentle"
+      ]
     },
     {
       "word": "volcano",
-      "hints": ["lava", "eruption", "mountain", "ash", "crater"]
+      "hints": [
+        "mountain",
+        "lava",
+        "hot",
+        "ash",
+        "erupt"
+      ]
     },
     {
       "word": "rainbow",
-      "hints": ["colors", "rain", "sky", "arc", "gold"]
+      "hints": [
+        "colors",
+        "sky",
+        "rain",
+        "arc",
+        "bright"
+      ]
     },
     {
       "word": "waterfall",
-      "hints": ["river", "cliff", "splash", "roaring", "mist"]
+      "hints": [
+        "water",
+        "cliff",
+        "fall",
+        "river",
+        "loud"
+      ]
     },
     {
       "word": "desert",
-      "hints": ["sand", "camels", "hot", "dunes", "cactus"]
+      "hints": [
+        "sand",
+        "hot",
+        "dry",
+        "dunes",
+        "empty"
+      ]
     },
     {
       "word": "jungle",
-      "hints": ["trees", "monkeys", "dense", "tropical", "vines"]
+      "hints": [
+        "trees",
+        "green",
+        "dense",
+        "tropical",
+        "wild"
+      ]
     },
     {
       "word": "glacier",
-      "hints": ["ice", "slow", "mountains", "melting", "blue"]
+      "hints": [
+        "mountains",
+        "cold",
+        "slow",
+        "ancient",
+        "white"
+      ]
     },
     {
       "word": "thunderstorm",
-      "hints": ["lightning", "rain", "loud", "clouds", "flash"]
+      "hints": [
+        "clouds",
+        "rain",
+        "loud",
+        "flash",
+        "dark"
+      ]
     },
     {
       "word": "coral",
-      "hints": ["ocean", "colorful", "fish", "reef", "fragile"]
+      "hints": [
+        "ocean",
+        "colorful",
+        "reef",
+        "fragile",
+        "underwater"
+      ]
+    },
+    {
+      "word": "tiger",
+      "hints": [
+        "jungle",
+        "stripes",
+        "orange",
+        "hunt",
+        "Asia"
+      ]
+    },
+    {
+      "word": "leopard",
+      "hints": [
+        "spots",
+        "jungle",
+        "fast",
+        "hunt",
+        "climb"
+      ]
+    },
+    {
+      "word": "cheetah",
+      "hints": [
+        "fast",
+        "spots",
+        "Africa",
+        "run",
+        "hunt"
+      ]
+    },
+    {
+      "word": "zebra",
+      "hints": [
+        "stripes",
+        "Africa",
+        "savanna",
+        "herd",
+        "black"
+      ]
+    },
+    {
+      "word": "hippo",
+      "hints": [
+        "water",
+        "Africa",
+        "huge",
+        "river",
+        "heavy"
+      ]
+    },
+    {
+      "word": "rhino",
+      "hints": [
+        "Africa",
+        "huge",
+        "grey",
+        "heavy",
+        "thick"
+      ]
+    },
+    {
+      "word": "crocodile",
+      "hints": [
+        "river",
+        "teeth",
+        "water",
+        "scales",
+        "snap"
+      ]
+    },
+    {
+      "word": "monkey",
+      "hints": [
+        "jungle",
+        "trees",
+        "climb",
+        "tail",
+        "banana"
+      ]
+    },
+    {
+      "word": "gorilla",
+      "hints": [
+        "jungle",
+        "big",
+        "strong",
+        "black",
+        "chest"
+      ]
+    },
+    {
+      "word": "sloth",
+      "hints": [
+        "slow",
+        "trees",
+        "lazy",
+        "hang",
+        "jungle"
+      ]
+    },
+    {
+      "word": "koala",
+      "hints": [
+        "Australia",
+        "trees",
+        "sleepy",
+        "grey",
+        "leaves"
+      ]
+    },
+    {
+      "word": "camel",
+      "hints": [
+        "desert",
+        "sand",
+        "travel",
+        "tall",
+        "dry"
+      ]
+    },
+    {
+      "word": "deer",
+      "hints": [
+        "forest",
+        "fast",
+        "graceful",
+        "brown",
+        "gentle"
+      ]
+    },
+    {
+      "word": "squirrel",
+      "hints": [
+        "trees",
+        "nuts",
+        "tail",
+        "fast",
+        "small"
+      ]
+    },
+    {
+      "word": "hedgehog",
+      "hints": [
+        "small",
+        "garden",
+        "curl",
+        "night",
+        "brown"
+      ]
+    },
+    {
+      "word": "bat",
+      "hints": [
+        "night",
+        "fly",
+        "cave",
+        "dark",
+        "wings"
+      ]
+    },
+    {
+      "word": "raccoon",
+      "hints": [
+        "night",
+        "trash",
+        "clever",
+        "stripes",
+        "grey"
+      ]
+    },
+    {
+      "word": "otter",
+      "hints": [
+        "river",
+        "swim",
+        "playful",
+        "water",
+        "fur"
+      ]
+    },
+    {
+      "word": "seal",
+      "hints": [
+        "ocean",
+        "swim",
+        "cold",
+        "smooth",
+        "beach"
+      ]
+    },
+    {
+      "word": "whale",
+      "hints": [
+        "ocean",
+        "huge",
+        "deep",
+        "blue",
+        "swim"
+      ]
+    },
+    {
+      "word": "jellyfish",
+      "hints": [
+        "ocean",
+        "soft",
+        "sting",
+        "float",
+        "clear"
+      ]
+    },
+    {
+      "word": "crab",
+      "hints": [
+        "beach",
+        "claws",
+        "shell",
+        "sideways",
+        "sand"
+      ]
+    },
+    {
+      "word": "starfish",
+      "hints": [
+        "ocean",
+        "five",
+        "beach",
+        "slow",
+        "shallow"
+      ]
+    },
+    {
+      "word": "swan",
+      "hints": [
+        "lake",
+        "white",
+        "graceful",
+        "elegant",
+        "feathers"
+      ]
+    },
+    {
+      "word": "peacock",
+      "hints": [
+        "colorful",
+        "feathers",
+        "proud",
+        "blue",
+        "fan"
+      ]
+    },
+    {
+      "word": "flamingo",
+      "hints": [
+        "pink",
+        "water",
+        "tall",
+        "legs",
+        "tropical"
+      ]
+    },
+    {
+      "word": "parrot",
+      "hints": [
+        "colorful",
+        "tropical",
+        "talk",
+        "feathers",
+        "beak"
+      ]
+    },
+    {
+      "word": "ostrich",
+      "hints": [
+        "big",
+        "fast",
+        "Africa",
+        "feathers",
+        "run"
+      ]
+    },
+    {
+      "word": "crow",
+      "hints": [
+        "black",
+        "sky",
+        "clever",
+        "loud",
+        "feathers"
+      ]
+    },
+    {
+      "word": "chicken",
+      "hints": [
+        "farm",
+        "eggs",
+        "feathers",
+        "peck",
+        "yard"
+      ]
+    },
+    {
+      "word": "pig",
+      "hints": [
+        "farm",
+        "pink",
+        "mud",
+        "round",
+        "fat"
+      ]
+    },
+    {
+      "word": "sheep",
+      "hints": [
+        "farm",
+        "wool",
+        "white",
+        "flock",
+        "field"
+      ]
+    },
+    {
+      "word": "goat",
+      "hints": [
+        "farm",
+        "horns",
+        "climb",
+        "milk",
+        "field"
+      ]
+    },
+    {
+      "word": "donkey",
+      "hints": [
+        "farm",
+        "grey",
+        "ears",
+        "stubborn",
+        "carry"
+      ]
+    },
+    {
+      "word": "llama",
+      "hints": [
+        "mountains",
+        "wool",
+        "spit",
+        "tall",
+        "Andes"
+      ]
+    },
+    {
+      "word": "ant",
+      "hints": [
+        "small",
+        "ground",
+        "colony",
+        "work",
+        "carry"
+      ]
+    },
+    {
+      "word": "ladybug",
+      "hints": [
+        "small",
+        "red",
+        "spots",
+        "garden",
+        "fly"
+      ]
+    },
+    {
+      "word": "mosquito",
+      "hints": [
+        "small",
+        "bite",
+        "summer",
+        "buzz",
+        "annoying"
+      ]
+    },
+    {
+      "word": "dragonfly",
+      "hints": [
+        "wings",
+        "pond",
+        "fly",
+        "summer",
+        "fast"
+      ]
+    },
+    {
+      "word": "snail",
+      "hints": [
+        "slow",
+        "shell",
+        "garden",
+        "trail",
+        "small"
+      ]
+    },
+    {
+      "word": "scorpion",
+      "hints": [
+        "desert",
+        "sting",
+        "tail",
+        "small",
+        "claws"
+      ]
+    },
+    {
+      "word": "mouse",
+      "hints": [
+        "small",
+        "cheese",
+        "fast",
+        "grey",
+        "tail"
+      ]
+    },
+    {
+      "word": "lizard",
+      "hints": [
+        "small",
+        "scales",
+        "sun",
+        "fast",
+        "tail"
+      ]
+    },
+    {
+      "word": "chameleon",
+      "hints": [
+        "colors",
+        "change",
+        "tree",
+        "slow",
+        "tongue"
+      ]
+    },
+    {
+      "word": "hamster",
+      "hints": [
+        "small",
+        "pet",
+        "cage",
+        "wheel",
+        "cheeks"
+      ]
+    },
+    {
+      "word": "cave",
+      "hints": [
+        "dark",
+        "rock",
+        "deep",
+        "underground",
+        "echo"
+      ]
+    },
+    {
+      "word": "forest",
+      "hints": [
+        "trees",
+        "green",
+        "wild",
+        "animals",
+        "shade"
+      ]
+    },
+    {
+      "word": "swamp",
+      "hints": [
+        "water",
+        "mud",
+        "wet",
+        "green",
+        "murky"
+      ]
+    },
+    {
+      "word": "canyon",
+      "hints": [
+        "rock",
+        "deep",
+        "river",
+        "cliffs",
+        "vast"
+      ]
+    },
+    {
+      "word": "cliff",
+      "hints": [
+        "high",
+        "rock",
+        "edge",
+        "sea",
+        "steep"
+      ]
+    },
+    {
+      "word": "island",
+      "hints": [
+        "sea",
+        "land",
+        "alone",
+        "beach",
+        "remote"
+      ]
+    },
+    {
+      "word": "tornado",
+      "hints": [
+        "wind",
+        "spin",
+        "storm",
+        "funnel",
+        "destroy"
+      ]
+    },
+    {
+      "word": "avalanche",
+      "hints": [
+        "snow",
+        "mountain",
+        "fall",
+        "fast",
+        "danger"
+      ]
+    },
+    {
+      "word": "earthquake",
+      "hints": [
+        "shake",
+        "ground",
+        "danger",
+        "sudden",
+        "cracks"
+      ]
+    },
+    {
+      "word": "geyser",
+      "hints": [
+        "hot",
+        "water",
+        "spray",
+        "ground",
+        "burst"
+      ]
+    },
+    {
+      "word": "aurora",
+      "hints": [
+        "sky",
+        "lights",
+        "north",
+        "colors",
+        "night"
+      ]
+    },
+    {
+      "word": "meadow",
+      "hints": [
+        "grass",
+        "flowers",
+        "field",
+        "open",
+        "green"
+      ]
+    },
+    {
+      "word": "reef",
+      "hints": [
+        "ocean",
+        "fish",
+        "colorful",
+        "underwater",
+        "barrier"
+      ]
+    },
+    {
+      "word": "fog",
+      "hints": [
+        "mist",
+        "grey",
+        "morning",
+        "thick",
+        "hide"
+      ]
+    },
+    {
+      "word": "sunset",
+      "hints": [
+        "evening",
+        "orange",
+        "sky",
+        "horizon",
+        "beautiful"
+      ]
     }
   ]
 }

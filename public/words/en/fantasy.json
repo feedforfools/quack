@@ -5,123 +5,783 @@
   "words": [
     {
       "word": "dragon",
-      "hints": ["fire", "wings", "treasure", "scales", "knight"]
+      "hints": [
+        "fire",
+        "wings",
+        "scales",
+        "huge",
+        "legend"
+      ]
     },
     {
       "word": "wizard",
-      "hints": ["magic", "wand", "beard", "spells", "hat"]
+      "hints": [
+        "magic",
+        "robe",
+        "old",
+        "spells",
+        "powerful"
+      ]
     },
     {
       "word": "unicorn",
-      "hints": ["horn", "rainbow", "white", "magical", "pure"]
+      "hints": [
+        "horn",
+        "white",
+        "magical",
+        "pure",
+        "rainbow"
+      ]
     },
     {
       "word": "fairy",
-      "hints": ["wings", "tiny", "dust", "forest", "wish"]
+      "hints": [
+        "tiny",
+        "wings",
+        "magic",
+        "forest",
+        "glow"
+      ]
     },
     {
       "word": "elf",
-      "hints": ["ears", "forest", "archer", "immortal", "graceful"]
+      "hints": [
+        "pointy ears",
+        "forest",
+        "graceful",
+        "magical",
+        "archer"
+      ]
     },
     {
       "word": "dwarf",
-      "hints": ["beard", "mining", "axe", "short", "mountain"]
+      "hints": [
+        "short",
+        "beard",
+        "mountain",
+        "mining",
+        "tough"
+      ]
     },
     {
       "word": "goblin",
-      "hints": ["green", "mischief", "treasure", "ugly", "cave"]
+      "hints": [
+        "small",
+        "green",
+        "ugly",
+        "mischief",
+        "cave"
+      ]
     },
     {
       "word": "troll",
-      "hints": ["bridge", "big", "club", "stone", "smelly"]
+      "hints": [
+        "big",
+        "ugly",
+        "bridge",
+        "stone",
+        "slow"
+      ]
     },
     {
       "word": "mermaid",
-      "hints": ["tail", "ocean", "singing", "scales", "sailors"]
+      "hints": [
+        "sea",
+        "tail",
+        "half-fish",
+        "beautiful",
+        "sing"
+      ]
     },
     {
       "word": "giant",
-      "hints": ["huge", "beanstalk", "footsteps", "clouds", "strength"]
+      "hints": [
+        "huge",
+        "tall",
+        "strong",
+        "footsteps",
+        "clouds"
+      ]
     },
     {
       "word": "witch",
-      "hints": ["broom", "cauldron", "spells", "hat", "cat"]
+      "hints": [
+        "magic",
+        "spells",
+        "hat",
+        "cackle",
+        "potions"
+      ]
     },
     {
       "word": "werewolf",
-      "hints": ["moon", "transformation", "howling", "silver", "curse"]
+      "hints": [
+        "moon",
+        "transform",
+        "fur",
+        "beast",
+        "curse"
+      ]
     },
     {
       "word": "ghost",
-      "hints": ["haunting", "white", "transparent", "castle", "chains"]
+      "hints": [
+        "white",
+        "transparent",
+        "haunt",
+        "spooky",
+        "dead"
+      ]
     },
     {
       "word": "phoenix",
-      "hints": ["fire", "rebirth", "ashes", "immortal", "wings"]
+      "hints": [
+        "fire",
+        "rebirth",
+        "bird",
+        "ashes",
+        "immortal"
+      ]
     },
     {
       "word": "griffin",
-      "hints": ["eagle", "lion", "wings", "majestic", "guardian"]
+      "hints": [
+        "wings",
+        "beast",
+        "majestic",
+        "guardian",
+        "mythical"
+      ]
     },
     {
       "word": "castle",
-      "hints": ["towers", "king", "moat", "stone", "drawbridge"]
+      "hints": [
+        "stone",
+        "towers",
+        "king",
+        "old",
+        "walls"
+      ]
     },
     {
       "word": "knight",
-      "hints": ["armor", "sword", "horse", "quest", "shield"]
+      "hints": [
+        "armor",
+        "sword",
+        "horse",
+        "brave",
+        "honor"
+      ]
     },
     {
       "word": "princess",
-      "hints": ["crown", "tower", "royal", "dress", "rescue"]
+      "hints": [
+        "crown",
+        "royal",
+        "dress",
+        "tower",
+        "beautiful"
+      ]
     },
     {
       "word": "king",
-      "hints": ["throne", "crown", "kingdom", "ruling", "royal"]
+      "hints": [
+        "crown",
+        "throne",
+        "rule",
+        "royal",
+        "power"
+      ]
     },
     {
       "word": "quest",
-      "hints": ["journey", "hero", "mission", "adventure", "reward"]
+      "hints": [
+        "journey",
+        "hero",
+        "adventure",
+        "mission",
+        "reward"
+      ]
     },
     {
       "word": "sword",
-      "hints": ["blade", "knight", "sharp", "legendary", "duel"]
+      "hints": [
+        "blade",
+        "sharp",
+        "metal",
+        "fight",
+        "legendary"
+      ]
     },
     {
       "word": "potion",
-      "hints": ["bottle", "magic", "brewing", "ingredients", "bubbling"]
+      "hints": [
+        "bottle",
+        "magic",
+        "liquid",
+        "brew",
+        "effect"
+      ]
     },
     {
       "word": "spell",
-      "hints": ["magic", "words", "wand", "casting", "curse"]
+      "hints": [
+        "magic",
+        "words",
+        "cast",
+        "power",
+        "wizard"
+      ]
     },
     {
       "word": "curse",
-      "hints": ["evil", "witch", "breaking", "doomed", "spell"]
+      "hints": [
+        "evil",
+        "bad luck",
+        "break",
+        "doomed",
+        "magic"
+      ]
     },
     {
       "word": "treasure",
-      "hints": ["gold", "chest", "map", "pirates", "buried"]
+      "hints": [
+        "gold",
+        "chest",
+        "buried",
+        "valuable",
+        "map"
+      ]
     },
     {
       "word": "prophecy",
-      "hints": ["future", "chosen", "ancient", "destiny", "scroll"]
+      "hints": [
+        "future",
+        "chosen",
+        "ancient",
+        "destiny",
+        "foretold"
+      ]
     },
     {
       "word": "portal",
-      "hints": ["doorway", "dimension", "glowing", "travel", "magic"]
+      "hints": [
+        "doorway",
+        "magic",
+        "travel",
+        "glow",
+        "another world"
+      ]
     },
     {
       "word": "kingdom",
-      "hints": ["realm", "king", "castle", "land", "throne"]
+      "hints": [
+        "realm",
+        "king",
+        "land",
+        "castle",
+        "rule"
+      ]
     },
     {
       "word": "genie",
-      "hints": ["lamp", "wishes", "three", "smoke", "freed"]
+      "hints": [
+        "lamp",
+        "wishes",
+        "magic",
+        "smoke",
+        "grant"
+      ]
     },
     {
       "word": "pegasus",
-      "hints": ["horse", "wings", "flying", "white", "mythology"]
+      "hints": [
+        "horse",
+        "wings",
+        "fly",
+        "white",
+        "mythical"
+      ]
+    },
+    {
+      "word": "ogre",
+      "hints": [
+        "big",
+        "ugly",
+        "green",
+        "mean",
+        "swamp"
+      ]
+    },
+    {
+      "word": "orc",
+      "hints": [
+        "ugly",
+        "warrior",
+        "green",
+        "brutal",
+        "army"
+      ]
+    },
+    {
+      "word": "centaur",
+      "hints": [
+        "half-horse",
+        "man",
+        "forest",
+        "archer",
+        "mythical"
+      ]
+    },
+    {
+      "word": "minotaur",
+      "hints": [
+        "bull",
+        "maze",
+        "beast",
+        "horns",
+        "ancient"
+      ]
+    },
+    {
+      "word": "cyclops",
+      "hints": [
+        "one eye",
+        "giant",
+        "ancient",
+        "cave",
+        "huge"
+      ]
+    },
+    {
+      "word": "kraken",
+      "hints": [
+        "sea",
+        "tentacles",
+        "monster",
+        "huge",
+        "ships"
+      ]
+    },
+    {
+      "word": "gargoyle",
+      "hints": [
+        "stone",
+        "statue",
+        "rooftop",
+        "wings",
+        "guard"
+      ]
+    },
+    {
+      "word": "gnome",
+      "hints": [
+        "small",
+        "garden",
+        "beard",
+        "hat",
+        "pointy"
+      ]
+    },
+    {
+      "word": "leprechaun",
+      "hints": [
+        "small",
+        "Irish",
+        "gold",
+        "green",
+        "lucky"
+      ]
+    },
+    {
+      "word": "demon",
+      "hints": [
+        "evil",
+        "hell",
+        "horns",
+        "dark",
+        "fire"
+      ]
+    },
+    {
+      "word": "angel",
+      "hints": [
+        "wings",
+        "white",
+        "heaven",
+        "halo",
+        "pure"
+      ]
+    },
+    {
+      "word": "sorcerer",
+      "hints": [
+        "magic",
+        "dark",
+        "powerful",
+        "spells",
+        "robe"
+      ]
+    },
+    {
+      "word": "enchantress",
+      "hints": [
+        "magic",
+        "beautiful",
+        "spells",
+        "charm",
+        "mysterious"
+      ]
+    },
+    {
+      "word": "necromancer",
+      "hints": [
+        "dark",
+        "dead",
+        "magic",
+        "raise",
+        "evil"
+      ]
+    },
+    {
+      "word": "paladin",
+      "hints": [
+        "holy",
+        "knight",
+        "armor",
+        "righteous",
+        "sword"
+      ]
+    },
+    {
+      "word": "barbarian",
+      "hints": [
+        "strong",
+        "wild",
+        "axe",
+        "fierce",
+        "fur"
+      ]
+    },
+    {
+      "word": "bard",
+      "hints": [
+        "music",
+        "stories",
+        "lute",
+        "tavern",
+        "tales"
+      ]
+    },
+    {
+      "word": "druid",
+      "hints": [
+        "nature",
+        "forest",
+        "magic",
+        "ancient",
+        "robe"
+      ]
+    },
+    {
+      "word": "alchemist",
+      "hints": [
+        "potions",
+        "gold",
+        "experiment",
+        "mixing",
+        "old"
+      ]
+    },
+    {
+      "word": "oracle",
+      "hints": [
+        "future",
+        "wise",
+        "temple",
+        "vision",
+        "ancient"
+      ]
+    },
+    {
+      "word": "jester",
+      "hints": [
+        "fool",
+        "court",
+        "funny",
+        "bells",
+        "colorful"
+      ]
+    },
+    {
+      "word": "queen",
+      "hints": [
+        "crown",
+        "royal",
+        "throne",
+        "rule",
+        "elegant"
+      ]
+    },
+    {
+      "word": "prince",
+      "hints": [
+        "royal",
+        "crown",
+        "young",
+        "heir",
+        "castle"
+      ]
+    },
+    {
+      "word": "throne",
+      "hints": [
+        "seat",
+        "royal",
+        "gold",
+        "king",
+        "power"
+      ]
+    },
+    {
+      "word": "crown",
+      "hints": [
+        "gold",
+        "head",
+        "royal",
+        "jewels",
+        "king"
+      ]
+    },
+    {
+      "word": "shield",
+      "hints": [
+        "protect",
+        "metal",
+        "knight",
+        "block",
+        "round"
+      ]
+    },
+    {
+      "word": "armor",
+      "hints": [
+        "metal",
+        "knight",
+        "protect",
+        "shiny",
+        "battle"
+      ]
+    },
+    {
+      "word": "wand",
+      "hints": [
+        "magic",
+        "stick",
+        "wizard",
+        "wave",
+        "spells"
+      ]
+    },
+    {
+      "word": "staff",
+      "hints": [
+        "magic",
+        "long",
+        "wizard",
+        "wood",
+        "power"
+      ]
+    },
+    {
+      "word": "crystal ball",
+      "hints": [
+        "future",
+        "glass",
+        "round",
+        "vision",
+        "magic"
+      ]
+    },
+    {
+      "word": "scroll",
+      "hints": [
+        "paper",
+        "rolled",
+        "ancient",
+        "writing",
+        "secrets"
+      ]
+    },
+    {
+      "word": "spellbook",
+      "hints": [
+        "magic",
+        "pages",
+        "spells",
+        "ancient",
+        "wizard"
+      ]
+    },
+    {
+      "word": "amulet",
+      "hints": [
+        "magic",
+        "necklace",
+        "protect",
+        "ancient",
+        "charm"
+      ]
+    },
+    {
+      "word": "magic",
+      "hints": [
+        "spells",
+        "power",
+        "mystery",
+        "wonder",
+        "supernatural"
+      ]
+    },
+    {
+      "word": "rune",
+      "hints": [
+        "symbol",
+        "ancient",
+        "stone",
+        "magic",
+        "carved"
+      ]
+    },
+    {
+      "word": "dungeon",
+      "hints": [
+        "dark",
+        "underground",
+        "prison",
+        "stone",
+        "scary"
+      ]
+    },
+    {
+      "word": "lair",
+      "hints": [
+        "hidden",
+        "beast",
+        "cave",
+        "secret",
+        "dangerous"
+      ]
+    },
+    {
+      "word": "tower",
+      "hints": [
+        "tall",
+        "stone",
+        "high",
+        "lonely",
+        "castle"
+      ]
+    },
+    {
+      "word": "moat",
+      "hints": [
+        "water",
+        "castle",
+        "around",
+        "defense",
+        "deep"
+      ]
+    },
+    {
+      "word": "drawbridge",
+      "hints": [
+        "castle",
+        "wood",
+        "chains",
+        "raise",
+        "entrance"
+      ]
+    },
+    {
+      "word": "catapult",
+      "hints": [
+        "throw",
+        "siege",
+        "wood",
+        "rocks",
+        "war"
+      ]
+    },
+    {
+      "word": "broomstick",
+      "hints": [
+        "witch",
+        "fly",
+        "wood",
+        "sweep",
+        "magic"
+      ]
+    },
+    {
+      "word": "cauldron",
+      "hints": [
+        "witch",
+        "pot",
+        "boil",
+        "potion",
+        "bubbling"
+      ]
+    },
+    {
+      "word": "gem",
+      "hints": [
+        "precious",
+        "shiny",
+        "stone",
+        "valuable",
+        "colorful"
+      ]
+    },
+    {
+      "word": "wizard hat",
+      "hints": [
+        "pointy",
+        "magic",
+        "star",
+        "tall",
+        "wear"
+      ]
+    },
+    {
+      "word": "magic carpet",
+      "hints": [
+        "fly",
+        "rug",
+        "Arabian",
+        "float",
+        "ride"
+      ]
+    },
+    {
+      "word": "fairy tale",
+      "hints": [
+        "story",
+        "magic",
+        "happy ending",
+        "children",
+        "once upon"
+      ]
+    },
+    {
+      "word": "enchanted forest",
+      "hints": [
+        "magic",
+        "trees",
+        "mysterious",
+        "creatures",
+        "glowing"
+      ]
     }
   ]
 }

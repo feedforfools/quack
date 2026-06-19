@@ -5,129 +5,843 @@
   "words": [
     {
       "word": "calcio",
-      "hints": ["pallone", "gol", "campo", "undici", "arbitro"]
+      "hints": [
+        "pallone",
+        "gol",
+        "campo",
+        "squadra",
+        "calciare"
+      ]
     },
     {
       "word": "basket",
-      "hints": ["canestro", "palleggio", "campo", "alti", "arancione"]
+      "hints": [
+        "canestro",
+        "campo",
+        "palla",
+        "alti",
+        "palleggio"
+      ]
     },
     {
       "word": "tennis",
-      "hints": ["racchetta", "rete", "campo", "servizio", "gialla"]
+      "hints": [
+        "racchetta",
+        "rete",
+        "campo",
+        "servizio",
+        "palla"
+      ]
     },
     {
       "word": "pallavolo",
-      "hints": ["rete", "spiaggia", "schiacciata", "squadra", "mani"]
+      "hints": [
+        "rete",
+        "squadra",
+        "spiaggia",
+        "mani",
+        "campo"
+      ]
     },
     {
       "word": "nuoto",
-      "hints": ["piscina", "acqua", "stili", "occhialini", "vasche"]
+      "hints": [
+        "piscina",
+        "acqua",
+        "stili",
+        "vasche",
+        "bagnato"
+      ]
     },
     {
       "word": "maratona",
-      "hints": ["corsa", "distanza", "medaglia", "sudore", "traguardo"]
+      "hints": [
+        "corsa",
+        "lunga",
+        "resistenza",
+        "traguardo",
+        "sudore"
+      ]
     },
     {
       "word": "boxe",
-      "hints": ["guantoni", "ring", "pugno", "riprese", "knockout"]
+      "hints": [
+        "guantoni",
+        "ring",
+        "pugno",
+        "combattere",
+        "riprese"
+      ]
     },
     {
       "word": "sci",
-      "hints": ["neve", "montagne", "piste", "bastoncini", "inverno"]
+      "hints": [
+        "neve",
+        "montagne",
+        "piste",
+        "inverno",
+        "velocità"
+      ]
     },
     {
       "word": "surf",
-      "hints": ["onde", "tavola", "oceano", "equilibrio", "muta"]
+      "hints": [
+        "onde",
+        "tavola",
+        "oceano",
+        "equilibrio",
+        "spiaggia"
+      ]
     },
     {
       "word": "ciclismo",
-      "hints": ["bicicletta", "casco", "pedali", "gara", "strada"]
+      "hints": [
+        "bicicletta",
+        "strada",
+        "pedali",
+        "gara",
+        "casco"
+      ]
     },
     {
       "word": "golf",
-      "hints": ["mazza", "buche", "prato", "swing", "caddie"]
+      "hints": [
+        "mazza",
+        "campo",
+        "buca",
+        "swing",
+        "prato"
+      ]
     },
     {
       "word": "rugby",
-      "hints": ["ovale", "placcaggio", "mischia", "squadra", "fango"]
+      "hints": [
+        "palla",
+        "placcaggio",
+        "squadra",
+        "fango",
+        "duro"
+      ]
     },
     {
       "word": "baseball",
-      "hints": ["mazza", "lanciatore", "basi", "guantone", "stadio"]
+      "hints": [
+        "mazza",
+        "campo",
+        "basi",
+        "guantone",
+        "America"
+      ]
     },
     {
       "word": "hockey",
-      "hints": ["ghiaccio", "bastone", "disco", "pattini", "porta"]
+      "hints": [
+        "ghiaccio",
+        "bastone",
+        "porta",
+        "veloce",
+        "squadra"
+      ]
     },
     {
       "word": "ginnastica",
       "hints": [
-        "flessibilità",
+        "flessibile",
         "esercizio",
-        "tappeto",
+        "equilibrio",
         "capriole",
-        "equilibrio"
+        "tappeto"
       ]
     },
     {
       "word": "arrampicata",
-      "hints": ["corda", "parete", "imbrago", "montagna", "presa"]
+      "hints": [
+        "corda",
+        "parete",
+        "altezza",
+        "presa",
+        "montagna"
+      ]
     },
     {
       "word": "skateboard",
-      "hints": ["ruote", "trick", "rampa", "strada", "equilibrio"]
+      "hints": [
+        "ruote",
+        "trick",
+        "strada",
+        "equilibrio",
+        "rampa"
+      ]
     },
     {
       "word": "yoga",
-      "hints": ["tappetino", "stretching", "respiro", "posizioni", "calma"]
+      "hints": [
+        "tappetino",
+        "stretching",
+        "calma",
+        "posizioni",
+        "respiro"
+      ]
     },
     {
       "word": "karate",
-      "hints": ["cintura", "calci", "dojo", "disciplina", "bianco"]
+      "hints": [
+        "cintura",
+        "calci",
+        "disciplina",
+        "combattere",
+        "tappeto"
+      ]
     },
     {
       "word": "scherma",
-      "hints": ["spada", "maschera", "affondo", "duello", "bianco"]
+      "hints": [
+        "spada",
+        "maschera",
+        "duello",
+        "bianco",
+        "affondo"
+      ]
     },
     {
       "word": "tiro con l'arco",
-      "hints": ["arco", "freccia", "bersaglio", "mira", "centro"]
+      "hints": [
+        "arco",
+        "freccia",
+        "bersaglio",
+        "mira",
+        "concentrazione"
+      ]
     },
     {
       "word": "bowling",
-      "hints": ["birilli", "boccia", "pista", "strike", "scarpe"]
+      "hints": [
+        "birilli",
+        "boccia",
+        "pista",
+        "lanciare",
+        "scarpe"
+      ]
     },
     {
       "word": "freccette",
-      "hints": ["bersaglio", "lancio", "pub", "centro", "punti"]
+      "hints": [
+        "bersaglio",
+        "lancio",
+        "pub",
+        "mira",
+        "punti"
+      ]
     },
     {
       "word": "scacchi",
-      "hints": ["scacchiera", "pezzi", "re", "strategia", "scaccomatto"]
+      "hints": [
+        "scacchiera",
+        "pezzi",
+        "strategia",
+        "pensare",
+        "re"
+      ]
     },
     {
       "word": "ping pong",
-      "hints": ["racchetta", "pallina", "tavolo", "rete", "veloce"]
+      "hints": [
+        "racchetta",
+        "pallina",
+        "tavolo",
+        "veloce",
+        "rete"
+      ]
     },
     {
       "word": "automobilismo",
-      "hints": ["auto", "velocità", "circuito", "casco", "box"]
+      "hints": [
+        "auto",
+        "velocità",
+        "circuito",
+        "veloce",
+        "traguardo"
+      ]
     },
     {
       "word": "arbitro",
-      "hints": ["fischietto", "regole", "cartellini", "campo", "decisioni"]
+      "hints": [
+        "fischietto",
+        "regole",
+        "campo",
+        "giusto",
+        "decisioni"
+      ]
     },
     {
       "word": "stadio",
-      "hints": ["folla", "posti", "campo", "cori", "riflettori"]
+      "hints": [
+        "folla",
+        "posti",
+        "campo",
+        "cori",
+        "grande"
+      ]
     },
     {
       "word": "trofeo",
-      "hints": ["vincitore", "oro", "coppa", "cerimonia", "bacheca"]
+      "hints": [
+        "vincitore",
+        "oro",
+        "coppa",
+        "bacheca",
+        "premio"
+      ]
     },
     {
       "word": "olimpiadi",
-      "hints": ["giochi", "medaglie", "cerchi", "atleti", "fiaccola"]
+      "hints": [
+        "giochi",
+        "medaglie",
+        "atleti",
+        "cerchi",
+        "mondiale"
+      ]
+    },
+    {
+      "word": "badminton",
+      "hints": [
+        "rete",
+        "racchetta",
+        "volano",
+        "leggero",
+        "campo"
+      ]
+    },
+    {
+      "word": "cricket",
+      "hints": [
+        "mazza",
+        "palla",
+        "campo",
+        "Inghilterra",
+        "porte"
+      ]
+    },
+    {
+      "word": "pallamano",
+      "hints": [
+        "palla",
+        "porta",
+        "squadra",
+        "lanciare",
+        "campo"
+      ]
+    },
+    {
+      "word": "pallanuoto",
+      "hints": [
+        "piscina",
+        "palla",
+        "squadra",
+        "nuotare",
+        "porta"
+      ]
+    },
+    {
+      "word": "lacrosse",
+      "hints": [
+        "bastone",
+        "rete",
+        "palla",
+        "squadra",
+        "campo"
+      ]
+    },
+    {
+      "word": "squash",
+      "hints": [
+        "racchetta",
+        "palla",
+        "muro",
+        "campo",
+        "veloce"
+      ]
+    },
+    {
+      "word": "pattinaggio su ghiaccio",
+      "hints": [
+        "ghiaccio",
+        "lame",
+        "scivolare",
+        "equilibrio",
+        "freddo"
+      ]
+    },
+    {
+      "word": "pattinaggio artistico",
+      "hints": [
+        "ghiaccio",
+        "piroette",
+        "grazia",
+        "salti",
+        "musica"
+      ]
+    },
+    {
+      "word": "snowboard",
+      "hints": [
+        "neve",
+        "tavola",
+        "montagna",
+        "inverno",
+        "trick"
+      ]
+    },
+    {
+      "word": "curling",
+      "hints": [
+        "ghiaccio",
+        "pietre",
+        "scope",
+        "spazzare",
+        "bersaglio"
+      ]
+    },
+    {
+      "word": "lotta",
+      "hints": [
+        "tappeto",
+        "presa",
+        "forza",
+        "atterrare",
+        "combattere"
+      ]
+    },
+    {
+      "word": "judo",
+      "hints": [
+        "tappeto",
+        "proiezioni",
+        "cintura",
+        "presa",
+        "disciplina"
+      ]
+    },
+    {
+      "word": "taekwondo",
+      "hints": [
+        "calci",
+        "cintura",
+        "Corea",
+        "disciplina",
+        "combattere"
+      ]
+    },
+    {
+      "word": "sumo",
+      "hints": [
+        "Giappone",
+        "pesante",
+        "spingere",
+        "ring",
+        "tradizione"
+      ]
+    },
+    {
+      "word": "kickboxing",
+      "hints": [
+        "calci",
+        "guantoni",
+        "pugno",
+        "ring",
+        "combattere"
+      ]
+    },
+    {
+      "word": "sollevamento pesi",
+      "hints": [
+        "pesante",
+        "muscoli",
+        "bilanciere",
+        "forza",
+        "palestra"
+      ]
+    },
+    {
+      "word": "canottaggio",
+      "hints": [
+        "barca",
+        "remi",
+        "acqua",
+        "squadra",
+        "tirare"
+      ]
+    },
+    {
+      "word": "kayak",
+      "hints": [
+        "barca",
+        "pagaia",
+        "fiume",
+        "acqua",
+        "rapide"
+      ]
+    },
+    {
+      "word": "vela",
+      "hints": [
+        "barca",
+        "vento",
+        "mare",
+        "vele",
+        "corde"
+      ]
+    },
+    {
+      "word": "windsurf",
+      "hints": [
+        "tavola",
+        "vela",
+        "vento",
+        "mare",
+        "equilibrio"
+      ]
+    },
+    {
+      "word": "tuffi",
+      "hints": [
+        "trampolino",
+        "piscina",
+        "saltare",
+        "spruzzo",
+        "capriola"
+      ]
+    },
+    {
+      "word": "immersione",
+      "hints": [
+        "oceano",
+        "maschera",
+        "profondo",
+        "bombola",
+        "subacqueo"
+      ]
+    },
+    {
+      "word": "rafting",
+      "hints": [
+        "fiume",
+        "rapide",
+        "gommone",
+        "squadra",
+        "pagaia"
+      ]
+    },
+    {
+      "word": "triathlon",
+      "hints": [
+        "nuoto",
+        "bici",
+        "corsa",
+        "resistenza",
+        "tre"
+      ]
+    },
+    {
+      "word": "ostacoli",
+      "hints": [
+        "corsa",
+        "saltare",
+        "pista",
+        "barriere",
+        "velocità"
+      ]
+    },
+    {
+      "word": "scatto",
+      "hints": [
+        "corsa",
+        "veloce",
+        "breve",
+        "pista",
+        "velocità"
+      ]
+    },
+    {
+      "word": "salto in lungo",
+      "hints": [
+        "salto",
+        "sabbia",
+        "pista",
+        "distanza",
+        "rincorsa"
+      ]
+    },
+    {
+      "word": "salto in alto",
+      "hints": [
+        "salto",
+        "asticella",
+        "pista",
+        "altezza",
+        "arco"
+      ]
+    },
+    {
+      "word": "salto con l'asta",
+      "hints": [
+        "asta",
+        "salto",
+        "altezza",
+        "pista",
+        "asticella"
+      ]
+    },
+    {
+      "word": "giavellotto",
+      "hints": [
+        "lancio",
+        "lancia",
+        "pista",
+        "distanza",
+        "campo"
+      ]
+    },
+    {
+      "word": "disco",
+      "hints": [
+        "lancio",
+        "rotazione",
+        "piatto",
+        "pista",
+        "campo"
+      ]
+    },
+    {
+      "word": "getto del peso",
+      "hints": [
+        "lancio",
+        "pesante",
+        "palla",
+        "pista",
+        "forza"
+      ]
+    },
+    {
+      "word": "ippica",
+      "hints": [
+        "cavalli",
+        "pista",
+        "scommesse",
+        "velocità",
+        "fantino"
+      ]
+    },
+    {
+      "word": "equitazione",
+      "hints": [
+        "cavallo",
+        "salti",
+        "cavaliere",
+        "elegante",
+        "sella"
+      ]
+    },
+    {
+      "word": "motocross",
+      "hints": [
+        "moto",
+        "terra",
+        "salti",
+        "gara",
+        "fango"
+      ]
+    },
+    {
+      "word": "rally",
+      "hints": [
+        "auto",
+        "sterrato",
+        "gara",
+        "velocità",
+        "navigatore"
+      ]
+    },
+    {
+      "word": "BMX",
+      "hints": [
+        "bici",
+        "trick",
+        "terra",
+        "salti",
+        "rampe"
+      ]
+    },
+    {
+      "word": "mountain bike",
+      "hints": [
+        "bici",
+        "sentieri",
+        "fuoristrada",
+        "colline",
+        "casco"
+      ]
+    },
+    {
+      "word": "parkour",
+      "hints": [
+        "saltare",
+        "città",
+        "muri",
+        "agile",
+        "libero"
+      ]
+    },
+    {
+      "word": "paracadutismo",
+      "hints": [
+        "aereo",
+        "paracadute",
+        "cadere",
+        "cielo",
+        "brivido"
+      ]
+    },
+    {
+      "word": "parapendio",
+      "hints": [
+        "cielo",
+        "planare",
+        "vento",
+        "vela",
+        "montagna"
+      ]
+    },
+    {
+      "word": "snorkeling",
+      "hints": [
+        "mare",
+        "maschera",
+        "superficie",
+        "pesci",
+        "nuotare"
+      ]
+    },
+    {
+      "word": "escursionismo",
+      "hints": [
+        "sentiero",
+        "montagne",
+        "scarponi",
+        "natura",
+        "camminare"
+      ]
+    },
+    {
+      "word": "frisbee",
+      "hints": [
+        "disco",
+        "lanciare",
+        "parco",
+        "prendere",
+        "volare"
+      ]
+    },
+    {
+      "word": "biliardo",
+      "hints": [
+        "tavolo",
+        "palle",
+        "stecca",
+        "buche",
+        "verde"
+      ]
+    },
+    {
+      "word": "snooker",
+      "hints": [
+        "tavolo",
+        "palle",
+        "stecca",
+        "rosso",
+        "buche"
+      ]
+    },
+    {
+      "word": "paintball",
+      "hints": [
+        "pistole",
+        "squadra",
+        "nascondersi",
+        "colori",
+        "campo"
+      ]
+    },
+    {
+      "word": "medaglia",
+      "hints": [
+        "vincitore",
+        "oro",
+        "collo",
+        "cerimonia",
+        "premio"
+      ]
+    },
+    {
+      "word": "portiere",
+      "hints": [
+        "porta",
+        "guanti",
+        "parata",
+        "rete",
+        "difendere"
+      ]
+    },
+    {
+      "word": "fischietto",
+      "hints": [
+        "arbitro",
+        "soffiare",
+        "forte",
+        "fermare",
+        "regole"
+      ]
+    },
+    {
+      "word": "maglia",
+      "hints": [
+        "squadra",
+        "numero",
+        "maglietta",
+        "colori",
+        "indossare"
+      ]
+    },
+    {
+      "word": "tabellone",
+      "hints": [
+        "punti",
+        "numeri",
+        "partita",
+        "display",
+        "schermo"
+      ]
+    },
+    {
+      "word": "podio",
+      "hints": [
+        "vincitori",
+        "tre",
+        "cerimonia",
+        "salire",
+        "medaglie"
+      ]
+    },
+    {
+      "word": "campione",
+      "hints": [
+        "vincitore",
+        "migliore",
+        "titolo",
+        "trofeo",
+        "primo"
+      ]
     }
   ]
 }

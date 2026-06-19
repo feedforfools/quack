@@ -5,134 +5,722 @@
   "words": [
     {
       "word": "meme",
-      "hints": ["divertente", "virale", "immagine", "condividere", "internet"]
+      "hints": [
+        "divertente",
+        "immagine",
+        "condividere",
+        "internet",
+        "virale"
+      ]
     },
     {
       "word": "hashtag",
-      "hints": ["social", "tendenza", "simbolo", "Twitter", "post"]
+      "hints": [
+        "simbolo",
+        "tendenza",
+        "post",
+        "social",
+        "etichetta"
+      ]
     },
     {
       "word": "selfie",
-      "hints": ["fotocamera", "frontale", "posa", "filtro", "condividere"]
+      "hints": [
+        "fotocamera",
+        "se stessi",
+        "posa",
+        "telefono",
+        "condividere"
+      ]
     },
     {
       "word": "influencer",
       "hints": [
         "follower",
-        "sponsorizzazioni",
-        "Instagram",
+        "sponsor",
         "contenuti",
-        "famoso"
+        "famoso",
+        "social"
       ]
     },
     {
       "word": "diretta",
-      "hints": ["live", "spettatori", "chat", "gaming", "telecamera"]
+      "hints": [
+        "live",
+        "spettatori",
+        "chat",
+        "tempo reale",
+        "telecamera"
+      ]
     },
     {
       "word": "virale",
-      "hints": ["diffusione", "video", "milioni", "internet", "improvviso"]
+      "hints": [
+        "diffondersi",
+        "milioni",
+        "veloce",
+        "popolare",
+        "ovunque"
+      ]
     },
     {
       "word": "emoji",
-      "hints": ["faccine", "messaggi", "gialle", "espressioni", "tastiera"]
+      "hints": [
+        "faccine",
+        "messaggi",
+        "piccole",
+        "espressioni",
+        "gialle"
+      ]
     },
     {
       "word": "filtro",
-      "hints": ["foto", "bellezza", "Instagram", "cagnolino", "ritocco"]
+      "hints": [
+        "foto",
+        "bellezza",
+        "effetto",
+        "liscio",
+        "ritocco"
+      ]
     },
     {
       "word": "troll",
-      "hints": ["commenti", "provocare", "anonimo", "internet", "ignorare"]
+      "hints": [
+        "commenti",
+        "provocare",
+        "anonimo",
+        "fastidioso",
+        "online"
+      ]
     },
     {
       "word": "spam",
-      "hints": ["email", "indesiderata", "cartella", "pubblicità", "fastidiosa"]
+      "hints": [
+        "indesiderata",
+        "email",
+        "spazzatura",
+        "cartella",
+        "fastidiosa"
+      ]
     },
     {
       "word": "wifi",
-      "hints": ["internet", "password", "router", "segnale", "gratis"]
+      "hints": [
+        "internet",
+        "password",
+        "segnale",
+        "wireless",
+        "connessione"
+      ]
     },
     {
       "word": "password",
-      "hints": ["segreta", "accesso", "dimenticata", "sicurezza", "asterischi"]
+      "hints": [
+        "segreta",
+        "accesso",
+        "dimenticata",
+        "sicurezza",
+        "lettere"
+      ]
     },
     {
       "word": "streaming",
-      "hints": ["Netflix", "guardare", "online", "serie", "maratona"]
+      "hints": [
+        "guardare",
+        "online",
+        "serie",
+        "maratona",
+        "abbonamento"
+      ]
     },
     {
       "word": "youtuber",
-      "hints": ["video", "canale", "iscritti", "telecamera", "vlog"]
+      "hints": [
+        "video",
+        "canale",
+        "iscritti",
+        "telecamera",
+        "contenuti"
+      ]
     },
     {
       "word": "TikTok",
-      "hints": ["balletti", "brevi", "video", "tendenze", "scorrere"]
+      "hints": [
+        "balletti",
+        "brevi",
+        "video",
+        "tendenze",
+        "scorrere"
+      ]
     },
     {
       "word": "unboxing",
-      "hints": ["pacco", "telecamera", "reazione", "nuovo", "apertura"]
+      "hints": [
+        "pacco",
+        "svelare",
+        "nuovo",
+        "reazione",
+        "video"
+      ]
     },
     {
       "word": "clickbait",
-      "hints": ["titolo", "curiosità", "ingannevole", "shock", "anteprima"]
+      "hints": [
+        "titolo",
+        "curiosità",
+        "ingannevole",
+        "shock",
+        "trucco"
+      ]
     },
     {
       "word": "screenshot",
-      "hints": ["cattura", "prova", "telefono", "condividere", "chat"]
+      "hints": [
+        "cattura",
+        "prova",
+        "telefono",
+        "immagine",
+        "condividere"
+      ]
     },
     {
       "word": "notifica",
-      "hints": ["suono", "telefono", "pallino", "distrazione", "continua"]
+      "hints": [
+        "suono",
+        "telefono",
+        "avviso",
+        "distrazione",
+        "pallino"
+      ]
     },
     {
       "word": "algoritmo",
-      "hints": ["feed", "consigli", "misterioso", "contenuti", "dipendenza"]
+      "hints": [
+        "feed",
+        "consigli",
+        "misterioso",
+        "contenuti",
+        "codice"
+      ]
     },
     {
       "word": "avatar",
-      "hints": ["profilo", "immagine", "digitale", "identità", "personaggio"]
+      "hints": [
+        "profilo",
+        "immagine",
+        "digitale",
+        "identità",
+        "personaggio"
+      ]
     },
     {
       "word": "GIF",
-      "hints": ["animata", "loop", "reazione", "divertente", "messaggi"]
+      "hints": [
+        "animata",
+        "loop",
+        "reazione",
+        "divertente",
+        "breve"
+      ]
     },
     {
       "word": "blog",
-      "hints": ["scrivere", "post", "personale", "internet", "lettori"]
+      "hints": [
+        "scrivere",
+        "post",
+        "personale",
+        "online",
+        "lettori"
+      ]
     },
     {
       "word": "vlog",
-      "hints": ["telecamera", "quotidiano", "youtube", "vita", "parlare"]
+      "hints": [
+        "telecamera",
+        "quotidiano",
+        "video",
+        "vita",
+        "parlare"
+      ]
     },
     {
       "word": "follower",
-      "hints": ["social", "numero", "Instagram", "fan", "crescere"]
+      "hints": [
+        "social",
+        "numero",
+        "fan",
+        "crescere",
+        "pubblico"
+      ]
     },
     {
       "word": "like",
-      "hints": ["pollice", "cuore", "tasto", "approvazione", "contare"]
+      "hints": [
+        "pollice",
+        "cuore",
+        "tasto",
+        "approvazione",
+        "toccare"
+      ]
     },
     {
       "word": "commenti",
-      "hints": ["opinioni", "litigi", "scorrere", "tossici", "risposte"]
+      "hints": [
+        "opinioni",
+        "litigi",
+        "scorrere",
+        "risposte",
+        "tossici"
+      ]
     },
     {
       "word": "download",
-      "hints": ["file", "internet", "avanzamento", "attesa", "salvare"]
+      "hints": [
+        "file",
+        "online",
+        "avanzamento",
+        "salvare",
+        "attesa"
+      ]
     },
     {
       "word": "gamer",
-      "hints": ["console", "cuffie", "streaming", "notte", "energetica"]
+      "hints": [
+        "console",
+        "cuffie",
+        "notte",
+        "schermo",
+        "energetica"
+      ]
     },
     {
       "word": "criptovalute",
       "hints": [
-        "bitcoin",
         "digitale",
+        "soldi",
         "investimento",
         "volatile",
         "portafoglio"
+      ]
+    },
+    {
+      "word": "DM",
+      "hints": [
+        "privato",
+        "messaggio",
+        "diretto",
+        "chat",
+        "casella"
+      ]
+    },
+    {
+      "word": "chat di gruppo",
+      "hints": [
+        "amici",
+        "messaggi",
+        "tanti",
+        "notifiche",
+        "chat"
+      ]
+    },
+    {
+      "word": "videochiamata",
+      "hints": [
+        "volto",
+        "schermo",
+        "parlare",
+        "telecamera",
+        "lontano"
+      ]
+    },
+    {
+      "word": "webcam",
+      "hints": [
+        "telecamera",
+        "computer",
+        "volto",
+        "video",
+        "piccola"
+      ]
+    },
+    {
+      "word": "sticker",
+      "hints": [
+        "chat",
+        "carino",
+        "immagine",
+        "divertente",
+        "inviare"
+      ]
+    },
+    {
+      "word": "storia",
+      "hints": [
+        "foto",
+        "24 ore",
+        "condividere",
+        "sparire",
+        "quotidiana"
+      ]
+    },
+    {
+      "word": "reel",
+      "hints": [
+        "breve",
+        "video",
+        "verticale",
+        "scorrere",
+        "alla moda"
+      ]
+    },
+    {
+      "word": "swipe",
+      "hints": [
+        "dito",
+        "sinistra",
+        "destra",
+        "schermo",
+        "scegliere"
+      ]
+    },
+    {
+      "word": "feed",
+      "hints": [
+        "scorrere",
+        "post",
+        "infinito",
+        "aggiornamenti",
+        "home"
+      ]
+    },
+    {
+      "word": "profilo",
+      "hints": [
+        "immagine",
+        "info",
+        "account",
+        "bio",
+        "pagina"
+      ]
+    },
+    {
+      "word": "bio",
+      "hints": [
+        "breve",
+        "descrizione",
+        "profilo",
+        "su di sé",
+        "parole"
+      ]
+    },
+    {
+      "word": "repost",
+      "hints": [
+        "condividere",
+        "di nuovo",
+        "altri",
+        "diffondere",
+        "credito"
+      ]
+    },
+    {
+      "word": "condividere",
+      "hints": [
+        "inviare",
+        "diffondere",
+        "altri",
+        "tasto",
+        "post"
+      ]
+    },
+    {
+      "word": "segnalibro",
+      "hints": [
+        "salvare",
+        "dopo",
+        "pagina",
+        "tenere",
+        "preferito"
+      ]
+    },
+    {
+      "word": "iscriversi",
+      "hints": [
+        "seguire",
+        "canale",
+        "aggiornamenti",
+        "tasto",
+        "campanella"
+      ]
+    },
+    {
+      "word": "bloccare",
+      "hints": [
+        "fermare",
+        "rimuovere",
+        "ignorare",
+        "fastidioso",
+        "tasto"
+      ]
+    },
+    {
+      "word": "silenziare",
+      "hints": [
+        "silenzio",
+        "zitto",
+        "ignorare",
+        "notifiche",
+        "spento"
+      ]
+    },
+    {
+      "word": "catfish",
+      "hints": [
+        "falso",
+        "identità",
+        "online",
+        "bugia",
+        "foto"
+      ]
+    },
+    {
+      "word": "doomscrolling",
+      "hints": [
+        "infinito",
+        "brutte notizie",
+        "scorrere",
+        "dipendenza",
+        "tardi"
+      ]
+    },
+    {
+      "word": "FOMO",
+      "hints": [
+        "perdersi",
+        "ansia",
+        "altri",
+        "paura",
+        "social"
+      ]
+    },
+    {
+      "word": "trend",
+      "hints": [
+        "popolare",
+        "ora",
+        "argomento",
+        "in crescita",
+        "tutti"
+      ]
+    },
+    {
+      "word": "challenge",
+      "hints": [
+        "sfida",
+        "virale",
+        "video",
+        "copiare",
+        "moda"
+      ]
+    },
+    {
+      "word": "tutorial",
+      "hints": [
+        "come fare",
+        "passi",
+        "imparare",
+        "video",
+        "guida"
+      ]
+    },
+    {
+      "word": "miniatura",
+      "hints": [
+        "immagine",
+        "anteprima",
+        "piccola",
+        "cliccare",
+        "video"
+      ]
+    },
+    {
+      "word": "iscritto",
+      "hints": [
+        "follower",
+        "canale",
+        "numero",
+        "fedele",
+        "notifica"
+      ]
+    },
+    {
+      "word": "pop-up",
+      "hints": [
+        "finestra",
+        "fastidioso",
+        "pubblicità",
+        "chiudere",
+        "improvviso"
+      ]
+    },
+    {
+      "word": "captcha",
+      "hints": [
+        "robot",
+        "verificare",
+        "rompicapo",
+        "umano",
+        "lettere"
+      ]
+    },
+    {
+      "word": "VPN",
+      "hints": [
+        "nascosto",
+        "privato",
+        "sicuro",
+        "posizione",
+        "connessione"
+      ]
+    },
+    {
+      "word": "cloud",
+      "hints": [
+        "archiviazione",
+        "online",
+        "file",
+        "backup",
+        "remoto"
+      ]
+    },
+    {
+      "word": "caricamento",
+      "hints": [
+        "inviare",
+        "file",
+        "online",
+        "avanzamento",
+        "condividere"
+      ]
+    },
+    {
+      "word": "buffering",
+      "hints": [
+        "caricamento",
+        "attesa",
+        "rotella",
+        "lento",
+        "video"
+      ]
+    },
+    {
+      "word": "lag",
+      "hints": [
+        "lento",
+        "ritardo",
+        "gaming",
+        "frustrante",
+        "connessione"
+      ]
+    },
+    {
+      "word": "server",
+      "hints": [
+        "computer",
+        "ospitare",
+        "online",
+        "dati",
+        "crash"
+      ]
+    },
+    {
+      "word": "glitch",
+      "hints": [
+        "errore",
+        "bug",
+        "strano",
+        "schermo",
+        "rotto"
+      ]
+    },
+    {
+      "word": "aggiornamento",
+      "hints": [
+        "nuova versione",
+        "scaricare",
+        "migliorare",
+        "software",
+        "attesa"
+      ]
+    },
+    {
+      "word": "browser",
+      "hints": [
+        "internet",
+        "schede",
+        "cercare",
+        "web",
+        "finestra"
+      ]
+    },
+    {
+      "word": "motore di ricerca",
+      "hints": [
+        "cercare",
+        "risultati",
+        "web",
+        "domande",
+        "trovare"
+      ]
+    },
+    {
+      "word": "URL",
+      "hints": [
+        "indirizzo",
+        "web",
+        "link",
+        "barra",
+        "digitare"
+      ]
+    },
+    {
+      "word": "phishing",
+      "hints": [
+        "truffa",
+        "falso",
+        "email",
+        "rubare",
+        "trucco"
+      ]
+    },
+    {
+      "word": "hacker",
+      "hints": [
+        "computer",
+        "irrompere",
+        "codice",
+        "rubare",
+        "anonimo"
+      ]
+    },
+    {
+      "word": "chatbot",
+      "hints": [
+        "IA",
+        "messaggi",
+        "automatico",
+        "rispondere",
+        "robot"
+      ]
+    },
+    {
+      "word": "deepfake",
+      "hints": [
+        "falso",
+        "video",
+        "IA",
+        "realistico",
+        "volto"
       ]
     }
   ]
